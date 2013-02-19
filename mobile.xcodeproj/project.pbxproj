@@ -28,6 +28,19 @@
 		9103113E16D1E53900CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103114616D1E53900CEE814 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103114416D1E53900CEE814 /* InfoPlist.strings */; };
 		9103114916D1E53900CEE814 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103114816D1E53900CEE814 /* mobileTests.m */; };
+		9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115816D316BA00CEE814 /* ExploreTableViewController.m */; };
+		9103115E16D3179E00CEE814 /* ApplicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* ApplicationCell.m */; };
+		9103116116D317E800CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* MerchantCell.m */; };
+		9103116316D3181800CEE814 /* MerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9103116216D3181800CEE814 /* MerchantCell.xib */; };
+		9103116616D3194F00CEE814 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116516D3194F00CEE814 /* MerchantController.m */; };
+		9103116916D3196300CEE814 /* Merchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116816D3196200CEE814 /* Merchant.m */; };
+		9103117116D3275800CEE814 /* Baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116B16D3275800CEE814 /* Baseball.png */; };
+		9103117216D3275800CEE814 /* Blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116C16D3275800CEE814 /* Blocks.png */; };
+		9103117316D3275800CEE814 /* Checkers.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116D16D3275800CEE814 /* Checkers.png */; };
+		9103117416D3275800CEE814 /* DarkBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116E16D3275800CEE814 /* DarkBackground.png */; };
+		9103117516D3275800CEE814 /* Dinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116F16D3275800CEE814 /* Dinner.png */; };
+		9103117616D3275800CEE814 /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103117016D3275800CEE814 /* Football.png */; };
+		9103117816D3278B00CEE814 /* MerchantData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9103117716D3278B00CEE814 /* MerchantData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +82,24 @@
 		9103114516D1E53900CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9103114716D1E53900CEE814 /* mobileTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileTests.h; sourceTree = "<group>"; };
 		9103114816D1E53900CEE814 /* mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobileTests.m; sourceTree = "<group>"; };
+		9103115716D316BA00CEE814 /* ExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableViewController.h; sourceTree = "<group>"; };
+		9103115816D316BA00CEE814 /* ExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableViewController.m; sourceTree = "<group>"; };
+		9103115C16D3179E00CEE814 /* ApplicationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationCell.h; sourceTree = "<group>"; };
+		9103115D16D3179E00CEE814 /* ApplicationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationCell.m; sourceTree = "<group>"; };
+		9103115F16D317E800CEE814 /* MerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantCell.h; sourceTree = "<group>"; };
+		9103116016D317E800CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
+		9103116216D3181800CEE814 /* MerchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantCell.xib; sourceTree = "<group>"; };
+		9103116416D3194F00CEE814 /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
+		9103116516D3194F00CEE814 /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
+		9103116716D3196200CEE814 /* Merchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Merchant.h; sourceTree = "<group>"; };
+		9103116816D3196200CEE814 /* Merchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Merchant.m; sourceTree = "<group>"; };
+		9103116B16D3275800CEE814 /* Baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Baseball.png; sourceTree = "<group>"; };
+		9103116C16D3275800CEE814 /* Blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blocks.png; sourceTree = "<group>"; };
+		9103116D16D3275800CEE814 /* Checkers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checkers.png; sourceTree = "<group>"; };
+		9103116E16D3275800CEE814 /* DarkBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DarkBackground.png; sourceTree = "<group>"; };
+		9103116F16D3275800CEE814 /* Dinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dinner.png; sourceTree = "<group>"; };
+		9103117016D3275800CEE814 /* Football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Football.png; sourceTree = "<group>"; };
+		9103117716D3278B00CEE814 /* MerchantData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MerchantData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +159,7 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
 				9103111C16D1E53800CEE814 /* AppDelegate.m */,
 				9103112416D1E53800CEE814 /* MainStoryboard.storyboard */,
@@ -140,6 +172,17 @@
 				9103113116D1E53800CEE814 /* second.png */,
 				9103113316D1E53800CEE814 /* second@2x.png */,
 				9103111316D1E53800CEE814 /* Supporting Files */,
+				9103115716D316BA00CEE814 /* ExploreTableViewController.h */,
+				9103115816D316BA00CEE814 /* ExploreTableViewController.m */,
+				9103115C16D3179E00CEE814 /* ApplicationCell.h */,
+				9103115D16D3179E00CEE814 /* ApplicationCell.m */,
+				9103115F16D317E800CEE814 /* MerchantCell.h */,
+				9103116016D317E800CEE814 /* MerchantCell.m */,
+				9103116216D3181800CEE814 /* MerchantCell.xib */,
+				9103116416D3194F00CEE814 /* MerchantController.h */,
+				9103116516D3194F00CEE814 /* MerchantController.m */,
+				9103116716D3196200CEE814 /* Merchant.h */,
+				9103116816D3196200CEE814 /* Merchant.m */,
 			);
 			path = mobile;
 			sourceTree = "<group>";
@@ -175,6 +218,20 @@
 				9103114416D1E53900CEE814 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9103116A16D3271D00CEE814 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9103117716D3278B00CEE814 /* MerchantData.plist */,
+				9103116B16D3275800CEE814 /* Baseball.png */,
+				9103116C16D3275800CEE814 /* Blocks.png */,
+				9103116D16D3275800CEE814 /* Checkers.png */,
+				9103116E16D3275800CEE814 /* DarkBackground.png */,
+				9103116F16D3275800CEE814 /* Dinner.png */,
+				9103117016D3275800CEE814 /* Football.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +314,14 @@
 				9103112D16D1E53800CEE814 /* first@2x.png in Resources */,
 				9103113216D1E53800CEE814 /* second.png in Resources */,
 				9103113416D1E53800CEE814 /* second@2x.png in Resources */,
+				9103116316D3181800CEE814 /* MerchantCell.xib in Resources */,
+				9103117116D3275800CEE814 /* Baseball.png in Resources */,
+				9103117216D3275800CEE814 /* Blocks.png in Resources */,
+				9103117316D3275800CEE814 /* Checkers.png in Resources */,
+				9103117416D3275800CEE814 /* DarkBackground.png in Resources */,
+				9103117516D3275800CEE814 /* Dinner.png in Resources */,
+				9103117616D3275800CEE814 /* Football.png in Resources */,
+				9103117816D3278B00CEE814 /* MerchantData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +360,11 @@
 				9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */,
 				9103112916D1E53800CEE814 /* FirstViewController.m in Sources */,
 				9103113016D1E53800CEE814 /* SecondViewController.m in Sources */,
+				9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */,
+				9103115E16D3179E00CEE814 /* ApplicationCell.m in Sources */,
+				9103116116D317E800CEE814 /* MerchantCell.m in Sources */,
+				9103116616D3194F00CEE814 /* MerchantController.m in Sources */,
+				9103116916D3196300CEE814 /* Merchant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
