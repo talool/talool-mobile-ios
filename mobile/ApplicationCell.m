@@ -10,7 +10,7 @@
 
 @implementation ApplicationCell
 
-@synthesize useDarkBackground, icon, publisher, name, price;
+@synthesize useDarkBackground, merchant, icon, publisher, name, price;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -40,6 +40,21 @@
         self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.backgroundView.frame = self.bounds;
     }
+}
+
+- (void)setMerchant:(Merchant *)newMerchant {
+    if (newMerchant != merchant) {
+        merchant = newMerchant;
+        
+        self.icon = merchant.thumbnailImage;
+        self.name = merchant.name;
+        self.publisher = merchant.publisher;
+        self.price = merchant.price;
+    }
+}
+
+- (Merchant *)merchant {
+    return merchant;
 }
 
 

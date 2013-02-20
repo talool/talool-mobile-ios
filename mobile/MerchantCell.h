@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "ApplicationCell.h"
 //#import "RatingView.h"
-#import "Merchant.h"
 
 @interface MerchantCell : ApplicationCell
 {
-    Merchant *merchant;
     
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *publisherLabel;
@@ -22,7 +20,5 @@
     //IBOutlet UILabel *numRatingsLabel;
     IBOutlet UILabel *priceLabel;
 }
-
-@property (nonatomic, retain) Merchant *merchant;
 
 @end

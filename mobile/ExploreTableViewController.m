@@ -11,15 +11,7 @@
 
 #import "Merchant.h"
 #import "MerchantController.h"
-
 #import "MerchantCell.h"
-
-
-// Define one of the following macros to 1 to control which type of cell will be used.
-#define USE_INDIVIDUAL_SUBVIEWS_CELL    1	// use a xib file defining the cell
-#define USE_COMPOSITE_SUBVIEW_CELL      0	// use a single view to draw all the content
-#define USE_HYBRID_CELL                 0	// use a single view to draw most of the content + separate label to render the rest of the content
-
 
 /*
  Predefined colors to alternate the background color of each cell row by row
@@ -34,7 +26,7 @@
 @end
 
 @implementation ExploreTableViewController
-@synthesize merchantController, tmpCell, data, cellNib;
+@synthesize merchantController, tmpCell, cellNib;
 
 - (void)viewDidLoad
 {
@@ -45,11 +37,9 @@
     self.tableView.backgroundColor = DARK_BACKGROUND;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-	// Load the data.
-    NSString *dataPath = [[NSBundle mainBundle] pathForResource:@"MerchantData" ofType:@"plist"];
-    self.data = [NSArray arrayWithContentsOfFile:dataPath];
-    
+    // The merchantController will fetch the data for this view
     self.merchantController = [[MerchantController alloc] init];
+    [self.merchantController loadData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -57,17 +47,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    // create our UINib instance which will later help us load and instanciate the
-	// UITableViewCells's UI via a xib file.
-	//
-	// Note:
-	// The UINib classe provides better performance in situations where you want to create multiple
-	// copies of a nib file’s contents. The normal nib-loading process involves reading the nib file
-	// from disk and then instantiating the objects it contains. However, with the UINib class, the
-	// nib file is read from disk once and the contents are stored in memory.
-	// Because they are in memory, creating successive sets of objects takes less time because it
-	// does not require accessing the disk.
-	//
 	self.cellNib = [UINib nibWithNibName:@"MerchantCell" bundle:nil];
 }
 
@@ -81,7 +60,6 @@
 {
 	[super viewDidLoad];
 	
-	self.data = nil;
 	self.tmpCell = nil;
 	self.cellNib = nil;
     self.merchantController = nil;
@@ -115,33 +93,16 @@
 	
     if (cell == nil)
     {
-//#if USE_INDIVIDUAL_SUBVIEWS_CELL
         [self.cellNib instantiateWithOwner:self options:nil];
 		cell = tmpCell;
 		self.tmpCell = nil;
-/*
-#elif USE_COMPOSITE_SUBVIEW_CELL
-        cell = [[[CompositeSubviewBasedApplicationCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                            reuseIdentifier:CellIdentifier] autorelease];
-		
-#elif USE_HYBRID_CELL
-        cell = [[[HybridSubviewBasedApplicationCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                                         reuseIdentifier:CellIdentifier] autorelease];
-#endif
- */
     }
     
 	// Display dark and light background in alternate rows -- see tableView:willDisplayCell:forRowAtIndexPath:.
     cell.useDarkBackground = (indexPath.row % 2 == 0);
 	
 	// Configure the data for the cell.
-    NSDictionary *dataItem = [data objectAtIndex:indexPath.row];
-    cell.icon = [UIImage imageNamed:[dataItem objectForKey:@"Icon"]];
-    cell.publisher = [dataItem objectForKey:@"Publisher"];
-    cell.name = [dataItem objectForKey:@"Name"];
-    //cell.numRatings = [[dataItem objectForKey:@"NumRatings"] intValue];
-    //cell.rating = [[dataItem objectForKey:@"Rating"] floatValue];
-    cell.price = [dataItem objectForKey:@"Price"];
+    [cell setMerchant:[self.merchantController objectInMerchantsAtIndex:indexPath.row]];
 	
     return cell;
 }

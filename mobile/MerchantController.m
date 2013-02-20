@@ -9,10 +9,8 @@
 #import "MerchantController.h"
 #import "Merchant.h"
 
-static NSString *DataFilename = @"mobile.archive";
-
 @interface MerchantController (DemoData)
-- (void)createDemoData;
+- (void)loadData;
 @end
 
 @implementation MerchantController
@@ -22,23 +20,7 @@ static NSString *DataFilename = @"mobile.archive";
 
 - (id)init {
 	if ((self = [super init])) {
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		if ([paths count] == 0) {
-			[self createDemoData];
-		} else {
-			NSString *documentsDirectory = [paths objectAtIndex:0];
-			NSString *appFile = [documentsDirectory stringByAppendingPathComponent:DataFilename];
-            
-			NSFileManager *fm = [NSFileManager defaultManager];
-			if (/*0 && */[fm fileExistsAtPath:appFile]) {
-				merchants = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
-			} else {
-				[self createDemoData];
-			}
-		}
-        [self sortAlphabeticallyAscending:YES];
-        
-        selectedIndexes = [[NSMutableIndexSet alloc] init];
+		// do something cool
 	}
 	return self;
 }
@@ -49,9 +31,10 @@ static NSString *DataFilename = @"mobile.archive";
 }
 
 /*
- Create the Merchant objects and initialize them from the Merchants.plist file on the app bundle
+ Create the Merchant objects and initialize them from a plist.
+ Eventually, we'll get this from the API
  */
-- (void)createDemoData {
+- (void)loadData {
 	merchants = [[NSMutableArray alloc] init];
 	NSArray *merchantDictionaries = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MerchantData" ofType:@"plist"]];
 	
@@ -69,6 +52,10 @@ static NSString *DataFilename = @"mobile.archive";
         
 		[merchants addObject:newMerchant];
 	}
+    
+    [self sortAlphabeticallyAscending:YES];
+    
+    selectedIndexes = [[NSMutableIndexSet alloc] init];
 }
 
 - (unsigned)countOfMerchants {
@@ -79,9 +66,6 @@ static NSString *DataFilename = @"mobile.archive";
     return [merchants objectAtIndex:theIndex];
 }
 
-//- (void)dealloc {
-//[merchants release];
-//[super dealloc];
-//}
+
 
 @end

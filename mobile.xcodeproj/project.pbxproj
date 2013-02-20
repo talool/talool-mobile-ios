@@ -159,30 +159,14 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				9103117B16D467C500CEE814 /* View Controllers */,
+				9103117A16D467AE00CEE814 /* Table Cells */,
+				9103117916D4678600CEE814 /* Models and Model Controllers */,
 				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
 				9103111C16D1E53800CEE814 /* AppDelegate.m */,
 				9103112416D1E53800CEE814 /* MainStoryboard.storyboard */,
-				9103112716D1E53800CEE814 /* FirstViewController.h */,
-				9103112816D1E53800CEE814 /* FirstViewController.m */,
-				9103112A16D1E53800CEE814 /* first.png */,
-				9103112C16D1E53800CEE814 /* first@2x.png */,
-				9103112E16D1E53800CEE814 /* SecondViewController.h */,
-				9103112F16D1E53800CEE814 /* SecondViewController.m */,
-				9103113116D1E53800CEE814 /* second.png */,
-				9103113316D1E53800CEE814 /* second@2x.png */,
 				9103111316D1E53800CEE814 /* Supporting Files */,
-				9103115716D316BA00CEE814 /* ExploreTableViewController.h */,
-				9103115816D316BA00CEE814 /* ExploreTableViewController.m */,
-				9103115C16D3179E00CEE814 /* ApplicationCell.h */,
-				9103115D16D3179E00CEE814 /* ApplicationCell.m */,
-				9103115F16D317E800CEE814 /* MerchantCell.h */,
-				9103116016D317E800CEE814 /* MerchantCell.m */,
-				9103116216D3181800CEE814 /* MerchantCell.xib */,
-				9103116416D3194F00CEE814 /* MerchantController.h */,
-				9103116516D3194F00CEE814 /* MerchantController.m */,
-				9103116716D3196200CEE814 /* Merchant.h */,
-				9103116816D3196200CEE814 /* Merchant.m */,
 			);
 			path = mobile;
 			sourceTree = "<group>";
@@ -223,7 +207,10 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9103117716D3278B00CEE814 /* MerchantData.plist */,
+				9103112A16D1E53800CEE814 /* first.png */,
+				9103112C16D1E53800CEE814 /* first@2x.png */,
+				9103113116D1E53800CEE814 /* second.png */,
+				9103113316D1E53800CEE814 /* second@2x.png */,
 				9103116B16D3275800CEE814 /* Baseball.png */,
 				9103116C16D3275800CEE814 /* Blocks.png */,
 				9103116D16D3275800CEE814 /* Checkers.png */,
@@ -232,6 +219,43 @@
 				9103117016D3275800CEE814 /* Football.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		9103117916D4678600CEE814 /* Models and Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9103117716D3278B00CEE814 /* MerchantData.plist */,
+				9103116416D3194F00CEE814 /* MerchantController.h */,
+				9103116516D3194F00CEE814 /* MerchantController.m */,
+				9103116716D3196200CEE814 /* Merchant.h */,
+				9103116816D3196200CEE814 /* Merchant.m */,
+			);
+			name = "Models and Model Controllers";
+			sourceTree = "<group>";
+		};
+		9103117A16D467AE00CEE814 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9103115C16D3179E00CEE814 /* ApplicationCell.h */,
+				9103115D16D3179E00CEE814 /* ApplicationCell.m */,
+				9103115F16D317E800CEE814 /* MerchantCell.h */,
+				9103116016D317E800CEE814 /* MerchantCell.m */,
+				9103116216D3181800CEE814 /* MerchantCell.xib */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
+		9103117B16D467C500CEE814 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9103112E16D1E53800CEE814 /* SecondViewController.h */,
+				9103112F16D1E53800CEE814 /* SecondViewController.m */,
+				9103115716D316BA00CEE814 /* ExploreTableViewController.h */,
+				9103115816D316BA00CEE814 /* ExploreTableViewController.m */,
+				9103112716D1E53800CEE814 /* FirstViewController.h */,
+				9103112816D1E53800CEE814 /* FirstViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

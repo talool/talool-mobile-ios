@@ -10,25 +10,6 @@
 
 @implementation MerchantCell
 
-/*
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
     [super setBackgroundColor:backgroundColor];
@@ -76,25 +57,5 @@
     [super setPrice:newPrice];
     priceLabel.text = newPrice;
 }
-
-
-- (void)setMerchant:(Merchant *)newMerchant {
-    if (newMerchant != merchant) {
-        merchant = newMerchant;
-        
-        //imageView.image = merchant.thumbnailImage;
-        //nameLabel.text = merchant.name;
-        //descriptionLabel.text = merchant.description;
-        //prepTimeLabel.text = merchant.prepTime;
-    }
-}
-
-/*
- Set the recipe object onto the table view cell.
- */
-- (Merchant *)merchant {
-    return merchant;
-}
-
 
 @end

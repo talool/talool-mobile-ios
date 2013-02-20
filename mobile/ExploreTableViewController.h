@@ -15,14 +15,10 @@
 @interface ExploreTableViewController : UITableViewController {
     MerchantController *merchantController;
     ApplicationCell *tmpCell;
-    NSArray *data;
-	
-	// referring to our xib-based UITableViewCell ('MerchantCell')
 	UINib *cellNib;
 }
 
 @property (nonatomic, retain) IBOutlet ApplicationCell *tmpCell;
-@property (nonatomic, retain) NSArray *data;
 
 @property (nonatomic, retain) UINib *cellNib;
 
