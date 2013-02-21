@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ApplicationCell.h"
+#import "MerchantCell.h"
 //#import "RatingView.h"
 
-@interface FavoriteMerchantCell : ApplicationCell
+@interface FavoriteMerchantCell : MerchantCell
 {
     
     IBOutlet UIImageView *iconView;

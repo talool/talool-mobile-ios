@@ -1,5 +1,5 @@
 //
-//  MerchantCell.m
+//  ApplicationCell.m
 //  mobile
 //
 //  Created by Douglas McCuen on 2/18/13.
@@ -10,52 +10,52 @@
 
 @implementation MerchantCell
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
+@synthesize useDarkBackground, merchant, icon, publisher, name, price;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super setBackgroundColor:backgroundColor];
-    
-    iconView.backgroundColor = backgroundColor;
-    publisherLabel.backgroundColor = backgroundColor;
-    nameLabel.backgroundColor = backgroundColor;
-    //ratingView.backgroundColor = backgroundColor;
-    //numRatingsLabel.backgroundColor = backgroundColor;
-    priceLabel.backgroundColor = backgroundColor;
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
 }
 
-- (void)setIcon:(UIImage *)newIcon
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setIcon:newIcon];
-    iconView.image = newIcon;
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
 
-- (void)setPublisher:(NSString *)newPublisher
+- (void)setUseDarkBackground:(BOOL)flag
 {
-    [super setPublisher:newPublisher];
-    publisherLabel.text = newPublisher;
-}
-/*
-- (void)setRating:(float)newRating
-{
-    [super setRating:newRating];
-    ratingView.rating = newRating;
-}
-
-- (void)setNumRatings:(NSInteger)newNumRatings
-{
-    [super setNumRatings:newNumRatings];
-    numRatingsLabel.text = [NSString stringWithFormat:@"%d Ratings", newNumRatings];
-}
-*/
-- (void)setName:(NSString *)newName
-{
-    [super setName:newName];
-    nameLabel.text = newName;
+    if (flag != useDarkBackground || !self.backgroundView)
+    {
+        useDarkBackground = flag;
+        
+        NSString *backgroundImagePath = [[NSBundle mainBundle] pathForResource:useDarkBackground ? @"DarkBackground" : @"LightBackground" ofType:@"png"];
+        UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
+        self.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.backgroundView.frame = self.bounds;
+    }
 }
 
-- (void)setPrice:(NSString *)newPrice
-{
-    [super setPrice:newPrice];
-    priceLabel.text = newPrice;
+- (void)setMerchant:(Merchant *)newMerchant {
+    if (newMerchant != merchant) {
+        merchant = newMerchant;
+        
+        self.icon = merchant.thumbnailImage;
+        self.name = merchant.name;
+        self.publisher = merchant.publisher;
+        self.price = merchant.price;
+    }
 }
+
+- (Merchant *)merchant {
+    return merchant;
+}
+
 
 @end

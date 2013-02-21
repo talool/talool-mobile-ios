@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ApplicationCell.h"
+#import "MerchantCell.h"
 
 @class MerchantController;
 @class Merchant;
 
 @interface ExploreTableViewController : UITableViewController {
     MerchantController *merchantController;
-    ApplicationCell *tmpCell;
+    MerchantCell *tmpCell;
 	UINib *cellNib;
 }
 
-@property (nonatomic, retain) IBOutlet ApplicationCell *tmpCell;
+@property (nonatomic, retain) IBOutlet MerchantCell *tmpCell;
 
 @property (nonatomic, retain) UINib *cellNib;
 
