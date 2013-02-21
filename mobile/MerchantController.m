@@ -9,9 +9,6 @@
 #import "MerchantController.h"
 #import "Merchant.h"
 
-@interface MerchantController (DemoData)
-- (void)loadData;
-@end
 
 @implementation MerchantController
 

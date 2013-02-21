@@ -11,7 +11,7 @@
 
 #import "Merchant.h"
 #import "MerchantController.h"
-#import "MerchantCell.h"
+#import "FavoriteMerchantCell.h"
 
 /*
  Predefined colors to alternate the background color of each cell row by row
@@ -47,7 +47,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-	self.cellNib = [UINib nibWithNibName:@"MerchantCell" bundle:nil];
+	self.cellNib = [UINib nibWithNibName:@"FavoriteMerchantCell" bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning
