@@ -23,18 +23,15 @@
                                     <segue destination="1Ub-9V-glG" kind="embed" id="6PO-Zn-rs8"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="city.png" translatesAutoresizingMaskIntoConstraints="NO" id="yK8-Tk-ODY"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yK8-Tk-ODY" firstAttribute="leading" secondItem="oZx-eq-qlH" secondAttribute="leading" type="default" id="3Xx-TV-ptc"/>
                             <constraint firstItem="GWZ-1U-ZdH" firstAttribute="trailing" secondItem="oZx-eq-qlH" secondAttribute="trailing" type="default" id="5Im-Rh-ZEa"/>
                             <constraint firstItem="yYQ-8F-q4V" firstAttribute="leading" secondItem="oZx-eq-qlH" secondAttribute="leading" type="default" id="GLt-az-WB4"/>
+                            <constraint firstItem="yYQ-8F-q4V" firstAttribute="top" secondItem="GWZ-1U-ZdH" secondAttribute="bottom" type="default" id="KW8-GA-3IB"/>
                             <constraint firstItem="yYQ-8F-q4V" firstAttribute="trailing" secondItem="oZx-eq-qlH" secondAttribute="trailing" type="default" id="Xgg-0n-VQh"/>
-                            <constraint firstItem="yYQ-8F-q4V" firstAttribute="top" secondItem="oZx-eq-qlH" secondAttribute="top" constant="104" id="ZhX-sB-vJu"/>
                             <constraint firstItem="yYQ-8F-q4V" firstAttribute="bottom" secondItem="oZx-eq-qlH" secondAttribute="bottom" type="default" id="bxE-NY-8uk"/>
                             <constraint firstItem="GWZ-1U-ZdH" firstAttribute="leading" secondItem="oZx-eq-qlH" secondAttribute="leading" type="default" id="fYI-6s-8dL"/>
-                            <constraint firstItem="yK8-Tk-ODY" firstAttribute="top" secondItem="GWZ-1U-ZdH" secondAttribute="bottom" type="default" id="gLf-3g-PZ1"/>
                             <constraint firstItem="GWZ-1U-ZdH" firstAttribute="top" secondItem="oZx-eq-qlH" secondAttribute="top" type="default" id="jHJ-92-hQf"/>
                         </constraints>
                     </view>
@@ -65,17 +62,14 @@
                                     <segue destination="44G-gE-vEU" kind="embed" id="PLc-MK-ujn"/>
                                 </connections>
                             </containerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="city2.png" translatesAutoresizingMaskIntoConstraints="NO" id="IjL-WG-k05"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IjL-WG-k05" firstAttribute="leading" secondItem="bY8-yi-Z85" secondAttribute="leading" type="default" id="6ie-Hr-rpI"/>
-                            <constraint firstItem="IjL-WG-k05" firstAttribute="top" secondItem="31f-0z-6Dn" secondAttribute="bottom" type="default" id="CJr-6G-Ce4"/>
+                            <constraint firstItem="0Ne-7R-JTN" firstAttribute="top" secondItem="31f-0z-6Dn" secondAttribute="bottom" type="default" id="EYH-cN-myC"/>
                             <constraint firstItem="31f-0z-6Dn" firstAttribute="leading" secondItem="bY8-yi-Z85" secondAttribute="leading" type="default" id="FdV-KX-NqO"/>
                             <constraint firstItem="31f-0z-6Dn" firstAttribute="trailing" secondItem="bY8-yi-Z85" secondAttribute="trailing" type="default" id="Pp8-qT-GUT"/>
                             <constraint firstItem="0Ne-7R-JTN" firstAttribute="trailing" secondItem="bY8-yi-Z85" secondAttribute="trailing" type="default" id="b5F-da-LFS"/>
                             <constraint firstItem="31f-0z-6Dn" firstAttribute="top" secondItem="bY8-yi-Z85" secondAttribute="top" type="default" id="ewr-8j-tn0"/>
-                            <constraint firstItem="0Ne-7R-JTN" firstAttribute="top" secondItem="bY8-yi-Z85" secondAttribute="top" constant="104" id="iIU-CY-zfh"/>
                             <constraint firstItem="0Ne-7R-JTN" firstAttribute="leading" secondItem="bY8-yi-Z85" secondAttribute="leading" type="default" id="qpf-bx-6Sk"/>
                             <constraint firstItem="0Ne-7R-JTN" firstAttribute="bottom" secondItem="bY8-yi-Z85" secondAttribute="bottom" type="default" id="sLl-rh-whq"/>
                         </constraints>
@@ -154,18 +148,35 @@
             <objects>
                 <viewController id="1Ub-9V-glG" customClass="ProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V6j-40-UN7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Merchant" id="j66-JG-jfl" customClass="MerchantCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MerchantCell" id="j66-JG-jfl" customClass="FavoriteMerchantCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZS-J5-Z3s">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="239" id="13f-il-vmJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="fZS-J5-Z3s" firstAttribute="leading" secondItem="j66-JG-jfl" secondAttribute="leading" constant="20" type="default" id="aBk-eh-VW8"/>
+                                    <constraint firstItem="fZS-J5-Z3s" firstAttribute="top" secondItem="j66-JG-jfl" secondAttribute="top" constant="11" id="hw4-T0-fxZ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameLabel" destination="fZS-J5-Z3s" id="Y5v-U2-GfT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -180,18 +191,35 @@
             <objects>
                 <viewController id="44G-gE-vEU" customClass="ExploreTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VYK-3z-rTe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="395"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Merchant" id="l8R-gE-RRw" customClass="MerchantCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MerchantCell" id="l8R-gE-RRw" customClass="FavoriteMerchantCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fn-Vg-1XY">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="233" id="W1v-I2-CrH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="5fn-Vg-1XY" firstAttribute="top" secondItem="l8R-gE-RRw" secondAttribute="top" constant="11" id="Imx-ml-qD2"/>
+                                    <constraint firstItem="5fn-Vg-1XY" firstAttribute="leading" secondItem="l8R-gE-RRw" secondAttribute="leading" constant="20" type="default" id="dpj-Sx-SjA"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameLabel" destination="5fn-Vg-1XY" id="qdj-Du-5wX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -209,6 +237,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CustomerCell" id="TQN-k2-3i4" customClass="FriendCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Friend's Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ct-JK-sEO">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="238" id="Epz-4I-9TD"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="7Ct-JK-sEO" firstAttribute="leading" secondItem="TQN-k2-3i4" secondAttribute="leading" constant="20" type="default" id="TwO-9n-UOC"/>
+                                    <constraint firstItem="7Ct-JK-sEO" firstAttribute="top" secondItem="TQN-k2-3i4" secondAttribute="top" constant="11" id="azX-SQ-hJ4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="nameLabel" destination="7Ct-JK-sEO" id="Gj2-O1-kK6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                     <toolbarItems/>
                 </viewController>
@@ -218,60 +274,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="city.png" width="320" height="60"/>
-        <image name="city2.png" width="320" height="60"/>
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="BaseTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
-        </class>
-        <class className="CustomerCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomerCell.h"/>
-        </class>
-        <class className="ExploreTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tmpCell" candidateClass="MerchantCell"/>
-            </relationships>
-        </class>
-        <class className="ExploreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreViewController.h"/>
-        </class>
-        <class className="FriendCell" superclassName="CustomerCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendsTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tmpCell" candidateClass="FriendCell"/>
-            </relationships>
-        </class>
-        <class className="FriendsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-        </class>
-        <class className="MerchantCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantCell.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ProfileTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tmpCell" candidateClass="MerchantCell"/>
-            </relationships>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

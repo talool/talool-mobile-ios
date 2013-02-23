@@ -17,7 +17,7 @@
 @end
 
 @implementation ProfileTableViewController
-@synthesize merchantController, tmpCell, cellNib;
+@synthesize merchantController;
 
 - (void)viewDidLoad
 {
@@ -26,8 +26,6 @@
     // The merchantController will fetch the data for this view
     self.merchantController = [[MerchantController alloc] init];
     [self.merchantController loadData];
-    
-	self.cellNib = [UINib nibWithNibName:@"FavoriteMerchantCell" bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,8 +38,6 @@
 {
 	[super viewDidLoad];
 	
-	self.tmpCell = nil;
-	self.cellNib = nil;
     self.merchantController = nil;
 }
 
@@ -56,13 +52,6 @@
     static NSString *CellIdentifier = @"MerchantCell";
     
     MerchantCell *cell = (MerchantCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-    if (cell == nil)
-    {
-        [self.cellNib instantiateWithOwner:self options:nil];
-		cell = tmpCell;
-		self.tmpCell = nil;
-    }
     
 	// Display dark and light background in alternate rows -- see tableView:willDisplayCell:forRowAtIndexPath:.
     cell.useDarkBackground = (indexPath.row % 2 == 0);

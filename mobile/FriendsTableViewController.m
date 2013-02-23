@@ -16,7 +16,7 @@
 @end
 
 @implementation FriendsTableViewController
-@synthesize customerController, tmpCell, cellNib;
+@synthesize customerController;
 
 - (void)viewDidLoad
 {
@@ -26,7 +26,6 @@
     self.customerController = [[CustomerController alloc] init];
     [self.customerController loadData];
     
-	self.cellNib = [UINib nibWithNibName:@"FriendCell" bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,8 +38,6 @@
 {
 	[super viewDidLoad];
 	
-	self.tmpCell = nil;
-	self.cellNib = nil;
     self.customerController = nil;
 }
 
@@ -56,14 +53,7 @@
     
     FriendCell *cell = (FriendCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
-    if (cell == nil)
-    {
-        [self.cellNib instantiateWithOwner:self options:nil];
-		cell = tmpCell;
-		self.tmpCell = nil;
-    }
-    
-	// Display dark and light background in alternate rows -- see tableView:willDisplayCell:forRowAtIndexPath:.
+	// Display dark and light background in alternate rows
     cell.useDarkBackground = (indexPath.row % 2 == 0);
 	
 	// Configure the data for the cell.

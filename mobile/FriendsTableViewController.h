@@ -14,13 +14,7 @@
 
 @interface FriendsTableViewController : BaseTableViewController {
     CustomerController *customerController;
-    FriendCell *tmpCell;
-    UINib *cellNib;
 }
-
-@property (nonatomic, retain) IBOutlet FriendCell *tmpCell;
-
-@property (nonatomic, retain) UINib *cellNib;
 
 - (void)showFriend:(Customer *)friend animated:(BOOL)animated;
 
