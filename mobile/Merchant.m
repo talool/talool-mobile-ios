@@ -10,7 +10,7 @@
 
 @implementation Merchant
 
-@synthesize name, thumbnailImage, publisher, price;
+@synthesize name, thumbnailImage, category, talools, visits, points;
 
 /*
  Initialize a recipe object.

@@ -15,11 +15,12 @@
     [super setBackgroundColor:backgroundColor];
     
     iconView.backgroundColor = backgroundColor;
-    publisherLabel.backgroundColor = backgroundColor;
+    categoryLabel.backgroundColor = backgroundColor;
     nameLabel.backgroundColor = backgroundColor;
     //ratingView.backgroundColor = backgroundColor;
     //numRatingsLabel.backgroundColor = backgroundColor;
-    priceLabel.backgroundColor = backgroundColor;
+    pointsLabel.backgroundColor = backgroundColor;
+    visitsLabel.backgroundColor = backgroundColor;
 }
 
 - (void)setIcon:(UIImage *)newIcon
@@ -28,10 +29,10 @@
     iconView.image = newIcon;
 }
 
-- (void)setPublisher:(NSString *)newPublisher
+- (void)setCategory:(NSString *)newCategory
 {
-    [super setPublisher:newPublisher];
-    publisherLabel.text = newPublisher;
+    [super setCategory:newCategory];
+    categoryLabel.text = newCategory;
 }
 /*
 - (void)setRating:(float)newRating
@@ -52,10 +53,16 @@
     nameLabel.text = newName;
 }
 
-- (void)setPrice:(NSString *)newPrice
+- (void)setPoints:(NSString *)newPoints
 {
-    [super setPrice:newPrice];
-    priceLabel.text = newPrice;
+    [super setPoints:newPoints];
+    pointsLabel.text = newPoints;
+}
+
+- (void)setVisits:(NSString *)newVisits
+{
+    [super setVisits:newVisits];
+    visitsLabel.text = newVisits;
 }
 
 @end

@@ -14,11 +14,12 @@
 {
     
     IBOutlet UIImageView *iconView;
-    IBOutlet UILabel *publisherLabel;
+    IBOutlet UILabel *categoryLabel;
     IBOutlet UILabel *nameLabel;
     //IBOutlet RatingView *ratingView;
     //IBOutlet UILabel *numRatingsLabel;
-    IBOutlet UILabel *priceLabel;
+    IBOutlet UILabel *visitsLabel;
+    IBOutlet UILabel *pointsLabel;
 }
 
 @end

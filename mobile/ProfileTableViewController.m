@@ -1,24 +1,22 @@
 //
-//  ExploreTableViewController.m
+//  ProfileTableViewController.m
 //  mobile
 //
-//  Created by Douglas McCuen on 2/18/13.
+//  Created by Douglas McCuen on 2/20/13.
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
-
-#import "ExploreTableViewController.h"
+#import "ProfileTableViewController.h"
 
 #import "Merchant.h"
 #import "MerchantController.h"
 #import "FavoriteMerchantCell.h"
 
-
-@interface ExploreTableViewController ()
+@interface ProfileTableViewController ()
 @property (nonatomic, retain) MerchantController *merchantController;
 @end
 
-@implementation ExploreTableViewController
+@implementation ProfileTableViewController
 @synthesize merchantController, tmpCell, cellNib;
 
 - (void)viewDidLoad
@@ -103,10 +101,4 @@
     [self showMerchant:merchant animated:YES];
 }
 
-
 @end
-
-
-
-
-

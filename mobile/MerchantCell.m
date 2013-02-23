@@ -10,7 +10,7 @@
 
 @implementation MerchantCell
 
-@synthesize useDarkBackground, merchant, icon, publisher, name, price;
+@synthesize useDarkBackground, merchant, icon, category, name, points, talools, visits;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,11 +34,11 @@
     {
         useDarkBackground = flag;
         
-        NSString *backgroundImagePath = [[NSBundle mainBundle] pathForResource:useDarkBackground ? @"DarkBackground" : @"LightBackground" ofType:@"png"];
-        UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
-        self.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.backgroundView.frame = self.bounds;
+        //NSString *backgroundImagePath = [[NSBundle mainBundle] pathForResource:useDarkBackground ? @"DarkBackground" : @"LightBackground" ofType:@"png"];
+        //UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
+        //self.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        //self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        //self.backgroundView.frame = self.bounds;
     }
 }
 
@@ -48,8 +48,10 @@
         
         self.icon = merchant.thumbnailImage;
         self.name = merchant.name;
-        self.publisher = merchant.publisher;
-        self.price = merchant.price;
+        self.category = merchant.category;
+        self.points = merchant.points;
+        self.talools = merchant.talools;
+        self.visits = merchant.visits;
     }
 }
 

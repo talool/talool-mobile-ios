@@ -35,7 +35,7 @@
 	merchants = [[NSMutableArray alloc] init];
 	NSArray *merchantDictionaries = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MerchantData" ofType:@"plist"]];
 	
-	NSArray *propertyNames = [[NSArray alloc] initWithObjects:@"Name", @"Publisher", @"Price", nil];
+	NSArray *propertyNames = [[NSArray alloc] initWithObjects:@"Name", @"Category", @"Points", @"Visits", @"Talools", nil];
 	
 	for (NSDictionary *merchantDictionary in merchantDictionaries) {
 		

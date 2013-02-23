@@ -10,14 +10,19 @@
 
 @interface Merchant : NSObject {
 	NSString *name;
-    NSString *publisher;
-    NSString *price;
+    NSString *category;
+    NSString *points;
+    NSString *talools;
+    NSString *visits;
 	UIImage *thumbnailImage;
+    
 	//NSMutableArray *ingredients;
 }
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *publisher;
-@property (nonatomic, copy) NSString *price;
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *points;
+@property (nonatomic, copy) NSString *visits;
+@property (nonatomic, copy) NSString *talools;
 @property (nonatomic, retain) UIImage *thumbnailImage;
 //@property (nonatomic, copy) NSMutableArray *ingredients;
 
