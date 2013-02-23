@@ -3,86 +3,98 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>Publisher</key>
-		<string>Super Sportz, Inc.</string>
+		<key>Category</key>
+		<string>Restaurants &amp; Bars</string>
 		<key>Name</key>
-		<string>Baseball</string>
-		<key>NumRatings</key>
+		<string>The Kitchen</string>
+		<key>Talools</key>
 		<integer>106</integer>
 		<key>Rating</key>
 		<real>3.5</real>
-		<key>Price</key>
-		<string>$2.98</string>
+		<key>Visits</key>
+		<string>4</string>
+		<key>Points</key>
+		<string>300</string>
 		<key>Icon</key>
 		<string>Baseball.png</string>
 	</dict>
 	<dict>
-		<key>Publisher</key>
-		<string>General Specifics, Inc.</string>
+		<key>Category</key>
+		<string>Restaurants &amp; Bars</string>
 		<key>Name</key>
-		<string>Blocks</string>
-		<key>NumRatings</key>
+		<string>Jill&apos;s</string>
+		<key>Talools</key>
 		<integer>114</integer>
 		<key>Rating</key>
 		<real>4.5</real>
-		<key>Price</key>
-		<string>$0.99</string>
+		<key>Visits</key>
+		<string>2</string>
+		<key>Points</key>
+		<string>50</string>
 		<key>Icon</key>
 		<string>Blocks.png</string>
 	</dict>
 	<dict>
-		<key>Publisher</key>
-		<string>Gameitoids, Inc.</string>
+		<key>Category</key>
+		<string>Hosptitality</string>
 		<key>Name</key>
-		<string>Checkers</string>
-		<key>NumRatings</key>
+		<string>St Julien</string>
+		<key>Talools</key>
 		<integer>87</integer>
 		<key>Rating</key>
 		<integer>4</integer>
-		<key>Price</key>
-		<string>Free</string>
+		<key>Visits</key>
+		<string>3</string>
+		<key>Points</key>
+		<string>100</string>
 		<key>Icon</key>
 		<string>Checkers.png</string>
 	</dict>
 	<dict>
-		<key>Publisher</key>
-		<string>Foodies, Inc.</string>
+		<key>Category</key>
+		<string>Gaming &amp; Casinos</string>
 		<key>Name</key>
-		<string>Dinner</string>
-		<key>NumRatings</key>
+		<string>Luxor</string>
+		<key>Talools</key>
 		<integer>254</integer>
 		<key>Rating</key>
 		<real>3</real>
-		<key>Price</key>
-		<string>$4.98</string>
+		<key>Visits</key>
+		<string>5</string>
+		<key>Points</key>
+		<string>240</string>
 		<key>Icon</key>
 		<string>Dinner.png</string>
 	</dict>
 	<dict>
-		<key>Publisher</key>
-		<string>Super Sportz, Inc.</string>
+		<key>Category</key>
+		<string>Gas</string>
 		<key>Name</key>
-		<string>Football</string>
-		<key>NumRatings</key>
+		<string>Conoco</string>
+		<key>Talools</key>
 		<integer>422</integer>
 		<key>Rating</key>
 		<real>3</real>
-		<key>Price</key>
-		<string>$1.99</string>
+		<key>Visits</key>
+		<string>24</string>
+		<key>Points</key>
+		<string>5000</string>
 		<key>Icon</key>
 		<string>Football.png</string>
 	</dict>
 	<dict>
-		<key>Publisher</key>
-		<string>Math Nutz</string>
+		<key>Category</key>
+		<string>Groceries &amp; Markets</string>
 		<key>Name</key>
-		<string>MathGraph</string>
-		<key>NumRatings</key>
+		<string>Safeway</string>
+		<key>Talools</key>
 		<integer>45</integer>
 		<key>Rating</key>
 		<real>4</real>
-		<key>Price</key>
-		<string>$0.99</string>
+		<key>Visits</key>
+		<string>12</string>
+		<key>Points</key>
+		<string>400</string>
 		<key>Icon</key>
 		<string>MathGraph.png</string>
 	</dict>

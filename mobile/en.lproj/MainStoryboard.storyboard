@@ -90,6 +90,37 @@
         <scene sceneID="13">
             <objects>
                 <viewController title="Friends" id="3" customClass="FriendsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jYG-Lg-2rg">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="6Sm-eJ-zNu">
+                                <color key="backgroundColor" red="0.0" green="0.29411764709999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.29411764709999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Friends" id="PNz-2v-4I1">
+                                        <barButtonItem key="rightBarButtonItem" title="Invite" id="DOJ-U1-ITR"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Enb-B3-ilY">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="g5Q-a3-9zr" kind="embed" id="fog-ra-PgE"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Enb-B3-ilY" firstAttribute="bottom" secondItem="jYG-Lg-2rg" secondAttribute="bottom" type="default" id="3NS-MR-Hnz"/>
+                            <constraint firstItem="Enb-B3-ilY" firstAttribute="leading" secondItem="jYG-Lg-2rg" secondAttribute="leading" type="default" id="L3s-ui-mYk"/>
+                            <constraint firstItem="Enb-B3-ilY" firstAttribute="top" secondItem="6Sm-eJ-zNu" secondAttribute="bottom" type="default" id="Mcz-Yj-cTS"/>
+                            <constraint firstItem="6Sm-eJ-zNu" firstAttribute="leading" secondItem="jYG-Lg-2rg" secondAttribute="leading" type="default" id="YQL-PP-DsC"/>
+                            <constraint firstItem="6Sm-eJ-zNu" firstAttribute="top" secondItem="jYG-Lg-2rg" secondAttribute="top" type="default" id="r1A-wW-fRy"/>
+                            <constraint firstItem="6Sm-eJ-zNu" firstAttribute="trailing" secondItem="jYG-Lg-2rg" secondAttribute="trailing" type="default" id="uAb-Ii-rZQ"/>
+                            <constraint firstItem="Enb-B3-ilY" firstAttribute="trailing" secondItem="jYG-Lg-2rg" secondAttribute="trailing" type="default" id="zbS-Zp-flc"/>
+                        </constraints>
+                    </view>
                     <tabBarItem key="tabBarItem" title="Friends" image="second" id="6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
@@ -170,6 +201,21 @@
             </objects>
             <point key="canvasLocation" x="1049" y="642"/>
         </scene>
+        <!--Friends Table View Controller-->
+        <scene sceneID="KSo-5M-CFY">
+            <objects>
+                <viewController id="g5Q-a3-9zr" customClass="FriendsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gwm-Ic-3dR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tableView>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qeo-So-1Z4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1059" y="1173"/>
+        </scene>
     </scenes>
     <resources>
         <image name="city.png" width="320" height="60"/>
@@ -181,6 +227,9 @@
         <class className="BaseTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
         </class>
+        <class className="CustomerCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomerCell.h"/>
+        </class>
         <class className="ExploreTableViewController" superclassName="BaseTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreTableViewController.h"/>
             <relationships>
@@ -189,6 +238,20 @@
         </class>
         <class className="ExploreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreViewController.h"/>
+        </class>
+        <class className="FriendCell" superclassName="CustomerCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FriendsTableViewController" superclassName="BaseTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tmpCell" candidateClass="FriendCell"/>
+            </relationships>
         </class>
         <class className="FriendsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>

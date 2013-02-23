@@ -61,6 +61,9 @@
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
 		91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFE16D7153800D1CA96 /* CustomerCell.m */; };
 		91986F0116D87B0C00D1CA96 /* CustomerData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91986F0016D87B0C00D1CA96 /* CustomerData.plist */; };
+		91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */; };
+		91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0616D94CA300D1CA96 /* FriendCell.m */; };
+		91986F0916D94CCF00D1CA96 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91986F0816D94CCF00D1CA96 /* FriendCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +152,11 @@
 		91986EFD16D7153800D1CA96 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
 		91986EFE16D7153800D1CA96 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
 		91986F0016D87B0C00D1CA96 /* CustomerData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CustomerData.plist; sourceTree = "<group>"; };
+		91986F0216D93EC600D1CA96 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
+		91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
+		91986F0516D94CA300D1CA96 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		91986F0616D94CA300D1CA96 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		91986F0816D94CCF00D1CA96 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +306,9 @@
 				91986EFB16D7150400D1CA96 /* RewardCell.m */,
 				91986EFD16D7153800D1CA96 /* CustomerCell.h */,
 				91986EFE16D7153800D1CA96 /* CustomerCell.m */,
+				91986F0516D94CA300D1CA96 /* FriendCell.h */,
+				91986F0616D94CA300D1CA96 /* FriendCell.m */,
+				91986F0816D94CCF00D1CA96 /* FriendCell.xib */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -325,6 +336,8 @@
 				91986EC516D5D23D00D1CA96 /* ProfileTableViewController.m */,
 				91986EC716D5D33000D1CA96 /* BaseTableViewController.h */,
 				91986EC816D5D33000D1CA96 /* BaseTableViewController.m */,
+				91986F0216D93EC600D1CA96 /* FriendsTableViewController.h */,
+				91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -475,6 +488,7 @@
 				91986EEB16D6D67D00D1CA96 /* doug.png in Resources */,
 				91986EEC16D6D67D00D1CA96 /* SSurfer.png in Resources */,
 				91986F0116D87B0C00D1CA96 /* CustomerData.plist in Resources */,
+				91986F0916D94CCF00D1CA96 /* FriendCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +541,8 @@
 				91986EF816D7148F00D1CA96 /* CustomerController.m in Sources */,
 				91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */,
 				91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */,
+				91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */,
+				91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
