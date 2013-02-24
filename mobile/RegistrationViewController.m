@@ -14,6 +14,8 @@
 
 @implementation RegistrationViewController
 
+@synthesize customer, customerController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

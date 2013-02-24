@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Customer.h"
+#import "CustomerController.h"
 
-@interface RegistrationViewController : UIViewController
+@interface RegistrationViewController : UIViewController {
+    Customer *customer;
+    CustomerController *customerController;
+}
+
+@property (nonatomic, retain) Customer *customer;
+@property (nonatomic, retain) CustomerController *customerController;
 
 @end
