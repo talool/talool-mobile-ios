@@ -17,6 +17,4 @@
     MerchantController *merchantController;
 }
 
-- (void)showMerchant:(Merchant *)merchant animated:(BOOL)animated;
-
 @end

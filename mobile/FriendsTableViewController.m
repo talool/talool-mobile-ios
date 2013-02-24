@@ -68,26 +68,14 @@
     cell.backgroundColor = ((FriendCell *)cell).useDarkBackground ? self.darkBG : self.lightBG;
 }
 
-// Cell touch handler that pushes the recipe detail view onto the navigation controller stack
-- (void)showFriend:(Customer *)friend animated:(BOOL)animated {
-    //RecipeDetailViewController *detailViewController = [[RecipeDetailViewController alloc] initWithRecipe:recipe];
-    //[self.navigationController pushViewController:detailViewController animated:animated];
-    //[detailViewController release];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showFriend"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [[segue destinationViewController] setCustomer:[customerController objectInCustomersAtIndex:indexPath.row]];
+        
+    }
 }
 
-// Call the cell touch handler and pass in the Friend associated with the argument section/row
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Customer *friend = [customerController objectInCustomersAtIndex:indexPath.row];
-    [self showFriend:friend animated:YES];
-}
 
 @end

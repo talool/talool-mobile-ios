@@ -31,7 +31,6 @@
 		9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115816D316BA00CEE814 /* ExploreTableViewController.m */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
-		9103116316D3181800CEE814 /* FavoriteMerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9103116216D3181800CEE814 /* FavoriteMerchantCell.xib */; };
 		9103116616D3194F00CEE814 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116516D3194F00CEE814 /* MerchantController.m */; };
 		9103116916D3196300CEE814 /* Merchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116816D3196200CEE814 /* Merchant.m */; };
 		9103117116D3275800CEE814 /* Baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116B16D3275800CEE814 /* Baseball.png */; };
@@ -110,7 +109,6 @@
 		9103115D16D3179E00CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
 		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
-		9103116216D3181800CEE814 /* FavoriteMerchantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteMerchantCell.xib; sourceTree = "<group>"; };
 		9103116416D3194F00CEE814 /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
 		9103116516D3194F00CEE814 /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
 		9103116716D3196200CEE814 /* Merchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Merchant.h; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				9103115D16D3179E00CEE814 /* MerchantCell.m */,
 				9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */,
 				9103116016D317E800CEE814 /* FavoriteMerchantCell.m */,
-				9103116216D3181800CEE814 /* FavoriteMerchantCell.xib */,
 				91986EFA16D7150400D1CA96 /* RewardCell.h */,
 				91986EFB16D7150400D1CA96 /* RewardCell.m */,
 				91986EFD16D7153800D1CA96 /* CustomerCell.h */,
@@ -466,7 +463,6 @@
 				9103112D16D1E53800CEE814 /* first@2x.png in Resources */,
 				9103113216D1E53800CEE814 /* second.png in Resources */,
 				9103113416D1E53800CEE814 /* second@2x.png in Resources */,
-				9103116316D3181800CEE814 /* FavoriteMerchantCell.xib in Resources */,
 				9103117116D3275800CEE814 /* Baseball.png in Resources */,
 				9103117216D3275800CEE814 /* Blocks.png in Resources */,
 				9103117316D3275800CEE814 /* Checkers.png in Resources */,

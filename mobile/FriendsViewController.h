@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendsViewController : UIViewController
+#import "Customer.h"
+
+
+@interface FriendsViewController : UIViewController {
+    Customer *customer;
+    IBOutlet UILabel *nameLabel;
+}
+
+@property (nonatomic, retain) Customer *customer;
 
 @end

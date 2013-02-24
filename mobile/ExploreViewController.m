@@ -14,16 +14,24 @@
 
 @implementation ExploreViewController
 
+@synthesize merchant;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	nameLabel.text = merchant.name;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setMerchant:(Merchant *)newMerchant {
+    if (newMerchant != merchant) {
+        merchant = newMerchant;
+    }
 }
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Merchant.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController {
+    Merchant *merchant;
+    IBOutlet UILabel *nameLabel;
+}
+
+@property (nonatomic, retain) Merchant *merchant;
 
 @end

@@ -16,6 +16,4 @@
     CustomerController *customerController;
 }
 
-- (void)showFriend:(Customer *)friend animated:(BOOL)animated;
-
 @end

@@ -54,7 +54,7 @@
 {
     static NSString *CellIdentifier = @"MerchantCell";
     
-    MerchantCell *cell = (MerchantCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FavoriteMerchantCell *cell = (FavoriteMerchantCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	// Display dark and light background in alternate rows -- see tableView:willDisplayCell:forRowAtIndexPath:.
     cell.useDarkBackground = (indexPath.row % 2 == 0);
@@ -71,26 +71,13 @@
     cell.backgroundColor = ((MerchantCell *)cell).useDarkBackground ? self.darkBG : self.lightBG;
 }
 
-// Cell touch handler that pushes the recipe detail view onto the navigation controller stack
-- (void)showMerchant:(Merchant *)merchant animated:(BOOL)animated {
-    //RecipeDetailViewController *detailViewController = [[RecipeDetailViewController alloc] initWithRecipe:recipe];
-    //[self.navigationController pushViewController:detailViewController animated:animated];
-    //[detailViewController release];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
-}
-
-// Call the cell touch handler and pass in the merchant associated with the argument section/row
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Merchant *merchant = [merchantController objectInMerchantsAtIndex:indexPath.row];
-    [self showMerchant:merchant animated:YES];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showMerchant"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [[segue destinationViewController] setMerchant:[merchantController objectInMerchantsAtIndex:indexPath.row]];
+        
+    }
 }
 
 

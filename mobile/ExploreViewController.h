@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Merchant.h"
+
 @interface ExploreViewController : UIViewController
+{
+    Merchant *merchant;
+    IBOutlet UILabel *nameLabel;
+}
+
+@property (nonatomic, retain) Merchant *merchant;
 
 @end

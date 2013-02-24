@@ -10,20 +10,28 @@
 
 @implementation RewardCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void)setBackgroundColor:(UIColor *)backgroundColor
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    [super setBackgroundColor:backgroundColor];
+    
+    iconView.backgroundColor = backgroundColor;
+    nameLabel.backgroundColor = backgroundColor;
+    pointsLabel.backgroundColor = backgroundColor;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setIcon:(UIImage *)newIcon
 {
-    [super setSelected:selected animated:animated];
+    iconView.image = newIcon;
+}
 
-    // Configure the view for the selected state
+- (void)setName:(NSString *)newName
+{
+    nameLabel.text = newName;
+}
+
+- (void)setPoints:(NSString *)newPoints
+{
+    pointsLabel.text = newPoints;
 }
 
 @end
