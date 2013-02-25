@@ -31,6 +31,11 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tabBarController.navigationItem.title = @"Explore";
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

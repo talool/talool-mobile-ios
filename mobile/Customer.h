@@ -9,19 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @interface Customer : NSObject {
+    NSString *name;
+    NSMutableArray *friends;
+    NSString *points;
+    NSString *talools;
+    UIImage *thumbnailImage;
+    NSString *email;
+    NSString *password;
 
-NSString *name;
-NSMutableArray *friends;
-NSString *points;
-NSString *talools;
-UIImage *thumbnailImage;
-
-//NSMutableArray *ingredients;
+    //NSMutableArray *ingredients;
 }
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *points;
 @property (nonatomic, copy) NSString *talools;
 @property (nonatomic, retain) UIImage *thumbnailImage;
 @property (nonatomic, copy) NSMutableArray *friends;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *password;
 
 @end

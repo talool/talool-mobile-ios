@@ -19,6 +19,11 @@
 @implementation ProfileTableViewController
 @synthesize merchantController;
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tabBarController.navigationItem.title = @"Username";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,6 +31,7 @@
     // The merchantController will fetch the data for this view
     self.merchantController = [[MerchantController alloc] init];
     [self.merchantController loadData];
+
 }
 
 - (void)didReceiveMemoryWarning

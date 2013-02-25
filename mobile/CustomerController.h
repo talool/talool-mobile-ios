@@ -18,7 +18,8 @@
 @property (nonatomic, readonly) NSMutableArray *customers;
 
 - (void)sortAlphabeticallyAscending:(BOOL)ascending;
-- (void)loadData;
+- (void)loadData; 
+- (BOOL)registerUser:(Customer *)customer;
 - (unsigned)countOfCustomers;
 - (id)objectInCustomersAtIndex:(unsigned)theIndex;
 

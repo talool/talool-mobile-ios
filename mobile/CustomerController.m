@@ -59,5 +59,20 @@
     return [customers objectAtIndex:theIndex];
 }
 
+- (BOOL)registerUser:(Customer *)customer {
+    // validate data before sending to the server
+    // TODO: enable/disable the button based on this criteria
+    if (customer.name == nil || customer.name.length < 2) {
+        // set error message
+        return NO;
+    } else if (customer.password == nil || customer.password.length < 2) {
+        // set error message
+        return NO;
+    }
+    // TODO review core data videos...
+    return YES;
+    
+}
+
 
 @end

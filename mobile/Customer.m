@@ -10,6 +10,6 @@
 
 @implementation Customer
 
-@synthesize name, thumbnailImage, friends, talools, points;
+@synthesize name, thumbnailImage, friends, talools, points, email, password;
 
 @end

@@ -28,6 +28,11 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tabBarController.navigationItem.title = @"Friends";
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

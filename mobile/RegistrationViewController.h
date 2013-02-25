@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Customer.h"
-#import "CustomerController.h"
+
 
 @interface RegistrationViewController : UIViewController {
-    Customer *customer;
-    CustomerController *customerController;
+    IBOutlet UITextField *emailField;
+    IBOutlet UITextField *passwordField;
+    UIAlertView *errorView;
 }
 
-@property (nonatomic, retain) Customer *customer;
-@property (nonatomic, retain) CustomerController *customerController;
+@property (nonatomic, retain) UIAlertView *errorView;
+
+- (IBAction) onRegistration:(id) sender;
 
 @end
