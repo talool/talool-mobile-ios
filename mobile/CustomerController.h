@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class Customer;
+@class BulletinBoardClient;
 
 @interface CustomerController : NSObject {
     NSMutableArray *customers;
     NSMutableIndexSet *selectedIndexes;
+    BulletinBoardClient *server;
 }
 
 @property (nonatomic, readonly) NSMutableArray *customers;

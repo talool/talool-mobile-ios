@@ -64,6 +64,21 @@
 		91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0616D94CA300D1CA96 /* FriendCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
+		91986F3416DBAC8900D1CA96 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */; };
+		91986F3516DBAC8900D1CA96 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1616DBAC8800D1CA96 /* TProtocolException.m */; };
+		91986F3616DBAC8900D1CA96 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */; };
+		91986F3716DBAC8900D1CA96 /* TSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1C16DBAC8800D1CA96 /* TSocketServer.m */; };
+		91986F3816DBAC8900D1CA96 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1E16DBAC8800D1CA96 /* TApplicationException.m */; };
+		91986F3916DBAC8900D1CA96 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2016DBAC8800D1CA96 /* TException.m */; };
+		91986F3A16DBAC8900D1CA96 /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2616DBAC8800D1CA96 /* THTTPClient.m */; };
+		91986F3B16DBAC8900D1CA96 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */; };
+		91986F3C16DBAC8900D1CA96 /* TNSFileHandleTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */; };
+		91986F3D16DBAC8900D1CA96 /* TNSStreamTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */; };
+		91986F3E16DBAC8900D1CA96 /* TSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2E16DBAC8800D1CA96 /* TSocketClient.m */; };
+		91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3116DBAC8900D1CA96 /* TTransportException.m */; };
+		91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */; };
+		91986F4216DBACC200D1CA96 /* idl.thrift in Resources */ = {isa = PBXBuildFile; fileRef = 91986F4116DBACC100D1CA96 /* idl.thrift */; };
+		91986F4616DBACEE00D1CA96 /* idl.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F4516DBACEE00D1CA96 /* idl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +174,41 @@
 		91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTabBarController.h; sourceTree = "<group>"; };
 		91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTabBarController.m; sourceTree = "<group>"; };
+		91986F1216DBAC8800D1CA96 /* TBinaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBinaryProtocol.h; sourceTree = "<group>"; };
+		91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBinaryProtocol.m; sourceTree = "<group>"; };
+		91986F1416DBAC8800D1CA96 /* TProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocol.h; sourceTree = "<group>"; };
+		91986F1516DBAC8800D1CA96 /* TProtocolException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolException.h; sourceTree = "<group>"; };
+		91986F1616DBAC8800D1CA96 /* TProtocolException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TProtocolException.m; sourceTree = "<group>"; };
+		91986F1716DBAC8800D1CA96 /* TProtocolFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolFactory.h; sourceTree = "<group>"; };
+		91986F1816DBAC8800D1CA96 /* TProtocolUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolUtil.h; sourceTree = "<group>"; };
+		91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TProtocolUtil.m; sourceTree = "<group>"; };
+		91986F1B16DBAC8800D1CA96 /* TSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSocketServer.h; sourceTree = "<group>"; };
+		91986F1C16DBAC8800D1CA96 /* TSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSocketServer.m; sourceTree = "<group>"; };
+		91986F1D16DBAC8800D1CA96 /* TApplicationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TApplicationException.h; sourceTree = "<group>"; };
+		91986F1E16DBAC8800D1CA96 /* TApplicationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TApplicationException.m; sourceTree = "<group>"; };
+		91986F1F16DBAC8800D1CA96 /* TException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TException.h; sourceTree = "<group>"; };
+		91986F2016DBAC8800D1CA96 /* TException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TException.m; sourceTree = "<group>"; };
+		91986F2116DBAC8800D1CA96 /* TObjective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TObjective-C.h"; sourceTree = "<group>"; };
+		91986F2216DBAC8800D1CA96 /* TProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessor.h; sourceTree = "<group>"; };
+		91986F2316DBAC8800D1CA96 /* TProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessorFactory.h; sourceTree = "<group>"; };
+		91986F2516DBAC8800D1CA96 /* THTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THTTPClient.h; sourceTree = "<group>"; };
+		91986F2616DBAC8800D1CA96 /* THTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THTTPClient.m; sourceTree = "<group>"; };
+		91986F2716DBAC8800D1CA96 /* TMemoryBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMemoryBuffer.h; sourceTree = "<group>"; };
+		91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMemoryBuffer.m; sourceTree = "<group>"; };
+		91986F2916DBAC8800D1CA96 /* TNSFileHandleTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNSFileHandleTransport.h; sourceTree = "<group>"; };
+		91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNSFileHandleTransport.m; sourceTree = "<group>"; };
+		91986F2B16DBAC8800D1CA96 /* TNSStreamTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNSStreamTransport.h; sourceTree = "<group>"; };
+		91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNSStreamTransport.m; sourceTree = "<group>"; };
+		91986F2D16DBAC8800D1CA96 /* TSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSocketClient.h; sourceTree = "<group>"; };
+		91986F2E16DBAC8800D1CA96 /* TSocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSocketClient.m; sourceTree = "<group>"; };
+		91986F2F16DBAC8900D1CA96 /* TTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransport.h; sourceTree = "<group>"; };
+		91986F3016DBAC8900D1CA96 /* TTransportException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransportException.h; sourceTree = "<group>"; };
+		91986F3116DBAC8900D1CA96 /* TTransportException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTransportException.m; sourceTree = "<group>"; };
+		91986F3216DBAC8900D1CA96 /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
+		91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
+		91986F4116DBACC100D1CA96 /* idl.thrift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = idl.thrift; sourceTree = "<group>"; };
+		91986F4416DBACEE00D1CA96 /* idl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idl.h; sourceTree = "<group>"; };
+		91986F4516DBACEE00D1CA96 /* idl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = idl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +239,8 @@
 			isa = PBXGroup;
 			children = (
 				9103111216D1E53800CEE814 /* mobile */,
+				91986F4316DBACED00D1CA96 /* gen-cocoa */,
+				91986F1016DBAC8800D1CA96 /* thrift */,
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
 				9103110A16D1E53800CEE814 /* Products */,
@@ -218,8 +270,8 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
-				9103117A16D467AE00CEE814 /* Table Cells */,
 				9103117916D4678600CEE814 /* Models and Model Controllers */,
 				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
@@ -240,6 +292,7 @@
 				9103111E16D1E53800CEE814 /* Default.png */,
 				9103112016D1E53800CEE814 /* Default@2x.png */,
 				9103112216D1E53800CEE814 /* Default-568h@2x.png */,
+				91986F4116DBACC100D1CA96 /* idl.thrift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,7 +369,6 @@
 		9103117B16D467C500CEE814 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103112E16D1E53800CEE814 /* ExploreViewController.h */,
 				9103112F16D1E53800CEE814 /* ExploreViewController.m */,
 				9103112716D1E53800CEE814 /* ProfileViewController.h */,
@@ -334,6 +386,7 @@
 		91986ED216D5E20200D1CA96 /* Table View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9103117A16D467AE00CEE814 /* Table Cells */,
 				9103115716D316BA00CEE814 /* ExploreTableViewController.h */,
 				9103115816D316BA00CEE814 /* ExploreTableViewController.m */,
 				91986EC416D5D23D00D1CA96 /* ProfileTableViewController.h */,
@@ -391,6 +444,80 @@
 				91986F0016D87B0C00D1CA96 /* CustomerData.plist */,
 			);
 			name = "Demo Data";
+			sourceTree = "<group>";
+		};
+		91986F1016DBAC8800D1CA96 /* thrift */ = {
+			isa = PBXGroup;
+			children = (
+				91986F1116DBAC8800D1CA96 /* protocol */,
+				91986F1A16DBAC8800D1CA96 /* server */,
+				91986F1D16DBAC8800D1CA96 /* TApplicationException.h */,
+				91986F1E16DBAC8800D1CA96 /* TApplicationException.m */,
+				91986F1F16DBAC8800D1CA96 /* TException.h */,
+				91986F2016DBAC8800D1CA96 /* TException.m */,
+				91986F2116DBAC8800D1CA96 /* TObjective-C.h */,
+				91986F2216DBAC8800D1CA96 /* TProcessor.h */,
+				91986F2316DBAC8800D1CA96 /* TProcessorFactory.h */,
+				91986F2416DBAC8800D1CA96 /* transport */,
+				91986F3216DBAC8900D1CA96 /* TSharedProcessorFactory.h */,
+				91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */,
+			);
+			name = thrift;
+			path = mobile/thrift;
+			sourceTree = "<group>";
+		};
+		91986F1116DBAC8800D1CA96 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				91986F1216DBAC8800D1CA96 /* TBinaryProtocol.h */,
+				91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */,
+				91986F1416DBAC8800D1CA96 /* TProtocol.h */,
+				91986F1516DBAC8800D1CA96 /* TProtocolException.h */,
+				91986F1616DBAC8800D1CA96 /* TProtocolException.m */,
+				91986F1716DBAC8800D1CA96 /* TProtocolFactory.h */,
+				91986F1816DBAC8800D1CA96 /* TProtocolUtil.h */,
+				91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		91986F1A16DBAC8800D1CA96 /* server */ = {
+			isa = PBXGroup;
+			children = (
+				91986F1B16DBAC8800D1CA96 /* TSocketServer.h */,
+				91986F1C16DBAC8800D1CA96 /* TSocketServer.m */,
+			);
+			path = server;
+			sourceTree = "<group>";
+		};
+		91986F2416DBAC8800D1CA96 /* transport */ = {
+			isa = PBXGroup;
+			children = (
+				91986F2516DBAC8800D1CA96 /* THTTPClient.h */,
+				91986F2616DBAC8800D1CA96 /* THTTPClient.m */,
+				91986F2716DBAC8800D1CA96 /* TMemoryBuffer.h */,
+				91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */,
+				91986F2916DBAC8800D1CA96 /* TNSFileHandleTransport.h */,
+				91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */,
+				91986F2B16DBAC8800D1CA96 /* TNSStreamTransport.h */,
+				91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */,
+				91986F2D16DBAC8800D1CA96 /* TSocketClient.h */,
+				91986F2E16DBAC8800D1CA96 /* TSocketClient.m */,
+				91986F2F16DBAC8900D1CA96 /* TTransport.h */,
+				91986F3016DBAC8900D1CA96 /* TTransportException.h */,
+				91986F3116DBAC8900D1CA96 /* TTransportException.m */,
+			);
+			path = transport;
+			sourceTree = "<group>";
+		};
+		91986F4316DBACED00D1CA96 /* gen-cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				91986F4416DBACEE00D1CA96 /* idl.h */,
+				91986F4516DBACEE00D1CA96 /* idl.m */,
+			);
+			name = "gen-cocoa";
+			path = "mobile/gen-cocoa";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +618,7 @@
 				91986EEB16D6D67D00D1CA96 /* doug.png in Resources */,
 				91986EEC16D6D67D00D1CA96 /* SSurfer.png in Resources */,
 				91986F0116D87B0C00D1CA96 /* CustomerData.plist in Resources */,
+				91986F4216DBACC200D1CA96 /* idl.thrift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +675,20 @@
 				91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
+				91986F3416DBAC8900D1CA96 /* TBinaryProtocol.m in Sources */,
+				91986F3516DBAC8900D1CA96 /* TProtocolException.m in Sources */,
+				91986F3616DBAC8900D1CA96 /* TProtocolUtil.m in Sources */,
+				91986F3716DBAC8900D1CA96 /* TSocketServer.m in Sources */,
+				91986F3816DBAC8900D1CA96 /* TApplicationException.m in Sources */,
+				91986F3916DBAC8900D1CA96 /* TException.m in Sources */,
+				91986F3A16DBAC8900D1CA96 /* THTTPClient.m in Sources */,
+				91986F3B16DBAC8900D1CA96 /* TMemoryBuffer.m in Sources */,
+				91986F3C16DBAC8900D1CA96 /* TNSFileHandleTransport.m in Sources */,
+				91986F3D16DBAC8900D1CA96 /* TNSStreamTransport.m in Sources */,
+				91986F3E16DBAC8900D1CA96 /* TSocketClient.m in Sources */,
+				91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */,
+				91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */,
+				91986F4616DBACEE00D1CA96 /* idl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +797,11 @@
 		9103114D16D1E53900CEE814 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
@@ -666,6 +813,11 @@
 		9103114E16D1E53900CEE814 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
