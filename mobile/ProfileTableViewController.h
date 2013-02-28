@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 #import "MerchantCell.h"
+#import "TaloolUser.h"
 
 @class MerchantController;
 @class Merchant;

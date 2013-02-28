@@ -7,7 +7,7 @@
 //
 
 #import "ProfileTableViewController.h"
-
+#import "MasterNavigationController.h"
 #import "Merchant.h"
 #import "MerchantController.h"
 #import "FavoriteMerchantCell.h"
@@ -21,7 +21,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.tabBarController.navigationItem.title = @"Username";
+    // Set the nav title to the user's first name
+    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
+    self.tabBarController.navigationItem.title = mnc.user.firstName;
 }
 
 - (void)viewDidLoad

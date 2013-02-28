@@ -10,6 +10,7 @@
 
 #import "CustomerController.h"
 #import "Customer.h"
+#import "TaloolUser.h"
 #import "idl.h"
 
 @implementation CustomerController
@@ -86,21 +87,34 @@
     return [customers objectAtIndex:theIndex];
 }
 
-- (BOOL)registerUser:(Customer *)customer {
+- (BOOL)registerUser:(TaloolUser *)customer error:(NSError**)error {
     
     // validate data before sending to the server
     // TODO: enable/disable the button based on this criteria
-    if (customer.name == nil || customer.name.length < 2) {
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+    if (customer.firstName == nil || customer.firstName.length < 2) {
         // set error message
+        [details setValue:@"Your first name is invalid" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
         return NO;
-    } else if (customer.password == nil || customer.password.length < 2) {
-        // set error message
+    } else if (customer.lastName == nil || customer.lastName.length < 2) {
+        [details setValue:@"Your last name is invalid" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        return NO;
+    } else if (customer.email == nil || customer.email.length < 2) {
+        [details setValue:@"Your email is invalid" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
         return NO;
     }
-    
-    // TODO review core data videos...
+
+    // Do the Thrift Save
     //[server add:msg];       // send data
     //NSArray *array = [server get];    // receive data
+    if (NO) {
+        [details setValue:@"Failed to register user" forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        return NO;
+    }
     
     return YES;
     

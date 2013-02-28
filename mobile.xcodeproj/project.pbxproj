@@ -39,6 +39,11 @@
 		9103117516D3275800CEE814 /* Dinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103116F16D3275800CEE814 /* Dinner.png */; };
 		9103117616D3275800CEE814 /* Football.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103117016D3275800CEE814 /* Football.png */; };
 		9103117816D3278B00CEE814 /* MerchantData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9103117716D3278B00CEE814 /* MerchantData.plist */; };
+		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
+		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
+		917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */; };
+		917F0FE616DC69D7008A56E3 /* MasterNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */; };
+		917F0FE916DDB368008A56E3 /* TaloolUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FE816DDB368008A56E3 /* TaloolUser.m */; };
 		91986EC616D5D23D00D1CA96 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* ProfileTableViewController.m */; };
 		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ECF16D5E11700D1CA96 /* MathGraph.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECB16D5E11700D1CA96 /* MathGraph.png */; };
@@ -136,6 +141,13 @@
 		9103116F16D3275800CEE814 /* Dinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Dinner.png; path = ../Dinner.png; sourceTree = "<group>"; };
 		9103117016D3275800CEE814 /* Football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Football.png; path = ../Football.png; sourceTree = "<group>"; };
 		9103117716D3278B00CEE814 /* MerchantData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MerchantData.plist; sourceTree = "<group>"; };
+		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Talool.xcdatamodel; sourceTree = "<group>"; };
+		917F0FE416DC69D7008A56E3 /* MasterNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterNavigationController.h; sourceTree = "<group>"; };
+		917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterNavigationController.m; sourceTree = "<group>"; };
+		917F0FE716DDB368008A56E3 /* TaloolUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaloolUser.h; path = ../TaloolUser.h; sourceTree = "<group>"; };
+		917F0FE816DDB368008A56E3 /* TaloolUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaloolUser.m; path = ../TaloolUser.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		91986EC716D5D33000D1CA96 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -216,6 +228,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */,
+				917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */,
 				9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */,
 				9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */,
 				9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */,
@@ -259,6 +273,8 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				917F0FD716DC66AB008A56E3 /* CoreData.framework */,
+				917F0FD816DC66AB008A56E3 /* CoreLocation.framework */,
 				9103110C16D1E53800CEE814 /* UIKit.framework */,
 				9103110E16D1E53800CEE814 /* Foundation.framework */,
 				9103111016D1E53800CEE814 /* CoreGraphics.framework */,
@@ -333,6 +349,9 @@
 			isa = PBXGroup;
 			children = (
 				91986EF916D7149F00D1CA96 /* Demo Data */,
+				917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */,
+				917F0FE716DDB368008A56E3 /* TaloolUser.h */,
+				917F0FE816DDB368008A56E3 /* TaloolUser.m */,
 				9103116416D3194F00CEE814 /* MerchantController.h */,
 				9103116516D3194F00CEE814 /* MerchantController.m */,
 				91986EF616D7148F00D1CA96 /* CustomerController.h */,
@@ -379,6 +398,8 @@
 				91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */,
 				91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */,
 				91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */,
+				917F0FE416DC69D7008A56E3 /* MasterNavigationController.h */,
+				917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -689,6 +710,9 @@
 				91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */,
 				91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */,
 				91986F4616DBACEE00D1CA96 /* idl.m in Sources */,
+				917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */,
+				917F0FE616DC69D7008A56E3 /* MasterNavigationController.m in Sources */,
+				917F0FE916DDB368008A56E3 /* TaloolUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +915,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */,
+			);
+			currentVersion = 917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */;
+			name = Talool.xcdatamodeld;
+			path = ../Talool.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9103110116D1E53800CEE814 /* Project object */;
 }

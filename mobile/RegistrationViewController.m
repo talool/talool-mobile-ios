@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
+#import "MasterNavigationController.h"
 #import "RegistrationViewController.h"
 #import "CustomerController.h"
 #import "Customer.h"
@@ -21,7 +22,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // if we have a user, we can skip Registration.
+    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
+    if (mnc.user != nil) {
+        [self performSegueWithIdentifier:@"userRegistered" sender:self.navigationController];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,33 +35,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"userRegistered"]) {
-        /* probably unneeded... we'll hook to the save button and save off the user there.
-         The customerController will be able to pull the logged in user from a data store.
-        */
-        //[[segue destinationViewController] setCustomer:customer];
-    } else if ([[segue identifier] isEqualToString:@"registrationError"]) {
-        // cook up the error message and pass the error object to the error view
-    }
-}
-
 - (IBAction)onRegistration:(id)sender
 {
-    Customer *customer = [[Customer alloc] init];
-    customer.name = emailField.text;
-    customer.password = passwordField.text;
     
-    // TODO: check the response object and display errors as needed
+    // Create and configure a new instance of the TaloolUser entity.
+    NSManagedObjectContext *context = ((MasterNavigationController *)(self.navigationController)).managedObjectContext;
+    TaloolUser *user = (TaloolUser *)[NSEntityDescription insertNewObjectForEntityForName:@"TaloolUser" inManagedObjectContext:context];
+    [user setCreationDate:[NSDate date]];
+    [user setFirstName:emailField.text];
+    [user setLastName:passwordField.text];
+    [user setEmail:emailField.text];
+    
+    // Register the user.  Check the response and display errors as needed
+    NSError *error = nil;
     CustomerController *cController = [[CustomerController alloc] init];
-    BOOL isRegistrationComplete = [cController registerUser:customer];
-    
-    if (isRegistrationComplete) {
-        [self performSegueWithIdentifier:@"userRegistered" sender:sender];
+    if ([cController registerUser:user error:&error]) {
+        // persist the user in the context
+        NSError *cd_error = nil;
+        if ([context save:&cd_error]) {
+            [self performSegueWithIdentifier:@"userRegistered" sender:sender];
+        } else {
+            [self showErrorMessage:cd_error.localizedDescription withTitle:@"oops!"];
+        }
     } else {
-        NSString *message = @"Fail!  Please enter the right data.";
-        [self showErrorMessage:message withTitle:@"yo!"];
+        [self showErrorMessage:error.localizedDescription withTitle:@"yo!"];
     }
 }
 

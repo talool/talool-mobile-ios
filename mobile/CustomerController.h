@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Customer;
+@class TaloolUser;
 @class BulletinBoardClient;
 
 @interface CustomerController : NSObject {
@@ -21,7 +22,7 @@
 
 - (void)sortAlphabeticallyAscending:(BOOL)ascending;
 - (void)loadData; 
-- (BOOL)registerUser:(Customer *)customer;
+- (BOOL)registerUser:(TaloolUser *)customer error:(NSError**)error;
 - (unsigned)countOfCustomers;
 - (id)objectInCustomersAtIndex:(unsigned)theIndex;
 
