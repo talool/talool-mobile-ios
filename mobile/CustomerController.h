@@ -10,12 +10,12 @@
 
 @class Customer;
 @class TaloolUser;
-@class BulletinBoardClient;
+@class TaloolServiceClient;
 
 @interface CustomerController : NSObject {
     NSMutableArray *customers;
     NSMutableIndexSet *selectedIndexes;
-    BulletinBoardClient *server;
+    TaloolServiceClient *service;
 }
 
 @property (nonatomic, readonly) NSMutableArray *customers;

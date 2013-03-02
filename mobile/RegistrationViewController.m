@@ -9,7 +9,7 @@
 #import "MasterNavigationController.h"
 #import "RegistrationViewController.h"
 #import "CustomerController.h"
-#import "Customer.h"
+#import "talool-service.h"
 
 @interface RegistrationViewController ()
 

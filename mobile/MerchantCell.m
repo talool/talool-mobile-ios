@@ -46,12 +46,12 @@
     if (newMerchant != merchant) {
         merchant = newMerchant;
         
-        self.icon = merchant.thumbnailImage;
+        //self.icon = merchant.thumbnailImage;
         self.name = merchant.name;
-        self.category = merchant.category;
-        self.points = merchant.points;
-        self.talools = merchant.talools;
-        self.visits = merchant.visits;
+        //self.category = merchant.category;
+        //self.points = merchant.points;
+        //self.talools = merchant.talools;
+        //self.visits = merchant.visits;
     }
 }
 

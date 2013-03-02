@@ -36,7 +36,7 @@
     }
 }
 
-- (void)setCustomer:(Customer *)newCustomer {
+- (void)setCustomer:(tCustomer *)newCustomer {
     if (newCustomer != customer) {
         customer = newCustomer;
         
@@ -47,7 +47,7 @@
     }
 }
 
-- (Customer *)customer {
+- (tCustomer *)customer {
     return customer;
 }
 

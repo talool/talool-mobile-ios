@@ -5,13 +5,13 @@
 //  Created by Douglas McCuen on 2/21/13.
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
-#import <TSocketClient.h>
+#import <THTTPClient.h>
 #import <TBinaryProtocol.h>
+#import <TTransportException.h>
 
 #import "CustomerController.h"
-#import "Customer.h"
 #import "TaloolUser.h"
-#import "idl.h"
+#import "talool-service.h"
 
 @implementation CustomerController
 
@@ -26,7 +26,7 @@
 }
 
 - (void)connect {
-    TSocketClient *transport;
+    THTTPClient *transport;
     TBinaryProtocol *protocol;
     @try {
         // Talk to a server via socket, using a binary protocol
@@ -35,9 +35,10 @@
                the phone will crash with a EXC_BAD_ACCESS when this
                controller is gabage collected.
          */
-        transport = [[TSocketClient alloc] init];//[[TSocketClient alloc] initWithHostname:@"localhost" port:7911]; 
+        NSURL *url = [NSURL URLWithString:@"http://66.186.23.208:8080/talool"];
+        transport = [[THTTPClient alloc] initWithURL:url];
         protocol = [[TBinaryProtocol alloc] initWithTransport:transport strictRead:YES strictWrite:YES];
-        server = [[BulletinBoardClient alloc] initWithProtocol:protocol];
+        service = [[TaloolServiceClient alloc] initWithProtocol:protocol];
     } @catch(NSException * e) {
         NSLog(@"Exception: %@", e);
     }
@@ -45,7 +46,7 @@
 }
 
 -(void)disconnect {
-    server = nil;
+    service = nil;
 }
 
 - (void)sortAlphabeticallyAscending:(BOOL)ascending {
@@ -68,8 +69,8 @@
 			[newCustomer setValue:[customerDictionary objectForKey:property] forKey:property];
 		}
 		
-		NSString *imageName = [customerDictionary objectForKey:@"Icon"];
-		newCustomer.thumbnailImage = [UIImage imageNamed:imageName];
+		//NSString *imageName = [customerDictionary objectForKey:@"Icon"];
+		//newCustomer.thumbnailImage = [UIImage imageNamed:imageName];
         
 		[customers addObject:newCustomer];
 	}
@@ -107,13 +108,51 @@
         return NO;
     }
 
-    // Do the Thrift Save
-    //[server add:msg];       // send data
-    //NSArray *array = [server get];    // receive data
-    if (NO) {
-        [details setValue:@"Failed to register user" forKey:NSLocalizedDescriptionKey];
+    
+    // Convert the core data obj to a thrift object
+    Address *address = [[Address alloc] init];
+    address.address1 = @"2734 Abror Glen Pl";
+    address.city = @"Boulder";
+    address.country = @"US";
+    address.stateProvinceCounty = @"CO";
+    address.zip = @"80304";
+    Customer *newCustomer = [[Customer alloc] init];
+    newCustomer.lastName = customer.lastName;
+    newCustomer.firstName = customer.firstName;
+    newCustomer.email = customer.email;
+    newCustomer.password = @"abc123";
+    newCustomer.address = address;
+    
+    @try {
+        // Do the Thrift Save
+        [service registerCustomer:newCustomer password:newCustomer.password];
+    }
+    @catch (ServiceException * se) {
+        [details setValue:@"Failed to register user, service failed." forKey:NSLocalizedDescriptionKey];
         *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        NSLog(@"failed to complete registration cycle: %@",se.description);
         return NO;
+    }
+    @catch (TApplicationException * tae) {
+        [details setValue:@"Failed to register user; app failed." forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        NSLog(@"failed to complete registration cycle: %@",tae.description);
+        return NO;
+    }
+    @catch (TTransportException * tpe) {
+        [details setValue:@"Failed to register user, cuz the server barfed." forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        NSLog(@"failed to complete registration cycle: %@",tpe.description);
+        return NO;
+    }
+    @catch (NSException * e) {
+        [details setValue:@"Failed to register user... who knows why." forKey:NSLocalizedDescriptionKey];
+        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+        NSLog(@"failed to complete registration cycle: %@",e.description);
+        return NO;
+    }
+    @finally {
+        NSLog(@"completed registration cycle");
     }
     
     return YES;

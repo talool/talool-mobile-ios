@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Customer.h"
+#import "talool-service.h"
 
 
 @interface FriendsViewController : UIViewController {

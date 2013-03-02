@@ -28,12 +28,12 @@
     
     NSError *error = nil;
     NSMutableArray *mutableFetchResults = [[_managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    if (mutableFetchResults == nil) {
+    if (mutableFetchResults == nil || [mutableFetchResults count] == 0) {
         // Handle the error.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"No User stored on device.");
     } else if ([mutableFetchResults count] > 1) {
         // "There can be only one!"
-        NSLog(@"There can be only one!");
+        NSLog(@"There can be only one (user)!");
         // TODO remove the extras... don't let this happen!
         // Delete all the managed objects.
         for (NSManagedObject *extra_user in mutableFetchResults) {

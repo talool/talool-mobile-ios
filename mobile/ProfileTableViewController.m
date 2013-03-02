@@ -8,7 +8,7 @@
 
 #import "ProfileTableViewController.h"
 #import "MasterNavigationController.h"
-#import "Merchant.h"
+#import "talool-service.h"
 #import "MerchantController.h"
 #import "FavoriteMerchantCell.h"
 
@@ -32,7 +32,7 @@
     
     // The merchantController will fetch the data for this view
     self.merchantController = [[MerchantController alloc] init];
-    [self.merchantController loadData];
+    //[self.merchantController loadData];
 
 }
 

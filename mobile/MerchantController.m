@@ -7,7 +7,7 @@
 //
 
 #import "MerchantController.h"
-#import "Merchant.h"
+#import "talool-service.h"
 
 
 @implementation MerchantController
@@ -44,8 +44,8 @@
 			[newMerchant setValue:[merchantDictionary objectForKey:property] forKey:property];
 		}
 		
-		NSString *imageName = [merchantDictionary objectForKey:@"Icon"];
-		newMerchant.thumbnailImage = [UIImage imageNamed:imageName];
+		//NSString *imageName = [merchantDictionary objectForKey:@"Icon"];
+		//newMerchant.thumbnailImage = [UIImage imageNamed:imageName];
         
 		[merchants addObject:newMerchant];
 	}

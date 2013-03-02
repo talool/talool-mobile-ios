@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Merchant.h"
+#import "talool-service.h"
 
 @interface ExploreViewController : UIViewController
 {

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Merchant.h"
+#import "talool-service.h"
 
 @interface ProfileViewController : UIViewController {
     Merchant *merchant;

@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	nameLabel.text = customer.name;
+	nameLabel.text = customer.lastName;
 }
 
 - (void)didReceiveMemoryWarning

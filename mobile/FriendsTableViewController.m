@@ -24,7 +24,7 @@
     
     // The FriendController will fetch the data for this view
     self.customerController = [[CustomerController alloc] init];
-    [self.customerController loadData];
+    //[self.customerController loadData];
     
 }
 

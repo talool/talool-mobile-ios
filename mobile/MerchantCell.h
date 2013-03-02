@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "Merchant.h"
+#import "talool-service.h"
 
 @interface MerchantCell : UITableViewCell
 {
