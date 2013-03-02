@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // if we have a user, we can skip Registration.
     MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-    if (mnc.user != nil) {
+    if ([mnc getLoggedInUser] != nil) {
         [self performSegueWithIdentifier:@"userRegistered" sender:self.navigationController];
     }
 }
@@ -62,7 +62,6 @@
     if ([cController registerUser:user error:&error]) {
         NSError *cd_error = nil;
         if ([context save:&cd_error]) {
-            mnc.user = user; // create a shortcut to the object... is this a bad idea?  TODO: maybe just add a getting to the base table view controller.
             [self performSegueWithIdentifier:@"userRegistered" sender:sender];
         } else {
             [self showErrorMessage:cd_error.localizedDescription withTitle:@"oops!"];
