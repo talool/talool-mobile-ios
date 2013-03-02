@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "tCustomer.h"
+#import "TaloolCustomer.h"
 
 @interface CustomerCell : UITableViewCell
 {
     BOOL useDarkBackground;
     
-    tCustomer *customer;
+    TaloolCustomer *customer;
     
     UIImage *icon;
     NSString *name;
@@ -23,7 +23,7 @@
 }
 
 @property(nonatomic) BOOL useDarkBackground;
-@property (nonatomic, retain) tCustomer *customer;
+@property (nonatomic, retain) TaloolCustomer *customer;
 
 @property(retain) UIImage *icon;
 @property(retain) NSString *name;

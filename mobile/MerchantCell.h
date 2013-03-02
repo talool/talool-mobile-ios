@@ -9,14 +9,14 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
+#import "TaloolMerchant.h"
 #import "talool-service.h"
 
 @interface MerchantCell : UITableViewCell
 {
     BOOL useDarkBackground;
     
-    Merchant *merchant;
+    TaloolMerchant *merchant;
     
     UIImage *icon;
     NSString *category;
@@ -29,7 +29,7 @@
 }
 
 @property(nonatomic) BOOL useDarkBackground;
-@property (nonatomic, retain) Merchant *merchant;
+@property (nonatomic, retain) TaloolMerchant *merchant;
 
 @property(retain) UIImage *icon;
 @property(retain) NSString *category;

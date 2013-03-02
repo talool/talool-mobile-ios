@@ -36,18 +36,18 @@
     }
 }
 
-- (void)setCustomer:(tCustomer *)newCustomer {
+- (void)setCustomer:(TaloolCustomer *)newCustomer {
     if (newCustomer != customer) {
         customer = newCustomer;
         
-        self.icon = customer.thumbnailImage;
-        self.name = customer.name;
-        self.points = customer.points;
-        self.talools = customer.talools;
+        //self.icon = customer.thumbnailImage;
+        self.name = customer.firstName;
+        //self.points = customer.points;
+        //self.talools = customer.talools;
     }
 }
 
-- (tCustomer *)customer {
+- (TaloolCustomer *)customer {
     return customer;
 }
 
