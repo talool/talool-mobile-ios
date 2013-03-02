@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
+// TODO: enable/disable the button based on ttCustomer.isValid
+
 #import "MasterNavigationController.h"
 #import "RegistrationViewController.h"
 #import "CustomerController.h"
@@ -38,21 +40,29 @@
 - (IBAction)onRegistration:(id)sender
 {
     
-    // Create and configure a new instance of the TaloolUser entity.
-    NSManagedObjectContext *context = ((MasterNavigationController *)(self.navigationController)).managedObjectContext;
-    TaloolUser *user = (TaloolUser *)[NSEntityDescription insertNewObjectForEntityForName:@"TaloolUser" inManagedObjectContext:context];
-    [user setCreationDate:[NSDate date]];
-    [user setFirstName:emailField.text];
-    [user setLastName:passwordField.text];
+    // Create and configure a new instance of the TaloolCustomer entity.
+    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
+    NSManagedObjectContext *context = mnc.managedObjectContext;
+    ttCustomer *user = (ttCustomer *)[NSEntityDescription insertNewObjectForEntityForName:@"TaloolCustomer" inManagedObjectContext:context];
+    [user setCreated:[NSDate date]];
+    [user setFirstName:firstNameField.text];
+    [user setLastName:lastNameField.text];
     [user setEmail:emailField.text];
+    [user setPassword:passwordField.text];
+    ttAddress *address = (ttAddress *)[NSEntityDescription insertNewObjectForEntityForName:@"TaloolAddress" inManagedObjectContext:context];
+    [address setAddress1:addressField.text];
+    [address setCity:cityField.text];
+    [address setStateProvidenceCounty:stateField.text];
+    [address setZip:zipField.text];
+    [user setAddress:address];
     
     // Register the user.  Check the response and display errors as needed
     NSError *error = nil;
     CustomerController *cController = [[CustomerController alloc] init];
     if ([cController registerUser:user error:&error]) {
-        // persist the user in the context
         NSError *cd_error = nil;
         if ([context save:&cd_error]) {
+            mnc.user = user; // create a shortcut to the object... is this a bad idea?  TODO: maybe just add a getting to the base table view controller.
             [self performSegueWithIdentifier:@"userRegistered" sender:sender];
         } else {
             [self showErrorMessage:cd_error.localizedDescription withTitle:@"oops!"];

@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TaloolUser.h"
+#import "ttCustomer.h"
+#import "ttAddress.h"
 
 
 @interface RegistrationViewController : UIViewController {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;
+    IBOutlet UITextField *firstNameField;
+    IBOutlet UITextField *lastNameField;
+    IBOutlet UITextField *addressField;
+    IBOutlet UITextField *cityField;
+    IBOutlet UITextField *stateField;
+    IBOutlet UITextField *zipField;
     UIAlertView *errorView;
 }
 

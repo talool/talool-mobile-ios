@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Customer;
-@class TaloolUser;
+@class ttCustomer;
 @class TaloolServiceClient;
 
 @interface CustomerController : NSObject {
@@ -22,7 +22,7 @@
 
 - (void)sortAlphabeticallyAscending:(BOOL)ascending;
 - (void)loadData; 
-- (BOOL)registerUser:(TaloolUser *)customer error:(NSError**)error;
+- (BOOL)registerUser:(ttCustomer *)customer error:(NSError**)error;
 - (unsigned)countOfCustomers;
 - (id)objectInCustomersAtIndex:(unsigned)theIndex;
 

@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import <CoreData/CoreData.h>
-#import "TaloolUser.h"
+#import "TaloolCustomer.h"
 
 @interface MasterNavigationController : UINavigationController <NSFetchedResultsControllerDelegate> {
-    TaloolUser *user;
+    TaloolCustomer *user;
 }
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) TaloolUser *user;
+@property (nonatomic, retain) TaloolCustomer *user;
 
 @end

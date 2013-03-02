@@ -33,22 +33,6 @@
  */
 - (void)loadData {
 	merchants = [[NSMutableArray alloc] init];
-	NSArray *merchantDictionaries = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"MerchantData" ofType:@"plist"]];
-	
-	NSArray *propertyNames = [[NSArray alloc] initWithObjects:@"Name", @"Category", @"Points", @"Visits", @"Talools", nil];
-	
-	for (NSDictionary *merchantDictionary in merchantDictionaries) {
-		
-		Merchant *newMerchant = [[Merchant alloc] init];
-		for (NSString *property in propertyNames) {
-			[newMerchant setValue:[merchantDictionary objectForKey:property] forKey:property];
-		}
-		
-		//NSString *imageName = [merchantDictionary objectForKey:@"Icon"];
-		//newMerchant.thumbnailImage = [UIImage imageNamed:imageName];
-        
-		[merchants addObject:newMerchant];
-	}
     
     [self sortAlphabeticallyAscending:YES];
     

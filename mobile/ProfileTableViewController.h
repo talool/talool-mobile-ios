@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 #import "MerchantCell.h"
-#import "TaloolUser.h"
+#import "TaloolCustomer.h"
 
 @class MerchantController;
-@class Merchant;
+@class TaloolMerchant;
 
 @interface ProfileTableViewController : BaseTableViewController {
     MerchantController *merchantController;

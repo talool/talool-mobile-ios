@@ -10,7 +10,7 @@
 #import <TTransportException.h>
 
 #import "CustomerController.h"
-#import "TaloolUser.h"
+#import "ttCustomer.h"
 #import "talool-service.h"
 
 @implementation CustomerController
@@ -58,22 +58,6 @@
 - (void)loadData {
     
 	customers = [[NSMutableArray alloc] init];
-	NSArray *customerDictionaries = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"CustomerData" ofType:@"plist"]];
-	
-	NSArray *propertyNames = [[NSArray alloc] initWithObjects:@"Name", @"Points", @"Talools", nil];
-	
-	for (NSDictionary *customerDictionary in customerDictionaries) {
-		
-		Customer *newCustomer = [[Customer alloc] init];
-		for (NSString *property in propertyNames) {
-			[newCustomer setValue:[customerDictionary objectForKey:property] forKey:property];
-		}
-		
-		//NSString *imageName = [customerDictionary objectForKey:@"Icon"];
-		//newCustomer.thumbnailImage = [UIImage imageNamed:imageName];
-        
-		[customers addObject:newCustomer];
-	}
     
     [self sortAlphabeticallyAscending:YES];
     
@@ -88,40 +72,17 @@
     return [customers objectAtIndex:theIndex];
 }
 
-- (BOOL)registerUser:(TaloolUser *)customer error:(NSError**)error {
+- (BOOL)registerUser:(ttCustomer *)customer error:(NSError**)error {
     
     // validate data before sending to the server
-    // TODO: enable/disable the button based on this criteria
-    NSMutableDictionary* details = [NSMutableDictionary dictionary];
-    if (customer.firstName == nil || customer.firstName.length < 2) {
-        // set error message
-        [details setValue:@"Your first name is invalid" forKey:NSLocalizedDescriptionKey];
-        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
-        return NO;
-    } else if (customer.lastName == nil || customer.lastName.length < 2) {
-        [details setValue:@"Your last name is invalid" forKey:NSLocalizedDescriptionKey];
-        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
-        return NO;
-    } else if (customer.email == nil || customer.email.length < 2) {
-        [details setValue:@"Your email is invalid" forKey:NSLocalizedDescriptionKey];
-        *error = [NSError errorWithDomain:@"registration" code:200 userInfo:details];
+    if (![customer isValid:error]){
         return NO;
     }
 
-    
     // Convert the core data obj to a thrift object
-    Address *address = [[Address alloc] init];
-    address.address1 = @"2734 Abror Glen Pl";
-    address.city = @"Boulder";
-    address.country = @"US";
-    address.stateProvinceCounty = @"CO";
-    address.zip = @"80304";
-    Customer *newCustomer = [[Customer alloc] init];
-    newCustomer.lastName = customer.lastName;
-    newCustomer.firstName = customer.firstName;
-    newCustomer.email = customer.email;
-    newCustomer.password = @"abc123";
-    newCustomer.address = address;
+    Customer *newCustomer = [customer hydrateThriftObject];
+    
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
     
     @try {
         // Do the Thrift Save

@@ -7,7 +7,6 @@
 //
 
 #import "FriendsTableViewController.h"
-#import "Friend.h"
 #import "CustomerController.h"
 #import "FriendCell.h"
 

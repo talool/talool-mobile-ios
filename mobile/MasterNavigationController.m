@@ -7,7 +7,7 @@
 //
 
 #import "MasterNavigationController.h"
-#import "TaloolUser.h"
+#import "TaloolCustomer.h"
 
 @interface MasterNavigationController ()
 
@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TaloolUser" inManagedObjectContext:_managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"TaloolCustomer" inManagedObjectContext:_managedObjectContext];
     [request setEntity:entity];
     
     NSError *error = nil;
