@@ -11,6 +11,7 @@
 #import "talool-service.h"
 #import "MerchantController.h"
 #import "FavoriteMerchantCell.h"
+#import "ttCustomer.h"
 
 @interface ProfileTableViewController ()
 @property (nonatomic, retain) MerchantController *merchantController;
@@ -23,7 +24,7 @@
 {
     // Set the nav title to the user's first name
     MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-    self.tabBarController.navigationItem.title = mnc.user.firstName;
+    self.tabBarController.navigationItem.title = [[mnc getLoggedInUser] getFullName];
 }
 
 - (void)viewDidLoad
@@ -84,5 +85,6 @@
         
     }
 }
+
 
 @end
