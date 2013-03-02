@@ -16,5 +16,6 @@
 - (BOOL)isValid: (NSError**)error;
 - (void)initWithThrift: (Customer *)customer;
 - (Customer *)hydrateThriftObject;
+- (NSString *)getFullName;
 
 @end

@@ -54,4 +54,9 @@
     return newCustomer;
 }
 
+-(NSString *) getFullName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
 @end
