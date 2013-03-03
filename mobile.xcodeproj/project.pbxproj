@@ -32,6 +32,7 @@
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		9103116616D3194F00CEE814 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116516D3194F00CEE814 /* MerchantController.m */; };
+		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
 		917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */; };
@@ -118,6 +119,8 @@
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
 		9103116416D3194F00CEE814 /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
 		9103116516D3194F00CEE814 /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
+		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Talool.xcdatamodel; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */,
 				917F0FE416DC69D7008A56E3 /* MasterNavigationController.h */,
 				917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */,
+				914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */,
+				914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				917F0FFF16E25C9D008A56E3 /* ttCustomer.m in Sources */,
 				917F100316E25E82008A56E3 /* ttAddress.m in Sources */,
 				917F100616E25E98008A56E3 /* ttMerchant.m in Sources */,
+				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

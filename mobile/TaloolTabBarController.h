@@ -10,8 +10,4 @@
 
 @interface TaloolTabBarController : UITabBarController
 
-- (IBAction) onLogout:(id) sender;
-
-- (IBAction)loginAction:(UIStoryboardSegue *)segue;
-
 @end

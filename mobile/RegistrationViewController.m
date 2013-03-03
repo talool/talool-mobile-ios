@@ -24,7 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.hidesBackButton = YES;
+    // make sure we're logged out
+    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
+    [mnc logout];
 
 }
 
