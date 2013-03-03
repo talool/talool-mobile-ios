@@ -8,7 +8,14 @@
         <scene sceneID="15">
             <objects>
                 <tabBarController id="4" customClass="TaloolTabBarController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Zcy-e6-YP8"/>
+                    <navigationItem key="navigationItem" id="Zcy-e6-YP8">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="IAW-Ov-HWO">
+                            <color key="tintColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onLogout:" destination="4" id="KSX-fh-hTc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -18,36 +25,39 @@
                         <color key="selectedImageTintColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ct6-uY-y3D" kind="relationship" relationship="viewControllers" id="REC-yJ-dhd"/>
-                        <segue destination="xsS-Vr-ecg" kind="relationship" relationship="viewControllers" id="N0R-72-wfJ"/>
-                        <segue destination="I4r-jV-E07" kind="relationship" relationship="viewControllers" id="qSI-97-ywW"/>
+                        <segue destination="boA-Ez-tOt" kind="relationship" relationship="viewControllers" id="GG0-X3-Hhc"/>
+                        <segue destination="xsS-Vr-ecg" kind="relationship" relationship="viewControllers" id="ec7-Bd-dQj"/>
+                        <segue destination="I4r-jV-E07" kind="relationship" relationship="viewControllers" id="aB9-Wi-ZHd"/>
+                        <segue destination="eDt-vK-Q2w" kind="push" identifier="registerUser" id="17B-Cb-9pM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-93" y="502"/>
+            <point key="canvasLocation" x="-21" y="499"/>
         </scene>
         <!--Master Navigation Controller-->
         <scene sceneID="bjk-Jl-dAj">
             <objects>
                 <navigationController definesPresentationContext="YES" id="qBR-fx-qsL" customClass="MasterNavigationController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Gle-y4-NCC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fn4-EH-wid">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.29411764709999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="eDt-vK-Q2w" kind="relationship" relationship="rootViewController" id="gBb-Mc-pm9"/>
+                        <segue destination="4" kind="relationship" relationship="rootViewController" id="Qhy-g1-JId"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcs-A1-AO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1200" y="504"/>
+            <point key="canvasLocation" x="-552" y="502"/>
         </scene>
         <!--Registration View Controller - Registration-->
         <scene sceneID="1BJ-kl-jED">
             <objects>
                 <viewController id="eDt-vK-Q2w" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xlp-FE-0Da">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vho-5m-dn1">
@@ -73,6 +83,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onRegistration:" destination="eDt-vK-Q2w" eventType="touchDown" id="3Qi-ed-ruX"/>
+                                    <segue destination="pL6-L9-wYc" kind="unwind" identifier="loginUser" unwindAction="loginAction:" id="h2C-Bg-Rsy"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cqR-cK-IMG">
@@ -177,33 +188,30 @@
                         <outlet property="passwordField" destination="4bV-n7-FJl" id="hwJ-uO-VnS"/>
                         <outlet property="stateField" destination="Fya-N5-84a" id="m39-eJ-nUZ"/>
                         <outlet property="zipField" destination="VCe-Cq-ef1" id="GQ0-0N-3hc"/>
-                        <segue destination="4" kind="push" identifier="userRegistered" id="yKO-zM-FC6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs8-kF-Bpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pL6-L9-wYc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-630" y="102"/>
+            <point key="canvasLocation" x="-21" y="-258"/>
         </scene>
         <!--Profile Table View Controller - Profile-->
-        <scene sceneID="wUy-yh-C2O">
+        <scene sceneID="yhv-wg-Pdp">
             <objects>
-                <tableViewController id="ct6-uY-y3D" customClass="ProfileTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zRw-SL-GQX">
+                <tableViewController id="boA-Ez-tOt" customClass="ProfileTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6I1-Id-bV8">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" id="wwH-ej-s4g" customClass="FavoriteMerchantCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" id="OKh-Yw-prQ" customClass="FavoriteMerchantCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K3-uU-by5">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="254" id="X3T-9l-cWs"/>
-                                            </constraints>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Merchants" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKa-ts-dEP">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -212,22 +220,21 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="9K3-uU-by5" firstAttribute="leading" secondItem="wwH-ej-s4g" secondAttribute="leading" constant="20" type="default" id="YCx-Xz-nmG"/>
-                                    <constraint firstItem="9K3-uU-by5" firstAttribute="top" secondItem="wwH-ej-s4g" secondAttribute="top" constant="11" id="gGb-TH-XIC"/>
+                                    <constraint firstItem="oKa-ts-dEP" firstAttribute="top" secondItem="OKh-Yw-prQ" secondAttribute="top" constant="11" id="0eX-uG-VEh"/>
+                                    <constraint firstItem="oKa-ts-dEP" firstAttribute="leading" secondItem="OKh-Yw-prQ" secondAttribute="leading" constant="20" type="default" id="QfC-mQ-kVG"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="nameLabel" destination="9K3-uU-by5" id="nJx-wg-Pi8"/>
-                                    <segue destination="SSH-fd-inc" kind="push" identifier="showProfile" id="auO-PQ-iVw"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Profile" id="UUe-ok-I0e"/>
-                    <navigationItem key="navigationItem" title="Profile" id="c6c-VZ-Wsl"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="cSe-RX-vlf"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Tpx-nR-TOs"/>
+                    <connections>
+                        <segue destination="SSH-fd-inc" kind="push" identifier="showFavoriteMerchange" id="5qr-IS-Kau"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jso-d2-lO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-P8-FWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="491" y="-358"/>
+            <point key="canvasLocation" x="491" y="-258"/>
         </scene>
         <!--Profile View Controller - Merchant-->
         <scene sceneID="dwA-SF-feg">
@@ -263,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJj-ro-NeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="-358"/>
+            <point key="canvasLocation" x="1018" y="-258"/>
         </scene>
         <!--Friends Table View Controller - Friends-->
         <scene sceneID="8OP-k3-yvB">
@@ -427,85 +434,6 @@
             <point key="canvasLocation" x="1023" y="499"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BaseTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
-        </class>
-        <class className="CustomerCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomerCell.h"/>
-        </class>
-        <class className="ExploreTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreTableViewController.h"/>
-        </class>
-        <class className="ExploreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FavoriteMerchantCell" superclassName="MerchantCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteMerchantCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="categoryLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="visitsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendCell" superclassName="CustomerCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendsTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsTableViewController.h"/>
-        </class>
-        <class className="FriendsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterNavigationController.h"/>
-        </class>
-        <class className="MerchantCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantCell.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ProfileTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileTableViewController.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="RegistrationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onRegistration:"/>
-                <relationship kind="outlet" name="addressField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cityField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="stateField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="zipField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="TaloolTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolTabBarController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

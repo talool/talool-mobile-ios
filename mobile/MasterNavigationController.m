@@ -60,7 +60,11 @@
 
 - (void) logout
 {
-    [_managedObjectContext deleteObject:[self getLoggedInUser]];
+    ttCustomer *user = [self getLoggedInUser];
+    if (user == nil) {
+        return;
+    }
+    [_managedObjectContext deleteObject:user];
     NSError *error = [NSError alloc];
     if ([_managedObjectContext save:&error]) {
         NSLog(@"User logged out");

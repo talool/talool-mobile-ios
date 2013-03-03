@@ -24,11 +24,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // if we have a user, we can skip Registration.
-    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-    if ([mnc getLoggedInUser] != nil) {
-        [self performSegueWithIdentifier:@"userRegistered" sender:self.navigationController];
-    }
+    self.navigationItem.hidesBackButton = YES;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,9 +58,7 @@
     CustomerController *cController = [[CustomerController alloc] init];
     if ([cController registerUser:user error:&error]) {
         NSError *cd_error = nil;
-        if ([context save:&cd_error]) {
-            [self performSegueWithIdentifier:@"userRegistered" sender:sender];
-        } else {
+        if (![context save:&cd_error]) {
             [self showErrorMessage:cd_error.localizedDescription withTitle:@"oops!"];
         }
     } else {
