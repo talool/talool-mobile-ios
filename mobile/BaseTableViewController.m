@@ -28,6 +28,13 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

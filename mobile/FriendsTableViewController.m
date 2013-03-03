@@ -29,7 +29,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     self.tabBarController.navigationItem.title = @"Friends";
+    
+    UIBarButtonItem *inviteButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Invite"
+                                     style:UIBarButtonItemStyleBordered
+                                     target:self
+                                     action:@selector(invite:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = inviteButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +87,12 @@
         [[segue destinationViewController] setCustomer:[customerController objectInCustomersAtIndex:indexPath.row]];
         
     }
+}
+
+- (void)invite:(id)sender
+{
+    NSLog(@"Invite button clicked");
+    
 }
 
 

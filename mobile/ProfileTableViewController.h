@@ -18,4 +18,6 @@
     MerchantController *merchantController;
 }
 
+- (void)logout:(id)sender;
+
 @end

@@ -8,15 +8,7 @@
         <scene sceneID="15">
             <objects>
                 <tabBarController id="4" customClass="TaloolTabBarController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Zcy-e6-YP8">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="IAW-Ov-HWO">
-                            <color key="tintColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="onLogout:" destination="4" id="2u1-u9-R1U"/>
-                                <segue destination="Rc6-zN-aLm" kind="unwind" identifier="logoutUser" unwindAction="logoutAction:" id="np0-n6-OEZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Zcy-e6-YP8"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -32,7 +24,6 @@
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
-                <exit id="Rc6-zN-aLm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-21" y="499"/>
         </scene>
@@ -300,9 +291,11 @@
                     <navigationItem key="navigationItem" title="Profile" id="Tpx-nR-TOs"/>
                     <connections>
                         <segue destination="SSH-fd-inc" kind="push" identifier="showFavoriteMerchange" id="5qr-IS-Kau"/>
+                        <segue destination="1pH-zW-Nh2" kind="unwind" identifier="logoutUser" unwindAction="logoutAction:" id="zRd-Xb-26O"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-P8-FWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1pH-zW-Nh2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="491" y="-258"/>
         </scene>

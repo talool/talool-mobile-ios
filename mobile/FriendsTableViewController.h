@@ -16,4 +16,6 @@
     CustomerController *customerController;
 }
 
+- (void)invite:(id)sender;
+
 @end

@@ -25,6 +25,13 @@
     // Set the nav title to the user's first name
     MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
     self.tabBarController.navigationItem.title = [[mnc getLoggedInUser] getFullName];
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Logout"
+                                     style:UIBarButtonItemStyleBordered
+                                     target:self
+                                     action:@selector(logout:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = logoutButton;
 }
 
 - (void)viewDidLoad
@@ -84,6 +91,15 @@
         [[segue destinationViewController] setMerchant:[merchantController objectInMerchantsAtIndex:indexPath.row]];
         
     }
+}
+
+- (void)logout:(id)sender
+{
+    NSLog(@"Logout button clicked");
+    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
+    [mnc logout];
+    [self performSegueWithIdentifier:@"logoutUser" sender:self];
+    
 }
 
 
