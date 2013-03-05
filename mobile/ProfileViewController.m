@@ -20,6 +20,12 @@
 {
     [super viewDidLoad];
 	nameLabel.text = merchant.name;
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationItem.title = merchant.name;
 }
 
 - (void)didReceiveMemoryWarning

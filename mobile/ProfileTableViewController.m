@@ -32,6 +32,8 @@
                                      target:self
                                      action:@selector(logout:)];
     self.tabBarController.navigationItem.rightBarButtonItem = logoutButton;
+    
+    self.tabBarController.navigationItem.backBarButtonItem.title = @"back";
 }
 
 - (void)viewDidLoad
@@ -40,7 +42,7 @@
     
     // The merchantController will fetch the data for this view
     self.merchantController = [[MerchantController alloc] init];
-    //[self.merchantController loadData];
+    [self.merchantController loadData];
 
 }
 
@@ -86,10 +88,12 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showProfile"]) {
+    if ([[segue identifier] isEqualToString:@"showMerchant"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [[segue destinationViewController] setMerchant:[merchantController objectInMerchantsAtIndex:indexPath.row]];
         
+    } else {
+        NSLog(@"segue with identifier: %@",[segue identifier]);
     }
 }
 
