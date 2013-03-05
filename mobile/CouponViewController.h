@@ -10,9 +10,6 @@
 
 @interface CouponViewController : UIViewController <UIPageViewControllerDelegate>
 
-+ (CouponViewController *)couponViewControllerForPageIndex:(NSUInteger)pageIndex;
-
-- (NSInteger)pageIndex;
-+ (NSArray *)getData;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @end
