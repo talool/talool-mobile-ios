@@ -12,12 +12,10 @@
 
 @interface MerchantController : NSObject {
 	NSMutableArray *merchants;
-    NSMutableIndexSet *selectedIndexes;
 }
 
 @property (nonatomic, readonly) NSMutableArray *merchants;
 
-- (void)sortAlphabeticallyAscending:(BOOL)ascending;
 - (void)loadData;
 - (unsigned)countOfMerchants;
 - (id)objectInMerchantsAtIndex:(unsigned)theIndex;

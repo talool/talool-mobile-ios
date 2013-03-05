@@ -33,7 +33,7 @@
                                      action:@selector(logout:)];
     self.tabBarController.navigationItem.rightBarButtonItem = logoutButton;
     
-    self.tabBarController.navigationItem.backBarButtonItem.title = @"back";
+    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
 }
 
 - (void)viewDidLoad
