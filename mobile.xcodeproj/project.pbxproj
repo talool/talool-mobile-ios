@@ -33,6 +33,10 @@
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		9103116616D3194F00CEE814 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116516D3194F00CEE814 /* MerchantController.m */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
+		914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EC616E3F05B00C88B59 /* CouponViewController.m */; };
+		914B1ECD16E3F79000C88B59 /* ttCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1ECC16E3F79000C88B59 /* ttCoupon.m */; };
+		914B1ECF16E3FA8E00C88B59 /* coupons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 914B1ECE16E3FA8E00C88B59 /* coupons.plist */; };
+		914B1ED116E43A5C00C88B59 /* merchants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 914B1ED016E43A5C00C88B59 /* merchants.plist */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
 		917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */; };
@@ -70,6 +74,8 @@
 		91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3116DBAC8900D1CA96 /* TTransportException.m */; };
 		91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */; };
 		91986F4216DBACC200D1CA96 /* idl.thrift in Resources */ = {isa = PBXBuildFile; fileRef = 91986F4116DBACC100D1CA96 /* idl.thrift */; };
+		91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD716E4E6830021E605 /* ModelController.m */; };
+		91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +127,12 @@
 		9103116516D3194F00CEE814 /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		914B1EC516E3F05B00C88B59 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
+		914B1EC616E3F05B00C88B59 /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
+		914B1ECB16E3F78F00C88B59 /* ttCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttCoupon.h; sourceTree = "<group>"; };
+		914B1ECC16E3F79000C88B59 /* ttCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ttCoupon.m; sourceTree = "<group>"; };
+		914B1ECE16E3FA8E00C88B59 /* coupons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coupons.plist; sourceTree = "<group>"; };
+		914B1ED016E43A5C00C88B59 /* merchants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = merchants.plist; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Talool.xcdatamodel; sourceTree = "<group>"; };
@@ -195,6 +207,10 @@
 		91986F3216DBAC8900D1CA96 /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
 		91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
 		91986F4116DBACC100D1CA96 /* idl.thrift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = idl.thrift; sourceTree = "<group>"; };
+		91BDEFD416E4E6830021E605 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		91BDEFD516E4E6830021E605 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		91BDEFD616E4E6830021E605 /* ModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
+		91BDEFD716E4E6830021E605 /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +276,7 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				914B1EC116E3EE1600C88B59 /* Page View Controllers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
 				917F0FED16E23B94008A56E3 /* Managed Objects */,
@@ -323,6 +340,7 @@
 		9103117916D4678600CEE814 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				914B1ED016E43A5C00C88B59 /* merchants.plist */,
 				9103116416D3194F00CEE814 /* MerchantController.h */,
 				9103116516D3194F00CEE814 /* MerchantController.m */,
 				91986EF616D7148F00D1CA96 /* CustomerController.h */,
@@ -367,6 +385,22 @@
 				914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		914B1EC116E3EE1600C88B59 /* Page View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				914B1EC516E3F05B00C88B59 /* CouponViewController.h */,
+				914B1EC616E3F05B00C88B59 /* CouponViewController.m */,
+				91BDEFD416E4E6830021E605 /* DataViewController.h */,
+				91BDEFD516E4E6830021E605 /* DataViewController.m */,
+				91BDEFD616E4E6830021E605 /* ModelController.h */,
+				91BDEFD716E4E6830021E605 /* ModelController.m */,
+				914B1ECB16E3F78F00C88B59 /* ttCoupon.h */,
+				914B1ECC16E3F79000C88B59 /* ttCoupon.m */,
+				914B1ECE16E3FA8E00C88B59 /* coupons.plist */,
+			);
+			name = "Page View Controllers";
 			sourceTree = "<group>";
 		};
 		917F0FED16E23B94008A56E3 /* Managed Objects */ = {
@@ -570,6 +604,8 @@
 				91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */,
 				91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */,
 				91986F4216DBACC200D1CA96 /* idl.thrift in Resources */,
+				914B1ECF16E3FA8E00C88B59 /* coupons.plist in Resources */,
+				914B1ED116E43A5C00C88B59 /* merchants.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +681,10 @@
 				917F100316E25E82008A56E3 /* ttAddress.m in Sources */,
 				917F100616E25E98008A56E3 /* ttMerchant.m in Sources */,
 				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
+				914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */,
+				914B1ECD16E3F79000C88B59 /* ttCoupon.m in Sources */,
+				91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */,
+				91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

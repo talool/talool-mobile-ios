@@ -42,7 +42,7 @@
     }
 }
 
-- (void)setMerchant:(TaloolMerchant *)newMerchant {
+- (void)setMerchant:(ttMerchant *)newMerchant {
     if (newMerchant != merchant) {
         merchant = newMerchant;
         
@@ -55,7 +55,7 @@
     }
 }
 
-- (TaloolMerchant *)merchant {
+- (ttMerchant *)merchant {
     return merchant;
 }
 
