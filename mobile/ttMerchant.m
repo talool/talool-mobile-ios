@@ -11,14 +11,20 @@
 
 @implementation ttMerchant
 
+@synthesize name, email;
+
 -(BOOL)isValid
 {
     return TRUE;
 }
 
--(void)initWithThrift:(Merchant *)merchant
++(ttMerchant *)initWithThrift:(Merchant *)merchant
 {
+    ttMerchant *m = [ttMerchant alloc];
+    m.name = merchant.name;
+    m.email = merchant.email;
     
+    return m;
 }
 
 -(Merchant *)hydrateThriftObject

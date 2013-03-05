@@ -14,7 +14,7 @@
 @interface ttCustomer : TaloolCustomer
 
 - (BOOL)isValid: (NSError**)error;
-- (void)initWithThrift: (Customer *)customer;
++ (ttCustomer *)initWithThrift: (Customer *)customer;
 - (Customer *)hydrateThriftObject;
 - (NSString *)getFullName;
 

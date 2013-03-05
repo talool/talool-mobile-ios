@@ -16,9 +16,16 @@
     return TRUE;
 }
 
--(void)initWithThrift:(Address *)address
++(ttAddress *)initWithThrift:(Address *)address
 {
-    
+    ttAddress *a = [ttAddress alloc];
+    a.address1 = address.address1;
+    a.address2 = address.address2;
+    a.city = address.city;
+    a.country = address.country;
+    a.stateProvidenceCounty = address.stateProvinceCounty;
+    a.zip = address.zip;
+    return a;
 }
 
 -(Address *)hydrateThriftObject

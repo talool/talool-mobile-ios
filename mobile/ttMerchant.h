@@ -13,7 +13,7 @@
 @interface ttMerchant : TaloolMerchant
 
 - (BOOL)isValid;
-- (void)initWithThrift: (Merchant *)merchant;
++ (ttMerchant *)initWithThrift: (Merchant *)merchant;
 - (Merchant *)hydrateThriftObject;
 
 @end

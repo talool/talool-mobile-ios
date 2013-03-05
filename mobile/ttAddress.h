@@ -13,7 +13,7 @@
 @interface ttAddress : TaloolAddress
 
 - (BOOL)isValid;
-- (void)initWithThrift: (Address *)address;
++ (ttAddress *)initWithThrift: (Address *)address;
 - (Address *)hydrateThriftObject;
 
 @end

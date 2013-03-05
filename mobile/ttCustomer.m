@@ -37,8 +37,16 @@
     return YES;
 }
 
--(void)initWithThrift:(Customer *)customer
++(ttCustomer *)initWithThrift:(Customer *)customer
 {
+    ttCustomer *c = [ttCustomer alloc];
+    c.lastName = customer.lastName;
+    c.firstName = customer.firstName;
+    c.email = customer.email;
+    c.password = customer.password;
+    c.address = [ttAddress initWithThrift:customer.address];
+    
+    return c;
     
 }
 
