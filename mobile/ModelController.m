@@ -97,4 +97,16 @@
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
 
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return [self.pageData count];
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
+}
+
+
 @end

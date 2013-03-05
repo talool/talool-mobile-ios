@@ -24,8 +24,8 @@
     
     // Configure the table view.
     self.tableView.rowHeight = 72.0;
-    self.tableView.backgroundColor = [UIColor colorWithRed:110.0/255.0 green:158.0/255.0 blue:117.0/255.0 alpha:1.0];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+    //self.tableView.backgroundColor = [UIColor colorWithRed:110.0/255.0 green:158.0/255.0 blue:117.0/255.0 alpha:1.0];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)viewDidAppear:(BOOL)animated

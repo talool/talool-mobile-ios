@@ -77,7 +77,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = ((FriendCell *)cell).useDarkBackground ? self.darkBG : self.lightBG;
+    //cell.backgroundColor = ((FriendCell *)cell).useDarkBackground ? self.darkBG : self.lightBG;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

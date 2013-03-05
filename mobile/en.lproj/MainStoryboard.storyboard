@@ -13,9 +13,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.46274509800000002" green="0.46666666670000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.0" green="0.29411764709999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="boA-Ez-tOt" kind="relationship" relationship="viewControllers" id="GG0-X3-Hhc"/>
@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" id="Gle-y4-NCC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fn4-EH-wid">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.29411764709999999" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Jte-0N-Lae" kind="relationship" relationship="rootViewController" id="h5A-s7-Oka"/>
@@ -265,11 +265,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" id="OKh-Yw-prQ" customClass="FavoriteMerchantCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" id="OKh-Yw-prQ" customClass="FavoriteMerchantCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Merchants" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKa-ts-dEP">
@@ -317,13 +317,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Coupons" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX9-n5-sYZ">
-                                <color key="backgroundColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="9Fx-Qz-CZ2"/>
                                     <constraint firstAttribute="height" constant="27" id="c5N-Zj-V4b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="654" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="30u-z2-0GB">
@@ -338,7 +336,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.43137254899999999" green="0.61960784310000006" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Q1B-9h-cBd" firstAttribute="top" secondItem="y1C-nt-D3y" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5No-N7-ZhU"/>
                             <constraint firstItem="y1C-nt-D3y" firstAttribute="top" secondItem="rkb-uh-Jlx" secondAttribute="top" constant="15" id="7pV-Ez-kVk"/>
@@ -371,7 +369,7 @@
                     <view key="view" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="1000" id="2mK-sv-jHE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="299"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndc-tq-1Q1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -548,7 +546,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIU-an-Das">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.87058823529999996" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGE-wL-JCw">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -556,10 +554,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.2323068086" blue="0.44653634660000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="MGE-wL-JCw" firstAttribute="top" secondItem="6oG-8l-ZCW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="1he-RU-zNY"/>
-                            <constraint firstAttribute="bottom" secondItem="JIU-an-Das" secondAttribute="bottom" constant="41" id="bac-iE-LWw"/>
+                            <constraint firstItem="JIU-an-Das" firstAttribute="bottom" secondItem="6oG-8l-ZCW" secondAttribute="bottom" type="default" id="LVz-YQ-keN"/>
                             <constraint firstAttribute="trailing" secondItem="JIU-an-Das" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dbi-l9-jvw"/>
                             <constraint firstItem="JIU-an-Das" firstAttribute="leading" secondItem="6oG-8l-ZCW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gjE-KY-cKe"/>
                             <constraint firstItem="JIU-an-Das" firstAttribute="top" secondItem="MGE-wL-JCw" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jMC-Qt-9J5"/>
@@ -678,7 +676,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="jzp-fb-F8t"/>
         <segue reference="Rof-q4-TTF"/>
-        <segue reference="F4J-34-i3g"/>
     </inferredMetricsTieBreakers>
 </document>
