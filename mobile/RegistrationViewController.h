@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ttCustomer.h"
-#import "ttAddress.h"
+#import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttAddress.h"
 
 
 @interface RegistrationViewController : UIViewController {

@@ -31,48 +31,25 @@
 		9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115816D316BA00CEE814 /* ExploreTableViewController.m */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
-		9103116616D3194F00CEE814 /* MerchantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116516D3194F00CEE814 /* MerchantController.m */; };
+		914A1B9916E707E90043989A /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 914A1B9416E707720043989A /* libtalool-api-ios.a */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EC616E3F05B00C88B59 /* CouponViewController.m */; };
 		914B1ECD16E3F79000C88B59 /* ttCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1ECC16E3F79000C88B59 /* ttCoupon.m */; };
 		914B1ECF16E3FA8E00C88B59 /* coupons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 914B1ECE16E3FA8E00C88B59 /* coupons.plist */; };
-		914B1ED116E43A5C00C88B59 /* merchants.plist in Resources */ = {isa = PBXBuildFile; fileRef = 914B1ED016E43A5C00C88B59 /* merchants.plist */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
-		917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */; };
 		917F0FE616DC69D7008A56E3 /* MasterNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */; };
-		917F0FEC16E059E0008A56E3 /* talool-service.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FEB16E059E0008A56E3 /* talool-service.m */; };
-		917F0FF616E23EAA008A56E3 /* TaloolMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FF516E23EAA008A56E3 /* TaloolMerchant.m */; };
-		917F0FF916E2426F008A56E3 /* TaloolCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FF816E2426F008A56E3 /* TaloolCustomer.m */; };
-		917F0FFC16E24270008A56E3 /* TaloolAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FFB16E24270008A56E3 /* TaloolAddress.m */; };
-		917F0FFF16E25C9D008A56E3 /* ttCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F0FFE16E25C9D008A56E3 /* ttCustomer.m */; };
-		917F100316E25E82008A56E3 /* ttAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F100216E25E82008A56E3 /* ttAddress.m */; };
-		917F100616E25E98008A56E3 /* ttMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 917F100516E25E98008A56E3 /* ttMerchant.m */; };
 		91986EC616D5D23D00D1CA96 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* ProfileTableViewController.m */; };
 		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
 		91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECD16D5E11700D1CA96 /* StarsForeground.png */; };
 		91986ED516D5E2A400D1CA96 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986ED416D5E2A400D1CA96 /* FriendsViewController.m */; };
-		91986EF816D7148F00D1CA96 /* CustomerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EF716D7148F00D1CA96 /* CustomerController.m */; };
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
 		91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFE16D7153800D1CA96 /* CustomerCell.m */; };
 		91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */; };
 		91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0616D94CA300D1CA96 /* FriendCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
-		91986F3416DBAC8900D1CA96 /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */; };
-		91986F3516DBAC8900D1CA96 /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1616DBAC8800D1CA96 /* TProtocolException.m */; };
-		91986F3616DBAC8900D1CA96 /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */; };
-		91986F3716DBAC8900D1CA96 /* TSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1C16DBAC8800D1CA96 /* TSocketServer.m */; };
-		91986F3816DBAC8900D1CA96 /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F1E16DBAC8800D1CA96 /* TApplicationException.m */; };
-		91986F3916DBAC8900D1CA96 /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2016DBAC8800D1CA96 /* TException.m */; };
-		91986F3A16DBAC8900D1CA96 /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2616DBAC8800D1CA96 /* THTTPClient.m */; };
-		91986F3B16DBAC8900D1CA96 /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */; };
-		91986F3C16DBAC8900D1CA96 /* TNSFileHandleTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */; };
-		91986F3D16DBAC8900D1CA96 /* TNSStreamTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */; };
-		91986F3E16DBAC8900D1CA96 /* TSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F2E16DBAC8800D1CA96 /* TSocketClient.m */; };
-		91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3116DBAC8900D1CA96 /* TTransportException.m */; };
-		91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */; };
 		91986F4216DBACC200D1CA96 /* idl.thrift in Resources */ = {isa = PBXBuildFile; fileRef = 91986F4116DBACC100D1CA96 /* idl.thrift */; };
 		91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD716E4E6830021E605 /* ModelController.m */; };
 		91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DataViewController.m */; };
@@ -85,6 +62,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9103110816D1E53800CEE814;
 			remoteInfo = mobile;
+		};
+		914A1B9316E707720043989A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 914A1B8616E707660043989A /* talool-api-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 914A1AE416E6ECAC0043989A;
+			remoteInfo = "talool-api-ios";
+		};
+		914A1B9516E707720043989A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 914A1B8616E707660043989A /* talool-api-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 914A1AF516E6ECAD0043989A;
+			remoteInfo = "talool-api-iosTests";
+		};
+		914A1B9716E707BC0043989A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 914A1B8616E707660043989A /* talool-api-ios.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 914A1AE316E6ECAC0043989A;
+			remoteInfo = "talool-api-ios";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -123,8 +121,7 @@
 		9103115D16D3179E00CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
 		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
-		9103116416D3194F00CEE814 /* MerchantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantController.h; sourceTree = "<group>"; };
-		9103116516D3194F00CEE814 /* MerchantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantController.m; sourceTree = "<group>"; };
+		914A1B8616E707660043989A /* talool-api-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "talool-api-ios.xcodeproj"; path = "../talool-api-ios/talool-api-ios/talool-api-ios.xcodeproj"; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		914B1EC516E3F05B00C88B59 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
@@ -132,26 +129,10 @@
 		914B1ECB16E3F78F00C88B59 /* ttCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttCoupon.h; sourceTree = "<group>"; };
 		914B1ECC16E3F79000C88B59 /* ttCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ttCoupon.m; sourceTree = "<group>"; };
 		914B1ECE16E3FA8E00C88B59 /* coupons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = coupons.plist; sourceTree = "<group>"; };
-		914B1ED016E43A5C00C88B59 /* merchants.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = merchants.plist; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Talool.xcdatamodel; sourceTree = "<group>"; };
 		917F0FE416DC69D7008A56E3 /* MasterNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterNavigationController.h; sourceTree = "<group>"; };
 		917F0FE516DC69D7008A56E3 /* MasterNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterNavigationController.m; sourceTree = "<group>"; };
-		917F0FEA16E059E0008A56E3 /* talool-service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "talool-service.h"; sourceTree = "<group>"; };
-		917F0FEB16E059E0008A56E3 /* talool-service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "talool-service.m"; sourceTree = "<group>"; };
-		917F0FF416E23EAA008A56E3 /* TaloolMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolMerchant.h; sourceTree = "<group>"; };
-		917F0FF516E23EAA008A56E3 /* TaloolMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolMerchant.m; sourceTree = "<group>"; };
-		917F0FF716E2426F008A56E3 /* TaloolCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolCustomer.h; sourceTree = "<group>"; };
-		917F0FF816E2426F008A56E3 /* TaloolCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolCustomer.m; sourceTree = "<group>"; };
-		917F0FFA16E24270008A56E3 /* TaloolAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolAddress.h; sourceTree = "<group>"; };
-		917F0FFB16E24270008A56E3 /* TaloolAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolAddress.m; sourceTree = "<group>"; };
-		917F0FFD16E25C9D008A56E3 /* ttCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttCustomer.h; sourceTree = "<group>"; };
-		917F0FFE16E25C9D008A56E3 /* ttCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ttCustomer.m; sourceTree = "<group>"; };
-		917F100116E25E82008A56E3 /* ttAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttAddress.h; sourceTree = "<group>"; };
-		917F100216E25E82008A56E3 /* ttAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ttAddress.m; sourceTree = "<group>"; };
-		917F100416E25E98008A56E3 /* ttMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ttMerchant.h; sourceTree = "<group>"; };
-		917F100516E25E98008A56E3 /* ttMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ttMerchant.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		91986EC716D5D33000D1CA96 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -160,8 +141,6 @@
 		91986ECD16D5E11700D1CA96 /* StarsForeground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsForeground.png; sourceTree = "<group>"; };
 		91986ED316D5E2A400D1CA96 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		91986ED416D5E2A400D1CA96 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
-		91986EF616D7148F00D1CA96 /* CustomerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerController.h; sourceTree = "<group>"; };
-		91986EF716D7148F00D1CA96 /* CustomerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerController.m; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* RewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardCell.h; sourceTree = "<group>"; };
 		91986EFB16D7150400D1CA96 /* RewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardCell.m; sourceTree = "<group>"; };
 		91986EFD16D7153800D1CA96 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
@@ -174,38 +153,6 @@
 		91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTabBarController.h; sourceTree = "<group>"; };
 		91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTabBarController.m; sourceTree = "<group>"; };
-		91986F1216DBAC8800D1CA96 /* TBinaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBinaryProtocol.h; sourceTree = "<group>"; };
-		91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBinaryProtocol.m; sourceTree = "<group>"; };
-		91986F1416DBAC8800D1CA96 /* TProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocol.h; sourceTree = "<group>"; };
-		91986F1516DBAC8800D1CA96 /* TProtocolException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolException.h; sourceTree = "<group>"; };
-		91986F1616DBAC8800D1CA96 /* TProtocolException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TProtocolException.m; sourceTree = "<group>"; };
-		91986F1716DBAC8800D1CA96 /* TProtocolFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolFactory.h; sourceTree = "<group>"; };
-		91986F1816DBAC8800D1CA96 /* TProtocolUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolUtil.h; sourceTree = "<group>"; };
-		91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TProtocolUtil.m; sourceTree = "<group>"; };
-		91986F1B16DBAC8800D1CA96 /* TSocketServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSocketServer.h; sourceTree = "<group>"; };
-		91986F1C16DBAC8800D1CA96 /* TSocketServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSocketServer.m; sourceTree = "<group>"; };
-		91986F1D16DBAC8800D1CA96 /* TApplicationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TApplicationException.h; sourceTree = "<group>"; };
-		91986F1E16DBAC8800D1CA96 /* TApplicationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TApplicationException.m; sourceTree = "<group>"; };
-		91986F1F16DBAC8800D1CA96 /* TException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TException.h; sourceTree = "<group>"; };
-		91986F2016DBAC8800D1CA96 /* TException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TException.m; sourceTree = "<group>"; };
-		91986F2116DBAC8800D1CA96 /* TObjective-C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TObjective-C.h"; sourceTree = "<group>"; };
-		91986F2216DBAC8800D1CA96 /* TProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessor.h; sourceTree = "<group>"; };
-		91986F2316DBAC8800D1CA96 /* TProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessorFactory.h; sourceTree = "<group>"; };
-		91986F2516DBAC8800D1CA96 /* THTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THTTPClient.h; sourceTree = "<group>"; };
-		91986F2616DBAC8800D1CA96 /* THTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THTTPClient.m; sourceTree = "<group>"; };
-		91986F2716DBAC8800D1CA96 /* TMemoryBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMemoryBuffer.h; sourceTree = "<group>"; };
-		91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMemoryBuffer.m; sourceTree = "<group>"; };
-		91986F2916DBAC8800D1CA96 /* TNSFileHandleTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNSFileHandleTransport.h; sourceTree = "<group>"; };
-		91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNSFileHandleTransport.m; sourceTree = "<group>"; };
-		91986F2B16DBAC8800D1CA96 /* TNSStreamTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNSStreamTransport.h; sourceTree = "<group>"; };
-		91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNSStreamTransport.m; sourceTree = "<group>"; };
-		91986F2D16DBAC8800D1CA96 /* TSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSocketClient.h; sourceTree = "<group>"; };
-		91986F2E16DBAC8800D1CA96 /* TSocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSocketClient.m; sourceTree = "<group>"; };
-		91986F2F16DBAC8900D1CA96 /* TTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransport.h; sourceTree = "<group>"; };
-		91986F3016DBAC8900D1CA96 /* TTransportException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransportException.h; sourceTree = "<group>"; };
-		91986F3116DBAC8900D1CA96 /* TTransportException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTransportException.m; sourceTree = "<group>"; };
-		91986F3216DBAC8900D1CA96 /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
-		91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
 		91986F4116DBACC100D1CA96 /* idl.thrift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = idl.thrift; sourceTree = "<group>"; };
 		91BDEFD416E4E6830021E605 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		91BDEFD516E4E6830021E605 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
@@ -218,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914A1B9916E707E90043989A /* libtalool-api-ios.a in Frameworks */,
 				917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */,
 				917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */,
 				9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */,
@@ -243,8 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				9103111216D1E53800CEE814 /* mobile */,
-				91986F4316DBACED00D1CA96 /* gen-cocoa */,
-				91986F1016DBAC8800D1CA96 /* thrift */,
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
 				9103110A16D1E53800CEE814 /* Products */,
@@ -276,11 +222,10 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				914A1B8616E707660043989A /* talool-api-ios.xcodeproj */,
 				914B1EC116E3EE1600C88B59 /* Page View Controllers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
-				917F0FED16E23B94008A56E3 /* Managed Objects */,
-				9103117916D4678600CEE814 /* Model Controllers */,
 				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
 				9103111C16D1E53800CEE814 /* AppDelegate.m */,
@@ -337,18 +282,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		9103117916D4678600CEE814 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				914B1ED016E43A5C00C88B59 /* merchants.plist */,
-				9103116416D3194F00CEE814 /* MerchantController.h */,
-				9103116516D3194F00CEE814 /* MerchantController.m */,
-				91986EF616D7148F00D1CA96 /* CustomerController.h */,
-				91986EF716D7148F00D1CA96 /* CustomerController.m */,
-			);
-			name = "Model Controllers";
-			sourceTree = "<group>";
-		};
 		9103117A16D467AE00CEE814 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +320,15 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		914A1B8F16E707720043989A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				914A1B9416E707720043989A /* libtalool-api-ios.a */,
+				914A1B9616E707720043989A /* talool-api-iosTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		914B1EC116E3EE1600C88B59 /* Page View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,34 +343,6 @@
 				914B1ECE16E3FA8E00C88B59 /* coupons.plist */,
 			);
 			name = "Page View Controllers";
-			sourceTree = "<group>";
-		};
-		917F0FED16E23B94008A56E3 /* Managed Objects */ = {
-			isa = PBXGroup;
-			children = (
-				917F100016E25CC0008A56E3 /* Generated */,
-				917F0FFD16E25C9D008A56E3 /* ttCustomer.h */,
-				917F0FFE16E25C9D008A56E3 /* ttCustomer.m */,
-				917F100116E25E82008A56E3 /* ttAddress.h */,
-				917F100216E25E82008A56E3 /* ttAddress.m */,
-				917F100416E25E98008A56E3 /* ttMerchant.h */,
-				917F100516E25E98008A56E3 /* ttMerchant.m */,
-			);
-			name = "Managed Objects";
-			sourceTree = "<group>";
-		};
-		917F100016E25CC0008A56E3 /* Generated */ = {
-			isa = PBXGroup;
-			children = (
-				917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */,
-				917F0FFA16E24270008A56E3 /* TaloolAddress.h */,
-				917F0FFB16E24270008A56E3 /* TaloolAddress.m */,
-				917F0FF716E2426F008A56E3 /* TaloolCustomer.h */,
-				917F0FF816E2426F008A56E3 /* TaloolCustomer.m */,
-				917F0FF416E23EAA008A56E3 /* TaloolMerchant.h */,
-				917F0FF516E23EAA008A56E3 /* TaloolMerchant.m */,
-			);
-			name = Generated;
 			sourceTree = "<group>";
 		};
 		91986ED216D5E20200D1CA96 /* Table View Controllers */ = {
@@ -447,80 +361,6 @@
 			name = "Table View Controllers";
 			sourceTree = "<group>";
 		};
-		91986F1016DBAC8800D1CA96 /* thrift */ = {
-			isa = PBXGroup;
-			children = (
-				91986F1116DBAC8800D1CA96 /* protocol */,
-				91986F1A16DBAC8800D1CA96 /* server */,
-				91986F1D16DBAC8800D1CA96 /* TApplicationException.h */,
-				91986F1E16DBAC8800D1CA96 /* TApplicationException.m */,
-				91986F1F16DBAC8800D1CA96 /* TException.h */,
-				91986F2016DBAC8800D1CA96 /* TException.m */,
-				91986F2116DBAC8800D1CA96 /* TObjective-C.h */,
-				91986F2216DBAC8800D1CA96 /* TProcessor.h */,
-				91986F2316DBAC8800D1CA96 /* TProcessorFactory.h */,
-				91986F2416DBAC8800D1CA96 /* transport */,
-				91986F3216DBAC8900D1CA96 /* TSharedProcessorFactory.h */,
-				91986F3316DBAC8900D1CA96 /* TSharedProcessorFactory.m */,
-			);
-			name = thrift;
-			path = mobile/thrift;
-			sourceTree = "<group>";
-		};
-		91986F1116DBAC8800D1CA96 /* protocol */ = {
-			isa = PBXGroup;
-			children = (
-				91986F1216DBAC8800D1CA96 /* TBinaryProtocol.h */,
-				91986F1316DBAC8800D1CA96 /* TBinaryProtocol.m */,
-				91986F1416DBAC8800D1CA96 /* TProtocol.h */,
-				91986F1516DBAC8800D1CA96 /* TProtocolException.h */,
-				91986F1616DBAC8800D1CA96 /* TProtocolException.m */,
-				91986F1716DBAC8800D1CA96 /* TProtocolFactory.h */,
-				91986F1816DBAC8800D1CA96 /* TProtocolUtil.h */,
-				91986F1916DBAC8800D1CA96 /* TProtocolUtil.m */,
-			);
-			path = protocol;
-			sourceTree = "<group>";
-		};
-		91986F1A16DBAC8800D1CA96 /* server */ = {
-			isa = PBXGroup;
-			children = (
-				91986F1B16DBAC8800D1CA96 /* TSocketServer.h */,
-				91986F1C16DBAC8800D1CA96 /* TSocketServer.m */,
-			);
-			path = server;
-			sourceTree = "<group>";
-		};
-		91986F2416DBAC8800D1CA96 /* transport */ = {
-			isa = PBXGroup;
-			children = (
-				91986F2516DBAC8800D1CA96 /* THTTPClient.h */,
-				91986F2616DBAC8800D1CA96 /* THTTPClient.m */,
-				91986F2716DBAC8800D1CA96 /* TMemoryBuffer.h */,
-				91986F2816DBAC8800D1CA96 /* TMemoryBuffer.m */,
-				91986F2916DBAC8800D1CA96 /* TNSFileHandleTransport.h */,
-				91986F2A16DBAC8800D1CA96 /* TNSFileHandleTransport.m */,
-				91986F2B16DBAC8800D1CA96 /* TNSStreamTransport.h */,
-				91986F2C16DBAC8800D1CA96 /* TNSStreamTransport.m */,
-				91986F2D16DBAC8800D1CA96 /* TSocketClient.h */,
-				91986F2E16DBAC8800D1CA96 /* TSocketClient.m */,
-				91986F2F16DBAC8900D1CA96 /* TTransport.h */,
-				91986F3016DBAC8900D1CA96 /* TTransportException.h */,
-				91986F3116DBAC8900D1CA96 /* TTransportException.m */,
-			);
-			path = transport;
-			sourceTree = "<group>";
-		};
-		91986F4316DBACED00D1CA96 /* gen-cocoa */ = {
-			isa = PBXGroup;
-			children = (
-				917F0FEA16E059E0008A56E3 /* talool-service.h */,
-				917F0FEB16E059E0008A56E3 /* talool-service.m */,
-			);
-			name = "gen-cocoa";
-			path = "mobile/gen-cocoa";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -535,6 +375,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				914A1B9816E707BC0043989A /* PBXTargetDependency */,
 			);
 			name = mobile;
 			productName = mobile;
@@ -579,6 +420,12 @@
 			mainGroup = 9103110016D1E53800CEE814;
 			productRefGroup = 9103110A16D1E53800CEE814 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 914A1B8F16E707720043989A /* Products */;
+					ProjectRef = 914A1B8616E707660043989A /* talool-api-ios.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9103110816D1E53800CEE814 /* mobile */,
@@ -586,6 +433,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		914A1B9416E707720043989A /* libtalool-api-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libtalool-api-ios.a";
+			remoteRef = 914A1B9316E707720043989A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		914A1B9616E707720043989A /* talool-api-iosTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "talool-api-iosTests.octest";
+			remoteRef = 914A1B9516E707720043989A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9103110716D1E53800CEE814 /* Resources */ = {
@@ -605,7 +469,6 @@
 				91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */,
 				91986F4216DBACC200D1CA96 /* idl.thrift in Resources */,
 				914B1ECF16E3FA8E00C88B59 /* coupons.plist in Resources */,
-				914B1ED116E43A5C00C88B59 /* merchants.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,39 +510,16 @@
 				9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */,
 				9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */,
 				9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */,
-				9103116616D3194F00CEE814 /* MerchantController.m in Sources */,
 				91986EC616D5D23D00D1CA96 /* ProfileTableViewController.m in Sources */,
 				91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */,
 				91986ED516D5E2A400D1CA96 /* FriendsViewController.m in Sources */,
-				91986EF816D7148F00D1CA96 /* CustomerController.m in Sources */,
 				91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */,
 				91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */,
 				91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */,
 				91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
-				91986F3416DBAC8900D1CA96 /* TBinaryProtocol.m in Sources */,
-				91986F3516DBAC8900D1CA96 /* TProtocolException.m in Sources */,
-				91986F3616DBAC8900D1CA96 /* TProtocolUtil.m in Sources */,
-				91986F3716DBAC8900D1CA96 /* TSocketServer.m in Sources */,
-				91986F3816DBAC8900D1CA96 /* TApplicationException.m in Sources */,
-				91986F3916DBAC8900D1CA96 /* TException.m in Sources */,
-				91986F3A16DBAC8900D1CA96 /* THTTPClient.m in Sources */,
-				91986F3B16DBAC8900D1CA96 /* TMemoryBuffer.m in Sources */,
-				91986F3C16DBAC8900D1CA96 /* TNSFileHandleTransport.m in Sources */,
-				91986F3D16DBAC8900D1CA96 /* TNSStreamTransport.m in Sources */,
-				91986F3E16DBAC8900D1CA96 /* TSocketClient.m in Sources */,
-				91986F3F16DBAC8900D1CA96 /* TTransportException.m in Sources */,
-				91986F4016DBAC8900D1CA96 /* TSharedProcessorFactory.m in Sources */,
-				917F0FE016DC680F008A56E3 /* Talool.xcdatamodeld in Sources */,
 				917F0FE616DC69D7008A56E3 /* MasterNavigationController.m in Sources */,
-				917F0FEC16E059E0008A56E3 /* talool-service.m in Sources */,
-				917F0FF616E23EAA008A56E3 /* TaloolMerchant.m in Sources */,
-				917F0FF916E2426F008A56E3 /* TaloolCustomer.m in Sources */,
-				917F0FFC16E24270008A56E3 /* TaloolAddress.m in Sources */,
-				917F0FFF16E25C9D008A56E3 /* ttCustomer.m in Sources */,
-				917F100316E25E82008A56E3 /* ttAddress.m in Sources */,
-				917F100616E25E98008A56E3 /* ttMerchant.m in Sources */,
 				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
 				914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */,
 				914B1ECD16E3F79000C88B59 /* ttCoupon.m in Sources */,
@@ -703,6 +543,11 @@
 			isa = PBXTargetDependency;
 			target = 9103110816D1E53800CEE814 /* mobile */;
 			targetProxy = 9103113F16D1E53900CEE814 /* PBXContainerItemProxy */;
+		};
+		914A1B9816E707BC0043989A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "talool-api-ios";
+			targetProxy = 914A1B9716E707BC0043989A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -801,6 +646,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -817,6 +666,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -887,20 +740,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		917F0FDE16DC680E008A56E3 /* Talool.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */,
-			);
-			currentVersion = 917F0FDF16DC680F008A56E3 /* Talool.xcdatamodel */;
-			name = Talool.xcdatamodeld;
-			path = ../Talool.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9103110116D1E53800CEE814 /* Project object */;
 }

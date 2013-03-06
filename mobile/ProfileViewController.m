@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "talool-api-ios/ttMerchant.h"
 
 @interface ProfileViewController ()
 
@@ -34,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setMerchant:(Merchant *)newMerchant {
+- (void)setMerchant:(ttMerchant *)newMerchant {
     if (newMerchant != merchant) {
         merchant = newMerchant;
     }

@@ -8,10 +8,9 @@
 
 #import "ProfileTableViewController.h"
 #import "MasterNavigationController.h"
-#import "talool-service.h"
-#import "MerchantController.h"
+#import "talool-api-ios/MerchantController.h"
 #import "FavoriteMerchantCell.h"
-#import "ttCustomer.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface ProfileTableViewController ()
 @property (nonatomic, retain) MerchantController *merchantController;

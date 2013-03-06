@@ -7,7 +7,7 @@
 //
 
 #import "MasterNavigationController.h"
-#import "ttCustomer.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface MasterNavigationController ()
 

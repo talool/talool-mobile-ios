@@ -9,8 +9,7 @@
 
 #import "ExploreTableViewController.h"
 
-#import "talool-service.h"
-#import "MerchantController.h"
+#import "talool-api-ios/MerchantController.h"
 #import "FavoriteMerchantCell.h"
 
 

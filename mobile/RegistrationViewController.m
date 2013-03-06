@@ -10,8 +10,7 @@
 
 #import "MasterNavigationController.h"
 #import "RegistrationViewController.h"
-#import "CustomerController.h"
-#import "talool-service.h"
+#import "talool-api-ios/CustomerController.h"
 
 @interface RegistrationViewController ()
 

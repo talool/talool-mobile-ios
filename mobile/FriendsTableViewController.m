@@ -7,7 +7,7 @@
 //
 
 #import "FriendsTableViewController.h"
-#import "CustomerController.h"
+#import "talool-api-ios/CustomerController.h"
 #import "FriendCell.h"
 
 @interface FriendsTableViewController ()

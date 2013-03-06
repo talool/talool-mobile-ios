@@ -7,15 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "talool-service.h"
+#import "talool-api-ios/ttCustomer.h"
 
 
 @interface FriendsViewController : UIViewController {
-    Customer *customer;
+    ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
 }
 
-@property (nonatomic, retain) Customer *customer;
+@property (nonatomic, retain) ttCustomer *customer;
 
 @end

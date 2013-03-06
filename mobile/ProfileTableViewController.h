@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 #import "MerchantCell.h"
-#import "TaloolCustomer.h"
+#import "talool-api-ios/TaloolCustomer.h"
 
 @class MerchantController;
 @class TaloolMerchant;
