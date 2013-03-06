@@ -1,0 +1,3 @@
+[submodule "talool-api-ios"]
+	path = talool-api-ios
+	url = https://github.com/talool/talool-api-ios.git
