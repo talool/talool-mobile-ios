@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TaloolCustomer.h"
+#import "talool-api-ios/TaloolCustomer.h"
 
 @interface CustomerCell : UITableViewCell
 {
