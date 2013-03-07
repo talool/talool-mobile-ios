@@ -222,7 +222,6 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
-				914A1B8616E707660043989A /* talool-api-ios.xcodeproj */,
 				914B1EC116E3EE1600C88B59 /* Page View Controllers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
@@ -231,6 +230,7 @@
 				9103111C16D1E53800CEE814 /* AppDelegate.m */,
 				9103112416D1E53800CEE814 /* MainStoryboard.storyboard */,
 				9103111316D1E53800CEE814 /* Supporting Files */,
+				914A1B8616E707660043989A /* talool-api-ios.xcodeproj */,
 			);
 			path = mobile;
 			sourceTree = "<group>";
