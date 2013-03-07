@@ -29,7 +29,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setCustomer:(Customer *)newCustomer {
+- (void)setCustomer:(ttCustomer *)newCustomer {
     if (newCustomer != customer) {
         customer = newCustomer;
     }
