@@ -12,10 +12,11 @@
 
 @class ttCustomer;
 
-@interface MasterNavigationController : UINavigationController <NSFetchedResultsControllerDelegate>
+@interface MasterNavigationController : UINavigationController <NSFetchedResultsControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property BOOL isNavigating;
 
 - (ttCustomer *) getLoggedInUser;
 - (void) logout;
