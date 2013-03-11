@@ -7,7 +7,8 @@
 //
 
 #import "ModelController.h"
-#import "ttCoupon.h"
+#import "talool-api-ios/MerchantController.h"
+#import "talool-api-ios/ttCoupon.h"
 #import "DataViewController.h"
 
 /*
@@ -30,22 +31,9 @@
     self = [super init];
     if (self) {
         // Create the data model.
-        //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        //_pageData = [[dateFormatter monthSymbols] copy];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"coupons" ofType:@"plist"];
-        NSData *plistData = [NSData dataWithContentsOfFile:path];
-        NSString *error; NSPropertyListFormat format;
-        NSArray *data = [NSPropertyListSerialization propertyListFromData:plistData
-                                                mutabilityOption:NSPropertyListImmutable
-                                                          format:&format
-                                                errorDescription:&error];
-        _pageData = [[NSMutableArray alloc] initWithCapacity:[data count]];
-        for (int i=0; i<[data count]; i++) {
-            ttCoupon *ttc = [ttCoupon alloc];
-            NSDictionary *cd = [data objectAtIndex:i];
-            ttc.name = [cd valueForKey:@"name"];
-            [_pageData insertObject:ttc atIndex:i];
-        }
+        // TODO: eventually, the coupons will on the merchant object
+        MerchantController *mc = [[MerchantController alloc] init];
+        _pageData = [mc getCouponsByMerchant:nil forCustomer:nil];
     }
     return self;
 }
@@ -53,7 +41,7 @@
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard
 {   
     // Return the data view controller for the given index.
-    if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
+    if ([self.pageData count] == 0 || index >= [self.pageData count]) {
         return nil;
     }
     
@@ -68,6 +56,11 @@
      // Return the index of the given data view controller.
      // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
     return [self.pageData indexOfObject:viewController.coupon];
+}
+
+-(NSUInteger) pageCount
+{
+    return [self.pageData count];
 }
 
 #pragma mark - Page View Controller Data Source

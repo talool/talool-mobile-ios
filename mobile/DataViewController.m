@@ -7,7 +7,7 @@
 //
 
 #import "DataViewController.h"
-#import "ttCoupon.h"
+#import "talool-api-ios/ttCoupon.h"
 
 @interface DataViewController ()
 

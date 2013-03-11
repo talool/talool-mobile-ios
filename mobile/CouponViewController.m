@@ -7,7 +7,7 @@
 //
 
 #import "CouponViewController.h"
-#import "ttCoupon.h"
+#import "talool-api-ios/ttCoupon.h"
 #import "ModelController.h"
 #import "DataViewController.h"
 
@@ -22,6 +22,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self.modelController pageCount] == 0) {
+        return; // don't set up the page controller if there is no data
+    }
+    
 	// Do any additional setup after loading the view, typically from a nib.
     // Configure the page view controller and add it as a child view controller.
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
