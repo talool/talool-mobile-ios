@@ -7,10 +7,10 @@
 //
 
 #import "ProfileTableViewController.h"
-#import "MasterNavigationController.h"
 #import "talool-api-ios/MerchantController.h"
 #import "FavoriteMerchantCell.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "CustomerHelper.h"
 
 @interface ProfileTableViewController ()
 @property (nonatomic, retain) MerchantController *merchantController;
@@ -21,9 +21,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
     // Set the nav title to the user's first name
-    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-    self.tabBarController.navigationItem.title = [[mnc getLoggedInUser] getFullName];
+    self.tabBarController.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc]
                                      initWithTitle:@"Logout"
@@ -98,9 +98,6 @@
 
 - (void)logout:(id)sender
 {
-    NSLog(@"Logout button clicked");
-    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-    [mnc logout];
     [self performSegueWithIdentifier:@"logoutUser" sender:self];
     
 }

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FacebookSDK/FacebookSDK.h"
 
-@interface WelcomeViewController : UIViewController
+@interface WelcomeViewController : UIViewController<FBLoginViewDelegate>
 
 - (IBAction)logoutAction:(UIStoryboardSegue *)segue;
+
+@property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 
 @end

@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "WelcomeViewController.h"
-#import "MasterNavigationController.h"
+#import "TaloolTabBarController.h"
+#import "CustomerHelper.h"
 
 @interface WelcomeViewController ()
 
@@ -18,11 +20,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-	if ([mnc getLoggedInUser] != nil) {
-        // TODO need to save state of the UI correctly.  This is a temporary hack.
-        [self performSegueWithIdentifier:@"loginUser" sender:self];
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        // Push forward if we already have a user
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -31,12 +39,107 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - FBLoginView delegate
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    if (FBSession.activeSession.isOpen) {
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
+             if (!error) {
+                 if ([CustomerHelper getLoggedInUser] == nil) {
+                     ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
+                     // TODO: check if this user is already registered
+                     [CustomerHelper registerCustomer:customer sender:self];
+                 }
+                 if ([CustomerHelper getLoggedInUser] != nil) {
+                     // TODO consider updating the user if needed
+                     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                     if (self.navigationController.visibleViewController != appDelegate.mainViewController) {
+                         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+                     }
+                     
+                 }
+             }
+         }];
+    }
+    
+}
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
+{
+
+    
+    
+}
+
+- (void)loginView:(FBLoginView *)loginView
+      handleError:(NSError *)error{
+    NSString *alertMessage, *alertTitle;
+    
+    // Facebook SDK * error handling *
+    // Error handling is an important part of providing a good user experience.
+    // Since this sample uses the FBLoginView, this delegate will respond to
+    // login failures, or other failures that have closed the session (such
+    // as a token becoming invalid). Please see the [- postOpenGraphAction:]
+    // and [- requestPermissionAndPost] on `SCViewController` for further
+    // error handling on other operations.
+    
+    if (error.fberrorShouldNotifyUser) {
+        // If the SDK has a message for the user, surface it. This conveniently
+        // handles cases like password change or iOS6 app slider state.
+        alertTitle = @"Something Went Wrong";
+        alertMessage = error.fberrorUserMessage;
+    } else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
+        // It is important to handle session closures as mentioned. You can inspect
+        // the error for more context but this sample generically notifies the user.
+        alertTitle = @"Session Error";
+        alertMessage = @"Your current session is no longer valid. Please log in again.";
+    } else if (error.fberrorCategory == FBErrorCategoryUserCancelled) {
+        // The user has cancelled a login. You can inspect the error
+        // for more context. For this sample, we will simply ignore it.
+        NSLog(@"user cancelled login");
+    } else {
+        // For simplicity, this sample treats other errors blindly, but you should
+        // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
+        alertTitle  = @"Unknown Error";
+        alertMessage = @"Error. Please try again later.";
+        NSLog(@"Unexpected error:%@", error);
+    }
+    
+    if (alertMessage) {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:alertMessage
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    // Facebook SDK * login flow *
+    // It is important to always handle session closure because it can happen
+    // externally; for example, if the current session's access token becomes
+    // invalid. For this sample, we simply pop back to the landing page.
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (appDelegate.isNavigating) {
+        // The delay is for the edge case where a session is immediately closed after
+        // logging in and our navigation controller is still animating a push.
+        [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
+    } else {
+        [self logOut];
+    }
+}
+
+- (void)logOut {
+    [CustomerHelper logoutUser];
+}
+
+
 - (IBAction)logoutAction:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"logoutUser"]) {
-        MasterNavigationController *mnc = (MasterNavigationController *)(self.navigationController);
-        [mnc logout];
+        [self logOut];
     }
 }
+
 
 @end

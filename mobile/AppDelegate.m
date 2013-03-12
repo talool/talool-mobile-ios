@@ -7,21 +7,72 @@
 //
 
 #import "AppDelegate.h"
-
+#import "FacebookSDK/FacebookSDK.h"
+#import "FacebookSDK/FBSessionTokenCachingStrategy.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
-#import "MasterNavigationController.h"
+#import "CustomerHelper.h"
 
 @implementation AppDelegate
 
+@synthesize window = _window,
+            navigationController = _navigationController,
+            mainViewController = _mainViewController,
+            loginViewController = _loginViewController,
+            isNavigating = _isNavigating;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    MasterNavigationController *controller = (MasterNavigationController *)self.window.rootViewController;
-    controller.managedObjectContext = self.managedObjectContext;
+
+    [CustomerHelper setContext:self.managedObjectContext];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    self.mainViewController.navigationItem.hidesBackButton = YES;
+    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    self.loginViewController.navigationItem.hidesBackButton = YES;
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
+    self.navigationController.delegate = self;
+    self.window.rootViewController = self.navigationController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Facebook SDK * login flow *
+    // Attempt to handle URLs to complete any auth (e.g., SSO) flow.
+    if ([[FBSession activeSession] handleOpenURL:url]) {
+        return YES;
+    } else {
+        // Facebook SDK * App Linking *
+        // For simplicity, this sample will ignore the link if the session is already
+        // open but a more advanced app could support features like user switching.
+        // Otherwise extract the app link data from the url and open a new active session from it.
+        NSString *appID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookAppID"];
+        FBAccessTokenData *appLinkToken = [FBAccessTokenData createTokenFromFacebookURL:url
+                                                                                  appID:appID
+                                                                        urlSchemeSuffix:nil];
+        if (appLinkToken) {
+            if ([FBSession activeSession].isOpen) {
+                NSLog(@"INFO: Ignoring app link because current session is open.");
+            } else {
+                [self handleAppLink:appLinkToken];
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -44,25 +95,34 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [FBSession.activeSession handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [FBSession.activeSession close];
 }
 
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
+// Helper method to wrap logic for handling app links.
+- (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
+    // Initialize a new blank session instance...
+    FBSession *appLinkSession = [[FBSession alloc] initWithAppID:nil
+                                                     permissions:nil
+                                                 defaultAudience:FBSessionDefaultAudienceNone
+                                                 urlSchemeSuffix:nil
+                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance] ];
+    [FBSession setActiveSession:appLinkSession];
+    // ... and open it from the App Link's Token.
+    [appLinkSession openFromAccessTokenData:appLinkToken
+                          completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                              // Forward any errors to the FBLoginView delegate.
+                              if (error) {
+                                  NSLog(@"FB login error %@",error);
+                                  [self.loginViewController loginView:nil handleError:error];
+                              }
+                          }];
 }
 
 #pragma mark - Core Data stack
@@ -103,6 +163,18 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+    self.isNavigating = NO;
+}
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    self.isNavigating = YES;
 }
 
 

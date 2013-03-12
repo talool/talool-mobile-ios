@@ -25,16 +25,15 @@
 + (ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;
 
 + (ttCustomer *) getLoggedInUser;
++ (void) logoutUser;
 
 + (ttAddress *) createAddress:(NSString *)street
                          city:(NSString *)city
                         state:(NSString *)state
                          zip:(NSString *)zip;
 
-+ (BOOL) registerCustomer:(ttCustomer *)customer
-                    error:(NSError **)error;
++ (void) registerCustomer:(ttCustomer *)customer
+                    sender:(UIViewController *)sender;
 
-+ (BOOL) saveCustomerInContext:(ttCustomer *)customer
-                    error:(NSError **)error;
 
 @end
