@@ -10,6 +10,7 @@
 #import "WelcomeViewController.h"
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
+#import "FacebookHelper.h"
 
 @interface WelcomeViewController ()
 
@@ -25,6 +26,19 @@
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
+    
+    // TODO: set up FB permissions
+    /* there are a ton of permissions to consider
+     https://developers.facebook.com/docs/reference/login/extended-permissions/
+     
+     user_birthday (friends_birthday)
+     user_likes
+     publish_actions, publish_checkins
+     
+     */
+    self.FBLoginView.readPermissions = @[@"user_location", @"email"];
+    self.FBLoginView.publishPermissions = @[@"publish_actions"];
+    self.FBLoginView.defaultAudience = FBSessionDefaultAudienceFriends;
     
 }
 
@@ -46,11 +60,19 @@
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
              if (!error) {
+                 
+                 // If there is not saved user (in core data), but there is an active FB session
+                 // Then we should create the user (if needed) and save the user (to core data)
                  if ([CustomerHelper getLoggedInUser] == nil) {
                      ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
                      // TODO: check if this user is already registered
                      [CustomerHelper registerCustomer:customer sender:self];
+                     
+                     //[FacebookHelper getFriends];
                  }
+                 
+                 // If we have a logged in user (possibly as a result of the FB reg above)
+                 // Then we should check if any FB data has changed and navigate to the main view
                  if ([CustomerHelper getLoggedInUser] != nil) {
                      // TODO consider updating the user if needed
                      AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -59,15 +81,11 @@
                      }
                      
                  }
+                 
              }
          }];
-    }
-    
-}
-- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
-{
 
-    
+    }
     
 }
 

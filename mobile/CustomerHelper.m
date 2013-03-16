@@ -51,12 +51,12 @@ static NSManagedObjectContext *_context;
     [user setCreated:[NSDate date]];
     [user setFirstName:fb_user.first_name];
     [user setLastName:fb_user.last_name];
-    [user setEmail:@"didnotget@email.com"]; // TODO
-    [user setPassword:@"needtocookup"]; // TODO
+    [user setEmail:[fb_user objectForKey:@"email"]];
+    [user setPassword: [CustomerHelper randomPassword:8]];
     
     ttSocialAccount *sa = [CustomerHelper createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
-                                                    loginId:@"asdfads"
-                                                      token:@"asdfads"];
+                                                      loginId:@"asdfads"
+                                                        token:@"asdfads"];
     [user addSocialAccountsObject:sa];
     
     return user;
@@ -153,6 +153,16 @@ static NSManagedObjectContext *_context;
                                               cancelButtonTitle:label
                                               otherButtonTitles:nil];
 	[errorView show];
+}
+
++ (NSString *) randomPassword:(int)length
+{
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: length];
+    for (int i=0; i<length; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    return randomString;
 }
 
 @end

@@ -35,7 +35,8 @@
 
 - (IBAction)onRegistration:(id)sender
 {
-    NSNumber *sex = [[NSNumber alloc] initWithInt:1];
+    NSNumber *sex = [[NSNumber alloc] initWithInt:1]; // TODO ask the user for this
+    
     ttCustomer *user = [CustomerHelper createCustomer:firstNameField.text
                                              lastName:lastNameField.text
                                                 email:emailField.text
