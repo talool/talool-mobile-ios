@@ -21,7 +21,7 @@ static NSManagedObjectContext *_context;
     _context = context;
 }
 
-+ (ttCustomer *) createCustomer:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password address:(ttAddress *)address
++ (ttCustomer *) createCustomer:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password sex:(NSNumber *)sex socialAccount:(ttSocialAccount *)socialAccount
 {
     ttCustomer *user = (ttCustomer *)[NSEntityDescription
                                       insertNewObjectForEntityForName:CUSTOMER_ENTITY_NAME
@@ -32,7 +32,12 @@ static NSManagedObjectContext *_context;
     [user setLastName:lastName];
     [user setEmail:email];
     [user setPassword:password];
-    [user setAddress:address];
+    [user setSex:sex];
+
+    
+    if (socialAccount != nil){
+        [user addSocialAccountsObject:socialAccount];
+    }
     
     return user;
 }
@@ -48,6 +53,11 @@ static NSManagedObjectContext *_context;
     [user setLastName:fb_user.last_name];
     [user setEmail:@"didnotget@email.com"]; // TODO
     [user setPassword:@"needtocookup"]; // TODO
+    
+    ttSocialAccount *sa = [CustomerHelper createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
+                                                    loginId:@"asdfads"
+                                                      token:@"asdfads"];
+    [user addSocialAccountsObject:sa];
     
     return user;
 }
@@ -93,16 +103,19 @@ static NSManagedObjectContext *_context;
     [CustomerHelper save];
 }
 
-+ (ttAddress *) createAddress:(NSString *)street city:(NSString *)city state:(NSString *)state zip:(NSString *)zip
++ (ttSocialAccount *) createSocialAccount:(int *)socialNetwork
+                                  loginId:(NSString *)loginId
+                                    token:(NSString *)token
 {
-    ttAddress *address = (ttAddress *)[NSEntityDescription insertNewObjectForEntityForName:ADDRESS_ENTITY_NAME
-        inManagedObjectContext:_context];
     
-    [address setAddress1:street];
-    [address setCity:city];
-    [address setStateProvidenceCounty:state];
-    [address setZip:zip];
-    return address;
+    ttSocialAccount *sa = (ttSocialAccount *)[NSEntityDescription
+                                          insertNewObjectForEntityForName:SOCIAL_ACCOUNT_ENTITY_NAME
+                                          inManagedObjectContext:_context];
+    
+    sa.loginId = loginId;
+    sa.token = token;
+    sa.socialNetwork = [[NSNumber alloc] initWithInt:1]; // TODO this value should be defined in the DB
+    return sa;
 }
 
 + (void) registerCustomer:(ttCustomer *)customer sender:(UIViewController *)sender

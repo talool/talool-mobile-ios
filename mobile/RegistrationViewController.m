@@ -35,18 +35,13 @@
 
 - (IBAction)onRegistration:(id)sender
 {
-    
-    // Create and configure a new instance of the TaloolCustomer entity.
-    ttAddress *address = [CustomerHelper createAddress:addressField.text
-                                                  city:cityField.text
-                                                 state:stateField.text
-                                                   zip:zipField.text];
-    
+    NSNumber *sex = [[NSNumber alloc] initWithInt:1];
     ttCustomer *user = [CustomerHelper createCustomer:firstNameField.text
                                              lastName:lastNameField.text
                                                 email:emailField.text
                                              password:passwordField.text
-                                              address:address];
+                                                  sex:sex
+                                              socialAccount:nil];
     
     // Register the user.  Check the response and display errors as needed
     [CustomerHelper registerCustomer:user sender:self];

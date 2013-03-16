@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FacebookSDK/FacebookSDK.h"
 #import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttAddress.h"
+#import "talool-api-ios/ttSocialAccount.h"
 
 @interface CustomerHelper : NSObject
 
@@ -20,17 +20,17 @@
                        lastName:(NSString *)lastName
                           email:(NSString *)email
                        password:(NSString *)password
-                        address:(ttAddress *)address;
+                            sex:(NSNumber *)sex
+                  socialAccount:(ttSocialAccount *)socialAccount;
 
 + (ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;
 
 + (ttCustomer *) getLoggedInUser;
 + (void) logoutUser;
 
-+ (ttAddress *) createAddress:(NSString *)street
-                         city:(NSString *)city
-                        state:(NSString *)state
-                         zip:(NSString *)zip;
++ (ttSocialAccount *) createSocialAccount:(int *)socialNetwork
+                         loginId:(NSString *)loginId
+                        token:(NSString *)token;
 
 + (void) registerCustomer:(ttCustomer *)customer
                     sender:(UIViewController *)sender;
