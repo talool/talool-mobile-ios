@@ -56,7 +56,7 @@
 
 // Determines the number of rows for the argument section number
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return customerController.countOfCustomers;
+    return 0;//customerController.countOfCustomers;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +69,7 @@
     cell.useDarkBackground = (indexPath.row % 2 == 0);
 	
 	// Configure the data for the cell.
-    [cell setCustomer:[self.customerController objectInCustomersAtIndex:indexPath.row]];
+    //[cell setCustomer:[self.customerController objectInCustomersAtIndex:indexPath.row]];
 	
     return cell;
 }
@@ -83,8 +83,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showFriend"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        [[segue destinationViewController] setCustomer:[customerController objectInCustomersAtIndex:indexPath.row]];
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //[[segue destinationViewController] setCustomer:[customerController objectInCustomersAtIndex:indexPath.row]];
         
     }
 }

@@ -66,7 +66,7 @@
                  if ([CustomerHelper getLoggedInUser] == nil) {
                      ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
                      // TODO: check if this user is already registered
-                     [CustomerHelper registerCustomer:customer sender:self];
+                     [CustomerHelper registerCustomer:customer];
                      
                      //[FacebookHelper getFriends];
                  }
@@ -147,8 +147,12 @@
     }
 }
 
-- (void)logOut {
+- (void)logOut
+{
     [CustomerHelper logoutUser];
+    if ([CustomerHelper isUserLoggedIn]) {
+        NSLog(@"OH SHIT!!!! The user isn't completely logged out");
+    }
 }
 
 
@@ -159,5 +163,18 @@
     }
 }
 
+- (IBAction)loginAction:(id) sender
+{
+    // make sure we're logged out
+    [CustomerHelper logoutUser];
+    
+    [CustomerHelper loginUser:emailField.text password:passwordField.text];
+    
+    // don't leave the page if reg failed
+    if ([CustomerHelper isUserLoggedIn]) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+    }
+}
 
 @end

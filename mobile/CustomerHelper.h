@@ -26,14 +26,15 @@
 + (ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;
 
 + (ttCustomer *) getLoggedInUser;
++ (void) loginUser:(NSString *)email password:(NSString *)password;
 + (void) logoutUser;
++ (BOOL) isUserLoggedIn;
 
 + (ttSocialAccount *) createSocialAccount:(int *)socialNetwork
                          loginId:(NSString *)loginId
                         token:(NSString *)token;
 
-+ (void) registerCustomer:(ttCustomer *)customer
-                    sender:(UIViewController *)sender;
++ (void) registerCustomer:(ttCustomer *)customer;
 
 
 @end

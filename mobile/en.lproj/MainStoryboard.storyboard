@@ -47,6 +47,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginAction:" destination="Jte-0N-Lae" eventType="touchUpInside" id="stF-JM-MOm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-ZT-O0K">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -102,6 +105,8 @@
                     <navigationItem key="navigationItem" title="Welcome" id="q4a-fA-Y0l"/>
                     <connections>
                         <outlet property="FBLoginView" destination="mfC-YJ-6VM" id="gf6-Ie-10m"/>
+                        <outlet property="emailField" destination="Dpj-Xf-nNn" id="DLn-Ek-RCU"/>
+                        <outlet property="passwordField" destination="fEc-9g-ddz" id="Hp3-Vq-uGX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nu3-7V-Pgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -601,14 +606,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
             <relationships>
                 <relationship kind="action" name="onRegistration:"/>
-                <relationship kind="outlet" name="addressField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cityField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="stateField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="zipField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="TaloolTabBarController" superclassName="UITabBarController">
@@ -620,8 +621,11 @@
         <class className="WelcomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="loginAction:"/>
                 <relationship kind="action" name="logoutAction:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="FBLoginView" candidateClass="FBLoginView"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>

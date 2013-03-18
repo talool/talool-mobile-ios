@@ -10,6 +10,7 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "talool-api-ios/CustomerController.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
+#import "talool-api-ios/ttToken.h"
 #import <AddressBook/AddressBook.h>
 
 @implementation CustomerHelper
@@ -23,10 +24,11 @@ static NSManagedObjectContext *_context;
 
 + (ttCustomer *) createCustomer:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password sex:(NSNumber *)sex socialAccount:(ttSocialAccount *)socialAccount
 {
+    
     ttCustomer *user = (ttCustomer *)[NSEntityDescription
                                       insertNewObjectForEntityForName:CUSTOMER_ENTITY_NAME
                                                inManagedObjectContext:_context];
-    
+
     [user setCreated:[NSDate date]];
     [user setFirstName:firstName];
     [user setLastName:lastName];
@@ -72,18 +74,42 @@ static NSManagedObjectContext *_context;
     NSError *error = nil;
     NSMutableArray *mutableFetchResults = [[_context executeFetchRequest:request error:&error] mutableCopy];
     if ([mutableFetchResults count] > 1) {
-        // "There can be only one!"
-        NSLog(@"There can be only one (user)!");
-        // This is an error state.  Delete all the managed objects.
+        
+        // This is an error state.  Delete the managed objects without a customer_id.
         for (NSManagedObject *extra_user in mutableFetchResults) {
-            [_context deleteObject:extra_user];
-            [CustomerHelper save];
+            if ([((ttCustomer *)extra_user).customerId intValue] > 0) {
+                user = (ttCustomer *)extra_user;
+            } else {
+                [_context deleteObject:extra_user];
+            }
         }
+        
     } else if ([mutableFetchResults count] == 1) {
         user = [mutableFetchResults objectAtIndex:0];
     }
     
     return user;
+}
+
++ (BOOL) isUserLoggedIn
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSLog(@"APP: Customer: %@",customer.customerId);
+    return (customer != nil && [customer.customerId intValue] > 0);
+}
+
++ (void) loginUser:(NSString *)email password:(NSString *)password
+{
+    NSError *err = [NSError alloc];
+    CustomerController *cController = [[CustomerController alloc] init];
+    ttCustomer *customer = [cController authenticate:email password:password context:_context error:&err];
+    
+    if (customer != nil && [customer.customerId intValue] > 0) {
+        [CustomerHelper save];
+        NSLog(@"APP: user logged in");
+    } else {
+        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"try again" withSender:nil];
+    }
 }
 
 + (void) logoutUser
@@ -118,17 +144,18 @@ static NSManagedObjectContext *_context;
     return sa;
 }
 
-+ (void) registerCustomer:(ttCustomer *)customer sender:(UIViewController *)sender
++ (void) registerCustomer:(ttCustomer *)customer
 {
     // Register the user.  Check the response and display errors as needed
     CustomerController *cController = [[CustomerController alloc] init];
     
     NSError *err = [NSError alloc];
-    if ([cController registerUser:customer error:&err]) {
+    customer = [cController registerUser:customer context:_context error:&err];
+    if (customer != nil && [customer.customerId intValue] > 0) {
         [CustomerHelper save];
-        NSLog(@"user registered");
+        NSLog(@"APP: user registered width customerId:%@ and token:%@", customer.customerId, customer.token.token);
     } else {
-        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"try again" withSender:sender];
+        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"try again" withSender:nil];
     }
 }
 
@@ -139,10 +166,10 @@ static NSManagedObjectContext *_context;
     // * delete any current user if once exists
     NSError *err = nil;
     if (![_context save:&err]) {
-        NSLog(@"OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
+        NSLog(@"APP: OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
         abort();
     }
-    NSLog(@"context saved");
+    NSLog(@"APP: context saved");
 }
 
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender

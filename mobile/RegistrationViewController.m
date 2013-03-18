@@ -23,7 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // TODO: make sure we're logged out
 
 }
 
@@ -35,6 +34,9 @@
 
 - (IBAction)onRegistration:(id)sender
 {
+    // make sure we're logged out
+    [CustomerHelper logoutUser];
+    
     NSNumber *sex = [[NSNumber alloc] initWithInt:1]; // TODO ask the user for this
     
     ttCustomer *user = [CustomerHelper createCustomer:firstNameField.text
@@ -45,10 +47,14 @@
                                               socialAccount:nil];
     
     // Register the user.  Check the response and display errors as needed
-    [CustomerHelper registerCustomer:user sender:self];
+    [CustomerHelper registerCustomer:user];
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+    // don't leave the page if reg failed
+    if ([CustomerHelper isUserLoggedIn]) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+    }
+    
 }
 
 @end
