@@ -35,6 +35,9 @@
                         token:(NSString *)token;
 
 + (void) registerCustomer:(ttCustomer *)customer;
++ (BOOL) doesCustomerExist:(NSString *) email;
+
++ (void) saveCustomer:(ttCustomer *)customer;
 
 
 @end

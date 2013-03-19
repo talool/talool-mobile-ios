@@ -65,15 +65,20 @@
                  // Then we should create the user (if needed) and save the user (to core data)
                  if ([CustomerHelper getLoggedInUser] == nil) {
                      ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
-                     // TODO: check if this user is already registered
-                     [CustomerHelper registerCustomer:customer];
+                     // check if this user is already registered
+                     if ([CustomerHelper doesCustomerExist:customer.email]) {
+                         // TODO auth the user... could be hard with random password
+                         [CustomerHelper loginUser:customer.email password:customer.password];
+                     } else {
+                         [CustomerHelper registerCustomer:customer];
+                     }
                      
                      //[FacebookHelper getFriends];
                  }
                  
                  // If we have a logged in user (possibly as a result of the FB reg above)
                  // Then we should check if any FB data has changed and navigate to the main view
-                 if ([CustomerHelper getLoggedInUser] != nil) {
+                 if ([CustomerHelper isUserLoggedIn]) {
                      // TODO consider updating the user if needed
                      AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                      if (self.navigationController.visibleViewController != appDelegate.mainViewController) {

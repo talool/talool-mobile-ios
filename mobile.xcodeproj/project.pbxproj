@@ -57,6 +57,7 @@
 		91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD716E4E6830021E605 /* ModelController.m */; };
 		91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DataViewController.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
+		91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9103110816D1E53800CEE814;
 			remoteInfo = mobile;
+		};
+		91CC60E716F6CC1600647AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 914A1AE416E6ECAC0043989A;
+			remoteInfo = "talool-api-ios";
+		};
+		91CC60E916F6CC1600647AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 914A1AF516E6ECAD0043989A;
+			remoteInfo = "talool-api-iosTests";
+		};
+		91CC60EB16F6CC1600647AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 916148AA16EBC9E1001C546C;
+			remoteInfo = TaloolAPIResources;
+		};
+		91CC60ED16F6CC4B00647AEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 916148B916EBCE8F001C546C;
+			remoteInfo = Framework;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -145,6 +174,7 @@
 		91BDEFD716E4E6830021E605 /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
 		91CC60BE16F5222C00647AEC /* FacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookHelper.m; sourceTree = "<group>"; };
+		91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "talool-api-ios.xcodeproj"; path = "talool-api-ios/talool-api-ios/talool-api-ios.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */,
 				9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */,
 				9161487616EAD758001C546C /* Social.framework in Frameworks */,
 				9161487916EAD76F001C546C /* Accounts.framework in Frameworks */,
@@ -181,6 +212,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
+				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
@@ -355,6 +387,16 @@
 			name = "Table View Controllers";
 			sourceTree = "<group>";
 		};
+		91CC60E116F6CC1500647AEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */,
+				91CC60EA16F6CC1600647AEC /* talool-api-iosTests.octest */,
+				91CC60EC16F6CC1600647AEC /* talool-api-ios.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,6 +411,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				91CC60EE16F6CC4B00647AEC /* PBXTargetDependency */,
 			);
 			name = mobile;
 			productName = mobile;
@@ -413,6 +456,12 @@
 			mainGroup = 9103110016D1E53800CEE814;
 			productRefGroup = 9103110A16D1E53800CEE814 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 91CC60E116F6CC1500647AEC /* Products */;
+					ProjectRef = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9103110816D1E53800CEE814 /* mobile */,
@@ -420,6 +469,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libtalool-api-ios.a";
+			remoteRef = 91CC60E716F6CC1600647AEC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		91CC60EA16F6CC1600647AEC /* talool-api-iosTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "talool-api-iosTests.octest";
+			remoteRef = 91CC60E916F6CC1600647AEC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		91CC60EC16F6CC1600647AEC /* talool-api-ios.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "talool-api-ios.bundle";
+			remoteRef = 91CC60EB16F6CC1600647AEC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9103110716D1E53800CEE814 /* Resources */ = {
@@ -513,6 +586,11 @@
 			isa = PBXTargetDependency;
 			target = 9103110816D1E53800CEE814 /* mobile */;
 			targetProxy = 9103113F16D1E53900CEE814 /* PBXContainerItemProxy */;
+		};
+		91CC60EE16F6CC4B00647AEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Framework;
+			targetProxy = 91CC60ED16F6CC4B00647AEC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -610,6 +688,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+				);
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -635,6 +717,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+				);
 				INFOPLIST_FILE = "mobile/mobile-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

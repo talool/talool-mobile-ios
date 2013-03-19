@@ -54,11 +54,13 @@ static NSManagedObjectContext *_context;
     [user setFirstName:fb_user.first_name];
     [user setLastName:fb_user.last_name];
     [user setEmail:[fb_user objectForKey:@"email"]];
-    [user setPassword: [CustomerHelper randomPassword:8]];
+    [user setPassword: [CustomerHelper nonrandomPassword:user.email]];
+    
+    NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
     ttSocialAccount *sa = [CustomerHelper createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
-                                                      loginId:@"asdfads"
-                                                        token:@"asdfads"];
+                                                      loginId:fb_user.username
+                                                        token:fbToken];
     [user addSocialAccountsObject:sa];
     
     return user;
@@ -94,8 +96,13 @@ static NSManagedObjectContext *_context;
 + (BOOL) isUserLoggedIn
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSLog(@"APP: Customer: %@",customer.customerId);
-    return (customer != nil && [customer.customerId intValue] > 0);
+    if (customer != nil) {
+        ttToken *token = [customer getTaloolToken];
+        if ([token.token length] > 0) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 + (void) loginUser:(NSString *)email password:(NSString *)password
@@ -106,7 +113,6 @@ static NSManagedObjectContext *_context;
     
     if (customer != nil && [customer.customerId intValue] > 0) {
         [CustomerHelper save];
-        NSLog(@"APP: user logged in");
     } else {
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"try again" withSender:nil];
     }
@@ -151,9 +157,9 @@ static NSManagedObjectContext *_context;
     
     NSError *err = [NSError alloc];
     customer = [cController registerUser:customer context:_context error:&err];
-    if (customer != nil && [customer.customerId intValue] > 0) {
+    ttToken *token = [customer getTaloolToken];
+    if (customer != nil && [token.token length] > 0) {
         [CustomerHelper save];
-        NSLog(@"APP: user registered width customerId:%@ and token:%@", customer.customerId, customer.token.token);
     } else {
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"try again" withSender:nil];
     }
@@ -169,7 +175,7 @@ static NSManagedObjectContext *_context;
         NSLog(@"APP: OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
         abort();
     }
-    NSLog(@"APP: context saved");
+    //NSLog(@"APP: context saved");
 }
 
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender
@@ -190,6 +196,28 @@ static NSManagedObjectContext *_context;
         [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
     }
     return randomString;
+}
+
++ (NSString *) nonrandomPassword:(NSString *)seed
+{
+    return [NSString stringWithFormat:@"talool4%@", seed];
+}
+
++ (BOOL) doesCustomerExist:(NSString *) email
+{
+    CustomerController *cController = [[CustomerController alloc] init];
+    return [cController userExists:email];
+}
+
++ (void) saveCustomer:(ttCustomer *)customer
+{
+   CustomerController *cController = [[CustomerController alloc] init];
+    
+    NSError *err = [NSError alloc];
+    [cController save:customer error:&err];
+    if (err.code < 100) {
+       [CustomerHelper save];
+    }
 }
 
 @end

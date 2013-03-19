@@ -91,8 +91,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         [[segue destinationViewController] setMerchant:[merchantController objectInMerchantsAtIndex:indexPath.row]];
         
-    } else {
-        NSLog(@"segue with identifier: %@",[segue identifier]);
     }
 }
 
