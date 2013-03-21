@@ -13,9 +13,6 @@
 		9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103111516D1E53800CEE814 /* InfoPlist.strings */; };
 		9103111916D1E53800CEE814 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111816D1E53800CEE814 /* main.m */; };
 		9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
-		9103111F16D1E53800CEE814 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103111E16D1E53800CEE814 /* Default.png */; };
-		9103112116D1E53800CEE814 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103112016D1E53800CEE814 /* Default@2x.png */; };
-		9103112316D1E53800CEE814 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103112216D1E53800CEE814 /* Default-568h@2x.png */; };
 		9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
 		9103112916D1E53800CEE814 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103112816D1E53800CEE814 /* ProfileViewController.m */; };
 		9103112B16D1E53800CEE814 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103112A16D1E53800CEE814 /* first.png */; };
@@ -31,6 +28,9 @@
 		9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115816D316BA00CEE814 /* ExploreTableViewController.m */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
+		910FEB1716FB826900B4CCFD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 910FEB1416FB826900B4CCFD /* Default-568h@2x.png */; };
+		910FEB1816FB826900B4CCFD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 910FEB1516FB826900B4CCFD /* Default.png */; };
+		910FEB1916FB826900B4CCFD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 910FEB1616FB826900B4CCFD /* Default@2x.png */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EC616E3F05B00C88B59 /* CouponViewController.m */; };
 		9161487616EAD758001C546C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -109,9 +109,6 @@
 		9103111A16D1E53800CEE814 /* mobile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobile-Prefix.pch"; sourceTree = "<group>"; };
 		9103111B16D1E53800CEE814 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9103111C16D1E53800CEE814 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9103111E16D1E53800CEE814 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9103112016D1E53800CEE814 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		9103112216D1E53800CEE814 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9103112516D1E53800CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9103112716D1E53800CEE814 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		9103112816D1E53800CEE814 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
@@ -133,6 +130,9 @@
 		9103115D16D3179E00CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
 		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
+		910FEB1416FB826900B4CCFD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		910FEB1516FB826900B4CCFD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		910FEB1616FB826900B4CCFD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		914B1EC516E3F05B00C88B59 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
@@ -268,13 +268,13 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				910FEB1416FB826900B4CCFD /* Default-568h@2x.png */,
+				910FEB1516FB826900B4CCFD /* Default.png */,
+				910FEB1616FB826900B4CCFD /* Default@2x.png */,
 				9103111416D1E53800CEE814 /* mobile-Info.plist */,
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
 				9103111816D1E53800CEE814 /* main.m */,
 				9103111A16D1E53800CEE814 /* mobile-Prefix.pch */,
-				9103111E16D1E53800CEE814 /* Default.png */,
-				9103112016D1E53800CEE814 /* Default@2x.png */,
-				9103112216D1E53800CEE814 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -500,9 +500,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
-				9103111F16D1E53800CEE814 /* Default.png in Resources */,
-				9103112116D1E53800CEE814 /* Default@2x.png in Resources */,
-				9103112316D1E53800CEE814 /* Default-568h@2x.png in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				9103112B16D1E53800CEE814 /* first.png in Resources */,
 				9103112D16D1E53800CEE814 /* first@2x.png in Resources */,
@@ -512,6 +509,9 @@
 				91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */,
 				9161487F16EAD7E1001C546C /* FBUserSettingsViewResources.bundle in Resources */,
 				9161488016EAD7E1001C546C /* FacebookSDKResources.bundle in Resources */,
+				910FEB1716FB826900B4CCFD /* Default-568h@2x.png in Resources */,
+				910FEB1816FB826900B4CCFD /* Default.png in Resources */,
+				910FEB1916FB826900B4CCFD /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
