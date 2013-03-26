@@ -10,7 +10,7 @@
 
 @implementation CustomerCell
 
-@synthesize useDarkBackground, customer, icon, name, points, talools;
+@synthesize useDarkBackground, socialFriend, icon, name, points, talools;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -36,19 +36,19 @@
     }
 }
 
-- (void)setCustomer:(TaloolCustomer *)newCustomer {
-    if (newCustomer != customer) {
-        customer = newCustomer;
+- (void)setSocialFriend:(Friend *)friend {
+    if (friend != socialFriend) {
+        socialFriend = friend;
         
         //self.icon = customer.thumbnailImage;
-        self.name = customer.firstName;
+        self.name = [NSString stringWithFormat:@"%@ %@", socialFriend.firstName, socialFriend.lastName];
         //self.points = customer.points;
         //self.talools = customer.talools;
     }
 }
 
-- (TaloolCustomer *)customer {
-    return customer;
+- (Friend *)friend {
+    return socialFriend;
 }
 
 
