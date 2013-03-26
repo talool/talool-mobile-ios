@@ -11,6 +11,8 @@
 
 @interface FacebookHelper : NSObject
 
++ (void) setContext:(NSManagedObjectContext *)context;
+
 +(void) getFriends;
 
 +(void) getAuthToken;
