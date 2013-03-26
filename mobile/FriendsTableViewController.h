@@ -8,14 +8,18 @@
 
 #import "BaseTableViewController.h"
 #import "FriendCell.h"
+#import "FacebookSDK/FacebookSDK.h"
 
 @class CustomerController;
 @class Friend;
 
-@interface FriendsTableViewController : BaseTableViewController {
+@interface FriendsTableViewController : BaseTableViewController<FBFriendPickerDelegate> {
     CustomerController *customerController;
+    NSArray *friends;
+    
 }
 
-- (void)invite:(id)sender;
+- (IBAction)pickFriendsButtonClick:(id)sender;
+
 
 @end
