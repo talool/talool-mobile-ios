@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttCustomer.h"
 
 
 @interface ProfileViewController : UIViewController {
-    ttMerchant *merchant;
+    ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
 }
 
-@property (nonatomic, retain) ttMerchant *merchant;
+- (void)logout:(id)sender;
+
+@property (nonatomic, retain) ttCustomer *customer;
 
 @end

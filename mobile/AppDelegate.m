@@ -11,6 +11,7 @@
 #import "FacebookSDK/FBSessionTokenCachingStrategy.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
 #import "CustomerHelper.h"
+#import "FacebookHelper.h"
 
 @implementation AppDelegate
 
@@ -27,6 +28,7 @@
     // Override point for customization after application launch.
 
     [CustomerHelper setContext:self.managedObjectContext];
+    [FacebookHelper setContext:self.managedObjectContext];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

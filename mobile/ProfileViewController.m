@@ -7,7 +7,7 @@
 //
 
 #import "ProfileViewController.h"
-#import "talool-api-ios/ttMerchant.h"
+#import "CustomerHelper.h"
 
 @interface ProfileViewController ()
 
@@ -15,18 +15,27 @@
 
 @implementation ProfileViewController
 
-@synthesize merchant;
+@synthesize customer;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	nameLabel.text = merchant.name;
-
+    customer = [CustomerHelper getLoggedInUser];
+    nameLabel.text = customer.lastName;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    self.navigationItem.title = merchant.name;
+    self.tabBarController.navigationItem.title = [customer getFullName];
+    
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Logout"
+                                     style:UIBarButtonItemStyleBordered
+                                     target:self
+                                     action:@selector(logout:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = logoutButton;
+    
+    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,10 +44,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setMerchant:(ttMerchant *)newMerchant {
-    if (newMerchant != merchant) {
-        merchant = newMerchant;
-    }
+- (void)logout:(id)sender
+{
+    [self performSegueWithIdentifier:@"logoutUser" sender:self];
+    
 }
+
+
 
 @end

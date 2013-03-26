@@ -18,6 +18,7 @@
 
 @implementation WelcomeViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,7 +74,6 @@
                          [CustomerHelper registerCustomer:customer];
                      }
                      
-                     //[FacebookHelper getFriends];
                  }
                  
                  // If we have a logged in user (possibly as a result of the FB reg above)
@@ -84,7 +84,7 @@
                      if (self.navigationController.visibleViewController != appDelegate.mainViewController) {
                          [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
                      }
-                     
+                     [FacebookHelper getFriends];
                  }
                  
              }
@@ -181,5 +181,6 @@
         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
 }
+
 
 @end
