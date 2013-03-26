@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FacebookSDK/FacebookSDK.h"
 
 @class ttCoupon;
 
-@interface DataViewController : UIViewController
+@interface DataViewController : UIViewController<FBFriendPickerDelegate> {
+    
+}
+
+- (IBAction)shareAction:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) ttCoupon *coupon;

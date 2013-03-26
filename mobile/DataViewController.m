@@ -10,10 +10,11 @@
 #import "talool-api-ios/ttCoupon.h"
 
 @interface DataViewController ()
-
+@property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @end
 
 @implementation DataViewController
+@synthesize friendPickerController = _friendPickerController;
 
 - (void)viewDidLoad
 {
@@ -31,6 +32,35 @@
 {
     [super viewWillAppear:animated];
     self.dataLabel.text = self.coupon.name;
+}
+
+- (IBAction)shareAction:(id)sender {
+    if (self.friendPickerController == nil) {
+        // Create friend picker, and get data loaded into it.
+        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
+        self.friendPickerController.title = @"Pick Friends";
+        self.friendPickerController.delegate = self;
+        self.friendPickerController.allowsMultipleSelection = NO;
+    }
+    
+    [self.friendPickerController loadData];
+    [self.friendPickerController clearSelection];
+    
+    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+}
+
+- (void)facebookViewControllerDoneWasPressed:(id)sender {
+    
+    for (id<FBGraphUser> user in self.friendPickerController.selection) {
+        NSLog(@"Friend picked: %@", user.name);
+        
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)facebookViewControllerCancelWasPressed:(id)sender {
+    // clean up, if needed
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
