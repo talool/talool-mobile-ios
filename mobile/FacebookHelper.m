@@ -25,12 +25,18 @@ static NSManagedObjectContext *_context;
 +(void) getFriends
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    // TODO clear out the friends list or update as you go.
-    // TODO only update this list every few hours (not every request)
+    
     [[FBRequest requestForMyFriends] startWithCompletionHandler:
      ^(FBRequestConnection *connection, NSMutableDictionary<FBGraphObject> *friends, NSError *error) {
          if (!error) {
+             
+             // clear out the friends list
+             [customer removeFriends:[customer getSocialFriends]];
+             
              // TODO The friends object is paginated
+             // TODO We many not need to have friends associated with the ttCustomer, if we're just using FB's picker.
+             //      This is really just for sending the friend's FB-ID back to the server so we can make the
+             //      connections on our end.
              
              // Get the first page of data
              NSArray *friendData = [friends objectForKey:@"data"]; //FBGraphObjectArray >> NSMutableArray
@@ -44,12 +50,8 @@ static NSManagedObjectContext *_context;
                                                       inManagedObjectContext:_context];
                  friend.firstName = [fbfriend objectForKey:@"first_name"];
                  friend.lastName = [fbfriend objectForKey:@"last_name"];
-                 //friend.email = [fbfriend objectForKey:@"email"]; // TODO need to get the friends emails
                  friend.socialNetwork = [[NSNumber alloc] initWithInt:SOCIAL_NETWORK_FACEBOOK];
-                 // TODO this would be a very expesive action... should optimize
-                 //friend.isCustomer = ([CustomerHelper doesCustomerExist:friend.email])?[[NSNumber alloc] initWithInt:1]:[[NSNumber alloc] initWithInt:0];
                  [customer saveFriend:friend];
-                 //NSLog(@"friend: %@ %@ %@", friend.firstName, friend.lastName, friend.email);
              }
 
          }

@@ -10,6 +10,8 @@
 
 @implementation RewardCell
 
+@synthesize deal;
+
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
     [super setBackgroundColor:backgroundColor];
@@ -32,6 +34,12 @@
 - (void)setPoints:(NSString *)newPoints
 {
     pointsLabel.text = newPoints;
+}
+
+- (void)setDeal:(ttCoupon *)newDeal
+{
+    deal = newDeal;
+    [self setName:newDeal.name];
 }
 
 @end

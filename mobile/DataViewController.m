@@ -32,6 +32,33 @@
 {
     [super viewWillAppear:animated];
     self.dataLabel.text = self.coupon.name;
+    
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Share"
+                                     style:UIBarButtonItemStyleBordered
+                                     target:self
+                                     action:@selector(shareAction:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+}
+
+- (IBAction)redeemAction:(id)sender {
+    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"Please Confirm"
+                                                        message:@"Would you like to redeem this deal?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"No"
+                                              otherButtonTitles:@"Yes", nil];
+	[confirmView show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        NSLog(@"Redeem the deal.");
+        // TODO implement the redeem functionality
+    }
 }
 
 - (IBAction)shareAction:(id)sender {
@@ -53,7 +80,7 @@
     
     for (id<FBGraphUser> user in self.friendPickerController.selection) {
         NSLog(@"Friend picked: %@", user.name);
-        
+        // TODO implement the share functionality
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }

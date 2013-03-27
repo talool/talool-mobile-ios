@@ -45,6 +45,7 @@
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
 		918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C116FFA23D0054C004 /* MerchantViewController.m */; };
+		918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C71702204E0054C004 /* DealTableViewController.m */; };
 		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
 		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
@@ -153,6 +154,8 @@
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		918DE5C016FFA23D0054C004 /* MerchantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewController.h; sourceTree = "<group>"; };
 		918DE5C116FFA23D0054C004 /* MerchantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewController.m; sourceTree = "<group>"; };
+		918DE5C61702204C0054C004 /* DealTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealTableViewController.h; sourceTree = "<group>"; };
+		918DE5C71702204E0054C004 /* DealTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealTableViewController.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantTableViewController.m; sourceTree = "<group>"; };
 		91986EC716D5D33000D1CA96 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 				91986EC816D5D33000D1CA96 /* BaseTableViewController.m */,
 				91986F0216D93EC600D1CA96 /* FriendsTableViewController.h */,
 				91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */,
+				918DE5C61702204C0054C004 /* DealTableViewController.h */,
+				918DE5C71702204E0054C004 /* DealTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */,
 				91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */,
 				918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */,
+				918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

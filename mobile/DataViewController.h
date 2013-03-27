@@ -11,11 +11,12 @@
 
 @class ttCoupon;
 
-@interface DataViewController : UIViewController<FBFriendPickerDelegate> {
+@interface DataViewController : UIViewController<FBFriendPickerDelegate,UIAlertViewDelegate> {
     
 }
 
 - (IBAction)shareAction:(id)sender;
+- (IBAction)redeemAction:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) ttCoupon *coupon;
