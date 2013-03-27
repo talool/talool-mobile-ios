@@ -39,5 +39,7 @@
 
 + (void) saveCustomer:(ttCustomer *)customer;
 
++ (void) save;
+
 
 @end
