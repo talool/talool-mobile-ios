@@ -43,9 +43,42 @@
     self.navigationItem.rightBarButtonItem = shareButton;
     
     // Add the bar code
+    //
+    /* ZXing testing notes...
+      
+        codes to test: PBFC, PB12SS, PB10AD, ET1309251996
+     
+        formats to test (kinda work, but don't look right): 
+            kBarcodeFormatCode128
+            kBarcodeFormatCode39
+            kBarcodeFormatITF
+     
+        formats that fail with "no encoder" message:
+            kBarcodeFormatCode93
+            kBarcodeFormatMaxiCode
+            kBarcodeFormatRSS14
+            kBarcodeFormatRSSExpanded
+            kBarcodeFormatUPCE
+            kBarcodeFormatUPCEANExtension
+     
+        formats that don't seem valid for these codes:
+            kBarcodeFormatCodabar - Must start with ABCD?
+            kBarcodeFormatEan13 - Must be 13 digits
+            kBarcodeFormatEan8 - Must be 8 digits
+            kBarcodeFormatUPCA - Must be 11 or 12 digits, but didn't work for ET1309251996 (checksum error)
+    
+        formats that are somewhere between a bar code and a qr-code:
+            kBarcodeFormatPDF417
+     
+        formats that are QR-like: 
+            kBarcodeFormatAztec
+            kBarcodeFormatQRCode
+            kBarcodeFormatDataMatrix
+    */
+    
     ZXMultiFormatWriter* writer = [[ZXMultiFormatWriter alloc] init];
-    ZXBitMatrix* result = [writer encode:self.coupon.name
-                                  format:kBarcodeFormatQRCode
+    ZXBitMatrix* result = [writer encode:@"ET1309251996"
+                                  format:kBarcodeFormatCode39
                                    width:self.qrCode.frame.size.width
                                   height:self.qrCode.frame.size.width
                                    error:nil];

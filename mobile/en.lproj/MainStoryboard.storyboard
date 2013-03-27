@@ -555,15 +555,15 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keS-gw-Nlh">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="3nI-dg-ZZq"/>
-                                            <constraint firstAttribute="width" constant="150" id="JCX-pt-Ndm"/>
+                                            <constraint firstAttribute="width" constant="250" id="PLb-Lu-gMg"/>
+                                            <constraint firstAttribute="height" constant="50" id="Un9-Uu-PbH"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.87058823529999996" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="keS-gw-Nlh" firstAttribute="centerX" secondItem="JIU-an-Das" secondAttribute="centerX" type="default" id="EjU-yB-VSp"/>
+                                    <constraint firstItem="keS-gw-Nlh" firstAttribute="centerX" secondItem="JIU-an-Das" secondAttribute="centerX" type="default" id="T37-qW-pSV"/>
                                     <constraint firstItem="qZd-UJ-8oD" firstAttribute="leading" secondItem="JIU-an-Das" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yfu-Dr-0GC"/>
                                     <constraint firstItem="qZd-UJ-8oD" firstAttribute="top" secondItem="JIU-an-Das" secondAttribute="top" constant="20" symbolic="YES" type="default" id="rSf-et-SEd"/>
                                     <constraint firstItem="keS-gw-Nlh" firstAttribute="top" secondItem="qZd-UJ-8oD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xl0-GO-tCg"/>
