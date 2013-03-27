@@ -18,6 +18,8 @@
 - (IBAction)shareAction:(id)sender;
 - (IBAction)redeemAction:(id)sender;
 
+@property (nonatomic, retain) IBOutlet UIImageView *qrCode;
+
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) ttCoupon *coupon;
 

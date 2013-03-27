@@ -8,6 +8,7 @@
 
 #import "DataViewController.h"
 #import "talool-api-ios/ttCoupon.h"
+#import "ZXingObjC/ZXingObjC.h"
 
 @interface DataViewController ()
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
@@ -15,6 +16,7 @@
 
 @implementation DataViewController
 @synthesize friendPickerController = _friendPickerController;
+@synthesize qrCode;
 
 - (void)viewDidLoad
 {
@@ -39,6 +41,19 @@
                                      target:self
                                      action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
+    
+    // Add the bar code
+    ZXMultiFormatWriter* writer = [[ZXMultiFormatWriter alloc] init];
+    ZXBitMatrix* result = [writer encode:self.coupon.name
+                                  format:kBarcodeFormatQRCode
+                                   width:self.qrCode.frame.size.width
+                                  height:self.qrCode.frame.size.width
+                                   error:nil];
+    if (result) {
+        self.qrCode.image = [UIImage imageWithCGImage:[ZXImage imageWithMatrix:result].cgimage];
+    } else {
+        self.qrCode.image = nil;
+    }
 }
 
 - (IBAction)redeemAction:(id)sender {

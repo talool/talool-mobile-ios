@@ -44,6 +44,12 @@
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
+		9183F4C6170342B000ED4844 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C4170342B000ED4844 /* AVFoundation.framework */; };
+		9183F4C7170342B000ED4844 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C5170342B000ED4844 /* CoreMedia.framework */; };
+		9183F4C9170342C800ED4844 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C8170342C800ED4844 /* CoreVideo.framework */; };
+		9183F4CB170342D500ED4844 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
+		9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
+		9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
 		918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C116FFA23D0054C004 /* MerchantViewController.m */; };
 		918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C71702204E0054C004 /* DealTableViewController.m */; };
 		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
@@ -152,6 +158,12 @@
 		916148CE16ED1C04001C546C /* CustomerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerHelper.m; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9183F4C4170342B000ED4844 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9183F4C5170342B000ED4844 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9183F4C8170342C800ED4844 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9183F4CA170342D500ED4844 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9183F4CC170342E100ED4844 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9183F4D6170350BB00ED4844 /* ZXingObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZXingObjC.framework; sourceTree = "<group>"; };
 		918DE5C016FFA23D0054C004 /* MerchantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewController.h; sourceTree = "<group>"; };
 		918DE5C116FFA23D0054C004 /* MerchantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewController.m; sourceTree = "<group>"; };
 		918DE5C61702204C0054C004 /* DealTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealTableViewController.h; sourceTree = "<group>"; };
@@ -190,6 +202,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */,
+				9183F4CB170342D500ED4844 /* ImageIO.framework in Frameworks */,
+				9183F4C9170342C800ED4844 /* CoreVideo.framework in Frameworks */,
+				9183F4C6170342B000ED4844 /* AVFoundation.framework in Frameworks */,
+				9183F4C7170342B000ED4844 /* CoreMedia.framework in Frameworks */,
 				91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */,
 				9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */,
 				9161487616EAD758001C546C /* Social.framework in Frameworks */,
@@ -201,6 +218,7 @@
 				9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */,
 				9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */,
 				9161488116EAD7E1001C546C /* FacebookSDK.framework in Frameworks */,
+				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +259,12 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9183F4D6170350BB00ED4844 /* ZXingObjC.framework */,
+				9183F4CC170342E100ED4844 /* QuartzCore.framework */,
+				9183F4CA170342D500ED4844 /* ImageIO.framework */,
+				9183F4C8170342C800ED4844 /* CoreVideo.framework */,
+				9183F4C4170342B000ED4844 /* AVFoundation.framework */,
+				9183F4C5170342B000ED4844 /* CoreMedia.framework */,
 				9161488216EADC1A001C546C /* AdSupport.framework */,
 				9161487A16EAD783001C546C /* AddressBook.framework */,
 				9161487816EAD76F001C546C /* Accounts.framework */,

@@ -183,16 +183,16 @@
                             <constraint firstItem="nsm-kr-nIu" firstAttribute="leading" secondItem="Xlp-FE-0Da" secondAttribute="leading" constant="9" id="5gy-hj-tWs"/>
                             <constraint firstItem="B0g-E8-wZj" firstAttribute="leading" secondItem="Vho-5m-dn1" secondAttribute="leading" type="default" id="Ccv-kA-m1G"/>
                             <constraint firstItem="cqR-cK-IMG" firstAttribute="leading" secondItem="Vho-5m-dn1" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Dhh-IT-jTP"/>
-                            <constraint firstItem="4bV-n7-FJl" firstAttribute="leading" secondItem="9wX-Ve-5Ec" secondAttribute="leading" type="default" id="IYu-AL-p6e"/>
                             <constraint firstItem="B0g-E8-wZj" firstAttribute="top" secondItem="Xlp-FE-0Da" secondAttribute="top" constant="58" id="JCa-xz-ztt"/>
                             <constraint firstItem="Vho-5m-dn1" firstAttribute="baseline" secondItem="nsm-kr-nIu" secondAttribute="baseline" type="default" id="NC1-63-mXo"/>
                             <constraint firstAttribute="trailing" secondItem="cqR-cK-IMG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="R2U-i9-kwh"/>
+                            <constraint firstAttribute="trailing" secondItem="9wX-Ve-5Ec" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="R3Q-ik-j2B"/>
+                            <constraint firstItem="9wX-Ve-5Ec" firstAttribute="top" secondItem="4bV-n7-FJl" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SK4-Ac-ta3"/>
                             <constraint firstItem="hGg-8g-TwS" firstAttribute="leading" secondItem="kZL-Ma-Rrk" secondAttribute="leading" type="default" id="SyJ-ly-Som"/>
                             <constraint firstItem="kZL-Ma-Rrk" firstAttribute="leading" secondItem="nsm-kr-nIu" secondAttribute="leading" type="default" id="WcR-ml-lkz"/>
                             <constraint firstItem="4bV-n7-FJl" firstAttribute="top" secondItem="B0g-E8-wZj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XTQ-9E-3bi"/>
                             <constraint firstItem="hGg-8g-TwS" firstAttribute="top" secondItem="Xlp-FE-0Da" secondAttribute="top" constant="100" id="ZQg-51-eBD"/>
                             <constraint firstAttribute="trailing" secondItem="B0g-E8-wZj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dxa-ns-wst"/>
-                            <constraint firstAttribute="bottom" secondItem="9wX-Ve-5Ec" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="e4h-Ry-PZC"/>
                             <constraint firstItem="B0g-E8-wZj" firstAttribute="baseline" secondItem="kZL-Ma-Rrk" secondAttribute="baseline" type="default" id="k0u-Cx-R0i"/>
                             <constraint firstAttribute="trailing" secondItem="4bV-n7-FJl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="orv-5g-Ypw"/>
                             <constraint firstItem="kZL-Ma-Rrk" firstAttribute="top" secondItem="Xlp-FE-0Da" secondAttribute="top" constant="62" id="quE-cA-7by"/>
@@ -547,18 +547,26 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe up to redeem this deal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZd-UJ-8oD">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="233" id="8Vj-CC-7vd"/>
+                                            <constraint firstAttribute="width" constant="233" id="Dod-FN-3gO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keS-gw-Nlh">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="3nI-dg-ZZq"/>
+                                            <constraint firstAttribute="width" constant="150" id="JCX-pt-Ndm"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.87058823529999996" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="keS-gw-Nlh" firstAttribute="centerX" secondItem="JIU-an-Das" secondAttribute="centerX" type="default" id="EjU-yB-VSp"/>
                                     <constraint firstItem="qZd-UJ-8oD" firstAttribute="leading" secondItem="JIU-an-Das" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yfu-Dr-0GC"/>
                                     <constraint firstItem="qZd-UJ-8oD" firstAttribute="top" secondItem="JIU-an-Das" secondAttribute="top" constant="20" symbolic="YES" type="default" id="rSf-et-SEd"/>
+                                    <constraint firstItem="keS-gw-Nlh" firstAttribute="top" secondItem="qZd-UJ-8oD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xl0-GO-tCg"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="lls-sF-ncC" appends="YES" id="CUR-n2-e0E"/>
@@ -583,6 +591,7 @@
                     <navigationItem key="navigationItem" id="lne-uH-H5N"/>
                     <connections>
                         <outlet property="dataLabel" destination="MGE-wL-JCw" id="eBd-Xa-eQF"/>
+                        <outlet property="qrCode" destination="keS-gw-Nlh" id="dnO-8K-oZv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXc-Bl-s0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,6 +665,7 @@
                 <relationship kind="action" name="redeemAction:"/>
                 <relationship kind="action" name="shareAction:"/>
                 <relationship kind="outlet" name="dataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="qrCode" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="DealTableViewController" superclassName="UITableViewController">
