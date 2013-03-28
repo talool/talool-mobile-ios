@@ -39,7 +39,7 @@
 - (void)setDeal:(ttCoupon *)newDeal
 {
     deal = newDeal;
-    [self setName:newDeal.name];
+    [self setName:newDeal.title];
 }
 
 @end

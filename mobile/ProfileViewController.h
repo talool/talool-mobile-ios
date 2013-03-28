@@ -15,7 +15,7 @@
     IBOutlet UILabel *nameLabel;
 }
 
-- (void)logout:(id)sender;
+- (void)settings:(id)sender;
 
 @property (nonatomic, retain) ttCustomer *customer;
 

@@ -26,16 +26,21 @@
     
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
-    // TODO need to update once the user has merchants attached propperly
     ttCustomer *user = [CustomerHelper getLoggedInUser];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSSet * ms = [user getMerchants:appDelegate.managedObjectContext];
     merchants = [[NSMutableArray alloc] initWithArray:[ms allObjects]];
     NSLog(@"loaded %ld merchants",(unsigned long)[merchants count]);
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
 }
 
 - (void)didReceiveMemoryWarning

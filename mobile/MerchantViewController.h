@@ -16,4 +16,6 @@
 
 @property (nonatomic, retain) ttMerchant *merchant;
 
+- (IBAction)redeemAction:(UIStoryboardSegue *)segue;
+
 @end

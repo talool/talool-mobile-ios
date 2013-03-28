@@ -7,6 +7,7 @@
 //
 
 #import "ModelController.h"
+#import "AppDelegate.h"
 #import "talool-api-ios/MerchantController.h"
 #import "talool-api-ios/ttCoupon.h"
 #import "DataViewController.h"
@@ -32,8 +33,9 @@
     if (self) {
         // Create the data model.
         // TODO: eventually, the coupons will on the merchant object
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         MerchantController *mc = [[MerchantController alloc] init];
-        _pageData = [mc getCouponsByMerchant:nil forCustomer:nil];
+        _pageData = [mc getCouponsByMerchant:nil forCustomer:nil context:appDelegate.managedObjectContext];
     }
     return self;
 }

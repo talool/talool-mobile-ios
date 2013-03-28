@@ -40,4 +40,12 @@
     }
 }
 
+- (IBAction)redeemAction:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"redeemDeal"]) {
+        NSLog(@"change the deal");
+        // TODO make sure the table view updates
+    }
+}
+
 @end

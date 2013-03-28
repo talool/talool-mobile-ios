@@ -11,6 +11,7 @@
 #import "MerchantViewController.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "AppDelegate.h"
+#import "CustomerHelper.h"
 
 @interface DealTableViewController ()
 
@@ -33,7 +34,11 @@
     {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         merchant = mvc.merchant;
-        NSSet *ds = [merchant getDeals:appDelegate.managedObjectContext];
+        NSSet *ds = merchant.deals;
+        if ([ds count]==0) {
+            ds = [merchant getDeals:[CustomerHelper getLoggedInUser] context:appDelegate.managedObjectContext];
+            [CustomerHelper save];
+        }
         deals = [[NSMutableArray alloc] initWithArray:[ds allObjects]];
         [self.tableView reloadData];
     }

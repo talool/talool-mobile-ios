@@ -26,14 +26,12 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    customer = [CustomerHelper getLoggedInUser];
     self.tabBarController.navigationItem.title = [customer getFullName];
     
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc]
-                                     initWithTitle:@"Logout"
-                                     style:UIBarButtonItemStyleBordered
-                                     target:self
-                                     action:@selector(logout:)];
-    self.tabBarController.navigationItem.rightBarButtonItem = logoutButton;
+    UIImage *gears = [UIImage imageNamed:@"gear.png"];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:gears style:UIBarButtonItemStyleBordered target:self action:@selector(settings:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = settingsButton;
     
     self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
 }
@@ -44,10 +42,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)logout:(id)sender
+- (void)settings:(id)sender
 {
-    [self performSegueWithIdentifier:@"logoutUser" sender:self];
-    
+    [self performSegueWithIdentifier:@"userSettings" sender:self];
 }
 
 

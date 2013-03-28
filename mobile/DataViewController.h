@@ -21,6 +21,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *qrCode;
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
+@property (strong, nonatomic) IBOutlet UILabel *redeemedLabel;
 @property (strong, nonatomic) ttCoupon *coupon;
 
 @end

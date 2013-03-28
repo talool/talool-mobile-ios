@@ -9,6 +9,7 @@
 #import "DataViewController.h"
 #import "talool-api-ios/ttCoupon.h"
 #import "ZXingObjC/ZXingObjC.h"
+#import "CustomerHelper.h"
 
 @interface DataViewController ()
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
@@ -33,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.dataLabel.text = self.coupon.name;
+    self.dataLabel.text = self.coupon.title;
     
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                      initWithTitle:@"Share"
@@ -42,6 +43,17 @@
                                      action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
+    if (self.coupon.redeemed == [[NSNumber alloc] initWithBool:YES])
+    {
+        [self markAsRedeemed];
+    } else {
+        [self addBarCode];
+    }
+}
+
+- (void)addBarCode
+{
+
     // Add the bar code
     //
     /* ZXing testing notes...
@@ -104,8 +116,12 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        NSLog(@"Redeem the deal.");
         // TODO implement the redeem functionality
+        [self.coupon setRedeemed:[[NSNumber alloc] initWithBool:YES]];
+        [CustomerHelper save];
+        [self markAsRedeemed];
+        // TODO reload the view
+        //[self performSegueWithIdentifier:@"redeemDeal" sender:self];
     }
 }
 
@@ -137,5 +153,13 @@
     // clean up, if needed
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)markAsRedeemed
+{
+    NSLog(@"This deal has been redeemed.");
+    self.redeemedLabel.text = @"redeemed";
+    // TODO blank out the barcode
+}
+
 
 @end
