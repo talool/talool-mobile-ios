@@ -8,20 +8,44 @@
 
 #import "ProfileViewController.h"
 #import "CustomerHelper.h"
+#import "FacebookSDK/FacebookSDK.h"
 
 @interface ProfileViewController ()
-
+@property (strong, nonatomic) FBProfilePictureView *profilePictureView;
 @end
 
 @implementation ProfileViewController
 
 @synthesize customer;
+//@synthesize profilePictureView = _profilePictureView;
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     customer = [CustomerHelper getLoggedInUser];
     nameLabel.text = customer.lastName;
+    
+    
+    self.profilePictureView = [[FBProfilePictureView alloc] init];
+    // Set the size
+    self.profilePictureView.frame = CGRectMake(10.0, 10.0, 65.0, 65.0);
+    // Show the profile picture for a user
+    if (FBSession.activeSession.isOpen) {
+        NSArray *sa = [customer.socialAccounts allObjects];
+        if ([sa count]>0) {
+            SocialAccount *fb = [sa objectAtIndex:0];
+            NSLog(@"FB id: %@",fb.loginId);
+            self.profilePictureView.profileID = fb.loginId;
+        } else {
+            self.profilePictureView.profileID = nil;
+        }
+    } else {
+        self.profilePictureView.profileID = nil;
+    }
+    // Add the profile picture view to the main view
+    [self.view addSubview:self.profilePictureView];
+     
 }
 
 -(void)viewDidAppear:(BOOL)animated

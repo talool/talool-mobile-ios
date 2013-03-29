@@ -13,9 +13,9 @@
 
 @interface DealTableViewController : UITableViewController
 {
-    NSMutableArray *deals;
+    NSArray *deals;
     ttMerchant *merchant;
 }
-@property (nonatomic, retain) NSMutableArray *deals;
+@property (nonatomic, retain) NSArray *deals;
 @property (nonatomic, retain) ttMerchant *merchant;
 @end

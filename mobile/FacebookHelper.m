@@ -65,4 +65,21 @@ static NSManagedObjectContext *_context;
     
 }
 
++(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user
+{
+    ttSocialAccount *ttsa = (ttSocialAccount *)[NSEntityDescription
+                                              insertNewObjectForEntityForName:SOCIAL_ACCOUNT_ENTITY_NAME
+                                              inManagedObjectContext:_context];
+    
+    NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    
+    ttsa.token = fbToken;
+    ttsa.loginId = user.id;
+    ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
+    
+    NSLog(@"created social account for: %@",user.id);
+    
+    return ttsa;
+}
+
 @end

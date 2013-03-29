@@ -33,8 +33,12 @@
     ttCustomer *user = [CustomerHelper getLoggedInUser];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSSet * ms = [user getMerchants:appDelegate.managedObjectContext];
-    merchants = [[NSMutableArray alloc] initWithArray:[ms allObjects]];
-    NSLog(@"loaded %ld merchants",(unsigned long)[merchants count]);
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    merchants = [[[NSArray alloc] initWithArray:[ms allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+
+    //NSLog(@"loaded %ld merchants",(unsigned long)[merchants count]);
 }
 
 - (void)viewDidLoad

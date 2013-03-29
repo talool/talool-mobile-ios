@@ -70,6 +70,12 @@
                      if ([CustomerHelper doesCustomerExist:customer.email]) {
                          // TODO auth the user... could be hard with random password
                          [CustomerHelper loginUser:customer.email password:customer.password];
+                         // add the social account
+                         ttSocialAccount *sa = [FacebookHelper createSocialAccount:user];
+                         ttCustomer *user = [CustomerHelper getLoggedInUser];
+                         [user addSocialAccountsObject:sa];
+                         [CustomerHelper save];
+                         
                      } else {
                          [CustomerHelper registerCustomer:customer];
                      }

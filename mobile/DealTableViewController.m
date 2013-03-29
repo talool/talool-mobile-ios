@@ -39,7 +39,13 @@
             ds = [merchant getDeals:[CustomerHelper getLoggedInUser] context:appDelegate.managedObjectContext];
             [CustomerHelper save];
         }
+        
         deals = [[NSMutableArray alloc] initWithArray:[ds allObjects]];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+        deals = [[[NSArray alloc] initWithArray:[ds allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+        
         [self.tableView reloadData];
     }
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FacebookSDK/FacebookSDK.h"
+#import "talool-api-ios/ttSocialAccount.h"
 
 @interface FacebookHelper : NSObject
 
@@ -16,5 +17,7 @@
 +(void) getFriends;
 
 +(void) getAuthToken;
+
++(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user;
 
 @end

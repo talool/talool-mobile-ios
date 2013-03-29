@@ -12,7 +12,7 @@
 #import "talool-api-ios/ttMerchant.h"
 
 @interface MechantTableViewController : BaseTableViewController {
-    NSMutableArray *merchants;
+    NSArray *merchants;
 }
-@property (nonatomic, retain) NSMutableArray *merchants;
+@property (nonatomic, retain) NSArray *merchants;
 @end
