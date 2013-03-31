@@ -24,6 +24,8 @@ static NSManagedObjectContext *_context;
 
 +(void) getFriends
 {
+    return; // TODO we don't need to do this until we start storing friends details for sharing.
+    
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     
     [[FBRequest requestForMyFriends] startWithCompletionHandler:
@@ -77,7 +79,7 @@ static NSManagedObjectContext *_context;
     ttsa.loginId = user.id;
     ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
     
-    NSLog(@"created social account for: %@",user.id);
+    //NSLog(@"created social account for: %@",user.id);
     
     return ttsa;
 }
