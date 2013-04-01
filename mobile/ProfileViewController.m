@@ -17,19 +17,54 @@
 @implementation ProfileViewController
 
 @synthesize customer;
-//@synthesize profilePictureView = _profilePictureView;
+@synthesize profilePictureView = _profilePictureView;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    customer = [CustomerHelper getLoggedInUser];
-    nameLabel.text = customer.lastName;
-    
     
     self.profilePictureView = [[FBProfilePictureView alloc] init];
     // Set the size
     self.profilePictureView.frame = CGRectMake(10.0, 10.0, 65.0, 65.0);
+    // Show the profile picture for a user
+    [self loadProfilePic];
+    // Add the profile picture view to the main view
+    [self.view addSubview:self.profilePictureView];
+     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    customer = [CustomerHelper getLoggedInUser];
+    self.tabBarController.navigationItem.title = [customer getFullName];
+    nameLabel.text = customer.lastName;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    UIImage *gears = [UIImage imageNamed:@"gear.png"];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:gears style:UIBarButtonItemStyleBordered target:self action:@selector(settings:)];
+    self.tabBarController.navigationItem.rightBarButtonItem = settingsButton;
+    
+    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
+    
+    [self loadProfilePic];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)settings:(id)sender
+{
+    [self performSegueWithIdentifier:@"userSettings" sender:self];
+}
+
+-(void)loadProfilePic
+{
     // Show the profile picture for a user
     if (FBSession.activeSession.isOpen) {
         NSArray *sa = [customer.socialAccounts allObjects];
@@ -43,32 +78,6 @@
     } else {
         self.profilePictureView.profileID = nil;
     }
-    // Add the profile picture view to the main view
-    [self.view addSubview:self.profilePictureView];
-     
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    customer = [CustomerHelper getLoggedInUser];
-    self.tabBarController.navigationItem.title = [customer getFullName];
-    
-    UIImage *gears = [UIImage imageNamed:@"gear.png"];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:gears style:UIBarButtonItemStyleBordered target:self action:@selector(settings:)];
-    self.tabBarController.navigationItem.rightBarButtonItem = settingsButton;
-    
-    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)settings:(id)sender
-{
-    [self performSegueWithIdentifier:@"userSettings" sender:self];
 }
 
 
