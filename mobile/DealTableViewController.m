@@ -23,31 +23,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    // TODO this seems like a hacky way to get the deals for this table
-    MerchantViewController *mvc = (MerchantViewController *) self.parentViewController;
-    if (mvc != nil)
-    {
+
+    // Watch out.  This assumes the top controller is a MerchantViewController.
+    MerchantViewController *mvc = (MerchantViewController *) self.navigationController.topViewController;
+    merchant = mvc.merchant;
+    
+    NSSet *ds = merchant.deals;
+    if ([ds count]==0) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        merchant = mvc.merchant;
-        NSSet *ds = merchant.deals;
-        if ([ds count]==0) {
-            ds = [merchant getDeals:[CustomerHelper getLoggedInUser] context:appDelegate.managedObjectContext];
-            [CustomerHelper save];
-        }
-        
-        deals = [[NSMutableArray alloc] initWithArray:[ds allObjects]];
-        
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
-        NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-        deals = [[[NSArray alloc] initWithArray:[ds allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
-        
-        [self.tableView reloadData];
+        ds = [merchant getDeals:[CustomerHelper getLoggedInUser] context:appDelegate.managedObjectContext];
+        [CustomerHelper save];
     }
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES],
+                                nil];
+    
+    deals = [[[NSArray alloc] initWithArray:[ds allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+    
+    //[CustomerHelper dumpCustomer];
+
+    [self.tableView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning
