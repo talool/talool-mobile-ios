@@ -11,6 +11,8 @@
 #import "talool-api-ios/CustomerController.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
 #import "talool-api-ios/ttToken.h"
+#import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/TaloolDeal.h"
 #import <AddressBook/AddressBook.h>
 
 @implementation CustomerHelper
@@ -112,6 +114,7 @@ static NSManagedObjectContext *_context;
     ttCustomer *customer = [cController authenticate:email password:password context:_context error:&err];
     
     if (customer != nil && [customer.customerId intValue] > 0) {
+        [CustomerHelper refreshLoggedInUser];
         [CustomerHelper save];
     } else {
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"try again" withSender:nil];
@@ -175,6 +178,8 @@ static NSManagedObjectContext *_context;
         NSLog(@"APP: OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
         abort();
     }
+    
+    //[CustomerHelper dumpCustomer];
     //NSLog(@"APP: context saved");
 }
 
@@ -211,13 +216,40 @@ static NSManagedObjectContext *_context;
 
 + (void) saveCustomer:(ttCustomer *)customer
 {
-   CustomerController *cController = [[CustomerController alloc] init];
+    CustomerController *cController = [[CustomerController alloc] init];
     
     NSError *err = [NSError alloc];
     [cController save:customer error:&err];
     if (err.code < 100) {
        [CustomerHelper save];
     }
+}
+
++ (void) refreshLoggedInUser
+{
+    ttCustomer *u = [CustomerHelper getLoggedInUser];
+    if (u != nil) {
+        [u refreshMerchants:_context];
+    }
+}
+
++ (void) dumpCustomer
+{
+    ttCustomer *c = [CustomerHelper getLoggedInUser];
+    NSLog(@"Customer id: %@", c.customerId);
+    NSLog(@"Merchant Count: %lu", (unsigned long)[c.favoriteMerchants count]);
+    NSEnumerator *me = [c.favoriteMerchants objectEnumerator];
+    ttMerchant *m;
+    while (m = [me nextObject]) {
+        NSLog(@"   Merchant Name: %@", m.name);
+        NSLog(@"   Merchant Deals Count: %lu", (unsigned long)[m.deals count]);
+        NSEnumerator *de = [m.deals objectEnumerator];
+        TaloolDeal *d;
+        while (d = [de nextObject]) {
+            NSLog(@"      Deal Title: %@, Deal Redeemed: %@", d.title, d.redeemed);
+        }
+    }
+    
 }
 
 @end

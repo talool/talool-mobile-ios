@@ -26,6 +26,7 @@
 + (ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;
 
 + (ttCustomer *) getLoggedInUser;
++ (void) refreshLoggedInUser;
 + (void) loginUser:(NSString *)email password:(NSString *)password;
 + (void) logoutUser;
 + (BOOL) isUserLoggedIn;
@@ -40,6 +41,8 @@
 + (void) saveCustomer:(ttCustomer *)customer;
 
 + (void) save;
+
++ (void) dumpCustomer;
 
 
 @end
