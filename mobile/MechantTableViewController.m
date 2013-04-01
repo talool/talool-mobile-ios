@@ -31,14 +31,12 @@
     [super viewWillAppear:animated];
     
     ttCustomer *user = [CustomerHelper getLoggedInUser];
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSSet * ms = [user getMerchants:appDelegate.managedObjectContext];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    merchants = [[[NSArray alloc] initWithArray:[ms allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
-
-    //NSLog(@"loaded %ld merchants",(unsigned long)[merchants count]);
+    merchants = [[[NSArray alloc] initWithArray:[user.favoriteMerchants allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
