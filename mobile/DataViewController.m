@@ -10,6 +10,7 @@
 #import "talool-api-ios/ttCoupon.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import "CustomerHelper.h"
+#import "talool-api-ios/ttMerchant.h"
 
 @interface DataViewController ()
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
@@ -43,12 +44,26 @@
                                      action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
-    if (self.coupon.redeemed == [[NSNumber alloc] initWithBool:YES])
+    if ([self.coupon.redeemed intValue] == 1)
     {
         [self markAsRedeemed];
     } else {
         [self addBarCode];
     }
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // put the Deal back in the Merchant object and the Merchant back in the User object
+    ttMerchant *m = (ttMerchant *)self.coupon.merchant;
+    [m removeDealsObject:self.coupon];
+    [m addDealsObject:self.coupon];
+    ttCustomer *c = (ttCustomer *) m.customer;
+    [c removeFavoriteMerchantsObject:m];
+    [c addFavoriteMerchantsObject:m];
+    [CustomerHelper save];
+    
 }
 
 - (void)addBarCode
