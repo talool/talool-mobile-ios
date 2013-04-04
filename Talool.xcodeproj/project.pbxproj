@@ -334,7 +334,6 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9197F98B170D24DB00BDAA58 /* icons */,
 				9168A507170B484300E53EB1 /* Default-568h@2x.png */,
 				9168A508170B484300E53EB1 /* Default.png */,
 				9168A509170B484400E53EB1 /* Default@2x.png */,
@@ -369,6 +368,7 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9197F98B170D24DB00BDAA58 /* icons */,
 				9183F4E91703A31700ED4844 /* gear.png */,
 				9183F4EA1703A31700ED4844 /* gear@2x.png */,
 				9183F4DF1703A18500ED4844 /* search.png */,
