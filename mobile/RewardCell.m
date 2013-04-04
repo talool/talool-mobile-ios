@@ -57,12 +57,12 @@
     if ([deal.redeemed intValue] == 1) {
         // TODO add the right date
         date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
-        [self setIcon:[UIImage imageNamed:@"icon_tan.png"]];
+        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
         
     } else {
         // TODO add the right date
         date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:today]];
-        [self setIcon:[UIImage imageNamed:@"icon_teal.png"]];
+        [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
     }
     [self setDate:date];
 }
