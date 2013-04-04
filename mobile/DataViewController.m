@@ -7,7 +7,7 @@
 //
 
 #import "DataViewController.h"
-#import "talool-api-ios/ttCoupon.h"
+#import "talool-api-ios/ttDeal.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttMerchant.h"

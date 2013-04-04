@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
 
-@class ttCoupon;
+@class ttDeal;
 
 @interface DataViewController : UIViewController<FBFriendPickerDelegate,UIAlertViewDelegate> {
     
@@ -22,6 +22,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) IBOutlet UILabel *redeemedLabel;
-@property (strong, nonatomic) ttCoupon *coupon;
+@property (strong, nonatomic) ttDeal *coupon;
 
 @end

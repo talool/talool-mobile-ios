@@ -40,7 +40,7 @@
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
     self.navigationController.delegate = self;
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:80.0/255.0 green:185.0/255.0 blue:72.0/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0]];
     self.window.rootViewController = self.navigationController;
     
     [self.window makeKeyAndVisible];

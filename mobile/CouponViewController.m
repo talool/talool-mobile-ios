@@ -7,7 +7,7 @@
 //
 
 #import "CouponViewController.h"
-#import "talool-api-ios/ttCoupon.h"
+#import "talool-api-ios/ttDeal.h"
 #import "ModelController.h"
 #import "DataViewController.h"
 

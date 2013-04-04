@@ -9,7 +9,7 @@
 #import "ModelController.h"
 #import "AppDelegate.h"
 #import "talool-api-ios/MerchantController.h"
-#import "talool-api-ios/ttCoupon.h"
+#import "talool-api-ios/ttDeal.h"
 #import "DataViewController.h"
 
 /*

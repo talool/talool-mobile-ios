@@ -7,18 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttCoupon.h"
+#import "talool-api-ios/ttDeal.h"
 
 @interface RewardCell : UITableViewCell
 {
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *nameLabel;
-    IBOutlet UILabel *pointsLabel;
+    IBOutlet UILabel *dateLabel;
+    IBOutlet UIView *redeemedView;
     
-    ttCoupon *deal;
+    ttDeal *deal;
     
 }
 
-@property (nonatomic, retain) ttCoupon *deal;
+@property (nonatomic, retain) ttDeal *deal;
 
 @end

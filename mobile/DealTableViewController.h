@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RewardCell.h"
-#import "talool-api-ios/ttCoupon.h"
+#import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttMerchant.h"
 
 @interface DealTableViewController : UITableViewController

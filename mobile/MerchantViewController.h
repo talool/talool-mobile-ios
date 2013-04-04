@@ -11,11 +11,13 @@
 
 @interface MerchantViewController : UIViewController {
     ttMerchant *merchant;
-    IBOutlet UILabel *nameLabel;
+    IBOutlet UIButton *infoButton;
+    IBOutlet UIImageView *backgroundImage;
 }
 
 @property (nonatomic, retain) ttMerchant *merchant;
 
 - (IBAction)redeemAction:(UIStoryboardSegue *)segue;
+- (IBAction)infoAction:(id)sender;
 
 @end

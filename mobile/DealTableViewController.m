@@ -9,7 +9,6 @@
 #import "DealTableViewController.h"
 #import "DataViewController.h"
 #import "MerchantViewController.h"
-#import "talool-api-ios/ttMerchant.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
 
@@ -46,8 +45,6 @@
                                 nil];
     
     deals = [[[NSArray alloc] initWithArray:[ds allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
-    
-    //[CustomerHelper dumpCustomer];
 
     [self.tableView reloadData];
 
@@ -80,8 +77,19 @@
     RewardCell *cell = (RewardCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
-    [cell setDeal:[deals objectAtIndex:indexPath.row]];
-	
+    ttDeal *deal = (ttDeal *)[deals objectAtIndex:indexPath.row];
+    [cell setDeal:deal];
+    
+    if ([deal.redeemed intValue] == 1) {
+        cell.contentView.alpha = 0.5;
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        // Tan: [UIColor colorWithRed:218.0/255.0 green:215.0/255.0 blue:197.0/255.0 alpha:1.0];
+    } else {
+        cell.contentView.alpha = 1.0;
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        // Teal: [UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0];
+    }
+    
     return cell;
 }
 

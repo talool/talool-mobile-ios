@@ -18,7 +18,8 @@
     
     iconView.backgroundColor = backgroundColor;
     nameLabel.backgroundColor = backgroundColor;
-    pointsLabel.backgroundColor = backgroundColor;
+    dateLabel.backgroundColor = backgroundColor;
+    redeemedView.backgroundColor = backgroundColor;
 }
 
 - (void)setIcon:(UIImage *)newIcon
@@ -28,18 +29,42 @@
 
 - (void)setName:(NSString *)newName
 {
-    nameLabel.text = newName;
+    if ([deal.redeemed intValue] == 1) {
+        NSDictionary* attributes = @{
+                                     NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+                                     };
+        
+        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:newName attributes:attributes];
+        nameLabel.attributedText = attrText;
+    } else {
+        nameLabel.text = newName;
+    }
 }
 
-- (void)setPoints:(NSString *)newPoints
+- (void)setDate:(NSString *)newDate
 {
-    pointsLabel.text = newPoints;
+    dateLabel.text = newDate;
 }
 
-- (void)setDeal:(ttCoupon *)newDeal
+- (void)setDeal:(ttDeal *)newDeal
 {
     deal = newDeal;
     [self setName:newDeal.title];
+    NSString *date;
+    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    if ([deal.redeemed intValue] == 1) {
+        // TODO add the right date
+        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
+        [self setIcon:[UIImage imageNamed:@"icon_tan.png"]];
+        
+    } else {
+        // TODO add the right date
+        date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:today]];
+        [self setIcon:[UIImage imageNamed:@"icon_teal.png"]];
+    }
+    [self setDate:date];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MerchantViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MerchantViewController ()
 
@@ -19,7 +20,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	nameLabel.text = merchant.name;
+    NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
+                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
+                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
+                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test4.png",
+                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test5.png",
+                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
+                                ]];
+    
+    int idx = [merchant.merchantId intValue] % [bg count];
+    
+    // Here we use the new provided setImageWithURL: method to load the web image
+    NSString *imageUrl = [bg objectAtIndex:idx];
+    [backgroundImage setImageWithURL:[NSURL URLWithString:imageUrl]
+                   placeholderImage:[UIImage imageNamed:@"Default.png"]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              if (error !=  nil) {
+                                  // TODO track these errors
+                                  NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                              }
+                          
+                          }];
     
 }
 
@@ -43,9 +64,14 @@
 - (IBAction)redeemAction:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"redeemDeal"]) {
-        NSLog(@"change the deal");
+        NSLog(@"HEY, AM I USING THIS? change the deal");
         // TODO make sure the table view updates
     }
+}
+
+- (IBAction)infoAction:(id)sender
+{
+    NSLog(@"show address and shit");
 }
 
 @end
