@@ -29,7 +29,6 @@
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
-		914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EC616E3F05B00C88B59 /* CouponViewController.m */; };
 		9161487616EAD758001C546C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487916EAD76F001C546C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
@@ -71,15 +70,10 @@
 		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
 		91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECD16D5E11700D1CA96 /* StarsForeground.png */; };
-		91986ED516D5E2A400D1CA96 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986ED416D5E2A400D1CA96 /* FriendsViewController.m */; };
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
-		91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFE16D7153800D1CA96 /* CustomerCell.m */; };
-		91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */; };
-		91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0616D94CA300D1CA96 /* FriendCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
-		91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD716E4E6830021E605 /* ModelController.m */; };
-		91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DataViewController.m */; };
+		91BDEFDB16E4E9DC0021E605 /* DealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DealViewController.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 		91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
 /* End PBXBuildFile section */
@@ -156,8 +150,6 @@
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
-		914B1EC516E3F05B00C88B59 /* CouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponViewController.h; sourceTree = "<group>"; };
-		914B1EC616E3F05B00C88B59 /* CouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponViewController.m; sourceTree = "<group>"; };
 		9161487516EAD758001C546C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9161487816EAD76F001C546C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9161487A16EAD783001C546C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -205,24 +197,14 @@
 		91986EC816D5D33000D1CA96 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		91986ECC16D5E11700D1CA96 /* StarsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsBackground.png; sourceTree = "<group>"; };
 		91986ECD16D5E11700D1CA96 /* StarsForeground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsForeground.png; sourceTree = "<group>"; };
-		91986ED316D5E2A400D1CA96 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
-		91986ED416D5E2A400D1CA96 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* RewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardCell.h; sourceTree = "<group>"; };
 		91986EFB16D7150400D1CA96 /* RewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardCell.m; sourceTree = "<group>"; };
-		91986EFD16D7153800D1CA96 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
-		91986EFE16D7153800D1CA96 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
-		91986F0216D93EC600D1CA96 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
-		91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
-		91986F0516D94CA300D1CA96 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
-		91986F0616D94CA300D1CA96 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		91986F0A16DA88F800D1CA96 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTabBarController.h; sourceTree = "<group>"; };
 		91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTabBarController.m; sourceTree = "<group>"; };
-		91BDEFD416E4E6830021E605 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
-		91BDEFD516E4E6830021E605 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
-		91BDEFD616E4E6830021E605 /* ModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
-		91BDEFD716E4E6830021E605 /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
+		91BDEFD416E4E6830021E605 /* DealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealViewController.h; sourceTree = "<group>"; };
+		91BDEFD516E4E6830021E605 /* DealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealViewController.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
 		91CC60BE16F5222C00647AEC /* FacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookHelper.m; sourceTree = "<group>"; };
 		91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "talool-api-ios.xcodeproj"; path = "talool-api-ios/talool-api-ios/talool-api-ios.xcodeproj"; sourceTree = "<group>"; };
@@ -319,7 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				916148D016ED1C18001C546C /* Helpers */,
-				914B1EC116E3EE1600C88B59 /* Page View Controllers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
 				9103116A16D3271D00CEE814 /* Resources */,
@@ -394,10 +375,6 @@
 				9103116016D317E800CEE814 /* FavoriteMerchantCell.m */,
 				91986EFA16D7150400D1CA96 /* RewardCell.h */,
 				91986EFB16D7150400D1CA96 /* RewardCell.m */,
-				91986EFD16D7153800D1CA96 /* CustomerCell.h */,
-				91986EFE16D7153800D1CA96 /* CustomerCell.m */,
-				91986F0516D94CA300D1CA96 /* FriendCell.h */,
-				91986F0616D94CA300D1CA96 /* FriendCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -405,12 +382,12 @@
 		9103117B16D467C500CEE814 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				91BDEFD416E4E6830021E605 /* DealViewController.h */,
+				91BDEFD516E4E6830021E605 /* DealViewController.m */,
 				9103112E16D1E53800CEE814 /* ExploreViewController.h */,
 				9103112F16D1E53800CEE814 /* ExploreViewController.m */,
 				9103112716D1E53800CEE814 /* ProfileViewController.h */,
 				9103112816D1E53800CEE814 /* ProfileViewController.m */,
-				91986ED316D5E2A400D1CA96 /* FriendsViewController.h */,
-				91986ED416D5E2A400D1CA96 /* FriendsViewController.m */,
 				91986F0A16DA88F800D1CA96 /* RegistrationViewController.h */,
 				91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */,
 				91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */,
@@ -421,19 +398,6 @@
 				918DE5C116FFA23D0054C004 /* MerchantViewController.m */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		914B1EC116E3EE1600C88B59 /* Page View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				914B1EC516E3F05B00C88B59 /* CouponViewController.h */,
-				914B1EC616E3F05B00C88B59 /* CouponViewController.m */,
-				91BDEFD416E4E6830021E605 /* DataViewController.h */,
-				91BDEFD516E4E6830021E605 /* DataViewController.m */,
-				91BDEFD616E4E6830021E605 /* ModelController.h */,
-				91BDEFD716E4E6830021E605 /* ModelController.m */,
-			);
-			name = "Page View Controllers";
 			sourceTree = "<group>";
 		};
 		916148D016ED1C18001C546C /* Helpers */ = {
@@ -470,8 +434,6 @@
 				91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */,
 				91986EC716D5D33000D1CA96 /* BaseTableViewController.h */,
 				91986EC816D5D33000D1CA96 /* BaseTableViewController.m */,
-				91986F0216D93EC600D1CA96 /* FriendsTableViewController.h */,
-				91986F0316D93EC600D1CA96 /* FriendsTableViewController.m */,
 				918DE5C61702204C0054C004 /* DealTableViewController.h */,
 				918DE5C71702204E0054C004 /* DealTableViewController.m */,
 				9168A4D9170496CC00E53EB1 /* SetttingsTableViewController.h */,
@@ -662,17 +624,11 @@
 				9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */,
 				91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */,
 				91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */,
-				91986ED516D5E2A400D1CA96 /* FriendsViewController.m in Sources */,
 				91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */,
-				91986EFF16D7153900D1CA96 /* CustomerCell.m in Sources */,
-				91986F0416D93EC600D1CA96 /* FriendsTableViewController.m in Sources */,
-				91986F0716D94CA300D1CA96 /* FriendCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
 				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
-				914B1EC716E3F05B00C88B59 /* CouponViewController.m in Sources */,
-				91BDEFDA16E4E9D10021E605 /* ModelController.m in Sources */,
-				91BDEFDB16E4E9DC0021E605 /* DataViewController.m in Sources */,
+				91BDEFDB16E4E9DC0021E605 /* DealViewController.m in Sources */,
 				916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */,
 				91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */,
 				918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */,

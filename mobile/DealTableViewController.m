@@ -7,7 +7,7 @@
 //
 
 #import "DealTableViewController.h"
-#import "DataViewController.h"
+#import "DealViewController.h"
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
@@ -98,7 +98,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDeal"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        DataViewController *dvController = (DataViewController *)[segue destinationViewController];
+        DealViewController *dvController = (DealViewController *)[segue destinationViewController];
         [dvController setCoupon:[deals objectAtIndex:indexPath.row]];
         dvController.title = merchant.name;
         

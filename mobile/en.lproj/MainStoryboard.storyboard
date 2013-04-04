@@ -336,97 +336,6 @@
             </objects>
             <point key="canvasLocation" x="1658" y="-731"/>
         </scene>
-        <!--Coupon View Controller-->
-        <scene sceneID="l61-FT-M6i">
-            <objects>
-                <viewController storyboardIdentifier="CouponPageView" wantsFullScreenLayout="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hh5-DZ-1aO" customClass="CouponViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="1000" id="2mK-sv-jHE">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndc-tq-1Q1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1816" y="-1625"/>
-        </scene>
-        <!--Friends Table View Controller - Friends-->
-        <scene sceneID="8OP-k3-yvB">
-            <objects>
-                <tableViewController storyboardIdentifier="FriendsList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I4r-jV-E07" customClass="FriendsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FUO-KO-xKQ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomerCell" id="O4G-Wd-0qT" customClass="FriendCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8G-bC-Fh6">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="227" id="U5W-aw-7gH"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="O8G-bC-Fh6" firstAttribute="leading" secondItem="O4G-Wd-0qT" secondAttribute="leading" constant="20" type="default" id="XTa-C0-p0e"/>
-                                    <constraint firstItem="O8G-bC-Fh6" firstAttribute="top" secondItem="O4G-Wd-0qT" secondAttribute="top" constant="11" id="ZXG-N1-eaT"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="nameLabel" destination="O8G-bC-Fh6" id="tX3-hk-ZOY"/>
-                                    <segue destination="NQl-QV-eOk" kind="push" identifier="showFriend" id="Cb5-Vl-fwk"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Friends" id="Ybm-Qc-tID"/>
-                    <navigationItem key="navigationItem" title="Friends" id="vKr-SE-CPw"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G8Z-JU-uDl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1073" y="-1961"/>
-        </scene>
-        <!--Friends View Controller - Friend-->
-        <scene sceneID="TRD-IP-TfX">
-            <objects>
-                <viewController id="NQl-QV-eOk" customClass="FriendsViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Zdu-He-PbC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Friend Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-JI-HSO">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="maS-H2-jmx"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oWA-JI-HSO" firstAttribute="top" secondItem="Zdu-He-PbC" secondAttribute="top" constant="59" id="FU8-gW-bFC"/>
-                            <constraint firstItem="oWA-JI-HSO" firstAttribute="leading" secondItem="Zdu-He-PbC" secondAttribute="leading" constant="91" id="tuK-Eh-dlo"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Friend" id="UKe-gh-nhJ"/>
-                    <connections>
-                        <outlet property="nameLabel" destination="oWA-JI-HSO" id="c5S-Tt-AjZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rj4-br-bm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-541" y="-1961"/>
-        </scene>
         <!--Explore Table View Controller - Explore-->
         <scene sceneID="P6C-Bf-ndo">
             <objects>
@@ -585,10 +494,10 @@
             </objects>
             <point key="canvasLocation" x="2083" y="-575"/>
         </scene>
-        <!--Data View Controller-->
+        <!--Deal View Controller-->
         <scene sceneID="jbM-W6-XHJ">
             <objects>
-                <viewController storyboardIdentifier="DataViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CmX-G3-K0M" customClass="DataViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CmX-G3-K0M" customClass="DealViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" id="6oG-8l-ZCW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="255"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -972,14 +881,11 @@
         <class className="BaseTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
         </class>
-        <class className="CouponViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CouponViewController.h"/>
+        <class className="DealTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealTableViewController.h"/>
         </class>
-        <class className="CustomerCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomerCell.h"/>
-        </class>
-        <class className="DataViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataViewController.h"/>
+        <class className="DealViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealViewController.h"/>
             <relationships>
                 <relationship kind="action" name="redeemAction:"/>
                 <relationship kind="action" name="shareAction:"/>
@@ -987,9 +893,6 @@
                 <relationship kind="outlet" name="qrCode" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="redeemedLabel" candidateClass="UILabel"/>
             </relationships>
-        </class>
-        <class className="DealTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealTableViewController.h"/>
         </class>
         <class className="ExploreTableViewController" superclassName="BaseTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreTableViewController.h"/>
@@ -1014,26 +917,6 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="visitsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendCell" superclassName="CustomerCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pointsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FriendsTableViewController" superclassName="BaseTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pickFriendsButtonClick:"/>
-            </relationships>
-        </class>
-        <class className="FriendsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FriendsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="MechantTableViewController" superclassName="BaseTableViewController">
