@@ -62,7 +62,7 @@
     FavoriteMerchantCell *cell = (FavoriteMerchantCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	// Display dark and light background in alternate rows -- see tableView:willDisplayCell:forRowAtIndexPath:.
-    cell.useDarkBackground = (indexPath.row % 2 == 0);
+    //cell.useDarkBackground = (indexPath.row % 2 == 0);
 	
 	// Configure the data for the cell.
     [cell setMerchant:[self.merchantController objectInMerchantsAtIndex:indexPath.row]];

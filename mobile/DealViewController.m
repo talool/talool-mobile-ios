@@ -9,6 +9,7 @@
 #import "DealViewController.h"
 #import "talool-api-ios/ttDeal.h"
 #import "ZXingObjC/ZXingObjC.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttMerchant.h"
 
@@ -35,8 +36,32 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.dataLabel.text = self.coupon.title;
+    self.titleLabel.text = self.coupon.title;
+    self.summaryLabel.text = self.coupon.summary;
+    self.detailsLabel.text = self.coupon.details;
+    NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
+                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
+                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
+                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test4.png",
+                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test5.png",
+                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
+                          ]];
     
+    int idx = [self.coupon.dealId intValue] % [bg count];
+    
+    // Here we use the new provided setImageWithURL: method to load the web image
+    NSString *imageUrl = [bg objectAtIndex:idx];
+    [self.prettyPicture setImageWithURL:[NSURL URLWithString:imageUrl]
+                    placeholderImage:[UIImage imageNamed:@"Default.png"]
+                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                               if (error !=  nil) {
+                                   // TODO track these errors
+                                   NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                               }
+                               
+                           }];
+    
+    // TODO: Only show the share button is the user has connected with Facebook
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                      initWithTitle:@"Share"
                                      style:UIBarButtonItemStyleBordered
@@ -44,11 +69,18 @@
                                      action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
+    
+    // TODO: check the expires data.  create an isValid method on the deal.
     if ([self.coupon.redeemed intValue] == 1)
     {
         [self markAsRedeemed];
     } else {
+        
         [self addBarCode];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.coupon.expires]];
     }
 }
 
@@ -109,10 +141,12 @@
                                    width:self.qrCode.frame.size.width
                                   height:self.qrCode.frame.size.width
                                    error:nil];
-    if (result) {
+    // TODO conditionally add a barcode
+    if (result && NO) {
         self.qrCode.image = [UIImage imageWithCGImage:[ZXImage imageWithMatrix:result].cgimage];
     } else {
         self.qrCode.image = nil;
+        self.qrCode.hidden = YES;
     }
 }
 
@@ -172,7 +206,13 @@
 - (void)markAsRedeemed
 {
     NSLog(@"This deal has been redeemed.");
-    self.redeemedLabel.text = @"redeemed";
+    
+    // TODO get the right date
+    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
+    
     // TODO blank out the barcode
 }
 

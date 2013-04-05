@@ -68,7 +68,8 @@
 	
 	// Configure the data for the cell.
     [cell setMerchant:[merchants objectAtIndex:indexPath.row]];
-	
+	cell.contentView.backgroundColor = [UIColor whiteColor];
+    
     return cell;
 }
 

@@ -10,7 +10,5 @@
 
 @interface BaseTableViewController : UITableViewController
 
-@property (nonatomic, retain) UIColor *darkBG;
-@property (nonatomic, retain) UIColor *lightBG;
 
 @end

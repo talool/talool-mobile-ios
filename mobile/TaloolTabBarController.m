@@ -7,6 +7,7 @@
 //
 
 #import "TaloolTabBarController.h"
+#import "TaloolColor.h"
 
 @interface TaloolTabBarController ()
 
@@ -21,6 +22,9 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
+    
+    self.tabBar.tintColor = [TaloolColor gray_5];
+    self.tabBar.selectedImageTintColor = [TaloolColor teal];
     
 }
 

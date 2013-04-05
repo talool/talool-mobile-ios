@@ -19,13 +19,7 @@
 {
     [super viewDidLoad];
     
-    self.lightBG = [UIColor colorWithRed:218.0/255.0 green:215.0/255.0 blue:197.0/255.0 alpha:1.0];
-    self.darkBG = [UIColor colorWithRed:176.0/255.0 green:166.0/255.0 blue:144.0/255.0 alpha:1.0];
-    
-    // Configure the table view.
-    self.tableView.rowHeight = 72.0;
-    //self.tableView.backgroundColor = [UIColor colorWithRed:110.0/255.0 green:158.0/255.0 blue:117.0/255.0 alpha:1.0];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)viewDidAppear:(BOOL)animated

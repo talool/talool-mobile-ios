@@ -66,6 +66,7 @@
 		9197F988170D24CB00BDAA58 /* Icon_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F982170D24CB00BDAA58 /* Icon_red.png */; };
 		9197F989170D24CB00BDAA58 /* Icon_tan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F983170D24CB00BDAA58 /* Icon_tan.png */; };
 		9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F984170D24CB00BDAA58 /* Icon_teal.png */; };
+		9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
 		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
 		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
@@ -191,6 +192,8 @@
 		9197F982170D24CB00BDAA58 /* Icon_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_red.png; sourceTree = "<group>"; };
 		9197F983170D24CB00BDAA58 /* Icon_tan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_tan.png; sourceTree = "<group>"; };
 		9197F984170D24CB00BDAA58 /* Icon_teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_teal.png; sourceTree = "<group>"; };
+		9197F98C170F157200BDAA58 /* TaloolColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolColor.h; sourceTree = "<group>"; };
+		9197F98D170F157200BDAA58 /* TaloolColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolColor.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantTableViewController.m; sourceTree = "<group>"; };
 		91986EC716D5D33000D1CA96 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -407,6 +410,8 @@
 				916148CE16ED1C04001C546C /* CustomerHelper.m */,
 				91CC60BD16F5222C00647AEC /* FacebookHelper.h */,
 				91CC60BE16F5222C00647AEC /* FacebookHelper.m */,
+				9197F98C170F157200BDAA58 /* TaloolColor.h */,
+				9197F98D170F157200BDAA58 /* TaloolColor.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 				918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */,
 				918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */,
 				9168A4DB170496CC00E53EB1 /* SetttingsTableViewController.m in Sources */,
+				9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,10 +16,8 @@
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *categoryLabel;
     IBOutlet UILabel *nameLabel;
-    //IBOutlet RatingView *ratingView;
-    //IBOutlet UILabel *numRatingsLabel;
-    IBOutlet UILabel *visitsLabel;
-    IBOutlet UILabel *pointsLabel;
+    IBOutlet UILabel *addressLabel;
+
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
+#import "TaloolColor.h"
 
 @implementation AppDelegate
 
@@ -40,7 +41,8 @@
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
     self.navigationController.delegate = self;
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setTintColor:[TaloolColor teal]];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     self.window.rootViewController = self.navigationController;
     
     [self.window makeKeyAndVisible];

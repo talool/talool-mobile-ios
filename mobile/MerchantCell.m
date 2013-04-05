@@ -7,10 +7,11 @@
 //
 
 #import "MerchantCell.h"
+#import "talool-api-ios/TaloolAddress.h"
 
 @implementation MerchantCell
 
-@synthesize useDarkBackground, merchant, icon, category, name, points, talools, visits;
+@synthesize merchant, icon, category, address, name;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -28,30 +29,15 @@
     // Configure the view for the selected state
 }
 
-- (void)setUseDarkBackground:(BOOL)flag
-{
-    if (flag != useDarkBackground || !self.backgroundView)
-    {
-        useDarkBackground = flag;
-        
-        //NSString *backgroundImagePath = [[NSBundle mainBundle] pathForResource:useDarkBackground ? @"DarkBackground" : @"LightBackground" ofType:@"png"];
-        //UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
-        //self.backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        //self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        //self.backgroundView.frame = self.bounds;
-    }
-}
-
 - (void)setMerchant:(ttMerchant *)newMerchant {
     if (newMerchant != merchant) {
         merchant = newMerchant;
         
-        //self.icon = merchant.thumbnailImage;
-        self.name = merchant.name;
-        //self.category = merchant.category;
-        //self.points = merchant.points;
-        //self.talools = merchant.talools;
-        //self.visits = merchant.visits;
+        [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
+        [self setName:merchant.name];
+        [self setCategory:@"Fine Dining"];
+        [self setAddress:merchant.address.city];
+
     }
 }
 

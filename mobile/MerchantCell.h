@@ -13,30 +13,21 @@
 
 @interface MerchantCell : UITableViewCell
 {
-    BOOL useDarkBackground;
     
     ttMerchant *merchant;
     
     UIImage *icon;
     NSString *category;
     NSString *name;
-    //float rating;
-   // NSInteger numRatings;
-    NSString *points;
-    NSString *talools;
-    NSString *visits;
+    NSString *address;
+
 }
 
-@property(nonatomic) BOOL useDarkBackground;
 @property (nonatomic, retain) ttMerchant *merchant;
 
 @property(retain) UIImage *icon;
 @property(retain) NSString *category;
 @property(retain) NSString *name;
-//@property float rating;
-//@property NSInteger numRatings;
-@property(retain) NSString *points;
-@property(retain) NSString *talools;
-@property(retain) NSString *visits;
+@property(retain) NSString *address;
 
 @end

@@ -26,7 +26,7 @@
     
     self.profilePictureView = [[FBProfilePictureView alloc] init];
     // Set the size
-    self.profilePictureView.frame = CGRectMake(10.0, 10.0, 65.0, 65.0);
+    self.profilePictureView.frame = CGRectMake(0.0, 0.0, 75.0, 75.0);
     // Show the profile picture for a user
     [self loadProfilePic];
     // Add the profile picture view to the main view
