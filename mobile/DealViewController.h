@@ -26,6 +26,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *expiresLabel;
 
-@property (strong, nonatomic) ttDeal *coupon;
+@property (strong, nonatomic) ttDeal *deal;
 
 @end

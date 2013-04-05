@@ -19,7 +19,7 @@
 
 @implementation DealViewController
 @synthesize friendPickerController = _friendPickerController;
-@synthesize qrCode;
+@synthesize qrCode, deal;
 
 - (void)viewDidLoad
 {
@@ -36,9 +36,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.titleLabel.text = self.coupon.title;
-    self.summaryLabel.text = self.coupon.summary;
-    self.detailsLabel.text = self.coupon.details;
+    self.titleLabel.text = self.deal.title;
+    self.summaryLabel.text = self.deal.summary;
+    self.detailsLabel.text = self.deal.details;
     NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
@@ -47,7 +47,7 @@
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
                           ]];
     
-    int idx = [self.coupon.dealId intValue] % [bg count];
+    int idx = [self.deal.dealId intValue] % [bg count];
     
     // Here we use the new provided setImageWithURL: method to load the web image
     NSString *imageUrl = [bg objectAtIndex:idx];
@@ -71,7 +71,7 @@
     
     
     // TODO: check the expires data.  create an isValid method on the deal.
-    if ([self.coupon.redeemed intValue] == 1)
+    if ([self.deal.redeemed intValue] == 1)
     {
         [self markAsRedeemed];
     } else {
@@ -80,7 +80,7 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.coupon.expires]];
+        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.expires]];
     }
 }
 
@@ -88,9 +88,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // put the Deal back in the Merchant object and the Merchant back in the User object
-    ttMerchant *m = (ttMerchant *)self.coupon.merchant;
-    [m removeDealsObject:self.coupon];
-    [m addDealsObject:self.coupon];
+    ttMerchant *m = (ttMerchant *)self.deal.merchant;
+    [m removeDealsObject:self.deal];
+    [m addDealsObject:self.deal];
     ttCustomer *c = (ttCustomer *) m.customer;
     [c removeFavoriteMerchantsObject:m];
     [c addFavoriteMerchantsObject:m];
@@ -166,7 +166,7 @@
     if([title isEqualToString:@"Yes"])
     {
         // TODO implement the redeem functionality
-        [self.coupon setRedeemed:[[NSNumber alloc] initWithBool:YES]];
+        [self.deal setRedeemed:[[NSNumber alloc] initWithBool:YES]];
         [CustomerHelper save];
         [self markAsRedeemed];
         // TODO reload the view
