@@ -10,16 +10,14 @@
 #import "talool-api-ios/ttDeal.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "CustomerHelper.h"
-#import "talool-api-ios/ttMerchant.h"
 
 @interface DealViewController ()
-@property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
+
 @end
 
 @implementation DealViewController
-@synthesize friendPickerController = _friendPickerController;
-@synthesize qrCode, deal;
+
+@synthesize qrCode, deal, page;
 
 - (void)viewDidLoad
 {
@@ -61,15 +59,6 @@
                                
                            }];
     
-    // TODO: Only show the share button is the user has connected with Facebook
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
-                                     initWithTitle:@"Share"
-                                     style:UIBarButtonItemStyleBordered
-                                     target:self
-                                     action:@selector(shareAction:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
-    
     // TODO: check the expires data.  create an isValid method on the deal.
     if ([self.deal.redeemed intValue] == 1)
     {
@@ -82,20 +71,6 @@
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
         self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.expires]];
     }
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    // put the Deal back in the Merchant object and the Merchant back in the User object
-    ttMerchant *m = (ttMerchant *)self.deal.merchant;
-    [m removeDealsObject:self.deal];
-    [m addDealsObject:self.deal];
-    ttCustomer *c = (ttCustomer *) m.customer;
-    [c removeFavoriteMerchantsObject:m];
-    [c addFavoriteMerchantsObject:m];
-    [CustomerHelper save];
-    
 }
 
 - (void)addBarCode
@@ -150,58 +125,6 @@
     }
 }
 
-- (IBAction)redeemAction:(id)sender {
-    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"Please Confirm"
-                                                        message:@"Would you like to redeem this deal?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"No"
-                                              otherButtonTitles:@"Yes", nil];
-	[confirmView show];
-    
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if([title isEqualToString:@"Yes"])
-    {
-        // TODO implement the redeem functionality
-        [self.deal setRedeemed:[[NSNumber alloc] initWithBool:YES]];
-        [CustomerHelper save];
-        [self markAsRedeemed];
-        // TODO reload the view
-        //[self performSegueWithIdentifier:@"redeemDeal" sender:self];
-    }
-}
-
-- (IBAction)shareAction:(id)sender {
-    if (self.friendPickerController == nil) {
-        // Create friend picker, and get data loaded into it.
-        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-        self.friendPickerController.title = @"Pick Friends";
-        self.friendPickerController.delegate = self;
-        self.friendPickerController.allowsMultipleSelection = NO;
-    }
-    
-    [self.friendPickerController loadData];
-    [self.friendPickerController clearSelection];
-    
-    [self presentViewController:self.friendPickerController animated:YES completion:nil];
-}
-
-- (void)facebookViewControllerDoneWasPressed:(id)sender {
-    
-    for (id<FBGraphUser> user in self.friendPickerController.selection) {
-        NSLog(@"Friend picked: %@", user.name);
-        // TODO implement the share functionality
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)facebookViewControllerCancelWasPressed:(id)sender {
-    // clean up, if needed
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void)markAsRedeemed
 {
@@ -213,7 +136,16 @@
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
     
-    // TODO blank out the barcode
+    self.instructionsLabel.hidden = YES;
+}
+
+-(void) reset:(ttDeal *)newDeal
+{
+    self.deal = newDeal;
+    if ([self.deal.redeemed intValue] == 1)
+    {
+        [self markAsRedeemed];
+    }
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "DealTableViewController.h"
-#import "DealViewController.h"
+#import "DealRedemptionViewController.h"
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
@@ -98,9 +98,9 @@
 {
     if ([[segue identifier] isEqualToString:@"showDeal"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        DealViewController *dvController = (DealViewController *)[segue destinationViewController];
-        [dvController setCoupon:[deals objectAtIndex:indexPath.row]];
-        dvController.title = merchant.name;
+        DealRedemptionViewController *controller = (DealRedemptionViewController *)[segue destinationViewController];
+        [controller setDeal:[deals objectAtIndex:indexPath.row]];
+        controller.title = merchant.name;
         
     }
 }

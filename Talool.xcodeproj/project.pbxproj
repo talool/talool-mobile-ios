@@ -37,6 +37,8 @@
 		9161488116EAD7E1001C546C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487E16EAD7E1001C546C /* FacebookSDK.framework */; };
 		9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
+		9165344A170F66C000E1332F /* DealRedemptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91653449170F66C000E1332F /* DealRedemptionViewController.m */; };
+		9165344D170F66F200E1332F /* DealModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9165344C170F66F200E1332F /* DealModelController.m */; };
 		9168A4DB170496CC00E53EB1 /* SetttingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SetttingsTableViewController.m */; };
 		9168A506170A13FB00E53EB1 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9168A505170A13FA00E53EB1 /* talool-api-ios.bundle */; };
 		9168A50A170B484400E53EB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A507170B484300E53EB1 /* Default-568h@2x.png */; };
@@ -160,6 +162,10 @@
 		9161488216EADC1A001C546C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		916148CD16ED1C03001C546C /* CustomerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerHelper.h; sourceTree = "<group>"; };
 		916148CE16ED1C04001C546C /* CustomerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerHelper.m; sourceTree = "<group>"; };
+		91653448170F66C000E1332F /* DealRedemptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealRedemptionViewController.h; sourceTree = "<group>"; };
+		91653449170F66C000E1332F /* DealRedemptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealRedemptionViewController.m; sourceTree = "<group>"; };
+		9165344B170F66F200E1332F /* DealModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealModelController.h; sourceTree = "<group>"; };
+		9165344C170F66F200E1332F /* DealModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealModelController.m; sourceTree = "<group>"; };
 		9168A4D9170496CC00E53EB1 /* SetttingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetttingsTableViewController.h; sourceTree = "<group>"; };
 		9168A4DA170496CC00E53EB1 /* SetttingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetttingsTableViewController.m; sourceTree = "<group>"; };
 		9168A505170A13FA00E53EB1 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
@@ -385,8 +391,7 @@
 		9103117B16D467C500CEE814 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				91BDEFD416E4E6830021E605 /* DealViewController.h */,
-				91BDEFD516E4E6830021E605 /* DealViewController.m */,
+				91653444170F663400E1332F /* Deal View */,
 				9103112E16D1E53800CEE814 /* ExploreViewController.h */,
 				9103112F16D1E53800CEE814 /* ExploreViewController.m */,
 				9103112716D1E53800CEE814 /* ProfileViewController.h */,
@@ -414,6 +419,19 @@
 				9197F98D170F157200BDAA58 /* TaloolColor.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		91653444170F663400E1332F /* Deal View */ = {
+			isa = PBXGroup;
+			children = (
+				91BDEFD416E4E6830021E605 /* DealViewController.h */,
+				91BDEFD516E4E6830021E605 /* DealViewController.m */,
+				91653448170F66C000E1332F /* DealRedemptionViewController.h */,
+				91653449170F66C000E1332F /* DealRedemptionViewController.m */,
+				9165344B170F66F200E1332F /* DealModelController.h */,
+				9165344C170F66F200E1332F /* DealModelController.m */,
+			);
+			name = "Deal View";
 			sourceTree = "<group>";
 		};
 		9197F98B170D24DB00BDAA58 /* icons */ = {
@@ -640,6 +658,8 @@
 				918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */,
 				9168A4DB170496CC00E53EB1 /* SetttingsTableViewController.m in Sources */,
 				9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */,
+				9165344A170F66C000E1332F /* DealRedemptionViewController.m in Sources */,
+				9165344D170F66F200E1332F /* DealModelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

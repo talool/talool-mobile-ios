@@ -7,25 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FacebookSDK/FacebookSDK.h"
 
 @class ttDeal;
 
-@interface DealViewController : UIViewController<FBFriendPickerDelegate,UIAlertViewDelegate> {
-    
+@interface DealViewController : UIViewController {
+
 }
 
-- (IBAction)shareAction:(id)sender;
-- (IBAction)redeemAction:(id)sender;
+-(void) reset:(ttDeal *)newDeal;
 
 @property (nonatomic, retain) IBOutlet UIImageView *qrCode;
 @property (nonatomic, retain) IBOutlet UIImageView *prettyPicture;
-
+@property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *expiresLabel;
 
 @property (strong, nonatomic) ttDeal *deal;
+@property (strong, nonatomic) NSNumber *page;
 
 @end
