@@ -992,7 +992,6 @@
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dum-PD-RSO">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="53" id="AQY-KN-Vsy"/>
                                                 <constraint firstAttribute="height" constant="21" id="XfM-NB-QCn"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1007,6 +1006,7 @@
                                     <constraint firstItem="8ZJ-TG-wP4" firstAttribute="centerY" secondItem="aLY-tj-mBJ" secondAttribute="centerY" type="default" id="Z04-cb-mhA"/>
                                     <constraint firstItem="Y1q-ao-PDJ" firstAttribute="top" secondItem="aLY-tj-mBJ" secondAttribute="top" constant="11" id="auu-1k-NGq"/>
                                     <constraint firstAttribute="bottom" secondItem="dum-PD-RSO" secondAttribute="bottom" constant="8" id="iAF-ex-nJB"/>
+                                    <constraint firstItem="Y1q-ao-PDJ" firstAttribute="trailing" secondItem="dum-PD-RSO" secondAttribute="trailing" type="default" id="nBP-Uu-tqb"/>
                                     <constraint firstItem="8ZJ-TG-wP4" firstAttribute="leading" secondItem="aLY-tj-mBJ" secondAttribute="leading" constant="5" id="qnC-WQ-1yS"/>
                                     <constraint firstItem="Y1q-ao-PDJ" firstAttribute="leading" secondItem="aLY-tj-mBJ" secondAttribute="leading" constant="72" id="sWw-tV-qXL"/>
                                 </constraints>
