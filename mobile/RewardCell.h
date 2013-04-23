@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttDeal.h"
+
+@class ttDealAcquire;
 
 @interface RewardCell : UITableViewCell
 {
@@ -16,10 +17,10 @@
     IBOutlet UILabel *dateLabel;
     IBOutlet UIView *redeemedView;
     
-    ttDeal *deal;
+    ttDealAcquire *deal;
     
 }
 
-@property (nonatomic, retain) ttDeal *deal;
+@property (nonatomic, retain) ttDealAcquire *deal;
 
 @end

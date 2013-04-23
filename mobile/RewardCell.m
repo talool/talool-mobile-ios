@@ -7,6 +7,8 @@
 //
 
 #import "RewardCell.h"
+#import "talool-api-ios/ttDealAcquire.h"
+#import "talool-api-ios/ttDeal.h"
 
 @implementation RewardCell
 
@@ -29,7 +31,7 @@
 
 - (void)setName:(NSString *)newName
 {
-    if ([deal.redeemed intValue] == 1) {
+    if ([deal hasBeenRedeemed]) {
         NSDictionary* attributes = @{
                                      NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
                                      };
@@ -46,22 +48,19 @@
     dateLabel.text = newDate;
 }
 
-- (void)setDeal:(ttDeal *)newDeal
+- (void)setDeal:(ttDealAcquire *)newDeal
 {
     deal = newDeal;
-    [self setName:newDeal.title];
+    [self setName:newDeal.deal.title];
     NSString *date;
-    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    if ([deal.redeemed intValue] == 1) {
-        // TODO add the right date
-        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
+    if ([deal hasBeenRedeemed]) {
+        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];
         [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
         
     } else {
-        // TODO add the right date
-        date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:today]];
+        date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
         [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
     }
     [self setDate:date];
