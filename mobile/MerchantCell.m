@@ -36,7 +36,7 @@
         [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
         [self setName:merchant.name];
         [self setCategory:@"Fine Dining"];
-        [self setAddress:merchant.address.city];
+        [self setAddress:[merchant getLocationLabel]];
 
     }
 }
