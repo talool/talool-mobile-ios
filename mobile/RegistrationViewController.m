@@ -42,12 +42,11 @@
     ttCustomer *user = [CustomerHelper createCustomer:firstNameField.text
                                              lastName:lastNameField.text
                                                 email:emailField.text
-                                             password:passwordField.text
                                                   sex:sex
                                               socialAccount:nil];
     
     // Register the user.  Check the response and display errors as needed
-    [CustomerHelper registerCustomer:user];
+    [CustomerHelper registerCustomer:user password:passwordField.text];
     
     // don't leave the page if reg failed
     if ([CustomerHelper isUserLoggedIn]) {

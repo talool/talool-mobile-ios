@@ -11,6 +11,7 @@
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface WelcomeViewController ()
 
@@ -66,10 +67,13 @@
                  // Then we should create the user (if needed) and save the user (to core data)
                  if ([CustomerHelper getLoggedInUser] == nil) {
                      ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
-                     // check if this user is already registered
+                     
+                     // TODO: see if we have come up with a better method to generate a password for FB users
+                     NSString *passwordHack = [CustomerHelper nonrandomPassword:[user objectForKey:@"email"]];
+                     
                      if ([CustomerHelper doesCustomerExist:customer.email]) {
-                         // TODO auth the user... could be hard with random password
-                         [CustomerHelper loginUser:customer.email password:customer.password];
+                         // auth the user
+                         [CustomerHelper loginUser:customer.email password:passwordHack];
                          // add the social account
                          ttSocialAccount *sa = [FacebookHelper createSocialAccount:user];
                          ttCustomer *user = [CustomerHelper getLoggedInUser];
@@ -77,7 +81,7 @@
                          [CustomerHelper save];
                          
                      } else {
-                         [CustomerHelper registerCustomer:customer];
+                         [CustomerHelper registerCustomer:customer password:passwordHack];
                      }
                      
                  }

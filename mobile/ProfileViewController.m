@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "CustomerHelper.h"
 #import "FacebookSDK/FacebookSDK.h"
+#import "talool-api-ios/ttSocialAccount.h"
 
 @interface ProfileViewController ()
 @property (strong, nonatomic) FBProfilePictureView *profilePictureView;
@@ -40,9 +41,6 @@
     self.tabBarController.navigationItem.title = [customer getFullName];
     nameLabel.text = customer.lastName;
     
-    
-    //NSString *bookName = @"The Payback Book";
-    //NSNumber *merchantCount = [[NSNumber alloc] initWithInt:200];
     NSNumber *dealCount = [[NSNumber alloc] initWithInt:300];
     NSString *profileText = [NSString stringWithFormat:@"You have %@ deals.  Share some with your friends!",
                              dealCount];
@@ -77,7 +75,7 @@
     if (FBSession.activeSession.isOpen) {
         NSArray *sa = [customer.socialAccounts allObjects];
         if ([sa count]>0) {
-            SocialAccount *fb = [sa objectAtIndex:0];
+            ttSocialAccount *fb = [sa objectAtIndex:0];
             NSLog(@"FB id: %@",fb.loginId);
             self.profilePictureView.profileID = fb.loginId;
         } else {
