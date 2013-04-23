@@ -11,6 +11,8 @@
 #import "DealViewController.h"
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 
 @interface DealRedemptionViewController ()
@@ -80,12 +82,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // put the Deal back in the Merchant object and the Merchant back in the User object
-    ttMerchant *m = (ttMerchant *)self.deal.merchant;
-    [m removeDealsObject:self.deal];
-    [m addDealsObject:self.deal];
-    ttCustomer *c = (ttCustomer *) m.customer;
-    [c removeFavoriteMerchantsObject:m];
-    [c addFavoriteMerchantsObject:m];
+    ttCustomer *c = [CustomerHelper getLoggedInUser];
+    [c removeDealsObject:self.deal];
+    [c addDealsObject:self.deal];
     [CustomerHelper save];
     
 }
@@ -144,16 +143,24 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        // TODO implement the redeem functionality
-        [self.deal setRedeemed:[[NSNumber alloc] initWithBool:YES]];
-        [CustomerHelper save];
+        // TODO get the Lat/Long
+        NSError *err = [NSError alloc];
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        [self.deal setCustomer:customer];
+        [self.deal redeemHere:0.0 longitude:0.0 error:&err];
+        if (err.code < 100) {
+            [CustomerHelper save];
+            // reload the view
+            [self.modelController handleRedemption:self.deal];
+        } else {
+            // TODO show an error
+        }
         
-        // TODO reload the view
-        [self.modelController handleRedemption:self.deal];
+        
         
     } else {
         
-        // TODO page backwards
+        // page backwards
         DealViewController *startingViewController = [self.modelController viewControllerAtIndex:0 storyboard:self.storyboard];
         NSArray *viewControllers = @[startingViewController];
         [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:NULL];

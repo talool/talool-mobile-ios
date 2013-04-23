@@ -7,6 +7,7 @@
 //
 
 #import "DealViewController.h"
+#import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -34,9 +35,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.titleLabel.text = self.deal.title;
-    self.summaryLabel.text = self.deal.summary;
-    self.detailsLabel.text = self.deal.details;
+    self.titleLabel.text = self.deal.deal.title;
+    self.summaryLabel.text = self.deal.deal.summary;
+    self.detailsLabel.text = self.deal.deal.details;
     NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
@@ -45,7 +46,7 @@
                           @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
                           ]];
     
-    int idx = [self.deal.dealId intValue] % [bg count];
+    int idx = [self.deal.dealAcquireId intValue] % [bg count];
     
     // Here we use the new provided setImageWithURL: method to load the web image
     NSString *imageUrl = [bg objectAtIndex:idx];
@@ -59,8 +60,7 @@
                                
                            }];
     
-    // TODO: check the expires data.  create an isValid method on the deal.
-    if ([self.deal.redeemed intValue] == 1)
+    if ([self.deal hasBeenRedeemed])
     {
         [self markAsRedeemed];
     } else {
@@ -69,7 +69,7 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.expires]];
+        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.deal.expires]];
     }
 }
 
@@ -128,21 +128,17 @@
 
 - (void)markAsRedeemed
 {
-    NSLog(@"This deal has been redeemed.");
-    
-    // TODO get the right date
-    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:today]];
+    self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:self.deal.redeemed]];
     
     self.instructionsLabel.hidden = YES;
 }
 
--(void) reset:(ttDeal *)newDeal
+-(void) reset:(ttDealAcquire *)newDeal
 {
     self.deal = newDeal;
-    if ([self.deal.redeemed intValue] == 1)
+    if ([self.deal hasBeenRedeemed])
     {
         [self markAsRedeemed];
     }

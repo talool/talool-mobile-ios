@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ttDeal;
+@class ttDealAcquire;
 
 @interface DealViewController : UIViewController {
 
 }
 
--(void) reset:(ttDeal *)newDeal;
+-(void) reset:(ttDealAcquire *)newDeal;
 
 @property (nonatomic, retain) IBOutlet UIImageView *qrCode;
 @property (nonatomic, retain) IBOutlet UIImageView *prettyPicture;
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *expiresLabel;
 
-@property (strong, nonatomic) ttDeal *deal;
+@property (strong, nonatomic) ttDealAcquire *deal;
 @property (strong, nonatomic) NSNumber *page;
 
 @end

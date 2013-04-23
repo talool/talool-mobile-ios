@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class DealViewController;
-@class ttDeal;
+@class ttDealAcquire;
 
 @interface DealModelController : NSObject <UIPageViewControllerDataSource>
 
-- (id)initWithDeal:(ttDeal *)newDeal;
-- (void)handleRedemption:(ttDeal *)newDeal;
+- (id)initWithDeal:(ttDealAcquire *)newDeal;
+- (void)handleRedemption:(ttDealAcquire *)newDeal;
 - (DealViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DealViewController *)viewController;
 
-@property (strong, nonatomic) ttDeal *deal;
+@property (strong, nonatomic) ttDealAcquire *deal;
 @property (strong, nonatomic) DealViewController *currentViewController;
 
 @end

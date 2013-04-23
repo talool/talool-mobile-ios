@@ -9,6 +9,7 @@
 #import "DealModelController.h"
 #import "DealViewController.h"
 #import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttDealAcquire.h"
 
 @interface DealModelController()
 @property (readonly, strong, nonatomic) NSArray *pageData;
@@ -18,13 +19,13 @@
 
 @synthesize deal, currentViewController;
 
-- (id)initWithDeal:(ttDeal *)newDeal
+- (id)initWithDeal:(ttDealAcquire *)newDeal
 {
     self = [super init];
     if (self) {
         // Create the data model.  We only want two pages: the deal and a blank page.
         self.deal = newDeal;
-        if ([self.deal.redeemed intValue] == 1)
+        if ([self.deal hasBeenRedeemed])
         {
             _pageData = @[@2];
         } else {
@@ -92,7 +93,7 @@
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
 
-- (void) handleRedemption:(ttDeal *)newDeal
+- (void) handleRedemption:(ttDealAcquire *)newDeal
 {
     _pageData = @[@2];
     self.deal = newDeal;

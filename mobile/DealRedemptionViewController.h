@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
 
-@class ttDeal;
+@class ttDealAcquire;
 
 @interface DealRedemptionViewController : UIViewController <UIPageViewControllerDelegate,FBFriendPickerDelegate,UIAlertViewDelegate>
 
@@ -17,6 +17,6 @@
 - (void)redeemAction;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) ttDeal *deal;
+@property (strong, nonatomic) ttDealAcquire *deal;
 
 @end
