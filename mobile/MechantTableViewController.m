@@ -30,11 +30,11 @@
 {
     [super viewWillAppear:animated];
     
-    ttCustomer *user = [CustomerHelper getLoggedInUser];
+    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    merchants = [[[NSArray alloc] initWithArray:[user.favoriteMerchants allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+    merchants = [[[NSArray alloc] initWithArray:[user getMyMerchants]] sortedArrayUsingDescriptors:sortDescriptors];
     
     [self.tableView reloadData];
 }

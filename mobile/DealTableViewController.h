@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "RewardCell.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttMerchant.h"
+
+@class ttMerchant;
 
 @interface DealTableViewController : UITableViewController
 {

@@ -11,6 +11,10 @@
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
+#import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttDealAcquire.h"
+#import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface DealTableViewController ()
 
@@ -31,20 +35,22 @@
     // Watch out.  This assumes the top controller is a MerchantViewController.
     MerchantViewController *mvc = (MerchantViewController *) self.navigationController.topViewController;
     merchant = mvc.merchant;
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
     
-    NSSet *ds = merchant.deals;
-    if ([ds count]==0) {
+    deals = [[NSArray alloc] initWithArray:[customer.deals allObjects]];
+    if ([deals count]==0) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        ds = [merchant getDeals:[CustomerHelper getLoggedInUser] context:appDelegate.managedObjectContext];
+        deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext];
         [CustomerHelper save];
     }
     
+    // TODO: Remove this sort.  Deals should be sorted on the server now.
     NSArray *sortDescriptors = [NSArray arrayWithObjects:
                                 [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
-                                [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
                                 nil];
     
-    deals = [[[NSArray alloc] initWithArray:[ds allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+    deals = [[[NSArray alloc] initWithArray:deals] sortedArrayUsingDescriptors:sortDescriptors];
 
     [self.tableView reloadData];
 
@@ -77,10 +83,10 @@
     RewardCell *cell = (RewardCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
-    ttDeal *deal = (ttDeal *)[deals objectAtIndex:indexPath.row];
+    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
     
-    if ([deal.redeemed intValue] == 1) {
+    if ([deal hasBeenRedeemed]) {
         cell.contentView.alpha = 0.5;
         cell.contentView.backgroundColor = [UIColor whiteColor];
         // Tan: [UIColor colorWithRed:218.0/255.0 green:215.0/255.0 blue:197.0/255.0 alpha:1.0];
