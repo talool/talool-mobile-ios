@@ -59,6 +59,14 @@
                                     target:self
                                     action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
+    _merchantLocation = nil;
+    _customerLocation = nil;
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -143,11 +151,12 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        // TODO get the Lat/Long
         NSError *err = [NSError alloc];
         ttCustomer *customer = [CustomerHelper getLoggedInUser];
         [self.deal setCustomer:customer];
-        [self.deal redeemHere:0.0 longitude:0.0 error:&err];
+        [self.deal redeemHere:_customerLocation.coordinate.latitude
+                     longitude:_customerLocation.coordinate.longitude
+                        error:&err];
         if (err.code < 100) {
             [CustomerHelper save];
             // reload the view
@@ -194,6 +203,61 @@
 - (void)facebookViewControllerCancelWasPressed:(id)sender {
     // clean up, if needed
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    /*
+    NSLog(@"Location Manager Stats");
+    
+    NSString *currentLatitude = [[NSString alloc]
+                                 initWithFormat:@"%+.6f",
+                                 newLocation.coordinate.latitude];
+    NSLog(@"    latitude: %@",currentLatitude);
+    
+    NSString *currentLongitude = [[NSString alloc]
+                                  initWithFormat:@"%+.6f",
+                                  newLocation.coordinate.longitude];
+    NSLog(@"    longitude: %@",currentLongitude);
+    
+    NSString *currentHorizontalAccuracy =
+    [[NSString alloc]
+     initWithFormat:@"%+.6f",
+     newLocation.horizontalAccuracy];
+    NSLog(@"    hAccuracy: %@",currentHorizontalAccuracy);
+    
+    NSString *currentAltitude = [[NSString alloc]
+                                 initWithFormat:@"%+.6f",
+                                 newLocation.altitude];
+    NSLog(@"    altitue: %@",currentAltitude);
+    
+    NSString *currentVerticalAccuracy =
+    [[NSString alloc]
+     initWithFormat:@"%+.6f",
+     newLocation.verticalAccuracy];
+    NSLog(@"    vAccuracy: %@",currentVerticalAccuracy);
+    */
+    
+    _customerLocation = newLocation;
+    
+    _distance = [_customerLocation distanceFromLocation:_merchantLocation];
+    
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error
+{
+    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Location Error"
+                                                        message:error.localizedDescription
+                                                       delegate:self
+                                              cancelButtonTitle:@"close"
+                                              otherButtonTitles:nil];
+	[errorView show];
 }
 
 

@@ -8,15 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
+#import <CoreLocation/CoreLocation.h>
 
 @class ttDealAcquire;
 
-@interface DealRedemptionViewController : UIViewController <UIPageViewControllerDelegate,FBFriendPickerDelegate,UIAlertViewDelegate>
+@interface DealRedemptionViewController : UIViewController <UIPageViewControllerDelegate,FBFriendPickerDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 
 - (IBAction)shareAction:(id)sender;
 - (void)redeemAction;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) ttDealAcquire *deal;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *merchantLocation;
+@property (strong, nonatomic) CLLocation *customerLocation;
+@property (nonatomic) CLLocationDistance distance;
 
 @end
