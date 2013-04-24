@@ -44,7 +44,7 @@
 		9168A50B170B484400E53EB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A508170B484300E53EB1 /* Default.png */; };
 		9168A50C170B484400E53EB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A509170B484400E53EB1 /* Default@2x.png */; };
 		9168A50E170B485600E53EB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A50D170B485500E53EB1 /* Icon.png */; };
-		9179AA4F172731620082DB62 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9179AA4E172731610082DB62 /* talool-api-ios.bundle */; };
+		9179AA5517276FD40082DB62 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9179AA5417276FD40082DB62 /* talool-api-ios.bundle */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
 		9183F4C6170342B000ED4844 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C4170342B000ED4844 /* AVFoundation.framework */; };
@@ -172,7 +172,7 @@
 		9168A508170B484300E53EB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9168A509170B484400E53EB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9168A50D170B485500E53EB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		9179AA4E172731610082DB62 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
+		9179AA5417276FD40082DB62 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9183F4C4170342B000ED4844 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -261,7 +261,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
-				9179AA4E172731610082DB62 /* talool-api-ios.bundle */,
+				9179AA5417276FD40082DB62 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
 				9103114116D1E53900CEE814 /* mobileTests */,
@@ -603,7 +603,7 @@
 				9197F988170D24CB00BDAA58 /* Icon_red.png in Resources */,
 				9197F989170D24CB00BDAA58 /* Icon_tan.png in Resources */,
 				9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */,
-				9179AA4F172731620082DB62 /* talool-api-ios.bundle in Resources */,
+				9179AA5517276FD40082DB62 /* talool-api-ios.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

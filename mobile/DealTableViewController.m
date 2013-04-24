@@ -33,16 +33,18 @@
 {
 
     // Watch out.  This assumes the top controller is a MerchantViewController.
+    // TODO may want to set a flag on the user
     MerchantViewController *mvc = (MerchantViewController *) self.navigationController.topViewController;
     merchant = mvc.merchant;
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
     
-    deals = [[NSArray alloc] initWithArray:[customer.deals allObjects]];
-    if ([deals count]==0) {
+    // TODO need to persist a dictionary of customer.merchants.dealAcquires... need a handy way to get the merchants out, 
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    //deals = [[NSArray alloc] initWithArray:[customer.deals allObjects]];
+    //if ([deals count]==0) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext];
         [CustomerHelper save];
-    }
+    //}
     
     // TODO: Remove this sort.  Deals should be sorted on the server now.
     NSArray *sortDescriptors = [NSArray arrayWithObjects:

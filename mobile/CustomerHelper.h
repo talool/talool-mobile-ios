@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "FacebookSDK/FacebookSDK.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttSocialAccount.h"
+
+@class ttDealAcquire, ttCustomer, ttSocialAccount;
 
 @interface CustomerHelper : NSObject
 
@@ -19,7 +19,6 @@
 + (ttCustomer *) createCustomer:(NSString *)firstName
                        lastName:(NSString *)lastName
                           email:(NSString *)email
-                       password:(NSString *)password
                             sex:(NSNumber *)sex
                   socialAccount:(ttSocialAccount *)socialAccount;
 
@@ -35,14 +34,14 @@
                          loginId:(NSString *)loginId
                         token:(NSString *)token;
 
-+ (void) registerCustomer:(ttCustomer *)customer;
++ (void) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 + (BOOL) doesCustomerExist:(NSString *) email;
 
 + (void) saveCustomer:(ttCustomer *)customer;
 
 + (void) save;
 
-+ (void) dumpCustomer;
++ (NSString *)nonrandomPassword:(NSString *)password;
 
 
 @end

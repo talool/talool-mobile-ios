@@ -10,10 +10,13 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "talool-api-ios/CustomerController.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
+#import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttSocialAccount.h"
 #import "talool-api-ios/ttToken.h"
 #import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/TaloolDeal.h"
+#import "talool-api-ios/ttDealAcquire.h"
 #import <AddressBook/AddressBook.h>
+#import "AppDelegate.h"
 
 @implementation CustomerHelper
 
@@ -24,7 +27,7 @@ static NSManagedObjectContext *_context;
     _context = context;
 }
 
-+ (ttCustomer *) createCustomer:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password sex:(NSNumber *)sex socialAccount:(ttSocialAccount *)socialAccount
++ (ttCustomer *) createCustomer:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email sex:(NSNumber *)sex socialAccount:(ttSocialAccount *)socialAccount
 {
     
     ttCustomer *user = (ttCustomer *)[NSEntityDescription
@@ -35,7 +38,6 @@ static NSManagedObjectContext *_context;
     [user setFirstName:firstName];
     [user setLastName:lastName];
     [user setEmail:email];
-    [user setPassword:password];
     [user setSex:sex];
 
     
@@ -56,7 +58,6 @@ static NSManagedObjectContext *_context;
     [user setFirstName:fb_user.first_name];
     [user setLastName:fb_user.last_name];
     [user setEmail:[fb_user objectForKey:@"email"]];
-    [user setPassword: [CustomerHelper nonrandomPassword:user.email]];
     
     NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
@@ -70,7 +71,8 @@ static NSManagedObjectContext *_context;
 
 + (ttCustomer *) getLoggedInUser
 {
-    ttCustomer *user = nil;
+    ttCustomer *user;
+
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:CUSTOMER_ENTITY_NAME inManagedObjectContext:_context];
     [request setEntity:entity];
@@ -80,13 +82,16 @@ static NSManagedObjectContext *_context;
     if ([mutableFetchResults count] > 1) {
         
         // This is an error state.  Delete the managed objects without a customer_id.
+        BOOL gotOne = false;
         for (NSManagedObject *extra_user in mutableFetchResults) {
-            if ([((ttCustomer *)extra_user).customerId intValue] > 0) {
+            if (((ttCustomer *)extra_user).customerId != nil && gotOne==false) {
                 user = (ttCustomer *)extra_user;
+                gotOne = true;
             } else {
                 [_context deleteObject:extra_user];
             }
         }
+        [CustomerHelper save];
         
     } else if ([mutableFetchResults count] == 1) {
         user = [mutableFetchResults objectAtIndex:0];
@@ -113,10 +118,12 @@ static NSManagedObjectContext *_context;
     CustomerController *cController = [[CustomerController alloc] init];
     ttCustomer *customer = [cController authenticate:email password:password context:_context error:&err];
     
-    if (customer != nil && [customer.customerId intValue] > 0) {
+    if (customer != nil && customer.customerId != nil) {
         [CustomerHelper refreshLoggedInUser];
         [CustomerHelper save];
+        
     } else {
+        NSLog(@"auth failed: %@",err.localizedDescription);
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"try again" withSender:nil];
     }
 }
@@ -148,18 +155,17 @@ static NSManagedObjectContext *_context;
                                           inManagedObjectContext:_context];
     
     sa.loginId = loginId;
-    sa.token = token;
-    sa.socialNetwork = [[NSNumber alloc] initWithInt:1]; // TODO this value should be defined in the DB
+    sa.socialNetwork = [[NSNumber alloc] initWithInt:1]; // TODO use the values defined in thrift, or the persistence helper
     return sa;
 }
 
-+ (void) registerCustomer:(ttCustomer *)customer
++ (void) registerCustomer:(ttCustomer *)customer password:(NSString *) password
 {
     // Register the user.  Check the response and display errors as needed
     CustomerController *cController = [[CustomerController alloc] init];
     
     NSError *err = [NSError alloc];
-    customer = [cController registerUser:customer context:_context error:&err];
+    customer = [cController registerUser:customer password:password context:_context error:&err];
     ttToken *token = [customer getTaloolToken];
     if (customer != nil && [token.token length] > 0) {
         [CustomerHelper save];
@@ -171,16 +177,17 @@ static NSManagedObjectContext *_context;
 
 + (void) save
 {
-    //TODO: ERROR CHECKING?
-    // * delete any current user if once exists
+
+
     NSError *err = nil;
     if (![_context save:&err]) {
-        NSLog(@"APP: OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
+        NSLog(@"APP: OH SHIT!!!!");
+        //NSLog(@"APP: OH SHIT!!!! Failed to save context: %@ %@",err, [err userInfo]);
+        NSLog(@"APP: OH SHIT!!!! Failed to save context: %@",[err userInfo]);
+        NSLog(@"APP: OH SHIT!!!!");
         abort();
     }
-    
-    //[CustomerHelper dumpCustomer];
-    //NSLog(@"APP: context saved");
+
 }
 
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender
@@ -233,23 +240,5 @@ static NSManagedObjectContext *_context;
     }
 }
 
-+ (void) dumpCustomer
-{
-    ttCustomer *c = [CustomerHelper getLoggedInUser];
-    NSLog(@"Customer id: %@", c.customerId);
-    NSLog(@"Merchant Count: %lu", (unsigned long)[c.favoriteMerchants count]);
-    NSEnumerator *me = [c.favoriteMerchants objectEnumerator];
-    ttMerchant *m;
-    while (m = [me nextObject]) {
-        NSLog(@"   Merchant Name: %@", m.name);
-        NSLog(@"   Merchant Deals Count: %lu", (unsigned long)[m.deals count]);
-        NSEnumerator *de = [m.deals objectEnumerator];
-        TaloolDeal *d;
-        while (d = [de nextObject]) {
-            NSLog(@"      Deal Title: %@, Deal Redeemed: %@", d.title, d.redeemed);
-        }
-    }
-    
-}
 
 @end
