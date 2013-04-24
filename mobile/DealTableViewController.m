@@ -42,11 +42,10 @@
     //deals = [[NSArray alloc] initWithArray:[customer.deals allObjects]];
     //if ([deals count]==0) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext];
-        [CustomerHelper save];
+        NSError *err = nil;
+        deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext error:&err];
     //}
     
-    // TODO: Remove this sort.  Deals should be sorted on the server now.
     NSArray *sortDescriptors = [NSArray arrayWithObjects:
                                 [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],

@@ -10,6 +10,7 @@
 #import "DealModelController.h"
 #import "DealViewController.h"
 #import "CustomerHelper.h"
+#import "AppDelegate.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttDealAcquire.h"
@@ -89,11 +90,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    // put the Deal back in the Merchant object and the Merchant back in the User object
-    ttCustomer *c = [CustomerHelper getLoggedInUser];
-    [c removeDealsObject:self.deal];
-    [c addDealsObject:self.deal];
-    [CustomerHelper save];
+
     
 }
 
@@ -151,18 +148,24 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSError *err = [NSError alloc];
         ttCustomer *customer = [CustomerHelper getLoggedInUser];
         [self.deal setCustomer:customer];
         [self.deal redeemHere:_customerLocation.coordinate.latitude
-                     longitude:_customerLocation.coordinate.longitude
-                        error:&err];
+                    longitude:_customerLocation.coordinate.longitude
+                        error:&err
+                      context:appDelegate.managedObjectContext];
         if (err.code < 100) {
-            [CustomerHelper save];
-            // reload the view
             [self.modelController handleRedemption:self.deal];
         } else {
-            // TODO show an error
+            // show an error
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                                  message:@"We failed to redeem this deal."
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Please Try Again"
+                                                        otherButtonTitles:nil];
+            [errorView show];
         }
         
         

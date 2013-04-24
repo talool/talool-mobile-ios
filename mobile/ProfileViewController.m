@@ -76,7 +76,6 @@
         NSArray *sa = [customer.socialAccounts allObjects];
         if ([sa count]>0) {
             ttSocialAccount *fb = [sa objectAtIndex:0];
-            NSLog(@"FB id: %@",fb.loginId);
             self.profilePictureView.profileID = fb.loginId;
         } else {
             self.profilePictureView.profileID = nil;

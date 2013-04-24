@@ -62,23 +62,29 @@
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
              if (!error) {
-                 
+                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                  // If there is not saved user (in core data), but there is an active FB session
                  // Then we should create the user (if needed) and save the user (to core data)
                  if ([CustomerHelper getLoggedInUser] == nil) {
-                     ttCustomer *customer = [CustomerHelper createCustomerFromFacebookUser:user];
+                     ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
                      
                      // TODO: see if we have come up with a better method to generate a password for FB users
-                     NSString *passwordHack = [CustomerHelper nonrandomPassword:[user objectForKey:@"email"]];
+                     NSString *passwordHack = [ttCustomer nonrandomPassword:[user objectForKey:@"email"]];
                      
-                     if ([CustomerHelper doesCustomerExist:customer.email]) {
+                     if ([ttCustomer doesCustomerExist:customer.email]) {
                          // auth the user
                          [CustomerHelper loginUser:customer.email password:passwordHack];
-                         // add the social account
-                         ttSocialAccount *sa = [FacebookHelper createSocialAccount:user];
-                         ttCustomer *user = [CustomerHelper getLoggedInUser];
-                         [user addSocialAccountsObject:sa];
-                         [CustomerHelper save];
+                         ttCustomer *customer = [CustomerHelper getLoggedInUser];
+                         // TODO check for the FB account specifically
+                         if ([customer.socialAccounts count] == 0) {
+                             // add the social account
+                             ttSocialAccount *sa = [FacebookHelper createSocialAccount:user];
+                             // check for the presence of the social account
+                             [customer addSocialAccountsObject:sa];
+                             // save the user so the social account is stored
+                             [ttCustomer saveCustomer:customer context:appDelegate.managedObjectContext error:nil];
+                         }
+                         
                          
                      } else {
                          [CustomerHelper registerCustomer:customer password:passwordHack];
@@ -88,13 +94,11 @@
                  
                  // If we have a logged in user (possibly as a result of the FB reg above)
                  // Then we should check if any FB data has changed and navigate to the main view
-                 if ([CustomerHelper isUserLoggedIn]) {
+                 if ([CustomerHelper getLoggedInUser] != nil) {
                      // TODO consider updating the user if needed
-                     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                      if (self.navigationController.visibleViewController != appDelegate.mainViewController) {
                          [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
                      }
-                     [FacebookHelper getFriends];
                  }
                  
              }
@@ -164,10 +168,12 @@
 
 - (void)logOut
 {
-    [CustomerHelper logoutUser];
-    if ([CustomerHelper isUserLoggedIn]) {
-        NSLog(@"OH SHIT!!!! The user isn't completely logged out");
+    // CHECK FOR A FACEBOOK SESSION
+    if (FBSession.activeSession.isOpen) {
+        [FBSession.activeSession closeAndClearTokenInformation];
     }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [ttCustomer logoutUser:appDelegate.managedObjectContext];
 }
 
 
@@ -180,13 +186,8 @@
 
 - (IBAction)loginAction:(id) sender
 {
-    // make sure we're logged out
-    [CustomerHelper logoutUser];
-    
-    [CustomerHelper loginUser:emailField.text password:passwordField.text];
-    
-    // don't leave the page if reg failed
-    if ([CustomerHelper isUserLoggedIn]) {
+    // don't leave the page if login failed
+    if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
