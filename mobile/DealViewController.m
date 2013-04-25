@@ -38,19 +38,11 @@
     self.titleLabel.text = self.deal.deal.title;
     self.summaryLabel.text = self.deal.deal.summary;
     self.detailsLabel.text = self.deal.deal.details;
-    NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
-                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
-                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
-                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test4.png",
-                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test5.png",
-                          @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
-                          ]];
-    
-    int idx = [self.deal.dealAcquireId intValue] % [bg count];
+
     
     // Here we use the new provided setImageWithURL: method to load the web image
-    NSString *imageUrl = [bg objectAtIndex:idx];
-    [self.prettyPicture setImageWithURL:[NSURL URLWithString:imageUrl]
+    NSLog(@"loading image %@",self.deal.deal.imageUrl);
+    [self.prettyPicture setImageWithURL:[NSURL URLWithString:self.deal.deal.imageUrl]
                     placeholderImage:[UIImage imageNamed:@"Default.png"]
                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                if (error !=  nil) {

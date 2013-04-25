@@ -8,6 +8,7 @@
 
 #import "MerchantViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "talool-api-ios/ttMerchantLocation.h"
 
 @interface MerchantViewController ()
 
@@ -20,19 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSMutableArray *bg = [[NSMutableArray alloc] initWithArray:@[
-                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test2.png",
-                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test3.png",
-                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test4.png",
-                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test5.png",
-                                @"http://i567.photobucket.com/albums/ss116/alphabetabeta/bg_test.png"
-                                ]];
-    
-    int idx = [merchant.merchantId intValue] % [bg count];
+
     
     // Here we use the new provided setImageWithURL: method to load the web image
-    NSString *imageUrl = [bg objectAtIndex:idx];
-    [backgroundImage setImageWithURL:[NSURL URLWithString:imageUrl]
+    [backgroundImage setImageWithURL:[NSURL URLWithString:merchant.location.logoUrl]
                    placeholderImage:[UIImage imageNamed:@"Default.png"]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               if (error !=  nil) {
