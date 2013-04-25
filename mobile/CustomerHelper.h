@@ -14,6 +14,7 @@
 @interface CustomerHelper : NSObject
 
 + (void) setContext:(NSManagedObjectContext *)context;
++ (NSManagedObjectContext *) getContext;
 
 + (ttCustomer *) getLoggedInUser;
 + (void) refreshLoggedInUser;

@@ -26,6 +26,10 @@ static NSManagedObjectContext *_context;
 {
     _context = context;
 }
++ (NSManagedObjectContext *) getContext
+{
+    return _context;
+}
 
 + (ttCustomer *) getLoggedInUser
 {

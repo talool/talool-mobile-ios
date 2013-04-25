@@ -13,13 +13,14 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "CustomerHelper.h"
 #import "AppDelegate.h"
+#import "TaloolColor.h"
 
 @interface MechantTableViewController ()
 
 @end
 
 @implementation MechantTableViewController
-@synthesize merchants;
+@synthesize merchants, sortDescriptors;
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -33,7 +34,7 @@
     ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     merchants = [[[NSArray alloc] initWithArray:[user getMyMerchants]] sortedArrayUsingDescriptors:sortDescriptors];
     
     [self.tableView reloadData];
@@ -42,6 +43,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [TaloolColor gray_3];
+    [refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 
 }
 
@@ -88,6 +94,19 @@
     }
 }
 
+- (void) refreshMerchants
+{
+    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
+    [user refreshMerchants:[CustomerHelper getContext]];
+    merchants = [[[NSArray alloc] initWithArray:[user getMyMerchants]] sortedArrayUsingDescriptors:sortDescriptors];
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+}
+
+- (void) updateTable
+{
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
 
 
 

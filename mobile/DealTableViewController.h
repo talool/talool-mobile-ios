@@ -18,4 +18,5 @@
 }
 @property (nonatomic, retain) NSArray *deals;
 @property (nonatomic, retain) ttMerchant *merchant;
+@property (nonatomic, retain) NSArray *sortDescriptors;
 @end

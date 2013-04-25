@@ -11,6 +11,7 @@
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
+#import "TaloolColor.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -21,11 +22,16 @@
 @end
 
 @implementation DealTableViewController
-@synthesize deals, merchant;
+@synthesize deals, merchant, sortDescriptors;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [TaloolColor gray_3];
+    [refreshControl addTarget:self action:@selector(refreshDeals) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
     
 }
 
@@ -37,16 +43,13 @@
     MerchantViewController *mvc = (MerchantViewController *) self.navigationController.topViewController;
     merchant = mvc.merchant;
     
-    // TODO need to persist a dictionary of customer.merchants.dealAcquires... need a handy way to get the merchants out, 
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    //deals = [[NSArray alloc] initWithArray:[customer.deals allObjects]];
-    //if ([deals count]==0) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        NSError *err = nil;
-        deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext error:&err];
-    //}
+
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSError *err = nil;
+    deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext error:&err];
     
-    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+    sortDescriptors = [NSArray arrayWithObjects:
                                 [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
                                 nil];
@@ -110,6 +113,22 @@
         controller.title = merchant.name;
         
     }
+}
+
+
+- (void) refreshDeals
+{
+    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
+    NSError *error = nil;
+    deals = [user refreshMyDealsForMerchant:merchant context:[CustomerHelper getContext] error:&error purge:true];
+    deals = [[[NSArray alloc] initWithArray:deals] sortedArrayUsingDescriptors:sortDescriptors];
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+}
+
+- (void) updateTable
+{
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 @end
