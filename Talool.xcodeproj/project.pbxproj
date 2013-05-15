@@ -25,7 +25,6 @@
 		9103113E16D1E53900CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103114616D1E53900CEE814 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103114416D1E53900CEE814 /* InfoPlist.strings */; };
 		9103114916D1E53900CEE814 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103114816D1E53900CEE814 /* mobileTests.m */; };
-		9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115816D316BA00CEE814 /* ExploreTableViewController.m */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
@@ -69,16 +68,16 @@
 		9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F984170D24CB00BDAA58 /* Icon_teal.png */; };
 		9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
 		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
-		91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC816D5D33000D1CA96 /* BaseTableViewController.m */; };
 		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
 		91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECD16D5E11700D1CA96 /* StarsForeground.png */; };
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
+		919A32F91743FFE90093FAC4 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */; };
 		91BDEFDB16E4E9DC0021E605 /* DealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DealViewController.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 		91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
-		91F5BD341729A080001E7A07 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 91F5BD331729A080001E7A07 /* talool-api-ios.bundle */; };
+		91F5BD371729B8E9001E7A07 /* SearchFilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F5BD361729B8E9001E7A07 /* SearchFilterTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,8 +144,6 @@
 		9103114516D1E53900CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9103114716D1E53900CEE814 /* mobileTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileTests.h; sourceTree = "<group>"; };
 		9103114816D1E53900CEE814 /* mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobileTests.m; sourceTree = "<group>"; };
-		9103115716D316BA00CEE814 /* ExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableViewController.h; sourceTree = "<group>"; };
-		9103115816D316BA00CEE814 /* ExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableViewController.m; sourceTree = "<group>"; };
 		9103115C16D3179E00CEE814 /* MerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantCell.h; sourceTree = "<group>"; };
 		9103115D16D3179E00CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
 		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
@@ -201,8 +198,6 @@
 		9197F98D170F157200BDAA58 /* TaloolColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolColor.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantTableViewController.m; sourceTree = "<group>"; };
-		91986EC716D5D33000D1CA96 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		91986EC816D5D33000D1CA96 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		91986ECC16D5E11700D1CA96 /* StarsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsBackground.png; sourceTree = "<group>"; };
 		91986ECD16D5E11700D1CA96 /* StarsForeground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsForeground.png; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* RewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardCell.h; sourceTree = "<group>"; };
@@ -211,12 +206,14 @@
 		91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTabBarController.h; sourceTree = "<group>"; };
 		91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTabBarController.m; sourceTree = "<group>"; };
+		919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		91BDEFD416E4E6830021E605 /* DealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealViewController.h; sourceTree = "<group>"; };
 		91BDEFD516E4E6830021E605 /* DealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealViewController.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
 		91CC60BE16F5222C00647AEC /* FacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookHelper.m; sourceTree = "<group>"; };
 		91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "talool-api-ios.xcodeproj"; path = "talool-api-ios/talool-api-ios/talool-api-ios.xcodeproj"; sourceTree = "<group>"; };
-		91F5BD331729A080001E7A07 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
+		91F5BD351729B8E9001E7A07 /* SearchFilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFilterTableViewController.h; sourceTree = "<group>"; };
+		91F5BD361729B8E9001E7A07 /* SearchFilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFilterTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +258,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
-				91F5BD331729A080001E7A07 /* talool-api-ios.bundle */,
+				919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
 				9103114116D1E53900CEE814 /* mobileTests */,
@@ -451,16 +448,14 @@
 			isa = PBXGroup;
 			children = (
 				9103117A16D467AE00CEE814 /* Table Cells */,
-				9103115716D316BA00CEE814 /* ExploreTableViewController.h */,
-				9103115816D316BA00CEE814 /* ExploreTableViewController.m */,
 				91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */,
 				91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */,
-				91986EC716D5D33000D1CA96 /* BaseTableViewController.h */,
-				91986EC816D5D33000D1CA96 /* BaseTableViewController.m */,
 				918DE5C61702204C0054C004 /* DealTableViewController.h */,
 				918DE5C71702204E0054C004 /* DealTableViewController.m */,
 				9168A4D9170496CC00E53EB1 /* SetttingsTableViewController.h */,
 				9168A4DA170496CC00E53EB1 /* SetttingsTableViewController.m */,
+				91F5BD351729B8E9001E7A07 /* SearchFilterTableViewController.h */,
+				91F5BD361729B8E9001E7A07 /* SearchFilterTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -603,7 +598,7 @@
 				9197F988170D24CB00BDAA58 /* Icon_red.png in Resources */,
 				9197F989170D24CB00BDAA58 /* Icon_tan.png in Resources */,
 				9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */,
-				91F5BD341729A080001E7A07 /* talool-api-ios.bundle in Resources */,
+				919A32F91743FFE90093FAC4 /* talool-api-ios.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,11 +637,9 @@
 				9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */,
 				9103112916D1E53800CEE814 /* ProfileViewController.m in Sources */,
 				9103113016D1E53800CEE814 /* ExploreViewController.m in Sources */,
-				9103115A16D316BA00CEE814 /* ExploreTableViewController.m in Sources */,
 				9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */,
 				9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */,
 				91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */,
-				91986EC916D5D33000D1CA96 /* BaseTableViewController.m in Sources */,
 				91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
@@ -660,6 +653,7 @@
 				9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */,
 				9165344A170F66C000E1332F /* DealRedemptionViewController.m in Sources */,
 				9165344D170F66F200E1332F /* DealModelController.m in Sources */,
+				91F5BD371729B8E9001E7A07 /* SearchFilterTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

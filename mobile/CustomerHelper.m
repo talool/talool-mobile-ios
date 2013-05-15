@@ -8,7 +8,6 @@
 
 #import "CustomerHelper.h"
 #import "FacebookSDK/FacebookSDK.h"
-#import "talool-api-ios/CustomerController.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttSocialAccount.h"

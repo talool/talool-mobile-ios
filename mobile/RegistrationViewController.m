@@ -9,7 +9,6 @@
 // TODO: enable/disable the button based on ttCustomer.isValid
 #import "AppDelegate.h"
 #import "RegistrationViewController.h"
-#import "talool-api-ios/CustomerController.h"
 #import "CustomerHelper.h"
 
 @interface RegistrationViewController ()

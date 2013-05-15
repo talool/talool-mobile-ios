@@ -37,11 +37,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
-    // Watch out.  This assumes the top controller is a MerchantViewController.
-    // TODO may want to set a flag on the user
-    MerchantViewController *mvc = (MerchantViewController *) self.navigationController.topViewController;
-    merchant = mvc.merchant;
     
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
 

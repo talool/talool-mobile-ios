@@ -1,6 +1,6 @@
 //
-//  SecondViewController.h
-//  mobile
+//  ExploreViewController.h
+//  Talool
 //
 //  Created by Douglas McCuen on 2/17/13.
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
@@ -12,10 +12,8 @@
 
 @interface ExploreViewController : UIViewController
 {
-    ttMerchant *merchant;
-    IBOutlet UILabel *nameLabel;
+
 }
 
-@property (nonatomic, retain) ttMerchant *merchant;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MerchantViewController.h"
+#import "DealTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "talool-api-ios/ttMerchantLocation.h"
 
@@ -64,6 +65,14 @@
 - (IBAction)infoAction:(id)sender
 {
     NSLog(@"show address and shit");
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"listDeals"]) {
+        DealTableViewController *dtvc = [segue destinationViewController];
+        [dtvc setMerchant:merchant];
+    }
 }
 
 @end

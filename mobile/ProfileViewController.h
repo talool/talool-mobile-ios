@@ -12,7 +12,7 @@
 
 @interface ProfileViewController : UIViewController {
     ttCustomer *customer;
-    IBOutlet UILabel *nameLabel;
+    //IBOutlet UILabel *nameLabel;
 }
 
 - (void)settings:(id)sender;
