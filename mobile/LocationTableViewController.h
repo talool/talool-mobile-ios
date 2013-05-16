@@ -1,8 +1,8 @@
 //
-//  DealTableViewController.h
-//  mobile
+//  LocationTableViewController.h
+//  Talool
 //
-//  Created by Douglas McCuen on 3/26/13.
+//  Created by Douglas McCuen on 5/15/13.
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
@@ -10,12 +10,13 @@
 
 @class ttMerchant;
 
-@interface DealTableViewController : UITableViewController
+@interface LocationTableViewController : UITableViewController
 {
-    NSArray *deals;
     ttMerchant *merchant;
+    NSArray *locations;
 }
-@property (nonatomic, retain) NSArray *deals;
+@property (nonatomic, retain) NSArray *locations;
 @property (nonatomic, retain) ttMerchant *merchant;
 @property (nonatomic, retain) NSArray *sortDescriptors;
+
 @end

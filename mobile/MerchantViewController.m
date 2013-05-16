@@ -7,6 +7,7 @@
 //
 
 #import "MerchantViewController.h"
+#import "MerchantLocationViewController.h"
 #import "DealTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "talool-api-ios/ttMerchantLocation.h"
@@ -99,17 +100,21 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"listDeals"]) {
+    if ([[segue identifier] isEqualToString:@"listDeals"])
+    {
         DealTableViewController *dtvc = [segue destinationViewController];
         [dtvc setMerchant:merchant];
+    }
+    else if ([[segue identifier] isEqualToString:@"MerchantLocations"])
+    {
+        MerchantLocationViewController *mlvc = [segue destinationViewController];
+        [mlvc setMerchant:merchant];
     }
 }
 
 - (NSString *) getFavLabel
 {
     NSString *label;
-    
-    //[cell.textLabel setAttributedText:attributedString];
     
     if ([merchant isFavorite])
     {

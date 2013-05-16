@@ -331,6 +331,7 @@
                                 </state>
                                 <connections>
                                     <action selector="infoAction:" destination="SSH-fd-inc" eventType="touchUpInside" id="RDQ-MC-Y2R"/>
+                                    <segue destination="h0b-Jx-9cc" kind="push" identifier="MerchantLocations" id="qmT-u5-lmO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,6 +398,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sya-fh-Al7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="90"/>
+        </scene>
+        <!--Merchant Location View Controller-->
+        <scene sceneID="EHU-De-QAF">
+            <objects>
+                <viewController storyboardIdentifier="MerchantLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0b-Jx-9cc" customClass="MerchantLocationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0jG-m7-IXb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOt-aR-2Nl">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="227" id="eQd-nP-YIA"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="h0b-Jx-9cc" id="4Rp-5w-PqP"/>
+                                </connections>
+                            </mapView>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxA-bk-0Wp">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="tfJ-Aq-IGD" kind="embed" identifier="listLocations" id="JGT-Jg-R1A"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BOt-aR-2Nl" firstAttribute="trailing" secondItem="0jG-m7-IXb" secondAttribute="trailing" type="default" id="Jbj-Hc-3ao"/>
+                            <constraint firstItem="dxA-bk-0Wp" firstAttribute="trailing" secondItem="0jG-m7-IXb" secondAttribute="trailing" type="default" id="PBL-9l-JWm"/>
+                            <constraint firstItem="dxA-bk-0Wp" firstAttribute="bottom" secondItem="0jG-m7-IXb" secondAttribute="bottom" type="default" id="XtB-3f-HMB"/>
+                            <constraint firstItem="BOt-aR-2Nl" firstAttribute="leading" secondItem="0jG-m7-IXb" secondAttribute="leading" type="default" id="lZp-Wk-WqE"/>
+                            <constraint firstItem="dxA-bk-0Wp" firstAttribute="top" secondItem="0jG-m7-IXb" secondAttribute="top" constant="223" id="rq3-L4-U39"/>
+                            <constraint firstItem="BOt-aR-2Nl" firstAttribute="top" secondItem="0jG-m7-IXb" secondAttribute="top" type="default" id="s4B-Yl-M3h"/>
+                            <constraint firstItem="dxA-bk-0Wp" firstAttribute="leading" secondItem="0jG-m7-IXb" secondAttribute="leading" type="default" id="ty5-Sn-QPo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UHC-Fr-cda"/>
+                    <connections>
+                        <outlet property="locationMapView" destination="BOt-aR-2Nl" id="kyl-ur-4C0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8s-LY-Bui" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2198" y="-735"/>
         </scene>
         <!--Deal Table View Controller-->
         <scene sceneID="NyG-yp-H4m">
@@ -665,6 +709,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m10-Rd-Ynj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-316" y="-1260"/>
+        </scene>
+        <!--Location Table View Controller-->
+        <scene sceneID="8OU-vj-ygN">
+            <objects>
+                <tableViewController id="tfJ-Aq-IGD" customClass="LocationTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="UWG-qZ-WAV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="178"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="60" id="tWM-W5-RCP" customClass="LocationCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon_teal.png" translatesAutoresizingMaskIntoConstraints="NO" id="vkD-sJ-JNA">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="0e6-DK-ffO"/>
+                                                <constraint firstAttribute="width" constant="50" id="fsr-Yz-pyz"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDl-Py-1mb">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="27" id="Tbm-Cd-1yz"/>
+                                                <constraint firstAttribute="width" constant="219" id="jX4-oJ-F0E"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3W-Uk-PTc">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="08J-RY-Qsv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="leading" secondItem="xDl-Py-1mb" secondAttribute="leading" type="default" id="3C7-vi-Pq4"/>
+                                    <constraint firstItem="vkD-sJ-JNA" firstAttribute="leading" secondItem="tWM-W5-RCP" secondAttribute="leading" constant="5" id="Afv-1e-LKQ"/>
+                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="top" secondItem="tWM-W5-RCP" secondAttribute="top" constant="4" id="CrE-2a-EW7"/>
+                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="top" secondItem="tWM-W5-RCP" secondAttribute="top" constant="29" id="kHT-zw-1Hq"/>
+                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="leading" secondItem="tWM-W5-RCP" secondAttribute="leading" constant="72" id="odW-Uw-k96"/>
+                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="trailing" secondItem="xDl-Py-1mb" secondAttribute="trailing" type="default" id="pcr-Id-5W6"/>
+                                    <constraint firstItem="vkD-sJ-JNA" firstAttribute="centerY" secondItem="tWM-W5-RCP" secondAttribute="centerY" type="default" id="y7r-Q8-03S"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="addressLabel" destination="w3W-Uk-PTc" id="73H-ZB-tZm"/>
+                                    <outlet property="iconView" destination="vkD-sJ-JNA" id="CWY-qL-40e"/>
+                                    <outlet property="nameLabel" destination="xDl-Py-1mb" id="Lpu-z5-w4b"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tfJ-Aq-IGD" id="3SQ-wu-Bp4"/>
+                            <outlet property="delegate" destination="tfJ-Aq-IGD" id="KF0-uB-n2T"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5X-X2-7wQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2644" y="-492"/>
         </scene>
         <!--Deal Redemption View Controller-->
         <scene sceneID="oFg-cU-Vkj">
@@ -1233,6 +1344,17 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="LocationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LocationTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationTableViewController.h"/>
+        </class>
         <class className="MechantTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MechantTableViewController.h"/>
             <relationships>
@@ -1242,9 +1364,16 @@
         <class className="MerchantCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantCell.h"/>
         </class>
+        <class className="MerchantLocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantLocationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="locationMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
         <class className="MerchantViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantViewController.h"/>
             <relationships>
+                <relationship kind="action" name="favoriteAction:"/>
                 <relationship kind="action" name="infoAction:"/>
                 <relationship kind="action" name="redeemAction:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>

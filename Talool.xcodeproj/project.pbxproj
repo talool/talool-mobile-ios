@@ -82,6 +82,15 @@
 		919A330717443F770093FAC4 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A32FE17443A930093FAC4 /* FAImageView.m */; };
 		919A330817443F770093FAC4 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330017443A930093FAC4 /* UIFont+FontAwesome.m */; };
 		919A330917443F770093FAC4 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330217443A930093FAC4 /* NSString+FontAwesome.m */; };
+		919A330C17447C3B0093FAC4 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
+		919A330F17447CFB0093FAC4 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330E17447CFB0093FAC4 /* LocationTableViewController.m */; };
+		919A3311174510AA0093FAC4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919A3310174510A90093FAC4 /* MapKit.framework */; };
+		919A3314174516620093FAC4 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
+		919A331717452F1C0093FAC4 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
+		919A331817453AF70093FAC4 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
+		919A331917453B120093FAC4 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
+		919A331A17453B120093FAC4 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330E17447CFB0093FAC4 /* LocationTableViewController.m */; };
+		919A331B17453B120093FAC4 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
 		91BDEFDB16E4E9DC0021E605 /* DealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DealViewController.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 		91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
@@ -222,6 +231,15 @@
 		919A330017443A930093FAC4 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
 		919A330117443A930093FAC4 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		919A330217443A930093FAC4 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		919A330A17447C390093FAC4 /* MerchantLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantLocationViewController.h; sourceTree = "<group>"; };
+		919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantLocationViewController.m; sourceTree = "<group>"; };
+		919A330D17447CFB0093FAC4 /* LocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewController.h; sourceTree = "<group>"; };
+		919A330E17447CFB0093FAC4 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
+		919A3310174510A90093FAC4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		919A3312174516610093FAC4 /* MerchantLocationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantLocationAnnotation.h; sourceTree = "<group>"; };
+		919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantLocationAnnotation.m; sourceTree = "<group>"; };
+		919A331517452F1B0093FAC4 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		919A331617452F1B0093FAC4 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		91BDEFD416E4E6830021E605 /* DealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealViewController.h; sourceTree = "<group>"; };
 		91BDEFD516E4E6830021E605 /* DealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealViewController.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
@@ -236,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919A3311174510AA0093FAC4 /* MapKit.framework in Frameworks */,
 				9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */,
 				9183F4CB170342D500ED4844 /* ImageIO.framework in Frameworks */,
 				9183F4C9170342C800ED4844 /* CoreVideo.framework in Frameworks */,
@@ -273,6 +292,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
+				919A3310174510A90093FAC4 /* MapKit.framework */,
 				919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
@@ -398,6 +418,8 @@
 				9103116016D317E800CEE814 /* FavoriteMerchantCell.m */,
 				91986EFA16D7150400D1CA96 /* RewardCell.h */,
 				91986EFB16D7150400D1CA96 /* RewardCell.m */,
+				919A331517452F1B0093FAC4 /* LocationCell.h */,
+				919A331617452F1B0093FAC4 /* LocationCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -418,6 +440,10 @@
 				914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */,
 				918DE5C016FFA23D0054C004 /* MerchantViewController.h */,
 				918DE5C116FFA23D0054C004 /* MerchantViewController.m */,
+				919A330A17447C390093FAC4 /* MerchantLocationViewController.h */,
+				919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */,
+				919A3312174516610093FAC4 /* MerchantLocationAnnotation.h */,
+				919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -473,6 +499,8 @@
 				9168A4DA170496CC00E53EB1 /* SetttingsTableViewController.m */,
 				91F5BD351729B8E9001E7A07 /* SearchFilterTableViewController.h */,
 				91F5BD361729B8E9001E7A07 /* SearchFilterTableViewController.m */,
+				919A330D17447CFB0093FAC4 /* LocationTableViewController.h */,
+				919A330E17447CFB0093FAC4 /* LocationTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -665,6 +693,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919A331917453B120093FAC4 /* LocationCell.m in Sources */,
+				919A331A17453B120093FAC4 /* LocationTableViewController.m in Sources */,
+				919A331B17453B120093FAC4 /* MerchantLocationAnnotation.m in Sources */,
+				919A331817453AF70093FAC4 /* MerchantLocationViewController.m in Sources */,
 				919A330717443F770093FAC4 /* FAImageView.m in Sources */,
 				919A330817443F770093FAC4 /* UIFont+FontAwesome.m in Sources */,
 				919A330917443F770093FAC4 /* NSString+FontAwesome.m in Sources */,
@@ -700,6 +732,10 @@
 				919A330317443A930093FAC4 /* FAImageView.m in Sources */,
 				919A330417443A930093FAC4 /* UIFont+FontAwesome.m in Sources */,
 				919A330517443A930093FAC4 /* NSString+FontAwesome.m in Sources */,
+				919A330C17447C3B0093FAC4 /* MerchantLocationViewController.m in Sources */,
+				919A330F17447CFB0093FAC4 /* LocationTableViewController.m in Sources */,
+				919A3314174516620093FAC4 /* MerchantLocationAnnotation.m in Sources */,
+				919A331717452F1C0093FAC4 /* LocationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

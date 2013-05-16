@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "TaloolColor.h"
+#import "RewardCell.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttMerchant.h"
