@@ -10,14 +10,17 @@
 #import "DealTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "talool-api-ios/ttMerchantLocation.h"
+#import "CustomerHelper.h"
+#import "talool-api-ios/ttCustomer.h"
+#import "NSString+FontAwesome.h"
 
 @interface MerchantViewController ()
-
+@property (nonatomic, retain) UIBarButtonItem *favButton;
 @end
 
 @implementation MerchantViewController
 
-@synthesize merchant;
+@synthesize merchant, favButton;
 
 - (void)viewDidLoad
 {
@@ -34,6 +37,19 @@
                               }
                           
                           }];
+    
+    
+    favButton = [[UIBarButtonItem alloc]
+                 initWithTitle:[self getFavLabel]
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(favoriteAction:)];
+    self.navigationItem.rightBarButtonItem = favButton;
+    
+    UIFont *awesome = [UIFont fontWithName:@"FontAwesome" size:18.0];
+    NSDictionary *customTextAttrs = [NSDictionary dictionaryWithObjectsAndKeys: awesome, UITextAttributeFont, nil];
+    
+    [favButton setTitleTextAttributes:customTextAttrs forState:UIControlStateNormal];
     
 }
 
@@ -67,12 +83,44 @@
     NSLog(@"show address and shit");
 }
 
+- (IBAction)favoriteAction:(id)sender
+{
+    ttCustomer *customer = [ttCustomer getLoggedInUser:[CustomerHelper getContext]];
+    if ([merchant isFavorite])
+    {
+        [merchant unfavorite:customer];
+    }
+    else
+    {
+        [merchant favorite:customer];
+    }
+    [favButton setTitle:[self getFavLabel]];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"listDeals"]) {
         DealTableViewController *dtvc = [segue destinationViewController];
         [dtvc setMerchant:merchant];
     }
+}
+
+- (NSString *) getFavLabel
+{
+    NSString *label;
+    
+    //[cell.textLabel setAttributedText:attributedString];
+    
+    if ([merchant isFavorite])
+    {
+        label = [NSString fontAwesomeIconStringForEnum:FAIconHeart];
+    }
+    else
+    {
+        label = [NSString fontAwesomeIconStringForEnum:FAIconHeartEmpty];
+    }
+
+    return label;
 }
 
 @end

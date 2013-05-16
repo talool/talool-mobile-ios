@@ -10,6 +10,14 @@
 
 @implementation FavoriteMerchantCell
 
+- (id) initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        
+    }
+    return self;
+}
 
 - (void)setIcon:(UIImage *)newIcon
 {

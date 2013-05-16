@@ -74,6 +74,14 @@
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
 		919A32F91743FFE90093FAC4 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */; };
+		919A32FB17443A5E0093FAC4 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919A32FA17443A5E0093FAC4 /* FontAwesome.ttf */; };
+		919A330317443A930093FAC4 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A32FE17443A930093FAC4 /* FAImageView.m */; };
+		919A330417443A930093FAC4 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330017443A930093FAC4 /* UIFont+FontAwesome.m */; };
+		919A330517443A930093FAC4 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330217443A930093FAC4 /* NSString+FontAwesome.m */; };
+		919A330617443D680093FAC4 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 919A32FA17443A5E0093FAC4 /* FontAwesome.ttf */; };
+		919A330717443F770093FAC4 /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A32FE17443A930093FAC4 /* FAImageView.m */; };
+		919A330817443F770093FAC4 /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330017443A930093FAC4 /* UIFont+FontAwesome.m */; };
+		919A330917443F770093FAC4 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330217443A930093FAC4 /* NSString+FontAwesome.m */; };
 		91BDEFDB16E4E9DC0021E605 /* DealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BDEFD516E4E6830021E605 /* DealViewController.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 		91CC60EF16F6CC5C00647AEC /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
@@ -207,6 +215,13 @@
 		91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTabBarController.h; sourceTree = "<group>"; };
 		91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTabBarController.m; sourceTree = "<group>"; };
 		919A32F81743FFE90093FAC4 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
+		919A32FA17443A5E0093FAC4 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		919A32FD17443A930093FAC4 /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		919A32FE17443A930093FAC4 /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		919A32FF17443A930093FAC4 /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		919A330017443A930093FAC4 /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		919A330117443A930093FAC4 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		919A330217443A930093FAC4 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
 		91BDEFD416E4E6830021E605 /* DealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealViewController.h; sourceTree = "<group>"; };
 		91BDEFD516E4E6830021E605 /* DealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealViewController.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
@@ -309,6 +324,7 @@
 				916148D016ED1C18001C546C /* Helpers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
+				919A32FC17443A730093FAC4 /* FontAwesome-IOS */,
 				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
 				9103111C16D1E53800CEE814 /* AppDelegate.m */,
@@ -355,6 +371,7 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				919A32FA17443A5E0093FAC4 /* FontAwesome.ttf */,
 				9197F98B170D24DB00BDAA58 /* icons */,
 				9183F4E91703A31700ED4844 /* gear.png */,
 				9183F4EA1703A31700ED4844 /* gear@2x.png */,
@@ -458,6 +475,19 @@
 				91F5BD361729B8E9001E7A07 /* SearchFilterTableViewController.m */,
 			);
 			name = "Table View Controllers";
+			sourceTree = "<group>";
+		};
+		919A32FC17443A730093FAC4 /* FontAwesome-IOS */ = {
+			isa = PBXGroup;
+			children = (
+				919A32FD17443A930093FAC4 /* FAImageView.h */,
+				919A32FE17443A930093FAC4 /* FAImageView.m */,
+				919A32FF17443A930093FAC4 /* UIFont+FontAwesome.h */,
+				919A330017443A930093FAC4 /* UIFont+FontAwesome.m */,
+				919A330117443A930093FAC4 /* NSString+FontAwesome.h */,
+				919A330217443A930093FAC4 /* NSString+FontAwesome.m */,
+			);
+			name = "FontAwesome-IOS";
 			sourceTree = "<group>";
 		};
 		91CC60E116F6CC1500647AEC /* Products */ = {
@@ -572,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919A330617443D680093FAC4 /* FontAwesome.ttf in Resources */,
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				9103112B16D1E53800CEE814 /* first.png in Resources */,
@@ -607,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9103114616D1E53900CEE814 /* InfoPlist.strings in Resources */,
+				919A32FB17443A5E0093FAC4 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +665,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919A330717443F770093FAC4 /* FAImageView.m in Sources */,
+				919A330817443F770093FAC4 /* UIFont+FontAwesome.m in Sources */,
+				919A330917443F770093FAC4 /* NSString+FontAwesome.m in Sources */,
 				9103111916D1E53800CEE814 /* main.m in Sources */,
 				9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */,
 				9103112916D1E53800CEE814 /* ProfileViewController.m in Sources */,
@@ -662,6 +697,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9103114916D1E53900CEE814 /* mobileTests.m in Sources */,
+				919A330317443A930093FAC4 /* FAImageView.m in Sources */,
+				919A330417443A930093FAC4 /* UIFont+FontAwesome.m in Sources */,
+				919A330517443A930093FAC4 /* NSString+FontAwesome.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
