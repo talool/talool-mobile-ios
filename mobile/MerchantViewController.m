@@ -27,9 +27,8 @@
 {
     [super viewDidLoad];
 
-    
     // Here we use the new provided setImageWithURL: method to load the web image
-    [backgroundImage setImageWithURL:[NSURL URLWithString:merchant.location.logoUrl]
+    [backgroundImage setImageWithURL:[NSURL URLWithString:merchant.location.imageUrl]
                    placeholderImage:[UIImage imageNamed:@"Default.png"]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               if (error !=  nil) {

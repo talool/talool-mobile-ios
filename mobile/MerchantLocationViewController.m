@@ -12,6 +12,7 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttAddress.h"
+#import "talool-api-ios/ttLocation.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -26,10 +27,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // TODO initial location
+    // initial location
+    ttLocation *loc = merchant.location.location;
+    NSLog(@"center the map at lat: %f, lon: %f",[loc.latitude doubleValue], [loc.longitude doubleValue]);
+    
     CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = 39.281516;
-    zoomLocation.longitude= -76.580806;
+    zoomLocation.latitude = [loc.latitude doubleValue];
+    zoomLocation.longitude = [loc.longitude doubleValue];
     
     // 2 mile square box for the map area
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 2*METERS_PER_MILE, 2*METERS_PER_MILE);
@@ -56,6 +60,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ * Implement this when we want custom pins
+ *
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"MerchantLocation";
     if ([annotation isKindOfClass:[MerchantLocationAnnotation class]]) {
@@ -65,7 +72,7 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            //annotationView.image = [UIImage imageNamed:@"arrest.png"];//here we use a nice image instead of the default pins
+            annotationView.image = [UIImage imageNamed:@"arrest.png"];//here we use a nice image instead of the default pins
         } else {
             annotationView.annotation = annotation;
         }
@@ -75,6 +82,7 @@
     
     return nil;
 }
+*/
 
 - (void) plotMerchantLocations:(NSArray *)locations
 {
@@ -92,8 +100,10 @@
         NSString *name = (loc.name == nil) ? merchant.name : loc.name;
         
         CLLocationCoordinate2D coordinate;
-        coordinate.latitude = 39.281516;//loc.latitude;
-        coordinate.longitude = -76.580806;//loc.longitude;
+        coordinate.latitude = [loc.location.latitude doubleValue];
+        coordinate.longitude = [loc.location.longitude doubleValue];
+        NSLog(@"plot a point on the map at lat: %f, lon: %f",[loc.location.latitude doubleValue], [loc.location.longitude doubleValue]);
+        
         MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address.address1 coordinate:coordinate];
         [locationMapView addAnnotation:annotation];
 	}
