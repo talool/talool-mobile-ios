@@ -29,8 +29,6 @@
 {
     // initial location
     ttLocation *loc = merchant.location.location;
-    NSLog(@"center the map at lat: %f, lon: %f",[loc.latitude doubleValue], [loc.longitude doubleValue]);
-    
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [loc.latitude doubleValue];
     zoomLocation.longitude = [loc.longitude doubleValue];
@@ -102,7 +100,6 @@
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = [loc.location.latitude doubleValue];
         coordinate.longitude = [loc.location.longitude doubleValue];
-        NSLog(@"plot a point on the map at lat: %f, lon: %f",[loc.location.latitude doubleValue], [loc.location.longitude doubleValue]);
         
         MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address.address1 coordinate:coordinate];
         [locationMapView addAnnotation:annotation];
