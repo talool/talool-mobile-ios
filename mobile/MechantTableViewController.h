@@ -7,18 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MerchantCell.h"
-#import "talool-api-ios/ttMerchant.h"
+#import "ProfileViewController.h"
 
-@interface MechantTableViewController : UITableViewController<UISearchBarDelegate, UISearchDisplayDelegate> {
+@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate> {
     NSArray *merchants;
 }
 @property (nonatomic, retain) NSArray *merchants;
 @property (nonatomic, retain) NSArray *sortDescriptors;
 
 @property (strong,nonatomic) NSMutableArray *filteredMerchants;
-@property IBOutlet UISearchBar *merchantSearchBar;
+//@property IBOutlet UISearchBar *merchantSearchBar;
 
+// is the list being used for "my deals" or "explore"
 @property BOOL searchMode;
+
+// searchh filters
+@property (nonatomic) int filterIndex;
+@property int proximity;
+
+- (void) setFilterIndex:(int)filterIndex;
 
 @end

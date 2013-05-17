@@ -8,6 +8,7 @@
 
 #import "MechantTableViewController.h"
 #import "FavoriteMerchantCell.h"
+#import "MerchantCell.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "CustomerHelper.h"
@@ -19,8 +20,8 @@
 @end
 
 @implementation MechantTableViewController
-@synthesize merchants, sortDescriptors, searchMode;
-@synthesize filteredMerchants, merchantSearchBar;
+@synthesize merchants, sortDescriptors, searchMode, filterIndex, proximity;
+@synthesize filteredMerchants;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -33,24 +34,27 @@
 {
     [super viewDidLoad];
     
-    [merchantSearchBar setShowsScopeBar:NO];
-    [merchantSearchBar sizeToFit];
+    //[merchantSearchBar setShowsScopeBar:NO];
+    //[merchantSearchBar sizeToFit];
     
-    if (!searchMode) {
+    //if (!searchMode) {
         // Hide the search bar until user scrolls up
         // TODO remove the search bar if the user has only a few Merchants in the list
-        CGRect newBounds = self.tableView.bounds;
-        newBounds.origin.y = newBounds.origin.y + merchantSearchBar.bounds.size.height;
-        self.tableView.bounds = newBounds;
-        //NSArray *titles = [[NSArray alloc] initWithObjects:@"All", @"Favorites", nil];
-        //[merchantSearchBar setScopeButtonTitles:titles];
-    }
+        //CGRect newBounds = self.tableView.bounds;
+        //newBounds.origin.y = newBounds.origin.y + merchantSearchBar.bounds.size.height;
+        //self.tableView.bounds = newBounds;
+        ////NSArray *titles = [[NSArray alloc] initWithObjects:@"All", @"Favorites", nil];
+        ////[merchantSearchBar setScopeButtonTitles:titles];
+    //}
     
     ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
+    // TODO revisit to see when it's smart to refresh...
+    [user refreshMerchants:[CustomerHelper getContext]];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     merchants = [[[NSArray alloc] initWithArray:[user getMyMerchants]] sortedArrayUsingDescriptors:sortDescriptors];
     filteredMerchants = [NSMutableArray arrayWithCapacity:[merchants count]];
+    filteredMerchants = [NSMutableArray arrayWithArray:merchants];
     
     [self.tableView reloadData];
     
@@ -85,11 +89,11 @@
 // Determines the number of rows for the argument section number
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    //if (tableView == self.searchDisplayController.searchResultsTableView) {
+    //    return [filteredMerchants count];
+    //} else {
         return [filteredMerchants count];
-    } else {
-        return [merchants count];
-    }
+    //}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,11 +111,11 @@
 	// Configure the data for the cell.
     ttMerchant *merchant;
     // Check to see whether the normal table or search results table is being displayed and set the Candy object from the appropriate array
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    //if (tableView == self.searchDisplayController.searchResultsTableView) {
+    //    merchant = [filteredMerchants objectAtIndex:indexPath.row];
+    //} else {
         merchant = [filteredMerchants objectAtIndex:indexPath.row];
-    } else {
-        merchant = [merchants objectAtIndex:indexPath.row];
-    }
+    //}
     [cell setMerchant:merchant];
 	cell.contentView.backgroundColor = [UIColor whiteColor];
     
@@ -132,14 +136,14 @@
         ttMerchant *merchant;
         
         // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
-        if(sender == self.searchDisplayController.searchResultsTableView) {
-            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            merchant = [filteredMerchants objectAtIndex:[indexPath row]];
-        }
-        else {
+        //if(sender == self.searchDisplayController.searchResultsTableView) {
+        //    NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        //    merchant = [filteredMerchants objectAtIndex:[indexPath row]];
+        //}
+        //else {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            merchant = [merchants objectAtIndex:[indexPath row]];
-        }
+            merchant = [filteredMerchants objectAtIndex:[indexPath row]];
+        //}
         
         [[segue destinationViewController] setMerchant:merchant];
         
@@ -151,6 +155,7 @@
     ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
     [user refreshMerchants:[CustomerHelper getContext]];
     merchants = [[[NSArray alloc] initWithArray:[user getMyMerchants]] sortedArrayUsingDescriptors:sortDescriptors];
+    filteredMerchants = [NSMutableArray arrayWithArray:merchants];
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
 }
 
@@ -160,6 +165,7 @@
     [self.refreshControl endRefreshing];
 }
 
+/*
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     // Update the filtered array based on the search text and scope.
@@ -194,6 +200,60 @@
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+*/
+
+-(void)setFilterIndex:(int)index
+{
+    self.filterIndex = index;
+    [self filterMerchants];
+}
+
+- (void)proximityChanged:(float) valueInMiles sender:(id)sender
+{
+    proximity = [[[NSNumber alloc] initWithFloat:valueInMiles] intValue];
+    [self filterMerchants];
+}
+
+- (void) filterMerchants
+{
+    // Remove all objects from the filtered search array
+    [filteredMerchants removeAllObjects];
+    
+    NSArray *tempArray;
+    
+    // optional filter based on category or favorites
+    if (filterIndex == 0)
+    {
+        // show all merchants
+        tempArray = [NSMutableArray arrayWithArray:merchants];
+    }
+    else if (filterIndex == 1)
+    {
+        // only show favorites
+        //NSPredicate *categoryPredicate = [NSPredicate predicateWithFormat:@"SELF.isFav contains[c] %@",1];
+        //tempArray = [NSMutableArray arrayWithArray:[merchants filteredArrayUsingPredicate:categoryPredicate]];
+    }
+    else
+    {
+        // Filter based on category
+        //NSPredicate *categoryPredicate = [NSPredicate predicateWithFormat:@"SELF.category contains[c] %@",[self getCategoryName]];
+        //tempArray = [NSMutableArray arrayWithArray:[merchants filteredArrayUsingPredicate:categoryPredicate]];
+    }
+    
+    // filter the array based on proximity
+    //NSPredicate *proximityPredicate = [NSPredicate predicateWithFormat:@"SELF.distance contains[c] %@",proximity];
+    //tempArray = [tempArray filteredArrayUsingPredicate:proximityPredicate];
+    
+    filteredMerchants = [NSMutableArray arrayWithArray:tempArray];
+    
+    [self.tableView reloadData];
+}
+
+-(NSString *) getCategoryName
+{
+    // Turn the filterIndex into a category name to filter by
+    return @"food";
 }
 
 

@@ -11,15 +11,18 @@
 #import "CustomerHelper.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "talool-api-ios/ttSocialAccount.h"
+#import "talool-api-ios/ttCustomer.h"
 #import "FontAwesomeKit.h"
+#import "MerchantFilterControl.h"
 
 @interface ProfileViewController ()
 @property (strong, nonatomic) FBProfilePictureView *profilePictureView;
+@property (strong, nonatomic) MerchantFilterControl *filterControl;
 @end
 
 @implementation ProfileViewController
 
-@synthesize customer;
+@synthesize customer, filterControl,tableViewController, proximitySliderDelegate;
 @synthesize profilePictureView = _profilePictureView;
 
 
@@ -34,8 +37,18 @@
     [self loadProfilePic];
     // Add the profile picture view to the main view
     [self.view addSubview:self.profilePictureView];
-     
-     
+    
+    self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(10.0, 57.0, 296.0, 40.0)];
+    [self.view addSubview:self.filterControl];
+    [self.filterControl addTarget:self action:@selector(filterMerchants:) forControlEvents:UIControlEventValueChanged];
+    
+    float defaultProximityInMiles = 100.0;
+    [self updateProximityLabel:defaultProximityInMiles];
+    [distanceSlider setMaximumValue:200.0];
+    [distanceSlider setMinimumValue:2.0];
+    [distanceSlider setValue:defaultProximityInMiles];
+    [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpInside];
+    [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpOutside];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -100,9 +113,33 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"myMerchants"]) {
-        MechantTableViewController *mtvc = [segue destinationViewController];
-        [mtvc setSearchMode:NO];
+        tableViewController = [segue destinationViewController];
+        [tableViewController setSearchMode:NO];
+        tableViewController.filterIndex = filterControl.selectedSegmentIndex;
+        self.proximitySliderDelegate = tableViewController;
     }
 }
 
+- (void) filterMerchants:(id)sender
+{
+    [tableViewController setFilterIndex:filterControl.selectedSegmentIndex];
+}
+
+- (void) filterMerchantsByProximity:(id)sender
+{
+    [proximitySliderDelegate proximityChanged:distanceSlider.value sender:sender];
+}
+
+- (void) updateProximityLabel:(float) miles
+{
+    NSNumber *prox = [[NSNumber alloc] initWithFloat:miles];
+    distanceLabel.text = [NSString localizedStringWithFormat:@"Proximity: %d miles", [prox intValue]];
+}
+
+- (IBAction)proximitySliderValueChanged:(id)sender
+{
+    // this only changes the label
+    [self updateProximityLabel:distanceSlider.value];
+}
+          
 @end
