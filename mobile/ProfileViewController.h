@@ -7,26 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseSearchViewController.h"
 
-@class ttCustomer, MechantTableViewController;
+@class ttCustomer;
 
-@protocol ProximitySliderDelegate <NSObject>
-- (void)proximityChanged:(float) valueInMiles sender:(id)sender;
-@end
-
-@interface ProfileViewController : UIViewController {
+@interface ProfileViewController : BaseSearchViewController {
     ttCustomer *customer;
-    IBOutlet UILabel *distanceLabel;
-    IBOutlet UISlider *distanceSlider;
-    MechantTableViewController *tableViewController;
-    id <ProximitySliderDelegate> proximitySliderDelegate;
 }
 
-- (IBAction)proximitySliderValueChanged:(id)sender;
 - (void)settings:(id)sender;
 
 @property (nonatomic, retain) ttCustomer *customer;
-@property (nonatomic, retain) MechantTableViewController *tableViewController;
-@property (retain) id proximitySliderDelegate;
 
 @end

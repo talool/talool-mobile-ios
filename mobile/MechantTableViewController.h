@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProfileViewController.h"
+#import "BaseSearchViewController.h"
 
-@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate> {
+@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate, MerchantFilterDelegate> {
     NSArray *merchants;
 }
 @property (nonatomic, retain) NSArray *merchants;

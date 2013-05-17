@@ -203,15 +203,15 @@
 }
 */
 
--(void)setFilterIndex:(int)index
-{
-    self.filterIndex = index;
-    [self filterMerchants];
-}
 
 - (void)proximityChanged:(float) valueInMiles sender:(id)sender
 {
     proximity = [[[NSNumber alloc] initWithFloat:valueInMiles] intValue];
+    [self filterMerchants];
+}
+- (void)filterChanged:(int)idx sender:(id)sender
+{
+    self.filterIndex = idx;
     [self filterMerchants];
 }
 

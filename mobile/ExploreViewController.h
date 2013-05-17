@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttMerchant.h"
+#import "BaseSearchViewController.h"
 
+@class ttCustomer;
 
-@interface ExploreViewController : UIViewController
+@interface ExploreViewController : BaseSearchViewController
 {
-
+    ttCustomer *customer;
 }
 
+@property (nonatomic, retain) ttCustomer *customer;
 
 @end

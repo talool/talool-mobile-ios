@@ -32,6 +32,7 @@
 		91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91490D391745E02100622A85 /* FontAwesome.otf */; };
 		91490D3D1745E02100622A85 /* FontAwesomeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D3B1745E02100622A85 /* FontAwesomeKit.m */; };
 		91490D401746805400622A85 /* MerchantFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D3F1746805400622A85 /* MerchantFilterControl.m */; };
+		91490D431746C28700622A85 /* BaseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D421746C28700622A85 /* BaseSearchViewController.m */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		9161487616EAD758001C546C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487916EAD76F001C546C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -168,6 +169,8 @@
 		91490D3B1745E02100622A85 /* FontAwesomeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesomeKit.m; sourceTree = "<group>"; };
 		91490D3E1746805400622A85 /* MerchantFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantFilterControl.h; sourceTree = "<group>"; };
 		91490D3F1746805400622A85 /* MerchantFilterControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantFilterControl.m; sourceTree = "<group>"; };
+		91490D411746C28600622A85 /* BaseSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSearchViewController.h; sourceTree = "<group>"; };
+		91490D421746C28700622A85 /* BaseSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSearchViewController.m; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		9161487516EAD758001C546C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -428,6 +431,8 @@
 				9103112F16D1E53800CEE814 /* ExploreViewController.m */,
 				9103112716D1E53800CEE814 /* ProfileViewController.h */,
 				9103112816D1E53800CEE814 /* ProfileViewController.m */,
+				91490D411746C28600622A85 /* BaseSearchViewController.h */,
+				91490D421746C28700622A85 /* BaseSearchViewController.m */,
 				91986F0A16DA88F800D1CA96 /* RegistrationViewController.h */,
 				91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */,
 				91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */,
@@ -714,6 +719,7 @@
 				91F5BD371729B8E9001E7A07 /* SearchFilterTableViewController.m in Sources */,
 				91490D3D1745E02100622A85 /* FontAwesomeKit.m in Sources */,
 				91490D401746805400622A85 /* MerchantFilterControl.m in Sources */,
+				91490D431746C28700622A85 /* BaseSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
