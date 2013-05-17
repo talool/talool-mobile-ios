@@ -28,7 +28,9 @@
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		91490D2D174598CE00622A85 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 91490D2C174598CE00622A85 /* talool-api-ios.bundle */; };
-		91490D2F1745A34C00622A85 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 91490D2E1745A34C00622A85 /* arrest.png */; };
+		91490D311745DBD000622A85 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
+		91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = 91490D391745E02100622A85 /* FontAwesome.otf */; };
+		91490D3D1745E02100622A85 /* FontAwesomeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D3B1745E02100622A85 /* FontAwesomeKit.m */; };
 		914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		9161487616EAD758001C546C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487916EAD76F001C546C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -167,7 +169,10 @@
 		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
 		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
 		91490D2C174598CE00622A85 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
-		91490D2E1745A34C00622A85 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
+		91490D301745DBD000622A85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		91490D391745E02100622A85 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		91490D3A1745E02100622A85 /* FontAwesomeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAwesomeKit.h; sourceTree = "<group>"; };
+		91490D3B1745E02100622A85 /* FontAwesomeKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontAwesomeKit.m; sourceTree = "<group>"; };
 		914B1EBE16E3029A00C88B59 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		9161487516EAD758001C546C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -256,6 +261,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
 				917CBE5317457C0F00383EA1 /* libtalool-api-ios.a in Frameworks */,
 				919A3311174510AA0093FAC4 /* MapKit.framework in Frameworks */,
 				9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */,
@@ -315,6 +321,7 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				91490D301745DBD000622A85 /* CoreText.framework */,
 				919A3310174510A90093FAC4 /* MapKit.framework */,
 				9197F97A170CB50500BDAA58 /* SDWebImage.framework */,
 				9183F4D6170350BB00ED4844 /* ZXingObjC.framework */,
@@ -346,6 +353,7 @@
 				916148D016ED1C18001C546C /* Helpers */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
 				9103117B16D467C500CEE814 /* View Controllers */,
+				91490D381745E02100622A85 /* FontAwesomeKit */,
 				919A32FC17443A730093FAC4 /* FontAwesome-IOS */,
 				9103116A16D3271D00CEE814 /* Resources */,
 				9103111B16D1E53800CEE814 /* AppDelegate.h */,
@@ -393,7 +401,6 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				91490D2E1745A34C00622A85 /* arrest.png */,
 				919A32FA17443A5E0093FAC4 /* FontAwesome.ttf */,
 				9197F98B170D24DB00BDAA58 /* icons */,
 				9183F4E91703A31700ED4844 /* gear.png */,
@@ -449,6 +456,16 @@
 				919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		91490D381745E02100622A85 /* FontAwesomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				91490D391745E02100622A85 /* FontAwesome.otf */,
+				91490D3A1745E02100622A85 /* FontAwesomeKit.h */,
+				91490D3B1745E02100622A85 /* FontAwesomeKit.m */,
+			);
+			path = FontAwesomeKit;
 			sourceTree = "<group>";
 		};
 		916148D016ED1C18001C546C /* Helpers */ = {
@@ -661,7 +678,7 @@
 				9197F989170D24CB00BDAA58 /* Icon_tan.png in Resources */,
 				9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */,
 				91490D2D174598CE00622A85 /* talool-api-ios.bundle in Resources */,
-				91490D2F1745A34C00622A85 /* arrest.png in Resources */,
+				91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -725,6 +742,7 @@
 				9165344A170F66C000E1332F /* DealRedemptionViewController.m in Sources */,
 				9165344D170F66F200E1332F /* DealModelController.m in Sources */,
 				91F5BD371729B8E9001E7A07 /* SearchFilterTableViewController.m in Sources */,
+				91490D3D1745E02100622A85 /* FontAwesomeKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

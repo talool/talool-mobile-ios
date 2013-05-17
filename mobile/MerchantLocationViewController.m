@@ -9,6 +9,8 @@
 #import "MerchantLocationViewController.h"
 #import "LocationTableViewController.h"
 #import "MerchantLocationAnnotation.h"
+#import "FontAwesomeKit.h"
+#import "TaloolColor.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttAddress.h"
@@ -51,9 +53,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- * Implement this when we want custom pins
- *
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"MerchantLocation";
     if ([annotation isKindOfClass:[MerchantLocationAnnotation class]]) {
@@ -63,8 +63,12 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            annotationView.image = [UIImage imageNamed:@"arrest.png"];//here we use a nice image instead of the default pins
- 
+            NSDictionary *attr =@{FAKImageAttributeForegroundColor:[TaloolColor orange]};
+            UIImage *pinIcon = [FontAwesomeKit imageForIcon:FAKIconMapMarker
+                                                     imageSize:CGSizeMake(45, 45)
+                                                      fontSize:44
+                                                    attributes:attr];
+            annotationView.image = pinIcon;
             annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         } else {
             annotationView.annotation = annotation;
@@ -82,7 +86,7 @@
     NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
     [location.mapItem openInMapsWithLaunchOptions:launchOptions];
 }
-*/
+
 
 - (void) plotMerchantLocations:(NSArray *)locations
 {
