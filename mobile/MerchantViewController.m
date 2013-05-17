@@ -13,7 +13,7 @@
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttCustomer.h"
-#import "NSString+FontAwesome.h"
+#import "FontAwesomeKit.h"
 
 @interface MerchantViewController ()
 @property (nonatomic, retain) UIBarButtonItem *favButton;
@@ -39,17 +39,14 @@
                           }];
     
     
-    favButton = [[UIBarButtonItem alloc]
-                 initWithTitle:[self getFavLabel]
-                                    style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(favoriteAction:)];
+    favButton = [[UIBarButtonItem alloc] initWithTitle:[self getFavLabel]
+                                                 style:UIBarButtonItemStyleBordered
+                                                target:self
+                                                action:@selector(favoriteAction:)];
     self.navigationItem.rightBarButtonItem = favButton;
     
-    UIFont *awesome = [UIFont fontWithName:@"FontAwesome" size:18.0];
-    NSDictionary *customTextAttrs = [NSDictionary dictionaryWithObjectsAndKeys: awesome, UITextAttributeFont, nil];
-    
-    [favButton setTitleTextAttributes:customTextAttrs forState:UIControlStateNormal];
+    [favButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+                             forState:UIControlStateNormal];
     
 }
 
@@ -76,11 +73,6 @@
         NSLog(@"HEY, AM I USING THIS? change the deal");
         // TODO make sure the table view updates
     }
-}
-
-- (IBAction)infoAction:(id)sender
-{
-    NSLog(@"show address and shit");
 }
 
 - (IBAction)favoriteAction:(id)sender
@@ -117,11 +109,11 @@
     
     if ([merchant isFavorite])
     {
-        label = [NSString fontAwesomeIconStringForEnum:FAIconHeart];
+        label = FAKIconHeart;
     }
     else
     {
-        label = [NSString fontAwesomeIconStringForEnum:FAIconHeartEmpty];
+        label = FAKIconHeartEmpty;
     }
 
     return label;
