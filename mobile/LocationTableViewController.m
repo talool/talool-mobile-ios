@@ -7,6 +7,7 @@
 //
 
 #import "LocationTableViewController.h"
+#import "MerchantLocationViewController.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttCustomer.h"
@@ -26,10 +27,12 @@
 {
     [super viewDidLoad];
 
+    /*
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.tintColor = [TaloolColor gray_3];
     [refreshControl addTarget:self action:@selector(refreshLocations) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
+     */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -74,6 +77,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
+    MerchantLocationViewController *mlvc = (MerchantLocationViewController *)[self parentViewController];
+    [mlvc centerMap:location.location];
+}
+
+/*
 - (void) refreshLocations
 {
     // TODO do we really want to do this?
@@ -89,5 +100,6 @@
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
+*/
 
 @end

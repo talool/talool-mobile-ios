@@ -28,16 +28,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // initial location
-    ttLocation *loc = merchant.location.location;
-    CLLocationCoordinate2D zoomLocation;
-    zoomLocation.latitude = [loc.latitude doubleValue];
-    zoomLocation.longitude = [loc.longitude doubleValue];
+    // TODO get the closest location
+    [self centerMap:merchant.location.location];
     
-    // 2 mile square box for the map area
-    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 2*METERS_PER_MILE, 2*METERS_PER_MILE);
-    
-    // display it
-    [locationMapView setRegion:viewRegion animated:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -71,6 +64,8 @@
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
             annotationView.image = [UIImage imageNamed:@"arrest.png"];//here we use a nice image instead of the default pins
+ 
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         } else {
             annotationView.annotation = annotation;
         }
@@ -79,6 +74,13 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    MerchantLocationAnnotation *location = (MerchantLocationAnnotation*)view.annotation;
+ 
+    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+    [location.mapItem openInMapsWithLaunchOptions:launchOptions];
 }
 */
 
@@ -115,10 +117,17 @@
     }
 }
 
-- (void)setMerchant:(ttMerchant *)newMerchant {
-    if (newMerchant != merchant) {
-        merchant = newMerchant;
-    }
+- (void)centerMap:(ttLocation *) loc
+{
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = [loc.latitude doubleValue];
+    zoomLocation.longitude = [loc.longitude doubleValue];
+    
+    // 2 mile square box for the map area
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 2*METERS_PER_MILE, 2*METERS_PER_MILE);
+    
+    // display it
+    [locationMapView setRegion:viewRegion animated:YES];
 }
 
 @end

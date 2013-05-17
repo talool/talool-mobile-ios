@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class ttMerchant;
+@class ttMerchant, ttLocation;
 
 @interface MerchantLocationViewController : UIViewController<MKMapViewDelegate>
 {
     ttMerchant *merchant;
 }
+
+- (void)centerMap:(ttLocation *) loc;
 
 @property (weak, nonatomic) IBOutlet MKMapView *locationMapView;
 @property (nonatomic, retain) ttMerchant *merchant;

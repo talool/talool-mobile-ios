@@ -719,7 +719,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="60" id="tWM-W5-RCP" customClass="LocationCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="60" id="tWM-W5-RCP" customClass="LocationCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -752,13 +752,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="leading" secondItem="xDl-Py-1mb" secondAttribute="leading" type="default" id="3C7-vi-Pq4"/>
                                     <constraint firstItem="vkD-sJ-JNA" firstAttribute="leading" secondItem="tWM-W5-RCP" secondAttribute="leading" constant="5" id="Afv-1e-LKQ"/>
-                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="top" secondItem="tWM-W5-RCP" secondAttribute="top" constant="4" id="CrE-2a-EW7"/>
-                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="top" secondItem="tWM-W5-RCP" secondAttribute="top" constant="29" id="kHT-zw-1Hq"/>
-                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="leading" secondItem="tWM-W5-RCP" secondAttribute="leading" constant="72" id="odW-Uw-k96"/>
-                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="trailing" secondItem="xDl-Py-1mb" secondAttribute="trailing" type="default" id="pcr-Id-5W6"/>
+                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="leading" secondItem="xDl-Py-1mb" secondAttribute="leading" type="default" id="Bqr-r6-QMb"/>
+                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="leading" secondItem="tWM-W5-RCP" secondAttribute="leading" constant="72" id="EDW-gg-H18"/>
+                                    <constraint firstItem="xDl-Py-1mb" firstAttribute="top" secondItem="vkD-sJ-JNA" secondAttribute="top" type="default" id="gbH-H5-cs3"/>
+                                    <constraint firstItem="w3W-Uk-PTc" firstAttribute="trailing" secondItem="xDl-Py-1mb" secondAttribute="trailing" type="default" id="vec-7h-EUL"/>
                                     <constraint firstItem="vkD-sJ-JNA" firstAttribute="centerY" secondItem="tWM-W5-RCP" secondAttribute="centerY" type="default" id="y7r-Q8-03S"/>
+                                    <constraint firstAttribute="bottom" secondItem="w3W-Uk-PTc" secondAttribute="bottom" constant="9" id="zth-Sv-QhF"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="addressLabel" destination="w3W-Uk-PTc" id="73H-ZB-tZm"/>
@@ -1367,6 +1367,7 @@
         <class className="MerchantLocationViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantLocationViewController.h"/>
             <relationships>
+                <relationship kind="action" name="focusMap:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="locationMapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
