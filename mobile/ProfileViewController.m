@@ -11,6 +11,7 @@
 #import "CustomerHelper.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "talool-api-ios/ttSocialAccount.h"
+#import "FontAwesomeKit.h"
 
 @interface ProfileViewController ()
 @property (strong, nonatomic) FBProfilePictureView *profilePictureView;
@@ -55,9 +56,14 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    UIImage *gears = [UIImage imageNamed:@"gear.png"];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:gears style:UIBarButtonItemStyleBordered target:self action:@selector(settings:)];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(favoriteAction:)];
     self.tabBarController.navigationItem.rightBarButtonItem = settingsButton;
+    
+    [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+                             forState:UIControlStateNormal];
     
     self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
     

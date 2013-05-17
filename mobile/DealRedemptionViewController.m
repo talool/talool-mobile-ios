@@ -15,6 +15,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
+#import "FontAwesomeKit.h"
 
 @interface DealRedemptionViewController ()
 @property (readonly, strong, nonatomic) DealModelController *modelController;
@@ -54,12 +55,14 @@
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
     // TODO: Only show the share button is the user has connected with Facebook
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"Share"
-                                    style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(shareAction:)];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconGift
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self
+                                                                   action:@selector(favoriteAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
+    
+    [shareButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+                                  forState:UIControlStateNormal];
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
