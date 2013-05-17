@@ -8,6 +8,7 @@
 
 #import "TaloolTabBarController.h"
 #import "TaloolColor.h"
+#import "FontAwesomeKit.h"
 
 @interface TaloolTabBarController ()
 
@@ -23,8 +24,16 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     
+    // make sure the icon for the disable tab is correct
     self.tabBar.tintColor = [TaloolColor gray_5];
     self.tabBar.selectedImageTintColor = [TaloolColor teal];
+    UITabBarItem *explore = [self.tabBar.items objectAtIndex:1];
+    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconSearch
+                                             imageSize:CGSizeMake(30, 30)
+                                              fontSize:29
+                                            attributes:nil];
+    explore.image = tabBarIcon;
+
     
 }
 

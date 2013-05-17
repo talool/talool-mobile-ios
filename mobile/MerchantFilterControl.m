@@ -19,13 +19,14 @@
         
         int iconSize = 25;
         int fontSize = 24;
+        Boolean animated = NO;
         
         // Set up the All button
         NSDictionary *fontAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [UIColor whiteColor], UITextAttributeTextColor,
                                    [UIFont fontWithName:@"Arial-BoldMT" size:fontSize-4], UITextAttributeFont,nil];
         [self setTitleTextAttributes:fontAttrs forState:UIControlStateNormal];
-        [self insertSegmentWithTitle:@"All" atIndex:0 animated:YES];
+        [self insertSegmentWithTitle:@"All" atIndex:0 animated:animated];
         
         // Set up the Favs and Category buttons
         NSDictionary *iconAttrs =@{FAKImageAttributeForegroundColor:[UIColor whiteColor]};
@@ -49,11 +50,11 @@
                                                     imageSize:CGSizeMake(iconSize, iconSize)
                                                      fontSize:fontSize
                                                    attributes:iconAttrs];
-        [self insertSegmentWithImage:heartIcon atIndex:1 animated:YES];
-        [self insertSegmentWithImage:foodIcon atIndex:2 animated:YES];
-        [self insertSegmentWithImage:shoppingIcon atIndex:3 animated:YES];
-        [self insertSegmentWithImage:funIcon atIndex:4 animated:YES];
-        [self insertSegmentWithImage:nightlifeIcon atIndex:5 animated:YES];
+        [self insertSegmentWithImage:heartIcon atIndex:1 animated:animated];
+        [self insertSegmentWithImage:foodIcon atIndex:2 animated:animated];
+        [self insertSegmentWithImage:shoppingIcon atIndex:3 animated:animated];
+        [self insertSegmentWithImage:funIcon atIndex:4 animated:animated];
+        [self insertSegmentWithImage:nightlifeIcon atIndex:5 animated:animated];
         
         // Set up the color and general style
         self.tintColor = [TaloolColor gray_4];

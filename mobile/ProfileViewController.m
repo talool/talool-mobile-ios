@@ -12,11 +12,20 @@
 
 @implementation ProfileViewController
 
+-(void) viewDidLoad
+{
+    [super viewDidLoad];
+    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconStar
+                                             imageSize:CGSizeMake(30, 30)
+                                              fontSize:29
+                                            attributes:nil];
+    self.tabBarItem.image = tabBarIcon;
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.title = [customer getFullName];
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated

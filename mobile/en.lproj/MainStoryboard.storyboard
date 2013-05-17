@@ -259,7 +259,7 @@
                             <constraint firstItem="9UF-Ks-62Q" firstAttribute="bottom" secondItem="SvH-wu-Ghu" secondAttribute="bottom" type="default" id="qGK-lF-Bqy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Deals" image="star.png" id="H90-Uu-fwK"/>
+                    <tabBarItem key="tabBarItem" title="My Deals" id="H90-Uu-fwK"/>
                     <connections>
                         <outlet property="distanceLabel" destination="SIP-f9-2by" id="mAz-h2-s5y"/>
                         <outlet property="distanceSlider" destination="0km-DF-sAq" id="TVO-ki-NHL"/>
@@ -398,7 +398,7 @@
                             <constraint firstItem="tHZ-f6-cbH" firstAttribute="leading" secondItem="Iya-4s-zfG" secondAttribute="leading" constant="17" id="yYx-GR-a4i"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="search.png" id="o5n-ll-tgt"/>
+                    <tabBarItem key="tabBarItem" title="Explore" id="o5n-ll-tgt"/>
                     <connections>
                         <outlet property="distanceLabel" destination="tHZ-f6-cbH" id="cs6-ps-TLI"/>
                         <outlet property="distanceSlider" destination="Y3K-g5-OT2" id="WN8-mt-w3l"/>
@@ -1293,8 +1293,6 @@
     <resources>
         <image name="Default.png" width="320" height="480"/>
         <image name="Icon_teal.png" width="57" height="57"/>
-        <image name="search.png" width="24" height="24"/>
-        <image name="star.png" width="23" height="22"/>
     </resources>
     <classes>
         <class className="BaseSearchViewController" superclassName="UIViewController">
@@ -1434,6 +1432,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jva-Pz-UQo"/>
+        <segue reference="dQf-pF-4Vf"/>
     </inferredMetricsTieBreakers>
 </document>

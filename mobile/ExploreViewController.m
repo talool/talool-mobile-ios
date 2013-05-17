@@ -8,6 +8,7 @@
 
 #import "ExploreViewController.h"
 #import "MerchantFilterControl.h"
+#import "FontAwesomeKit.h"
 
 
 @implementation ExploreViewController
@@ -17,6 +18,11 @@
     [super viewDidLoad];
     self.isExplore = YES;
     [self.filterControl removeSegmentAtIndex:1 animated:NO];
+    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconSearch
+                                             imageSize:CGSizeMake(30, 30)
+                                              fontSize:29
+                                            attributes:nil];
+    self.tabBarItem.image = tabBarIcon;
 }
 
 -(void)viewWillAppear:(BOOL)animated
