@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MerchantFilterControl;
+@class ttCustomer;
 
 @protocol ProximitySliderDelegate <NSObject>
 - (void)proximityChanged:(float)valueInMiles sender:(id)sender;
@@ -24,6 +25,8 @@
     
     IBOutlet UILabel *distanceLabel;
     IBOutlet UISlider *distanceSlider;
+    
+    ttCustomer *customer;
 }
 
 - (IBAction)proximitySliderValueChanged:(id)sender;
@@ -32,6 +35,8 @@
 
 @property (retain) id proximitySliderDelegate;
 @property (retain) id merchantFilterDelegate;
+
+@property (nonatomic, retain) ttCustomer *customer;
 
 @property Boolean isExplore;
 

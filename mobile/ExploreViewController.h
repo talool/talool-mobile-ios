@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseSearchViewController.h"
 
-@class ttCustomer;
-
 @interface ExploreViewController : BaseSearchViewController
 {
-    ttCustomer *customer;
-}
 
-@property (nonatomic, retain) ttCustomer *customer;
+}
 
 @end

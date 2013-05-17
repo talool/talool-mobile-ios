@@ -10,6 +10,8 @@
 #import "MechantTableViewController.h"
 #import "MerchantFilterControl.h"
 #import "FontAwesomeKit.h"
+#import "CustomerHelper.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface BaseSearchViewController ()
 
@@ -18,6 +20,7 @@
 @implementation BaseSearchViewController
 
 @synthesize filterControl, merchantFilterDelegate, proximitySliderDelegate, isExplore;
+@synthesize customer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +37,7 @@
     
     isExplore = NO; // the ExploreViewController needs to override this
 	
-    self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(10.0, 57.0, 296.0, 40.0)];
+    self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(10.0, 15.0, 296.0, 40.0)];
     [self.view addSubview:self.filterControl];
     [self.filterControl addTarget:self action:@selector(filterMerchants:) forControlEvents:UIControlEventValueChanged];
     
@@ -45,6 +48,18 @@
     [distanceSlider setValue:defaultProximityInMiles];
     [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpInside];
     [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpOutside];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    customer = [CustomerHelper getLoggedInUser];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
 }
 
 - (void)didReceiveMemoryWarning

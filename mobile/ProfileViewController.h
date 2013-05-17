@@ -9,14 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseSearchViewController.h"
 
-@class ttCustomer;
+
 
 @interface ProfileViewController : BaseSearchViewController {
-    ttCustomer *customer;
+    
 }
 
 - (void)settings:(id)sender;
-
-@property (nonatomic, retain) ttCustomer *customer;
 
 @end

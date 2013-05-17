@@ -211,6 +211,7 @@
 }
 - (void)filterChanged:(int)idx sender:(id)sender
 {
+    NSLog(@"filter index: %d",idx);
     self.filterIndex = idx;
     [self filterMerchants];
 }

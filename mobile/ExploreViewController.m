@@ -7,32 +7,30 @@
 //
 
 #import "ExploreViewController.h"
-#import "MechantTableViewController.h"
+#import "MerchantFilterControl.h"
 
 
 @implementation ExploreViewController
 
-@synthesize customer;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.tabBarController.navigationItem.title = @"Explore";
     self.isExplore = YES;
+    [self.filterControl removeSegmentAtIndex:1 animated:NO];
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.navigationItem.title = @"Explore";
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    self.tabBarController.navigationItem.backBarButtonItem.title = @"Back";
+    [super viewDidAppear:animated];
+    self.tabBarController.navigationItem.rightBarButtonItem = nil;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end
