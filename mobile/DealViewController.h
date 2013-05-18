@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) IBOutlet UIImageView *qrCode;
 @property (nonatomic, retain) IBOutlet UIImageView *prettyPicture;
+@property (nonatomic, retain) IBOutlet UIImageView *offerLogo;
+@property (nonatomic, retain) IBOutlet UIImageView *merchantLogo;
 @property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;

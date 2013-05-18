@@ -7,8 +7,13 @@
 //
 
 #import "DealViewController.h"
+#import "CustomerHelper.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttMerchantLocation.h"
+#import "talool-api-ios/ttDealOffer.h"
+#import "talool-api-ios/ttCustomer.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -41,7 +46,6 @@
 
     
     // Here we use the new provided setImageWithURL: method to load the web image
-    NSLog(@"loading image %@",self.deal.deal.imageUrl);
     [self.prettyPicture setImageWithURL:[NSURL URLWithString:self.deal.deal.imageUrl]
                     placeholderImage:[UIImage imageNamed:@"Default.png"]
                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
@@ -51,6 +55,37 @@
                                }
                                
                            }];
+    
+    // TODO
+    ttMerchant *merch = (ttMerchant *)self.deal.deal.merchant;
+    ttMerchantLocation *ml = [merch getClosestLocation:nil];
+    if (ml == nil)
+    {
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        [customer refreshMerchants:[CustomerHelper getContext]];
+        ml = [merch getClosestLocation:nil];
+    }
+    NSLog(@"LOGO URL: %@",ml.logoUrl);
+    [self.offerLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
+                       placeholderImage:[UIImage imageNamed:@"Default.png"]
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                  if (error !=  nil) {
+                                      // TODO track these errors
+                                      NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                                  }
+                                  
+                              }];
+    // TODO
+    //ttDealOffer *offer;
+    [self.merchantLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
+                       placeholderImage:[UIImage imageNamed:@"Default.png"]
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                  if (error !=  nil) {
+                                      // TODO track these errors
+                                      NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                                  }
+                                  
+                              }];
     
     if ([self.deal hasBeenRedeemed])
     {

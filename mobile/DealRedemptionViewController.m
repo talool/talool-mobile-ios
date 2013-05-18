@@ -58,7 +58,7 @@
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconGift
                                                                     style:UIBarButtonItemStyleBordered
                                                                    target:self
-                                                                   action:@selector(favoriteAction:)];
+                                                                   action:@selector(shareAction:)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
     [shareButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
@@ -75,8 +75,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    UIViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpfulDealViewController"];
+    DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpfulDealViewController"];
     hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    hiddenVC.deal = deal;
     __block DealRedemptionViewController *blocksafeSelf = self; 
     [self presentViewController:hiddenVC animated:YES completion:^(void) {
         // TODO turn back after a timer has expired
