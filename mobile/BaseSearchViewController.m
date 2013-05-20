@@ -17,19 +17,14 @@
 
 @end
 
+#define MAX_PROXIMITY 200
+#define DEFAULT_PROXIMITY 100
+#define MIN_PROXIMITY 2
+
 @implementation BaseSearchViewController
 
 @synthesize filterControl, merchantFilterDelegate, proximitySliderDelegate, isExplore;
 @synthesize customer;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -41,11 +36,10 @@
     [self.view addSubview:self.filterControl];
     [self.filterControl addTarget:self action:@selector(filterMerchants:) forControlEvents:UIControlEventValueChanged];
     
-    float defaultProximityInMiles = 100.0;
-    [self updateProximityLabel:defaultProximityInMiles];
-    [distanceSlider setMaximumValue:200.0];
-    [distanceSlider setMinimumValue:2.0];
-    [distanceSlider setValue:defaultProximityInMiles];
+    [self updateProximityLabel:DEFAULT_PROXIMITY];
+    [distanceSlider setMaximumValue:MAX_PROXIMITY];
+    [distanceSlider setMinimumValue:MIN_PROXIMITY];
+    [distanceSlider setValue:DEFAULT_PROXIMITY];
     [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpInside];
     [distanceSlider addTarget:self action:@selector(filterMerchantsByProximity:) forControlEvents:UIControlEventTouchUpOutside];
 }
@@ -73,9 +67,9 @@
     if ([[segue identifier] isEqualToString:@"myMerchants"] || [[segue identifier] isEqualToString:@"exploreMerchants"]) {
         // Grab the table view when it is embedded in the controller
         MechantTableViewController *tableViewController = [segue destinationViewController];
-        [tableViewController setSearchMode:isExplore];
-        tableViewController.filterIndex = filterControl.selectedSegmentIndex;
-        tableViewController.proximity = [[[NSNumber alloc] initWithFloat:distanceSlider.value] intValue];
+        [tableViewController setSearchMode:[self getSearchMode]];
+        tableViewController.selectedFilter = nil;
+        tableViewController.proximity = DEFAULT_PROXIMITY;
         self.proximitySliderDelegate = tableViewController;
         self.merchantFilterDelegate = tableViewController;
     }
@@ -83,7 +77,8 @@
 
 - (void) filterMerchants:(id)sender
 {
-    [merchantFilterDelegate filterChanged:filterControl.selectedSegmentIndex sender:self];
+    NSPredicate *filter = [self.filterControl getPredicateAtSelectedIndex:isExplore];
+    [merchantFilterDelegate filterChanged:filter sender:self];
 }
 
 - (void) filterMerchantsByProximity:(id)sender
@@ -101,6 +96,11 @@
 {
     // this only changes the label
     [self updateProximityLabel:distanceSlider.value];
+}
+
+-(Boolean) getSearchMode
+{
+    return NO;
 }
 
 @end

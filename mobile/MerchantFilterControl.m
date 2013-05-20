@@ -9,13 +9,19 @@
 #import "MerchantFilterControl.h"
 #import "FontAwesomeKit.h"
 #import "TaloolColor.h"
+#import "talool-api-ios/ttCategory.h"
+#import "CategoryHelper.h"
 
 @implementation MerchantFilterControl
+
+@synthesize categoryHelper;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        categoryHelper = [[CategoryHelper alloc ] init];
         
         int iconSize = 25;
         int fontSize = 24;
@@ -66,14 +72,92 @@
     return self;
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (ttCategory *) getCategoryAtSelectedIndex:(Boolean)searchMode
 {
-    // Drawing code
+    ttCategory *cat;
+    
+    if (searchMode)
+    {
+        switch ([self selectedSegmentIndex])
+        {
+            case ExploreFoodIndex:
+                cat = [categoryHelper getCategory:CategoryFood];
+                break;
+            case ExploreFunIndex:
+                cat = [categoryHelper getCategory:CategoryFun];
+                break;
+            case ExploreShoppingIndex:
+                cat = [categoryHelper getCategory:CategoryShopping];
+                break;
+            case ExploreNightlifeIndex:
+                cat = [categoryHelper getCategory:CategoryNightlife];
+                break;
+            default:
+                cat = nil;
+                break;
+        }
+    }
+    else
+    {
+        switch ([self selectedSegmentIndex])
+        {
+            case MyDealsFoodIndex:
+                cat = [categoryHelper getCategory:CategoryFood];
+                break;
+            case MyDealsFunIndex:
+                cat = [categoryHelper getCategory:CategoryFun];
+                break;
+            case MyDealsShoppingIndex:
+                cat = [categoryHelper getCategory:CategoryShopping];
+                break;
+            case MyDealsNightlifeIndex:
+                cat = [categoryHelper getCategory:CategoryNightlife];
+                break;
+            default:
+                cat = nil;
+                break;
+        }
+    }
+    return cat;
 }
-*/
+
+- (NSPredicate *) getPredicateAtSelectedIndex:(Boolean)searchMode
+{
+    NSPredicate *filter;
+    if (searchMode)
+    {
+        switch ([self selectedSegmentIndex])
+        {
+            case ExploreAllIndex:
+                filter = nil;
+                break;
+            default:
+                filter = [self getCategoryPredicate:searchMode];
+                break;
+        }
+    }
+    else
+    {
+        switch ([self selectedSegmentIndex]) {
+            case MyDealsAllIndex:
+                filter = nil;
+                break;
+            case MyDealsFavsIndex:
+                filter = [NSPredicate predicateWithFormat:@"SELF.isFav > %d",0];
+                break;
+            default:
+                filter = [self getCategoryPredicate:searchMode];
+                break;
+        }
+    }
+    
+    return filter;
+}
+
+- (NSPredicate *)getCategoryPredicate:(Boolean)searchMode
+{
+    ttCategory *cat = [self getCategoryAtSelectedIndex:searchMode];
+    return [NSPredicate predicateWithFormat:@"category.categoryId = %@", cat.categoryId];
+}
 
 @end

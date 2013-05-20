@@ -58,14 +58,7 @@
     
     // TODO
     ttMerchant *merch = (ttMerchant *)self.deal.deal.merchant;
-    ttMerchantLocation *ml = [merch getClosestLocation:nil];
-    if (ml == nil)
-    {
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        [customer refreshMerchants:[CustomerHelper getContext]];
-        ml = [merch getClosestLocation:nil];
-    }
-    NSLog(@"LOGO URL: %@",ml.logoUrl);
+    ttMerchantLocation *ml = [merch getClosestLocation:0.0 longitude:0.0];
     [self.offerLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
                        placeholderImage:[UIImage imageNamed:@"Default.png"]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {

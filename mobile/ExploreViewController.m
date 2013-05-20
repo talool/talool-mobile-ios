@@ -16,7 +16,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.isExplore = YES;
     [self.filterControl removeSegmentAtIndex:1 animated:NO];
     UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconSearch
                                              imageSize:CGSizeMake(30, 30)
@@ -29,12 +28,18 @@
 {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.title = @"Explore";
+    self.isExplore = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
+}
+
+-(Boolean) getSearchMode
+{
+    return YES;
 }
 
 

@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class MerchantFilterControl;
-@class ttCustomer;
+@class ttCustomer, ttCategory;
 
 @protocol ProximitySliderDelegate <NSObject>
 - (void)proximityChanged:(float)valueInMiles sender:(id)sender;
 @end
 
 @protocol MerchantFilterDelegate <NSObject>
-- (void)filterChanged:(int)idx sender:(id)sender;
+- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
 @end
 
 @interface BaseSearchViewController : UIViewController {
@@ -30,6 +30,7 @@
 }
 
 - (IBAction)proximitySliderValueChanged:(id)sender;
+-(Boolean) getSearchMode;
 
 @property (strong, nonatomic) MerchantFilterControl *filterControl;
 
