@@ -1210,7 +1210,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZJ-TG-wP4">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="8ZJ-TG-wP4">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="WlU-bt-EmS"/>
                                                 <constraint firstAttribute="width" constant="50" id="wUr-Qb-mUv"/>

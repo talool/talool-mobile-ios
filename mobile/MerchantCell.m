@@ -8,16 +8,19 @@
 
 #import "MerchantCell.h"
 #import "talool-api-ios/TaloolAddress.h"
+#import "talool-api-ios/ttCategory.h"
+#import "CategoryHelper.h"
 
 @implementation MerchantCell
 
-@synthesize merchant, icon, category, address, name;
+@synthesize merchant, icon, category, address, name, helper;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+
+- (id) initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+    if (self = [super initWithCoder:aDecoder])
+    {
+        helper = [[CategoryHelper alloc] init];
     }
     return self;
 }
@@ -32,10 +35,11 @@
 - (void)setMerchant:(ttMerchant *)newMerchant {
     if (newMerchant != merchant) {
         merchant = newMerchant;
+        ttCategory *cat = (ttCategory *)newMerchant.category;
         
-        [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
+        [self setIcon:[helper getIcon:[cat.categoryId intValue]]];
         [self setName:merchant.name];
-        [self setCategory:@"Fine Dining"];
+        [self setCategory:cat.name];
         [self setAddress:[merchant getLocationLabel]];
 
     }

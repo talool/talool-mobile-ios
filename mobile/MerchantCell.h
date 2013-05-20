@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 #import "talool-api-ios/ttMerchant.h"
 
+@class CategoryHelper;
+
 @interface MerchantCell : UITableViewCell
 {
     
@@ -29,5 +31,6 @@
 @property(retain) NSString *category;
 @property(retain) NSString *name;
 @property(retain) NSString *address;
+@property(retain) CategoryHelper *helper;
 
 @end
