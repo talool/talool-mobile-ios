@@ -17,9 +17,9 @@
 
 @end
 
-#define MAX_PROXIMITY 200
-#define DEFAULT_PROXIMITY 100
-#define MIN_PROXIMITY 2
+#define MAX_PROXIMITY 100
+#define DEFAULT_PROXIMITY 20
+#define MIN_PROXIMITY 1
 
 @implementation BaseSearchViewController
 
@@ -89,7 +89,14 @@
 - (void) updateProximityLabel:(float) miles
 {
     NSNumber *prox = [[NSNumber alloc] initWithFloat:miles];
-    distanceLabel.text = [NSString localizedStringWithFormat:@"Proximity: %d miles", [prox intValue]];
+    if ([prox intValue] == MAX_PROXIMITY)
+    {
+        distanceLabel.text = @"Proximity: infinite";
+    }
+    else
+    {
+        distanceLabel.text = [NSString localizedStringWithFormat:@"Proximity: %d miles", [prox intValue]];
+    }
 }
 
 - (IBAction)proximitySliderValueChanged:(id)sender

@@ -23,6 +23,7 @@
 
 #define METERS_PER_MILE 1609.344
 #define MAX_PROXIMITY 200
+#define INFINITE_PROXIMITY 9999
 #define MIN_PROXIMITY_CHANGE_IN_MILES .05
 
 @implementation MechantTableViewController
@@ -186,16 +187,17 @@
  */
 -(void) updateMerchants
 {
-    if (proximity == 0)
+    int prox = proximity;
+    if (proximity == 0 || proximity == MAX_PROXIMITY)
     {
-        proximity = MAX_PROXIMITY;
+        prox = INFINITE_PROXIMITY;
     }
     
     ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
     NSError *error = [[NSError alloc] init];
     switch ([self getLocationUpdateType]) {
         case LOCATION_CHANGED:
-            allMerchantsInProximity = [user getMerchantsByProximity:proximity
+            allMerchantsInProximity = [user getMerchantsByProximity:prox
                                                           longitude:_customerLocation.coordinate.longitude
                                                            latitude:_customerLocation.coordinate.latitude
                                                             context:[CustomerHelper getContext]

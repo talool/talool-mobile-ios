@@ -9,11 +9,12 @@
 #import "MerchantCell.h"
 #import "talool-api-ios/TaloolAddress.h"
 #import "talool-api-ios/ttCategory.h"
+#import "talool-api-ios/ttMerchantLocation.h"
 #import "CategoryHelper.h"
 
 @implementation MerchantCell
 
-@synthesize merchant, icon, category, address, name, helper;
+@synthesize merchant, icon, distance, address, name, helper;
 
 
 - (id) initWithCoder:(NSCoder *)aDecoder
@@ -36,10 +37,17 @@
     if (newMerchant != merchant) {
         merchant = newMerchant;
         ttCategory *cat = (ttCategory *)newMerchant.category;
+        ttMerchantLocation *loc = newMerchant.location;
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        //[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [formatter setPositiveFormat:@"###0.##"];
+        [formatter setLocale:[NSLocale currentLocale]];
+        NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
         
         [self setIcon:[helper getIcon:[cat.categoryId intValue]]];
         [self setName:merchant.name];
-        [self setCategory:cat.name];
+        [self setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
         [self setAddress:[merchant getLocationLabel]];
 
     }

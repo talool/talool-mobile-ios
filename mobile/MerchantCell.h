@@ -19,7 +19,7 @@
     ttMerchant *merchant;
     
     UIImage *icon;
-    NSString *category;
+    NSString *distance;
     NSString *name;
     NSString *address;
 
@@ -28,7 +28,7 @@
 @property (nonatomic, retain) ttMerchant *merchant;
 
 @property(retain) UIImage *icon;
-@property(retain) NSString *category;
+@property(retain) NSString *distance;
 @property(retain) NSString *name;
 @property(retain) NSString *address;
 @property(retain) CategoryHelper *helper;

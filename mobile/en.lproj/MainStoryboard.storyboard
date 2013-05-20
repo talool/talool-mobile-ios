@@ -1212,7 +1212,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="8ZJ-TG-wP4">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="WlU-bt-EmS"/>
+                                                <constraint firstAttribute="height" constant="50" id="FEj-rO-Lb7"/>
                                                 <constraint firstAttribute="width" constant="50" id="wUr-Qb-mUv"/>
                                             </constraints>
                                         </imageView>
@@ -1232,20 +1232,32 @@
                                             <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKj-cb-1Yx">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="rrF-eF-Bhq"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="Y1q-ao-PDJ" firstAttribute="top" secondItem="8ZJ-TG-wP4" secondAttribute="top" type="default" id="2Qh-oG-MjJ"/>
                                     <constraint firstItem="dum-PD-RSO" firstAttribute="leading" secondItem="Y1q-ao-PDJ" secondAttribute="leading" type="default" id="IUb-Iu-TXO"/>
+                                    <constraint firstItem="yKj-cb-1Yx" firstAttribute="leading" secondItem="dum-PD-RSO" secondAttribute="leading" type="default" id="RZH-b2-2Kd"/>
+                                    <constraint firstAttribute="bottom" secondItem="yKj-cb-1Yx" secondAttribute="bottom" constant="1" id="XMe-PI-wxV"/>
                                     <constraint firstItem="8ZJ-TG-wP4" firstAttribute="centerY" secondItem="aLY-tj-mBJ" secondAttribute="centerY" type="default" id="Z04-cb-mhA"/>
-                                    <constraint firstItem="Y1q-ao-PDJ" firstAttribute="top" secondItem="aLY-tj-mBJ" secondAttribute="top" constant="11" id="auu-1k-NGq"/>
-                                    <constraint firstAttribute="bottom" secondItem="dum-PD-RSO" secondAttribute="bottom" constant="8" id="iAF-ex-nJB"/>
+                                    <constraint firstItem="yKj-cb-1Yx" firstAttribute="trailing" secondItem="dum-PD-RSO" secondAttribute="trailing" type="default" id="a7e-D9-kBX"/>
+                                    <constraint firstItem="dum-PD-RSO" firstAttribute="top" secondItem="aLY-tj-mBJ" secondAttribute="top" constant="22" id="i9c-6g-cr3"/>
                                     <constraint firstItem="Y1q-ao-PDJ" firstAttribute="trailing" secondItem="dum-PD-RSO" secondAttribute="trailing" type="default" id="nBP-Uu-tqb"/>
                                     <constraint firstItem="8ZJ-TG-wP4" firstAttribute="leading" secondItem="aLY-tj-mBJ" secondAttribute="leading" constant="5" id="qnC-WQ-1yS"/>
                                     <constraint firstItem="Y1q-ao-PDJ" firstAttribute="leading" secondItem="aLY-tj-mBJ" secondAttribute="leading" constant="72" id="sWw-tV-qXL"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="addressLabel" destination="dum-PD-RSO" id="xd8-PB-men"/>
+                                    <outlet property="distanceLabel" destination="yKj-cb-1Yx" id="NTg-Ju-n7U"/>
                                     <outlet property="iconView" destination="8ZJ-TG-wP4" id="D3a-wq-dFL"/>
                                     <outlet property="nameLabel" destination="Y1q-ao-PDJ" id="kJD-Km-POZ"/>
                                     <segue destination="SSH-fd-inc" kind="push" identifier="showMerchant" id="lv4-tA-3Ge"/>
@@ -1472,7 +1484,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteMerchantCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="categoryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>

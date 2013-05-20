@@ -14,7 +14,7 @@
 {
     
     IBOutlet UIImageView *iconView;
-    IBOutlet UILabel *categoryLabel;
+    IBOutlet UILabel *distanceLabel;
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *addressLabel;
 

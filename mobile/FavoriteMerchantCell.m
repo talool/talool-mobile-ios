@@ -25,10 +25,10 @@
     iconView.image = newIcon;
 }
 
-- (void)setCategory:(NSString *)newCategory
+- (void)setDistance:(NSString *)newDistance
 {
-    [super setCategory:newCategory];
-    categoryLabel.text = newCategory;
+    [super setDistance:newDistance];
+    distanceLabel.text = newDistance;
 }
 
 - (void)setName:(NSString *)newName
