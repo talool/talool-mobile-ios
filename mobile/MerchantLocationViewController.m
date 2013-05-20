@@ -27,17 +27,10 @@
 @synthesize locationMapView, merchant;
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    // initial location
-    // TODO get the closest location
-    [self centerMap:merchant.location.location];
-    
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     self.navigationItem.title = merchant.name;
+    [self centerMap:merchant.location.location];
 }
 
 - (void)viewDidLoad
