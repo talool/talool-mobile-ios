@@ -13,6 +13,7 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttCategory.h"
+#import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "CustomerHelper.h"
 #import "AppDelegate.h"
 #import "TaloolColor.h"
@@ -21,10 +22,7 @@
 
 @end
 
-#define METERS_PER_MILE 1609.344
-#define MAX_PROXIMITY 200
-#define INFINITE_PROXIMITY 9999
-#define MIN_PROXIMITY_CHANGE_IN_MILES .05
+
 
 @implementation MechantTableViewController
 @synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter;

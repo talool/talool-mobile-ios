@@ -16,7 +16,7 @@
 -(void) viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconStar
+    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconUser
                                              imageSize:CGSizeMake(30, 30)
                                               fontSize:29
                                             attributes:nil];

@@ -45,7 +45,7 @@ static NSMutableDictionary *_categoryDictionary;
                 catKey = [NSNumber numberWithInt:CategoryShopping];
                 break;
             case CategoryFun:
-                icon = [CategoryHelper getImageForIcon:FAKIconStar color:[TaloolColor green]];
+                icon = [CategoryHelper getImageForIcon:FAKIconTicket color:[TaloolColor green]];
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryFun];
                 break;

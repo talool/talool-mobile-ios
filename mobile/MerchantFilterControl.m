@@ -48,7 +48,7 @@
                                                    imageSize:CGSizeMake(iconSize, iconSize)
                                                     fontSize:fontSize
                                                   attributes:iconAttrs];
-        UIImage *funIcon = [FontAwesomeKit imageForIcon:FAKIconStar
+        UIImage *funIcon = [FontAwesomeKit imageForIcon:FAKIconTicket
                                               imageSize:CGSizeMake(iconSize, iconSize)
                                                fontSize:fontSize
                                              attributes:iconAttrs];

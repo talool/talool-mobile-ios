@@ -15,8 +15,7 @@
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttAddress.h"
 #import "talool-api-ios/ttLocation.h"
-
-#define METERS_PER_MILE 1609.344
+#import "talool-api-ios/TaloolFrameworkHelper.h"
 
 @interface MerchantLocationViewController ()
 
@@ -26,10 +25,16 @@
 
 @synthesize locationMapView, merchant;
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = merchant.name;
+    [self centerMap:merchant.location.location];
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    self.navigationItem.title = merchant.name;
+    [super viewDidAppear:animated];
     [self centerMap:merchant.location.location];
 }
 

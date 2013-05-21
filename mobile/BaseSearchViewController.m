@@ -12,14 +12,11 @@
 #import "FontAwesomeKit.h"
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/TaloolFrameworkHelper.h"
 
 @interface BaseSearchViewController ()
 
 @end
-
-#define MAX_PROXIMITY 100
-#define DEFAULT_PROXIMITY 20
-#define MIN_PROXIMITY 1
 
 @implementation BaseSearchViewController
 
