@@ -25,14 +25,18 @@
 
 
 @implementation MechantTableViewController
-@synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter;
+@synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter, locationManagerEnabled;
 @synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity;
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self filterMerchants];
+    // TODO what to show if the user hasn't enabled location services?
+    if (locationManagerEnabled)
+    {
+        [self filterMerchants];
+    }
 }
 
 - (void)viewDidLoad
@@ -52,6 +56,29 @@
     _lastLocation = nil;
     locationChanged = YES;
     proximityChanged = YES;
+    
+    // is the location service enabled?
+    if ([CLLocationManager locationServicesEnabled] == NO)
+    {
+        // It would be interesting to track this. (TODO)
+        // the user will be prompted to turn them on when the location
+        // manager starts up.
+        NSLog(@"The user has disabled location services");
+    }
+    
+    // is the location service authorized?
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined ||
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+    {
+        /* 
+         * TODO
+            - track this
+            - message user about why it's needed?
+            - flag the user obj, so we can avoid errors?
+         */
+        NSLog(@"The user has denied the use of their location");
+    }
+    locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 
 }
 
@@ -277,6 +304,14 @@
         locationChanged = NO;
     }
     
+    if (locationManagerEnabled == NO)
+    {
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+            // we were just authorized, so update the list
+            locationManagerEnabled = YES;
+            [self filterMerchants];
+        }
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager

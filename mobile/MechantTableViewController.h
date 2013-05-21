@@ -34,6 +34,7 @@
 @property int lastProximity;
 @property BOOL locationChanged;
 @property BOOL proximityChanged;
+@property BOOL locationManagerEnabled;
 
 enum {
     LOCATION_UNAVAILABLE = 0,
