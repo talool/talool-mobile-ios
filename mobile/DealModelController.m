@@ -8,6 +8,7 @@
 
 #import "DealModelController.h"
 #import "DealViewController.h"
+#import "TaloolColor.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttDealAcquire.h"
 
@@ -45,16 +46,16 @@
     }
     
     // Create a new view controller and pass suitable data.
-    NSNumber *page = [self.pageData objectAtIndex:index];
-    NSString *identifier;
-    if ([page intValue] == 1) {
-        identifier = @"DealViewController";
-    } else {
-        identifier = @"RedeemedDealViewController";
-    }
-    DealViewController *dealViewController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+    DealViewController *dealViewController = [storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
     dealViewController.deal = self.deal;
+    NSNumber *page = [self.pageData objectAtIndex:index];
     dealViewController.page = page;
+    if ([page intValue] == 1) {
+        [dealViewController updateBackgroundColor:[TaloolColor teal]];
+    } else {
+        [dealViewController updateBackgroundColor:[TaloolColor gray_1]];
+    }
+    [dealViewController.instructionsLabel setHidden:true];
     self.currentViewController = dealViewController;
     return dealViewController;
 }

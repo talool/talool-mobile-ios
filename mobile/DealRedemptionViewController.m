@@ -75,12 +75,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpfulDealViewController"];
+    DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
     hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     hiddenVC.deal = deal;
+    //[hiddenVC.instructionsLabel setHidden:true];
+    [hiddenVC.qrCode setHidden:true];
     __block DealRedemptionViewController *blocksafeSelf = self; 
     [self presentViewController:hiddenVC animated:YES completion:^(void) {
-        // TODO turn back after a timer has expired
+        // turn back after a timer has expired
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:blocksafeSelf selector:@selector(hideInstructionalModal:) userInfo:nil repeats:NO];
     }];
 

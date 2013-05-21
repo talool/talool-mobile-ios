@@ -164,5 +164,12 @@
     }
 }
 
+- (void) updateBackgroundColor:(UIColor *)color
+{
+    [self.view setBackgroundColor:color];
+    // change any subviews too
+    [self.logoContainer setBackgroundColor:color];
+}
+
 
 @end
