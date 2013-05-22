@@ -193,11 +193,12 @@
     
     
     // filter the array based on proximity
-    if (proximity == 0)
+    int prox = proximity;
+    if (proximity == 0 || proximity == MAX_PROXIMITY)
     {
-        proximity = MAX_PROXIMITY;
+        prox = INFINITE_PROXIMITY;
     }
-    int proximityInMeters = METERS_PER_MILE * proximity;
+    int proximityInMeters = METERS_PER_MILE * prox;
     NSPredicate *proximityPredicate = [NSPredicate predicateWithFormat:@"ANY locations.distanceInMeters < %d",proximityInMeters];
     tempArray = [tempArray filteredArrayUsingPredicate:proximityPredicate];
     
