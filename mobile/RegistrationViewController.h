@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "talool-api-ios/ttCustomer.h"
 
+@class TaloolUIButton;
 
 @interface RegistrationViewController : UIViewController {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *firstNameField;
     IBOutlet UITextField *lastNameField;
+    IBOutlet TaloolUIButton *regButton;
     UIAlertView *errorView;
 }
 

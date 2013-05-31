@@ -10,7 +10,9 @@
 #import "WelcomeViewController.h"
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
+#import "TaloolUIButton.h"
 #import "FacebookHelper.h"
+#import "TaloolColor.h"
 #import "talool-api-ios/ttCustomer.h"
 
 @interface WelcomeViewController ()
@@ -41,6 +43,12 @@
     self.FBLoginView.readPermissions = @[@"user_location", @"email"];
     self.FBLoginView.publishPermissions = @[@"publish_actions"];
     self.FBLoginView.defaultAudience = FBSessionDefaultAudienceFriends;
+    
+    [loginButton useTaloolStyle];
+    [loginButton setBaseColor:[TaloolColor teal]];
+    
+    [regButton useTaloolStyle];
+    [regButton setBaseColor:[TaloolColor teal]];
     
 }
 

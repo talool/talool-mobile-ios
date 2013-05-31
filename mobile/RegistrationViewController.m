@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "RegistrationViewController.h"
 #import "CustomerHelper.h"
+#import "TaloolColor.h"
+#import "TaloolUIButton.h"
 
 @interface RegistrationViewController ()
 
@@ -23,6 +25,8 @@
 {
     [super viewDidLoad];
 
+    [regButton useTaloolStyle];
+    [regButton setBaseColor:[TaloolColor teal]];
 }
 
 - (void)didReceiveMemoryWarning
