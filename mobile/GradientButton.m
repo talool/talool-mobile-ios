@@ -111,7 +111,7 @@
 {
     [self setDrawingProperties];
     CGFloat buttonMargin = 0.5f;
-    CGFloat buttonPadding = 2.0f;
+    CGFloat buttonPadding = 1.0f;
     
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGMutablePathRef path = CGPathCreateMutable();
@@ -209,16 +209,16 @@
     
     // draw a highlight line
     path = CGPathCreateMutable();
-    point = [self getPoint:0.0
-                         y:(self.bounds.size.height - [self cornerRadius])];
+    point = [self getPoint:buttonMargin
+                         y:(self.bounds.size.height - [self halfCornerRadius])];
 	CGPathMoveToPoint(path, NULL, point.x, point.y);
     // bottom left curved corner
 	point = [self getPoint:[self cornerRadius]
                          y:(self.bounds.size.height - buttonMargin)];
-	controlPoint1 = [self getPoint:0.0
-                                 y:(self.bounds.size.height - [self halfCornerRadius])];
-	controlPoint2 = [self getPoint:[self halfCornerRadius]
-                                 y:(self.bounds.size.height - buttonMargin)];
+	controlPoint1 = [self getPoint:(2*buttonMargin)
+                                 y:(self.bounds.size.height - [self halfCornerRadius] + buttonMargin)];
+	controlPoint2 = [self getPoint:([self cornerRadius] - buttonMargin)
+                                 y:(self.bounds.size.height - 2*buttonMargin)];
 	CGPathAddCurveToPoint(path, NULL, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, point.x, point.y);
     // bottom side (between the curves)
 	point = [self getPoint:(self.bounds.size.width - [self cornerRadius])
@@ -226,11 +226,11 @@
 	CGPathAddLineToPoint(path, NULL, point.x, point.y);
     // bottom right curved corner
 	point = [self getPoint:(self.bounds.size.width - buttonMargin)
-                         y:(self.bounds.size.height - [self cornerRadius])];
-	controlPoint1 = [self getPoint:(self.bounds.size.width - [self halfCornerRadius])
-                                 y:(self.bounds.size.height - buttonMargin)];
-	controlPoint2 = [self getPoint:(self.bounds.size.width - buttonMargin)
-                                 y:(self.bounds.size.height - [self halfCornerRadius])];
+                         y:(self.bounds.size.height - [self halfCornerRadius])];
+	controlPoint1 = [self getPoint:(self.bounds.size.width - [self cornerRadius] + buttonMargin)
+                                 y:(self.bounds.size.height - 2*buttonMargin)];
+	controlPoint2 = [self getPoint:(self.bounds.size.width - 2*buttonMargin)
+                                 y:(self.bounds.size.height - [self halfCornerRadius] + buttonMargin)];
 	CGPathAddCurveToPoint(path, NULL, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, point.x, point.y);
     //
     [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.6] setStroke];
