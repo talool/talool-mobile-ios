@@ -106,8 +106,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DealRedemptionViewController *controller = (DealRedemptionViewController *)[segue destinationViewController];
         [controller setDeal:[deals objectAtIndex:indexPath.row]];
-        controller.title = merchant.name;
-        
     }
 }
 

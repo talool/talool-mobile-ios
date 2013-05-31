@@ -53,6 +53,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     self.navigationItem.title = merchant.name;
+    self.navigationItem.backBarButtonItem.title = @"Back";
 }
 
 - (void)didReceiveMemoryWarning
