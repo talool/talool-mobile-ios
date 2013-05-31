@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FacebookSDK/FacebookSDK.h"
 #import <CoreLocation/CoreLocation.h>
 
 @class ttDealAcquire;
 
-@interface DealRedemptionViewController : UIViewController <UIPageViewControllerDelegate,FBFriendPickerDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
+@interface DealRedemptionViewController : UIViewController <UIPageViewControllerDelegate,UIAlertViewDelegate,CLLocationManagerDelegate>
 
 - (IBAction)shareAction:(id)sender;
 - (void)redeemAction;

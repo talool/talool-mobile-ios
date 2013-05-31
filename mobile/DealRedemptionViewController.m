@@ -9,6 +9,7 @@
 #import "DealRedemptionViewController.h"
 #import "DealModelController.h"
 #import "DealViewController.h"
+#import "SendGiftViewController.h"
 #import "CustomerHelper.h"
 #import "AppDelegate.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -19,13 +20,11 @@
 
 @interface DealRedemptionViewController ()
 @property (readonly, strong, nonatomic) DealModelController *modelController;
-@property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @end
 
 @implementation DealRedemptionViewController
 
 @synthesize modelController = _modelController;
-@synthesize friendPickerController = _friendPickerController;
 @synthesize deal;
 
 - (void)viewDidLoad
@@ -54,7 +53,6 @@
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
-    // TODO: Only show the share button is the user has connected with Facebook
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconGift
                                                                     style:UIBarButtonItemStyleBordered
                                                                    target:self
@@ -73,8 +71,17 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.title = deal.deal.merchant.name;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
     hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     hiddenVC.deal = deal;
@@ -86,7 +93,6 @@
         [NSTimer scheduledTimerWithTimeInterval:1.0 target:blocksafeSelf selector:@selector(hideInstructionalModal:) userInfo:nil repeats:NO];
     }];
 
-
 }
 
 - (void) hideInstructionalModal:(id)sender
@@ -96,8 +102,17 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    // TODO can't figure out why can't set the backbutton item
+    self.navigationItem.title = @"Back";
+}
 
-    
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showGiftView"])
+    {
+        SendGiftViewController *sgvc = [segue destinationViewController];
+        sgvc.dealAcquire = deal;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,33 +201,13 @@
 }
 
 - (IBAction)shareAction:(id)sender {
-    if (self.friendPickerController == nil) {
-        // Create friend picker, and get data loaded into it.
-        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-        self.friendPickerController.title = @"Pick Friends";
-        self.friendPickerController.delegate = self;
-        self.friendPickerController.allowsMultipleSelection = NO;
-    }
-    
-    [self.friendPickerController loadData];
-    [self.friendPickerController clearSelection];
-    
-    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+    // open the share modal
+    //SendGiftViewController *shareView = [self.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
+    //shareView.dealAcquire = self.deal;
+    [self performSegueWithIdentifier:@"showGiftView" sender:self];
+    //[self presentViewController:shareView animated:YES completion:nil];
 }
 
-- (void)facebookViewControllerDoneWasPressed:(id)sender {
-    
-    for (id<FBGraphUser> user in self.friendPickerController.selection) {
-        NSLog(@"Friend picked: %@", user.name);
-        // TODO implement the share functionality
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)facebookViewControllerCancelWasPressed:(id)sender {
-    // clean up, if needed
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark -
 #pragma mark CLLocationManagerDelegate
