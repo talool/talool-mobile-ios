@@ -110,8 +110,13 @@ static NSMutableDictionary *_categoryDictionary;
 
 +(UIImage *) getCircleWithColor:(UIColor *)color
 {
-    CGFloat width = 50;
-    CGFloat height = 50;
+    return [self getCircleWithColor:color diameter:50];
+}
+
++(UIImage *) getCircleWithColor:(UIColor *)color diameter:(CGFloat)diameter
+{
+    CGFloat width = diameter;
+    CGFloat height = diameter;
     
 	// create a new bitmap image context
 	//

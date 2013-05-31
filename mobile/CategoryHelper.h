@@ -23,7 +23,7 @@ typedef int CategoryType;
 -(UIImage *) getIcon:(CategoryType)catType;
 -(ttCategory *) getCategory:(CategoryType)catType;
 
-+(UIImage *) getCircleWithColor:(UIColor *)color;
++(UIImage *) getCircleWithColor:(UIColor *)color diameter:(CGFloat)diameter;
 +(UIImage *) getImageForIcon:(NSString *)icon color:(UIColor *)color;
 
 @end
