@@ -10,9 +10,11 @@
 #import "WelcomeViewController.h"
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
+#import "TaloolIconButton.h"
 #import "TaloolUIButton.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
+#import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
 
 @interface WelcomeViewController ()
@@ -47,8 +49,15 @@
     [loginButton useTaloolStyle];
     [loginButton setBaseColor:[TaloolColor teal]];
     
+    NSDictionary *attr = @{ FAKImageAttributeForegroundColor:[UIColor whiteColor] };
+    UIImage *userIcon = [FontAwesomeKit imageForIcon:FAKIconUser
+                                           imageSize:CGSizeMake(44, 44)
+                                            fontSize:36
+                                          attributes:attr];
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
+    [regButton setTitle:@"Register" forState:UIControlStateNormal];
+    [regButton setImage:userIcon forState:UIControlStateNormal];
     
 }
 

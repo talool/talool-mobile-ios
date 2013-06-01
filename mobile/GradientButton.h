@@ -49,5 +49,7 @@
 @property (nonatomic) CGFloat alignStroke;
 @property (nonatomic) CGFloat resolution;
 
+- (CGPoint) getPoint:(CGFloat)x y:(CGFloat)y;
+
 
 @end

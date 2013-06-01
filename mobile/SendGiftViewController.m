@@ -10,7 +10,7 @@
 #import "TaloolColor.h"
 #import "FontAwesomeKit.h"
 #import "CategoryHelper.h"
-#import "TaloolUIButton.h"
+#import "TaloolIconButton.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 
@@ -47,7 +47,7 @@
                                                         attributes:attr];
     [facebookButton useTaloolStyle];
     [facebookButton setImage:fbIcon forState:UIControlStateNormal];
-    [facebookButton setTitle:@"" forState:UIControlStateNormal];
+    [facebookButton setTitle:@"Pick a Facebook Friend" forState:UIControlStateNormal];
     [facebookButton setBaseColor:[TaloolColor teal]];
     
     UIImage *userIcon = [FontAwesomeKit imageForIcon:FAKIconUser
@@ -55,7 +55,7 @@
                                                           fontSize:36
                                                         attributes:attr];
     [contactButton useTaloolStyle];
-    [contactButton setTitle:@"" forState:UIControlStateNormal];
+    [contactButton setTitle:@"Pick a Contact Email" forState:UIControlStateNormal];
     [contactButton setImage:userIcon forState:UIControlStateNormal];
     [contactButton setBaseColor:[TaloolColor teal]];
 

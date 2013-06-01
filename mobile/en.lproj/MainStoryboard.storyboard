@@ -50,7 +50,7 @@
                                     <action selector="loginAction:" destination="Jte-0N-Lae" eventType="touchUpInside" id="stF-JM-MOm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-ZT-O0K" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-ZT-O0K" customClass="TaloolIconButton">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0bs-sJ-XiY"/>
                                     <constraint firstAttribute="width" constant="160" id="lCs-Mg-KSm"/>
@@ -561,11 +561,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Who would you like to send this deal to?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-Dj-6gn">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="How would you like to share this deal?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-Dj-6gn">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="E4e-dB-16p"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -578,10 +578,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-iO-ubN" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-iO-ubN" customClass="TaloolIconButton">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Brp-82-zV6"/>
-                                    <constraint firstAttribute="width" constant="120" id="RsD-Wl-WNQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="C">
@@ -595,9 +594,9 @@
                                     <action selector="openContactPickerAction:" destination="roS-l2-lMH" eventType="touchUpInside" id="HW9-R1-veB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWH-ab-Oo5" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWH-ab-Oo5" customClass="TaloolIconButton">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="DMq-yC-NUS"/>
+                                    <constraint firstAttribute="height" constant="50" id="mF6-Nc-1B1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" title="F">
@@ -614,20 +613,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aL3-iO-ubN" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4rl-6R-7iv"/>
                             <constraint firstAttribute="trailing" secondItem="M8C-5u-OlA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BBx-uj-M4D"/>
                             <constraint firstItem="M8C-5u-OlA" firstAttribute="top" secondItem="i2M-Ke-cuN" secondAttribute="top" constant="26" id="Btd-5S-Bfw"/>
                             <constraint firstItem="0nu-Ww-zYp" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="16" id="GDN-ef-WtK"/>
-                            <constraint firstItem="aL3-iO-ubN" firstAttribute="top" secondItem="fWH-ab-Oo5" secondAttribute="top" type="default" id="HEi-Nc-3jm"/>
-                            <constraint firstItem="fWH-ab-Oo5" firstAttribute="top" secondItem="i2M-Ke-cuN" secondAttribute="top" constant="415" id="PHA-3G-AwB"/>
+                            <constraint firstAttribute="bottom" secondItem="0nu-Ww-zYp" secondAttribute="bottom" constant="211" id="LwW-OD-DWL"/>
+                            <constraint firstAttribute="bottom" secondItem="aL3-iO-ubN" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="PQo-XP-rNW"/>
                             <constraint firstItem="M8C-5u-OlA" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Usz-bW-tMJ"/>
                             <constraint firstItem="ZGG-uT-dup" firstAttribute="top" secondItem="i2M-Ke-cuN" secondAttribute="top" constant="74" id="WeI-YQ-mFR"/>
-                            <constraint firstItem="aL3-iO-ubN" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hry-X6-DSh"/>
-                            <constraint firstAttribute="trailing" secondItem="fWH-ab-Oo5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kbb-wY-rX7"/>
-                            <constraint firstItem="fWH-ab-Oo5" firstAttribute="bottom" secondItem="aL3-iO-ubN" secondAttribute="bottom" type="default" id="ocM-zP-8Q1"/>
+                            <constraint firstItem="fWH-ab-Oo5" firstAttribute="top" secondItem="IhS-Dj-6gn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="a9o-n8-FRq"/>
+                            <constraint firstAttribute="trailing" secondItem="aL3-iO-ubN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eKD-h6-E41"/>
+                            <constraint firstAttribute="trailing" secondItem="fWH-ab-Oo5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fte-ml-ikO"/>
+                            <constraint firstAttribute="bottom" secondItem="fWH-ab-Oo5" secondAttribute="bottom" constant="91" id="hq8-4c-sAK"/>
+                            <constraint firstItem="fWH-ab-Oo5" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ndX-bD-OXr"/>
                             <constraint firstItem="M8C-5u-OlA" firstAttribute="centerX" secondItem="ZGG-uT-dup" secondAttribute="centerX" type="default" id="ryX-9a-sVZ"/>
-                            <constraint firstAttribute="bottom" secondItem="0nu-Ww-zYp" secondAttribute="bottom" constant="168" id="tIP-Dj-3Wk"/>
                             <constraint firstItem="IhS-Dj-6gn" firstAttribute="leading" secondItem="i2M-Ke-cuN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vqr-2O-srU"/>
-                            <constraint firstAttribute="bottom" secondItem="IhS-Dj-6gn" secondAttribute="bottom" constant="106" id="wm1-AH-QCj"/>
+                            <constraint firstAttribute="trailing" secondItem="IhS-Dj-6gn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xTz-Po-LAp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CPv-yI-FaN"/>
@@ -1559,9 +1560,9 @@
             <relationships>
                 <relationship kind="action" name="openContactPickerAction:"/>
                 <relationship kind="action" name="openFBPickerAction:"/>
-                <relationship kind="outlet" name="contactButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="contactButton" candidateClass="TaloolIconButton"/>
                 <relationship kind="outlet" name="dealTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="facebookButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="facebookButton" candidateClass="TaloolIconButton"/>
                 <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="gifteeName" candidateClass="UILabel"/>
             </relationships>
@@ -1572,6 +1573,9 @@
                 <relationship kind="action" name="logout:"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="TaloolIconButton" superclassName="TaloolUIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolIconButton.h"/>
         </class>
         <class className="TaloolTabBarController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolTabBarController.h"/>
@@ -1591,7 +1595,7 @@
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="TaloolUIButton"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="regButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="regButton" candidateClass="TaloolIconButton"/>
             </relationships>
         </class>
     </classes>

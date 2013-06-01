@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
 
-@class TaloolUIButton;
+@class TaloolIconButton, TaloolUIButton;
 
 @interface WelcomeViewController : UIViewController<FBLoginViewDelegate>
 {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;
     IBOutlet TaloolUIButton *loginButton;
-    IBOutlet TaloolUIButton *regButton;
+    IBOutlet TaloolIconButton *regButton;
 }
 
 - (IBAction)logoutAction:(UIStoryboardSegue *)segue;

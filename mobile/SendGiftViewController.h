@@ -11,15 +11,15 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "FacebookSDK/FacebookSDK.h"
 
-@class ttDealAcquire, TaloolUIButton;
+@class ttDealAcquire, TaloolIconButton;
 
 @interface SendGiftViewController : UIViewController<ABPeoplePickerNavigationControllerDelegate,FBFriendPickerDelegate>
 {
     IBOutlet UIImageView *giftImage;
     IBOutlet UILabel *dealTitle;
     IBOutlet UILabel *gifteeName;
-    IBOutlet TaloolUIButton *facebookButton;
-    IBOutlet TaloolUIButton *contactButton;
+    IBOutlet TaloolIconButton *facebookButton;
+    IBOutlet TaloolIconButton *contactButton;
 }
 
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
