@@ -27,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view setBackgroundColor:[TaloolColor gray_2]];
+    
     if ([CustomerHelper getLoggedInUser] != nil) {
         // Push forward if we already have a user
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

@@ -8,6 +8,7 @@
 
 #import "SendGiftViewController.h"
 #import "TaloolColor.h"
+#import "FacebookHelper.h"
 #import "FontAwesomeKit.h"
 #import "CategoryHelper.h"
 #import "TaloolIconButton.h"
@@ -26,7 +27,7 @@
 {
     [super viewDidLoad];
 	
-    // TODO set the bgcolor and gift image and deal summary
+    // set the bgcolor and gift image and deal summary
     [self.view setBackgroundColor:[TaloolColor gray_2]];
     NSDictionary *attr =@{
                           FAKImageAttributeForegroundColor:[UIColor whiteColor],
@@ -87,6 +88,26 @@
 - (void)confirmGiftSent
 {
     // TODO - show alert and change text labels
+    [self announceShare];
+}
+
+- (void)announceShare
+{
+    if ([FBSession.activeSession.permissions
+         indexOfObject:@"publish_actions"] == NSNotFound) {
+        
+        [FBSession.activeSession
+         requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
+         defaultAudience:FBSessionDefaultAudienceFriends
+         completionHandler:^(FBSession *session, NSError *error) {
+             if (!error) {
+                 // re-call assuming we now have the permission
+                 [self announceShare];
+             }
+         }];
+    } else {
+        [FacebookHelper postOGShareAction:dealAcquire];
+    }
 }
 
 - (IBAction)openContactPickerAction:(id)sender

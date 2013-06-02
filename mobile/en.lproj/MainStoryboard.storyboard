@@ -34,7 +34,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-dW-ZqD" customClass="TaloolUIButton">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="EYb-3n-IGu"/>
+                                    <constraint firstAttribute="height" constant="30" id="JYK-4w-bUe"/>
                                     <constraint firstAttribute="width" constant="85" id="oOi-eM-Zx7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -53,7 +53,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-ZT-O0K" customClass="TaloolIconButton">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="0bs-sJ-XiY"/>
-                                    <constraint firstAttribute="width" constant="160" id="lCs-Mg-KSm"/>
+                                    <constraint firstAttribute="width" constant="160" id="1CH-lD-8hv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,20 +86,20 @@
                         <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fEc-9g-ddz" firstAttribute="baseline" secondItem="6bD-dW-ZqD" secondAttribute="baseline" type="default" id="1Ra-ma-fKN"/>
-                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="120" id="69l-mZ-Bbe"/>
-                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="leading" secondItem="mfC-YJ-6VM" secondAttribute="leading" type="default" id="6qv-MW-OXz"/>
+                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="centerX" secondItem="Dpj-Xf-nNn" secondAttribute="centerX" type="default" id="4GY-Ap-Qd3"/>
                             <constraint firstItem="Dpj-Xf-nNn" firstAttribute="leading" secondItem="KYq-yi-s1S" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gez-AQ-zmg"/>
-                            <constraint firstItem="6bD-dW-ZqD" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="59" id="J9d-bJ-Imk"/>
-                            <constraint firstItem="6bD-dW-ZqD" firstAttribute="centerY" secondItem="fEc-9g-ddz" secondAttribute="centerY" type="default" id="KMS-OQ-PWR"/>
-                            <constraint firstAttribute="trailing" secondItem="Dpj-Xf-nNn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="MoJ-6K-bzT"/>
                             <constraint firstItem="cYb-ZT-O0K" firstAttribute="top" secondItem="mfC-YJ-6VM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QXD-V3-jtl"/>
+                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="186" id="Y1o-Tg-8op"/>
                             <constraint firstItem="6bD-dW-ZqD" firstAttribute="leading" secondItem="fEc-9g-ddz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="baW-g8-UvN"/>
                             <constraint firstItem="fEc-9g-ddz" firstAttribute="leading" secondItem="KYq-yi-s1S" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bcW-CU-PcF"/>
                             <constraint firstItem="Dpj-Xf-nNn" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="20" symbolic="YES" type="default" id="bi6-q6-t3f"/>
-                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="184" id="cFe-TH-wnm"/>
-                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="trailing" secondItem="mfC-YJ-6VM" secondAttribute="trailing" type="default" id="cWf-TJ-m2w"/>
                             <constraint firstAttribute="trailing" secondItem="6bD-dW-ZqD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ePh-fV-giD"/>
-                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="centerX" secondItem="Dpj-Xf-nNn" secondAttribute="centerX" type="default" id="r8n-qc-0v2"/>
+                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="centerX" secondItem="KYq-yi-s1S" secondAttribute="centerX" type="default" id="eup-9l-SCr"/>
+                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="trailing" secondItem="mfC-YJ-6VM" secondAttribute="trailing" type="default" id="j7h-Bf-GcS"/>
+                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="leading" secondItem="cYb-ZT-O0K" secondAttribute="leading" type="default" id="rHG-0C-1Ay"/>
+                            <constraint firstItem="6bD-dW-ZqD" firstAttribute="top" secondItem="fEc-9g-ddz" secondAttribute="top" type="default" id="rsz-6M-rc4"/>
+                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="122" id="sO8-N5-ddb"/>
+                            <constraint firstItem="6bD-dW-ZqD" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="60" id="uUf-37-2lh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="q4a-fA-Y0l"/>
