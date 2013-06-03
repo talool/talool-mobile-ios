@@ -76,22 +76,24 @@
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
 {
     // TODO - call the service
+    [self announceShare:facebookId];
     [self confirmGiftSent];
 }
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
 {
     // TODO - call the service
+    [self announceShare:nil];
     [self confirmGiftSent];
 }
 
 - (void)confirmGiftSent
 {
     // TODO - show alert and change text labels
-    [self announceShare];
+    
 }
 
-- (void)announceShare
+- (void)announceShare:(NSString *)facebookId
 {
     if ([FBSession.activeSession.permissions
          indexOfObject:@"publish_actions"] == NSNotFound) {
@@ -102,11 +104,12 @@
          completionHandler:^(FBSession *session, NSError *error) {
              if (!error) {
                  // re-call assuming we now have the permission
-                 [self announceShare];
+                 [self announceShare:facebookId];
              }
          }];
     } else {
-        [FacebookHelper postOGShareAction:dealAcquire];
+        ttDeal *deal = (ttDeal *)dealAcquire.deal;
+        [FacebookHelper postOGShareAction:deal facebookId:facebookId];
     }
 }
 

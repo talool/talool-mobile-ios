@@ -17,6 +17,7 @@
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 #import "FontAwesomeKit.h"
+#import "FacebookHelper.h"
 
 @interface DealRedemptionViewController ()
 @property (readonly, strong, nonatomic) DealModelController *modelController;
@@ -179,6 +180,10 @@
                       context:appDelegate.managedObjectContext];
         if (err.code < 100) {
             [self.modelController handleRedemption:self.deal];
+            
+            // Post the FB redeem action
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal];
+            
         } else {
             // show an error
             UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
@@ -201,11 +206,7 @@
 }
 
 - (IBAction)shareAction:(id)sender {
-    // open the share modal
-    //SendGiftViewController *shareView = [self.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
-    //shareView.dealAcquire = self.deal;
     [self performSegueWithIdentifier:@"showGiftView" sender:self];
-    //[self presentViewController:shareView animated:YES completion:nil];
 }
 
 

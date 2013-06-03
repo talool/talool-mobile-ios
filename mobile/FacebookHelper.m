@@ -22,6 +22,10 @@
 
 static NSManagedObjectContext *_context;
 
+NSString * const APP_NAMESPACE = @"taloolclient";
+NSString * const APP_ID = @"342739092494152";
+NSString * const OG_PAGE = @"http://talool.com/og";
+
 +(void) setContext:(NSManagedObjectContext *)context
 {
     _context = context;
@@ -61,100 +65,69 @@ static NSManagedObjectContext *_context;
     return user;
 }
 
-+ (id<OGDeal>)dealObjectForDealShare:(ttDealAcquire*)dealAcquire
++ (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal
 {
-    // This URL is specific to this sample, and can be used to
-    // create arbitrary OG objects for this app; your OG objects
-    // will have URLs hosted by your server.
     NSString *format =
-    @"https://<YOUR_BACK_END>/repeater.php?"
-    @"fb:app_id=<YOUR_APP_ID>&og:type=%@&"
-    @"og:title=%@&og:description=%%22%@%%22&"
-    @"og:image=https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png&"
-    @"body=%@";
+        @"%@?fb:app_id=%@&og:type=%@:deal&"
+        @"og:title=%@&og:description=%%22%@%%22&"
+        @"og:image=%@&"
+        @"body=%@";
     
-    // We create an FBGraphObject object, but we can treat it as
-    // an SCOGMeal with typed properties, etc. See <FacebookSDK/FBGraphObject.h>
-    // for more details.
     id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
-    
-    // Give it a URL that will echo back the name of the meal as its title,
-    // description, and body.
     result.url = [NSString stringWithFormat:format,
-                  @"<YOUR_APP_NAMESPACE>:deal", dealAcquire.deal.title, dealAcquire.deal.title, dealAcquire.deal.title];
-    
+                  OG_PAGE, APP_ID, APP_NAMESPACE,
+                  deal.title,
+                  deal.summary,
+                  deal.imageUrl,
+                  deal.title];
+
     return result;
 }
 
-+ (id<OGDeal>)dealObjectForDealRedemption:(ttDealAcquire*)dealAcquire
++ (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer
 {
-    // This URL is specific to this sample, and can be used to
-    // create arbitrary OG objects for this app; your OG objects
-    // will have URLs hosted by your server.
     NSString *format =
-    @"https://<YOUR_BACK_END>/repeater.php?"
-    @"fb:app_id=<YOUR_APP_ID>&og:type=%@&"
-    @"og:title=%@&og:description=%%22%@%%22&"
-    @"og:image=https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png&"
-    @"body=%@";
+        @"%@?fb:app_id=%@&og:type=%@:deal_pack&"
+        @"og:title=%@&og:description=%%22%@%%22&"
+        @"og:image=%@&"
+        @"body=%@";
     
-    // We create an FBGraphObject object, but we can treat it as
-    // an SCOGMeal with typed properties, etc. See <FacebookSDK/FBGraphObject.h>
-    // for more details.
-    id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
-    
-    // Give it a URL that will echo back the name of the meal as its title,
-    // description, and body.
-    result.url = [NSString stringWithFormat:format,
-                  @"<YOUR_APP_NAMESPACE>:deal", dealAcquire.deal.title, dealAcquire.deal.title, dealAcquire.deal.title];
-    
-    return result;
-
-}
-
-+ (id<OGDealPack>)dealPackObjectForPurchase:(ttDealOffer*)dealOffer
-{
-    // This URL is specific to this sample, and can be used to
-    // create arbitrary OG objects for this app; your OG objects
-    // will have URLs hosted by your server.
-    NSString *format =
-    @"https://<YOUR_BACK_END>/repeater.php?"
-    @"fb:app_id=<YOUR_APP_ID>&og:type=%@&"
-    @"og:title=%@&og:description=%%22%@%%22&"
-    @"og:image=https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png&"
-    @"body=%@";
-    
-    // We create an FBGraphObject object, but we can treat it as
-    // an SCOGMeal with typed properties, etc. See <FacebookSDK/FBGraphObject.h>
-    // for more details.
     id<OGDealPack> result = (id<OGDealPack>)[FBGraphObject graphObject];
-    
-    // Give it a URL that will echo back the name of the meal as its title,
-    // description, and body.
     result.url = [NSString stringWithFormat:format,
-                  @"<YOUR_APP_NAMESPACE>:deal", dealOffer.title, dealOffer.title, dealOffer.title];
+                  OG_PAGE, APP_ID, APP_NAMESPACE,
+                  dealOffer.title,
+                  dealOffer.summary,
+                  dealOffer.imageUrl,
+                  dealOffer.title];
     
     return result;
 
 }
 
-+ (void)postOGShareAction:(ttDealAcquire*)dealAcquire
++ (void)postOGShareAction:(ttDeal*)deal facebookId:(NSString *)facebookId
 {
     // First create the Open Graph deal object for the deal being shared.
-    id<OGDeal> dealObject = [FacebookHelper dealObjectForDealShare:dealAcquire];
+    id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
     
-    // Now create an Open Graph eat action with the meal, our location,
-    // and the people we were with.
-    id<OGShareDealAction> action =
-    (id<OGShareDealAction>)[FBGraphObject graphObject];
+    // Now create an Open Graph share action with the deal,
+    id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
     action.deal = dealObject;
+    if (facebookId != nil)
+    {
+        // reference to the user this deal was shared with
+        NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
+        [friends addObject:facebookId];
+        action.tags = friends;
+        //action.tags = [NSArray arrayWithObject:facebookId];
+    }
     
     /*
+     
+     // TODO the merchant location,
+     // TODO additional photos?
+     
     if (self.selectedPlace) {
         action.place = self.selectedPlace;
-    }
-    if (self.selectedFriends.count > 0) {
-        action.tags = self.selectedFriends;
     }
     if (photoURL) {
         NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
@@ -167,9 +140,90 @@ static NSManagedObjectContext *_context;
     }
      */
     
-    // Create the request and post the action to the
-    // "me/<YOUR_APP_NAMESPACE>:eat" path.
-    [FBRequestConnection startForPostWithGraphPath:@"me/<YOUR_APP_NAMESPACE>:share"
+    // Handy setting for additional logging
+    //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
+    
+    // Create the request and post the action to the share path.
+    NSString *ogPath = [NSString stringWithFormat:@"me/%@:share", APP_NAMESPACE];
+    [FBRequestConnection startForPostWithGraphPath:ogPath
+                                       graphObject:action
+                                 completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         NSString *alertText;
+         if (!error) {
+             alertText = [NSString stringWithFormat:
+                          @"Posted Open Graph action, id: %@",
+                          [result objectForKey:@"id"]];
+         } else {
+             alertText = [NSString stringWithFormat:
+                          @"error: domain = %@, code = %d",
+                          error.domain, error.code];
+         }
+         [[[UIAlertView alloc] initWithTitle:@"Result"
+                                     message:alertText
+                                    delegate:nil
+                           cancelButtonTitle:@"Thanks!"
+                           otherButtonTitles:nil]
+          show];
+     }
+     ];
+}
+
++ (void)postOGRedeemAction:(ttDeal*)deal
+{
+    // First create the Open Graph deal object for the deal being shared.
+    id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
+    
+    // Now create an Open Graph redeem action with the deal,
+    // TODO the merchant location
+    id<OGRedeemDealAction> action = (id<OGRedeemDealAction>)[FBGraphObject graphObject];
+    action.deal = dealObject;
+    
+    // Handy setting for additional logging
+    //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
+    
+    // Create the request and post the action to the share path.
+    NSString *ogPath = [NSString stringWithFormat:@"me/%@:redeem", APP_NAMESPACE];
+    [FBRequestConnection startForPostWithGraphPath:ogPath
+                                       graphObject:action
+                                 completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         NSString *alertText;
+         if (!error) {
+             alertText = [NSString stringWithFormat:
+                          @"Posted Open Graph action, id: %@",
+                          [result objectForKey:@"id"]];
+         } else {
+             alertText = [NSString stringWithFormat:
+                          @"error: domain = %@, code = %d",
+                          error.domain, error.code];
+         }
+         [[[UIAlertView alloc] initWithTitle:@"Result"
+                                     message:alertText
+                                    delegate:nil
+                           cancelButtonTitle:@"Thanks!"
+                           otherButtonTitles:nil]
+          show];
+     }
+     ];
+}
+
++ (void)postOGPurchaseAction:(ttDealOffer*)pack
+{
+    // First create the Open Graph deal object for the deal being shared.
+    id<OGDealPack> dealPackObject = [FacebookHelper dealPackObjectForDealOffer:pack];
+    
+    // Now create an Open Graph redeem action with the deal,
+    // TODO the merchant location
+    id<OGPurchaseDealPackAction> action = (id<OGPurchaseDealPackAction>)[FBGraphObject graphObject];
+    action.pack = dealPackObject;
+    
+    // Handy setting for additional logging
+    //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
+    
+    // Create the request and post the action to the share path.
+    NSString *ogPath = [NSString stringWithFormat:@"me/%@:purchase", APP_NAMESPACE];
+    [FBRequestConnection startForPostWithGraphPath:ogPath
                                        graphObject:action
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
