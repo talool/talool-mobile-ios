@@ -43,9 +43,6 @@
 		9161487616EAD758001C546C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487916EAD76F001C546C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
-		9161487F16EAD7E1001C546C /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9161487C16EAD7E1001C546C /* FBUserSettingsViewResources.bundle */; };
-		9161488016EAD7E1001C546C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9161487D16EAD7E1001C546C /* FacebookSDKResources.bundle */; };
-		9161488116EAD7E1001C546C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487E16EAD7E1001C546C /* FacebookSDK.framework */; };
 		9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
 		9165344A170F66C000E1332F /* DealRedemptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91653449170F66C000E1332F /* DealRedemptionViewController.m */; };
@@ -55,6 +52,10 @@
 		9168A50B170B484400E53EB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A508170B484300E53EB1 /* Default.png */; };
 		9168A50C170B484400E53EB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A509170B484400E53EB1 /* Default@2x.png */; };
 		9168A50E170B485600E53EB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A50D170B485500E53EB1 /* Icon.png */; };
+		916B1167175D69590024A037 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
+		916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */; };
+		916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */; };
+		916B1172175D6B1B0024A037 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1171175D6B1B0024A037 /* FacebookSDK.framework */; };
 		917CBE5317457C0F00383EA1 /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
@@ -194,9 +195,6 @@
 		9161487516EAD758001C546C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9161487816EAD76F001C546C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9161487A16EAD783001C546C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		9161487C16EAD7E1001C546C /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		9161487D16EAD7E1001C546C /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		9161487E16EAD7E1001C546C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9161488216EADC1A001C546C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		916148CD16ED1C03001C546C /* CustomerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerHelper.h; sourceTree = "<group>"; };
 		916148CE16ED1C04001C546C /* CustomerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerHelper.m; sourceTree = "<group>"; };
@@ -210,6 +208,10 @@
 		9168A508170B484300E53EB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9168A509170B484400E53EB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9168A50D170B485500E53EB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		916B1166175D69590024A037 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
+		916B1171175D6B1B0024A037 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9183F4C4170342B000ED4844 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -270,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
 				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
 				917CBE5317457C0F00383EA1 /* libtalool-api-ios.a in Frameworks */,
@@ -288,9 +291,9 @@
 				9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */,
 				9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */,
 				9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */,
-				9161488116EAD7E1001C546C /* FacebookSDK.framework in Frameworks */,
 				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
 				9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */,
+				916B1172175D6B1B0024A037 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +313,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
+				916B1166175D69590024A037 /* Security.framework */,
 				81F24B021750280D003A3A1A /* AddressBookUI.framework */,
 				91490D781747B44E00622A85 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
@@ -332,6 +336,9 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				916B1171175D6B1B0024A037 /* FacebookSDK.framework */,
+				916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */,
+				916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */,
 				91490D301745DBD000622A85 /* CoreText.framework */,
 				919A3310174510A90093FAC4 /* MapKit.framework */,
 				9197F97A170CB50500BDAA58 /* SDWebImage.framework */,
@@ -345,9 +352,6 @@
 				9161487A16EAD783001C546C /* AddressBook.framework */,
 				9161487816EAD76F001C546C /* Accounts.framework */,
 				9161487516EAD758001C546C /* Social.framework */,
-				9161487C16EAD7E1001C546C /* FBUserSettingsViewResources.bundle */,
-				9161487D16EAD7E1001C546C /* FacebookSDKResources.bundle */,
-				9161487E16EAD7E1001C546C /* FacebookSDK.framework */,
 				917F0FD716DC66AB008A56E3 /* CoreData.framework */,
 				917F0FD816DC66AB008A56E3 /* CoreLocation.framework */,
 				9103110C16D1E53800CEE814 /* UIKit.framework */,
@@ -677,8 +681,6 @@
 				9103113416D1E53800CEE814 /* second@2x.png in Resources */,
 				91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */,
 				91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */,
-				9161487F16EAD7E1001C546C /* FBUserSettingsViewResources.bundle in Resources */,
-				9161488016EAD7E1001C546C /* FacebookSDKResources.bundle in Resources */,
 				9183F4E51703A18600ED4844 /* search.png in Resources */,
 				9183F4E61703A18600ED4844 /* search@2x.png in Resources */,
 				9183F4E71703A18600ED4844 /* star.png in Resources */,
@@ -697,6 +699,8 @@
 				9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */,
 				91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */,
 				91490D791747B44E00622A85 /* talool-api-ios.bundle in Resources */,
+				916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */,
+				916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

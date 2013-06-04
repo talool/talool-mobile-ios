@@ -31,6 +31,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>FacebookDisplayName</key>
+	<string>Talool</string>
 	<key>FacebookAppID</key>
 	<string>342739092494152</string>
 	<key>LSRequiresIPhoneOS</key>
