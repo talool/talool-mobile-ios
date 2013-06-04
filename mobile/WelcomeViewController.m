@@ -45,9 +45,8 @@
      publish_actions, publish_checkins
      
      */
-    self.FBLoginView.readPermissions = @[@"user_location", @"email"];
-    self.FBLoginView.publishPermissions = @[@"publish_actions"];
-    self.FBLoginView.defaultAudience = FBSessionDefaultAudienceFriends;
+    self.FBLoginView = [[FBLoginView alloc] init];
+    self.FBLoginView.readPermissions = @[@"email",@"user_birthday"];
     
     [loginButton useTaloolStyle];
     [loginButton setBaseColor:[TaloolColor teal]];
@@ -67,6 +66,11 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+- (void)viewDidUnload {
+    [self setFBLoginView:nil];
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning

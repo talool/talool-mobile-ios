@@ -47,6 +47,9 @@
     
     [self.window makeKeyAndVisible];
     
+    [FBSettings enableBetaFeature:FBBetaFeaturesOpenGraphShareDialog];
+    [FBSettings enableBetaFeature:FBBetaFeaturesShareDialog];
+    
     return YES;
 }
 
@@ -57,7 +60,9 @@
     
     // Facebook SDK * login flow *
     // Attempt to handle URLs to complete any auth (e.g., SSO) flow.
-    if ([[FBSession activeSession] handleOpenURL:url]) {
+    //if ([[FBSession activeSession] handleOpenURL:url]) {
+    if ([FBAppCall handleOpenURL:url sourceApplication:sourceApplication])
+    {
         return YES;
     } else {
         // Facebook SDK * App Linking *
@@ -101,7 +106,7 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-    [FBSession.activeSession handleDidBecomeActive];
+    [FBAppCall handleDidBecomeActive];
     [CustomerHelper refreshLoggedInUser];
 }
 

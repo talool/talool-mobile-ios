@@ -313,8 +313,6 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
-				916B1166175D69590024A037 /* Security.framework */,
-				81F24B021750280D003A3A1A /* AddressBookUI.framework */,
 				91490D781747B44E00622A85 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
@@ -336,6 +334,8 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				916B1166175D69590024A037 /* Security.framework */,
+				81F24B021750280D003A3A1A /* AddressBookUI.framework */,
 				916B1171175D6B1B0024A037 /* FacebookSDK.framework */,
 				916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */,
 				916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */,

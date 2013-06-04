@@ -24,6 +24,7 @@
 
 @property (retain, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (retain, nonatomic) ttDealAcquire *dealAcquire;
+@property (retain, nonatomic) FBFrictionlessRecipientCache *friendCache;
 
 - (IBAction)openContactPickerAction:(id)sender;
 - (IBAction)openFBPickerAction:(id)sender;

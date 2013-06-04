@@ -21,7 +21,7 @@
 
 @implementation SendGiftViewController
 
-@synthesize friendPickerController, dealAcquire;
+@synthesize friendPickerController, dealAcquire, friendCache;
 
 - (void)viewDidLoad
 {
@@ -51,6 +51,12 @@
     [facebookButton setTitle:@"Pick a Facebook Friend" forState:UIControlStateNormal];
     [facebookButton setBaseColor:[TaloolColor teal]];
     
+    // hide the FB button if there is no active session
+    if (!FBSession.activeSession.isOpen)
+    {
+        [facebookButton setHidden:YES];
+    }
+    
     UIImage *userIcon = [FontAwesomeKit imageForIcon:FAKIconUser
                                                          imageSize:CGSizeMake(44, 44)
                                                           fontSize:36
@@ -75,9 +81,50 @@
 
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
 {
+    
+    friendCache = [[FBFrictionlessRecipientCache alloc] init];
+    [friendCache prefetchAndCacheForSession:nil];
+    
+    // TODO consider passing context for the link back
+    //SBJSON *jsonWriter = [SBJSON new];
+    //NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", nScore], @"challenge_score", nil];
+    //NSString *challengeStr = [jsonWriter stringWithObject:challenge];
+    
+    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     facebookId, @"to",
+                                     nil];
+    
+    ttDeal *deal = (ttDeal *)dealAcquire.deal;
+    NSString *message = [NSString stringWithFormat:@"I thought you might like this deal!  %@", deal.title];
+    
+    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                  message:message
+                                                    title:@"Share This Deal"
+                                               parameters:params
+                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                      if (error) {
+                                                          // Case A: Error launching the dialog or sending request.
+                                                          NSLog(@"Error sending request.");
+                                                      } else {
+                                                          if (result == FBWebDialogResultDialogNotCompleted) {
+                                                              // Case B: User clicked the "x" icon
+                                                              NSLog(@"User canceled request.");
+                                                          } else {
+                                                              NSLog(@"Request Sent.");
+                                                              // TODO how do you filter out the cancel events?
+                                                              // TODO - call the service
+                                                              [self announceShare:facebookId];
+                                                              [self confirmGiftSent];
+                                                          }
+                                                      }}
+                                              friendCache:friendCache
+     ];
+    
     // TODO - call the service
-    [self announceShare:facebookId];
-    [self confirmGiftSent];
+    //[self announceShare:facebookId];
+    //[self confirmGiftSent];
+    
+
 }
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
@@ -119,6 +166,30 @@
     picker.peoplePickerDelegate = self;
     [self presentViewController:picker animated:YES completion:nil];
 }
+
+/*
+- (IBAction)openFBPickerActionInShareDialog:(id)sender
+{
+    // First create the Open Graph deal object for the deal being shared.
+    ttDeal *deal = (ttDeal *)dealAcquire.deal;
+    id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
+    
+    // Now create an Open Graph share action with the deal,
+    id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
+    action.deal = dealObject;
+    
+    [FBDialogs presentShareDialogWithOpenGraphAction:action
+                                          actionType:@"taloolclient:share"
+                                 previewPropertyName:@"deal"
+                                             handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                                 if(error) {
+                                                     NSLog(@"Error: %@", error.description);
+                                                 } else {
+                                                     NSLog(@"Success!");
+                                                 }
+                                             }];
+}
+ */
 
 - (IBAction)openFBPickerAction:(id)sender
 {
