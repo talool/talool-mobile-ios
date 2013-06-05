@@ -22,5 +22,4 @@
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password;
 + (void) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 
-
 @end

@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "BaseSearchViewController.h"
 
-
+@class ttGift;
 
 @interface ProfileViewController : BaseSearchViewController {
     
 }
 
 - (void)settings:(id)sender;
+@property (retain, nonatomic) ttGift * currentGift;
 
 @end

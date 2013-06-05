@@ -10,10 +10,12 @@
 #import "TaloolColor.h"
 #import "FacebookHelper.h"
 #import "FontAwesomeKit.h"
+#import "CustomerHelper.h"
 #import "CategoryHelper.h"
 #import "TaloolIconButton.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttCustomer.h"
 
 @interface SendGiftViewController ()
 
@@ -85,11 +87,6 @@
     friendCache = [[FBFrictionlessRecipientCache alloc] init];
     [friendCache prefetchAndCacheForSession:nil];
     
-    // TODO consider passing context for the link back
-    //SBJSON *jsonWriter = [SBJSON new];
-    //NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", nScore], @"challenge_score", nil];
-    //NSString *challengeStr = [jsonWriter stringWithObject:challenge];
-    
     NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      facebookId, @"to",
                                      nil];
@@ -112,26 +109,50 @@
                                                           } else {
                                                               NSLog(@"Request Sent.");
                                                               // TODO how do you filter out the cancel events?
-                                                              // TODO - call the service
-                                                              [self announceShare:facebookId];
-                                                              [self confirmGiftSent];
+                                                              ttCustomer *customer = [CustomerHelper getLoggedInUser];
+                                                              NSError *error;
+                                                              BOOL success = [customer giftToFacebook:dealAcquire.dealAcquireId
+                                                                                           facebookId:facebookId
+                                                                                       receipientName:name
+                                                                                                error:&error];
+                                                              if (success)
+                                                              {
+                                                                  [self announceShare:facebookId];
+                                                                  [self confirmGiftSent];
+                                                              }
+                                                              else
+                                                              {
+                                                                  NSLog(@"failed to send gift");
+                                                                  // TODO show error message
+                                                              }
                                                           }
                                                       }}
                                               friendCache:friendCache
      ];
     
-    // TODO - call the service
-    //[self announceShare:facebookId];
-    //[self confirmGiftSent];
     
 
 }
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
 {
-    // TODO - call the service
-    [self announceShare:nil];
-    [self confirmGiftSent];
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    BOOL success = [customer giftToEmail:dealAcquire.dealAcquireId
+                                   email:email
+                          receipientName:name
+                                   error:&error];
+    if (success)
+    {
+        [self announceShare:nil];
+        [self confirmGiftSent];
+    }
+    else
+    {
+        NSLog(@"failed to send gift");
+        // TODO show error message
+    }
+
 }
 
 - (void)confirmGiftSent

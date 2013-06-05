@@ -52,12 +52,22 @@ NSString * const OG_PAGE = @"http://talool.com/og";
     [user setCreated:[NSDate date]];
     [user setFirstName:fb_user.first_name];
     [user setLastName:fb_user.last_name];
+    
+    //NSLog(@"birthday: %@",fb_user.birthday);
+    // convert the bday string to a date
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+    [formatter setTimeZone:gmt];
+    NSDate *bday = [formatter dateFromString:fb_user.birthday];
+    [user setBirthDate:bday];
+    
     [user setEmail:[fb_user objectForKey:@"email"]];
     
     NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
     ttSocialAccount *sa = [ttSocialAccount createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
-                                                       loginId:fb_user.username
+                                                       loginId:fb_user.id
                                                          token:fbToken
                                                        context:_context];
     [user addSocialAccountsObject:sa];

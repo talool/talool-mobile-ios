@@ -98,18 +98,6 @@
                      if ([ttCustomer doesCustomerExist:customer.email]) {
                          // auth the user
                          [CustomerHelper loginUser:customer.email password:passwordHack];
-                         ttCustomer *customer = [CustomerHelper getLoggedInUser];
-                         // TODO check for the FB account specifically
-                         if ([customer.socialAccounts count] == 0) {
-                             // add the social account
-                             ttSocialAccount *sa = [FacebookHelper createSocialAccount:user];
-                             // check for the presence of the social account
-                             [customer addSocialAccountsObject:sa];
-                             // save the user so the social account is stored
-                             [ttCustomer saveCustomer:customer context:appDelegate.managedObjectContext error:nil];
-                         }
-                         
-                         
                      } else {
                          [CustomerHelper registerCustomer:customer password:passwordHack];
                      }

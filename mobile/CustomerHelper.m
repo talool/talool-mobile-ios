@@ -74,5 +74,4 @@ static NSManagedObjectContext *_context;
 	[errorView show];
 }
 
-
 @end

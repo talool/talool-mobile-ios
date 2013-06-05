@@ -25,6 +25,9 @@
 
 @implementation DealRedemptionViewController
 
+static int dealInstructionalCurlCount = 0;
+static bool hasRedeemedADeal = NO;
+
 @synthesize modelController = _modelController;
 @synthesize deal;
 
@@ -83,16 +86,20 @@
 {
     [super viewDidAppear:animated];
     
-    DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
-    hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-    hiddenVC.deal = deal;
-    //[hiddenVC.instructionsLabel setHidden:true];
-    [hiddenVC.qrCode setHidden:true];
-    __block DealRedemptionViewController *blocksafeSelf = self; 
-    [self presentViewController:hiddenVC animated:YES completion:^(void) {
-        // turn back after a timer has expired
-        [NSTimer scheduledTimerWithTimeInterval:1.0 target:blocksafeSelf selector:@selector(hideInstructionalModal:) userInfo:nil repeats:NO];
-    }];
+    if ((dealInstructionalCurlCount < 1) && ![deal hasBeenRedeemed] && !hasRedeemedADeal)
+    {
+        DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
+        hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+        hiddenVC.deal = deal;
+        //[hiddenVC.instructionsLabel setHidden:true];
+        [hiddenVC.qrCode setHidden:true];
+        __block DealRedemptionViewController *blocksafeSelf = self;
+        [self presentViewController:hiddenVC animated:YES completion:^(void) {
+            // turn back after a timer has expired
+            [NSTimer scheduledTimerWithTimeInterval:1.0 target:blocksafeSelf selector:@selector(hideInstructionalModal:) userInfo:nil repeats:NO];
+        }];
+        dealInstructionalCurlCount++;
+    }
 
 }
 
@@ -183,6 +190,8 @@
             
             // Post the FB redeem action
             [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal];
+            
+            hasRedeemedADeal = YES;
             
         } else {
             // show an error
