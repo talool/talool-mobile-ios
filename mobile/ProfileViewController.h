@@ -16,6 +16,5 @@
 }
 
 - (void)settings:(id)sender;
-@property (retain, nonatomic) ttGift * currentGift;
 
 @end

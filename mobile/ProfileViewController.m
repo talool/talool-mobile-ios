@@ -7,14 +7,13 @@
 //
 
 #import "ProfileViewController.h"
+#import "AcceptGiftViewController.h"
 #import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttGift.h"
 #import "CustomerHelper.h"
 
 @implementation ProfileViewController
-
-@synthesize currentGift;
 
 -(void) viewDidLoad
 {
@@ -50,56 +49,21 @@
     [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                              forState:UIControlStateNormal];
     
-    // TODO search for gifts!
-    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
+    // search for gifts!
     NSError *error;
-    NSArray *gifts = [user getGifts:[CustomerHelper getContext] error:&error];
+    NSArray *gifts = [customer getGifts:[CustomerHelper getContext] error:&error];
+    // TODO if the user gets a bunch of gifts, we should show a table view
     if ([gifts count]>0)
     {
-        NSLog(@"got gifts");
-        currentGift = [gifts objectAtIndex:0];
-        UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"You got a gift"
-                                                              message:@"Would you like to accept this deal?"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"No"
-                                                    otherButtonTitles:@"Yes", nil];
-        [confirmView show];
+        // create the modal screen and show it
+        AcceptGiftViewController *giftVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AcceptGiftViewController"];
+        giftVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        giftVC.gift = [gifts objectAtIndex:0];
+        [self presentViewController:giftVC animated:YES completion:nil];
     }
 
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSError *err;
-    
-    NSString *giftId = currentGift.giftId;
-    BOOL success;
-    
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    if([title isEqualToString:@"Yes"])
-    {
-        success = [customer acceptGift:giftId error:&err];
-    } else {
-        success = [customer rejectGift:giftId error:&err];
-    }
-    
-    if (success)
-    {
-        // TODO refresh the merchant list
-    }
-    else
-    {
-        // show an error
-        UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                            message:@"We failed to handle this gift."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Please Try Again"
-                                                  otherButtonTitles:nil];
-        [errorView show];
-    }
-    
-    currentGift = nil;
-}
 
 - (void)settings:(id)sender
 {

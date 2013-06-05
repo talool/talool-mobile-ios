@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Jte-0N-Lae">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Jte-0N-Lae">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -637,10 +637,10 @@
             </objects>
             <point key="canvasLocation" x="3058" y="-330"/>
         </scene>
-        <!--View Controller-->
+        <!--Accept Gift View Controller-->
         <scene sceneID="I1M-kP-2aO">
             <objects>
-                <viewController storyboardIdentifier="AcceptGift" id="9Vz-pM-8dl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AcceptGiftViewController" id="9Vz-pM-8dl" customClass="AcceptGiftViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v2S-WH-hWt">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -655,8 +655,7 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-2Y-9nH">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="UcI-dR-Oga"/>
-                                    <constraint firstAttribute="height" constant="167" id="lQp-Y2-cnW"/>
+                                    <constraint firstAttribute="height" constant="160" id="x2g-er-hNW"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;deal summary>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYB-Hk-QQv">
@@ -667,27 +666,45 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH6-UM-oeh">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH6-UM-oeh" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="myh-5D-mIX"/>
+                                    <constraint firstAttribute="width" constant="80" id="o1z-w4-8A8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Yes">
+                                <state key="normal" title="Accept">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="acceptGift:" destination="9Vz-pM-8dl" eventType="touchUpInside" id="lkh-1q-mv7"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-NF-py0">
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-NF-py0" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Vxv-ZI-H5r"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="No">
+                                <state key="normal" title="Reject">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="rejectGift:" destination="9Vz-pM-8dl" eventType="touchUpInside" id="9c8-Fk-eMD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Do you want to keep it?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-8d-YQV">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="at &lt;Merchant>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXT-op-g8i">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -695,22 +712,37 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aSS-NF-py0" firstAttribute="trailing" secondItem="eQ4-8d-YQV" secondAttribute="trailing" type="default" id="9b4-JG-ITw"/>
-                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="centerX" secondItem="Pfz-2Y-9nH" secondAttribute="centerX" type="default" id="ANE-xi-QWy"/>
-                            <constraint firstItem="vl8-lG-hAO" firstAttribute="top" secondItem="v2S-WH-hWt" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Eir-iv-o9U"/>
-                            <constraint firstAttribute="bottom" secondItem="MYB-Hk-QQv" secondAttribute="bottom" constant="168" id="FA7-d0-Z9h"/>
-                            <constraint firstAttribute="bottom" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="112" id="Gd1-ei-qMX"/>
-                            <constraint firstItem="aSS-NF-py0" firstAttribute="baseline" secondItem="WH6-UM-oeh" secondAttribute="baseline" type="default" id="MQz-K3-eUU"/>
-                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NQI-ih-oSB"/>
-                            <constraint firstItem="vl8-lG-hAO" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ncu-15-3xs"/>
-                            <constraint firstItem="WH6-UM-oeh" firstAttribute="leading" secondItem="eQ4-8d-YQV" secondAttribute="leading" type="default" id="S3s-ct-oPc"/>
-                            <constraint firstAttribute="trailing" secondItem="vl8-lG-hAO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YWH-Ku-Exg"/>
-                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="top" secondItem="v2S-WH-hWt" secondAttribute="top" constant="70" id="gPz-oh-dc1"/>
-                            <constraint firstAttribute="trailing" secondItem="MYB-Hk-QQv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gxP-md-BpZ"/>
-                            <constraint firstAttribute="bottom" secondItem="WH6-UM-oeh" secondAttribute="bottom" constant="36" id="m00-FY-P5J"/>
-                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="centerX" secondItem="eQ4-8d-YQV" secondAttribute="centerX" type="default" id="wcC-0R-9qf"/>
+                            <constraint firstItem="WH6-UM-oeh" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="70" id="01X-Zf-7pB"/>
+                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="trailing" secondItem="v2S-WH-hWt" secondAttribute="trailing" type="default" id="4EF-n2-BwN"/>
+                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="top" secondItem="vl8-lG-hAO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="62O-Wa-Uhn"/>
+                            <constraint firstItem="vl8-lG-hAO" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="62a-G9-CxQ"/>
+                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="top" secondItem="v2S-WH-hWt" secondAttribute="top" type="default" id="ECO-Ya-Xbi"/>
+                            <constraint firstAttribute="bottom" secondItem="WH6-UM-oeh" secondAttribute="bottom" constant="18" id="FrU-IM-tjQ"/>
+                            <constraint firstItem="aSS-NF-py0" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="G35-ag-ILG"/>
+                            <constraint firstAttribute="trailing" secondItem="vl8-lG-hAO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="G8o-rX-uq7"/>
+                            <constraint firstAttribute="trailing" secondItem="eQ4-8d-YQV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="N3N-yH-orF"/>
+                            <constraint firstItem="UXT-op-g8i" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="OCk-5p-M9s"/>
+                            <constraint firstItem="WH6-UM-oeh" firstAttribute="baseline" secondItem="aSS-NF-py0" secondAttribute="baseline" type="default" id="era-N2-azj"/>
+                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" type="default" id="kWY-DL-93f"/>
+                            <constraint firstItem="eQ4-8d-YQV" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="m54-Pl-GtR"/>
+                            <constraint firstItem="vl8-lG-hAO" firstAttribute="top" secondItem="Pfz-2Y-9nH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mrE-Zq-RYp"/>
+                            <constraint firstAttribute="trailing" secondItem="MYB-Hk-QQv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nyI-wi-xbQ"/>
+                            <constraint firstAttribute="trailing" secondItem="UXT-op-g8i" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o8F-7Z-09B"/>
+                            <constraint firstAttribute="trailing" secondItem="aSS-NF-py0" secondAttribute="trailing" constant="61" id="pn5-q5-tXf"/>
+                            <constraint firstItem="aSS-NF-py0" firstAttribute="bottom" secondItem="WH6-UM-oeh" secondAttribute="bottom" type="default" id="poX-lJ-Vot"/>
+                            <constraint firstItem="WH6-UM-oeh" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tDm-Pn-QCc"/>
+                            <constraint firstItem="UXT-op-g8i" firstAttribute="top" secondItem="MYB-Hk-QQv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="waM-kD-h7j"/>
+                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wbM-Dh-TLT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="acceptButton" destination="WH6-UM-oeh" id="gHm-nz-yXC"/>
+                        <outlet property="dealSummary" destination="MYB-Hk-QQv" id="64Y-2F-FCm"/>
+                        <outlet property="giftImage" destination="Pfz-2Y-9nH" id="Cfy-KC-Xye"/>
+                        <outlet property="gifterName" destination="vl8-lG-hAO" id="vUJ-MB-xbb"/>
+                        <outlet property="merchantName" destination="UXT-op-g8i" id="ir4-Gg-aJq"/>
+                        <outlet property="rejectButton" destination="aSS-NF-py0" id="9aa-15-JDR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHC-pL-iQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1433,6 +1465,19 @@
         <image name="Icon_teal.png" width="57" height="57"/>
     </resources>
     <classes>
+        <class className="AcceptGiftViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AcceptGiftViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="acceptGift:"/>
+                <relationship kind="action" name="rejectGift:"/>
+                <relationship kind="outlet" name="acceptButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="dealSummary" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gifterName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="merchantName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rejectButton" candidateClass="TaloolUIButton"/>
+            </relationships>
+        </class>
         <class className="BaseSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseSearchViewController.h"/>
             <relationships>
