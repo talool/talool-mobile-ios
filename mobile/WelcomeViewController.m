@@ -164,17 +164,26 @@
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    // NOTE: We don't want to log the user out here.  If they were never connected with FB,
+    //      this would invalidate their token everything they quit the app and reopen it.
+    //      Consider checking if the user has a FB account before logging them out...
+    //      But this could still cause problems.0
+    //
     // Facebook SDK * login flow *
     // It is important to always handle session closure because it can happen
     // externally; for example, if the current session's access token becomes
     // invalid. For this sample, we simply pop back to the landing page.
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (appDelegate.isNavigating) {
-        // The delay is for the edge case where a session is immediately closed after
-        // logging in and our navigation controller is still animating a push.
-        [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
-    } else {
-        [self logOut];
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    if ([customer isFacebookUser])
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        if (appDelegate.isNavigating) {
+            // The delay is for the edge case where a session is immediately closed after
+            // logging in and our navigation controller is still animating a push.
+            [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
+        } else {
+            [self logOut];
+        }
     }
 }
 

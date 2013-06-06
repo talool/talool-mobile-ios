@@ -21,6 +21,10 @@
     
 }
 
+
 @property (nonatomic, retain) ttDealAcquire *deal;
+@property (retain, nonatomic) UILabel *nameLabel;
+@property (retain, nonatomic) UIImageView *iconView;
+@property (retain, nonatomic) UILabel *dateLabel;
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation RewardCell
 
-@synthesize deal;
+@synthesize deal, nameLabel, iconView, dateLabel;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
@@ -31,16 +31,7 @@
 
 - (void)setName:(NSString *)newName
 {
-    if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired]) {
-        NSDictionary* attributes = @{
-                                     NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
-                                     };
-        
-        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:newName attributes:attributes];
-        nameLabel.attributedText = attrText;
-    } else {
-        nameLabel.text = newName;
-    }
+    nameLabel.text = newName;
 }
 
 - (void)setDate:(NSString *)newDate
@@ -51,39 +42,6 @@
 - (void)setDeal:(ttDealAcquire *)newDeal
 {
     deal = newDeal;
-    [self setName:newDeal.deal.title];
-    NSString *date;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    if ([deal hasBeenRedeemed])
-    {
-        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];
-        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
-        
-    }
-    else if([deal hasBeenShared])
-    {
-        date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.redeemed]];
-        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
-    }
-    else if([deal hasExpired])
-    {
-        date = [NSString stringWithFormat:@"Expired on %@", [dateFormatter stringFromDate:deal.deal.expires]];
-        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
-    }
-    else
-    {
-        if (deal.deal.expires ==  nil)
-        {
-            date = @"Never Expires";
-        }
-        else
-        {
-            date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
-        }
-        [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
-    }
-    [self setDate:date];
 }
 
 @end

@@ -165,7 +165,7 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    self.expiresLabel.text = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.redeemed]];
+    self.expiresLabel.text = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.shared]];
     
     self.instructionsLabel.hidden = YES;
 }

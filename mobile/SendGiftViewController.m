@@ -165,7 +165,8 @@
 
 - (void)announceShare:(NSString *)facebookId
 {
-    if ([FBSession.activeSession.permissions
+    if ([FBSession.activeSession isOpen] &&
+        [FBSession.activeSession.permissions
          indexOfObject:@"publish_actions"] == NSNotFound) {
         
         [FBSession.activeSession

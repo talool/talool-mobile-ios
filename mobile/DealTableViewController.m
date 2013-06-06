@@ -46,7 +46,8 @@
     deals = [customer getMyDealsForMerchant:merchant context:appDelegate.managedObjectContext error:&err];
     
     sortDescriptors = [NSArray arrayWithObjects:
-                                [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
+                                //[NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
                                 //[NSSortDescriptor sortDescriptorWithKey:@"expires" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
                                 nil];
@@ -86,18 +87,52 @@
 	// Configure the data for the cell.
     ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
-    
+    NSString *date;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    if ([deal hasBeenRedeemed])
+    {
+        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];
+        
+    }
+    else if ([deal hasBeenShared])
+    {
+        date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.shared]];
+    }
+    else if ([deal hasExpired])
+    {
+        date = [NSString stringWithFormat:@"Expired on %@", [dateFormatter stringFromDate:deal.deal.expires]];
+    }
     if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
     {
         cell.contentView.alpha = 0.5;
         cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.iconView.image = [UIImage imageNamed:@"Icon_tan.png"];
+        
+        NSDictionary* attributes = @{
+                                     NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+                                     };
+        
+        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:deal.deal.title attributes:attributes];
+        cell.nameLabel.attributedText = attrText;
     }
     else
     {
+        if (deal.deal.expires ==  nil)
+        {
+            date = @"Never Expires";
+        }
+        else
+        {
+            date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
+        }
         cell.contentView.alpha = 1.0;
         cell.contentView.backgroundColor = [UIColor whiteColor];
-        // Teal: [UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0];
+        cell.nameLabel.text = deal.deal.title;
+        cell.iconView.image = [UIImage imageNamed:@"Icon_teal.png"];
     }
+    
+    cell.dateLabel.text = date;
     
     return cell;
 }

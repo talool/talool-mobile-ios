@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
-		811A9CDF1760381200B42612 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 811A9CDE1760381200B42612 /* talool-api-ios.bundle */; };
 		81F24AFE174F8C2F003A3A1A /* SendGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		81FF00F9176123250040E1F6 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81FF00F8176123240040E1F6 /* talool-api-ios.bundle */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
@@ -143,7 +143,6 @@
 /* Begin PBXFileReference section */
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
-		811A9CDE1760381200B42612 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		81F24AFC174F8C2F003A3A1A /* SendGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendGiftViewController.h; sourceTree = "<group>"; };
 		81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendGiftViewController.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -154,6 +153,7 @@
 		81F24B22175950C9003A3A1A /* TaloolIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIconButton.h; sourceTree = "<group>"; };
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
+		81FF00F8176123240040E1F6 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -316,7 +316,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
-				811A9CDE1760381200B42612 /* talool-api-ios.bundle */,
+				81FF00F8176123240040E1F6 /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
 				9103114116D1E53900CEE814 /* mobileTests */,
@@ -705,7 +705,7 @@
 				91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */,
 				916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */,
 				916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */,
-				811A9CDF1760381200B42612 /* talool-api-ios.bundle in Resources */,
+				81FF00F9176123250040E1F6 /* talool-api-ios.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
