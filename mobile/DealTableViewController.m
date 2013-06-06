@@ -86,11 +86,17 @@
     ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
     
-    if ([deal hasBeenRedeemed]) {
+    if ([deal hasBeenRedeemed])
+    {
         cell.contentView.alpha = 0.5;
         cell.contentView.backgroundColor = [UIColor whiteColor];
-        // Tan: [UIColor colorWithRed:218.0/255.0 green:215.0/255.0 blue:197.0/255.0 alpha:1.0];
-    } else {
+    }
+    else if ([deal hasBeenShared]) {
+        cell.contentView.alpha = 0.5;
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+    }
+    else
+    {
         cell.contentView.alpha = 1.0;
         cell.contentView.backgroundColor = [UIColor whiteColor];
         // Teal: [UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0];

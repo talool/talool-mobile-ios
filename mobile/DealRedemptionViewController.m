@@ -86,7 +86,7 @@ static bool hasRedeemedADeal = NO;
 {
     [super viewDidAppear:animated];
     
-    if ((dealInstructionalCurlCount < 1) && ![deal hasBeenRedeemed] && !hasRedeemedADeal)
+    if ((dealInstructionalCurlCount < 1) && ![deal hasBeenRedeemed] && !hasRedeemedADeal && ![deal hasBeenShared])
     {
         DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
         hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;

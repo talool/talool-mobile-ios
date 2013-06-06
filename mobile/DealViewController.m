@@ -83,7 +83,13 @@
     if ([self.deal hasBeenRedeemed])
     {
         [self markAsRedeemed];
-    } else {
+    }
+    else if ([self.deal hasBeenShared])
+    {
+        [self markAsShared];
+    }
+    else
+    {
         
         [self addBarCode];
         
@@ -155,12 +161,25 @@
     self.instructionsLabel.hidden = YES;
 }
 
+- (void)markAsShared
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    self.expiresLabel.text = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.redeemed]];
+    
+    self.instructionsLabel.hidden = YES;
+}
+
 -(void) reset:(ttDealAcquire *)newDeal
 {
     self.deal = newDeal;
     if ([self.deal hasBeenRedeemed])
     {
         [self markAsRedeemed];
+    }
+    else if ([self.deal hasBeenRedeemed])
+    {
+        [self markAsShared];
     }
 }
 

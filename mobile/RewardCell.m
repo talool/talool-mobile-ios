@@ -31,7 +31,7 @@
 
 - (void)setName:(NSString *)newName
 {
-    if ([deal hasBeenRedeemed]) {
+    if ([deal hasBeenRedeemed] || [deal hasBeenShared]) {
         NSDictionary* attributes = @{
                                      NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
                                      };
@@ -55,11 +55,19 @@
     NSString *date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    if ([deal hasBeenRedeemed]) {
+    if ([deal hasBeenRedeemed])
+    {
         date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];
         [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
         
-    } else {
+    }
+    else if([deal hasBeenShared])
+    {
+        date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.redeemed]];
+        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
+    }
+    else
+    {
         date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
         [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
     }
