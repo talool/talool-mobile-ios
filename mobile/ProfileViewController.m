@@ -49,7 +49,13 @@
     [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                              forState:UIControlStateNormal];
     
-    // search for gifts!
+    // search for gifts a little later, so we don't push the same view twice
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForGifts:) userInfo:nil repeats:NO];
+    
+}
+
+- (void) checkForGifts:(id)sender
+{
     NSError *error;
     NSArray *gifts = [customer getGifts:[CustomerHelper getContext] error:&error];
     // TODO if the user gets a bunch of gifts, we should show a table view
@@ -61,7 +67,6 @@
         giftVC.gift = [gifts objectAtIndex:0];
         [self presentViewController:giftVC animated:YES completion:nil];
     }
-
 }
 
 

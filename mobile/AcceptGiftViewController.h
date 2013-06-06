@@ -19,7 +19,6 @@
 }
 @property (nonatomic, retain) IBOutlet UIImageView *giftImage;
 @property (nonatomic, retain) IBOutlet UILabel *dealSummary;
-@property (nonatomic, retain) IBOutlet UILabel *merchantName;
 @property (nonatomic, retain) IBOutlet UILabel *gifterName;
 @property (retain, nonatomic) ttGift *gift;
 

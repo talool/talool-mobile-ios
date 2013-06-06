@@ -645,11 +645,11 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;Gifter> has set you a gift!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vl8-lG-hAO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;Gifter> has set you a gift!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="vl8-lG-hAO">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="cnI-SP-kOp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" type="user" id="cnI-SP-kOp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -658,9 +658,9 @@
                                     <constraint firstAttribute="height" constant="160" id="x2g-er-hNW"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;deal summary>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYB-Hk-QQv">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;deal summary>" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MYB-Hk-QQv">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="Gat-nJ-4zf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" type="user" id="Gat-nJ-4zf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -704,11 +704,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="at &lt;Merchant>" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXT-op-g8i">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -721,17 +716,13 @@
                             <constraint firstItem="aSS-NF-py0" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="G35-ag-ILG"/>
                             <constraint firstAttribute="trailing" secondItem="vl8-lG-hAO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="G8o-rX-uq7"/>
                             <constraint firstAttribute="trailing" secondItem="eQ4-8d-YQV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="N3N-yH-orF"/>
-                            <constraint firstItem="UXT-op-g8i" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="OCk-5p-M9s"/>
-                            <constraint firstItem="WH6-UM-oeh" firstAttribute="baseline" secondItem="aSS-NF-py0" secondAttribute="baseline" type="default" id="era-N2-azj"/>
                             <constraint firstItem="Pfz-2Y-9nH" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" type="default" id="kWY-DL-93f"/>
                             <constraint firstItem="eQ4-8d-YQV" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="m54-Pl-GtR"/>
                             <constraint firstItem="vl8-lG-hAO" firstAttribute="top" secondItem="Pfz-2Y-9nH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mrE-Zq-RYp"/>
                             <constraint firstAttribute="trailing" secondItem="MYB-Hk-QQv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nyI-wi-xbQ"/>
-                            <constraint firstAttribute="trailing" secondItem="UXT-op-g8i" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="o8F-7Z-09B"/>
                             <constraint firstAttribute="trailing" secondItem="aSS-NF-py0" secondAttribute="trailing" constant="61" id="pn5-q5-tXf"/>
                             <constraint firstItem="aSS-NF-py0" firstAttribute="bottom" secondItem="WH6-UM-oeh" secondAttribute="bottom" type="default" id="poX-lJ-Vot"/>
                             <constraint firstItem="WH6-UM-oeh" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tDm-Pn-QCc"/>
-                            <constraint firstItem="UXT-op-g8i" firstAttribute="top" secondItem="MYB-Hk-QQv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="waM-kD-h7j"/>
                             <constraint firstItem="MYB-Hk-QQv" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wbM-Dh-TLT"/>
                         </constraints>
                     </view>
@@ -740,7 +731,6 @@
                         <outlet property="dealSummary" destination="MYB-Hk-QQv" id="64Y-2F-FCm"/>
                         <outlet property="giftImage" destination="Pfz-2Y-9nH" id="Cfy-KC-Xye"/>
                         <outlet property="gifterName" destination="vl8-lG-hAO" id="vUJ-MB-xbb"/>
-                        <outlet property="merchantName" destination="UXT-op-g8i" id="ir4-Gg-aJq"/>
                         <outlet property="rejectButton" destination="aSS-NF-py0" id="9aa-15-JDR"/>
                     </connections>
                 </viewController>
@@ -1474,7 +1464,6 @@
                 <relationship kind="outlet" name="dealSummary" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="gifterName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="merchantName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="rejectButton" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>

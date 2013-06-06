@@ -22,7 +22,7 @@
 
 @implementation AcceptGiftViewController
 
-@synthesize gift, giftImage, gifterName, dealSummary, merchantName;
+@synthesize gift, giftImage, gifterName, dealSummary;
 
 - (void)viewDidLoad
 {
@@ -49,9 +49,7 @@
                                   }
                               }];
     ttCustomer *gifter = (ttCustomer *)gift.fromCustomer;
-    self.gifterName.text = gifter.getFullName;
-    
-    self.merchantName.text = gift.deal.merchant.name;
+    self.gifterName.text = [NSString stringWithFormat:@"%@ sent you a deal for %@!", gifter.getFullName, gift.deal.merchant.name];
     
     self.dealSummary.text = gift.deal.summary;
     
