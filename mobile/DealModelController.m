@@ -26,7 +26,7 @@
     if (self) {
         // Create the data model.  We only want two pages: the deal and a blank page.
         self.deal = newDeal;
-        if ([self.deal hasBeenRedeemed] || [self.deal hasBeenShared])
+        if ([self.deal hasBeenRedeemed] || [self.deal hasBeenShared] || [self.deal hasExpired])
         {
             _pageData = @[@2];
         } else {

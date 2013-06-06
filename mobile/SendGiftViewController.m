@@ -7,6 +7,7 @@
 //
 
 #import "SendGiftViewController.h"
+#import "DealRedemptionViewController.h"
 #import "TaloolColor.h"
 #import "FacebookHelper.h"
 #import "FontAwesomeKit.h"
@@ -122,8 +123,7 @@
                                                               }
                                                               else
                                                               {
-                                                                  NSLog(@"failed to send gift");
-                                                                  // TODO show error message
+                                                                  [self displayError:error];
                                                               }
                                                           }
                                                       }}
@@ -149,16 +149,18 @@
     }
     else
     {
-        NSLog(@"failed to send gift");
-        // TODO show error message
+        [self displayError:error];
     }
 
 }
 
 - (void)confirmGiftSent
 {
-    // TODO - show alert and change text labels
+    // change the status of the deal
+    [dealAcquire setShared];
     
+    // go back to the deal
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)announceShare:(NSString *)facebookId
@@ -189,6 +191,9 @@
 }
 
 /*
+ 
+ THIS WOULD REACH USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
+ 
 - (IBAction)openFBPickerActionInShareDialog:(id)sender
 {
     // First create the Open Graph deal object for the deal being shared.
@@ -242,7 +247,7 @@
         // Can we prevent users from selecting contacts without emails?
         NSLog(@"Contact picked with no emails: %@", name);
         // TODO alert user
-        continueToProperties = NO;
+        continueToProperties = YES;
         
     }
     else if (ABMultiValueGetCount(multi) == 1)
@@ -278,6 +283,16 @@
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) displayError:(NSError *)error
+{
+    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                        message:@"We failed to send this gift."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Please Try Again"
+                                              otherButtonTitles:nil];
+    [errorView show];
 }
 
 #pragma mark - FBFriendPickerDelegate delegate methods

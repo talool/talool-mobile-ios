@@ -16,6 +16,8 @@
 - (IBAction)shareAction:(id)sender;
 - (void)redeemAction;
 
+@property (retain, nonatomic) UIBarButtonItem *shareButton;
+
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) ttDealAcquire *deal;
 

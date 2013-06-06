@@ -11,6 +11,7 @@
 #import "DealViewController.h"
 #import "SendGiftViewController.h"
 #import "CustomerHelper.h"
+#import "TaloolColor.h"
 #import "AppDelegate.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttCustomer.h"
@@ -25,11 +26,8 @@
 
 @implementation DealRedemptionViewController
 
-static int dealInstructionalCurlCount = 0;
-static bool hasRedeemedADeal = NO;
-
 @synthesize modelController = _modelController;
-@synthesize deal;
+@synthesize deal, shareButton;
 
 - (void)viewDidLoad
 {
@@ -57,7 +55,7 @@ static bool hasRedeemedADeal = NO;
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconGift
+    shareButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconGift
                                                                     style:UIBarButtonItemStyleBordered
                                                                    target:self
                                                                    action:@selector(shareAction:)];
@@ -80,13 +78,27 @@ static bool hasRedeemedADeal = NO;
     [super viewWillAppear:animated];
     
     self.navigationItem.title = deal.deal.merchant.name;
+    
+    // prevent actions if...
+    if ([deal hasBeenShared] || [deal hasBeenRedeemed] || [deal hasExpired])
+    {
+        self.navigationItem.rightBarButtonItem = nil;
+        // force the view to use the updated bg color
+        [self.modelController.currentViewController updateBackgroundColor:[TaloolColor gray_1]];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem = shareButton;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if ((dealInstructionalCurlCount < 1) && ![deal hasBeenRedeemed] && !hasRedeemedADeal && ![deal hasBeenShared])
+    // Only do the page curl if...
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    if ([customer showDealRedemptionInstructions:deal])
     {
         DealViewController *hiddenVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DealViewController"];
         hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
@@ -98,7 +110,7 @@ static bool hasRedeemedADeal = NO;
             // turn back after a timer has expired
             [NSTimer scheduledTimerWithTimeInterval:1.0 target:blocksafeSelf selector:@selector(hideInstructionalModal:) userInfo:nil repeats:NO];
         }];
-        dealInstructionalCurlCount++;
+        [customer showedDealRedemptionInstructions];
     }
 
 }
@@ -190,8 +202,6 @@ static bool hasRedeemedADeal = NO;
             
             // Post the FB redeem action
             [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal];
-            
-            hasRedeemedADeal = YES;
             
         } else {
             // show an error

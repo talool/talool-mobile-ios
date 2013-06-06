@@ -116,6 +116,9 @@ NSString * const OG_PAGE = @"http://talool.com/og";
 
 + (void)postOGShareAction:(ttDeal*)deal facebookId:(NSString *)facebookId
 {
+    // bail if not connected
+    if (![FBSession activeSession].isOpen) return;
+    
     // First create the Open Graph deal object for the deal being shared.
     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
     
@@ -178,6 +181,9 @@ NSString * const OG_PAGE = @"http://talool.com/og";
 
 + (void)postOGRedeemAction:(ttDeal*)deal
 {
+    // bail if not connected
+    if (![FBSession activeSession].isOpen) return;
+    
     // First create the Open Graph deal object for the deal being shared.
     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
     
@@ -195,28 +201,27 @@ NSString * const OG_PAGE = @"http://talool.com/og";
                                        graphObject:action
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
-         NSString *alertText;
-         if (!error) {
-             alertText = [NSString stringWithFormat:
-                          @"Posted Open Graph action, id: %@",
-                          [result objectForKey:@"id"]];
-         } else {
-             alertText = [NSString stringWithFormat:
+         if (error) {
+             NSString *alertText = [NSString stringWithFormat:
                           @"error: domain = %@, code = %d",
                           error.domain, error.code];
-         }
-         [[[UIAlertView alloc] initWithTitle:@"Result"
+         
+             [[[UIAlertView alloc] initWithTitle:@"Result"
                                      message:alertText
                                     delegate:nil
                            cancelButtonTitle:@"Thanks!"
                            otherButtonTitles:nil]
-          show];
+                show];
+         }
      }
      ];
 }
 
 + (void)postOGPurchaseAction:(ttDealOffer*)pack
 {
+    // bail if not connected
+    if (![FBSession activeSession].isOpen) return;
+    
     // First create the Open Graph deal object for the deal being shared.
     id<OGDealPack> dealPackObject = [FacebookHelper dealPackObjectForDealOffer:pack];
     
@@ -234,22 +239,18 @@ NSString * const OG_PAGE = @"http://talool.com/og";
                                        graphObject:action
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
-         NSString *alertText;
-         if (!error) {
-             alertText = [NSString stringWithFormat:
-                          @"Posted Open Graph action, id: %@",
-                          [result objectForKey:@"id"]];
-         } else {
-             alertText = [NSString stringWithFormat:
-                          @"error: domain = %@, code = %d",
-                          error.domain, error.code];
+         if (error) {
+             NSString *alertText = [NSString stringWithFormat:
+                                    @"error: domain = %@, code = %d",
+                                    error.domain, error.code];
+             
+             [[[UIAlertView alloc] initWithTitle:@"Result"
+                                         message:alertText
+                                        delegate:nil
+                               cancelButtonTitle:@"Thanks!"
+                               otherButtonTitles:nil]
+              show];
          }
-         [[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:alertText
-                                    delegate:nil
-                           cancelButtonTitle:@"Thanks!"
-                           otherButtonTitles:nil]
-          show];
      }
      ];
 }

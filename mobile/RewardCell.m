@@ -31,7 +31,7 @@
 
 - (void)setName:(NSString *)newName
 {
-    if ([deal hasBeenRedeemed] || [deal hasBeenShared]) {
+    if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired]) {
         NSDictionary* attributes = @{
                                      NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
                                      };
@@ -66,9 +66,21 @@
         date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.redeemed]];
         [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
     }
+    else if([deal hasExpired])
+    {
+        date = [NSString stringWithFormat:@"Expired on %@", [dateFormatter stringFromDate:deal.deal.expires]];
+        [self setIcon:[UIImage imageNamed:@"Icon_tan.png"]];
+    }
     else
     {
-        date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
+        if (deal.deal.expires ==  nil)
+        {
+            date = @"Never Expires";
+        }
+        else
+        {
+            date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
+        }
         [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
     }
     [self setDate:date];

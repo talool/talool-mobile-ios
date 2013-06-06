@@ -47,6 +47,7 @@
     
     sortDescriptors = [NSArray arrayWithObjects:
                                 [NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
+                                //[NSSortDescriptor sortDescriptorWithKey:@"expires" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
                                 nil];
     
@@ -86,12 +87,8 @@
     ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
     
-    if ([deal hasBeenRedeemed])
+    if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
     {
-        cell.contentView.alpha = 0.5;
-        cell.contentView.backgroundColor = [UIColor whiteColor];
-    }
-    else if ([deal hasBeenShared]) {
         cell.contentView.alpha = 0.5;
         cell.contentView.backgroundColor = [UIColor whiteColor];
     }
