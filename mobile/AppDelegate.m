@@ -47,9 +47,6 @@
     
     [self.window makeKeyAndVisible];
     
-    [FBSettings enableBetaFeature:FBBetaFeaturesOpenGraphShareDialog];
-    [FBSettings enableBetaFeature:FBBetaFeaturesShareDialog];
-    
     return YES;
 }
 

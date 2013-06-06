@@ -50,7 +50,7 @@
                              forState:UIControlStateNormal];
     
     // search for gifts a little later, so we don't push the same view twice
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkForGifts:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(checkForGifts:) userInfo:nil repeats:NO];
     
 }
 

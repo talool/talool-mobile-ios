@@ -159,22 +159,19 @@ NSString * const OG_PAGE = @"http://talool.com/og";
                                        graphObject:action
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
-         NSString *alertText;
-         if (!error) {
-             alertText = [NSString stringWithFormat:
-                          @"Posted Open Graph action, id: %@",
-                          [result objectForKey:@"id"]];
-         } else {
-             alertText = [NSString stringWithFormat:
-                          @"error: domain = %@, code = %d",
+         if (error)
+         {
+             NSString *alertText = [NSString stringWithFormat:
+                          @"error posting to facebook: fb error: domain = %@, code = %d",
                           error.domain, error.code];
+             [[[UIAlertView alloc] initWithTitle:@"Result"
+                                         message:alertText
+                                        delegate:nil
+                               cancelButtonTitle:@"Thanks!"
+                               otherButtonTitles:nil]
+              show];
          }
-         [[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:alertText
-                                    delegate:nil
-                           cancelButtonTitle:@"Thanks!"
-                           otherButtonTitles:nil]
-          show];
+         
      }
      ];
 }
