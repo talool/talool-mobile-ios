@@ -97,7 +97,15 @@
     }
     else if ([deal hasBeenShared])
     {
-        date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.shared]];
+        if (deal.shared == nil)
+        {
+            date = @"Shared";
+        }
+        else
+        {
+            date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.shared]];
+        }
+        
     }
     else if ([deal hasExpired])
     {

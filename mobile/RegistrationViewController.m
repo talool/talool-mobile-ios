@@ -19,7 +19,7 @@
 
 @implementation RegistrationViewController
 
-@synthesize errorView;
+@synthesize errorView, spinner;
 
 - (void)viewDidLoad
 {
@@ -27,6 +27,8 @@
 
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
+    
+    spinner.hidesWhenStopped = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,6 +39,8 @@
 
 - (IBAction)onRegistration:(id)sender
 {
+    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSNumber *sex = [[NSNumber alloc] initWithInt:1]; // TODO ask the user for this
@@ -56,6 +60,12 @@
         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
     
+    [spinner stopAnimating];
+
+}
+
+- (void) threadStartSpinner:(id)data {
+    [spinner startAnimating];
 }
 
 @end

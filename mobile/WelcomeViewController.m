@@ -23,6 +23,7 @@
 
 @implementation WelcomeViewController
 
+@synthesize spinner;
 
 - (void)viewDidLoad
 {
@@ -61,6 +62,13 @@
     [regButton setTitle:@"Register" forState:UIControlStateNormal];
     [regButton setImage:userIcon forState:UIControlStateNormal];
     
+    spinner.hidesWhenStopped=YES;
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -205,13 +213,21 @@
     }
 }
 
+- (void) threadStartSpinner:(id)data {
+    [spinner startAnimating];
+}
+
 - (IBAction)loginAction:(id) sender
 {
+    // add a spinner
+    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     // don't leave the page if login failed
     if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
     }
+    // remove the spinner
+    [spinner stopAnimating];
 }
 
 

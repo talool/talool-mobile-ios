@@ -17,11 +17,13 @@
     IBOutlet UITextField *passwordField;
     IBOutlet TaloolUIButton *loginButton;
     IBOutlet TaloolIconButton *regButton;
+    IBOutlet UIActivityIndicatorView *spinner;
 }
 
 - (IBAction)logoutAction:(UIStoryboardSegue *)segue;
 - (IBAction)loginAction:(id) sender;
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
+@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
 @end

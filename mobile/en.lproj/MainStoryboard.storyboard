@@ -82,11 +82,13 @@
                                     <outlet property="delegate" destination="Jte-0N-Lae" id="fXd-z6-0kg"/>
                                 </connections>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hAo-Tp-e1W"/>
                         </subviews>
                         <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fEc-9g-ddz" firstAttribute="baseline" secondItem="6bD-dW-ZqD" secondAttribute="baseline" type="default" id="1Ra-ma-fKN"/>
-                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="centerX" secondItem="Dpj-Xf-nNn" secondAttribute="centerX" type="default" id="4GY-Ap-Qd3"/>
+                            <constraint firstItem="hAo-Tp-e1W" firstAttribute="centerX" secondItem="Dpj-Xf-nNn" secondAttribute="centerX" type="default" id="5Zx-z5-MXm"/>
+                            <constraint firstItem="hAo-Tp-e1W" firstAttribute="centerX" secondItem="KYq-yi-s1S" secondAttribute="centerX" type="default" id="7Nc-VC-HJZ"/>
                             <constraint firstItem="Dpj-Xf-nNn" firstAttribute="leading" secondItem="KYq-yi-s1S" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gez-AQ-zmg"/>
                             <constraint firstItem="cYb-ZT-O0K" firstAttribute="top" secondItem="mfC-YJ-6VM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="QXD-V3-jtl"/>
                             <constraint firstItem="cYb-ZT-O0K" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="186" id="Y1o-Tg-8op"/>
@@ -94,11 +96,12 @@
                             <constraint firstItem="fEc-9g-ddz" firstAttribute="leading" secondItem="KYq-yi-s1S" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bcW-CU-PcF"/>
                             <constraint firstItem="Dpj-Xf-nNn" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="20" symbolic="YES" type="default" id="bi6-q6-t3f"/>
                             <constraint firstAttribute="trailing" secondItem="6bD-dW-ZqD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ePh-fV-giD"/>
-                            <constraint firstItem="cYb-ZT-O0K" firstAttribute="centerX" secondItem="KYq-yi-s1S" secondAttribute="centerX" type="default" id="eup-9l-SCr"/>
+                            <constraint firstItem="hAo-Tp-e1W" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="94" id="fTS-eN-UhT"/>
                             <constraint firstItem="cYb-ZT-O0K" firstAttribute="trailing" secondItem="mfC-YJ-6VM" secondAttribute="trailing" type="default" id="j7h-Bf-GcS"/>
+                            <constraint firstItem="hAo-Tp-e1W" firstAttribute="centerX" secondItem="mfC-YJ-6VM" secondAttribute="centerX" type="default" id="lBT-fo-DSx"/>
+                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="top" secondItem="hAo-Tp-e1W" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="oX0-LW-z48"/>
                             <constraint firstItem="mfC-YJ-6VM" firstAttribute="leading" secondItem="cYb-ZT-O0K" secondAttribute="leading" type="default" id="rHG-0C-1Ay"/>
                             <constraint firstItem="6bD-dW-ZqD" firstAttribute="top" secondItem="fEc-9g-ddz" secondAttribute="top" type="default" id="rsz-6M-rc4"/>
-                            <constraint firstItem="mfC-YJ-6VM" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="122" id="sO8-N5-ddb"/>
                             <constraint firstItem="6bD-dW-ZqD" firstAttribute="top" secondItem="KYq-yi-s1S" secondAttribute="top" constant="60" id="uUf-37-2lh"/>
                         </constraints>
                     </view>
@@ -109,6 +112,7 @@
                         <outlet property="loginButton" destination="6bD-dW-ZqD" id="yEV-7X-x3C"/>
                         <outlet property="passwordField" destination="fEc-9g-ddz" id="Hp3-Vq-uGX"/>
                         <outlet property="regButton" destination="cYb-ZT-O0K" id="8Vl-yu-4gG"/>
+                        <outlet property="spinner" destination="hAo-Tp-e1W" id="X1d-HW-f2O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nu3-7V-Pgu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,6 +190,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rvQ-5W-muL"/>
                         </subviews>
                         <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -202,8 +207,10 @@
                             <constraint firstItem="Vho-5m-dn1" firstAttribute="baseline" secondItem="nsm-kr-nIu" secondAttribute="baseline" type="default" id="NC1-63-mXo"/>
                             <constraint firstItem="LjD-ZJ-DQL" firstAttribute="leading" secondItem="nsm-kr-nIu" secondAttribute="leading" type="default" id="NjN-KF-5lI"/>
                             <constraint firstAttribute="trailing" secondItem="cqR-cK-IMG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="R2U-i9-kwh"/>
+                            <constraint firstItem="rvQ-5W-muL" firstAttribute="centerX" secondItem="9wX-Ve-5Ec" secondAttribute="centerX" type="default" id="Rlx-fw-XkF"/>
                             <constraint firstItem="hGg-8g-TwS" firstAttribute="leading" secondItem="kZL-Ma-Rrk" secondAttribute="leading" type="default" id="SyJ-ly-Som"/>
                             <constraint firstItem="4bV-n7-FJl" firstAttribute="top" secondItem="B0g-E8-wZj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XTQ-9E-3bi"/>
+                            <constraint firstItem="rvQ-5W-muL" firstAttribute="top" secondItem="cqR-cK-IMG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bpT-84-7RT"/>
                             <constraint firstAttribute="trailing" secondItem="B0g-E8-wZj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dxa-ns-wst"/>
                             <constraint firstItem="nsm-kr-nIu" firstAttribute="top" secondItem="Xlp-FE-0Da" secondAttribute="top" constant="17" id="fsQ-aF-86F"/>
                             <constraint firstItem="LjD-ZJ-DQL" firstAttribute="top" secondItem="Xlp-FE-0Da" secondAttribute="top" constant="55" id="gTy-Mc-V4u"/>
@@ -1454,6 +1461,179 @@
         <image name="Default.png" width="320" height="480"/>
         <image name="Icon_teal.png" width="57" height="57"/>
     </resources>
+    <classes>
+        <class className="AcceptGiftViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AcceptGiftViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="acceptGift:"/>
+                <relationship kind="action" name="rejectGift:"/>
+                <relationship kind="outlet" name="acceptButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="dealSummary" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gifterName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rejectButton" candidateClass="TaloolUIButton"/>
+            </relationships>
+        </class>
+        <class className="BaseSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseSearchViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="proximitySliderValueChanged:"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceSlider" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="DealRedemptionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealRedemptionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="shareAction:"/>
+            </relationships>
+        </class>
+        <class className="DealTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealTableViewController.h"/>
+        </class>
+        <class className="DealViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="expiresLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="merchantLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="offerLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="prettyPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="qrCode" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="summaryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ExploreViewController" superclassName="BaseSearchViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExploreViewController.h"/>
+        </class>
+        <class className="FBLoginView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBLoginView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="FavoriteMerchantCell" superclassName="MerchantCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteMerchantCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GradientButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientButton.h"/>
+        </class>
+        <class className="LocationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LocationTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationTableViewController.h"/>
+        </class>
+        <class className="MechantTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MechantTableViewController.h"/>
+        </class>
+        <class className="MerchantCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantCell.h"/>
+        </class>
+        <class className="MerchantLocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantLocationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="locationMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="MerchantViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MerchantViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="favoriteAction:"/>
+                <relationship kind="action" name="redeemAction:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ProfileViewController" superclassName="BaseSearchViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+        </class>
+        <class className="RegistrationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onRegistration:"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="regButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="RewardCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RewardCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="redeemedView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SearchFilterTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchFilterTableViewController.h"/>
+        </class>
+        <class className="SendGiftViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SendGiftViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openContactPickerAction:"/>
+                <relationship kind="action" name="openFBPickerAction:"/>
+                <relationship kind="outlet" name="contactButton" candidateClass="TaloolIconButton"/>
+                <relationship kind="outlet" name="dealTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="facebookButton" candidateClass="TaloolIconButton"/>
+                <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="gifteeName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SetttingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetttingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaloolIconButton" superclassName="TaloolUIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolIconButton.h"/>
+        </class>
+        <class className="TaloolTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolTabBarController.h"/>
+        </class>
+        <class className="TaloolUIButton" superclassName="GradientButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolUIButton.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+        <class className="WelcomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginAction:"/>
+                <relationship kind="action" name="logoutAction:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="FBLoginView" candidateClass="FBLoginView"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="regButton" candidateClass="TaloolIconButton"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
