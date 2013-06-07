@@ -13,6 +13,7 @@
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttMerchant.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -48,8 +49,9 @@
                                       NSLog(@"need to track image loading errors: %@", error.localizedDescription);
                                   }
                               }];
-    ttCustomer *gifter = (ttCustomer *)gift.fromCustomer;
-    self.gifterName.text = [NSString stringWithFormat:@"%@ sent you a deal for %@!", gifter.getFullName, gift.deal.merchant.name];
+    ttFriend *gifter = (ttFriend *)gift.fromCustomer;
+    ttMerchant *merchant = (ttMerchant *)gift.deal.merchant;
+    self.gifterName.text = [NSString stringWithFormat:@"%@ sent you a deal for %@!", gifter.firstName, merchant.name];
     
     self.dealSummary.text = gift.deal.summary;
     

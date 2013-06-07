@@ -90,7 +90,7 @@
 #pragma mark - FBLoginView delegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    if (FBSession.activeSession.isOpen) {
+    if (FBSession.activeSession.isOpen && [CustomerHelper getLoggedInUser] == nil) {
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
              if (!error) {

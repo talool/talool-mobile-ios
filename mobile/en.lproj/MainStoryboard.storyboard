@@ -228,6 +228,7 @@
                         <outlet property="lastNameField" destination="cqR-cK-IMG" id="9HW-lm-ODf"/>
                         <outlet property="passwordField" destination="4bV-n7-FJl" id="hwJ-uO-VnS"/>
                         <outlet property="regButton" destination="9wX-Ve-5Ec" id="HQb-Qu-QSs"/>
+                        <outlet property="spinner" destination="rvQ-5W-muL" id="Ogf-tZ-CSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs8-kF-Bpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,7 +744,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHC-pL-iQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2214" y="270"/>
+            <point key="canvasLocation" x="650" y="-1367"/>
         </scene>
         <!--Deal View Controller-->
         <scene sceneID="jbM-W6-XHJ">
