@@ -8,6 +8,7 @@
 
 #import "DealViewController.h"
 #import "CustomerHelper.h"
+#import "TaloolColor.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -87,11 +88,13 @@
     else if ([self.deal hasBeenShared])
     {
         [self markAsShared];
+        self.redemptionCode.hidden = YES;
     }
     else
     {
         
         [self addBarCode];
+        self.redemptionCode.hidden = YES;
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
@@ -156,9 +159,23 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:self.deal.redeemed]];
+    
+    self.expiresLabel.text = [NSString stringWithFormat:@"Redeemed on %@.",
+                     [dateFormatter stringFromDate:self.deal.redeemed]];
+    
+    if (self.deal.redemptionCode !=nil)
+    {
+        self.redemptionCode.text = self.deal.redemptionCode;
+        self.redemptionCode.hidden = NO;
+    }
+    else
+    {
+        self.redemptionCode.hidden = YES;
+    }
     
     self.instructionsLabel.hidden = YES;
+    
+    [self updateTextColor:[TaloolColor gray_4]];
 }
 
 - (void)markAsShared
@@ -168,6 +185,17 @@
     self.expiresLabel.text = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.shared]];
     
     self.instructionsLabel.hidden = YES;
+    
+    [self updateTextColor:[TaloolColor gray_4]];
+}
+
+-(void)updateTextColor:(UIColor *)color
+{
+    self.titleLabel.textColor = color;
+    self.summaryLabel.textColor = color;
+    self.detailsLabel.textColor = color;
+    self.expiresLabel.textColor = color;
+    self.redemptionCode.textColor = color;
 }
 
 -(void) reset:(ttDealAcquire *)newDeal

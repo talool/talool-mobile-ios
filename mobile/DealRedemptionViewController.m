@@ -194,9 +194,10 @@
         ttCustomer *customer = [CustomerHelper getLoggedInUser];
         [self.deal setCustomer:customer];
         [self.deal redeemHere:_customerLocation.coordinate.latitude
-                    longitude:_customerLocation.coordinate.longitude
-                        error:&err
-                      context:appDelegate.managedObjectContext];
+                                     longitude:_customerLocation.coordinate.longitude
+                                         error:&err
+                                       context:appDelegate.managedObjectContext];
+        
         if (err.code < 100) {
             [self.modelController handleRedemption:self.deal];
             

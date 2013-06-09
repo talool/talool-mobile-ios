@@ -23,6 +23,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *merchantLogo;
 @property (nonatomic, retain) IBOutlet UIView *logoContainer;
 @property (strong, nonatomic) IBOutlet UILabel *instructionsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *redemptionCode;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *detailsLabel;
