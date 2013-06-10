@@ -204,6 +204,8 @@
             // Post the FB redeem action
             [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal];
             
+            self.navigationItem.rightBarButtonItem = nil;
+            
         } else {
             // show an error
             UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"

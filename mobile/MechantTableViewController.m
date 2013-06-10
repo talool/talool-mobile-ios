@@ -26,7 +26,7 @@
 
 @implementation MechantTableViewController
 @synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter, locationManagerEnabled;
-@synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity;
+@synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity, newCustomerHandled;
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -37,6 +37,9 @@
     {
         [self filterMerchants];
     }
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.loginViewController registerLogoutDelegate:self];
 }
 
 - (void)viewDidLoad
@@ -80,6 +83,13 @@
     }
     locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -207,6 +217,12 @@
     [self.tableView reloadData];
 }
 
+- (void) customerLoggedOut:(id)sender
+{
+    NSLog(@"MerchantTableViewController is handling the logout");
+    newCustomerHandled = NO;
+}
+
 /*
  * This hits the service for a proximity search.
  * It also sorts the main list of merchants, but doesn't filter the set.
@@ -232,6 +248,7 @@
             lastProximity = proximity;
             locationChanged = NO;
             proximityChanged = NO;
+            newCustomerHandled = YES;
             break;
         case LOCATION_UNAVAILABLE:
             // TODO if there the location services can't get the merchants, how do we fail?
@@ -272,7 +289,7 @@
     {
         type = LOCATION_UNAVAILABLE;
     }
-    else if (locationChanged || proximityChanged)
+    else if (locationChanged || proximityChanged || newCustomerHandled==NO)
     {
         type = LOCATION_CHANGED;
     }

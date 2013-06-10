@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "BaseSearchViewController.h"
+#import "TaloolProtocols.h"
 
 @class ttCategory;
 
-@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate, MerchantFilterDelegate, CLLocationManagerDelegate> {
+@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate, MerchantFilterDelegate, CLLocationManagerDelegate, TaloolLogoutDelegate> {
     NSArray *merchants;
 }
+
 @property (nonatomic, retain) NSArray *merchants;
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSArray *allMerchantsInProximity;
@@ -23,6 +25,9 @@
 
 // is the list being used for "my deals" or "explore"
 @property BOOL searchMode;
+
+// lots of non-sense to support switching users and avoiding "null" distances
+@property BOOL newCustomerHandled;
 
 // search filters
 @property int proximity;

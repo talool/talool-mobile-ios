@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+@protocol TaloolLogoutDelegate<NSObject>
+- (void)customerLoggedOut:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

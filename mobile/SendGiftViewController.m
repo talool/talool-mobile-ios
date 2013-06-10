@@ -243,17 +243,18 @@
     ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
     BOOL continueToProperties;
     
-    if (ABMultiValueGetCount(multi) == 0)
+    if (ABMultiValueGetCount(multi)==0)
     {
         // Can we prevent users from selecting contacts without emails?
         NSLog(@"Contact picked with no emails: %@", name);
         // TODO alert user
+        // let the user see there is no email address for this contact
         continueToProperties = YES;
         
     }
-    else if (ABMultiValueGetCount(multi) == 1)
+    else if (ABMultiValueGetCount(multi)==1)
     {
-        email = [self getEmailFromContact:person];
+        email = [self getEmailFromContact:person identifier:0];
         NSLog(@"Contact picked: %@, %@", name, email);
         continueToProperties = NO;
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -261,8 +262,7 @@
     }
     else
     {
-        // how can the user pick from a list of emails
-        // can we limit the properties that are displayed?
+        // let the user pick the right email from the contact properties
         continueToProperties = YES;
     }
     return continueToProperties;
@@ -273,7 +273,7 @@
     if (property == kABPersonEmailProperty)
     {
         NSString *name = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-        NSString *email = [self getEmailFromContact:person];
+        NSString *email = [self getEmailFromContact:person identifier:identifier];
         NSLog(@"Email picked: %@", email);
         [self dismissViewControllerAnimated:YES completion:nil];
         [self handleUserContact:email name:name];
@@ -312,12 +312,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *) getEmailFromContact:(ABRecordRef)person
+- (NSString *) getEmailFromContact:(ABRecordRef)person identifier:(ABMultiValueIdentifier)idx
 {
     NSString *email;
     ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
-    if (ABMultiValueGetCount(multi) > 0) {
-        CFStringRef emailRef = ABMultiValueCopyValueAtIndex(multi, 0);
+    if (ABMultiValueGetCount(multi) > 0)
+    {
+        CFStringRef emailRef = ABMultiValueCopyValueAtIndex(multi, idx);
         email = (__bridge NSString *)(emailRef);
     }
     return email;

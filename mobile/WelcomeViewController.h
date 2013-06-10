@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
+#import "TaloolProtocols.h"
 
 @class TaloolIconButton, TaloolUIButton;
 
@@ -18,10 +19,12 @@
     IBOutlet TaloolUIButton *loginButton;
     IBOutlet TaloolIconButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
+    id <TaloolLogoutDelegate> logoutDelegate;
 }
 
 - (IBAction)logoutAction:(UIStoryboardSegue *)segue;
 - (IBAction)loginAction:(id) sender;
+- (void) registerLogoutDelegate:(id <TaloolLogoutDelegate>)delegate;
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;

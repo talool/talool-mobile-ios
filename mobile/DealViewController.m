@@ -98,7 +98,16 @@
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-        self.expiresLabel.text = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.deal.expires]];
+        NSString *exp;
+        if (self.deal.deal.expires == nil)
+        {
+            exp = @"Never Expires";
+        }
+        else
+        {
+            exp = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:self.deal.deal.expires]];
+        }
+        self.expiresLabel.text = exp;
     }
 }
 
@@ -176,6 +185,7 @@
     self.instructionsLabel.hidden = YES;
     
     [self updateTextColor:[TaloolColor gray_4]];
+    [self updateBackgroundColor:[TaloolColor gray_1]];
 }
 
 - (void)markAsShared
@@ -187,6 +197,7 @@
     self.instructionsLabel.hidden = YES;
     
     [self updateTextColor:[TaloolColor gray_4]];
+    [self updateBackgroundColor:[TaloolColor gray_1]];
 }
 
 -(void)updateTextColor:(UIColor *)color

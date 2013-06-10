@@ -46,8 +46,7 @@
      publish_actions, publish_checkins
      
      */
-    self.FBLoginView = [[FBLoginView alloc] init];
-    self.FBLoginView.readPermissions = @[@"email",@"user_birthday"];
+    self.FBLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"email",@"user_birthday"]];
     
     [loginButton useTaloolStyle];
     [loginButton setBaseColor:[TaloolColor teal]];
@@ -195,6 +194,11 @@
     }
 }
 
+- (void) registerLogoutDelegate:(id<TaloolLogoutDelegate>)delegate
+{
+    logoutDelegate = delegate;
+}
+
 - (void)logOut
 {
     // CHECK FOR A FACEBOOK SESSION
@@ -203,6 +207,7 @@
     }
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [ttCustomer logoutUser:appDelegate.managedObjectContext];
+    [logoutDelegate customerLoggedOut:self];
 }
 
 
