@@ -55,19 +55,12 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
-    if (!url) {
-        return NO;
-    }
-    NSString *URLString = [url absoluteString];
-    NSLog(@"The application received a request to open this URL: %@. The source app was: %@", URLString, sourceApplication);
-    if (!URLString)
-    {
+    if (!url || ![url absoluteString]) {
         return NO;
     }
     
     if ([[url scheme] isEqualToString:@"taloolmydeals"]) {
-        // TODO
-        // add logic to parse the url/query/fragments to set app properties.
+        // TODO: add logic to parse the url/query/fragments to set app properties.
         // the next stop in the lifecycle is applicationDidBecomeActive:
         return YES;
     }

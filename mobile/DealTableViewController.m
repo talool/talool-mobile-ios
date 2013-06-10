@@ -122,6 +122,7 @@
                                      };
         
         NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:deal.deal.title attributes:attributes];
+        cell.nameLabel.text = nil;
         cell.nameLabel.attributedText = attrText;
     }
     else
@@ -136,6 +137,7 @@
         }
         cell.contentView.alpha = 1.0;
         cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.nameLabel.attributedText = nil;
         cell.nameLabel.text = deal.deal.title;
         cell.iconView.image = [UIImage imageNamed:@"Icon_teal.png"];
     }

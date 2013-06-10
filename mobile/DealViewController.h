@@ -15,6 +15,7 @@
 }
 
 - (void) updateBackgroundColor:(UIColor *)color;
+- (void)updateTextColor:(UIColor *)color;
 - (void) reset:(ttDealAcquire *)newDeal;
 
 @property (nonatomic, retain) IBOutlet UIImageView *qrCode;

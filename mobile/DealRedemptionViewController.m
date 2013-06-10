@@ -104,6 +104,8 @@
         hiddenVC.modalTransitionStyle = UIModalTransitionStylePartialCurl;
         hiddenVC.deal = deal;
         //[hiddenVC.instructionsLabel setHidden:true];
+        [hiddenVC updateBackgroundColor:[TaloolColor gray_1]];
+        [hiddenVC updateTextColor:[TaloolColor gray_4]];
         [hiddenVC.qrCode setHidden:true];
         __block DealRedemptionViewController *blocksafeSelf = self;
         [self presentViewController:hiddenVC animated:YES completion:^(void) {
