@@ -70,6 +70,8 @@
         giftVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         giftVC.gift = [gifts objectAtIndex:0];
         [self presentViewController:giftVC animated:YES completion:nil];
+        
+        [giftVC setGiftDelegate:self.merchantTableViewController];
     }
 }
 

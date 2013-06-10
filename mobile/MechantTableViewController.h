@@ -13,7 +13,7 @@
 
 @class ttCategory;
 
-@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate, MerchantFilterDelegate, CLLocationManagerDelegate, TaloolLogoutDelegate> {
+@interface MechantTableViewController : UITableViewController<ProximitySliderDelegate, MerchantFilterDelegate, CLLocationManagerDelegate, TaloolLogoutDelegate, TaloolGiftAcceptedDelegate> {
     NSArray *merchants;
 }
 
@@ -28,6 +28,8 @@
 
 // lots of non-sense to support switching users and avoiding "null" distances
 @property BOOL newCustomerHandled;
+
+@property BOOL newGiftHandled;
 
 // search filters
 @property int proximity;

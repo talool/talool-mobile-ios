@@ -36,6 +36,7 @@
 
 @property (retain) id proximitySliderDelegate;
 @property (retain) id merchantFilterDelegate;
+@property (retain) id merchantTableViewController;
 
 @property (nonatomic, retain) ttCustomer *customer;
 

@@ -26,7 +26,8 @@
 
 @implementation MechantTableViewController
 @synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter, locationManagerEnabled;
-@synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity, newCustomerHandled;
+@synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity;
+@synthesize newCustomerHandled, newGiftHandled;
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -223,6 +224,13 @@
     newCustomerHandled = NO;
 }
 
+- (void) giftAccepted:(id)sender
+{
+    NSLog(@"MerchantTableViewController is handling the gift");
+    newGiftHandled = NO;
+    [self refreshMerchants];
+}
+
 /*
  * This hits the service for a proximity search.
  * It also sorts the main list of merchants, but doesn't filter the set.
@@ -249,6 +257,7 @@
             locationChanged = NO;
             proximityChanged = NO;
             newCustomerHandled = YES;
+            newGiftHandled = YES;
             break;
         case LOCATION_UNAVAILABLE:
             // TODO if there the location services can't get the merchants, how do we fail?
@@ -289,7 +298,7 @@
     {
         type = LOCATION_UNAVAILABLE;
     }
-    else if (locationChanged || proximityChanged || newCustomerHandled==NO)
+    else if (locationChanged || proximityChanged || newCustomerHandled==NO || newGiftHandled == NO)
     {
         type = LOCATION_CHANGED;
     }

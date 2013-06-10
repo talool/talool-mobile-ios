@@ -21,7 +21,7 @@
 @implementation BaseSearchViewController
 
 @synthesize filterControl, merchantFilterDelegate, proximitySliderDelegate, isExplore;
-@synthesize customer;
+@synthesize customer, merchantTableViewController;
 
 - (void)viewDidLoad
 {
@@ -69,6 +69,7 @@
         tableViewController.proximity = DEFAULT_PROXIMITY;
         self.proximitySliderDelegate = tableViewController;
         self.merchantFilterDelegate = tableViewController;
+        self.merchantTableViewController = tableViewController;
     }
 }
 

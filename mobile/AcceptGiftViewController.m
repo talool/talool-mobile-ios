@@ -23,7 +23,7 @@
 
 @implementation AcceptGiftViewController
 
-@synthesize gift, giftImage, gifterName, dealSummary;
+@synthesize gift, giftImage, gifterName, dealSummary, giftDelegate;
 
 - (void)viewDidLoad
 {
@@ -69,8 +69,12 @@
     ttCustomer *customer = (ttCustomer *)[CustomerHelper getLoggedInUser];
     if ([customer acceptGift:gift.giftId error:&err])
     {
+        // tell the delegate what happened
+        [giftDelegate giftAccepted:self];
+        
         // pop the modal off the stack
         [self dismissViewControllerAnimated:YES completion:NULL];
+        
     }
     else
     {

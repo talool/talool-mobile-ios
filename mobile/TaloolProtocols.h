@@ -13,6 +13,10 @@
 - (void)customerLoggedOut:(id)sender;
 @end
 
+@protocol TaloolGiftAcceptedDelegate<NSObject>
+- (void)giftAccepted:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

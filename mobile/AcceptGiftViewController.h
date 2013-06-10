@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
 @class TaloolUIButton, ttGift;
 
@@ -15,8 +16,11 @@
 
     IBOutlet TaloolUIButton *acceptButton;
     IBOutlet TaloolUIButton *rejectButton;
+    id <TaloolGiftAcceptedDelegate> giftDelegate;
     
 }
+
+@property (retain) id giftDelegate;
 @property (nonatomic, retain) IBOutlet UIImageView *giftImage;
 @property (nonatomic, retain) IBOutlet UILabel *dealSummary;
 @property (nonatomic, retain) IBOutlet UILabel *gifterName;
