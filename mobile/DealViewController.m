@@ -256,6 +256,7 @@
     [self.view setBackgroundColor:color];
     // change any subviews too
     [self.logoContainer setBackgroundColor:color];
+    [self.detailContainer setBackgroundColor:color];
 }
 
 
