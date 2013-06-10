@@ -16,6 +16,7 @@
 #import "TaloolIconButton.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttCustomer.h"
 
 @interface SendGiftViewController ()
@@ -119,7 +120,7 @@
                                                               if (success)
                                                               {
                                                                   [self announceShare:facebookId];
-                                                                  [self confirmGiftSent];
+                                                                  [self confirmGiftSent:nil name:name];
                                                               }
                                                               else
                                                               {
@@ -145,7 +146,7 @@
     if (success)
     {
         [self announceShare:nil];
-        [self confirmGiftSent];
+        [self confirmGiftSent:email name:name];
     }
     else
     {
@@ -154,10 +155,11 @@
 
 }
 
-- (void)confirmGiftSent
+- (void)confirmGiftSent:(NSString *)email name:(NSString *)name
 {
     // change the status of the deal
-    [dealAcquire setShared];
+    ttFriend *friend = [ttFriend initWithName:name email:email context:[CustomerHelper getContext]];
+    [dealAcquire setSharedWith:friend];
     
     // go back to the deal
     [self.navigationController popViewControllerAnimated:YES];
@@ -165,22 +167,24 @@
 
 - (void)announceShare:(NSString *)facebookId
 {
-    if ([FBSession.activeSession isOpen] &&
-        [FBSession.activeSession.permissions
-         indexOfObject:@"publish_actions"] == NSNotFound) {
+    if ([FBSession.activeSession isOpen])
+    {
+        if ([FBSession.activeSession.permissions
+             indexOfObject:@"publish_actions"] == NSNotFound) {
         
-        [FBSession.activeSession
-         requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
-         defaultAudience:FBSessionDefaultAudienceFriends
-         completionHandler:^(FBSession *session, NSError *error) {
-             if (!error) {
-                 // re-call assuming we now have the permission
-                 [self announceShare:facebookId];
-             }
-         }];
-    } else {
-        ttDeal *deal = (ttDeal *)dealAcquire.deal;
-        [FacebookHelper postOGShareAction:deal facebookId:facebookId];
+            [FBSession.activeSession
+             requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
+             defaultAudience:FBSessionDefaultAudienceFriends
+             completionHandler:^(FBSession *session, NSError *error) {
+                 if (!error) {
+                    // re-call assuming we now have the permission
+                    [self announceShare:facebookId];
+                 }
+             }];
+        } else {
+            ttDeal *deal = (ttDeal *)dealAcquire.deal;
+            [FacebookHelper postOGShareAction:deal facebookId:facebookId];
+        }
     }
 }
 

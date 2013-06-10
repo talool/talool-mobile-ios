@@ -15,6 +15,7 @@
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttFriend.h"
 #import "ZXingObjC/ZXingObjC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -88,7 +89,6 @@
     else if ([self.deal hasBeenShared])
     {
         [self markAsShared];
-        self.redemptionCode.hidden = YES;
     }
     else
     {
@@ -192,12 +192,41 @@
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    self.expiresLabel.text = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.shared]];
+    NSString *shareLabel;
+    if (self.deal.shared == nil)
+    {
+        shareLabel = @"shared with a friend";
+    }
+    else
+    {
+        shareLabel = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.shared]];
+    }
+    self.expiresLabel.text = shareLabel;
     
     self.instructionsLabel.hidden = YES;
     
     [self updateTextColor:[TaloolColor gray_4]];
     [self updateBackgroundColor:[TaloolColor gray_1]];
+    
+    ttFriend *friend = self.deal.sharedTo;
+    if (friend == nil)
+    {
+        self.redemptionCode.hidden = YES;
+    }
+    else
+    {
+        NSString *friendLabel;
+        if (friend.email == nil)
+        {
+            friendLabel = [NSString stringWithFormat:@"Shared to %@", friend.fullName];
+        }
+        else
+        {
+            friendLabel = [NSString stringWithFormat:@"Shared to %@", friend.email];
+        }
+        self.redemptionCode.text = friendLabel;
+        self.redemptionCode.hidden = NO;
+    }
 }
 
 -(void)updateTextColor:(UIColor *)color

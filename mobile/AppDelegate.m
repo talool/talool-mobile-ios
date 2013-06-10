@@ -55,6 +55,23 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     
+    if (!url) {
+        return NO;
+    }
+    NSString *URLString = [url absoluteString];
+    NSLog(@"The application received a request to open this URL: %@. The source app was: %@", URLString, sourceApplication);
+    if (!URLString)
+    {
+        return NO;
+    }
+    
+    if ([[url scheme] isEqualToString:@"taloolmydeals"]) {
+        // TODO
+        // add logic to parse the url/query/fragments to set app properties.
+        // the next stop in the lifecycle is applicationDidBecomeActive:
+        return YES;
+    }
+    
     // Facebook SDK * login flow *
     // Attempt to handle URLs to complete any auth (e.g., SSO) flow.
     //if ([[FBSession activeSession] handleOpenURL:url]) {
@@ -80,6 +97,41 @@
         }
     }
     return NO;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+
+    // You should be extremely careful when handling URL requests.
+    // You must take steps to validate the URL before handling it.
+    
+    if (!url) {
+        // The URL is nil. There's nothing more to do.
+        return NO;
+    }
+    
+    NSString *URLString = [url absoluteString];
+    
+    NSString *message = [NSString stringWithFormat:@"The application received a request to open this URL: %@. Be careful when servicing handleOpenURL requests!", URLString];
+    
+    UIAlertView *openURLAlert = [[UIAlertView alloc] initWithTitle:@"handleOpenURL:" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [openURLAlert show];
+    
+    if (!URLString) {
+        // The URL's absoluteString is nil. There's nothing more to do.
+        return NO;
+    }
+    
+    // Your application is defining the new URL type, so you should know the maximum character
+    // count of the URL. Anything longer than what you expect is likely to be dangerous.
+    NSInteger maximumExpectedLength = 50;
+    
+    if ([URLString length] > maximumExpectedLength) {
+        // The URL is longer than we expect. Stop servicing it.
+        return NO;
+    }
+    
+    return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -25,6 +25,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>taloolmydeals</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.talool.taloolclient</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>fb342739092494152</string>
 			</array>
 		</dict>
