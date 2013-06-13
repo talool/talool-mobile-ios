@@ -14,6 +14,7 @@
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "FontAwesomeKit.h"
+#import "FacebookHelper.h"
 
 @interface MerchantViewController ()
 @property (nonatomic, retain) UIBarButtonItem *favButton;
@@ -86,6 +87,7 @@
     else
     {
         [merchant favorite:customer];
+        [FacebookHelper postOGLikeAction:merchant.location];
     }
     [favButton setTitle:[self getFavLabel]];
 }

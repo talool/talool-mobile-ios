@@ -39,3 +39,12 @@
 @property (retain, nonatomic) id<OGDealPack> pack;
 @end
 
+@protocol OGLocation<FBGraphPlace>
+@property (retain, nonatomic) NSString *id;
+@property (retain, nonatomic) NSString *url;
+@end
+
+@protocol OGLikeLocationAction<FBOpenGraphAction>
+@property (retain, nonatomic) id<OGLocation> location;
+@end
+

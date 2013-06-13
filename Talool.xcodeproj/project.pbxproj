@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
 		818D16B7176661D800DFB14A /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 818D16B6176661D700DFB14A /* talool-api-ios.bundle */; };
+		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81F24AFE174F8C2F003A3A1A /* SendGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
@@ -22,11 +23,7 @@
 		9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
 		9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
 		9103112916D1E53800CEE814 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103112816D1E53800CEE814 /* ProfileViewController.m */; };
-		9103112B16D1E53800CEE814 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103112A16D1E53800CEE814 /* first.png */; };
-		9103112D16D1E53800CEE814 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103112C16D1E53800CEE814 /* first@2x.png */; };
 		9103113016D1E53800CEE814 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103112F16D1E53800CEE814 /* ExploreViewController.m */; };
-		9103113216D1E53800CEE814 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103113116D1E53800CEE814 /* second.png */; };
-		9103113416D1E53800CEE814 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103113316D1E53800CEE814 /* second@2x.png */; };
 		9103113C16D1E53900CEE814 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103113B16D1E53800CEE814 /* SenTestingKit.framework */; };
 		9103113D16D1E53900CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103113E16D1E53900CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
@@ -66,12 +63,6 @@
 		9183F4CB170342D500ED4844 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
 		9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
 		9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
-		9183F4E51703A18600ED4844 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4DF1703A18500ED4844 /* search.png */; };
-		9183F4E61703A18600ED4844 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4E01703A18600ED4844 /* search@2x.png */; };
-		9183F4E71703A18600ED4844 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4E11703A18600ED4844 /* star.png */; };
-		9183F4E81703A18600ED4844 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4E21703A18600ED4844 /* star@2x.png */; };
-		9183F4EB1703A31700ED4844 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4E91703A31700ED4844 /* gear.png */; };
-		9183F4EC1703A31700ED4844 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9183F4EA1703A31700ED4844 /* gear@2x.png */; };
 		918DE5C216FFA23D0054C004 /* MerchantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C116FFA23D0054C004 /* MerchantViewController.m */; };
 		918DE5C81702204F0054C004 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918DE5C71702204E0054C004 /* DealTableViewController.m */; };
 		9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9197F97A170CB50500BDAA58 /* SDWebImage.framework */; };
@@ -83,8 +74,6 @@
 		9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F984170D24CB00BDAA58 /* Icon_teal.png */; };
 		9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
 		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
-		91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECC16D5E11700D1CA96 /* StarsBackground.png */; };
-		91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91986ECD16D5E11700D1CA96 /* StarsForeground.png */; };
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
@@ -144,6 +133,7 @@
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
 		818D16B6176661D700DFB14A /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
+		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81F24AFC174F8C2F003A3A1A /* SendGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendGiftViewController.h; sourceTree = "<group>"; };
 		81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendGiftViewController.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -167,12 +157,8 @@
 		9103112516D1E53800CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9103112716D1E53800CEE814 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		9103112816D1E53800CEE814 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		9103112A16D1E53800CEE814 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		9103112C16D1E53800CEE814 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		9103112E16D1E53800CEE814 /* ExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
 		9103112F16D1E53800CEE814 /* ExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
-		9103113116D1E53800CEE814 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		9103113316D1E53800CEE814 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		9103113A16D1E53800CEE814 /* TaloolTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaloolTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103113B16D1E53800CEE814 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9103114316D1E53900CEE814 /* TaloolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TaloolTests-Info.plist"; sourceTree = "<group>"; };
@@ -223,12 +209,6 @@
 		9183F4CA170342D500ED4844 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9183F4CC170342E100ED4844 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9183F4D6170350BB00ED4844 /* ZXingObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZXingObjC.framework; sourceTree = "<group>"; };
-		9183F4DF1703A18500ED4844 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		9183F4E01703A18600ED4844 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
-		9183F4E11703A18600ED4844 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
-		9183F4E21703A18600ED4844 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
-		9183F4E91703A31700ED4844 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
-		9183F4EA1703A31700ED4844 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 		918DE5C016FFA23D0054C004 /* MerchantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantViewController.h; sourceTree = "<group>"; };
 		918DE5C116FFA23D0054C004 /* MerchantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantViewController.m; sourceTree = "<group>"; };
 		918DE5C61702204C0054C004 /* DealTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealTableViewController.h; sourceTree = "<group>"; };
@@ -244,8 +224,6 @@
 		9197F98D170F157200BDAA58 /* TaloolColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolColor.m; sourceTree = "<group>"; };
 		91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantTableViewController.h; sourceTree = "<group>"; };
 		91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantTableViewController.m; sourceTree = "<group>"; };
-		91986ECC16D5E11700D1CA96 /* StarsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsBackground.png; sourceTree = "<group>"; };
-		91986ECD16D5E11700D1CA96 /* StarsForeground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarsForeground.png; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* RewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardCell.h; sourceTree = "<group>"; };
 		91986EFB16D7150400D1CA96 /* RewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardCell.m; sourceTree = "<group>"; };
 		91986F0A16DA88F800D1CA96 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
@@ -419,19 +397,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81937B1A176A38BB002DDCA8 /* 000.png */,
 				9197F98B170D24DB00BDAA58 /* icons */,
-				9183F4E91703A31700ED4844 /* gear.png */,
-				9183F4EA1703A31700ED4844 /* gear@2x.png */,
-				9183F4DF1703A18500ED4844 /* search.png */,
-				9183F4E01703A18600ED4844 /* search@2x.png */,
-				9183F4E11703A18600ED4844 /* star.png */,
-				9183F4E21703A18600ED4844 /* star@2x.png */,
-				9103112A16D1E53800CEE814 /* first.png */,
-				91986ECC16D5E11700D1CA96 /* StarsBackground.png */,
-				91986ECD16D5E11700D1CA96 /* StarsForeground.png */,
-				9103112C16D1E53800CEE814 /* first@2x.png */,
-				9103113116D1E53800CEE814 /* second.png */,
-				9103113316D1E53800CEE814 /* second@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -680,18 +647,6 @@
 			files = (
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
-				9103112B16D1E53800CEE814 /* first.png in Resources */,
-				9103112D16D1E53800CEE814 /* first@2x.png in Resources */,
-				9103113216D1E53800CEE814 /* second.png in Resources */,
-				9103113416D1E53800CEE814 /* second@2x.png in Resources */,
-				91986ED016D5E11700D1CA96 /* StarsBackground.png in Resources */,
-				91986ED116D5E11700D1CA96 /* StarsForeground.png in Resources */,
-				9183F4E51703A18600ED4844 /* search.png in Resources */,
-				9183F4E61703A18600ED4844 /* search@2x.png in Resources */,
-				9183F4E71703A18600ED4844 /* star.png in Resources */,
-				9183F4E81703A18600ED4844 /* star@2x.png in Resources */,
-				9183F4EB1703A31700ED4844 /* gear.png in Resources */,
-				9183F4EC1703A31700ED4844 /* gear@2x.png in Resources */,
 				9168A50A170B484400E53EB1 /* Default-568h@2x.png in Resources */,
 				9168A50B170B484400E53EB1 /* Default.png in Resources */,
 				9168A50C170B484400E53EB1 /* Default@2x.png in Resources */,
@@ -706,6 +661,7 @@
 				916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */,
 				916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */,
 				818D16B7176661D800DFB14A /* talool-api-ios.bundle in Resources */,
+				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

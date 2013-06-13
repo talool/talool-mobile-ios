@@ -204,7 +204,7 @@
             [self.modelController handleRedemption:self.deal];
             
             // Post the FB redeem action
-            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal];
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.location];
             
             self.navigationItem.rightBarButtonItem = nil;
             

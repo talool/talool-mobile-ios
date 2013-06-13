@@ -18,6 +18,7 @@
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttMerchant.h"
 
 @interface SendGiftViewController ()
 
@@ -85,12 +86,46 @@
 
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
 {
-    
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    NSString *giftId = [customer giftToFacebook:dealAcquire.dealAcquireId
+                                     facebookId:facebookId
+                                 receipientName:name
+                                          error:&error];
+    if (error.code < 100)
+    {
+        [self announceShare:facebookId giftId:giftId];
+        //[self sendFacebookAppRequest:facebookId giftId:giftId];
+        [self confirmGiftSent:nil name:name];
+    }
+    else
+    {
+        [self displayError:error];
+    }
+}
+
+- (void) sendFacebookAppRequest:(NSString *)facebookId giftId:(NSString *)giftId
+{
     friendCache = [[FBFrictionlessRecipientCache alloc] init];
     [friendCache prefetchAndCacheForSession:nil];
     
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization
+                        dataWithJSONObject:@{
+                        @"giftId": giftId}
+                        options:0
+                        error:&error];
+    if (!jsonData) {
+        NSLog(@"JSON error: %@", error);
+        return;
+    }
+    NSString *giftStr = [[NSString alloc]
+                         initWithData:jsonData
+                         encoding:NSUTF8StringEncoding];
+    
     NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      facebookId, @"to",
+                                     giftStr, @"data",
                                      nil];
     
     ttDeal *deal = (ttDeal *)dealAcquire.deal;
@@ -98,7 +133,7 @@
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
                                                   message:message
-                                                    title:@"Share This Deal"
+                                                    title:@"Send an Additional Private Message"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
                                                       if (error) {
@@ -110,22 +145,6 @@
                                                               NSLog(@"User canceled request.");
                                                           } else {
                                                               NSLog(@"Request Sent.");
-                                                              // TODO how do you filter out the cancel events?
-                                                              ttCustomer *customer = [CustomerHelper getLoggedInUser];
-                                                              NSError *error;
-                                                              BOOL success = [customer giftToFacebook:dealAcquire.dealAcquireId
-                                                                                           facebookId:facebookId
-                                                                                       receipientName:name
-                                                                                                error:&error];
-                                                              if (success)
-                                                              {
-                                                                  [self announceShare:facebookId];
-                                                                  [self confirmGiftSent:nil name:name];
-                                                              }
-                                                              else
-                                                              {
-                                                                  [self displayError:error];
-                                                              }
                                                           }
                                                       }}
                                               friendCache:friendCache
@@ -139,13 +158,13 @@
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *error;
-    BOOL success = [customer giftToEmail:dealAcquire.dealAcquireId
+    NSString *giftId = [customer giftToEmail:dealAcquire.dealAcquireId
                                    email:email
                           receipientName:name
                                    error:&error];
-    if (success)
+    if (error.code < 100)
     {
-        [self announceShare:nil];
+        [self announceShare:nil giftId:giftId];
         [self confirmGiftSent:email name:name];
     }
     else
@@ -165,7 +184,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)announceShare:(NSString *)facebookId
+- (void)announceShare:(NSString *)facebookId giftId:(NSString *)giftId
 {
     if ([FBSession.activeSession isOpen])
     {
@@ -178,12 +197,11 @@
              completionHandler:^(FBSession *session, NSError *error) {
                  if (!error) {
                     // re-call assuming we now have the permission
-                    [self announceShare:facebookId];
+                    [self announceShare:facebookId giftId:giftId];
                  }
              }];
         } else {
-            ttDeal *deal = (ttDeal *)dealAcquire.deal;
-            [FacebookHelper postOGShareAction:deal facebookId:facebookId];
+            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:dealAcquire.deal.merchant.location];
         }
     }
 }

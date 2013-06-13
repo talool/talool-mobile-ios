@@ -753,10 +753,10 @@
                     <view key="view" contentMode="scaleToFill" id="JIU-an-Das">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="xZq-Kj-pLt">
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xZq-Kj-pLt">
                                 <accessibility key="accessibilityConfiguration" label="PrettyPicture"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" priority="1" constant="160" type="user" id="Kbx-3n-TWM"/>
+                                    <constraint firstAttribute="height" constant="160" type="user" id="Kbx-3n-TWM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Swipe to redeem this deal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNz-rG-1di">
@@ -822,20 +822,20 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="3Z6-qp-Kt7">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="158" id="EZb-xf-gcW"/>
+                                            <constraint firstAttribute="width" constant="120" id="7hP-Ao-Eiz"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-Ze-Vnd">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="158" id="ccY-jz-oSd"/>
+                                            <constraint firstAttribute="width" constant="120" id="ch8-7Y-A14"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="ggc-Ze-Vnd" firstAttribute="top" secondItem="2Vs-y7-XLP" secondAttribute="top" type="default" id="Bqa-Fw-far"/>
-                                    <constraint firstItem="ggc-Ze-Vnd" firstAttribute="trailing" secondItem="2Vs-y7-XLP" secondAttribute="trailing" type="default" id="Jcz-oC-aFE"/>
-                                    <constraint firstItem="3Z6-qp-Kt7" firstAttribute="leading" secondItem="2Vs-y7-XLP" secondAttribute="leading" type="default" id="LjK-9S-qqN"/>
+                                    <constraint firstItem="3Z6-qp-Kt7" firstAttribute="leading" secondItem="2Vs-y7-XLP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NHs-9T-QO6"/>
+                                    <constraint firstAttribute="trailing" secondItem="ggc-Ze-Vnd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qt8-SF-Erf"/>
                                     <constraint firstItem="3Z6-qp-Kt7" firstAttribute="bottom" secondItem="2Vs-y7-XLP" secondAttribute="bottom" type="default" id="XUJ-x5-KlV"/>
                                     <constraint firstItem="ggc-Ze-Vnd" firstAttribute="bottom" secondItem="2Vs-y7-XLP" secondAttribute="bottom" type="default" id="akB-ii-nfK"/>
                                     <constraint firstItem="3Z6-qp-Kt7" firstAttribute="top" secondItem="2Vs-y7-XLP" secondAttribute="top" type="default" id="vZB-19-rz2"/>

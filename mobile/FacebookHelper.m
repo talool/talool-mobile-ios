@@ -14,7 +14,10 @@
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
+#import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/ttSocialAccount.h"
+#import "talool-api-ios/ttMerchantLocation.h"
+#import "talool-api-ios/ttMerchant.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import <AddressBook/AddressBook.h>
 
@@ -24,7 +27,10 @@ static NSManagedObjectContext *_context;
 
 NSString * const APP_NAMESPACE = @"taloolclient";
 NSString * const APP_ID = @"342739092494152";
-NSString * const OG_PAGE = @"http://talool.com/og";
+NSString * const OG_GIFT_PAGE = @"http://dev-www.talool.com/gift"; // TODO don't commit with this test domain!!!
+NSString * const OG_DEAL_PAGE = @"http://dev-www.talool.com/deal";
+NSString * const OG_OFFER_PAGE = @"http://talool.com/offer";
+NSString * const OG_MERCHANT_PAGE = @"http://dev-www.talool.com/location";
 
 +(void) setContext:(NSManagedObjectContext *)context
 {
@@ -75,52 +81,47 @@ NSString * const OG_PAGE = @"http://talool.com/og";
     return user;
 }
 
++ (id<OGDeal>)dealObjectForGift:(NSString*)giftId
+{
+    id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
+    result.url = [NSString stringWithFormat:@"%@/%@", OG_GIFT_PAGE, giftId];
+
+    return result;
+}
+
 + (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal
 {
-    NSString *format =
-        @"%@?fb:app_id=%@&og:type=%@:deal&"
-        @"og:title=%@&og:description=%%22%@%%22&"
-        @"og:image=%@&"
-        @"body=%@";
-    
     id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:format,
-                  OG_PAGE, APP_ID, APP_NAMESPACE,
-                  deal.title,
-                  deal.summary,
-                  deal.imageUrl,
-                  deal.title];
+    result.url = [NSString stringWithFormat:@"%@/%@", OG_DEAL_PAGE, deal.dealId];
+    
+    return result;
+}
 
++ (id<OGLocation>)locationObjectForMerchantLocation:(ttMerchantLocation*)loc
+{
+    NSNumber *locId = loc.locationId;
+    id<OGLocation> result = (id<OGLocation>)[FBGraphObject graphObject];
+    result.url = [NSString stringWithFormat:@"%@/%@", OG_MERCHANT_PAGE, locId];
+    
     return result;
 }
 
 + (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer
 {
-    NSString *format =
-        @"%@?fb:app_id=%@&og:type=%@:deal_pack&"
-        @"og:title=%@&og:description=%%22%@%%22&"
-        @"og:image=%@&"
-        @"body=%@";
-    
     id<OGDealPack> result = (id<OGDealPack>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:format,
-                  OG_PAGE, APP_ID, APP_NAMESPACE,
-                  dealOffer.title,
-                  dealOffer.summary,
-                  dealOffer.imageUrl,
-                  dealOffer.title];
+    result.url = [NSString stringWithFormat:@"%@/%@", OG_OFFER_PAGE, dealOffer.dealOfferId];
     
     return result;
 
 }
 
-+ (void)postOGShareAction:(ttDeal*)deal facebookId:(NSString *)facebookId
++ (void)postOGShareAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
 {
     // bail if not connected
     if (![FBSession activeSession].isOpen) return;
     
     // First create the Open Graph deal object for the deal being shared.
-    id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
+    id<OGDeal> dealObject = [FacebookHelper dealObjectForGift:giftId];
     
     // Now create an Open Graph share action with the deal,
     id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
@@ -131,17 +132,13 @@ NSString * const OG_PAGE = @"http://talool.com/og";
         NSMutableArray *friends = [[NSMutableArray alloc] initWithCapacity:1];
         [friends addObject:facebookId];
         action.tags = friends;
-        //action.tags = [NSArray arrayWithObject:facebookId];
     }
     
+    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
+    action.place = locationObject;
+    
     /*
-     
-     // TODO the merchant location,
-     // TODO additional photos?
-     
-    if (self.selectedPlace) {
-        action.place = self.selectedPlace;
-    }
+     // TODO additional photos for the merchant?
     if (photoURL) {
         NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
         [image setObject:photoURL forKey:@"url"];
@@ -164,22 +161,14 @@ NSString * const OG_PAGE = @"http://talool.com/og";
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (error)
          {
-             NSString *alertText = [NSString stringWithFormat:
-                          @"error posting to facebook: fb error: domain = %@, code = %d",
-                          error.domain, error.code];
-             [[[UIAlertView alloc] initWithTitle:@"Result"
-                                         message:alertText
-                                        delegate:nil
-                               cancelButtonTitle:@"Thanks!"
-                               otherButtonTitles:nil]
-              show];
+             [FacebookHelper  handleFBOGError:error];
          }
          
      }
      ];
 }
 
-+ (void)postOGRedeemAction:(ttDeal*)deal
++ (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location
 {
     // bail if not connected
     if (![FBSession activeSession].isOpen) return;
@@ -188,9 +177,11 @@ NSString * const OG_PAGE = @"http://talool.com/og";
     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
     
     // Now create an Open Graph redeem action with the deal,
-    // TODO the merchant location
     id<OGRedeemDealAction> action = (id<OGRedeemDealAction>)[FBGraphObject graphObject];
     action.deal = dealObject;
+    
+    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
+    action.place = locationObject;
     
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
@@ -202,16 +193,7 @@ NSString * const OG_PAGE = @"http://talool.com/og";
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (error) {
-             NSString *alertText = [NSString stringWithFormat:
-                          @"error: domain = %@, code = %d",
-                          error.domain, error.code];
-         
-             [[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:alertText
-                                    delegate:nil
-                           cancelButtonTitle:@"Thanks!"
-                           otherButtonTitles:nil]
-                show];
+             [FacebookHelper  handleFBOGError:error];
          }
      }
      ];
@@ -225,10 +207,15 @@ NSString * const OG_PAGE = @"http://talool.com/og";
     // First create the Open Graph deal object for the deal being shared.
     id<OGDealPack> dealPackObject = [FacebookHelper dealPackObjectForDealOffer:pack];
     
-    // Now create an Open Graph redeem action with the deal,
-    // TODO the merchant location
+    // Now create an Open Graph purchase action with the deal offer
     id<OGPurchaseDealPackAction> action = (id<OGPurchaseDealPackAction>)[FBGraphObject graphObject];
     action.pack = dealPackObject;
+    
+    // the merchant location (so Ted gets brand on the post)
+    ttMerchant *merchant = (ttMerchant *)pack.merchant;
+    ttMerchantLocation *location = merchant.location;
+    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
+    action.place = locationObject;
     
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
@@ -240,19 +227,54 @@ NSString * const OG_PAGE = @"http://talool.com/og";
                                  completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
          if (error) {
-             NSString *alertText = [NSString stringWithFormat:
-                                    @"error: domain = %@, code = %d",
-                                    error.domain, error.code];
-             
-             [[[UIAlertView alloc] initWithTitle:@"Result"
-                                         message:alertText
-                                        delegate:nil
-                               cancelButtonTitle:@"Thanks!"
-                               otherButtonTitles:nil]
-              show];
+             [FacebookHelper  handleFBOGError:error];
          }
      }
      ];
+}
+
++ (void)postOGLikeAction:(ttMerchantLocation*)loc
+{
+    // bail if not connected
+    if (![FBSession activeSession].isOpen) return;
+    
+    // First create the Open Graph deal object for the deal being shared.
+    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:loc];
+    
+    // the merchant location for the action
+    NSMutableDictionary<FBGraphObject> *action = [FBGraphObject graphObject];
+    action[@"object"] = locationObject.url;
+    
+    // Handy setting for additional logging
+    //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
+    
+    // Create the request and post the action to the share path.
+    NSString *ogPath = @"me/og.likes";
+    
+    [FBRequestConnection startForPostWithGraphPath:ogPath
+                                       graphObject:action
+                                 completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         if (error) {
+             // We get an error if the user like a merchant more than once.  That is expected, so ignore.
+             //[FacebookHelper  handleFBOGError:error];
+         }
+     }
+     ];
+}
+
++ (void) handleFBOGError:(NSError *)error
+{
+    NSString *alertText = [NSString stringWithFormat:
+                           @"error: domain = %@, code = %d",
+                           error.domain, error.code];
+    
+    [[[UIAlertView alloc] initWithTitle:@"Debug Info for Facebook Post"
+                                message:alertText
+                               delegate:nil
+                      cancelButtonTitle:@"Thanks!"
+                      otherButtonTitles:nil]
+     show];
 }
 
 @end

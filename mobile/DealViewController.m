@@ -49,37 +49,41 @@
     
     // Here we use the new provided setImageWithURL: method to load the web image
     [self.prettyPicture setImageWithURL:[NSURL URLWithString:self.deal.deal.imageUrl]
-                    placeholderImage:[UIImage imageNamed:@"Default.png"]
+                    placeholderImage:[UIImage imageNamed:@"000.png"]
                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                if (error !=  nil) {
                                    // TODO track these errors
-                                   NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                                   NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
                                }
                                
                            }];
     
-    // TODO
+    // TODO get the closest location... test this
     ttMerchant *merch = (ttMerchant *)self.deal.deal.merchant;
     ttMerchantLocation *ml = [merch getClosestLocation:0.0 longitude:0.0];
-    [self.offerLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
-                       placeholderImage:[UIImage imageNamed:@"Default.png"]
+    [self.merchantLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
+                       placeholderImage:[UIImage imageNamed:@"000.png"]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                   if (error !=  nil) {
                                       // TODO track these errors
-                                      NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
                                   }
                                   
                               }];
-    // TODO
-    //ttDealOffer *offer;
-    [self.merchantLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
-                       placeholderImage:[UIImage imageNamed:@"Default.png"]
+    NSError *error;
+    NSString *doId = deal.deal.dealOfferId;
+    ttDealOffer *offer = [ttDealOffer getDealOffer:doId
+                                          customer:[CustomerHelper getLoggedInUser]
+                                           context:[CustomerHelper getContext]
+                                             error:&error];
+    ttMerchant *doMerch = (ttMerchant *)offer.merchant;
+    [self.offerLogo setImageWithURL:[NSURL URLWithString:doMerch.location.logoUrl]
+                       placeholderImage:[UIImage imageNamed:@"000.png"]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                   if (error !=  nil) {
                                       // TODO track these errors
-                                      NSLog(@"need to track image loading errors: %@", error.localizedDescription);
+                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
                                   }
-                                  
                               }];
     
     if ([self.deal hasBeenRedeemed])
