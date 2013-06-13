@@ -27,10 +27,10 @@ static NSManagedObjectContext *_context;
 
 NSString * const APP_NAMESPACE = @"taloolclient";
 NSString * const APP_ID = @"342739092494152";
-NSString * const OG_GIFT_PAGE = @"http://dev-www.talool.com/gift"; // TODO don't commit with this test domain!!!
-NSString * const OG_DEAL_PAGE = @"http://dev-www.talool.com/deal";
+NSString * const OG_GIFT_PAGE = @"http://talool.com/gift"; // TODO don't commit with this test domain!!!
+NSString * const OG_DEAL_PAGE = @"http://talool.com/deal";
 NSString * const OG_OFFER_PAGE = @"http://talool.com/offer";
-NSString * const OG_MERCHANT_PAGE = @"http://dev-www.talool.com/location";
+NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 +(void) setContext:(NSManagedObjectContext *)context
 {
