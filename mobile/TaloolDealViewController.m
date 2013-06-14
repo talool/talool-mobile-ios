@@ -96,8 +96,7 @@
                                           customer:[CustomerHelper getLoggedInUser]
                                            context:[CustomerHelper getContext]
                                              error:&error];
-    ttMerchant *doMerch = (ttMerchant *)offer.merchant;
-    [self.offerLogo setImageWithURL:[NSURL URLWithString:doMerch.location.logoUrl]
+    [self.offerLogo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
                    placeholderImage:[UIImage imageNamed:@"000.png"]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               if (error !=  nil) {
