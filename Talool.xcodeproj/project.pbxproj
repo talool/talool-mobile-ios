@@ -10,6 +10,9 @@
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
 		818D16B7176661D800DFB14A /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 818D16B6176661D700DFB14A /* talool-api-ios.bundle */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
+		81937B20176A44FA002DDCA8 /* page-curl.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1F176A44FA002DDCA8 /* page-curl.png */; };
+		81937B23176A4A1A002DDCA8 /* TaloolDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B22176A4A1A002DDCA8 /* TaloolDealViewController.m */; };
+		81937B26176A6D70002DDCA8 /* TaloolDealActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */; };
 		81F24AFE174F8C2F003A3A1A /* SendGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
@@ -134,6 +137,11 @@
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
 		818D16B6176661D700DFB14A /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
+		81937B1F176A44FA002DDCA8 /* page-curl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page-curl.png"; sourceTree = "<group>"; };
+		81937B21176A4A1A002DDCA8 /* TaloolDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolDealViewController.h; sourceTree = "<group>"; };
+		81937B22176A4A1A002DDCA8 /* TaloolDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolDealViewController.m; sourceTree = "<group>"; };
+		81937B24176A6D6F002DDCA8 /* TaloolDealActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolDealActionViewController.h; sourceTree = "<group>"; };
+		81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolDealActionViewController.m; sourceTree = "<group>"; };
 		81F24AFC174F8C2F003A3A1A /* SendGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendGiftViewController.h; sourceTree = "<group>"; };
 		81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendGiftViewController.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -397,6 +405,7 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81937B1F176A44FA002DDCA8 /* page-curl.png */,
 				81937B1A176A38BB002DDCA8 /* 000.png */,
 				9197F98B170D24DB00BDAA58 /* icons */,
 			);
@@ -442,6 +451,10 @@
 				81F24AFD174F8C2F003A3A1A /* SendGiftViewController.m */,
 				811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */,
 				811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */,
+				81937B21176A4A1A002DDCA8 /* TaloolDealViewController.h */,
+				81937B22176A4A1A002DDCA8 /* TaloolDealViewController.m */,
+				81937B24176A6D6F002DDCA8 /* TaloolDealActionViewController.h */,
+				81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -662,6 +675,7 @@
 				916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */,
 				818D16B7176661D800DFB14A /* talool-api-ios.bundle in Resources */,
 				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
+				81937B20176A44FA002DDCA8 /* page-curl.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +744,8 @@
 				81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */,
 				81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */,
 				811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */,
+				81937B23176A4A1A002DDCA8 /* TaloolDealViewController.m in Sources */,
+				81937B26176A6D70002DDCA8 /* TaloolDealActionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

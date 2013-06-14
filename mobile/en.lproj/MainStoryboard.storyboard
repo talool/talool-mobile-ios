@@ -304,7 +304,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="amc-cz-a1k">
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="amc-cz-a1k">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Krb-S2-VWK"/>
                                 </constraints>
@@ -356,6 +356,7 @@
                             <constraint firstItem="amc-cz-a1k" firstAttribute="top" secondItem="rkb-uh-Jlx" secondAttribute="top" type="default" id="eUQ-pl-woI"/>
                             <constraint firstItem="30u-z2-0GB" firstAttribute="bottom" secondItem="rkb-uh-Jlx" secondAttribute="bottom" type="default" id="gMT-U8-GQe"/>
                             <constraint firstItem="tZG-H8-shG" firstAttribute="top" secondItem="rkb-uh-Jlx" secondAttribute="top" constant="134" id="hiR-I2-6XZ"/>
+                            <constraint firstItem="amc-cz-a1k" firstAttribute="trailing" secondItem="rkb-uh-Jlx" secondAttribute="trailing" type="default" id="pHn-xY-Z8F"/>
                             <constraint firstItem="1xq-BE-NUX" firstAttribute="top" secondItem="rkb-uh-Jlx" secondAttribute="top" constant="6" id="q5Z-HF-oOl"/>
                             <constraint firstAttribute="trailing" secondItem="1xq-BE-NUX" secondAttribute="trailing" constant="7" id="uHY-rM-bca"/>
                             <constraint firstItem="OX9-n5-sYZ" firstAttribute="centerY" secondItem="tZG-H8-shG" secondAttribute="centerY" type="default" id="ymh-5e-9cN"/>
@@ -520,15 +521,15 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="1QR-ed-jen" firstAttribute="leading" secondItem="l4B-DC-U22" secondAttribute="leading" type="default" id="8BQ-gO-tdY"/>
+                                    <constraint firstItem="1QR-ed-jen" firstAttribute="trailing" secondItem="l4B-DC-U22" secondAttribute="trailing" type="default" id="5dY-VC-BrE"/>
                                     <constraint firstItem="0Y6-4e-aah" firstAttribute="top" secondItem="l4B-DC-U22" secondAttribute="top" constant="4" id="E1s-Qb-AS2"/>
                                     <constraint firstItem="f9U-FA-aBt" firstAttribute="centerY" secondItem="1QR-ed-jen" secondAttribute="centerY" type="default" id="HLm-Bj-Hbu"/>
                                     <constraint firstItem="1QR-ed-jen" firstAttribute="top" secondItem="l4B-DC-U22" secondAttribute="top" type="default" id="LMl-sx-VCz"/>
                                     <constraint firstItem="0Y6-4e-aah" firstAttribute="leading" secondItem="Bhh-T2-yEt" secondAttribute="leading" type="default" id="Qm3-6U-Vyi"/>
                                     <constraint firstItem="Bhh-T2-yEt" firstAttribute="top" secondItem="l4B-DC-U22" secondAttribute="top" constant="29" id="WKg-tT-eZl"/>
-                                    <constraint firstItem="f9U-FA-aBt" firstAttribute="centerY" secondItem="l4B-DC-U22" secondAttribute="centerY" type="default" id="aOV-MI-WfY"/>
                                     <constraint firstItem="f9U-FA-aBt" firstAttribute="leading" secondItem="l4B-DC-U22" secondAttribute="leading" constant="5" id="e1v-3l-UNf"/>
-                                    <constraint firstItem="1QR-ed-jen" firstAttribute="trailing" secondItem="l4B-DC-U22" secondAttribute="trailing" type="default" id="fi2-zv-tPz"/>
+                                    <constraint firstItem="1QR-ed-jen" firstAttribute="bottom" secondItem="l4B-DC-U22" secondAttribute="bottom" type="default" id="gye-zw-UOb"/>
+                                    <constraint firstItem="1QR-ed-jen" firstAttribute="leading" secondItem="l4B-DC-U22" secondAttribute="leading" type="default" id="kqJ-Fx-pKE"/>
                                     <constraint firstItem="0Y6-4e-aah" firstAttribute="leading" secondItem="l4B-DC-U22" secondAttribute="leading" constant="72" id="re8-zV-9zs"/>
                                 </constraints>
                                 <connections>
@@ -536,7 +537,6 @@
                                     <outlet property="iconView" destination="f9U-FA-aBt" id="WMm-UL-8kh"/>
                                     <outlet property="nameLabel" destination="0Y6-4e-aah" id="q2Z-YE-QwJ"/>
                                     <outlet property="redeemedView" destination="1QR-ed-jen" id="2od-Rt-gT1"/>
-                                    <segue destination="0bJ-y4-evx" kind="push" identifier="showDeal" id="rAk-a9-chx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -555,7 +555,7 @@
             <objects>
                 <viewController storyboardIdentifier="GiftView" id="roS-l2-lMH" customClass="SendGiftViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i2M-Ke-cuN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ZGG-uT-dup">
@@ -745,6 +745,245 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHC-pL-iQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="650" y="-1367"/>
+        </scene>
+        <!--Talool Deal Action View Controller-->
+        <scene sceneID="eTE-zW-9sF">
+            <objects>
+                <viewController storyboardIdentifier="DealActionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kUv-Em-a6l" customClass="TaloolDealActionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hPP-bc-FP2">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhP-8T-G0T" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="z6F-4S-4pM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Gift Via Facebook">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openFBPickerAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="jSe-J9-eHG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hcj-MC-oPV" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Hrx-11-GnB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Redeem">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="redeemAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="LzJ-CE-Elh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcy-MA-wJA" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qTm-mi-zDg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="mwR-Qe-KKu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWX-y1-ME3" customClass="TaloolUIButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OWk-O2-H6t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Gift Via Email">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openContactPickerAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="lqF-AI-rqP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tcy-MA-wJA" firstAttribute="leading" secondItem="hPP-bc-FP2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="18z-QL-h8D"/>
+                            <constraint firstItem="Tcy-MA-wJA" firstAttribute="top" secondItem="dWX-y1-ME3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5yS-Pu-Oc2"/>
+                            <constraint firstItem="dWX-y1-ME3" firstAttribute="top" secondItem="HhP-8T-G0T" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="BZE-hi-JId"/>
+                            <constraint firstAttribute="bottom" secondItem="Hcj-MC-oPV" secondAttribute="bottom" constant="175" id="GXr-X7-FDP"/>
+                            <constraint firstAttribute="trailing" secondItem="HhP-8T-G0T" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="JDY-mS-fY7"/>
+                            <constraint firstItem="dWX-y1-ME3" firstAttribute="leading" secondItem="hPP-bc-FP2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K7q-n0-ixi"/>
+                            <constraint firstAttribute="trailing" secondItem="dWX-y1-ME3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="WNM-bd-Jnb"/>
+                            <constraint firstItem="Hcj-MC-oPV" firstAttribute="leading" secondItem="hPP-bc-FP2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eg3-09-m6p"/>
+                            <constraint firstAttribute="trailing" secondItem="Tcy-MA-wJA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gF6-pZ-gT8"/>
+                            <constraint firstAttribute="trailing" secondItem="Hcj-MC-oPV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hSp-dd-ML6"/>
+                            <constraint firstItem="HhP-8T-G0T" firstAttribute="top" secondItem="Hcj-MC-oPV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="weJ-Sd-7Af"/>
+                            <constraint firstItem="HhP-8T-G0T" firstAttribute="leading" secondItem="hPP-bc-FP2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wlw-7M-fuH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="Tcy-MA-wJA" id="Bud-li-THm"/>
+                        <outlet property="emailButton" destination="dWX-y1-ME3" id="ssV-eX-9vQ"/>
+                        <outlet property="facebookButton" destination="HhP-8T-G0T" id="Tqe-lm-RM5"/>
+                        <outlet property="redeemButton" destination="Hcj-MC-oPV" id="aC3-lk-mwp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLW-j4-YfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765" y="306"/>
+        </scene>
+        <!--Talool Deal View Controller-->
+        <scene sceneID="ux4-WA-HSa">
+            <objects>
+                <viewController storyboardIdentifier="DealView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jUJ-U8-dqU" customClass="TaloolDealViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Don-ob-c76">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="DM9-Me-mdn">
+                                <accessibility key="accessibilityConfiguration" label="PrettyPicture"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" type="user" id="tSP-3M-M8d"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qw5-dI-SS4">
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Summary" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="KC3-Pc-SKP">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="XTy-la-m6G"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="c64-cg-m9T">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" type="user" id="dB7-HK-8OE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="pOL-U1-4Jd">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="xcL-Y3-QqW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="CzE-qP-JeX">
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" type="user" id="XYK-x3-12b"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pOL-U1-4Jd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9jv-sw-rZO"/>
+                                    <constraint firstItem="KC3-Pc-SKP" firstAttribute="leading" secondItem="qw5-dI-SS4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BnZ-sN-atY"/>
+                                    <constraint firstItem="pOL-U1-4Jd" firstAttribute="top" secondItem="c64-cg-m9T" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Dza-8T-s7y"/>
+                                    <constraint firstItem="CzE-qP-JeX" firstAttribute="leading" secondItem="qw5-dI-SS4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Jpu-Qo-PDG"/>
+                                    <constraint firstItem="pOL-U1-4Jd" firstAttribute="leading" secondItem="qw5-dI-SS4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NwR-i1-w5x"/>
+                                    <constraint firstAttribute="trailing" secondItem="c64-cg-m9T" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="U65-Ek-Uco"/>
+                                    <constraint firstItem="KC3-Pc-SKP" firstAttribute="top" secondItem="qw5-dI-SS4" secondAttribute="top" type="default" id="XbN-k4-AmB"/>
+                                    <constraint firstAttribute="trailing" secondItem="KC3-Pc-SKP" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="YSL-72-8Ax"/>
+                                    <constraint firstItem="CzE-qP-JeX" firstAttribute="top" secondItem="pOL-U1-4Jd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aDb-IB-3qA"/>
+                                    <constraint firstItem="c64-cg-m9T" firstAttribute="leading" secondItem="qw5-dI-SS4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fxn-zJ-DR7"/>
+                                    <constraint firstAttribute="trailing" secondItem="CzE-qP-JeX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kVs-U0-mXw"/>
+                                    <constraint firstItem="c64-cg-m9T" firstAttribute="top" secondItem="KC3-Pc-SKP" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="owx-6e-CrT"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="400" translatesAutoresizingMaskIntoConstraints="NO" id="tn6-Wg-Jd2">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JKP-ou-TFT">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="WCx-cc-8xM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="WNk-1X-hg4">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="d7Z-T6-UwX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="WNk-1X-hg4" firstAttribute="bottom" secondItem="tn6-Wg-Jd2" secondAttribute="bottom" type="default" id="31T-OK-uVJ"/>
+                                    <constraint firstItem="JKP-ou-TFT" firstAttribute="top" secondItem="tn6-Wg-Jd2" secondAttribute="top" type="default" id="7fN-vd-HEc"/>
+                                    <constraint firstItem="WNk-1X-hg4" firstAttribute="top" secondItem="tn6-Wg-Jd2" secondAttribute="top" type="default" id="BrO-kc-hQ2"/>
+                                    <constraint firstAttribute="trailing" secondItem="WNk-1X-hg4" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Q4N-Ry-WxF"/>
+                                    <constraint firstItem="JKP-ou-TFT" firstAttribute="leading" secondItem="tn6-Wg-Jd2" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wq0-62-btX"/>
+                                    <constraint firstItem="JKP-ou-TFT" firstAttribute="bottom" secondItem="tn6-Wg-Jd2" secondAttribute="bottom" type="default" id="yqa-Ai-5Ew"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="page-curl.png" translatesAutoresizingMaskIntoConstraints="NO" id="pbM-3D-DRT"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="DM9-Me-mdn" firstAttribute="leading" secondItem="Don-ob-c76" secondAttribute="leading" type="default" id="EKe-Ob-y7D"/>
+                            <constraint firstItem="qw5-dI-SS4" firstAttribute="top" secondItem="Don-ob-c76" secondAttribute="top" constant="177" id="G6E-ZN-ie0"/>
+                            <constraint firstAttribute="bottom" secondItem="tn6-Wg-Jd2" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="G7C-gJ-R1Y"/>
+                            <constraint firstItem="DM9-Me-mdn" firstAttribute="trailing" secondItem="Don-ob-c76" secondAttribute="trailing" type="default" id="GMC-fs-9O6"/>
+                            <constraint firstItem="tn6-Wg-Jd2" firstAttribute="leading" secondItem="Don-ob-c76" secondAttribute="leading" type="default" id="O6b-71-bIA"/>
+                            <constraint firstItem="DM9-Me-mdn" firstAttribute="top" secondItem="Don-ob-c76" secondAttribute="top" type="default" id="SOc-jE-Lm9"/>
+                            <constraint firstItem="qw5-dI-SS4" firstAttribute="leading" secondItem="Don-ob-c76" secondAttribute="leading" type="default" id="cmD-ER-rkl"/>
+                            <constraint firstItem="tn6-Wg-Jd2" firstAttribute="trailing" secondItem="Don-ob-c76" secondAttribute="trailing" type="default" id="fDz-6V-8ZO"/>
+                            <constraint firstItem="pbM-3D-DRT" firstAttribute="bottom" secondItem="Don-ob-c76" secondAttribute="bottom" type="default" id="jRr-Qo-v9X"/>
+                            <constraint firstItem="qw5-dI-SS4" firstAttribute="trailing" secondItem="Don-ob-c76" secondAttribute="trailing" type="default" id="lJd-Q1-sMF"/>
+                            <constraint firstItem="pbM-3D-DRT" firstAttribute="top" secondItem="tn6-Wg-Jd2" secondAttribute="top" type="default" id="opw-nq-Pky"/>
+                            <constraint firstAttribute="bottom" secondItem="qw5-dI-SS4" secondAttribute="bottom" constant="141" id="rij-l2-xsu"/>
+                            <constraint firstItem="pbM-3D-DRT" firstAttribute="trailing" secondItem="Don-ob-c76" secondAttribute="trailing" type="default" id="x8O-Vk-IY5"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="TdH-D7-5nY" appends="YES" id="spX-A8-mxd"/>
+                            <outletCollection property="gestureRecognizers" destination="Yx5-wB-tWc" appends="YES" id="5Qk-m7-GZk"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="detailContainer" destination="qw5-dI-SS4" id="9oL-Ly-wzj"/>
+                        <outlet property="detailsLabel" destination="c64-cg-m9T" id="psb-Vn-dvm"/>
+                        <outlet property="expiresLabel" destination="pOL-U1-4Jd" id="B7r-PO-yMc"/>
+                        <outlet property="logoContainer" destination="tn6-Wg-Jd2" id="TRB-mj-kWi"/>
+                        <outlet property="merchantLogo" destination="JKP-ou-TFT" id="uHH-2G-XKr"/>
+                        <outlet property="offerLogo" destination="WNk-1X-hg4" id="bfU-ZT-vtv"/>
+                        <outlet property="pageCurl" destination="pbM-3D-DRT" id="mhP-jV-BrO"/>
+                        <outlet property="prettyPicture" destination="DM9-Me-mdn" id="z9d-TV-E4T"/>
+                        <outlet property="redemptionCode" destination="CzE-qP-JeX" id="K6R-5X-VPU"/>
+                        <outlet property="summaryLabel" destination="KC3-Pc-SKP" id="QtU-ld-tt6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwQ-Jv-CP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="TdH-D7-5nY">
+                    <connections>
+                        <action selector="swipeAction:" destination="jUJ-U8-dqU" id="dP6-YP-FY5"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="Yx5-wB-tWc">
+                    <connections>
+                        <action selector="swipeAction:" destination="jUJ-U8-dqU" id="OfU-qG-Cjl"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2240" y="269"/>
         </scene>
         <!--Deal View Controller-->
         <scene sceneID="jbM-W6-XHJ">
@@ -955,9 +1194,9 @@
         <!--Deal Redemption View Controller-->
         <scene sceneID="oFg-cU-Vkj">
             <objects>
-                <viewController storyboardIdentifier="" id="0bJ-y4-evx" customClass="DealRedemptionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RedemptionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0bJ-y4-evx" customClass="DealRedemptionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gvk-YB-8cy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -968,7 +1207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v69-Zn-wkq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="7"/>
+            <point key="canvasLocation" x="2655" y="-330"/>
         </scene>
         <!--Setttings Table View Controller - Settings-->
         <scene sceneID="3FZ-Fi-RuH">
@@ -1471,8 +1710,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Default.png" width="320" height="480"/>
+        <image name="000.png" width="1" height="1"/>
         <image name="Icon_teal.png" width="57" height="57"/>
+        <image name="page-curl.png" width="58" height="100"/>
     </resources>
     <classes>
         <class className="AcceptGiftViewController" superclassName="UIViewController">
@@ -1621,6 +1861,38 @@
             <relationships>
                 <relationship kind="action" name="logout:"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaloolDealActionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolDealActionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="openContactPickerAction:"/>
+                <relationship kind="action" name="openFBPickerAction:"/>
+                <relationship kind="action" name="redeemAction:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="emailButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="facebookButton" candidateClass="TaloolUIButton"/>
+                <relationship kind="outlet" name="redeemButton" candidateClass="TaloolUIButton"/>
+            </relationships>
+        </class>
+        <class className="TaloolDealViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaloolDealViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="swipeAction:"/>
+                <relationship kind="outlet" name="detailContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="detailsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="expiresLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="instructionsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logoContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="merchantLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="offerLogo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pageCurl" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="prettyPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="qrCode" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="redemptionCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="summaryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="TaloolIconButton" superclassName="TaloolUIButton">

@@ -8,6 +8,7 @@
 
 #import "DealTableViewController.h"
 #import "DealRedemptionViewController.h"
+#import "TaloolDealViewController.h"
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
@@ -147,6 +148,12 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TaloolDealViewController *dv = [self.storyboard instantiateViewControllerWithIdentifier:@"DealView"];
+    [dv setDeal:[deals objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:dv animated:YES];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

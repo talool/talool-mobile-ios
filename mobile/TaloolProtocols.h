@@ -17,6 +17,13 @@
 - (void)giftAccepted:(id)sender;
 @end
 
+@protocol TaloolDealActionDelegate<NSObject>
+- (void)sendGiftViaEmail:(id)sender;
+- (void)sendGiftViaFacebook:(id)sender;
+- (void)dealRedeemed:(id)sender;
+- (void)dealActionCanceled:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;
