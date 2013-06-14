@@ -9,12 +9,14 @@
 #import "MechantTableViewController.h"
 #import "FavoriteMerchantCell.h"
 #import "MerchantCell.h"
+#import "talool-api-ios/ttCategory.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttCategory.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "CustomerHelper.h"
+#import "CategoryHelper.h"
 #import "AppDelegate.h"
 #import "TaloolColor.h"
 
@@ -27,7 +29,7 @@
 @implementation MechantTableViewController
 @synthesize merchants, sortDescriptors, searchMode, proximity, selectedFilter, locationManagerEnabled;
 @synthesize filteredMerchants, allMerchantsInProximity, locationChanged, proximityChanged, lastProximity;
-@synthesize newCustomerHandled, newGiftHandled;
+@synthesize newCustomerHandled, newGiftHandled, manualOverride;
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -39,8 +41,6 @@
         [self filterMerchants];
     }
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.loginViewController registerLogoutDelegate:self];
 }
 
 - (void)viewDidLoad
@@ -84,6 +84,8 @@
     }
     locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.loginViewController registerLogoutDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -127,7 +129,26 @@
 	
 	// Configure the data for the cell.
     ttMerchant *merchant = [filteredMerchants objectAtIndex:indexPath.row];
-    [cell setMerchant:merchant];
+    //[cell setMerchant:merchant];
+    ttCategory *cat = (ttCategory *)merchant.category;
+    ttMerchantLocation *loc = merchant.location;
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setPositiveFormat:@"###0.##"];
+    [formatter setLocale:[NSLocale currentLocale]];
+    NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
+    CategoryHelper *helper = [[CategoryHelper alloc] init];
+    [cell setIcon:[helper getIcon:[cat.categoryId intValue]]];
+    [cell setName:merchant.name];
+    if (miles == nil)
+    {
+        [cell setDistance:@""];
+    }
+    else
+    {
+        [cell setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
+    }
+    [cell setAddress:[merchant getLocationLabel]];
     cell.contentView.backgroundColor = [UIColor whiteColor];
     
     return cell;
@@ -232,7 +253,7 @@
 }
 
 /*
- * This hits the service for a proximity search.
+ * This hits the service for a proximity search if the location changed.
  * It also sorts the main list of merchants, but doesn't filter the set.
  */
 -(void) updateMerchants
@@ -256,8 +277,10 @@
             lastProximity = proximity;
             locationChanged = NO;
             proximityChanged = NO;
+            manualOverride = NO;
             newCustomerHandled = YES;
             newGiftHandled = YES;
+            
             break;
         case LOCATION_UNAVAILABLE:
             // TODO if there the location services can't get the merchants, how do we fail?
@@ -265,8 +288,10 @@
             //  * return all merchants?  eventually, this isn't helpful.
             //  * blank the page and force the user to enable location services
             allMerchantsInProximity = [user getMyMerchants];
+            NSLog(@"WHOA! Location unavailavle!!!");
             break;
         default:
+            NSLog(@"Location unchanged");
             break;
     }
     
@@ -289,7 +314,7 @@
 
 /*
  *  Originally, this logic seemed complicated so I pulled this into this
- *  method... but not needed now.
+ *  method...
  */
 -(LocationUpdateType) getLocationUpdateType
 {
@@ -298,7 +323,7 @@
     {
         type = LOCATION_UNAVAILABLE;
     }
-    else if (locationChanged || proximityChanged || newCustomerHandled==NO || newGiftHandled == NO)
+    else if (locationChanged || proximityChanged || newCustomerHandled==NO || newGiftHandled == NO || manualOverride == YES)
     {
         type = LOCATION_CHANGED;
     }

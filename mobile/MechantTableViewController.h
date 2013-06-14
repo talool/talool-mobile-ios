@@ -30,6 +30,7 @@
 @property BOOL newCustomerHandled;
 
 @property BOOL newGiftHandled;
+@property BOOL manualOverride;
 
 // search filters
 @property int proximity;
