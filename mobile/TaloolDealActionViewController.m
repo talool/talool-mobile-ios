@@ -64,32 +64,48 @@
 - (IBAction)redeemAction:(id)sender
 {
     
-    NSError *err = [NSError alloc];
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    [self.deal setCustomer:customer];
-    [self.deal redeemHere:_customerLocation.coordinate.latitude
-                longitude:_customerLocation.coordinate.longitude
-                    error:&err
-                  context:[CustomerHelper getContext]];
+    UIAlertView *confirmView = [[UIAlertView alloc] initWithTitle:@"Please Confirm"
+                                                          message:@"Would you like to redeem this deal?"
+                                                         delegate:self
+                                                cancelButtonTitle:@"No"
+                                                otherButtonTitles:@"Yes", nil];
+	[confirmView show];
     
-    if (err.code < 100) {
-        // Post the FB redeem action
-        [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.location];
-        // Notify delegate and close
-        [dealActionDelegate dealRedeemed:self];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        // tell the delegate what happened
-        [dealActionDelegate dealRedeemed:self];
-    } else {
-        // show an error
-        UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                            message:@"We failed to redeem this deal."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Please Try Again"
-                                                  otherButtonTitles:nil];
-        [errorView show];
-    }
     
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    if([title isEqualToString:@"Yes"])
+    {
+        NSError *err = [NSError alloc];
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        [self.deal setCustomer:customer];
+        [self.deal redeemHere:_customerLocation.coordinate.latitude
+                    longitude:_customerLocation.coordinate.longitude
+                        error:&err
+                      context:[CustomerHelper getContext]];
+        
+        if (err.code < 100) {
+            // Post the FB redeem action
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.location];
+            // Notify delegate and close
+            [dealActionDelegate dealRedeemed:self];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            // tell the delegate what happened
+            [dealActionDelegate dealRedeemed:self];
+        } else {
+            // show an error
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                                message:@"We failed to redeem this deal."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Please Try Again"
+                                                      otherButtonTitles:nil];
+            [errorView show];
+        }
+    } 
 }
 
 - (IBAction)cancelAction:(id)sender

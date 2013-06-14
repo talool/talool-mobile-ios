@@ -11,6 +11,8 @@
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
+#import "TextureHelper.h"
+#import "CategoryHelper.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -27,11 +29,13 @@
 
 @implementation TaloolDealViewController
 
-@synthesize qrCode, deal, friendPickerController, friendCache;
+@synthesize qrCode, deal, friendPickerController, friendCache, texture;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.frame.size];
+    [self.texture setAlpha:0.1];
 }
 - (IBAction)swipeAction:(id)sender
 {
@@ -62,7 +66,6 @@
     self.titleLabel.text = self.deal.deal.title;
     self.summaryLabel.text = self.deal.deal.summary;
     self.detailsLabel.text = self.deal.deal.details;
-    
     
     // Here we use the new provided setImageWithURL: method to load the web image
     [self.prettyPicture setImageWithURL:[NSURL URLWithString:self.deal.deal.imageUrl]
@@ -173,7 +176,7 @@
     ZXBitMatrix* result = [writer encode:@"ET1309251996"
                                   format:kBarcodeFormatCode39
                                    width:self.qrCode.frame.size.width
-                                  height:self.qrCode.frame.size.width
+                                  height:self.qrCode.frame.size.height
                                    error:nil];
     // TODO conditionally add a barcode
     if (result && NO) {
@@ -206,7 +209,7 @@
     self.instructionsLabel.hidden = YES;
     
     [self updateTextColor:[TaloolColor gray_4]];
-    [self updateBackgroundColor:[TaloolColor gray_1]];
+    [self.view setBackgroundColor:[TaloolColor gray_1]];
     [self.pageCurl setHidden:YES];
 }
 
@@ -228,7 +231,7 @@
     self.instructionsLabel.hidden = YES;
     
     [self updateTextColor:[TaloolColor gray_4]];
-    [self updateBackgroundColor:[TaloolColor gray_1]];
+    [self.view setBackgroundColor:[TaloolColor gray_1]];
     
     ttFriend *friend = self.deal.sharedTo;
     if (friend == nil)
@@ -272,14 +275,6 @@
     {
         [self markAsShared];
     }
-}
-
-- (void) updateBackgroundColor:(UIColor *)color
-{
-    [self.view setBackgroundColor:color];
-    // change any subviews too
-    [self.logoContainer setBackgroundColor:color];
-    [self.detailContainer setBackgroundColor:color];
 }
 
 #pragma mark - TaloolDealActionDelegate delegate methods

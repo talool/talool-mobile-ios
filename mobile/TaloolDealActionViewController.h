@@ -12,7 +12,7 @@
 
 @class ttDealAcquire, TaloolUIButton;
 
-@interface TaloolDealActionViewController : UIViewController<CLLocationManagerDelegate> {
+@interface TaloolDealActionViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate> {
     IBOutlet TaloolUIButton *facebookButton;
     IBOutlet TaloolUIButton *emailButton;
     IBOutlet TaloolUIButton *redeemButton;

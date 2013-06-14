@@ -7,7 +7,6 @@
 //
 
 #import "DealTableViewController.h"
-#import "DealRedemptionViewController.h"
 #import "TaloolDealViewController.h"
 #import "MerchantViewController.h"
 #import "AppDelegate.h"
@@ -154,16 +153,6 @@
     [dv setDeal:[deals objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:dv animated:YES];
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDeal"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        DealRedemptionViewController *controller = (DealRedemptionViewController *)[segue destinationViewController];
-        [controller setDeal:[deals objectAtIndex:indexPath.row]];
-    }
-}
-
 
 - (void) refreshDeals
 {
