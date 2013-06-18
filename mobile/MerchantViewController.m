@@ -9,6 +9,7 @@
 #import "MerchantViewController.h"
 #import "MerchantLocationViewController.h"
 #import "DealTableViewController.h"
+#import "DealOfferTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "CustomerHelper.h"
@@ -63,21 +64,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setMerchant:(ttMerchant *)newMerchant {
-    if (newMerchant != merchant) {
-        merchant = newMerchant;
-    }
-}
-
-- (IBAction)redeemAction:(UIStoryboardSegue *)segue
-{
-    if ([[segue identifier] isEqualToString:@"redeemDeal"]) {
-        NSLog(@"HEY, AM I USING THIS? change the deal");
-        // TODO make sure the table view updates
-    }
-}
-
-- (IBAction)favoriteAction:(id)sender
+- (void)favoriteAction:(id)sender
 {
     ttCustomer *customer = [ttCustomer getLoggedInUser:[CustomerHelper getContext]];
     if ([merchant isFavorite])
@@ -94,15 +81,20 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"listDeals"])
+    if ([[segue identifier] isEqualToString:@"MerchantLocations"])
+    {
+        MerchantLocationViewController *mlvc = [segue destinationViewController];
+        [mlvc setMerchant:merchant];
+    }
+    else if ([[segue identifier] isEqualToString:@"ShowDeals"])
     {
         DealTableViewController *dtvc = [segue destinationViewController];
         [dtvc setMerchant:merchant];
     }
-    else if ([[segue identifier] isEqualToString:@"MerchantLocations"])
+    else if ([[segue identifier] isEqualToString:@"ShowDealOffers"])
     {
-        MerchantLocationViewController *mlvc = [segue destinationViewController];
-        [mlvc setMerchant:merchant];
+        DealOfferTableViewController *dotvc = [segue destinationViewController];
+        [dotvc setMerchant:merchant];
     }
 }
 

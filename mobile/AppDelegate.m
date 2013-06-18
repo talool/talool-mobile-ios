@@ -13,6 +13,7 @@
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
+#import "TaloolIAPHelper.h"
 
 @implementation AppDelegate
 
@@ -46,6 +47,8 @@
     self.window.rootViewController = self.navigationController;
     
     [self.window makeKeyAndVisible];
+    
+    [TaloolIAPHelper sharedInstance];
     
     return YES;
 }

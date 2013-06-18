@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     self.texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.frame.size];
-    [self.texture setAlpha:0.1];
+    [self.texture setAlpha:0.15];
 }
 - (IBAction)swipeAction:(id)sender
 {

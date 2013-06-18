@@ -17,7 +17,4 @@
 
 @property (nonatomic, retain) ttMerchant *merchant;
 
-- (IBAction)redeemAction:(UIStoryboardSegue *)segue;
-- (IBAction)favoriteAction:(id)sender;
-
 @end
