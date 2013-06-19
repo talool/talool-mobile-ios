@@ -82,35 +82,33 @@
 
 - (IBAction)buyAction:(id)sender
 {
-    NSLog(@"buy it now");
-    
-    // TODO get the $$
-    // TODO what if the user navigates away before the notification is received?  need to check notifications on the "my deals" screen.
-    // TODO consider persisting a "pending transaction" state so we can see if there is any fall off at this point.
-    //[[TaloolIAPHelper sharedInstance] buyProduct:product];
-    
-    // TODO remove this temp by-pass to the completed purchase handler
-    [self recordPurchase];
-    
+    if (offer.price.intValue > 0)
+    {
+        // TODO what if the user navigates away before the notification is received?  need to check notifications on the "my deals" screen.
+        // TODO consider persisting a "pending transaction" state so we can see if there is any fall off at this point.
+        NSString *productIdentifier = @"TODO"; // this should be on the Deal Offer
+        TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
+        SKProduct *product = [iapHelper getProductForIdentifier:productIdentifier];
+        [iapHelper buyProduct:product];
+    }
+    else
+    {
+        [self recordPurchase];
+    }
 }
 
 - (void)productPurchased:(NSNotification *)notification {
     
     // TODO confirm that the purchase notification is for this offer
-    // NSString * productIdentifier = notification.object;
-    if (YES)
+    // * the notification object should wrap the offer too
+    NSString * productIdentifier = notification.object;
+    TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
+    SKProduct *product = [iapHelper getProductForIdentifier:productIdentifier];
+    if ([product.productIdentifier isEqualToString:productIdentifier])
     {
         [self recordPurchase];
     }
     
-    /*
-    [_products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
-        if ([product.productIdentifier isEqualToString:productIdentifier]) {
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-            *stop = YES;
-        }
-    }];
-    */
 }
 
 - (void) recordPurchase
@@ -127,6 +125,7 @@
     {
         message = @"Fail";
         // TODO handle failure.  The user has purchased, but we haven't delivered the deals.
+        // * Store the offer in the user's NSUserDefaults and retry later
     }
     UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:title
                                                         message:message

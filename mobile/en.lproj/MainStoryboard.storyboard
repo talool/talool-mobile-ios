@@ -369,7 +369,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImage" destination="amc-cz-a1k" id="aAU-Yz-Ytz"/>
-                        <outlet property="listLabel" destination="OX9-n5-sYZ" id="SkR-LB-pg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJj-ro-NeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1760,7 +1759,6 @@
             <relationships>
                 <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">

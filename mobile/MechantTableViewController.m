@@ -92,6 +92,8 @@
 {
     [super viewWillAppear:animated];
     
+    [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
+    
     [self.tableView reloadData];
 }
 
@@ -178,9 +180,7 @@
  */
 - (void) refreshMerchants
 {
-    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
-    [user refreshMerchants:[CustomerHelper getContext]];
-    [user refreshFavoriteMerchants:[CustomerHelper getContext]];
+    [[CustomerHelper getLoggedInUser] refreshMerchants:[CustomerHelper getContext]];
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
 }
 
@@ -241,13 +241,11 @@
 
 - (void) customerLoggedOut:(id)sender
 {
-    NSLog(@"MerchantTableViewController is handling the logout");
     newCustomerHandled = NO;
 }
 
 - (void) giftAccepted:(id)sender
 {
-    NSLog(@"MerchantTableViewController is handling the gift");
     newGiftHandled = NO;
     [self refreshMerchants];
 }
@@ -291,7 +289,7 @@
             NSLog(@"WHOA! Location unavailavle!!!");
             break;
         default:
-            NSLog(@"Location unchanged");
+            //NSLog(@"Location unchanged");
             break;
     }
     

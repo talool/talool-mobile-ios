@@ -6,24 +6,23 @@
 //  Copyright (c) 2012 Razeware LLC. All rights reserved.
 //
 
-// 1
 #import "IAPHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "VerificationController.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 
-// 2
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+{
+    NSArray *_products;
+}
 @end
 
-// 3
 @implementation IAPHelper {
     SKProductsRequest * _productsRequest;
     RequestProductsCompletionHandler _completionHandler;
     
     NSSet * _productIdentifiers;
-    NSMutableSet * _purchasedProductIdentifiers;
 }
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
@@ -33,17 +32,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         // Store product identifiers
         _productIdentifiers = productIdentifiers;
         
-        // Check for previously purchased products
-        _purchasedProductIdentifiers = [NSMutableSet set];
-        for (NSString * productIdentifier in _productIdentifiers) {
-            BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
-            if (productPurchased) {
-                [_purchasedProductIdentifiers addObject:productIdentifier];
-                NSLog(@"Previously purchased: %@", productIdentifier);
-            } else {
-                NSLog(@"Not purchased: %@", productIdentifier);
-            }
-        }
+        // Load the products
+        [self requestProductsWithCompletionHandler:nil];
         
         // Add self as transaction observer
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -56,23 +46,15 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
     
     
-    // 1
     _completionHandler = [completionHandler copy];
     
-    // 2
     _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
     _productsRequest.delegate = self;
     [_productsRequest start];
     
 }
 
-- (BOOL)productPurchased:(NSString *)productIdentifier {
-    return [_purchasedProductIdentifiers containsObject:productIdentifier];
-}
-
 - (void)buyProduct:(SKProduct *)product {
-    
-    NSLog(@"Buying %@...", product.productIdentifier);
     
     SKPayment * payment = [SKPayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -83,7 +65,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     VerificationController * verifier = [VerificationController sharedInstance];
     [verifier verifyPurchase:transaction completionHandler:^(BOOL success) {
         if (success) {
-            NSLog(@"Successfully verified receipt!");
             [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
         } else {
             NSLog(@"Failed to validate receipt.");
@@ -96,19 +77,25 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     
-    NSLog(@"Loaded list of products...");
     _productsRequest = nil;
+    _products = response.products;
     
-    NSArray * skProducts = response.products;
-    for (SKProduct * skProduct in skProducts) {
-        NSLog(@"Found product: %@ %@ %0.2f",
+    /*
+    // Debugging
+    for (SKProduct * skProduct in _products) {
+        NSLog(@"Found product: %@ :: %@ :: %0.2f",
               skProduct.productIdentifier,
               skProduct.localizedTitle,
               skProduct.price.floatValue);
     }
-    
-    _completionHandler(YES, skProducts);
-    _completionHandler = nil;
+    // end debugging
+    */
+     
+    if (_completionHandler)
+    {
+        _completionHandler(YES, _products);
+        _completionHandler = nil;
+    }
     
 }
 
@@ -117,8 +104,11 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     NSLog(@"Failed to load list of products.");
     _productsRequest = nil;
     
-    _completionHandler(NO, nil);
-    _completionHandler = nil;
+    if (_completionHandler)
+    {
+        _completionHandler(NO, nil);
+        _completionHandler = nil;
+    }
     
 }
 
@@ -135,8 +125,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
             case SKPaymentTransactionStateFailed:
                 [self failedTransaction:transaction];
                 break;
-            case SKPaymentTransactionStateRestored:
-                [self restoreTransaction:transaction];
             default:
                 break;
         }
@@ -144,15 +132,6 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"completeTransaction...");
-    
-    [self validateReceiptForTransaction:transaction];
-    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-}
-
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"restoreTransaction...");
-    
     [self validateReceiptForTransaction:transaction];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
@@ -170,25 +149,18 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {
     
-    if ([productIdentifier isEqualToString:@"com.razeware.inapprage.randomrageface"]) {
-        
-        int currentValue = [[NSUserDefaults standardUserDefaults] integerForKey:@"com.razeware.inapprage.randomrageface"];
-        currentValue += 5;
-        [[NSUserDefaults standardUserDefaults] setInteger:currentValue forKey:@"com.razeware.inapprage.randomrageface"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-    } else {
-        [_purchasedProductIdentifiers addObject:productIdentifier];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperProductPurchasedNotification object:productIdentifier userInfo:nil];
     
 }
 
-- (void)restoreCompletedTransactions {
-    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+- (SKProduct *)getProductForPrice:(NSNumber *)price
+{
+    return [_products objectAtIndex:0];
+}
+
+- (SKProduct *)getProductForIdentifier:(NSString *)identifier
+{
+    return [_products objectAtIndex:0];
 }
 
 @end

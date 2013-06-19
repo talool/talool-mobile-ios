@@ -23,12 +23,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.talool.taloolclient</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>taloolmydeals</string>
 			</array>
-			<key>CFBundleURLName</key>
-			<string>com.talool.taloolclient</string>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
@@ -39,18 +39,18 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>FacebookDisplayName</key>
-	<string>Talool</string>
 	<key>FacebookAppID</key>
 	<string>342739092494152</string>
+	<key>FacebookDisplayName</key>
+	<string>Talool</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.ttf</string>
 	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>MainStoryboard</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

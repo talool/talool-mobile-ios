@@ -23,11 +23,7 @@
                                               fontSize:29
                                             attributes:nil];
     self.tabBarItem.image = tabBarIcon;
-    
-    // attach the merchants to the user.  needs to happen after we query by distance.
-    ttCustomer *user = (ttCustomer *)[CustomerHelper getLoggedInUser];
-    [user refreshMerchants:[CustomerHelper getContext]];
-    [user refreshFavoriteMerchants:[CustomerHelper getContext]];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

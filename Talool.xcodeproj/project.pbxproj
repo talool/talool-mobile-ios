@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
+		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
+		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
+		817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53791770A86A0049434A /* TaloolIAPHelper.m */; };
+		817E53851770CE180049434A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817E53841770CE180049434A /* StoreKit.framework */; };
 		818D16B7176661D800DFB14A /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 818D16B6176661D700DFB14A /* talool-api-ios.bundle */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B20176A44FA002DDCA8 /* page-curl.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1F176A44FA002DDCA8 /* page-curl.png */; };
 		81937B23176A4A1A002DDCA8 /* TaloolDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B22176A4A1A002DDCA8 /* TaloolDealViewController.m */; };
 		81937B26176A6D70002DDCA8 /* TaloolDealActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
+		81937B2F176F79D1002DDCA8 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2E176F79D0002DDCA8 /* DealOfferTableViewController.m */; };
+		81937B32176F7B7B002DDCA8 /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B31176F7B7B002DDCA8 /* DealOfferCell.m */; };
+		81937B35176FB51B002DDCA8 /* DealOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B34176FB51A002DDCA8 /* DealOfferViewController.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
@@ -131,6 +139,15 @@
 /* Begin PBXFileReference section */
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
+		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
+		817E53791770A86A0049434A /* TaloolIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIAPHelper.m; sourceTree = "<group>"; };
+		817E537B1770A90A0049434A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		817E537C1770A90A0049434A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		817E537D1770A90A0049434A /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
+		817E537E1770A90A0049434A /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
+		817E53841770CE180049434A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		818D16B6176661D700DFB14A /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B1F176A44FA002DDCA8 /* page-curl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "page-curl.png"; sourceTree = "<group>"; };
@@ -140,6 +157,12 @@
 		81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolDealActionViewController.m; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
+		81937B2D176F79D0002DDCA8 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
+		81937B2E176F79D0002DDCA8 /* DealOfferTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferTableViewController.m; sourceTree = "<group>"; };
+		81937B30176F7B7B002DDCA8 /* DealOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferCell.h; sourceTree = "<group>"; };
+		81937B31176F7B7B002DDCA8 /* DealOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferCell.m; sourceTree = "<group>"; };
+		81937B33176FB51A002DDCA8 /* DealOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferViewController.h; sourceTree = "<group>"; };
+		81937B34176FB51A002DDCA8 /* DealOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferViewController.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -249,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817E53851770CE180049434A /* StoreKit.framework in Frameworks */,
 				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
 				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
@@ -287,9 +311,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		817E53831770A9490049434A /* In App Purchase Verification */ = {
+			isa = PBXGroup;
+			children = (
+				817E537B1770A90A0049434A /* NSData+Base64.h */,
+				817E537C1770A90A0049434A /* NSData+Base64.m */,
+				817E537D1770A90A0049434A /* VerificationController.h */,
+				817E537E1770A90A0049434A /* VerificationController.m */,
+			);
+			name = "In App Purchase Verification";
+			sourceTree = "<group>";
+		};
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
+				817E53841770CE180049434A /* StoreKit.framework */,
 				818D16B6176661D700DFB14A /* talool-api-ios.bundle */,
 				91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */,
 				9103111216D1E53800CEE814 /* mobile */,
@@ -342,6 +378,7 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				817E53831770A9490049434A /* In App Purchase Verification */,
 				916148D016ED1C18001C546C /* Helpers */,
 				91490D7A1747BE7400622A85 /* Components */,
 				91986ED216D5E20200D1CA96 /* Table View Controllers */,
@@ -411,6 +448,8 @@
 				91986EFB16D7150400D1CA96 /* RewardCell.m */,
 				919A331517452F1B0093FAC4 /* LocationCell.h */,
 				919A331617452F1B0093FAC4 /* LocationCell.m */,
+				81937B30176F7B7B002DDCA8 /* DealOfferCell.h */,
+				81937B31176F7B7B002DDCA8 /* DealOfferCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -440,6 +479,8 @@
 				81937B22176A4A1A002DDCA8 /* TaloolDealViewController.m */,
 				81937B24176A6D6F002DDCA8 /* TaloolDealActionViewController.h */,
 				81937B25176A6D70002DDCA8 /* TaloolDealActionViewController.m */,
+				81937B33176FB51A002DDCA8 /* DealOfferViewController.h */,
+				81937B34176FB51A002DDCA8 /* DealOfferViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -485,6 +526,10 @@
 				81F24B25175ABA66003A3A1A /* TaloolProtocols.h */,
 				81937B2A176B6B1E002DDCA8 /* TextureHelper.h */,
 				81937B2B176B6B1E002DDCA8 /* TextureHelper.m */,
+				817E53721770A82C0049434A /* IAPHelper.h */,
+				817E53731770A82C0049434A /* IAPHelper.m */,
+				817E53781770A86A0049434A /* TaloolIAPHelper.h */,
+				817E53791770A86A0049434A /* TaloolIAPHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -514,6 +559,8 @@
 				9168A4DA170496CC00E53EB1 /* SetttingsTableViewController.m */,
 				919A330D17447CFB0093FAC4 /* LocationTableViewController.h */,
 				919A330E17447CFB0093FAC4 /* LocationTableViewController.m */,
+				81937B2D176F79D0002DDCA8 /* DealOfferTableViewController.h */,
+				81937B2E176F79D0002DDCA8 /* DealOfferTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -714,6 +761,13 @@
 				81937B23176A4A1A002DDCA8 /* TaloolDealViewController.m in Sources */,
 				81937B26176A6D70002DDCA8 /* TaloolDealActionViewController.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
+				81937B2F176F79D1002DDCA8 /* DealOfferTableViewController.m in Sources */,
+				81937B32176F7B7B002DDCA8 /* DealOfferCell.m in Sources */,
+				81937B35176FB51B002DDCA8 /* DealOfferViewController.m in Sources */,
+				817E537F1770A90A0049434A /* NSData+Base64.m in Sources */,
+				817E53801770A90A0049434A /* VerificationController.m in Sources */,
+				817E53811770A9150049434A /* IAPHelper.m in Sources */,
+				817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

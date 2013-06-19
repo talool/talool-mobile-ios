@@ -15,12 +15,7 @@
     static TaloolIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      @"com.razeware.inapprage.drummerrage",
-                                      @"com.razeware.inapprage.itunesconnectrage",
-                                      @"com.razeware.inapprage.nightlyrage",
-                                      @"com.razeware.inapprage.studylikeaboss",
-                                      @"com.razeware.inapprage.updogsadness",
-                                      @"com.razeware.inapprage.randomrageface",
+                                      PRODUCT_IDENTIFIER_OFFER_SMALL,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
