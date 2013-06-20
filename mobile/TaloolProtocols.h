@@ -24,6 +24,14 @@
 - (void)dealActionCanceled:(id)sender;
 @end
 
+@protocol ProximitySliderDelegate <NSObject>
+- (void)proximityChanged:(float)valueInMiles sender:(id)sender;
+@end
+
+@protocol MerchantFilterDelegate <NSObject>
+- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

@@ -7,17 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
 @class MerchantFilterControl;
 @class ttCustomer, ttCategory;
-
-@protocol ProximitySliderDelegate <NSObject>
-- (void)proximityChanged:(float)valueInMiles sender:(id)sender;
-@end
-
-@protocol MerchantFilterDelegate <NSObject>
-- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
-@end
 
 @interface BaseSearchViewController : UIViewController {
     id <ProximitySliderDelegate> proximitySliderDelegate;

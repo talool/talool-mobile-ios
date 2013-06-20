@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		8146D160177267220035F589 /* DealOfferDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D15F177267220035F589 /* DealOfferDealsViewController.m */; };
+		8146D166177273390035F589 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D165177273390035F589 /* ActivityTableViewController.m */; };
+		8146D169177274450035F589 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
+		8146D16C17733A8A0035F589 /* ExploreMerchantsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D16B17733A8A0035F589 /* ExploreMerchantsTableViewController.m */; };
+		8146D16F17733B530035F589 /* BaseMerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D16E17733B520035F589 /* BaseMerchantTableViewController.m */; };
 		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
 		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
@@ -82,7 +87,7 @@
 		9197F989170D24CB00BDAA58 /* Icon_tan.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F983170D24CB00BDAA58 /* Icon_tan.png */; };
 		9197F98A170D24CB00BDAA58 /* Icon_teal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9197F984170D24CB00BDAA58 /* Icon_teal.png */; };
 		9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
-		91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */; };
+		91986EC616D5D23D00D1CA96 /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EC516D5D23D00D1CA96 /* MerchantTableViewController.m */; };
 		91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* RewardCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
@@ -139,6 +144,16 @@
 /* Begin PBXFileReference section */
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
+		8146D15E177267220035F589 /* DealOfferDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferDealsViewController.h; sourceTree = "<group>"; };
+		8146D15F177267220035F589 /* DealOfferDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferDealsViewController.m; sourceTree = "<group>"; };
+		8146D164177273380035F589 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
+		8146D165177273390035F589 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
+		8146D167177274450035F589 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		8146D168177274450035F589 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		8146D16A17733A8A0035F589 /* ExploreMerchantsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMerchantsTableViewController.h; sourceTree = "<group>"; };
+		8146D16B17733A8A0035F589 /* ExploreMerchantsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreMerchantsTableViewController.m; sourceTree = "<group>"; };
+		8146D16D17733B520035F589 /* BaseMerchantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMerchantTableViewController.h; sourceTree = "<group>"; };
+		8146D16E17733B520035F589 /* BaseMerchantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMerchantTableViewController.m; sourceTree = "<group>"; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
@@ -245,8 +260,8 @@
 		9197F984170D24CB00BDAA58 /* Icon_teal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_teal.png; sourceTree = "<group>"; };
 		9197F98C170F157200BDAA58 /* TaloolColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolColor.h; sourceTree = "<group>"; };
 		9197F98D170F157200BDAA58 /* TaloolColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolColor.m; sourceTree = "<group>"; };
-		91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MechantTableViewController.h; sourceTree = "<group>"; };
-		91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MechantTableViewController.m; sourceTree = "<group>"; };
+		91986EC416D5D23D00D1CA96 /* MerchantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantTableViewController.h; sourceTree = "<group>"; };
+		91986EC516D5D23D00D1CA96 /* MerchantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantTableViewController.m; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* RewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardCell.h; sourceTree = "<group>"; };
 		91986EFB16D7150400D1CA96 /* RewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardCell.m; sourceTree = "<group>"; };
 		91986F0A16DA88F800D1CA96 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
@@ -450,6 +465,8 @@
 				919A331617452F1B0093FAC4 /* LocationCell.m */,
 				81937B30176F7B7B002DDCA8 /* DealOfferCell.h */,
 				81937B31176F7B7B002DDCA8 /* DealOfferCell.m */,
+				8146D167177274450035F589 /* ActivityCell.h */,
+				8146D168177274450035F589 /* ActivityCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -551,8 +568,8 @@
 			isa = PBXGroup;
 			children = (
 				9103117A16D467AE00CEE814 /* Table Cells */,
-				91986EC416D5D23D00D1CA96 /* MechantTableViewController.h */,
-				91986EC516D5D23D00D1CA96 /* MechantTableViewController.m */,
+				91986EC416D5D23D00D1CA96 /* MerchantTableViewController.h */,
+				91986EC516D5D23D00D1CA96 /* MerchantTableViewController.m */,
 				918DE5C61702204C0054C004 /* DealTableViewController.h */,
 				918DE5C71702204E0054C004 /* DealTableViewController.m */,
 				9168A4D9170496CC00E53EB1 /* SetttingsTableViewController.h */,
@@ -561,6 +578,14 @@
 				919A330E17447CFB0093FAC4 /* LocationTableViewController.m */,
 				81937B2D176F79D0002DDCA8 /* DealOfferTableViewController.h */,
 				81937B2E176F79D0002DDCA8 /* DealOfferTableViewController.m */,
+				8146D15E177267220035F589 /* DealOfferDealsViewController.h */,
+				8146D15F177267220035F589 /* DealOfferDealsViewController.m */,
+				8146D164177273380035F589 /* ActivityTableViewController.h */,
+				8146D165177273390035F589 /* ActivityTableViewController.m */,
+				8146D16A17733A8A0035F589 /* ExploreMerchantsTableViewController.h */,
+				8146D16B17733A8A0035F589 /* ExploreMerchantsTableViewController.m */,
+				8146D16D17733B520035F589 /* BaseMerchantTableViewController.h */,
+				8146D16E17733B520035F589 /* BaseMerchantTableViewController.m */,
 			);
 			name = "Table View Controllers";
 			sourceTree = "<group>";
@@ -739,7 +764,7 @@
 				9103113016D1E53800CEE814 /* ExploreViewController.m in Sources */,
 				9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */,
 				9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */,
-				91986EC616D5D23D00D1CA96 /* MechantTableViewController.m in Sources */,
+				91986EC616D5D23D00D1CA96 /* MerchantTableViewController.m in Sources */,
 				91986EFC16D7150400D1CA96 /* RewardCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
@@ -768,6 +793,11 @@
 				817E53801770A90A0049434A /* VerificationController.m in Sources */,
 				817E53811770A9150049434A /* IAPHelper.m in Sources */,
 				817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */,
+				8146D160177267220035F589 /* DealOfferDealsViewController.m in Sources */,
+				8146D166177273390035F589 /* ActivityTableViewController.m in Sources */,
+				8146D169177274450035F589 /* ActivityCell.m in Sources */,
+				8146D16C17733A8A0035F589 /* ExploreMerchantsTableViewController.m in Sources */,
+				8146D16F17733B530035F589 /* BaseMerchantTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

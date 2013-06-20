@@ -33,6 +33,13 @@
                                               fontSize:29
                                             attributes:nil];
     explore.image = tabBarIcon;
+    
+    UITabBarItem *activity = [self.tabBar.items objectAtIndex:2];
+    UIImage *activityIcon = [FontAwesomeKit imageForIcon:FAKIconTime
+                                             imageSize:CGSizeMake(30, 30)
+                                              fontSize:29
+                                            attributes:nil];
+    activity.image = activityIcon;
 
     
 }

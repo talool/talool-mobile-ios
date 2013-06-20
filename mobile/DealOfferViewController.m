@@ -7,6 +7,7 @@
 //
 
 #import "DealOfferViewController.h"
+#import "DealOfferDealsViewController.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
@@ -48,16 +49,34 @@
                                                  name:IAPHelperProductPurchasedNotification
                                                object:nil];
     
+    descriptionLabel.text = offer.summary;
+    
+    NSString *expiresOn;
+    if (offer.expires == nil)
+    {
+        expiresOn = @"";
+    }
+    else
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        expiresOn = [NSString stringWithFormat:@"Offer expires on %@",[dateFormatter stringFromDate:offer.expires]];
+    }
+    
     if (offer.price.intValue==0)
     {
         [buyButton setBaseColor:[TaloolColor orange]];
         [buyButton setTitle:@"Get It Free!" forState:UIControlStateNormal];
+        
+        savingsLabel.text = [NSString stringWithFormat:@"Offer valid in the XXX area.  %@",expiresOn];
     }
     else
     {
         [buyButton setBaseColor:[TaloolColor teal]];
         NSString *label = [NSString stringWithFormat:@"Buy for $%@",offer.price];
         [buyButton setTitle:label forState:UIControlStateNormal];
+        
+        savingsLabel.text = [NSString stringWithFormat:@"Over $100 in savings in the XXX area.  %@",expiresOn];
     }
     [logo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
                       placeholderImage:[UIImage imageNamed:@"000.png"]
@@ -72,6 +91,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowDealOfferDeals"])
+    {
+        //DealOfferDealsViewController *dodvc = [segue destinationViewController];
+        //[dodvc setOffer:offer];
+    }
 }
 
 - (void)didReceiveMemoryWarning

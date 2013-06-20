@@ -7,7 +7,9 @@
 //
 
 #import "ExploreViewController.h"
+#import "ExploreMerchantsTableViewController.h"
 #import "MerchantFilterControl.h"
+#import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "FontAwesomeKit.h"
 
 
@@ -27,7 +29,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.navigationItem.title = @"Explore";
+    self.tabBarController.navigationItem.title = @"Find Deals";
     self.isExplore = YES;
 }
 
@@ -40,6 +42,19 @@
 -(Boolean) getSearchMode
 {
     return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"exploreMerchants"]) {
+        // Grab the table view when it is embedded in the controller
+        ExploreMerchantsTableViewController *tableViewController = [segue destinationViewController];
+        tableViewController.selectedFilter = nil;
+        tableViewController.proximity = DEFAULT_PROXIMITY;
+        self.proximitySliderDelegate = tableViewController;
+        self.merchantFilterDelegate = tableViewController;
+        self.merchantTableViewController = tableViewController;
+    }
 }
 
 

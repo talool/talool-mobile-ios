@@ -7,7 +7,7 @@
 //
 
 #import "BaseSearchViewController.h"
-#import "MechantTableViewController.h"
+#import "MerchantTableViewController.h"
 #import "MerchantFilterControl.h"
 #import "FontAwesomeKit.h"
 #import "CustomerHelper.h"
@@ -57,20 +57,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"myMerchants"] || [[segue identifier] isEqualToString:@"exploreMerchants"]) {
-        // Grab the table view when it is embedded in the controller
-        MechantTableViewController *tableViewController = [segue destinationViewController];
-        [tableViewController setSearchMode:[self getSearchMode]];
-        tableViewController.selectedFilter = nil;
-        tableViewController.proximity = DEFAULT_PROXIMITY;
-        self.proximitySliderDelegate = tableViewController;
-        self.merchantFilterDelegate = tableViewController;
-        self.merchantTableViewController = tableViewController;
-    }
 }
 
 - (void) filterMerchants:(id)sender

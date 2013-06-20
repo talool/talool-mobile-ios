@@ -14,6 +14,9 @@
 {
     IBOutlet TaloolUIButton *buyButton;
     IBOutlet UIImageView *logo;
+    IBOutlet UILabel *descriptionLabel;
+    IBOutlet UILabel *savingsLabel;
+    IBOutlet UILabel *dealCountLabel;
 }
 
 @property (retain, nonatomic) ttDealOffer *offer;
