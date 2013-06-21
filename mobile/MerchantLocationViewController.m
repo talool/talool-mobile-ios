@@ -7,7 +7,6 @@
 //
 
 #import "MerchantLocationViewController.h"
-#import "LocationTableViewController.h"
 #import "MerchantLocationAnnotation.h"
 #import "FontAwesomeKit.h"
 #import "TaloolColor.h"
@@ -16,6 +15,9 @@
 #import "talool-api-ios/ttAddress.h"
 #import "talool-api-ios/ttLocation.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
+#import "talool-api-ios/ttCustomer.h"
+#import "CustomerHelper.h"
+#import "LocationCell.h"
 
 @interface MerchantLocationViewController ()
 
@@ -23,13 +25,20 @@
 
 @implementation MerchantLocationViewController
 
-@synthesize locationMapView, merchant;
+@synthesize locationMapView, merchant, tableView, locations, sortDescriptors;
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = merchant.name;
     [self centerMap:merchant.location.location];
+    
+    sortDescriptors = [NSArray arrayWithObjects:
+                       //[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], // TODO distance
+                       [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                       nil];
+    locations = [[[NSArray alloc] initWithArray:[merchant.locations allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
+    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -86,7 +95,7 @@
 }
 
 
-- (void) plotMerchantLocations:(NSArray *)locations
+- (void) plotMerchantLocations:(NSArray *)locs
 {
     // our with the old
     for (id<MKAnnotation> annotation in locationMapView.annotations) {
@@ -94,7 +103,7 @@
     }
     
     // in with the new
-    NSEnumerator *enumerator = [locations objectEnumerator];
+    NSEnumerator *enumerator = [locs objectEnumerator];
     ttMerchantLocation *loc;
     while (loc = [enumerator nextObject])
     {
@@ -110,15 +119,6 @@
 	}
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"listLocations"])
-    {
-        LocationTableViewController *ltvc = [segue destinationViewController];
-        [ltvc setMerchant:merchant];
-    }
-}
-
 - (void)centerMap:(ttLocation *) loc
 {
     CLLocationCoordinate2D zoomLocation;
@@ -130,6 +130,39 @@
     
     // display it
     [locationMapView setRegion:viewRegion animated:YES];
+}
+
+#pragma mark -
+#pragma mark UITableView Delegate/Datasource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [locations count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"LocationCell";
+    LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
+    [cell setLocation:location];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
+    [self centerMap:location.location];
 }
 
 @end

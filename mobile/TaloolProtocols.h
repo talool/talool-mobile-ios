@@ -32,6 +32,11 @@
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
 @end
 
+@protocol MerchantBannerDelegate<NSObject>
+- (void)like:(BOOL)on sender:(id)sender;
+- (void)openMap:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

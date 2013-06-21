@@ -10,10 +10,6 @@
 #import "TaloolColor.h"
 #import "FontAwesomeKit.h"
 
-@interface TaloolTabBarController ()
-
-@end
-
 @implementation TaloolTabBarController
 
 
@@ -21,33 +17,39 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    
-    // make sure the icon for the disable tab is correct
+    // Set the color fo the tabBar
     self.tabBar.tintColor = [TaloolColor gray_5];
     self.tabBar.selectedImageTintColor = [TaloolColor teal];
+    
+    // Set the icon for MyDeals
+    UITabBarItem *mydeals = [self.tabBar.items objectAtIndex:0];
+    UIImage *mydealsIcon = [FontAwesomeKit imageForIcon:FAKIconUser
+                                             imageSize:CGSizeMake(30, 30)
+                                              fontSize:29
+                                            attributes:nil];
+    mydeals.image = mydealsIcon;
+    mydeals.title = @"My Deals";
+    
+    // Set the icon for Find Deals
     UITabBarItem *explore = [self.tabBar.items objectAtIndex:1];
     UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconSearch
                                              imageSize:CGSizeMake(30, 30)
                                               fontSize:29
                                             attributes:nil];
     explore.image = tabBarIcon;
+    explore.title = @"Find Deals";
     
+    // Set the icon for Activity
     UITabBarItem *activity = [self.tabBar.items objectAtIndex:2];
     UIImage *activityIcon = [FontAwesomeKit imageForIcon:FAKIconTime
                                              imageSize:CGSizeMake(30, 30)
                                               fontSize:29
                                             attributes:nil];
     activity.image = activityIcon;
+    activity.title = @"Activity";
+    [activity setBadgeValue:[NSString stringWithFormat:@"%d", 2]];
 
     
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

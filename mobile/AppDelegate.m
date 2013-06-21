@@ -36,16 +36,36 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    self.mainViewController.navigationItem.hidesBackButton = YES;
-    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    self.loginViewController.navigationItem.hidesBackButton = YES;
+    //self.mainViewController.navigationItem.hidesBackButton = YES;
     
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
-    self.navigationController.delegate = self;
-    [self.navigationController.navigationBar setTintColor:[TaloolColor teal]];
-    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
-    self.window.rootViewController = self.navigationController;
+    // Add the view controller for My Deals
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+    UINavigationController *navController;
+    navController = [[UINavigationController alloc]
+                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"MyDeals"]];
+    navController.delegate = self;
+    [navController.navigationBar setTintColor:[TaloolColor teal]];
+    [navController.navigationBar setBarStyle:UIBarStyleBlack];
+    [viewControllers addObject:navController];
     
+    // Add the view controller for Find Deals
+    navController = [[UINavigationController alloc]
+                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"FindDeals"]];
+    navController.delegate = self;
+    [navController.navigationBar setTintColor:[TaloolColor teal]];
+    [navController.navigationBar setBarStyle:UIBarStyleBlack];
+    [viewControllers addObject:navController];
+    
+    // Add the view controller for Activity
+    navController = [[UINavigationController alloc]
+                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"Activity"]];
+    navController.delegate = self;
+    [navController.navigationBar setTintColor:[TaloolColor teal]];
+    [navController.navigationBar setBarStyle:UIBarStyleBlack];
+    [viewControllers addObject:navController];
+    
+    [self.mainViewController setViewControllers:viewControllers];
+    self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
     
     [TaloolIAPHelper sharedInstance];
@@ -231,6 +251,13 @@
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     self.isNavigating = YES;
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
+    if(changed) {
+        [[[viewControllers objectAtIndex:2] tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%d", 2]];
+    }
 }
 
 

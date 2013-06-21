@@ -62,6 +62,7 @@
     [regButton setImage:userIcon forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
+    self.navigationItem.hidesBackButton = YES;
     
 }
 
@@ -116,7 +117,7 @@
                  if ([CustomerHelper getLoggedInUser] != nil) {
                      // TODO consider updating the user if needed
                      if (self.navigationController.visibleViewController != appDelegate.mainViewController) {
-                         [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+                         [self.navigationController popToRootViewControllerAnimated:YES];
                      }
                  }
                  
@@ -189,32 +190,8 @@
             // logging in and our navigation controller is still animating a push.
             [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
         } else {
-            [self logOut];
+            [appDelegate.settingsViewController logoutUser];
         }
-    }
-}
-
-- (void) registerLogoutDelegate:(id<TaloolLogoutDelegate>)delegate
-{
-    logoutDelegate = delegate;
-}
-
-- (void)logOut
-{
-    // CHECK FOR A FACEBOOK SESSION
-    if (FBSession.activeSession.isOpen) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ttCustomer logoutUser:appDelegate.managedObjectContext];
-    [logoutDelegate customerLoggedOut:self];
-}
-
-
-- (IBAction)logoutAction:(UIStoryboardSegue *)segue
-{
-    if ([[segue identifier] isEqualToString:@"logoutUser"]) {
-        [self logOut];
     }
 }
 

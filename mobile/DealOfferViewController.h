@@ -10,8 +10,9 @@
 
 @class TaloolUIButton, ttDealOffer;
 
-@interface DealOfferViewController : UIViewController
+@interface DealOfferViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 {
+    IBOutlet UITableView *tableView;
     IBOutlet TaloolUIButton *buyButton;
     IBOutlet UIImageView *logo;
     IBOutlet UILabel *descriptionLabel;
@@ -20,6 +21,7 @@
 }
 
 @property (retain, nonatomic) ttDealOffer *offer;
+@property (retain, nonatomic) UITableView *tableView;
 
 - (IBAction)buyAction:(id)sender;
 

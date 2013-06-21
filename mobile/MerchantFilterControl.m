@@ -23,8 +23,8 @@
         
         categoryHelper = [[CategoryHelper alloc ] init];
         
-        int iconSize = 25;
-        int fontSize = 24;
+        int iconSize = 21;
+        int fontSize = 21;
         Boolean animated = NO;
         
         // Set up the All button

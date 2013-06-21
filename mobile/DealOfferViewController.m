@@ -7,7 +7,6 @@
 //
 
 #import "DealOfferViewController.h"
-#import "DealOfferDealsViewController.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
@@ -24,7 +23,7 @@
 
 @implementation DealOfferViewController
 
-@synthesize offer;
+@synthesize offer, tableView;
 
 - (void)viewDidLoad
 {
@@ -161,6 +160,37 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [errorView show];
+}
+
+#pragma mark -
+#pragma mark UITableView Delegate/Datasource
+
+// Determines the number of sections within this table view
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    cell.textLabel.text = @"Big Deal";
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 @end
