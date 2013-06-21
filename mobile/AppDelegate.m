@@ -14,6 +14,9 @@
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
 #import "TaloolIAPHelper.h"
+#import "TaloolTabBarController.h"
+#import "WelcomeViewController.h"
+#import "SettingsTableViewController.h"
 
 @implementation AppDelegate
 
@@ -24,6 +27,7 @@
             isNavigating = _isNavigating;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize settingsViewController = _settingsViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

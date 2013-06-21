@@ -16,6 +16,7 @@
 #import "TaloolColor.h"
 #import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "SettingsTableViewController.h"
 
 @interface WelcomeViewController ()
 

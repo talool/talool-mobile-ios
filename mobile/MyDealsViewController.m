@@ -15,6 +15,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
+#import "SettingsTableViewController.h"
 
 @interface MyDealsViewController ()
 
