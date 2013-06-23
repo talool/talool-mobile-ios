@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@protocol TaloolLogoutDelegate<NSObject>
-- (void)customerLoggedOut:(id)sender;
+@protocol TaloolAuthenticationDelegate<NSObject>
+- (void)customerLoggedIn:(id)sender;
 @end
 
 @protocol TaloolGiftAcceptedDelegate<NSObject>
@@ -24,12 +24,14 @@
 - (void)dealActionCanceled:(id)sender;
 @end
 
-@protocol ProximitySliderDelegate <NSObject>
-- (void)proximityChanged:(float)valueInMiles sender:(id)sender;
-@end
-
 @protocol MerchantFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
+- (void)proximityChanged:(float)valueInMiles sender:(id)sender;
+- (void)fetchMerchants;
+@end
+
+@protocol MerchantSearchDelegate <NSObject>
+- (void)merchantSetChanged:(NSArray *)merchants sender:(id)sender;
 @end
 
 @protocol MerchantBannerDelegate<NSObject>

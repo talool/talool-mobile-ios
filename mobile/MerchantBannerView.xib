@@ -96,7 +96,6 @@
 						<string key="NSFrame">{{221, 50}, {70, 30}}</string>
 						<reference key="NSSuperview" ref="295591748"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -121,6 +120,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="466494173"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<reference key="IBUIImage" ref="491672984"/>
