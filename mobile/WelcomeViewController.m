@@ -17,6 +17,7 @@
 #import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "SettingsTableViewController.h"
+#import "MyDealsViewController.h"
 
 @interface WelcomeViewController ()
 
@@ -35,7 +36,8 @@
     if ([CustomerHelper getLoggedInUser] != nil) {
         // Push forward if we already have a user
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+        //[self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+        [appDelegate.settingsViewController logoutUser];
     }
     
     // TODO: set up FB permissions
@@ -75,6 +77,7 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
 }
 
 - (void)viewDidUnload {
@@ -99,6 +102,10 @@
                  // If there is not saved user (in core data), but there is an active FB session
                  // Then we should create the user (if needed) and save the user (to core data)
                  if ([CustomerHelper getLoggedInUser] == nil) {
+                     
+                     // add a spinner
+                     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+                     
                      ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
                      
                      // TODO: see if we have come up with a better method to generate a password for FB users
@@ -111,13 +118,17 @@
                          [CustomerHelper registerCustomer:customer password:passwordHack];
                      }
                      
+                     // remove the spinner
+                     [spinner stopAnimating];
+                     
                  }
                  
                  // If we have a logged in user (possibly as a result of the FB reg above)
                  // Then we should check if any FB data has changed and navigate to the main view
                  if ([CustomerHelper getLoggedInUser] != nil) {
+                     [authDelegate customerLoggedIn:self];
                      // TODO consider updating the user if needed
-                     if (self.navigationController.visibleViewController != appDelegate.mainViewController) {
+                     if (self.navigationController.visibleViewController != appDelegate.firstViewController) {
                          [self.navigationController popToRootViewControllerAnimated:YES];
                      }
                  }
@@ -191,9 +202,15 @@
             // logging in and our navigation controller is still animating a push.
             [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
         } else {
-            [appDelegate.settingsViewController logoutUser];
+            [self logOut];
         }
     }
+}
+
+- (void) logOut
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.settingsViewController logoutUser];
 }
 
 - (void) threadStartSpinner:(id)data {
@@ -206,11 +223,18 @@
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     // don't leave the page if login failed
     if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
+    
+    [authDelegate customerLoggedIn:self];
+    
     // remove the spinner
     [spinner stopAnimating];
+}
+
+- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
+{
+    authDelegate = delegate;
 }
 
 

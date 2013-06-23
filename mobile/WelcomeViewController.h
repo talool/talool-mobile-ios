@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
+#import "TaloolProtocols.h"
 
 @class TaloolIconButton, TaloolUIButton;
 
@@ -18,9 +19,11 @@
     IBOutlet TaloolUIButton *loginButton;
     IBOutlet TaloolIconButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
+    id <TaloolAuthenticationDelegate> authDelegate;
 }
 
 - (IBAction)loginAction:(id) sender;
+- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate;
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;

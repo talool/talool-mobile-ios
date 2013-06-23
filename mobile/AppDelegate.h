@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WelcomeViewController, TaloolTabBarController, SettingsTableViewController;
+@class WelcomeViewController, TaloolTabBarController, SettingsTableViewController, MyDealsViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) TaloolTabBarController *mainViewController;
 @property (strong, nonatomic) WelcomeViewController* loginViewController;
 @property (strong, nonatomic) SettingsTableViewController* settingsViewController;
+@property (strong, nonatomic) MyDealsViewController* firstViewController;
 @property BOOL isNavigating;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

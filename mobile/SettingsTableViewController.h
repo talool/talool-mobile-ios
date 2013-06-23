@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "talool-api-ios/ttCustomer.h"
-#import "TaloolProtocols.h"
 
 @interface SettingsTableViewController : UITableViewController {
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
-    id <TaloolLogoutDelegate> logoutDelegate;
+    IBOutlet UIActivityIndicatorView *spinner;
 }
 - (IBAction)logout:(id)sender;
 - (void)logoutUser;
-- (void) registerLogoutDelegate:(id <TaloolLogoutDelegate>)delegate;
 
+@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) ttCustomer *customer;
+
 @end

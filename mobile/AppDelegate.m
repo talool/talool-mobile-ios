@@ -17,6 +17,7 @@
 #import "TaloolTabBarController.h"
 #import "WelcomeViewController.h"
 #import "SettingsTableViewController.h"
+#import "MyDealsViewController.h"
 
 @implementation AppDelegate
 
@@ -28,6 +29,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize settingsViewController = _settingsViewController;
+@synthesize firstViewController = _firstViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,8 +47,9 @@
     // Add the view controller for My Deals
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     UINavigationController *navController;
+    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"];
     navController = [[UINavigationController alloc]
-                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"MyDeals"]];
+                     initWithRootViewController:self.firstViewController];
     navController.delegate = self;
     [navController.navigationBar setTintColor:[TaloolColor teal]];
     [navController.navigationBar setBarStyle:UIBarStyleBlack];
@@ -176,7 +179,6 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     [FBAppCall handleDidBecomeActive];
-    [CustomerHelper refreshLoggedInUser];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
