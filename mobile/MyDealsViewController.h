@@ -9,10 +9,6 @@
 #import "BaseMerchantViewController.h"
 #import "TaloolProtocols.h"
 
-@interface MyDealsViewController : BaseMerchantViewController<TaloolLogoutDelegate, TaloolGiftAcceptedDelegate>
-
-// lots of non-sense to support switching users and gifts
-@property BOOL newCustomerHandled;
-@property BOOL newGiftHandled;
+@interface MyDealsViewController : BaseMerchantViewController<TaloolAuthenticationDelegate, TaloolGiftAcceptedDelegate>
 
 @end

@@ -39,6 +39,15 @@
 - (void)openMap:(id)sender;
 @end
 
+@protocol ActivityFilterDelegate <NSObject>
+- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
+- (void)fetchActivities;
+@end
+
+@protocol ActivityStreamDelegate <NSObject>
+- (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender;
+@end
+
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
-@interface ActivityViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@class ActivityFilterView;
+
+@interface ActivityViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, ActivityStreamDelegate, TaloolGiftAcceptedDelegate>
 {
     IBOutlet UITableView *tableView;
 }
 @property (retain, nonatomic) UITableView *tableView;
 @property (retain, nonatomic) UIRefreshControl *refreshControl;
+
+@property (retain, nonatomic) NSArray *activities;
+
+@property (retain, nonatomic) ActivityFilterView *filterView;
 
 @end

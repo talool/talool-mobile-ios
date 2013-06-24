@@ -47,7 +47,7 @@
                                             attributes:nil];
     activity.image = activityIcon;
     activity.title = @"Activity";
-    [activity setBadgeValue:[NSString stringWithFormat:@"%d", 2]];
+    //[activity setBadgeValue:[NSString stringWithFormat:@"%d", 2]];
 
     
 }

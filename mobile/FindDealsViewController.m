@@ -20,12 +20,8 @@
 #import "CategoryHelper.h"
 #import "TaloolColor.h"
 #import "FontAwesomeKit.h"
-#import "MerchantFilterControl.h"
+#import "MerchantSearchView.h"
 
-
-@interface FindDealsViewController ()
-
-@end
 
 @implementation FindDealsViewController
 
@@ -33,44 +29,21 @@
 {
     [super viewDidLoad];
 
-    [self.filterControl removeSegmentAtIndex:1 animated:NO];
+    self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
+                                                      isExplore:YES
+                                         merchantSearchDelegate:self];
+    [self.view addSubview:self.searchView];
 
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.isExplore = YES;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"merchantDealOffers"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttMerchant *merchant = [self.filteredMerchants objectAtIndex:[indexPath row]];
+        ttMerchant *merchant = [self.merchants objectAtIndex:[indexPath row]];
         MerchantDealOfferViewController *mvc = (MerchantDealOfferViewController *)[segue destinationViewController];
         [mvc setMerchant:merchant];
     }
-}
-
-#pragma mark -
-#pragma mark - Override Superclass Helpers
-
-- (void) refreshMerchants
-{
-    // get merchants by proximity (manual override)
-    int prox = self.proximity;
-    if (self.proximity == 0 || self.proximity == MAX_PROXIMITY)
-    {
-        prox = INFINITE_PROXIMITY;
-    }
-    NSError *error;
-    [[CustomerHelper getLoggedInUser] getMerchantsByProximity:prox
-                                                    longitude:self.customerLocation.coordinate.longitude
-                                                     latitude:self.customerLocation.coordinate.latitude
-                                                      context:[CustomerHelper getContext]
-                                                        error:&error];
-    [super refreshMerchants];
 }
 
 

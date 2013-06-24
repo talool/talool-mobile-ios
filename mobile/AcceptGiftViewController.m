@@ -72,8 +72,7 @@
         // tell the delegate what happened
         [giftDelegate giftAccepted:self];
         
-        // pop the modal off the stack
-        [self dismissViewControllerAnimated:YES completion:NULL];
+        [self.navigationController popViewControllerAnimated:YES];
         
     }
     else
@@ -88,8 +87,7 @@
     ttCustomer *customer = (ttCustomer *)[CustomerHelper getLoggedInUser];
     if ([customer rejectGift:gift.giftId error:&err])
     {
-        // pop the modal off the stack
-        [self dismissViewControllerAnimated:YES completion:NULL];
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {

@@ -18,6 +18,8 @@
 #import "WelcomeViewController.h"
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
+#import "ActivityViewController.h"
+#import "ActivityStreamHelper.h"
 
 @implementation AppDelegate
 
@@ -30,6 +32,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize settingsViewController = _settingsViewController;
 @synthesize firstViewController = _firstViewController;
+@synthesize activiyViewController = _activiyViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -64,8 +67,9 @@
     [viewControllers addObject:navController];
     
     // Add the view controller for Activity
+    self.activiyViewController = [storyboard instantiateViewControllerWithIdentifier:@"Activity"];
     navController = [[UINavigationController alloc]
-                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"Activity"]];
+                     initWithRootViewController:self.activiyViewController];
     navController.delegate = self;
     [navController.navigationBar setTintColor:[TaloolColor teal]];
     [navController.navigationBar setBarStyle:UIBarStyleBlack];
@@ -76,6 +80,8 @@
     [self.window makeKeyAndVisible];
     
     [TaloolIAPHelper sharedInstance];
+    
+    _activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
     return YES;
 }
@@ -161,6 +167,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [_activityHelper stopPollingActivity];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -179,6 +186,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     [FBAppCall handleDidBecomeActive];
+    [_activityHelper startPollingActivity];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -259,11 +267,12 @@
     self.isNavigating = YES;
 }
 
-#pragma mark - UITabBarControllerDelegate
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
-    if(changed) {
-        [[[viewControllers objectAtIndex:2] tabBarItem] setBadgeValue:[NSString stringWithFormat:@"%d", 2]];
-    }
+#pragma mark -
+#pragma mark - ActivityStreamDelegate methods
+
+- (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender
+{
+    [[self.activiyViewController navigationController] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",[newActivies count]];
 }
 
 
