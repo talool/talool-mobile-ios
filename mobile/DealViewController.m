@@ -219,11 +219,11 @@
     NSString *shareLabel;
     if (self.deal.shared == nil)
     {
-        shareLabel = @"shared with a friend";
+        shareLabel = @"Gifted to a friend";
     }
     else
     {
-        shareLabel = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:self.deal.shared]];
+        shareLabel = [NSString stringWithFormat:@"Gifted on %@", [dateFormatter stringFromDate:self.deal.shared]];
     }
     self.expiresLabel.text = shareLabel;
     
@@ -242,11 +242,11 @@
         NSString *friendLabel;
         if (friend.email == nil)
         {
-            friendLabel = [NSString stringWithFormat:@"Shared to %@", friend.fullName];
+            friendLabel = [NSString stringWithFormat:@"Gifted to %@", friend.fullName];
         }
         else
         {
-            friendLabel = [NSString stringWithFormat:@"Shared to %@", friend.email];
+            friendLabel = [NSString stringWithFormat:@"Gifted to %@", friend.email];
         }
         self.redemptionCode.text = friendLabel;
         self.redemptionCode.hidden = NO;
@@ -486,6 +486,8 @@
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
+    return YES;
+    /*
     NSString *name = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
     NSString *email;
     ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
@@ -514,6 +516,7 @@
         continueToProperties = YES;
     }
     return continueToProperties;
+     */
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier

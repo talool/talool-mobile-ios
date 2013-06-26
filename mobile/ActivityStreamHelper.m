@@ -52,32 +52,19 @@
 {
     ttCustomer *user = [CustomerHelper getLoggedInUser];
     NSError *error;
-    activities = [user getGifts:[CustomerHelper getContext] error:&error];
+    activities = [user getActivities:[CustomerHelper getContext] error:&error];
     
     //NSLog(@"DEBUG::: Activies: found %lu activities",(unsigned long)[activities count]);
     
     // Send the new array to the delegate
     [delegate activitySetChanged:activities sender:self];
+    
+    // preload any gifts too
+    NSError *error2;
+    NSArray *gifts = [user getGifts:[CustomerHelper getContext] error:&error2];
+    [delegate giftSetChanged:gifts sender:self];
 }
 
-/*
- - (void) checkForGifts:(id)sender
- {
- NSError *error;
- NSArray *gifts = [[CustomerHelper getLoggedInUser] getGifts:[CustomerHelper getContext] error:&error];
- // TODO if the user gets a bunch of gifts, we should show a table view
- if ([gifts count]>0)
- {
- // create the modal screen and show it
- AcceptGiftViewController *giftVC = [self.storyboard instantiateViewControllerWithIdentifier:@"AcceptGiftViewController"];
- giftVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
- giftVC.gift = [gifts objectAtIndex:0];
- [self presentViewController:giftVC animated:YES completion:nil];
- 
- [giftVC setGiftDelegate:self];
- }
- }
- */
 
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender
 {

@@ -10,6 +10,7 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "FacebookSDK/FBSessionTokenCachingStrategy.h"
 #import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
+#import "talool-api-ios/ttActivity.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
@@ -272,10 +273,14 @@
 
 - (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender
 {
+    
+}
+- (void)giftSetChanged:(NSArray *)gifts sender:(id)sender
+{
     NSString *badge;
-    if ([newActivies count] > 0)
+    if ([gifts count] > 0)
     {
-        badge = [NSString stringWithFormat:@"%d",[newActivies count]];
+        badge = [NSString stringWithFormat:@"%d",[gifts count]];
     }
     [[self.activiyViewController navigationController] tabBarItem].badgeValue = badge;
 }

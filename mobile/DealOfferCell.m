@@ -9,7 +9,7 @@
 #import "DealOfferCell.h"
 #import "TaloolColor.h"
 #import "TaloolUIButton.h"
-#import "CategoryHelper.h"
+#import "IconHelper.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -30,12 +30,12 @@
     if ([offer.price intValue] == 0)
     {
         priceLabel.text = @"Free";
-        [iconView setImage:[CategoryHelper getCircleWithColor:[TaloolColor orange] diameter:50.0]];
+        [iconView setImage:[IconHelper getCircleWithColor:[TaloolColor orange] diameter:50.0]];
     }
     else
     {
         priceLabel.text = [[NSString alloc] initWithFormat:@"$%@", offer.price];
-        [iconView setImage:[CategoryHelper getCircleWithColor:[TaloolColor teal] diameter:50.0]];
+        [iconView setImage:[IconHelper getCircleWithColor:[TaloolColor teal] diameter:50.0]];
     }
     
     

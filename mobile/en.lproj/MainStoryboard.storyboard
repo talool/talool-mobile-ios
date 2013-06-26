@@ -1028,7 +1028,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="na7-vw-dat"/>
+                                    <action selector="redeemAction:" destination="kUv-Em-a6l" eventType="touchUpInside" id="LUa-yV-mZr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWX-y1-ME3" customClass="TaloolUIButton">

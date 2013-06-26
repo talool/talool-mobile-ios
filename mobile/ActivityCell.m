@@ -7,10 +7,45 @@
 //
 
 #import "ActivityCell.h"
+#import "talool-api-ios/ttActivity.h"
+#import "IconHelper.h"
+#import "TaloolColor.h"
+#import "FontAwesomeKit.h"
 
 @implementation ActivityCell
 
-@synthesize titleLabel, iconView, dateLabel, subtitleLabel;
+@synthesize titleLabel, iconView, dateLabel, subtitleLabel, activity;
 
+- (void)setActivity:(ttActivity *)newActivity
+{
+    activity = newActivity;
+    titleLabel.text = activity.title;
+    subtitleLabel.text = activity.subtitle;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    dateLabel.text = [dateFormatter stringFromDate:activity.activityDate];
+
+    if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor teal]];
+    }
+    else if ([activity isEmailSendGiftEvent] || [activity isFacebookSendGiftEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
+    }
+    else if ([activity isPurchaseEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
+    }
+    else if ([activity isRedeemEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
+    }
+    else
+    { 
+        iconView.image = [IconHelper getImageForIcon:FAKIconQuestion color:[TaloolColor gray_1]];
+    }
+}
 
 @end

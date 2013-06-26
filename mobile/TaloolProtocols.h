@@ -46,6 +46,7 @@
 
 @protocol ActivityStreamDelegate <NSObject>
 - (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender;
+- (void)giftSetChanged:(NSArray *)gifts sender:(id)sender;
 @end
 
 @protocol OGDeal<FBGraphObject>

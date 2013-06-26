@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class ttActivity;
+
 @interface ActivityCell : UITableViewCell
 {
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *titleLabel;
     IBOutlet UILabel *subtitleLabel;
     IBOutlet UILabel *dateLabel;
+    
+    ttActivity *activity;
 }
 
+@property (nonatomic, retain) ttActivity *activity;
 @property (retain, nonatomic) UILabel *titleLabel;
 @property (retain, nonatomic) UILabel *subtitleLabel;
 @property (retain, nonatomic) UIImageView *iconView;

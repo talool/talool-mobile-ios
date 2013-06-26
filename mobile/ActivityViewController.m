@@ -16,6 +16,8 @@
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttFriend.h"
+#import "talool-api-ios/ttActivity.h"
+#import "talool-api-ios/ttActivityLink.h"
 
 @interface ActivityViewController ()
 
@@ -50,7 +52,12 @@
 {
     if ([[segue identifier] isEqualToString:@"openGift"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttGift *gift = [self.activities objectAtIndex:[indexPath row]];
+        ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+        NSString *giftId = activity.link.elementId;
+        
+        // gifts were loaded when the activities where loaded, so we should
+        // be able to get the gift from the context
+        ttGift *gift = [ttGift getGiftById:giftId context:[CustomerHelper getContext]];
         AcceptGiftViewController *agvc = (AcceptGiftViewController *)[segue destinationViewController];
         [agvc setGift:gift];
         
@@ -75,18 +82,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"GiftCell";
+    ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+    
+    NSString *CellIdentifier;
+    if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
+    {
+        CellIdentifier = @"GiftCell";
+    }
+    else
+    {
+        CellIdentifier = @"ActivityCell";
+    }
+    
     ActivityCell *cell = (ActivityCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    ttGift *gift = [self.activities objectAtIndex:[indexPath row]];
-    
-    // Configure the cell...
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    cell.titleLabel.text = gift.deal.title;
-    cell.subtitleLabel.text = [NSString stringWithFormat:@"from %@", gift.fromCustomer.firstName];
-    cell.dateLabel.text = [dateFormatter stringFromDate:gift.created];
-    cell.iconView.image = [UIImage imageNamed:@"Icon_teal.png"];
+    [cell setActivity:activity];
     
     return cell;
 }
@@ -113,7 +122,16 @@
 {
     activities = newActivies;
     [self.tableView reloadData];
-    [[self navigationController] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",[newActivies count]];
+}
+
+- (void) giftSetChanged:(NSArray *)gifts sender:(id)sender
+{
+    NSString *badge;
+    if ([gifts count] > 0)
+    {
+        badge = [NSString stringWithFormat:@"%d",[gifts count]];
+    }
+    [[self navigationController] tabBarItem].badgeValue = badge;
 }
 
 #pragma mark -
