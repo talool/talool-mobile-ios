@@ -21,6 +21,7 @@
 }
 
 @property (retain, nonatomic) ttDealOffer *offer;
+@property (retain, nonatomic) NSArray *deals;
 @property (retain, nonatomic) UITableView *tableView;
 
 - (IBAction)buyAction:(id)sender;

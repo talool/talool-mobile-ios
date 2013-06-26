@@ -10,10 +10,12 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
+#import "DealCell.h"
 #import "TaloolIAPHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttDeal.h"
 
 @interface DealOfferViewController ()
 {
@@ -23,7 +25,7 @@
 
 @implementation DealOfferViewController
 
-@synthesize offer, tableView;
+@synthesize offer, tableView, deals;
 
 - (void)viewDidLoad
 {
@@ -42,6 +44,9 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = offer.title;
+    
+    NSError *error;
+    deals = [offer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productPurchased:)
@@ -67,7 +72,7 @@
         [buyButton setBaseColor:[TaloolColor orange]];
         [buyButton setTitle:@"Get It Free!" forState:UIControlStateNormal];
         
-        savingsLabel.text = [NSString stringWithFormat:@"Offer valid in the XXX area.  %@",expiresOn];
+        savingsLabel.text = [NSString stringWithFormat:@"Offer valid in the %@ area.  %@", offer.locationName, expiresOn];
     }
     else
     {
@@ -75,7 +80,7 @@
         NSString *label = [NSString stringWithFormat:@"Buy for $%@",offer.price];
         [buyButton setTitle:label forState:UIControlStateNormal];
         
-        savingsLabel.text = [NSString stringWithFormat:@"Over $100 in savings in the XXX area.  %@",expiresOn];
+        savingsLabel.text = [NSString stringWithFormat:@"Over $100 in savings in the %@ area.  %@", offer.locationName, expiresOn];
     }
     [logo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
                       placeholderImage:[UIImage imageNamed:@"000.png"]
@@ -86,19 +91,12 @@
                                  }
                                  
                              }];
+    
+    dealCountLabel.text = [NSString stringWithFormat:@"%lu Deals in this Pack", (unsigned long)[deals count]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"ShowDealOfferDeals"])
-    {
-        //DealOfferDealsViewController *dodvc = [segue destinationViewController];
-        //[dodvc setOffer:offer];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,9 +123,12 @@
 }
 
 - (void)productPurchased:(NSNotification *)notification {
-    
-    // TODO confirm that the purchase notification is for this offer
-    // * the notification object should wrap the offer too
+
+    /*
+     *  We got a notification of a purchase.  It has a productId, but that doesn't tell us
+     *  the specific offer.  If we assume it is for the current offer, we may fulfill the 
+     *  wrong deal.  It's a small edgecase, but I think it's possible
+     */
     NSString * productIdentifier = notification.object;
     TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
     SKProduct *product = [iapHelper getProductForIdentifier:productIdentifier];
@@ -172,16 +173,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30;
+    return [deals count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    DealCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    ttDeal *deal = [deals objectAtIndex:indexPath.row];
     
     // Configure the cell...
-    cell.textLabel.text = @"Big Deal";
+    [cell setDeal:deal];
     
     return cell;
 }

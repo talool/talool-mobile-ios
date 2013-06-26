@@ -272,7 +272,12 @@
 
 - (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender
 {
-    [[self.activiyViewController navigationController] tabBarItem].badgeValue = [NSString stringWithFormat:@"%d",[newActivies count]];
+    NSString *badge;
+    if ([newActivies count] > 0)
+    {
+        badge = [NSString stringWithFormat:@"%d",[newActivies count]];
+    }
+    [[self.activiyViewController navigationController] tabBarItem].badgeValue = badge;
 }
 
 

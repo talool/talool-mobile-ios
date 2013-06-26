@@ -81,8 +81,11 @@
     ttGift *gift = [self.activities objectAtIndex:[indexPath row]];
     
     // Configure the cell...
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     cell.titleLabel.text = gift.deal.title;
-    cell.dateLabel.text = [NSString stringWithFormat:@"from %@", gift.fromCustomer.firstName];
+    cell.subtitleLabel.text = [NSString stringWithFormat:@"from %@", gift.fromCustomer.firstName];
+    cell.dateLabel.text = [dateFormatter stringFromDate:gift.created];
     cell.iconView.image = [UIImage imageNamed:@"Icon_teal.png"];
     
     return cell;

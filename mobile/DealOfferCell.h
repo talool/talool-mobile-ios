@@ -15,6 +15,7 @@
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *priceLabel;
+    IBOutlet UILabel *merchantLabel;
     
     ttDealOffer *offer;
     

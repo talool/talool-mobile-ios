@@ -7,10 +7,10 @@
 //
 
 #import "MerchantDealViewController.h"
-#import "TaloolDealViewController.h"
+#import "DealViewController.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
-#import "RewardCell.h"
+#import "DealAcquireCell.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -62,7 +62,7 @@
     if ([[segue identifier] isEqualToString:@"showDeal"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ttDealAcquire *deal = [deals objectAtIndex:[indexPath row]];
-        TaloolDealViewController *tdvc = [segue destinationViewController];
+        DealViewController *tdvc = [segue destinationViewController];
         [tdvc setHidesBottomBarWhenPushed:YES];
         [tdvc setDeal:deal];
     }
@@ -85,7 +85,7 @@
 {
     static NSString *CellIdentifier = @"RewardCell";
     
-    RewardCell *cell = (RewardCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DealAcquireCell *cell = (DealAcquireCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
     ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];

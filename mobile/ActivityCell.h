@@ -12,10 +12,12 @@
 {
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *titleLabel;
+    IBOutlet UILabel *subtitleLabel;
     IBOutlet UILabel *dateLabel;
 }
 
 @property (retain, nonatomic) UILabel *titleLabel;
+@property (retain, nonatomic) UILabel *subtitleLabel;
 @property (retain, nonatomic) UIImageView *iconView;
 @property (retain, nonatomic) UILabel *dateLabel;
 

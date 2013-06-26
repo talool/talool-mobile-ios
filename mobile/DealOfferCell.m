@@ -11,6 +11,7 @@
 #import "TaloolUIButton.h"
 #import "CategoryHelper.h"
 #import "talool-api-ios/ttDealOffer.h"
+#import "talool-api-ios/ttMerchant.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation DealOfferCell
@@ -23,6 +24,7 @@
     
     [nameLabel setTextColor:[TaloolColor gray_5]];
     nameLabel.text = offer.title;
+    merchantLabel.text = offer.merchant.name;
     
     [priceLabel setTextColor:[UIColor whiteColor]];
     if ([offer.price intValue] == 0)
