@@ -14,9 +14,10 @@
 @interface ActivityFilterView : UIView
 {
     IBOutlet UIView *view;
+    IBOutlet UIImageView *texture;
 }
 
-- (void) categoryToggled;
+- (void) filterToggled;
 - (void) fetchActivities;
 
 @property (strong, nonatomic) ActivityFilterControl *filterControl;

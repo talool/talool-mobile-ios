@@ -14,7 +14,7 @@
 
 @implementation ActivityStreamHelper
 
-@synthesize activities, delegate, activityMonitor;
+@synthesize activities, delegate, activityMonitor, selectedPredicate;
 
 - (id) initWithDelegate:(id<ActivityStreamDelegate>)streamDelegate
 {
@@ -46,6 +46,36 @@
 }
 
 #pragma mark -
+#pragma mark - Filter the activities array based on the predicate
+- (void) filterActivities
+{
+    
+    if ([activities count]==0)
+    {
+        NSLog(@"DEBUG::: no activities to filter");
+        return;
+    }
+    
+    NSArray *tempArray;
+    
+    // optional filter based on category or favorites
+    if (selectedPredicate == nil)
+    {
+        // show all merchants
+        tempArray = [NSMutableArray arrayWithArray:activities];
+    }
+    else
+    {
+        // filter merchants
+        tempArray = [NSMutableArray arrayWithArray:[activities filteredArrayUsingPredicate:selectedPredicate]];
+    }
+    //NSLog(@"DEBUG::: Activities: filtered %lu activities down to %lu",(unsigned long)[activities count], (unsigned long)[tempArray count]);
+    
+    // Send the new array to the delegate
+    [delegate activitySetChanged:tempArray sender:self];
+}
+
+#pragma mark -
 #pragma mark - ActivityFilterDelegate methods
 
 - (void) fetchActivities
@@ -68,7 +98,8 @@
 
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender
 {
-    
+    selectedPredicate = filter;
+    [self filterActivities];
 }
 
 @end

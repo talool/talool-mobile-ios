@@ -8,6 +8,9 @@
 
 #import "ActivityFilterView.h"
 #import "ActivityStreamHelper.h"
+#import "ActivityFilterControl.h"
+#import "TextureHelper.h"
+#import "TaloolColor.h"
 
 @implementation ActivityFilterView
 
@@ -20,8 +23,15 @@
         
         [[NSBundle mainBundle] loadNibNamed:@"ActivityFilterView" owner:self options:nil];
         
+        self.filterControl = [[ActivityFilterControl alloc] initWithFrame:CGRectMake(12.0, 40.0, 296.0, 35.0)];
+        [view addSubview:self.filterControl];
+        [self.filterControl addTarget:self action:@selector(filterToggled) forControlEvents:UIControlEventValueChanged];
+        
         activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:streamDelegate];
         [self setDelegate:activityHelper];
+        
+        texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320.0, 90.0)];
+        [texture setAlpha:0.15];
         
         [self addSubview:view];
     }
@@ -40,9 +50,10 @@
     [delegate fetchActivities];
 }
 
-- (void) categoryToggled
+- (void) filterToggled
 {
-    
+    NSPredicate *predicate = [self.filterControl getPredicateAtSelectedIndex];
+    [self.delegate filterChanged:predicate sender:self];
 }
 
 @end

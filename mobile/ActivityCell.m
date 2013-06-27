@@ -42,6 +42,10 @@
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
     }
+    else if ([activity isFriendGiftAcceptEvent] || [activity isFriendGiftRedeemEvent] || [activity isFriendGiftRejectEvent] || [activity isFriendPurchaseEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconGroup color:[TaloolColor gray_3]];
+    }
     else
     { 
         iconView.image = [IconHelper getImageForIcon:FAKIconQuestion color:[TaloolColor gray_1]];

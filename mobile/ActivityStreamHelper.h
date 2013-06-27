@@ -17,6 +17,7 @@
 @property (retain, nonatomic) NSArray *activities;
 @property (retain, nonatomic) id<ActivityStreamDelegate> delegate;
 @property (retain, nonatomic) NSTimer *activityMonitor;
+@property (retain, nonatomic) NSPredicate *selectedPredicate;
 
 - (void) fetchActivities;
 - (void) stopPollingActivity;

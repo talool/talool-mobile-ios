@@ -10,6 +10,8 @@
 #import "MerchantFilterControl.h"
 #import "MerchantSearchHelper.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
+#import "TaloolColor.h"
+#import "TextureHelper.h"
 
 @implementation MerchantSearchView
 
@@ -42,6 +44,9 @@
         
         searchHelper = [[MerchantSearchHelper alloc] initWithDelegate:searchDelegate searchMode:explore];
         [self setDelegate:searchHelper];
+        
+        texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320.0, 90.0)];
+        [texture setAlpha:0.15];
         
         [self addSubview:view];
     }

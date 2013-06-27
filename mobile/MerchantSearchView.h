@@ -16,6 +16,7 @@
     IBOutlet UILabel *distanceLabel;
     IBOutlet UISlider *distanceSlider;
     IBOutlet UIView *view;
+    IBOutlet UIImageView *texture;
 }
 
 - (IBAction)proximitySliderValueChanged:(id)sender;
