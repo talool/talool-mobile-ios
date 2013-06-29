@@ -34,6 +34,15 @@
                                                               isExplore:NO
                                                  merchantSearchDelegate:self];
     [self.view addSubview:self.searchView];
+    
+    // load any merchants connected to this customer from the context
+    if ([merchants count]==0)
+    {
+        NSArray *unsortedMerchants = [[CustomerHelper getLoggedInUser] getMyMerchants];
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+        merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
+    }
 
 }
 

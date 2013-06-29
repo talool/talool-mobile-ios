@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "talool-api-ios/ttCustomer.h"
+#import "FacebookSDK/FacebookSDK.h"
 
-@interface SettingsTableViewController : UITableViewController {
+@interface SettingsTableViewController : UITableViewController<FBLoginViewDelegate>
+{
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
+    IBOutlet UIButton *logoutButton;
     IBOutlet UIActivityIndicatorView *spinner;
+    IBOutlet UITableViewCell *logoutCell;
 }
 - (IBAction)logout:(id)sender;
 - (void)logoutUser;

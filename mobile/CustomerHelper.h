@@ -17,7 +17,6 @@
 + (NSManagedObjectContext *) getContext;
 
 + (ttCustomer *) getLoggedInUser;
-+ (void) refreshLoggedInUser;
 
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password;
 + (void) registerCustomer:(ttCustomer *)customer password:(NSString *)password;

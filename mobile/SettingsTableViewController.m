@@ -12,6 +12,7 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "WelcomeViewController.h"
 #import "MyDealsViewController.h"
+#import "TaloolMobileWebViewController.h"
 
 @interface SettingsTableViewController ()
 
@@ -32,6 +33,25 @@
     spinner.hidesWhenStopped=YES;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    if ([FBSession.activeSession isOpen] || [[CustomerHelper getLoggedInUser] isFacebookUser])
+    {
+        // hide the normal logout button and replace with a FB logout button
+        [logoutButton setHidden:YES];
+        FBLoginView *loginView = [[FBLoginView alloc] init];
+        loginView.delegate = self;
+        [loginView setTransform:CGAffineTransformMakeScale(.75, .75)];
+        // Align the button in the center horizontally
+        loginView.frame = CGRectOffset(loginView.frame,
+                                       ((logoutCell.viewForBaselineLayout.frame.size.width - (loginView.frame.size.width)-50)),
+                                       2);
+        [logoutCell.viewForBaselineLayout addSubview:loginView];
+        [loginView sizeToFit];
+        
+    }
+}
+
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
 }
@@ -39,9 +59,8 @@
 - (void)logoutUser
 {
     // CHECK FOR A FACEBOOK SESSION
-    if (FBSession.activeSession.isOpen) {
+    if ([FBSession.activeSession isOpen]) {
         [FBSession.activeSession closeAndClearTokenInformation];
-        [FBSession.activeSession close];
     }
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [ttCustomer logoutUser:appDelegate.managedObjectContext];
@@ -49,10 +68,9 @@
 
 - (void) delayedDeparture
 {
-    if (FBSession.activeSession.isOpen)
+    if ([FBSession.activeSession isOpen])
     {
         [FBSession.activeSession closeAndClearTokenInformation];
-        [FBSession.activeSession close];
         [self performSelector:@selector(delayedDeparture) withObject:nil afterDelay:3];
         return;
     }
@@ -72,6 +90,31 @@
         [wvc registerAuthDelegate:appDelegate.firstViewController];
         [wvc setHidesBottomBarWhenPushed:YES];
     }
+    else if ([[segue identifier] isEqualToString:@"privacy"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
+    }
+    else if ([[segue identifier] isEqualToString:@"terms"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setViewTitle:@"Terms of Service"];
+    }
+    else if ([[segue identifier] isEqualToString:@"merchant"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setViewTitle:@"Merchant Services"];
+    }
+    else if ([[segue identifier] isEqualToString:@"publisher"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setViewTitle:@"Publisher Services"];
+    }
+    else if ([[segue identifier] isEqualToString:@"feedback"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setViewTitle:@"Feedback"];
+    }
 }
 
 - (IBAction)logout:(id)sender
@@ -82,7 +125,7 @@
     [self logoutUser];
     
     // make sure the FB session is closed before we split
-    if (FBSession.activeSession.isOpen)
+    if ([FBSession.activeSession isOpen])
     {
         [self performSelector:@selector(delayedDeparture) withObject:nil afterDelay:3];
     }
@@ -97,6 +140,68 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - FBLoginView delegate
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    
+    // the FB user has logged in
+    
+}
+
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error
+{
+    NSString *alertMessage, *alertTitle;
+    
+    // Facebook SDK * error handling *
+    // Error handling is an important part of providing a good user experience.
+    // Since this sample uses the FBLoginView, this delegate will respond to
+    // login failures, or other failures that have closed the session (such
+    // as a token becoming invalid). Please see the [- postOpenGraphAction:]
+    // and [- requestPermissionAndPost] on `SCViewController` for further
+    // error handling on other operations.
+    
+    if (error.fberrorShouldNotifyUser) {
+        // If the SDK has a message for the user, surface it. This conveniently
+        // handles cases like password change or iOS6 app slider state.
+        alertTitle = @"Something Went Wrong";
+        alertMessage = error.fberrorUserMessage;
+    } else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
+        // It is important to handle session closures as mentioned. You can inspect
+        // the error for more context but this sample generically notifies the user.
+        alertTitle = @"Session Error";
+        alertMessage = @"Your current session is no longer valid. Please log in again.";
+    } else if (error.fberrorCategory == FBErrorCategoryUserCancelled) {
+        // The user has cancelled a login. You can inspect the error
+        // for more context. For this sample, we will simply ignore it.
+        NSLog(@"user cancelled login");
+    } else {
+        // For simplicity, this sample treats other errors blindly, but you should
+        // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
+        alertTitle  = @"Unknown Error";
+        alertMessage = @"Error. Please try again later.";
+        NSLog(@"Unexpected error:%@", error);
+    }
+    
+    if (alertMessage) {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:alertMessage
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView
+{
+    // the FB user has logged out
+    // TODO, but this could also be a non-FB user...
+    ttCustomer *user = [CustomerHelper getLoggedInUser];
+    
+    if ([user isFacebookUser]) {
+        [self logout:self];
+    }
 }
 
 @end

@@ -35,14 +35,6 @@ static NSManagedObjectContext *_context;
     return [ttCustomer getLoggedInUser:_context];
 }
 
-+ (void) refreshLoggedInUser
-{
-    ttCustomer *user = [ttCustomer getLoggedInUser:_context];
-    if (user != nil) {
-        [user refresh:_context];
-    }
-}
-
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password
 {
     NSError *err = nil;

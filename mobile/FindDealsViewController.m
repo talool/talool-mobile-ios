@@ -33,6 +33,15 @@
                                                       isExplore:YES
                                          merchantSearchDelegate:self];
     [self.view addSubview:self.searchView];
+    
+    // Load any merchants we have in the context
+    if ([merchants count]==0)
+    {
+        NSArray *unsortedMerchants = [ttMerchant getMerchantsInContext:[CustomerHelper getContext]];
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+        merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
+    }
 
 }
 
