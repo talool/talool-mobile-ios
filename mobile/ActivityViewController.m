@@ -18,6 +18,7 @@
 #import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttActivity.h"
 #import "talool-api-ios/ttActivityLink.h"
+#import "TaloolMobileWebViewController.h"
 
 @interface ActivityViewController ()
 
@@ -50,20 +51,31 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"openGift"]) {
+    if ([[segue identifier] isEqualToString:@"openGift"])
+    {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
         NSString *giftId = activity.link.elementId;
         
         // gifts were loaded when the activities where loaded, so we should
         // be able to get the gift from the context
-        ttGift *gift = [ttGift getGiftById:giftId context:[CustomerHelper getContext]];
+        NSError *error;
+        ttGift *gift = [ttGift getGiftById:giftId customer:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+        //NSLog(@"show Gift: %@",gift.deal.title);
         AcceptGiftViewController *agvc = (AcceptGiftViewController *)[segue destinationViewController];
         [agvc setGift:gift];
         
         // TODO we may have to register multiple deletages.  My Deals should reload too.
         // * could chain delegates together
         [agvc setGiftDelegate:self];
+    }
+    else if ([[segue identifier] isEqualToString:@"WelcomeActivity"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+        //NSLog(@"mobile web welcome url: %@",activity.link.elementId);
+        [[segue destinationViewController] setMobileWebUrl:activity.link.elementId];
+        [[segue destinationViewController] setViewTitle:@"Welcome"];
     }
 }
 
@@ -87,7 +99,18 @@
     NSString *CellIdentifier;
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
     {
-        CellIdentifier = @"GiftCell";
+        if ([activity isClosed])
+        {
+            CellIdentifier = @"ActivityCell";
+        }
+        else
+        {
+            CellIdentifier = @"GiftCell";
+        }
+    }
+    else if ([activity isWelcomeEvent])
+    {
+        CellIdentifier = @"WelcomeCell";
     }
     else
     {
@@ -137,7 +160,7 @@
 #pragma mark -
 #pragma mark - TaloolGiftAcceptedDelegate methods
 
-- (void)giftAccepted:(id)sender
+- (void)giftAccepted:(ttDealAcquire *)deal sender:(id)sender
 {
     [filterView fetchActivities];
 }

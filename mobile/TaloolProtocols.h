@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
+@class ttDealAcquire;
+
 @protocol TaloolAuthenticationDelegate<NSObject>
 - (void)customerLoggedIn:(id)sender;
 @end
 
 @protocol TaloolGiftAcceptedDelegate<NSObject>
-- (void)giftAccepted:(id)sender;
+- (void)giftAccepted:(ttDealAcquire *)deal sender:(id)sender;
 @end
 
 @protocol TaloolDealActionDelegate<NSObject>

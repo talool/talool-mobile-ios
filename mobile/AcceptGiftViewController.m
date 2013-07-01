@@ -67,10 +67,11 @@
 {
     NSError *err;
     ttCustomer *customer = (ttCustomer *)[CustomerHelper getLoggedInUser];
-    if ([customer acceptGift:gift.giftId error:&err])
+    ttDealAcquire *deal = [customer acceptGift:gift.giftId context:[CustomerHelper getContext] error:&err];
+    if (deal)
     {
         // tell the delegate what happened
-        [giftDelegate giftAccepted:self];
+        [giftDelegate giftAccepted:deal sender:self];
         
         [self.navigationController popViewControllerAnimated:YES];
         

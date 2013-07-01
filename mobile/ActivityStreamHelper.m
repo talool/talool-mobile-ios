@@ -10,6 +10,7 @@
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttActivity.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 
 @implementation ActivityStreamHelper
@@ -90,8 +91,18 @@
     [delegate activitySetChanged:activities sender:self];
     
     // preload any gifts too
-    NSError *error2;
-    NSArray *gifts = [user getGifts:[CustomerHelper getContext] error:&error2];
+    NSMutableArray *gifts = [[NSMutableArray alloc] init];
+    for (int i=0; i<[activities count]; i++)
+    {
+        ttActivity *act = [activities objectAtIndex:i];
+        if ([act isFacebookReceiveGiftEvent] || [act isEmailReceiveGiftEvent])
+        {
+            if (![act isClosed])
+            {
+                [gifts addObject:act];
+            }
+        }
+    }
     [delegate giftSetChanged:gifts sender:self];
 }
 

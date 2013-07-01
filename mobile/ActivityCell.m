@@ -28,7 +28,14 @@
 
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor teal]];
+        if ([activity isClosed])
+        {
+            iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
+        }
+        else
+        {
+            iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor teal]];
+        }
     }
     else if ([activity isEmailSendGiftEvent] || [activity isFacebookSendGiftEvent])
     {
@@ -37,6 +44,10 @@
     else if ([activity isPurchaseEvent])
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
+    }
+    else if ([activity isWelcomeEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconSmile color:[TaloolColor teal]];
     }
     else if ([activity isRedeemEvent])
     {

@@ -105,8 +105,9 @@
 #pragma mark -
 #pragma mark - TaloolGiftAcceptedDelegate methods
 
-- (void) giftAccepted:(id)sender
+- (void) giftAccepted:(ttDealAcquire *)deal sender:(id)sender
 {
+    // TODO add the merchant and the deal to the customer w/o pulling everything
     [self.searchView fetchMerchants];
 }
 

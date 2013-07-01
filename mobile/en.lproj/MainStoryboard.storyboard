@@ -460,6 +460,67 @@
                                             <segue destination="9Vz-pM-8dl" kind="push" identifier="openGift" id="lB0-AV-beX"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WelcomeCell" id="fbh-DV-DEf" customClass="ActivityCell">
+                                        <rect key="frame" x="0.0" y="162" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Kr-QFW">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="I0n-ll-IWK"/>
+                                                        <constraint firstAttribute="width" constant="50" id="cNH-Ni-C2l"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="$10 Off Dinner" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="232" translatesAutoresizingMaskIntoConstraints="NO" id="rKs-Lg-icS">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="ech-DZ-71N"/>
+                                                        <constraint firstAttribute="width" constant="232" id="huJ-2f-R19"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From Sally" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2a-6M-lqO">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="G2F-zb-QKo"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Zmu-jc-dcz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6/25/2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OM-JU-yyQ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="TN1-Ka-kYK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="c2P-Kr-QFW" firstAttribute="centerY" secondItem="fbh-DV-DEf" secondAttribute="centerY" type="default" id="0Iv-mD-tG2"/>
+                                            <constraint firstAttribute="bottom" secondItem="g2a-6M-lqO" secondAttribute="bottom" constant="6" id="4Yu-te-2eU"/>
+                                            <constraint firstItem="rKs-Lg-icS" firstAttribute="top" secondItem="fbh-DV-DEf" secondAttribute="top" constant="6" id="AM1-jv-XR5"/>
+                                            <constraint firstItem="g2a-6M-lqO" firstAttribute="baseline" secondItem="2OM-JU-yyQ" secondAttribute="baseline" type="default" id="Dva-EK-31z"/>
+                                            <constraint firstItem="g2a-6M-lqO" firstAttribute="leading" secondItem="rKs-Lg-icS" secondAttribute="leading" type="default" id="JXp-J8-k6y"/>
+                                            <constraint firstItem="c2P-Kr-QFW" firstAttribute="leading" secondItem="fbh-DV-DEf" secondAttribute="leading" constant="5" id="LC8-4V-pxx"/>
+                                            <constraint firstItem="2OM-JU-yyQ" firstAttribute="top" secondItem="g2a-6M-lqO" secondAttribute="top" type="default" id="Q63-WZ-VD4"/>
+                                            <constraint firstAttribute="trailing" secondItem="2OM-JU-yyQ" secondAttribute="trailing" constant="20" type="default" id="ngE-4t-jBJ"/>
+                                            <constraint firstItem="rKs-Lg-icS" firstAttribute="leading" secondItem="fbh-DV-DEf" secondAttribute="leading" constant="72" id="tJ7-qe-cGl"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="2OM-JU-yyQ" id="QDd-6l-VwQ"/>
+                                            <outlet property="iconView" destination="c2P-Kr-QFW" id="pVi-uH-N8N"/>
+                                            <outlet property="subtitleLabel" destination="g2a-6M-lqO" id="TD7-j1-a1I"/>
+                                            <outlet property="titleLabel" destination="rKs-Lg-icS" id="mKH-Xh-Xt2"/>
+                                            <segue destination="Kia-Ym-Kxg" kind="push" identifier="WelcomeActivity" id="q3T-VT-ua5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="ZD0-fp-a4M" id="gPC-V0-fpZ"/>
@@ -1330,7 +1391,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="About Talool" id="IH5-pL-XiG">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vK7-So-rj8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vK7-So-rj8">
                                         <rect key="frame" x="0.0" y="226" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1353,7 +1414,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="privacy" id="ZYY-Ve-nGY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pAX-lF-yrZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="pAX-lF-yrZ">
                                         <rect key="frame" x="0.0" y="271" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1376,7 +1437,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="terms" id="hYw-ya-Q4f"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7sm-j8-XJ3">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7sm-j8-XJ3">
                                         <rect key="frame" x="0.0" y="315" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1399,7 +1460,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="merchant" id="Vch-VY-fmq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
                                         <rect key="frame" x="0.0" y="359" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1422,7 +1483,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="publisher" id="FkP-eH-9t0"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Zq-0H-MTc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Zq-0H-MTc">
                                         <rect key="frame" x="0.0" y="403" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1495,7 +1556,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAL-9Z-vV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829" y="-1367"/>
+            <point key="canvasLocation" x="1837" y="-1367"/>
         </scene>
         <!--Merchant Deal Offer View Controller - Merchant Offers-->
         <scene sceneID="AkL-HF-y08">
@@ -1917,7 +1978,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ABU-IG-HyQ"/>
+        <segue reference="hYw-ya-Q4f"/>
         <segue reference="du6-n3-mQW"/>
         <segue reference="6GU-YU-bA8"/>
     </inferredMetricsTieBreakers>

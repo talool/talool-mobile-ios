@@ -26,7 +26,9 @@
         
         [[NSBundle mainBundle] loadNibNamed:@"MerchantSearchView" owner:self options:nil];
         
+        //self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(12.0, 40.0, 296.0, 35.0)];
         self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(12.0, 12.0, 296.0, 35.0)];
+        
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];
         
@@ -70,19 +72,19 @@
 
 - (IBAction)proximitySliderValueChanged:(id)sender
 {
-    [self updateProximityLabel:distanceSlider.value];
+    NSNumber *prox = [[NSNumber alloc] initWithFloat:distanceSlider.value];
+    [self updateProximityLabel:[prox intValue]];
 }
 
-- (void) updateProximityLabel:(float)miles
+- (void) updateProximityLabel:(int)miles
 {
-    NSNumber *prox = [[NSNumber alloc] initWithFloat:miles];
-    if ([prox intValue] == MAX_PROXIMITY)
+    if (miles == INFINITE_PROXIMITY || miles == MAX_PROXIMITY)
     {
         distanceLabel.text = @"Proximity: infinite";
     }
     else
     {
-        distanceLabel.text = [NSString localizedStringWithFormat:@"Proximity: %d miles", [prox intValue]];
+        distanceLabel.text = [NSString localizedStringWithFormat:@"Proximity: %d miles", miles];
     }
 }
 
