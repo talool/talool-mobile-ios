@@ -44,7 +44,7 @@
                                                    imageSize:CGSizeMake(iconWidth, iconHeight)
                                                     fontSize:fontSize
                                                   attributes:iconAttrs];
-        UIImage *reachIcon = [FontAwesomeKit imageForIcon:FAKIconBullhorn
+        UIImage *reachIcon = [FontAwesomeKit imageForIcon:FAKIconEnvelopeAlt
                                               imageSize:CGSizeMake(iconWidth, iconHeight)
                                                fontSize:fontSize
                                              attributes:iconAttrs];

@@ -23,7 +23,7 @@
     subtitleLabel.text = activity.subtitle;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
     dateLabel.text = [dateFormatter stringFromDate:activity.activityDate];
 
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
@@ -45,9 +45,9 @@
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
     }
-    else if ([activity isWelcomeEvent])
+    else if ([activity isWelcomeEvent] || [activity isMerchantReachEvent] || [activity isTaloolReachEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconSmile color:[TaloolColor teal]];
+        iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor teal]];
     }
     else if ([activity isRedeemEvent])
     {
