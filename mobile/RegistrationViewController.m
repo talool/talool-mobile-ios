@@ -57,7 +57,7 @@
     
     // don't leave the page if reg failed
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
     [spinner stopAnimating];

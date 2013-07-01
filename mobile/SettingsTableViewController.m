@@ -92,28 +92,47 @@
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/privacy"];
         [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
     }
     else if ([[segue identifier] isEqualToString:@"terms"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/terms"];
         [[segue destinationViewController] setViewTitle:@"Terms of Service"];
     }
     else if ([[segue identifier] isEqualToString:@"merchant"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/services/merchants"];
         [[segue destinationViewController] setViewTitle:@"Merchant Services"];
     }
     else if ([[segue identifier] isEqualToString:@"publisher"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/services/publishers"];
         [[segue destinationViewController] setViewTitle:@"Publisher Services"];
     }
     else if ([[segue identifier] isEqualToString:@"feedback"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://talool.com"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/feedback"];
         [[segue destinationViewController] setViewTitle:@"Feedback"];
+    }
+    else if ([[segue identifier] isEqualToString:@"partnership"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/partnership"];
+        [[segue destinationViewController] setViewTitle:@"Feedback"];
+    }
+    else if ([[segue identifier] isEqualToString:@"boulder"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/boulder"];
+        [[segue destinationViewController] setViewTitle:@"Boulder"];
+    }
+    else if ([[segue identifier] isEqualToString:@"vancouver"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/vancouver"];
+        [[segue destinationViewController] setViewTitle:@"Vancouver"];
+    }
+    else if ([[segue identifier] isEqualToString:@"entercode"])
+    {
+        
     }
 }
 

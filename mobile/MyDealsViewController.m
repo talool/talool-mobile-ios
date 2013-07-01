@@ -23,6 +23,8 @@
 
 @implementation MyDealsViewController
 
+@synthesize helpButton;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,15 +36,6 @@
                                                               isExplore:NO
                                                  merchantSearchDelegate:self];
     [self.view addSubview:self.searchView];
-    
-    // load any merchants connected to this customer from the context
-    if ([merchants count]==0)
-    {
-        NSArray *unsortedMerchants = [[CustomerHelper getLoggedInUser] getMyMerchants];
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
-        merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
-    }
 
 }
 
@@ -65,11 +58,46 @@
     self.navigationItem.rightBarButtonItem = settingsButton;
     [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                                   forState:UIControlStateNormal];
+    
+    // load any merchants connected to this customer from the context
+    if ([merchants count]==0)
+    {
+        NSArray *unsortedMerchants = [[CustomerHelper getLoggedInUser] getMyMerchants];
+        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
+        merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
+    }
+    
+    // if merchants are still 0, we should show the user some help
+    if ([merchants count]==0)
+    {
+        helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
+        [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:helpButton];
+    }
+    else
+    {
+        // check if there are deals
+        if (![[CustomerHelper getLoggedInUser] hasDeals:[CustomerHelper getContext]])
+        {
+            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDeals.png"] forState:UIControlStateNormal];
+            [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:helpButton];
+        }
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self closeHelp];
 }
 
 
@@ -91,6 +119,14 @@
         WelcomeViewController *wvc = [segue destinationViewController];
         [wvc registerAuthDelegate:self];
         [wvc setHidesBottomBarWhenPushed:YES];
+    }
+}
+
+- (void)closeHelp
+{
+    if (helpButton)
+    {
+        [helpButton removeFromSuperview];
     }
 }
 

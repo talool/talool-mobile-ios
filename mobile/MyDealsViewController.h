@@ -11,4 +11,6 @@
 
 @interface MyDealsViewController : BaseMerchantViewController<TaloolAuthenticationDelegate, TaloolGiftAcceptedDelegate>
 
+@property (strong, nonatomic) UIButton *helpButton;
+
 @end
