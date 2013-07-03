@@ -15,7 +15,13 @@
     static TaloolIAPHelper * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      PRODUCT_IDENTIFIER_OFFER_SMALL,
+                                      PRODUCT_IDENTIFIER_OFFER_DEAL,
+                                      PRODUCT_IDENTIFIER_OFFER_BIG_DEAL,
+                                      PRODUCT_IDENTIFIER_OFFER_DEAL_PACK,
+                                      PRODUCT_IDENTIFIER_OFFER_BIG_DEAL_PACK,
+                                      PRODUCT_IDENTIFIER_OFFER_GIANT_DEAL_PACK,
+                                      PRODUCT_IDENTIFIER_OFFER_DEAL_BOOK,
+                                      PRODUCT_IDENTIFIER_OFFER_BIG_DEAL_BOOK,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });
