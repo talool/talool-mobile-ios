@@ -26,7 +26,8 @@
     [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
     dateLabel.text = [dateFormatter stringFromDate:activity.activityDate];
 
-    if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
+    if ([activity isFacebookReceiveGiftEvent] ||
+        [activity isEmailReceiveGiftEvent])
     {
         if ([activity isClosed])
         {
@@ -37,7 +38,12 @@
             iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor teal]];
         }
     }
-    else if ([activity isEmailSendGiftEvent] || [activity isFacebookSendGiftEvent])
+    else if ([activity isRejectGiftEvent])
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_2]];
+    }
+    else if ([activity isEmailSendGiftEvent] ||
+             [activity isFacebookSendGiftEvent])
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
     }
@@ -45,7 +51,9 @@
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
     }
-    else if ([activity isWelcomeEvent] || [activity isMerchantReachEvent] || [activity isTaloolReachEvent])
+    else if ([activity isWelcomeEvent] ||
+             [activity isMerchantReachEvent] ||
+             [activity isTaloolReachEvent])
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor teal]];
     }
@@ -53,7 +61,10 @@
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
     }
-    else if ([activity isFriendGiftAcceptEvent] || [activity isFriendGiftRedeemEvent] || [activity isFriendGiftRejectEvent] || [activity isFriendPurchaseEvent])
+    else if ([activity isFriendGiftAcceptEvent] ||
+             [activity isFriendGiftRedeemEvent] ||
+             [activity isFriendGiftRejectEvent] ||
+             [activity isFriendPurchaseEvent])
     {
         iconView.image = [IconHelper getImageForIcon:FAKIconGroup color:[TaloolColor gray_3]];
     }
