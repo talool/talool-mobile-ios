@@ -21,7 +21,6 @@
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
 		8121888B1780EBC300348899 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8121888A1780EBC300348899 /* talool-api-ios.bundle */; };
 		8145C45F177A1CE800880294 /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
-		8145C462177A47DD00880294 /* FulfillmentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C461177A47DD00880294 /* FulfillmentHelper.m */; };
 		8146D169177274450035F589 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
 		8146D16F17733B530035F589 /* BaseMerchantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D16E17733B520035F589 /* BaseMerchantViewController.m */; };
 		8146D17217737EF80035F589 /* FindDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D17117737EF80035F589 /* FindDealsViewController.m */; };
@@ -174,8 +173,6 @@
 		8121888A1780EBC300348899 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		8145C45D177A1CE800880294 /* DealCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealCell.h; sourceTree = "<group>"; };
 		8145C45E177A1CE800880294 /* DealCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealCell.m; sourceTree = "<group>"; };
-		8145C460177A47DD00880294 /* FulfillmentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FulfillmentHelper.h; sourceTree = "<group>"; };
-		8145C461177A47DD00880294 /* FulfillmentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FulfillmentHelper.m; sourceTree = "<group>"; };
 		8146D167177274450035F589 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		8146D168177274450035F589 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		8146D16D17733B520035F589 /* BaseMerchantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMerchantViewController.h; sourceTree = "<group>"; };
@@ -660,8 +657,6 @@
 				81A869B4177633220043ACE8 /* MerchantSearchHelper.m */,
 				81A869BB177792CB0043ACE8 /* ActivityStreamHelper.h */,
 				81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */,
-				8145C460177A47DD00880294 /* FulfillmentHelper.h */,
-				8145C461177A47DD00880294 /* FulfillmentHelper.m */,
 				819FA951177B99DD006A819B /* IconHelper.h */,
 				819FA952177B99DD006A819B /* IconHelper.m */,
 			);
@@ -900,7 +895,6 @@
 				81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */,
 				81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */,
 				8145C45F177A1CE800880294 /* DealCell.m in Sources */,
-				8145C462177A47DD00880294 /* FulfillmentHelper.m in Sources */,
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
 				819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */,
