@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810BB73E1781F8C900C65540 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7381781F8C900C65540 /* Default-568h@2x.png */; };
+		810BB73F1781F8C900C65540 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7391781F8C900C65540 /* Default.png */; };
+		810BB7401781F8C900C65540 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB73A1781F8C900C65540 /* Default@2x.png */; };
+		810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */; };
+		810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB752178213E100C65540 /* HelpBuyDeals.png */; };
+		810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB753178213E100C65540 /* HelpBuyDeals@2x.png */; };
+		810BB75A17821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */; };
+		810BB75B17821C0700C65540 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */; };
+		810BB75C17821C0700C65540 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */; };
+		810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
+		810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
 		8121888B1780EBC300348899 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8121888A1780EBC300348899 /* talool-api-ios.bundle */; };
 		8145C45F177A1CE800880294 /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
@@ -72,9 +83,6 @@
 		9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
 		9168A4DB170496CC00E53EB1 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
-		9168A50A170B484400E53EB1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A507170B484300E53EB1 /* Default-568h@2x.png */; };
-		9168A50B170B484400E53EB1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A508170B484300E53EB1 /* Default.png */; };
-		9168A50C170B484400E53EB1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A509170B484400E53EB1 /* Default@2x.png */; };
 		9168A50E170B485600E53EB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A50D170B485500E53EB1 /* Icon.png */; };
 		916B1167175D69590024A037 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
 		916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */; };
@@ -149,6 +157,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		810BB7381781F8C900C65540 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		810BB7391781F8C900C65540 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		810BB73A1781F8C900C65540 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals-568h@2x.png"; sourceTree = "<group>"; };
+		810BB752178213E100C65540 /* HelpBuyDeals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDeals.png; sourceTree = "<group>"; };
+		810BB753178213E100C65540 /* HelpBuyDeals@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals@2x.png"; sourceTree = "<group>"; };
+		810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
+		810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDealsWithCode.png; sourceTree = "<group>"; };
+		810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
+		810BB75D1783295500C65540 /* KeyboardAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAccessoryView.h; sourceTree = "<group>"; };
+		810BB75E1783295500C65540 /* KeyboardAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAccessoryView.m; sourceTree = "<group>"; };
+		810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
 		8121888A1780EBC300348899 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
@@ -259,9 +279,6 @@
 		916148CE16ED1C04001C546C /* CustomerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerHelper.m; sourceTree = "<group>"; };
 		9168A4D9170496CC00E53EB1 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
-		9168A507170B484300E53EB1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		9168A508170B484300E53EB1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		9168A509170B484400E53EB1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		9168A50D170B485500E53EB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		916B1166175D69590024A037 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
@@ -346,6 +363,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		810BB7441781FFCF00C65540 /* Help Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Help Controllers";
+			sourceTree = "<group>";
+		};
 		8146D18217749F440035F589 /* Merchant Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,9 +514,15 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9168A507170B484300E53EB1 /* Default-568h@2x.png */,
-				9168A508170B484300E53EB1 /* Default.png */,
-				9168A509170B484400E53EB1 /* Default@2x.png */,
+				810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */,
+				810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */,
+				810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */,
+				810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */,
+				810BB752178213E100C65540 /* HelpBuyDeals.png */,
+				810BB753178213E100C65540 /* HelpBuyDeals@2x.png */,
+				810BB7381781F8C900C65540 /* Default-568h@2x.png */,
+				810BB7391781F8C900C65540 /* Default.png */,
+				810BB73A1781F8C900C65540 /* Default@2x.png */,
 				9168A50D170B485500E53EB1 /* Icon.png */,
 				9103111416D1E53800CEE814 /* Talool-Info.plist */,
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
@@ -557,6 +587,7 @@
 			children = (
 				91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */,
 				91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */,
+				810BB7441781FFCF00C65540 /* Help Controllers */,
 				8146D1831774A00A0035F589 /* Navigation Controllers */,
 				8146D18217749F440035F589 /* Merchant Detail */,
 				8146D1841774A0480035F589 /* Action Views */,
@@ -600,6 +631,9 @@
 				81A869B61777822E0043ACE8 /* ActivityFilterView.h */,
 				81A869B71777822E0043ACE8 /* ActivityFilterView.m */,
 				81A869B91777824B0043ACE8 /* ActivityFilterView.xib */,
+				810BB75D1783295500C65540 /* KeyboardAccessoryView.h */,
+				810BB75E1783295500C65540 /* KeyboardAccessoryView.m */,
+				810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -761,9 +795,6 @@
 			files = (
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
-				9168A50A170B484400E53EB1 /* Default-568h@2x.png in Resources */,
-				9168A50B170B484400E53EB1 /* Default.png in Resources */,
-				9168A50C170B484400E53EB1 /* Default@2x.png in Resources */,
 				9168A50E170B485600E53EB1 /* Icon.png in Resources */,
 				9197F985170D24CB00BDAA58 /* Icon_brown.png in Resources */,
 				9197F986170D24CB00BDAA58 /* Icon_green.png in Resources */,
@@ -780,6 +811,16 @@
 				81A869B217750BA30043ACE8 /* MerchantSearchView.xib in Resources */,
 				81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */,
 				8121888B1780EBC300348899 /* talool-api-ios.bundle in Resources */,
+				810BB73E1781F8C900C65540 /* Default-568h@2x.png in Resources */,
+				810BB73F1781F8C900C65540 /* Default.png in Resources */,
+				810BB7401781F8C900C65540 /* Default@2x.png in Resources */,
+				810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */,
+				810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */,
+				810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */,
+				810BB75A17821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
+				810BB75B17821C0700C65540 /* HelpBuyDealsWithCode.png in Resources */,
+				810BB75C17821C0700C65540 /* HelpBuyDealsWithCode@2x.png in Resources */,
+				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,6 +904,7 @@
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
 				819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */,
+				810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

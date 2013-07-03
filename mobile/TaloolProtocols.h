@@ -26,6 +26,13 @@
 - (void)dealActionCanceled:(id)sender;
 @end
 
+@protocol TaloolKeyboardAccessoryDelegate<NSObject>
+- (void)submit:(id)sender;
+- (void)next:(id)sender;
+- (void)previous:(id)sender;
+- (void)cancel:(id)sender;
+@end
+
 @protocol MerchantFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
 - (void)proximityChanged:(float)valueInMiles sender:(id)sender;

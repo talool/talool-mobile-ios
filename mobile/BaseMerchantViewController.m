@@ -127,6 +127,14 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView.contentOffset.y < -60 && ![self.refreshControl isRefreshing]) {
+        [self.refreshControl beginRefreshing];
+        [self refreshMerchants];
+    }
+}
+
 #pragma mark -
 #pragma mark - MerchantSearchDelegate methods
 

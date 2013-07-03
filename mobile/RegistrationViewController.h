@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttCustomer.h"
+#import "TaloolProtocols.h"
 
 @class TaloolUIButton;
 
-@interface RegistrationViewController : UIViewController {
+@interface RegistrationViewController : UIViewController<TaloolKeyboardAccessoryDelegate> {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *firstNameField;
     IBOutlet UITextField *lastNameField;
     IBOutlet TaloolUIButton *regButton;
+    IBOutlet UIImageView *texture;
+    IBOutlet UIScrollView *scroller;
     UIAlertView *errorView;
     
     IBOutlet UIActivityIndicatorView *spinner;
