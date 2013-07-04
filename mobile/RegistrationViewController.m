@@ -12,7 +12,6 @@
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "TaloolColor.h"
-#import "TaloolUIButton.h"
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
 
@@ -28,10 +27,6 @@
 {
     [super viewDidLoad];
 
-    [regButton useTaloolStyle];
-    [regButton setBaseColor:[TaloolColor teal]];
-    [regButton setTitle:@"Register" forState:UIControlStateNormal];
-    
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self];
     [emailField setInputAccessoryView:kav];
     [passwordField setInputAccessoryView:kav];

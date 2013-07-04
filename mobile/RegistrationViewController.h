@@ -16,7 +16,6 @@
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *firstNameField;
     IBOutlet UITextField *lastNameField;
-    IBOutlet TaloolUIButton *regButton;
     IBOutlet UIImageView *texture;
     IBOutlet UIScrollView *scroller;
     UIAlertView *errorView;
@@ -25,8 +24,6 @@
 }
 
 @property (nonatomic, retain) UIAlertView *errorView;
-
-- (IBAction) onRegistration:(id) sender;
 
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
