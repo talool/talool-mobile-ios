@@ -233,7 +233,7 @@
                                  y:(self.bounds.size.height - [self halfCornerRadius] + buttonMargin)];
 	CGPathAddCurveToPoint(path, NULL, controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, point.x, point.y);
     //
-    [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.6] setStroke];
+    [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3] setStroke];
 	CGContextSetLineWidth(context, stroke);
 	CGContextSetLineCap(context, kCGLineCapSquare);
 	CGContextAddPath(context, path);
