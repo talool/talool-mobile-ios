@@ -42,7 +42,7 @@
     [super viewWillAppear:animated];
     
     [self.giftImage setImageWithURL:[NSURL URLWithString:gift.deal.imageUrl]
-                       placeholderImage:[UIImage imageNamed:@"Default.png"]
+                       placeholderImage:[UIImage imageNamed:@"000.png"]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                   if (error !=  nil) {
                                       // TODO track these errors

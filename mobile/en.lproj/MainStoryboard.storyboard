@@ -269,9 +269,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ykx-Xo-IbM">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="368" id="cv5-th-LGq"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="RewardCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RewardCell" rowHeight="60" id="l4B-DC-U22" customClass="DealAcquireCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
@@ -337,8 +334,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ykx-Xo-IbM" firstAttribute="bottom" secondItem="rkb-uh-Jlx" secondAttribute="bottom" type="default" id="9ap-8W-C7o"/>
+                            <constraint firstItem="ykx-Xo-IbM" firstAttribute="bottom" secondItem="rkb-uh-Jlx" secondAttribute="bottom" type="user" id="9ap-8W-C7o"/>
                             <constraint firstItem="ykx-Xo-IbM" firstAttribute="trailing" secondItem="rkb-uh-Jlx" secondAttribute="trailing" type="default" id="QKt-k4-MYs"/>
+                            <constraint firstItem="ykx-Xo-IbM" firstAttribute="top" secondItem="rkb-uh-Jlx" secondAttribute="top" constant="92" type="user" id="QNB-Nu-fAf"/>
                             <constraint firstItem="ykx-Xo-IbM" firstAttribute="leading" secondItem="rkb-uh-Jlx" secondAttribute="leading" type="default" id="ah9-oU-oyp"/>
                         </constraints>
                     </view>
@@ -364,9 +362,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Wy-Fb-2ke">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="368" id="sMM-pv-zpu"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="qid-w6-WlB" customClass="ActivityCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="90"/>
@@ -559,9 +554,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="2Wy-Fb-2ke" firstAttribute="top" secondItem="fHz-UT-f2Z" secondAttribute="top" constant="92" type="user" id="AvL-hP-VrV"/>
                             <constraint firstItem="2Wy-Fb-2ke" firstAttribute="leading" secondItem="fHz-UT-f2Z" secondAttribute="leading" type="default" id="KkI-hl-7pA"/>
                             <constraint firstItem="2Wy-Fb-2ke" firstAttribute="trailing" secondItem="fHz-UT-f2Z" secondAttribute="trailing" type="default" id="sx6-Fc-K8X"/>
-                            <constraint firstItem="2Wy-Fb-2ke" firstAttribute="bottom" secondItem="fHz-UT-f2Z" secondAttribute="bottom" type="default" id="wy0-N6-k91"/>
+                            <constraint firstItem="2Wy-Fb-2ke" firstAttribute="bottom" secondItem="fHz-UT-f2Z" secondAttribute="bottom" type="user" id="wy0-N6-k91"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" id="QxX-Ub-2tA"/>
@@ -586,9 +582,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="odJ-2k-R6a">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="368" id="wPT-N2-Wmn"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" rowHeight="60" id="r6m-Iv-lp5" customClass="FavoriteMerchantCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
@@ -657,9 +650,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="odJ-2k-R6a" firstAttribute="bottom" secondItem="ikt-Oh-LV4" secondAttribute="bottom" type="default" id="OpK-zi-dNw"/>
+                            <constraint firstItem="odJ-2k-R6a" firstAttribute="bottom" secondItem="ikt-Oh-LV4" secondAttribute="bottom" type="user" id="OpK-zi-dNw"/>
                             <constraint firstItem="odJ-2k-R6a" firstAttribute="leading" secondItem="ikt-Oh-LV4" secondAttribute="leading" type="default" id="Qh3-bU-brj"/>
                             <constraint firstItem="odJ-2k-R6a" firstAttribute="trailing" secondItem="ikt-Oh-LV4" secondAttribute="trailing" type="default" id="wUV-1h-EJ4"/>
+                            <constraint firstItem="odJ-2k-R6a" firstAttribute="top" secondItem="ikt-Oh-LV4" secondAttribute="top" constant="92" type="user" id="xUB-RY-Lcf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Find Deals" id="a6g-mT-sVS"/>
@@ -1668,9 +1662,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="BQI-ew-5bJ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="319" id="Isx-yQ-8Jb"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="DealOfferCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="4" reuseIdentifier="DealOfferCell" rowHeight="60" id="V39-hj-kVl" customClass="DealOfferCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
@@ -1739,7 +1730,8 @@
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BQI-ew-5bJ" firstAttribute="leading" secondItem="cPY-fB-LaV" secondAttribute="leading" type="default" id="2hb-gg-Mic"/>
-                            <constraint firstItem="BQI-ew-5bJ" firstAttribute="bottom" secondItem="cPY-fB-LaV" secondAttribute="bottom" type="default" id="cIE-Yu-dBg"/>
+                            <constraint firstItem="BQI-ew-5bJ" firstAttribute="top" secondItem="cPY-fB-LaV" secondAttribute="top" constant="92" type="user" id="P2n-qF-nte"/>
+                            <constraint firstItem="BQI-ew-5bJ" firstAttribute="bottom" secondItem="cPY-fB-LaV" secondAttribute="bottom" type="user" id="cIE-Yu-dBg"/>
                             <constraint firstItem="BQI-ew-5bJ" firstAttribute="trailing" secondItem="cPY-fB-LaV" secondAttribute="trailing" type="default" id="lBo-e5-6vv"/>
                         </constraints>
                     </view>
@@ -1766,9 +1758,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="54U-v7-1LU">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="368" id="cWL-DD-aAZ"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MerchantCell" rowHeight="60" id="bZ1-yj-4ib" customClass="FavoriteMerchantCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="60"/>
@@ -1837,9 +1826,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="54U-v7-1LU" firstAttribute="top" secondItem="wy8-Ly-5C1" secondAttribute="top" constant="92" type="user" id="SkX-CY-Ve9"/>
                             <constraint firstItem="54U-v7-1LU" firstAttribute="trailing" secondItem="wy8-Ly-5C1" secondAttribute="trailing" type="default" id="pf5-CM-Icy"/>
                             <constraint firstItem="54U-v7-1LU" firstAttribute="leading" secondItem="wy8-Ly-5C1" secondAttribute="leading" type="default" id="sBf-jh-dFh"/>
-                            <constraint firstItem="54U-v7-1LU" firstAttribute="bottom" secondItem="wy8-Ly-5C1" secondAttribute="bottom" type="default" id="xdE-b0-I9u"/>
+                            <constraint firstItem="54U-v7-1LU" firstAttribute="bottom" secondItem="wy8-Ly-5C1" secondAttribute="bottom" type="user" id="xdE-b0-I9u"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Deals" id="us5-2P-3Wi"/>
@@ -1858,7 +1848,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Default-568h@2x.png" width="640" height="1136"/>
         <image name="Icon_teal.png" width="57" height="57"/>
         <image name="page-curl.png" width="58" height="100"/>
     </resources>
@@ -1921,6 +1910,14 @@
                 <relationship kind="outlet" name="redeemButton" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>
+        <class className="DealCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="merchantLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="summaryLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="DealOfferCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DealOfferCell.h"/>
             <relationships>
@@ -1939,11 +1936,7 @@
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="savingsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="view1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="view2" candidateClass="UIView"/>
-                <relationship kind="outlet" name="view3" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="DealViewController" superclassName="UIViewController">
@@ -2079,8 +2072,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="du6-n3-mQW"/>
-        <segue reference="W9i-zs-IW2"/>
+        <segue reference="sEH-Qv-RUj"/>
         <segue reference="6GU-YU-bA8"/>
+        <segue reference="q3T-VT-ua5"/>
     </inferredMetricsTieBreakers>
 </document>
