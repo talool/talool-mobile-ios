@@ -42,7 +42,6 @@
 		81937B26176A6D70002DDCA8 /* DealActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B25176A6D70002DDCA8 /* DealActionViewController.m */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		81937B32176F7B7B002DDCA8 /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B31176F7B7B002DDCA8 /* DealOfferCell.m */; };
-		81937B35176FB51B002DDCA8 /* DealOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B34176FB51A002DDCA8 /* DealOfferViewController.m */; };
 		819FA953177B99DE006A819B /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
 		819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA955177BA2CE006A819B /* ActivityFilterControl.m */; };
 		819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
@@ -219,8 +218,6 @@
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
 		81937B30176F7B7B002DDCA8 /* DealOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferCell.h; sourceTree = "<group>"; };
 		81937B31176F7B7B002DDCA8 /* DealOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferCell.m; sourceTree = "<group>"; };
-		81937B33176FB51A002DDCA8 /* DealOfferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferViewController.h; sourceTree = "<group>"; };
-		81937B34176FB51A002DDCA8 /* DealOfferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferViewController.m; sourceTree = "<group>"; };
 		819FA951177B99DD006A819B /* IconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconHelper.h; sourceTree = "<group>"; };
 		819FA952177B99DD006A819B /* IconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconHelper.m; sourceTree = "<group>"; };
 		819FA954177BA2CE006A819B /* ActivityFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterControl.h; sourceTree = "<group>"; };
@@ -427,8 +424,6 @@
 				81937B22176A4A1A002DDCA8 /* DealViewController.m */,
 				81937B24176A6D6F002DDCA8 /* DealActionViewController.h */,
 				81937B25176A6D70002DDCA8 /* DealActionViewController.m */,
-				81937B33176FB51A002DDCA8 /* DealOfferViewController.h */,
-				81937B34176FB51A002DDCA8 /* DealOfferViewController.m */,
 				81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */,
 				81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */,
 			);
@@ -913,7 +908,6 @@
 				81937B26176A6D70002DDCA8 /* DealActionViewController.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
 				81937B32176F7B7B002DDCA8 /* DealOfferCell.m in Sources */,
-				81937B35176FB51B002DDCA8 /* DealOfferViewController.m in Sources */,
 				817E537F1770A90A0049434A /* NSData+Base64.m in Sources */,
 				817E53801770A90A0049434A /* VerificationController.m in Sources */,
 				817E53811770A9150049434A /* IAPHelper.m in Sources */,
