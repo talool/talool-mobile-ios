@@ -52,6 +52,8 @@
 		81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B71777822E0043ACE8 /* ActivityFilterView.m */; };
 		81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B91777824B0043ACE8 /* ActivityFilterView.xib */; };
 		81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */; };
+		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
+		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
@@ -82,7 +84,6 @@
 		9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
 		9168A4DB170496CC00E53EB1 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
-		9168A50E170B485600E53EB1 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9168A50D170B485500E53EB1 /* Icon.png */; };
 		916B1167175D69590024A037 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
 		916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */; };
 		916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */; };
@@ -229,6 +230,8 @@
 		81A869B91777824B0043ACE8 /* ActivityFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFilterView.xib; sourceTree = "<group>"; };
 		81A869BB177792CB0043ACE8 /* ActivityStreamHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityStreamHelper.h; sourceTree = "<group>"; };
 		81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityStreamHelper.m; sourceTree = "<group>"; };
+		81BD120E1784BA8B00AF7475 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -276,7 +279,6 @@
 		916148CE16ED1C04001C546C /* CustomerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerHelper.m; sourceTree = "<group>"; };
 		9168A4D9170496CC00E53EB1 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
-		9168A50D170B485500E53EB1 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		916B1166175D69590024A037 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
@@ -520,7 +522,8 @@
 				810BB7381781F8C900C65540 /* Default-568h@2x.png */,
 				810BB7391781F8C900C65540 /* Default.png */,
 				810BB73A1781F8C900C65540 /* Default@2x.png */,
-				9168A50D170B485500E53EB1 /* Icon.png */,
+				81BD120E1784BA8B00AF7475 /* Icon.png */,
+				81BD120F1784BA8B00AF7475 /* Icon@2x.png */,
 				9103111416D1E53800CEE814 /* Talool-Info.plist */,
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
 				9103111816D1E53800CEE814 /* main.m */,
@@ -790,7 +793,6 @@
 			files = (
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
-				9168A50E170B485600E53EB1 /* Icon.png in Resources */,
 				9197F985170D24CB00BDAA58 /* Icon_brown.png in Resources */,
 				9197F986170D24CB00BDAA58 /* Icon_green.png in Resources */,
 				9197F987170D24CB00BDAA58 /* Icon_orange.png in Resources */,
@@ -816,6 +818,8 @@
 				810BB75B17821C0700C65540 /* HelpBuyDealsWithCode.png in Resources */,
 				810BB75C17821C0700C65540 /* HelpBuyDealsWithCode@2x.png in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
+				81BD12101784BA8B00AF7475 /* Icon.png in Resources */,
+				81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
