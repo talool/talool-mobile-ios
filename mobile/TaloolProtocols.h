@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@class ttDealAcquire;
+@class ttDealAcquire, ttDealOffer;
 
 @protocol TaloolAuthenticationDelegate<NSObject>
 - (void)customerLoggedIn:(id)sender;
@@ -56,6 +56,10 @@
 @protocol ActivityStreamDelegate <NSObject>
 - (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender;
 - (void)giftSetChanged:(NSArray *)gifts sender:(id)sender;
+@end
+
+@protocol DealOfferPurchaseDelegate <NSObject>
+- (void)buyNow:(ttDealOffer *)offer sender:(id)sender;
 @end
 
 @protocol OGDeal<FBGraphObject>
