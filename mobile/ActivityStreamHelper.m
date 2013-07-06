@@ -91,19 +91,23 @@
     [delegate activitySetChanged:activities sender:self];
     
     // preload any gifts too
-    NSMutableArray *gifts = [[NSMutableArray alloc] init];
+    int openActivities = 0;
     for (int i=0; i<[activities count]; i++)
     {
         ttActivity *act = [activities objectAtIndex:i];
-        if ([act isFacebookReceiveGiftEvent] || [act isEmailReceiveGiftEvent])
+        if ([act isWelcomeEvent] ||
+            [act isTaloolReachEvent] ||
+            [act isMerchantReachEvent] ||
+            [act isFacebookReceiveGiftEvent] ||
+            [act isEmailReceiveGiftEvent])
         {
             if (![act isClosed])
             {
-                [gifts addObject:act];
+                openActivities++;
             }
         }
     }
-    [delegate giftSetChanged:gifts sender:self];
+    [delegate openActivityCountChanged:openActivities sender:self];
 }
 
 

@@ -14,6 +14,7 @@
 #import "DealCell.h"
 #import "OfferSummaryCell.h"
 #import "OfferMapCell.h"
+#import "AccessCodeCell.h"
 #import "TaloolIAPHelper.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttCustomer.h"
@@ -37,11 +38,16 @@
     _priceFormatter = [[NSNumberFormatter alloc] init];
     [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    
+    if (!offer)
+    {
+        // TODO: get the closest deal offer
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        NSError *err = nil;
+        NSArray *dealOffers = [ttDealOffer getDealOffers:customer context:[CustomerHelper getContext] error:&err];
+        offer = [dealOffers objectAtIndex:0];
+    }
+    
     self.navigationItem.title = offer.title;
     
     NSError *error;
@@ -55,15 +61,19 @@
     // Create the detail view that will be used for the first section header
     CGRect frame = self.view.bounds;
     detailView = [[OfferDetailView alloc]
-                        initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
-                        offer:offer];
+                  initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
+                  offer:offer];
     
     // Create the action view that will be used for the second section header
     actionView = [[OfferActionView alloc]
                   initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
                   offer:offer];
     [actionView setDelegate:self];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
 }
 
@@ -90,7 +100,7 @@
 {
     if (section == 0)
     {
-        return 2;
+        return 3;
     }
     else
     {
@@ -109,6 +119,14 @@
         
             cell.summary.text = offer.summary;
         
+            return cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            NSString *CellIdentifier = @"AccessCodeCell";
+            AccessCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            //[cell setOffer:offer];
+            
             return cell;
         }
         else
@@ -143,6 +161,10 @@
             UIFont *font = [UIFont fontWithName:@"Verdana" size:14];
             CGSize size = [offer.summary sizeWithFont:font constrainedToSize:CGSizeMake(280, 800) lineBreakMode:NSLineBreakByWordWrapping];
             return (size.height + 40);
+        }
+        else if (indexPath.row == 1)
+        {
+            return 150.0;
         }
         else
         {

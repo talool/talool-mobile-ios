@@ -123,6 +123,15 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+    if ([activity isWelcomeEvent] || [activity isTaloolReachEvent] || [activity isMerchantReachEvent])
+    {
+        [activity actionTaken:[CustomerHelper getLoggedInUser]];
+    }
+}
+
 #pragma mark -
 #pragma mark - Refresh Control
 
@@ -155,12 +164,12 @@
     [self.tableView reloadData];
 }
 
-- (void) giftSetChanged:(NSArray *)gifts sender:(id)sender
+- (void)openActivityCountChanged:(int)count sender:(id)sender
 {
     NSString *badge;
-    if ([gifts count] > 0)
+    if (count > 0)
     {
-        badge = [NSString stringWithFormat:@"%d",[gifts count]];
+        badge = [NSString stringWithFormat:@"%d",count];
     }
     [[self navigationController] tabBarItem].badgeValue = badge;
 }

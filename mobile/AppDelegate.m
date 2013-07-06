@@ -61,7 +61,7 @@
     
     // Add the view controller for Find Deals
     navController = [[UINavigationController alloc]
-                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"FindDeals"]];
+                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"FindDeals1"]];
     navController.delegate = self;
     [navController.navigationBar setTintColor:[TaloolColor teal]];
     [navController.navigationBar setBarStyle:UIBarStyleBlack];
@@ -275,12 +275,12 @@
 {
     
 }
-- (void)giftSetChanged:(NSArray *)gifts sender:(id)sender
+- (void)openActivityCountChanged:(int)count sender:(id)sender
 {
     NSString *badge;
-    if ([gifts count] > 0)
+    if (count > 0)
     {
-        badge = [NSString stringWithFormat:@"%d",[gifts count]];
+        badge = [NSString stringWithFormat:@"%d",count];
     }
     [[self.activiyViewController navigationController] tabBarItem].badgeValue = badge;
 }

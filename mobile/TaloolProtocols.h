@@ -55,7 +55,7 @@
 
 @protocol ActivityStreamDelegate <NSObject>
 - (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender;
-- (void)giftSetChanged:(NSArray *)gifts sender:(id)sender;
+- (void)openActivityCountChanged:(int)count sender:(id)sender;
 @end
 
 @protocol DealOfferPurchaseDelegate <NSObject>

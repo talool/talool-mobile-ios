@@ -68,25 +68,7 @@
         merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
     }
     
-    // if merchants are still 0, we should show the user some help
-    if ([merchants count]==0)
-    {
-        helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
-        [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:helpButton];
-    }
-    else
-    {
-        // check if there are deals
-        if (![[CustomerHelper getLoggedInUser] hasDeals:[CustomerHelper getContext]])
-        {
-            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDeals.png"] forState:UIControlStateNormal];
-            [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:helpButton];
-        }
-    }
+    [self askForHelp];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -119,6 +101,33 @@
         WelcomeViewController *wvc = [segue destinationViewController];
         [wvc registerAuthDelegate:self];
         [wvc setHidesBottomBarWhenPushed:YES];
+    }
+}
+
+
+#pragma mark -
+#pragma mark - Help Overlay Methods
+
+- (void) askForHelp
+{
+    // if merchants are still 0, we should show the user some help
+    if ([merchants count]==0)
+    {
+        helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
+        [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:helpButton];
+    }
+    else
+    {
+        // check if there are deals
+        if (![[CustomerHelper getLoggedInUser] hasDeals:[CustomerHelper getContext]])
+        {
+            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDeals.png"] forState:UIControlStateNormal];
+            [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:helpButton];
+        }
     }
 }
 
