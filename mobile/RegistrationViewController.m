@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
 
-    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self];
+    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Register"];
     [emailField setInputAccessoryView:kav];
     [passwordField setInputAccessoryView:kav];
     [firstNameField setInputAccessoryView:kav];
@@ -49,11 +49,6 @@
 
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
-}
-
-- (IBAction) onRegistration:(id) sender
-{
-    [self submit:self];
 }
 
 #pragma mark -

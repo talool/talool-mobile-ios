@@ -116,8 +116,7 @@
         {
             NSString *CellIdentifier = @"AccessCodeCell";
             AccessCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell.loadDealsButton useTaloolStyle];
-            [cell.loadDealsButton setBaseColor:[TaloolColor gray_3]];
+            [cell setupKeyboardAccessory];
             
             return cell;
         }
@@ -236,7 +235,6 @@
                                               otherButtonTitles:nil];
     [errorView show];
 }
-
 
 
 @end

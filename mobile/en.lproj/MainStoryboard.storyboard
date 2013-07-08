@@ -1823,46 +1823,24 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="access code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XGB-IJ-HFj">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="38" type="user" id="00x-73-jKm"/>
+                                                <constraint firstAttribute="width" constant="143" id="0GQ-ID-RrF"/>
                                             </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-Kx-aYa" customClass="TaloolUIButton">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="129" id="Siw-Uo-si6"/>
-                                                <constraint firstAttribute="height" constant="38" type="user" id="dx8-lz-DBA"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Load Deals">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="submitCode:" destination="crq-kV-FoY" eventType="touchUpInside" id="YEa-c3-IRI"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="20" type="default" id="CjL-fh-3Fb"/>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="top" secondItem="CyJ-Kx-aYa" secondAttribute="top" type="user" id="Dy8-f1-h7u"/>
+                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="centerX" secondItem="oMa-a5-IsU" secondAttribute="centerX" type="default" id="56P-bD-fOD"/>
+                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="centerX" secondItem="crq-kV-FoY" secondAttribute="centerX" type="default" id="Gem-ub-V67"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="20" type="default" id="KGn-Hb-rP4"/>
-                                    <constraint firstAttribute="trailing" secondItem="oMa-a5-IsU" secondAttribute="trailing" constant="20" type="default" id="PBE-mF-bUq"/>
-                                    <constraint firstItem="CyJ-Kx-aYa" firstAttribute="leading" secondItem="XGB-IJ-HFj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="PgC-Dy-ykD"/>
-                                    <constraint firstItem="CyJ-Kx-aYa" firstAttribute="baseline" secondItem="XGB-IJ-HFj" secondAttribute="baseline" type="default" id="adz-yu-yCL"/>
                                     <constraint firstAttribute="bottom" secondItem="XGB-IJ-HFj" secondAttribute="bottom" constant="16" id="hOB-Hw-dFm"/>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="bottom" secondItem="CyJ-Kx-aYa" secondAttribute="bottom" type="user" id="iI4-1R-Nsj"/>
-                                    <constraint firstAttribute="trailing" secondItem="CyJ-Kx-aYa" secondAttribute="trailing" constant="20" type="default" id="rIT-dL-kMS"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="top" secondItem="crq-kV-FoY" secondAttribute="top" constant="11" id="tPF-Yh-121"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="accessCodeFld" destination="XGB-IJ-HFj" id="qDq-Kl-qqi"/>
-                                    <outlet property="loadDealsButton" destination="CyJ-Kx-aYa" id="b7f-Io-xi5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1898,9 +1876,7 @@
         <class className="AccessCodeCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccessCodeCell.h"/>
             <relationships>
-                <relationship kind="action" name="submitCode:"/>
                 <relationship kind="outlet" name="accessCodeFld" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loadDealsButton" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>
         <class className="ActivityCell" superclassName="UITableViewCell">

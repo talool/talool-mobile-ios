@@ -15,6 +15,7 @@
 {
     IBOutlet UIView *view;
     IBOutlet UIBarButtonItem *closeButton;
+    IBOutlet UIBarButtonItem *submitButton;
 }
 
 - (IBAction) submit:(id)sender;
@@ -22,7 +23,7 @@
 - (IBAction) next:(id)sender;
 - (IBAction) previous:(id)sender;
 
-- (id)initWithFrame:(CGRect)frame keyboardDelegate:(id<TaloolKeyboardAccessoryDelegate>)keyboardDelegate;
+- (id)initWithFrame:(CGRect)frame keyboardDelegate:(id<TaloolKeyboardAccessoryDelegate>)keyboardDelegate submitLabel:(NSString *)label;
 
 @property (strong, nonatomic) id<TaloolKeyboardAccessoryDelegate>keyboardAccessoryDelegate;
 

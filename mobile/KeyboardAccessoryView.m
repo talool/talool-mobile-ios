@@ -14,7 +14,7 @@
 
 @synthesize keyboardAccessoryDelegate;
 
-- (id)initWithFrame:(CGRect)frame keyboardDelegate:(id<TaloolKeyboardAccessoryDelegate>)keyboardDelegate
+- (id)initWithFrame:(CGRect)frame keyboardDelegate:(id<TaloolKeyboardAccessoryDelegate>)keyboardDelegate submitLabel:(NSString *)label
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -26,6 +26,8 @@
         [closeButton setTitle:FAKIconCircleArrowDown];
         [closeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                                    forState:UIControlStateNormal];
+        
+        [submitButton setTitle:label];
         
         [self setKeyboardAccessoryDelegate:keyboardDelegate];
         

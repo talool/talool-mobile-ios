@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
 @class TaloolUIButton;
 
-@interface AccessCodeCell : UITableViewCell
+@interface AccessCodeCell : UITableViewCell<TaloolKeyboardAccessoryDelegate>
 
-- (IBAction)submitCode:(id)sender;
-
-@property (strong, nonatomic) IBOutlet TaloolUIButton *loadDealsButton;
 @property (strong, nonatomic) IBOutlet UITextField *accessCodeFld;
+
+- (void) setupKeyboardAccessory;
 
 @end
