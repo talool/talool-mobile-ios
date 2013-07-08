@@ -1724,7 +1724,7 @@
                                     <outlet property="summary" destination="74R-ou-vIc" id="kDH-7s-pQ8"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MapCell" rowHeight="90" id="OUD-rY-SZN" customClass="OfferMapCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MapCell" rowHeight="90" id="OUD-rY-SZN" customClass="OfferMapCell">
                                 <rect key="frame" x="0.0" y="82" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1808,7 +1808,7 @@
                                     <outlet property="summaryLabel" destination="G7d-Jj-xE6" id="t7G-EZ-rZF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="AccessCodeCell" rowHeight="150" id="crq-kV-FoY" customClass="AccessCodeCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AccessCodeCell" rowHeight="150" id="crq-kV-FoY" customClass="AccessCodeCell">
                                 <rect key="frame" x="0.0" y="232" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1828,7 +1828,7 @@
                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-Kx-aYa">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyJ-Kx-aYa" customClass="TaloolUIButton">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="129" id="Siw-Uo-si6"/>
                                                 <constraint firstAttribute="height" constant="38" type="user" id="dx8-lz-DBA"/>
@@ -1842,7 +1842,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="submitCode:" destination="crq-kV-FoY" eventType="touchUpInside" id="X4r-6M-0oB"/>
+                                                <action selector="submitCode:" destination="crq-kV-FoY" eventType="touchUpInside" id="YEa-c3-IRI"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1900,7 +1900,7 @@
             <relationships>
                 <relationship kind="action" name="submitCode:"/>
                 <relationship kind="outlet" name="accessCodeFld" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="loadDealsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loadDealsButton" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>
         <class className="ActivityCell" superclassName="UITableViewCell">

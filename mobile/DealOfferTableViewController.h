@@ -12,13 +12,14 @@
 #define HEADER_HEIGHT 70.0f
 
 
-@class OfferDetailView, OfferActionView, ttDealOffer;
+@class OfferDetailView, OfferActionView, ttDealOffer, SKProduct;
 
 @interface DealOfferTableViewController : UITableViewController<DealOfferPurchaseDelegate>
 
 @property (strong, nonatomic) OfferDetailView *detailView;
 @property (strong, nonatomic) OfferActionView *actionView;
 @property (retain, nonatomic) ttDealOffer *offer;
+@property (retain, nonatomic) SKProduct *product;
 @property (retain, nonatomic) NSArray *deals;
 
 @end

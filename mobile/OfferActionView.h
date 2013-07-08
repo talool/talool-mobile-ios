@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton, ttDealOffer;
+@class TaloolUIButton, SKProduct;
 
 @interface OfferActionView : UIView
 {
@@ -17,10 +17,10 @@
 }
 @property (strong, nonatomic) IBOutlet TaloolUIButton *buyButton;
 @property id<DealOfferPurchaseDelegate> delegate;
-@property (strong, nonatomic) ttDealOffer *offer;
+@property (strong, nonatomic) SKProduct *product;
 
 - (IBAction)buyAction:(id)sender;
 
-- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)offer;
+- (id)initWithFrame:(CGRect)frame product:(SKProduct *)product;
 
 @end

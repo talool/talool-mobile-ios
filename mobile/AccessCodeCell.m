@@ -7,14 +7,18 @@
 //
 
 #import "AccessCodeCell.h"
+#import "TaloolUIButton.h"
+#import "TaloolColor.h"
 
 @implementation AccessCodeCell
+
+@synthesize loadDealsButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        
     }
     return self;
 }
@@ -27,7 +31,7 @@
 }
 
 - (IBAction)submitCode:(id)sender {
-    
+    NSLog(@"submit my access code");
 }
 
 @end

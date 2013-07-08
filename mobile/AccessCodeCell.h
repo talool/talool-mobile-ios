@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class TaloolUIButton;
+
 @interface AccessCodeCell : UITableViewCell
 
 - (IBAction)submitCode:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIButton *loadDealsButton;
+@property (strong, nonatomic) IBOutlet TaloolUIButton *loadDealsButton;
 @property (strong, nonatomic) IBOutlet UITextField *accessCodeFld;
 
 @end

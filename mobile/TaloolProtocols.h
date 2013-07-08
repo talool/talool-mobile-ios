@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <StoreKit/StoreKit.h>
 
 @class ttDealAcquire, ttDealOffer;
 
@@ -59,7 +60,7 @@
 @end
 
 @protocol DealOfferPurchaseDelegate <NSObject>
-- (void)buyNow:(ttDealOffer *)offer sender:(id)sender;
+- (void)buyNow:(SKProduct *)product sender:(id)sender;
 @end
 
 @protocol OGDeal<FBGraphObject>

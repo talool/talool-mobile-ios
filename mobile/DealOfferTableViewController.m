@@ -16,37 +16,28 @@
 #import "OfferMapCell.h"
 #import "AccessCodeCell.h"
 #import "TaloolIAPHelper.h"
+#import "DealOfferHelper.h"
+#import "TaloolUIButton.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttDeal.h"
 
 @interface DealOfferTableViewController ()
-{
-    NSNumberFormatter * _priceFormatter;
-}
+
 @end
 
 @implementation DealOfferTableViewController
 
-@synthesize deals, offer, detailView, actionView;
+@synthesize deals, offer, detailView, actionView, product;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.view setBackgroundColor:[TaloolColor gray_1]];
-    
-    _priceFormatter = [[NSNumberFormatter alloc] init];
-    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    
-    if (!offer)
-    {
-        // TODO: get the closest deal offer
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        NSError *err = nil;
-        NSArray *dealOffers = [ttDealOffer getDealOffers:customer context:[CustomerHelper getContext] error:&err];
-        offer = [dealOffers objectAtIndex:0];
-    }
+
+    // NOTE: Temporary helper to get the right payback book
+    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
+    product = [[DealOfferHelper sharedInstance] getClosestProduct];
     
     self.navigationItem.title = offer.title;
     
@@ -67,7 +58,7 @@
     // Create the action view that will be used for the second section header
     actionView = [[OfferActionView alloc]
                   initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
-                  offer:offer];
+                  product:product];
     [actionView setDelegate:self];
 }
 
@@ -100,7 +91,7 @@
 {
     if (section == 0)
     {
-        return 3;
+        return 2; // change to 3 to include the map cell
     }
     else
     {
@@ -125,7 +116,8 @@
         {
             NSString *CellIdentifier = @"AccessCodeCell";
             AccessCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            //[cell setOffer:offer];
+            [cell.loadDealsButton useTaloolStyle];
+            [cell.loadDealsButton setBaseColor:[TaloolColor gray_3]];
             
             return cell;
         }
@@ -199,21 +191,9 @@
 #pragma mark -
 #pragma mark - DealOfferPurchaseDelegate methods
 
--(void) buyNow:(ttDealOffer *)dealOffer sender:(id)sender
+-(void) buyNow:(SKProduct *)prod sender:(id)sender
 {
-    if (offer.price.intValue > 0)
-    {
-        // TODO what if the user navigates away before the notification is received?  need to check notifications on the "my deals" screen.
-        // TODO consider persisting a "pending transaction" state so we can see if there is any fall off at this point.
-        NSString *productIdentifier = @"TODO"; // this should be on the Deal Offer
-        TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
-        SKProduct *product = [iapHelper getProductForIdentifier:productIdentifier];
-        [iapHelper buyProduct:product];
-    }
-    else
-    {
-        [self recordPurchase];
-    }
+    [[TaloolIAPHelper sharedInstance] buyProduct:prod];
 }
 
 - (void)productPurchased:(NSNotification *)notification {
@@ -225,8 +205,8 @@
      */
     NSString * productIdentifier = notification.object;
     TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
-    SKProduct *product = [iapHelper getProductForIdentifier:productIdentifier];
-    if ([product.productIdentifier isEqualToString:productIdentifier])
+    SKProduct *prod = [iapHelper getProductForIdentifier:productIdentifier];
+    if ([prod.productIdentifier isEqualToString:productIdentifier])
     {
         [self recordPurchase];
     }

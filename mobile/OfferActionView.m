@@ -9,23 +9,30 @@
 #import "OfferActionView.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import <StoreKit/StoreKit.h>
 
 @implementation OfferActionView
+{
+    NSNumberFormatter * _priceFormatter;
+}
 
-@synthesize delegate, offer;
+@synthesize delegate, product;
 
-- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer
+- (id)initWithFrame:(CGRect)frame product:(SKProduct *)skproduct
 {
     self = [super initWithFrame:frame];
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"OfferActionView" owner:self options:nil];
         
-        offer = dealOffer;
+        product = skproduct;
+        
+        _priceFormatter = [[NSNumberFormatter alloc] init];
+        [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        NSString *label = [NSString stringWithFormat:@"Buy Now For %@",[_priceFormatter stringFromNumber:product.price]];
         
         [self.buyButton useTaloolStyle];
-        [self.buyButton setBaseColor:[TaloolColor teal]];
-        NSString *label = [NSString stringWithFormat:@"Buy for $%@",offer.price];
+        [self.buyButton setBaseColor:[TaloolColor orange]];
         [self.buyButton setTitle:label forState:UIControlStateNormal];
         
         [self addSubview:view];
@@ -34,7 +41,7 @@
 }
 
 - (IBAction)buyAction:(id)sender {
-    [delegate buyNow:offer sender:self];
+    [delegate buyNow:product sender:self];
 }
 
 @end
