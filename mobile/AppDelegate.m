@@ -21,6 +21,7 @@
 #import "MyDealsViewController.h"
 #import "ActivityViewController.h"
 #import "ActivityStreamHelper.h"
+#import "DealOfferHelper.h"
 
 @implementation AppDelegate
 
@@ -81,6 +82,7 @@
     [self.window makeKeyAndVisible];
     
     [TaloolIAPHelper sharedInstance];
+    [DealOfferHelper sharedInstance];
     
     _activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
