@@ -17,11 +17,14 @@
 @property (strong, nonatomic) IBOutlet TaloolUIButton *buyButton;
 @property (strong, nonatomic) SKProduct *product;
 @property (strong, nonatomic) NSString *productId;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 - (IBAction)buyAction:(id)sender;
 
 - (id)initWithFrame:(CGRect)frame product:(SKProduct *)product;
 
 - (id)initWithFrame:(CGRect)frame productId:(NSString *)productId;
+
+- (void) stopSpinner;
 
 @end

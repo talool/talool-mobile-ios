@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton;
+@class TaloolUIButton, ttDealOffer;
 
 @interface AccessCodeCell : UITableViewCell<TaloolKeyboardAccessoryDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *accessCodeFld;
+@property (strong, nonatomic) ttDealOffer *offer;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-- (void) setupKeyboardAccessory;
+- (void) setupKeyboardAccessory:(ttDealOffer *)offer;
 
 @end

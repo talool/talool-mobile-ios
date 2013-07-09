@@ -52,6 +52,26 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productPurchased)
+                                                 name:IAPHelperProductPurchasedNotification
+                                               object:nil];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) productPurchased
+{
+    [actionView stopSpinner];
+}
+
 - (void) initTableView
 {
     self.navigationItem.title = offer.title;
@@ -121,7 +141,7 @@
         {
             NSString *CellIdentifier = @"AccessCodeCell";
             AccessCodeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell setupKeyboardAccessory];
+            [cell setupKeyboardAccessory:offer];
             
             return cell;
         }

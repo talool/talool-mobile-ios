@@ -1829,18 +1829,24 @@
                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-cy-5CE">
+                                            <color key="color" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="centerX" secondItem="oMa-a5-IsU" secondAttribute="centerX" type="default" id="56P-bD-fOD"/>
+                                    <constraint firstItem="PoI-cy-5CE" firstAttribute="centerX" secondItem="oMa-a5-IsU" secondAttribute="centerX" type="default" id="0BN-gG-SPd"/>
+                                    <constraint firstItem="PoI-cy-5CE" firstAttribute="centerX" secondItem="XGB-IJ-HFj" secondAttribute="centerX" type="default" id="Epb-LR-Pdk"/>
                                     <constraint firstItem="XGB-IJ-HFj" firstAttribute="centerX" secondItem="crq-kV-FoY" secondAttribute="centerX" type="default" id="Gem-ub-V67"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="20" type="default" id="KGn-Hb-rP4"/>
                                     <constraint firstAttribute="bottom" secondItem="XGB-IJ-HFj" secondAttribute="bottom" constant="16" id="hOB-Hw-dFm"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="top" secondItem="crq-kV-FoY" secondAttribute="top" constant="11" id="tPF-Yh-121"/>
+                                    <constraint firstItem="PoI-cy-5CE" firstAttribute="top" secondItem="crq-kV-FoY" secondAttribute="top" constant="56" id="ycA-Oz-K8O"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="accessCodeFld" destination="XGB-IJ-HFj" id="qDq-Kl-qqi"/>
+                                    <outlet property="spinner" destination="PoI-cy-5CE" id="zNg-Ax-2lf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1948,6 +1954,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccessCodeCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="accessCodeFld" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="ActivityCell" superclassName="UITableViewCell">

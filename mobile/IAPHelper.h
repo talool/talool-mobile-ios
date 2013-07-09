@@ -23,7 +23,6 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
 - (void)buyProduct:(SKProduct *)product;
-- (SKProduct *)getProductForPrice:(NSNumber *)price;
 - (SKProduct *)getProductForIdentifier:(NSString *)identifier;
 - (ttDealOffer *)getOfferForIdentifier:(NSString *)identifier;
 

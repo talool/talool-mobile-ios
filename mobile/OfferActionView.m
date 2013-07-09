@@ -17,7 +17,7 @@
     NSNumberFormatter * _priceFormatter;
 }
 
-@synthesize product;
+@synthesize product, spinner;
 
 - (id)initWithFrame:(CGRect)frame product:(SKProduct *)skproduct
 {
@@ -35,6 +35,8 @@
         [self.buyButton useTaloolStyle];
         [self.buyButton setBaseColor:[TaloolColor orange]];
         [self.buyButton setTitle:label forState:UIControlStateNormal];
+        
+        self.spinner.hidesWhenStopped = YES;
         
         [self addSubview:view];
     }
@@ -64,12 +66,19 @@
         [self.buyButton setBaseColor:[TaloolColor orange]];
         [self.buyButton setTitle:label forState:UIControlStateNormal];
         
+        self.spinner.hidesWhenStopped = YES;
+        
         [self addSubview:view];
     }
     return self;
 }
 
+- (void) threadStartSpinner:(id)data {
+    [spinner startAnimating];
+}
+
 - (IBAction)buyAction:(id)sender {
+
     if (product == nil)
     {
         product = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:_productId];
@@ -81,9 +90,18 @@
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
             [itunesError show];
+            return;
         }
     }
+    
     [[TaloolIAPHelper sharedInstance] buyProduct:product];
+    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
 }
+
+- (void) stopSpinner
+{
+    [spinner stopAnimating];
+}
+
 
 @end
