@@ -13,9 +13,6 @@
 		810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */; };
 		810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB752178213E100C65540 /* HelpBuyDeals.png */; };
 		810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB753178213E100C65540 /* HelpBuyDeals@2x.png */; };
-		810BB75A17821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */; };
-		810BB75B17821C0700C65540 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */; };
-		810BB75C17821C0700C65540 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */; };
 		810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
 		810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
@@ -62,6 +59,10 @@
 		81BD128A178869F400AF7475 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1289178869F400AF7475 /* talool-api-ios.bundle */; };
 		81BD128D1788A4E000AF7475 /* AccessCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */; };
 		81BD1290178B29B900AF7475 /* DealOfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128F178B29B900AF7475 /* DealOfferHelper.m */; };
+		81BD1294178B84E600AF7475 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */; };
+		81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */; };
+		81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */; };
+		81BD1299178C4A7800AF7475 /* HelpDealOfferLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
@@ -171,9 +172,6 @@
 		810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals-568h@2x.png"; sourceTree = "<group>"; };
 		810BB752178213E100C65540 /* HelpBuyDeals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDeals.png; sourceTree = "<group>"; };
 		810BB753178213E100C65540 /* HelpBuyDeals@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals@2x.png"; sourceTree = "<group>"; };
-		810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
-		810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDealsWithCode.png; sourceTree = "<group>"; };
-		810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
 		810BB75D1783295500C65540 /* KeyboardAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAccessoryView.h; sourceTree = "<group>"; };
 		810BB75E1783295500C65540 /* KeyboardAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAccessoryView.m; sourceTree = "<group>"; };
 		810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
@@ -254,6 +252,11 @@
 		81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessCodeCell.m; sourceTree = "<group>"; };
 		81BD128E178B29B800AF7475 /* DealOfferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferHelper.h; sourceTree = "<group>"; };
 		81BD128F178B29B900AF7475 /* DealOfferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferHelper.m; sourceTree = "<group>"; };
+		81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
+		81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDealsWithCode.png; sourceTree = "<group>"; };
+		81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
+		81BD1297178C4A7800AF7475 /* HelpDealOfferLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDealOfferLocationViewController.h; sourceTree = "<group>"; };
+		81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDealOfferLocationViewController.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 		810BB7441781FFCF00C65540 /* Help Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				81BD1297178C4A7800AF7475 /* HelpDealOfferLocationViewController.h */,
+				81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */,
 			);
 			name = "Help Controllers";
 			sourceTree = "<group>";
@@ -535,9 +540,9 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				810BB75717821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png */,
-				810BB75817821C0700C65540 /* HelpBuyDealsWithCode.png */,
-				810BB75917821C0700C65540 /* HelpBuyDealsWithCode@2x.png */,
+				81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */,
+				81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */,
+				81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */,
 				810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */,
 				810BB752178213E100C65540 /* HelpBuyDeals.png */,
 				810BB753178213E100C65540 /* HelpBuyDeals@2x.png */,
@@ -849,15 +854,15 @@
 				810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */,
 				810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */,
 				810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */,
-				810BB75A17821C0700C65540 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
-				810BB75B17821C0700C65540 /* HelpBuyDealsWithCode.png in Resources */,
-				810BB75C17821C0700C65540 /* HelpBuyDealsWithCode@2x.png in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
 				81BD12101784BA8B00AF7475 /* Icon.png in Resources */,
 				81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */,
 				81BD1270178710BA00AF7475 /* OfferDetailView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
 				81BD128A178869F400AF7475 /* talool-api-ios.bundle in Resources */,
+				81BD1294178B84E600AF7475 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
+				81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */,
+				81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +952,7 @@
 				81BD127B1787602A00AF7475 /* OfferMapCell.m in Sources */,
 				81BD128D1788A4E000AF7475 /* AccessCodeCell.m in Sources */,
 				81BD1290178B29B900AF7475 /* DealOfferHelper.m in Sources */,
+				81BD1299178C4A7800AF7475 /* HelpDealOfferLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
