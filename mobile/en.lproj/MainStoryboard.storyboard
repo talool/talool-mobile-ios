@@ -666,7 +666,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DPz-Pk-2Gm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1142" y="385"/>
+            <point key="canvasLocation" x="1665" y="385"/>
         </scene>
         <!--Merchant Location View Controller-->
         <scene sceneID="EHU-De-QAF">
@@ -894,7 +894,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cni-rl-2CG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1837" y="385"/>
+            <point key="canvasLocation" x="2360" y="385"/>
         </scene>
         <!--Accept Gift View Controller - A Gift For You-->
         <scene sceneID="I1M-kP-2aO">
@@ -1588,7 +1588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcz-Ho-cuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="379"/>
+            <point key="canvasLocation" x="2012" y="379"/>
         </scene>
         <!--My Deals View Controller - Title-->
         <scene sceneID="0pP-fm-OAv">
@@ -1815,7 +1815,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you purchased a paper copy of the Payback Book, there is an access code inside for free access to these digitital deals." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="oMa-a5-IsU">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you purchased a paper copy of the Payback Book, there is an access code inside for free access to these digitital deals." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="281" translatesAutoresizingMaskIntoConstraints="NO" id="oMa-a5-IsU">
                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1854,6 +1854,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibb-FS-5mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="706" y="379"/>
+        </scene>
+        <!--Help Deal Offer Location View Controller-->
+        <scene sceneID="ExE-mZ-aXJ">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmLocation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QYw-7j-0V8" customClass="HelpDealOfferLocationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AuD-wW-rdW">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We can't get a fix on your location.  Can you tell us which Payback Book you're interested in?" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="lgU-yE-rgZ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="ZDj-JR-0hP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRx-En-g7J">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wIV-0Z-r7B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Boulder Payback Book">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectBoulder:" destination="QYw-7j-0V8" eventType="touchUpInside" id="Woa-lM-drM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUi-mX-hfb">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="B1p-HG-esE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Vancouver Payback Book">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectVancouver:" destination="QYw-7j-0V8" eventType="touchUpInside" id="QIX-kw-EvC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lgU-yE-rgZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="7JL-nM-drV"/>
+                            <constraint firstItem="fRx-En-g7J" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Bfd-vO-Uuv"/>
+                            <constraint firstItem="lgU-yE-rgZ" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="IBT-qX-WQa"/>
+                            <constraint firstItem="lgU-yE-rgZ" firstAttribute="top" secondItem="AuD-wW-rdW" secondAttribute="top" constant="20" symbolic="YES" type="default" id="JNi-dT-K88"/>
+                            <constraint firstItem="fRx-En-g7J" firstAttribute="top" secondItem="AuD-wW-rdW" secondAttribute="top" constant="165" id="NTb-Lu-doe"/>
+                            <constraint firstAttribute="trailing" secondItem="fRx-En-g7J" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="W9E-4P-Wtt"/>
+                            <constraint firstItem="ZUi-mX-hfb" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="d0Y-fJ-4FJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ZUi-mX-hfb" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fNB-Pg-52N"/>
+                            <constraint firstItem="ZUi-mX-hfb" firstAttribute="top" secondItem="fRx-En-g7J" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fPM-eV-0jx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="boulderButton" destination="fRx-En-g7J" id="CEc-EK-cxQ"/>
+                        <outlet property="vancouverButton" destination="ZUi-mX-hfb" id="z8R-ev-DwI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nal-J4-QYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="385"/>
         </scene>
     </scenes>
     <resources>
@@ -1986,6 +2057,15 @@
         <class className="GradientButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GradientButton.h"/>
         </class>
+        <class className="HelpDealOfferLocationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpDealOfferLocationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="selectBoulder:"/>
+                <relationship kind="action" name="selectVancouver:"/>
+                <relationship kind="outlet" name="boulderButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="vancouverButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
         <class className="LocationCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LocationCell.h"/>
             <relationships>
@@ -2091,8 +2171,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hYw-ya-Q4f"/>
         <segue reference="du6-n3-mQW"/>
         <segue reference="6GU-YU-bA8"/>
+        <segue reference="q3T-VT-ua5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,8 +1,10 @@
 
 
 #import "IAPHelper.h"
+#import "DealOfferHelper.h"
 #import <StoreKit/StoreKit.h>
 #import "VerificationController.h"
+#import "talool-api-ios/ttDealOffer.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 
@@ -45,6 +47,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     _productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:_productIdentifiers];
     _productsRequest.delegate = self;
     [_productsRequest start];
+    
+    // NOTE: It could take a long time for this request to come back, so we need to message the user
+    //       if we're waiting for the list of products.
     
 }
 
@@ -95,7 +100,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     
-    NSLog(@"Failed to load list of products.");
+    NSLog(@"Failed to load list of products.  Probably can't connect to the itunes store.");
     _productsRequest = nil;
     
     if (_completionHandler)
@@ -136,6 +141,12 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
+        UIAlertView *itunesError = [[UIAlertView alloc] initWithTitle:@"We're Sorry"
+                                                              message:@"We're not able to connect to iTunes in order to complete your purchase.  Please try again later."
+                                                             delegate:self
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles:nil];
+        [itunesError show];
     }
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
@@ -147,14 +158,29 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     
 }
 
-- (SKProduct *)getProductForPrice:(NSNumber *)price
-{
-    return [_products objectAtIndex:0];
-}
-
 - (SKProduct *)getProductForIdentifier:(NSString *)identifier
 {
-    return [_products objectAtIndex:0];
+    for (int i = 0; i < [_products count]; i++)
+    {
+        SKProduct *prod = [_products objectAtIndex:i];
+        if ([prod.productIdentifier isEqualToString:identifier])
+        {
+            return prod;
+        }
+    }
+    return nil;
+}
+
+- (ttDealOffer *)getOfferForIdentifier:(NSString *)identifier
+{
+    if ([identifier isEqualToString:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER])
+    {
+        return [DealOfferHelper sharedInstance].boulderBook;
+    }
+    else
+    {
+        return [DealOfferHelper sharedInstance].vancouverBook;
+    }
 }
 
 @end

@@ -23,7 +23,7 @@
 
 @implementation DealOfferHelper
 
-@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct;
+@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct, closestProductId;
 
 + (DealOfferHelper *)sharedInstance
 {
@@ -114,13 +114,11 @@
     
     if (distanceToBoulder < distanceToVancouver)
     {
-        closestBook = boulderBook;
-        closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER];
+        [self setLocationAsBoulder];
     }
     else
     {
-        closestBook = vancouverBook;
-        closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER];
+        [self setLocationAsVancouver];
     }
     
     if (closestProduct != nil && closestBook != nil)
@@ -128,6 +126,20 @@
         //NSLog(@"DEBUG::: got the closest book (%@) and product (%@)",closestBook.title, closestProduct.productIdentifier);
         [_locationManager stopUpdatingLocation];
     }
+}
+
+-(void) setLocationAsBoulder
+{
+    closestBook = boulderBook;
+    closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER];
+    closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER;
+}
+
+-(void) setLocationAsVancouver
+{
+    closestBook = vancouverBook;
+    closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER];
+    closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER;
 }
 
 #pragma mark -

@@ -22,6 +22,7 @@
 #import "ActivityViewController.h"
 #import "ActivityStreamHelper.h"
 #import "DealOfferHelper.h"
+#import "MerchantSearchView.h"
 
 @implementation AppDelegate
 
@@ -171,6 +172,7 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     [_activityHelper stopPollingActivity];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -190,6 +192,10 @@
     
     [FBAppCall handleDidBecomeActive];
     [_activityHelper startPollingActivity];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productPurchased:)
+                                                 name:IAPHelperProductPurchasedNotification
+                                               object:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -216,6 +222,57 @@
                                   [self.loginViewController loginView:nil handleError:error];
                               }
                           }];
+}
+
+#pragma mark - 
+#pragma mark - IAP Helpers 
+
+- (void)productPurchased:(NSNotification *)notification
+{
+    
+    ttDealOffer *offer = [[TaloolIAPHelper sharedInstance] getOfferForIdentifier:notification.object];
+    
+    NSError *err;
+    BOOL success = [[CustomerHelper getLoggedInUser] purchaseDealOffer:offer error:&err];
+    if (success)
+    {
+        [self presentNewDeals];
+    }
+    else
+    {
+        // TODO handle failure.  The user has purchased, but we haven't delivered the deals.
+        // * Store the offer in the user's NSUserDefaults and retry later
+    }
+}
+
+-(void) presentNewDeals
+{
+    // refresh the deals
+    [self.firstViewController.searchView fetchMerchants];
+    
+    if (self.mainViewController.selectedViewController != self.firstViewController)
+    {
+        // the user is on FindDeals or Activity, so we should ask if they want to be redirected
+        UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got Deals!"
+                                                            message:@"We've updated your account with new deals.  Would you like to see them now?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Yes"
+                                                  otherButtonTitles:@"No",nil];
+        [showMe show];
+        
+    }
+
+}
+
+#pragma mark - UIAlertViewDelegate 
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
+    {
+        // take the user to the "my deals" tab
+        [self.mainViewController setSelectedIndex:0];
+    }
 }
 
 #pragma mark - Core Data stack

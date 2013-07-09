@@ -59,10 +59,6 @@
 - (void)openActivityCountChanged:(int)count sender:(id)sender;
 @end
 
-@protocol DealOfferPurchaseDelegate <NSObject>
-- (void)buyNow:(SKProduct *)product sender:(id)sender;
-@end
-
 @protocol OGDeal<FBGraphObject>
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *url;

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TaloolProtocols.h"
 
 @class TaloolUIButton, SKProduct;
 
@@ -16,11 +15,13 @@
     IBOutlet UIView *view;
 }
 @property (strong, nonatomic) IBOutlet TaloolUIButton *buyButton;
-@property id<DealOfferPurchaseDelegate> delegate;
 @property (strong, nonatomic) SKProduct *product;
+@property (strong, nonatomic) NSString *productId;
 
 - (IBAction)buyAction:(id)sender;
 
 - (id)initWithFrame:(CGRect)frame product:(SKProduct *)product;
+
+- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId;
 
 @end

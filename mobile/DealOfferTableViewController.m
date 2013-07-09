@@ -34,20 +34,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // NOTE: Temporary helper to get the right payback book
     offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     product = [[DealOfferHelper sharedInstance] getClosestProduct];
+    if (offer==nil)
+    {
+        // show the modal location helper view
+        HelpDealOfferLocationViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmLocation"];
+        [helper setDelegate:self];
+        [self presentViewController:helper animated:NO completion:nil];
+    }
+    else
+    {
+        [self initTableView];
+    }
     
+}
+
+- (void) initTableView
+{
     self.navigationItem.title = offer.title;
     
     NSError *error;
     deals = [offer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased:)
-                                                 name:IAPHelperProductPurchasedNotification
-                                               object:nil];
     
     // Create the detail view that will be used for the first section header
     CGRect frame = self.view.bounds;
@@ -56,26 +66,21 @@
                   offer:offer];
     
     // Create the action view that will be used for the second section header
-    actionView = [[OfferActionView alloc]
-                  initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
-                  product:product];
-    [actionView setDelegate:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+    if (product==nil)
+    {
+        // looks like we haven't gotten a product back from itunes, so init with
+        // just the productId
+        actionView = [[OfferActionView alloc]
+                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
+                      productId:[DealOfferHelper sharedInstance].closestProductId];
+    }
+    else
+    {
+        actionView = [[OfferActionView alloc]
+                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
+                      product:product];
+    }
     
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -188,52 +193,14 @@
 }
 
 #pragma mark -
-#pragma mark - DealOfferPurchaseDelegate methods
+#pragma mark - HelpDealOfferLocationDelegate methods
 
--(void) buyNow:(SKProduct *)prod sender:(id)sender
+-(void) locationSelected
 {
-    [[TaloolIAPHelper sharedInstance] buyProduct:prod];
-}
-
-- (void)productPurchased:(NSNotification *)notification {
-    
-    /*
-     *  We got a notification of a purchase.  It has a productId, but that doesn't tell us
-     *  the specific offer.  If we assume it is for the current offer, we may fulfill the
-     *  wrong deal.  It's a small edgecase, but I think it's possible
-     */
-    NSString * productIdentifier = notification.object;
-    TaloolIAPHelper *iapHelper = [TaloolIAPHelper sharedInstance];
-    SKProduct *prod = [iapHelper getProductForIdentifier:productIdentifier];
-    if ([prod.productIdentifier isEqualToString:productIdentifier])
-    {
-        [self recordPurchase];
-    }
-    
-}
-
-- (void) recordPurchase
-{
-    NSError *err;
-    BOOL success = [[CustomerHelper getLoggedInUser] purchaseDealOffer:offer error:&err];
-    NSString *title = @"purchase status";
-    NSString *message;
-    if (success)
-    {
-        message = @"OK";
-    }
-    else
-    {
-        message = @"Fail";
-        // TODO handle failure.  The user has purchased, but we haven't delivered the deals.
-        // * Store the offer in the user's NSUserDefaults and retry later
-    }
-    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-    [errorView show];
+    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
+    product = [[DealOfferHelper sharedInstance] getClosestProduct];
+    [self initTableView];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
+#import "HelpDealOfferLocationViewController.h"
 
 #define HEADER_HEIGHT 70.0f
 
 
 @class OfferDetailView, OfferActionView, ttDealOffer, SKProduct;
 
-@interface DealOfferTableViewController : UITableViewController<DealOfferPurchaseDelegate>
+@interface DealOfferTableViewController : UITableViewController<HelpDealOfferLocationDelegate>
 
 @property (strong, nonatomic) OfferDetailView *detailView;
 @property (strong, nonatomic) OfferActionView *actionView;

@@ -16,6 +16,8 @@ UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 
+@class ttDealOffer;
+
 @interface IAPHelper : NSObject
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
@@ -23,5 +25,6 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 - (void)buyProduct:(SKProduct *)product;
 - (SKProduct *)getProductForPrice:(NSNumber *)price;
 - (SKProduct *)getProductForIdentifier:(NSString *)identifier;
+- (ttDealOffer *)getOfferForIdentifier:(NSString *)identifier;
 
 @end

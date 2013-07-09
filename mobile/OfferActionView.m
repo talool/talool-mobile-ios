@@ -9,6 +9,7 @@
 #import "OfferActionView.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
+#import "TaloolIAPHelper.h"
 #import <StoreKit/StoreKit.h>
 
 @implementation OfferActionView
@@ -16,7 +17,7 @@
     NSNumberFormatter * _priceFormatter;
 }
 
-@synthesize delegate, product;
+@synthesize product;
 
 - (id)initWithFrame:(CGRect)frame product:(SKProduct *)skproduct
 {
@@ -40,8 +41,49 @@
     return self;
 }
 
+// It can take a long time to get the list of products back from iTunes,
+// so this init methods allows us show a buy button without a price (or a default price)
+- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [[NSBundle mainBundle] loadNibNamed:@"OfferActionView" owner:self options:nil];
+        
+        product = nil;
+        _productId = productId;
+        
+        // NOTE: harding the default price of the books
+        NSNumber *defaultPrice = [NSNumber numberWithFloat:9.99];
+        
+        _priceFormatter = [[NSNumberFormatter alloc] init];
+        [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        NSString *label = [NSString stringWithFormat:@"Buy Now For %@",[_priceFormatter stringFromNumber:defaultPrice]];
+        
+        [self.buyButton useTaloolStyle];
+        [self.buyButton setBaseColor:[TaloolColor orange]];
+        [self.buyButton setTitle:label forState:UIControlStateNormal];
+        
+        [self addSubview:view];
+    }
+    return self;
+}
+
 - (IBAction)buyAction:(id)sender {
-    [delegate buyNow:product sender:self];
+    if (product == nil)
+    {
+        product = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:_productId];
+        if (product ==  nil)
+        {
+            UIAlertView *itunesError = [[UIAlertView alloc] initWithTitle:@"We're Sorry"
+                                                             message:@"We're not able to connect to iTunes in order to complete your purchase.  Please try again later."
+                                                            delegate:self
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+            [itunesError show];
+        }
+    }
+    [[TaloolIAPHelper sharedInstance] buyProduct:product];
 }
 
 @end

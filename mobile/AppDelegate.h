@@ -11,7 +11,7 @@
 
 @class WelcomeViewController, TaloolTabBarController, SettingsTableViewController, MyDealsViewController, ActivityViewController, ActivityStreamHelper;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, ActivityStreamDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, ActivityStreamDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
@@ -26,6 +26,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (NSURL *)applicationDocumentsDirectory;
+- (void) presentNewDeals;
 
 
 @end
