@@ -13,6 +13,7 @@
 #import "CustomerHelper.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "AppDelegate.h"
+#import "DealOfferHelper.h"
 
 @implementation AccessCodeCell
 
@@ -38,7 +39,13 @@
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    NSLog(@"submit my access code");
+    // make sure we have a valid dealOffer.  It can be bad if the user logs out/in
+    if (offer.dealOfferId == nil)
+    {
+        offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
+    }
+    
+    NSLog(@"submit my access code for %@", offer.title);
     [self.accessCodeFld resignFirstResponder];
     
     NSError *err;
