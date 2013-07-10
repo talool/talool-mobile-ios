@@ -105,10 +105,6 @@
         [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/vancouver"];
         [[segue destinationViewController] setViewTitle:@"Vancouver"];
     }
-    else if ([[segue identifier] isEqualToString:@"entercode"])
-    {
-        
-    }
 }
 
 - (IBAction)logout:(id)sender
@@ -116,18 +112,24 @@
     // add a spinner
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    // CHECK FOR A FACEBOOK SESSION
-    if ([FBSession.activeSession isOpen]) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ttCustomer logoutUser:appDelegate.managedObjectContext];
+    [self logoutUser];
     
     [self performSegueWithIdentifier:@"logout" sender:self];
      
      // remove the spinner
      [spinner stopAnimating];
 
+}
+
+// Called from other controllers as needed
+- (void)logoutUser
+{
+    // CHECK FOR A FACEBOOK SESSION
+    if ([FBSession.activeSession isOpen]) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [ttCustomer logoutUser:appDelegate.managedObjectContext];
 }
 
 - (void)didReceiveMemoryWarning

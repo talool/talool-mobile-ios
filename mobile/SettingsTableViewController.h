@@ -19,6 +19,7 @@
     IBOutlet UITableViewCell *logoutCell;
 }
 - (IBAction)logout:(id)sender;
+- (void)logoutUser;
 
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) ttCustomer *customer;
