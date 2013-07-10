@@ -56,31 +56,6 @@
     [spinner startAnimating];
 }
 
-- (void)logoutUser
-{
-    // CHECK FOR A FACEBOOK SESSION
-    if ([FBSession.activeSession isOpen]) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ttCustomer logoutUser:appDelegate.managedObjectContext];
-}
-
-- (void) delayedDeparture
-{
-    if ([FBSession.activeSession isOpen])
-    {
-        [FBSession.activeSession closeAndClearTokenInformation];
-        [self performSelector:@selector(delayedDeparture) withObject:nil afterDelay:3];
-        return;
-    }
-    
-    [self performSegueWithIdentifier:@"logout" sender:self];
-    
-    // remove the spinner
-    [spinner stopAnimating];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"logout"])
@@ -141,17 +116,17 @@
     // add a spinner
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    [self logoutUser];
+    // CHECK FOR A FACEBOOK SESSION
+    if ([FBSession.activeSession isOpen]) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [ttCustomer logoutUser:appDelegate.managedObjectContext];
     
-    // make sure the FB session is closed before we split
-    if ([FBSession.activeSession isOpen])
-    {
-        [self performSelector:@selector(delayedDeparture) withObject:nil afterDelay:3];
-    }
-    else
-    {
-        [self delayedDeparture];
-    }
+    [self performSegueWithIdentifier:@"logout" sender:self];
+     
+     // remove the spinner
+     [spinner stopAnimating];
 
 }
 

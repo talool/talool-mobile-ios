@@ -84,6 +84,7 @@
         product = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:_productId];
         if (product ==  nil)
         {
+            NSLog(@"Purchased failed.  Couldn't load products from itunes");
             UIAlertView *itunesError = [[UIAlertView alloc] initWithTitle:@"We're Sorry"
                                                              message:@"We're not able to connect to iTunes in order to complete your purchase.  Please try again later."
                                                             delegate:self

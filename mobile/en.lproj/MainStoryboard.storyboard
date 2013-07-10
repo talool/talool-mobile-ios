@@ -60,7 +60,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="eDt-vK-Q2w" kind="push" identifier="showLogin" id="kF3-6c-WLe"/>
+                                    <segue destination="eDt-vK-Q2w" kind="push" identifier="showReg" id="kF3-6c-WLe"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dpj-Xf-nNn">

@@ -29,36 +29,41 @@
 
 @implementation DealOfferTableViewController
 
-@synthesize deals, offer, detailView, actionView, product;
+@synthesize detailView, actionView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initTableView];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    // NOTE: Temporary helper to get the right payback book
-    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
-    product = [[DealOfferHelper sharedInstance] getClosestProduct];
-    if (offer==nil)
+    if ([[DealOfferHelper sharedInstance] getClosestDealOffer]==nil)
     {
         // show the modal location helper view
         HelpDealOfferLocationViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmLocation"];
         [helper setDelegate:self];
         [self presentViewController:helper animated:NO completion:nil];
     }
-    else
-    {
-        [self initTableView];
-    }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(productPurchased)
+                                                 name:IAPHelperProductPurchasedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(purchaseCanceled)
+                                                 name:IAPHelperPurchaseCanceledNotification
+                                               object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased)
-                                                 name:IAPHelperProductPurchasedNotification
-                                               object:nil];
+    
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -72,12 +77,17 @@
     [actionView stopSpinner];
 }
 
+- (void) purchaseCanceled
+{
+    [actionView stopSpinner];
+}
+
 - (void) initTableView
 {
+    ttDealOffer *offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     self.navigationItem.title = offer.title;
     
-    NSError *error;
-    deals = [offer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+    
     
     // Create the detail view that will be used for the first section header
     CGRect frame = self.view.bounds;
@@ -86,6 +96,7 @@
                   offer:offer];
     
     // Create the action view that will be used for the second section header
+    SKProduct *product = [[DealOfferHelper sharedInstance] getClosestProduct];
     if (product==nil)
     {
         // looks like we haven't gotten a product back from itunes, so init with
@@ -120,12 +131,13 @@
     }
     else
     {
-        return [deals count];
+        return [[DealOfferHelper sharedInstance].closestDeals count];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ttDealOffer *offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     if (indexPath.section==0)
     {
         if (indexPath.row==0)
@@ -159,7 +171,7 @@
         NSString *CellIdentifier = @"DealCell";
         DealCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
-        ttDeal *deal = [deals objectAtIndex:indexPath.row];
+        ttDeal *deal = [[DealOfferHelper sharedInstance].closestDeals objectAtIndex:indexPath.row];
         [cell setDeal:deal];
         
         return cell;
@@ -169,6 +181,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ttDealOffer *offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     if (indexPath.section==0)
     {
         if (indexPath.row == 0)
@@ -217,8 +230,6 @@
 
 -(void) locationSelected
 {
-    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
-    product = [[DealOfferHelper sharedInstance] getClosestProduct];
     [self initTableView];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

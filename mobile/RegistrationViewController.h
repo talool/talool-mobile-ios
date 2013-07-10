@@ -21,10 +21,14 @@
     UIAlertView *errorView;
     
     IBOutlet UIActivityIndicatorView *spinner;
+    
+    id <TaloolAuthenticationDelegate> authDelegate;
 }
 
 @property (nonatomic, retain) UIAlertView *errorView;
 
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
+
+- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate;
 
 @end

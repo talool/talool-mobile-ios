@@ -32,11 +32,14 @@
 @property (strong, nonatomic) ttDealOffer *closestBook;
 @property (strong, nonatomic) SKProduct *closestProduct;
 @property (strong, nonatomic) NSString *closestProductId;
+@property (strong, nonatomic) NSArray *closestDeals;
 
 - (ttDealOffer *) getClosestDealOffer;
 - (SKProduct *) getClosestProduct;
+- (NSArray *) getClosestDeals;
 
 -(void) setLocationAsBoulder;
 -(void) setLocationAsVancouver;
+-(void) reset;
 
 @end

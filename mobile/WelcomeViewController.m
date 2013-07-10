@@ -91,6 +91,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showReg"])
+    {
+        [[segue destinationViewController] registerAuthDelegate:authDelegate];
+        [[segue destinationViewController] setHidesBottomBarWhenPushed:YES];
+    }
+}
+
 #pragma mark - FBLoginView delegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
@@ -202,15 +211,10 @@
             // logging in and our navigation controller is still animating a push.
             [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
         } else {
-            [self logOut];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate.settingsViewController logoutUser];
         }
     }
-}
-
-- (void) logOut
-{
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.settingsViewController logoutUser];
 }
 
 - (void) threadStartSpinner:(id)data {
@@ -221,12 +225,12 @@
 {
     // add a spinner
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    
     // don't leave the page if login failed
     if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
+        [authDelegate customerLoggedIn:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
-    
-    [authDelegate customerLoggedIn:self];
     
     // remove the spinner
     [spinner stopAnimating];

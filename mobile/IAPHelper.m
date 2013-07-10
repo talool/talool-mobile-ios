@@ -7,6 +7,7 @@
 #import "talool-api-ios/ttDealOffer.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
+NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCanceledNotification";
 
 @interface IAPHelper () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 {
@@ -54,10 +55,9 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
 }
 
 - (void)buyProduct:(SKProduct *)product {
-    
+    NSLog(@"Purchased Started for %@", product.productIdentifier);
     SKPayment * payment = [SKPayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
-    
 }
 
 - (void)validateReceiptForTransaction:(SKPaymentTransaction *)transaction {
@@ -67,6 +67,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
             [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
         } else {
             NSLog(@"Failed to validate receipt.");
+            [self cancelPurchase:transaction.payment.productIdentifier];
             [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
         }
     }];
@@ -141,6 +142,8 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
+        
+        
         UIAlertView *itunesError = [[UIAlertView alloc] initWithTitle:@"We're Sorry"
                                                               message:@"We're not able to connect to iTunes in order to complete your purchase.  Please try again later."
                                                              delegate:self
@@ -149,7 +152,14 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
         [itunesError show];
     }
     
+    [self cancelPurchase:transaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void)cancelPurchase:(NSString *)productIdentifier {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:IAPHelperPurchaseCanceledNotification object:productIdentifier userInfo:nil];
+    
 }
 
 - (void)provideContentForProductIdentifier:(NSString *)productIdentifier {

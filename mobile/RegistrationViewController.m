@@ -47,6 +47,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
+{
+    authDelegate = delegate;
+}
+
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
 }
@@ -73,6 +78,7 @@
     
     // don't leave the page if reg failed
     if ([CustomerHelper getLoggedInUser] != nil) {
+        [authDelegate customerLoggedIn:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     

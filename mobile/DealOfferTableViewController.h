@@ -19,8 +19,5 @@
 
 @property (strong, nonatomic) OfferDetailView *detailView;
 @property (strong, nonatomic) OfferActionView *actionView;
-@property (retain, nonatomic) ttDealOffer *offer;
-@property (retain, nonatomic) SKProduct *product;
-@property (retain, nonatomic) NSArray *deals;
 
 @end

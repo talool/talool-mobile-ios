@@ -23,7 +23,7 @@
 
 @implementation DealOfferHelper
 
-@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct, closestProductId;
+@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct, closestProductId, closestDeals;
 
 + (DealOfferHelper *)sharedInstance
 {
@@ -39,29 +39,11 @@
 {
     if ((self = [super init])) {
         
-        // Load all deal offers
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        NSError *err = nil;
-        dealOffers = [ttDealOffer getDealOffers:customer context:[CustomerHelper getContext] error:&err];
-        
-        // Pluck out the Payback books
-        for (int i=0; i<[dealOffers count]; i++)
-        {
-            ttDealOffer *dOff = [dealOffers objectAtIndex:i];
-            if ([dOff.dealOfferId isEqualToString:DEAL_OFFER_ID_PAYBACK_BOULDER])
-            {
-                boulderBook = dOff;
-            }
-            else if ([dOff.dealOfferId isEqualToString:DEAL_OFFER_ID_PAYBACK_VANCOUVER])
-            {
-                vancouverBook = dOff;
-            }
-        }
-        
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         _locationManager.delegate = self;
-        [_locationManager startUpdatingLocation];
+        
+        [self reset];
         
         // is the location service enabled?
         if ([CLLocationManager locationServicesEnabled] == NO)
@@ -91,6 +73,33 @@
     return self;
 }
 
+/*
+ *  This gets called when the view loads and after a new users logs in.
+ */
+- (void)reset
+{
+    // Load all deal offers
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *err = nil;
+    dealOffers = [ttDealOffer getDealOffers:customer context:[CustomerHelper getContext] error:&err];
+    
+    // Pluck out the Payback books
+    for (int i=0; i<[dealOffers count]; i++)
+    {
+        ttDealOffer *dOff = [dealOffers objectAtIndex:i];
+        if ([dOff.dealOfferId isEqualToString:DEAL_OFFER_ID_PAYBACK_BOULDER])
+        {
+            boulderBook = dOff;
+        }
+        else if ([dOff.dealOfferId isEqualToString:DEAL_OFFER_ID_PAYBACK_VANCOUVER])
+        {
+            vancouverBook = dOff;
+        }
+    }
+    
+    [_locationManager startUpdatingLocation];
+}
+
 - (ttDealOffer *) getClosestDealOffer
 {
     return closestBook;
@@ -99,6 +108,11 @@
 - (SKProduct *) getClosestProduct
 {
     return closestProduct;
+}
+
+- (NSArray *) getClosestDeals
+{
+    return closestDeals;
 }
 
 - (void) setClosestLocation:(CLLocation *)location
@@ -133,6 +147,9 @@
     closestBook = boulderBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER;
+    
+    NSError *error;
+    closestDeals = [closestBook getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
 }
 
 -(void) setLocationAsVancouver
@@ -140,6 +157,9 @@
     closestBook = vancouverBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER;
+    
+    NSError *error;
+    closestDeals = [closestBook getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
 }
 
 #pragma mark -

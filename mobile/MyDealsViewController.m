@@ -10,6 +10,7 @@
 #import "MerchantDealViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
+#import "DealOfferHelper.h"
 #import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttGift.h"
@@ -144,7 +145,11 @@
 
 - (void) customerLoggedIn:(id)sender
 {
+    self.merchants = [NSArray arrayWithObjects:nil];
     [self.searchView fetchMerchants];
+    [[DealOfferHelper sharedInstance] reset];
+    NSLog(@"new user with %d merchants", [self.merchants count]);
+    [self.tableView reloadData];
 }
 
 #pragma mark -
