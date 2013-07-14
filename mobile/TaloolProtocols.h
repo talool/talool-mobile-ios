@@ -12,6 +12,12 @@
 
 @class ttDealAcquire, ttDealOffer;
 
+@protocol TaloolDealLayoutDelegate <NSObject>
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+@end
+
 @protocol TaloolAuthenticationDelegate<NSObject>
 - (void)customerLoggedIn:(id)sender;
 @end
@@ -24,6 +30,7 @@
 - (void)sendGiftViaEmail:(id)sender;
 - (void)sendGiftViaFacebook:(id)sender;
 - (void)dealRedeemed:(id)sender;
+@optional
 - (void)dealActionCanceled:(id)sender;
 @end
 

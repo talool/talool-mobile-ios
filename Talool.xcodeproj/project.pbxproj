@@ -27,6 +27,8 @@
 		8146D181177495030035F589 /* MerchantDealOfferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D180177494F70035F589 /* MerchantDealOfferViewController.m */; };
 		8146D18A1774D2740035F589 /* MerchantBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1891774D2740035F589 /* MerchantBannerView.m */; };
 		8146D18C1774D29E0035F589 /* MerchantBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8146D18B1774D29E0035F589 /* MerchantBannerView.xib */; };
+		8151CB671791F05A007894B2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB651791F05A007894B2 /* bg.png */; };
+		8151CB681791F05A007894B2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB661791F05A007894B2 /* bg@2x.png */; };
 		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
 		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
@@ -50,12 +52,12 @@
 		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
 		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
-		81BD126F178710BA00AF7475 /* OfferDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126D178710BA00AF7475 /* OfferDetailView.m */; };
-		81BD1270178710BA00AF7475 /* OfferDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD126E178710BA00AF7475 /* OfferDetailView.xib */; };
+		81BD126F178710BA00AF7475 /* MerchantLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126D178710BA00AF7475 /* MerchantLogoView.m */; };
+		81BD1270178710BA00AF7475 /* MerchantLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD126E178710BA00AF7475 /* MerchantLogoView.xib */; };
 		81BD127317872AD000AF7475 /* OfferActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127217872AD000AF7475 /* OfferActionView.m */; };
 		81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
 		81BD12781787575A00AF7475 /* OfferSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12771787575A00AF7475 /* OfferSummaryCell.m */; };
-		81BD127B1787602A00AF7475 /* OfferMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* OfferMapCell.m */; };
+		81BD127B1787602A00AF7475 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* MapCell.m */; };
 		81BD128A178869F400AF7475 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1289178869F400AF7475 /* talool-api-ios.bundle */; };
 		81BD128D1788A4E000AF7475 /* AccessCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */; };
 		81BD1290178B29B900AF7475 /* DealOfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128F178B29B900AF7475 /* DealOfferHelper.m */; };
@@ -63,6 +65,22 @@
 		81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */; };
 		81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */; };
 		81BD1299178C4A7800AF7475 /* HelpDealOfferLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */; };
+		81BD12A0178F117700AF7475 /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD129F178F117500AF7475 /* MerchantTableViewController.m */; };
+		81BD12A5178F1C1F00AF7475 /* DealListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A4178F1C1C00AF7475 /* DealListHeaderView.m */; };
+		81BD12A7178F1C4800AF7475 /* DealListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD12A6178F1C4600AF7475 /* DealListHeaderView.xib */; };
+		81BD12AA178F37B200AF7475 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A9178F37B200AF7475 /* DealTableViewController.m */; };
+		81BD12AD178F44FA00AF7475 /* HeroImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12AC178F44F900AF7475 /* HeroImageCell.m */; };
+		81BD12B0178F451600AF7475 /* LogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12AF178F451500AF7475 /* LogoCell.m */; };
+		81BD12B3178F453D00AF7475 /* DealDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B2178F453C00AF7475 /* DealDetailCell.m */; };
+		81BD12B6178F456000AF7475 /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B5178F455F00AF7475 /* ShareCell.m */; };
+		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
+		81BD12BC178F525800AF7475 /* DealRedemptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12BB178F525400AF7475 /* DealRedemptionView.m */; };
+		81BD12BE178F527800AF7475 /* DealRedemptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD12BD178F527500AF7475 /* DealRedemptionView.xib */; };
+		81BD12C11791B9CC00AF7475 /* ActiveDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */; };
+		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
+		81BD12C81791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */; };
+		81BD12CB1791C12D00AF7475 /* InactivedealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */; };
+		81BD12CE1791DD0D00AF7475 /* DoubleLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12CD1791DD0A00AF7475 /* DoubleLogoCell.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
@@ -198,6 +216,8 @@
 		8146D1881774D2740035F589 /* MerchantBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantBannerView.h; sourceTree = "<group>"; };
 		8146D1891774D2740035F589 /* MerchantBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantBannerView.m; sourceTree = "<group>"; };
 		8146D18B1774D29E0035F589 /* MerchantBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantBannerView.xib; sourceTree = "<group>"; };
+		8151CB651791F05A007894B2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		8151CB661791F05A007894B2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
@@ -237,16 +257,16 @@
 		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
 		81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferTableViewController.m; sourceTree = "<group>"; };
-		81BD126C178710BA00AF7475 /* OfferDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferDetailView.h; sourceTree = "<group>"; };
-		81BD126D178710BA00AF7475 /* OfferDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferDetailView.m; sourceTree = "<group>"; };
-		81BD126E178710BA00AF7475 /* OfferDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferDetailView.xib; sourceTree = "<group>"; };
+		81BD126C178710BA00AF7475 /* MerchantLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantLogoView.h; sourceTree = "<group>"; };
+		81BD126D178710BA00AF7475 /* MerchantLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantLogoView.m; sourceTree = "<group>"; };
+		81BD126E178710BA00AF7475 /* MerchantLogoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantLogoView.xib; sourceTree = "<group>"; };
 		81BD127117872ACF00AF7475 /* OfferActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferActionView.h; sourceTree = "<group>"; };
 		81BD127217872AD000AF7475 /* OfferActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferActionView.m; sourceTree = "<group>"; };
 		81BD127417872AEB00AF7475 /* OfferActionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferActionView.xib; sourceTree = "<group>"; };
 		81BD12761787575A00AF7475 /* OfferSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferSummaryCell.h; sourceTree = "<group>"; };
 		81BD12771787575A00AF7475 /* OfferSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferSummaryCell.m; sourceTree = "<group>"; };
-		81BD12791787602A00AF7475 /* OfferMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferMapCell.h; sourceTree = "<group>"; };
-		81BD127A1787602A00AF7475 /* OfferMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferMapCell.m; sourceTree = "<group>"; };
+		81BD12791787602A00AF7475 /* MapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCell.h; sourceTree = "<group>"; };
+		81BD127A1787602A00AF7475 /* MapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCell.m; sourceTree = "<group>"; };
 		81BD1289178869F400AF7475 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		81BD128B1788A4DB00AF7475 /* AccessCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessCodeCell.h; sourceTree = "<group>"; };
 		81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessCodeCell.m; sourceTree = "<group>"; };
@@ -257,6 +277,36 @@
 		81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
 		81BD1297178C4A7800AF7475 /* HelpDealOfferLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDealOfferLocationViewController.h; sourceTree = "<group>"; };
 		81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDealOfferLocationViewController.m; sourceTree = "<group>"; };
+		81BD129E178F117500AF7475 /* MerchantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantTableViewController.h; sourceTree = "<group>"; };
+		81BD129F178F117500AF7475 /* MerchantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantTableViewController.m; sourceTree = "<group>"; };
+		81BD12A3178F1C1B00AF7475 /* DealListHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealListHeaderView.h; sourceTree = "<group>"; };
+		81BD12A4178F1C1C00AF7475 /* DealListHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealListHeaderView.m; sourceTree = "<group>"; };
+		81BD12A6178F1C4600AF7475 /* DealListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealListHeaderView.xib; sourceTree = "<group>"; };
+		81BD12A8178F37B200AF7475 /* DealTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealTableViewController.h; sourceTree = "<group>"; };
+		81BD12A9178F37B200AF7475 /* DealTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealTableViewController.m; sourceTree = "<group>"; };
+		81BD12AB178F44F900AF7475 /* HeroImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroImageCell.h; sourceTree = "<group>"; };
+		81BD12AC178F44F900AF7475 /* HeroImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroImageCell.m; sourceTree = "<group>"; };
+		81BD12AE178F451500AF7475 /* LogoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoCell.h; sourceTree = "<group>"; };
+		81BD12AF178F451500AF7475 /* LogoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoCell.m; sourceTree = "<group>"; };
+		81BD12B1178F453B00AF7475 /* DealDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealDetailCell.h; sourceTree = "<group>"; };
+		81BD12B2178F453C00AF7475 /* DealDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealDetailCell.m; sourceTree = "<group>"; };
+		81BD12B4178F455E00AF7475 /* ShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareCell.h; sourceTree = "<group>"; };
+		81BD12B5178F455F00AF7475 /* ShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareCell.m; sourceTree = "<group>"; };
+		81BD12B7178F457600AF7475 /* BarCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeCell.h; sourceTree = "<group>"; };
+		81BD12B8178F457700AF7475 /* BarCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeCell.m; sourceTree = "<group>"; };
+		81BD12BA178F525100AF7475 /* DealRedemptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealRedemptionView.h; sourceTree = "<group>"; };
+		81BD12BB178F525400AF7475 /* DealRedemptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealRedemptionView.m; sourceTree = "<group>"; };
+		81BD12BD178F527500AF7475 /* DealRedemptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealRedemptionView.xib; sourceTree = "<group>"; };
+		81BD12BF1791B9C900AF7475 /* ActiveDealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDealLayoutState.h; sourceTree = "<group>"; };
+		81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDealLayoutState.m; sourceTree = "<group>"; };
+		81BD12C31791BCA300AF7475 /* DealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLayoutState.h; sourceTree = "<group>"; };
+		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
+		81BD12C61791C10100AF7475 /* ActiveWithFacebookDealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWithFacebookDealLayoutState.h; sourceTree = "<group>"; };
+		81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWithFacebookDealLayoutState.m; sourceTree = "<group>"; };
+		81BD12C91791C12C00AF7475 /* InactivedealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InactivedealLayoutState.h; sourceTree = "<group>"; };
+		81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InactivedealLayoutState.m; sourceTree = "<group>"; };
+		81BD12CC1791DD0700AF7475 /* DoubleLogoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleLogoCell.h; sourceTree = "<group>"; };
+		81BD12CD1791DD0A00AF7475 /* DoubleLogoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleLogoCell.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -407,6 +457,8 @@
 				8146D180177494F70035F589 /* MerchantDealOfferViewController.m */,
 				919A330A17447C390093FAC4 /* MerchantLocationViewController.h */,
 				919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */,
+				81BD129E178F117500AF7475 /* MerchantTableViewController.h */,
+				81BD129F178F117500AF7475 /* MerchantTableViewController.m */,
 			);
 			name = "Merchant Detail";
 			sourceTree = "<group>";
@@ -437,6 +489,9 @@
 				81937B25176A6D70002DDCA8 /* DealActionViewController.m */,
 				81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */,
 				81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */,
+				81BD12A8178F37B200AF7475 /* DealTableViewController.h */,
+				81BD12A9178F37B200AF7475 /* DealTableViewController.m */,
+				81BD12C21791BB4000AF7475 /* Deal Layouts */,
 			);
 			name = "Action Views";
 			sourceTree = "<group>";
@@ -465,6 +520,21 @@
 				817E537E1770A90A0049434A /* VerificationController.m */,
 			);
 			name = "In App Purchase Verification";
+			sourceTree = "<group>";
+		};
+		81BD12C21791BB4000AF7475 /* Deal Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				81BD12C31791BCA300AF7475 /* DealLayoutState.h */,
+				81BD12C41791BCA300AF7475 /* DealLayoutState.m */,
+				81BD12BF1791B9C900AF7475 /* ActiveDealLayoutState.h */,
+				81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */,
+				81BD12C61791C10100AF7475 /* ActiveWithFacebookDealLayoutState.h */,
+				81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */,
+				81BD12C91791C12C00AF7475 /* InactivedealLayoutState.h */,
+				81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */,
+			);
+			name = "Deal Layouts";
 			sourceTree = "<group>";
 		};
 		9103110016D1E53800CEE814 = {
@@ -581,6 +651,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8151CB651791F05A007894B2 /* bg.png */,
+				8151CB661791F05A007894B2 /* bg@2x.png */,
 				81937B1F176A44FA002DDCA8 /* page-curl.png */,
 				81937B1A176A38BB002DDCA8 /* 000.png */,
 				9197F98B170D24DB00BDAA58 /* icons */,
@@ -607,10 +679,22 @@
 				8145C45E177A1CE800880294 /* DealCell.m */,
 				81BD12761787575A00AF7475 /* OfferSummaryCell.h */,
 				81BD12771787575A00AF7475 /* OfferSummaryCell.m */,
-				81BD12791787602A00AF7475 /* OfferMapCell.h */,
-				81BD127A1787602A00AF7475 /* OfferMapCell.m */,
+				81BD12791787602A00AF7475 /* MapCell.h */,
+				81BD127A1787602A00AF7475 /* MapCell.m */,
 				81BD128B1788A4DB00AF7475 /* AccessCodeCell.h */,
 				81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */,
+				81BD12AB178F44F900AF7475 /* HeroImageCell.h */,
+				81BD12AC178F44F900AF7475 /* HeroImageCell.m */,
+				81BD12AE178F451500AF7475 /* LogoCell.h */,
+				81BD12AF178F451500AF7475 /* LogoCell.m */,
+				81BD12B1178F453B00AF7475 /* DealDetailCell.h */,
+				81BD12B2178F453C00AF7475 /* DealDetailCell.m */,
+				81BD12B4178F455E00AF7475 /* ShareCell.h */,
+				81BD12B5178F455F00AF7475 /* ShareCell.m */,
+				81BD12B7178F457600AF7475 /* BarCodeCell.h */,
+				81BD12B8178F457700AF7475 /* BarCodeCell.m */,
+				81BD12CC1791DD0700AF7475 /* DoubleLogoCell.h */,
+				81BD12CD1791DD0A00AF7475 /* DoubleLogoCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -664,12 +748,18 @@
 				81A869B61777822E0043ACE8 /* ActivityFilterView.h */,
 				81A869B71777822E0043ACE8 /* ActivityFilterView.m */,
 				81A869B91777824B0043ACE8 /* ActivityFilterView.xib */,
-				81BD126C178710BA00AF7475 /* OfferDetailView.h */,
-				81BD126D178710BA00AF7475 /* OfferDetailView.m */,
-				81BD126E178710BA00AF7475 /* OfferDetailView.xib */,
+				81BD126C178710BA00AF7475 /* MerchantLogoView.h */,
+				81BD126D178710BA00AF7475 /* MerchantLogoView.m */,
+				81BD126E178710BA00AF7475 /* MerchantLogoView.xib */,
 				810BB75D1783295500C65540 /* KeyboardAccessoryView.h */,
 				810BB75E1783295500C65540 /* KeyboardAccessoryView.m */,
 				810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */,
+				81BD12A3178F1C1B00AF7475 /* DealListHeaderView.h */,
+				81BD12A4178F1C1C00AF7475 /* DealListHeaderView.m */,
+				81BD12A6178F1C4600AF7475 /* DealListHeaderView.xib */,
+				81BD12BA178F525100AF7475 /* DealRedemptionView.h */,
+				81BD12BB178F525400AF7475 /* DealRedemptionView.m */,
+				81BD12BD178F527500AF7475 /* DealRedemptionView.xib */,
 				81BD127117872ACF00AF7475 /* OfferActionView.h */,
 				81BD127217872AD000AF7475 /* OfferActionView.m */,
 				81BD127417872AEB00AF7475 /* OfferActionView.xib */,
@@ -857,12 +947,16 @@
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
 				81BD12101784BA8B00AF7475 /* Icon.png in Resources */,
 				81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */,
-				81BD1270178710BA00AF7475 /* OfferDetailView.xib in Resources */,
+				81BD1270178710BA00AF7475 /* MerchantLogoView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
 				81BD128A178869F400AF7475 /* talool-api-ios.bundle in Resources */,
 				81BD1294178B84E600AF7475 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
 				81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */,
 				81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */,
+				81BD12A7178F1C4800AF7475 /* DealListHeaderView.xib in Resources */,
+				81BD12BE178F527800AF7475 /* DealRedemptionView.xib in Resources */,
+				8151CB671791F05A007894B2 /* bg.png in Resources */,
+				8151CB681791F05A007894B2 /* bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,13 +1040,27 @@
 				819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */,
 				810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */,
 				81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */,
-				81BD126F178710BA00AF7475 /* OfferDetailView.m in Sources */,
+				81BD126F178710BA00AF7475 /* MerchantLogoView.m in Sources */,
 				81BD127317872AD000AF7475 /* OfferActionView.m in Sources */,
 				81BD12781787575A00AF7475 /* OfferSummaryCell.m in Sources */,
-				81BD127B1787602A00AF7475 /* OfferMapCell.m in Sources */,
+				81BD127B1787602A00AF7475 /* MapCell.m in Sources */,
 				81BD128D1788A4E000AF7475 /* AccessCodeCell.m in Sources */,
 				81BD1290178B29B900AF7475 /* DealOfferHelper.m in Sources */,
 				81BD1299178C4A7800AF7475 /* HelpDealOfferLocationViewController.m in Sources */,
+				81BD12A0178F117700AF7475 /* MerchantTableViewController.m in Sources */,
+				81BD12A5178F1C1F00AF7475 /* DealListHeaderView.m in Sources */,
+				81BD12AA178F37B200AF7475 /* DealTableViewController.m in Sources */,
+				81BD12AD178F44FA00AF7475 /* HeroImageCell.m in Sources */,
+				81BD12B0178F451600AF7475 /* LogoCell.m in Sources */,
+				81BD12B3178F453D00AF7475 /* DealDetailCell.m in Sources */,
+				81BD12B6178F456000AF7475 /* ShareCell.m in Sources */,
+				81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */,
+				81BD12BC178F525800AF7475 /* DealRedemptionView.m in Sources */,
+				81BD12C11791B9CC00AF7475 /* ActiveDealLayoutState.m in Sources */,
+				81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */,
+				81BD12C81791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m in Sources */,
+				81BD12CB1791C12D00AF7475 /* InactivedealLayoutState.m in Sources */,
+				81BD12CE1791DD0D00AF7475 /* DoubleLogoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

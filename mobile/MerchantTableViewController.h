@@ -1,0 +1,19 @@
+//
+//  MerchantTableViewController.h
+//  Talool
+//
+//  Created by Douglas McCuen on 7/11/13.
+//  Copyright (c) 2013 Douglas McCuen. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+#define HEADER_HEIGHT 60.0f
+
+@class ttMerchant;
+
+@interface MerchantTableViewController : UITableViewController
+
+@property (nonatomic, retain) ttMerchant *merchant;
+
+@end

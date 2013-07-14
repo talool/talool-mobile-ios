@@ -7,13 +7,13 @@
 //
 
 #import "DealOfferTableViewController.h"
-#import "OfferDetailView.h"
+#import "MerchantLogoView.h"
 #import "OfferActionView.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
 #import "DealCell.h"
 #import "OfferSummaryCell.h"
-#import "OfferMapCell.h"
+#import "MapCell.h"
 #import "AccessCodeCell.h"
 #import "TaloolIAPHelper.h"
 #import "DealOfferHelper.h"
@@ -87,13 +87,11 @@
     ttDealOffer *offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     self.navigationItem.title = offer.title;
     
-    
-    
     // Create the detail view that will be used for the first section header
     CGRect frame = self.view.bounds;
-    detailView = [[OfferDetailView alloc]
+    detailView = [[MerchantLogoView alloc]
                   initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
-                  offer:offer];
+                  url:offer.imageUrl];
     
     // Create the action view that will be used for the second section header
     SKProduct *product = [[DealOfferHelper sharedInstance] getClosestProduct];
@@ -160,7 +158,7 @@
         else
         {
             NSString *CellIdentifier = @"MapCell";
-            OfferMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+            MapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             [cell setOffer:offer];
             
             return cell;

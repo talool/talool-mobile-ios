@@ -13,11 +13,11 @@
 #define HEADER_HEIGHT 70.0f
 
 
-@class OfferDetailView, OfferActionView, ttDealOffer, SKProduct;
+@class MerchantLogoView, OfferActionView, ttDealOffer, SKProduct;
 
 @interface DealOfferTableViewController : UITableViewController<HelpDealOfferLocationDelegate>
 
-@property (strong, nonatomic) OfferDetailView *detailView;
+@property (strong, nonatomic) MerchantLogoView *detailView;
 @property (strong, nonatomic) OfferActionView *actionView;
 
 @end
