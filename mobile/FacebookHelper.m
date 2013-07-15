@@ -134,8 +134,12 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 + (void)postOGShareAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
 {
-    // bail if not connected
-    if (![FBSession activeSession].isOpen) return;
+    // bail if not connected & we couldn't reopen it
+    if (![FBSession activeSession].isOpen)
+    {
+        if (![FacebookHelper reopenSession]) return;
+    }
+    
     
     // First create the Open Graph deal object for the deal being shared.
     id<OGDeal> dealObject = [FacebookHelper dealObjectForGift:giftId];
@@ -187,8 +191,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 + (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location
 {
-    // bail if not connected
-    if (![FBSession activeSession].isOpen) return;
+    // bail if not connected & we couldn't reopen it
+    if (![FBSession activeSession].isOpen)
+    {
+        if (![FacebookHelper reopenSession]) return;
+    }
     
     // First create the Open Graph deal object for the deal being shared.
     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
@@ -218,8 +225,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 + (void)postOGPurchaseAction:(ttDealOffer*)pack
 {
-    // bail if not connected
-    if (![FBSession activeSession].isOpen) return;
+    // bail if not connected & we couldn't reopen it
+    if (![FBSession activeSession].isOpen)
+    {
+        if (![FacebookHelper reopenSession]) return;
+    }
     
     // First create the Open Graph deal object for the deal being shared.
     id<OGDealPack> dealPackObject = [FacebookHelper dealPackObjectForDealOffer:pack];
@@ -230,7 +240,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     
     // the merchant location (so Ted gets brand on the post)
     ttMerchant *merchant = (ttMerchant *)pack.merchant;
-    ttMerchantLocation *location = merchant.location;
+    ttMerchantLocation *location = [merchant getClosestLocation];
     id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
     action.place = locationObject;
     
@@ -252,8 +262,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 + (void)postOGLikeAction:(ttMerchantLocation*)loc
 {
-    // bail if not connected
-    if (![FBSession activeSession].isOpen) return;
+    // bail if not connected & we couldn't reopen it
+    if (![FBSession activeSession].isOpen)
+    {
+        if (![FacebookHelper reopenSession]) return;
+    }
     
     // First create the Open Graph deal object for the deal being shared.
     id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:loc];
@@ -292,6 +305,16 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
                       cancelButtonTitle:@"Thanks!"
                       otherButtonTitles:nil]
      show];
+}
+
++ (BOOL) reopenSession
+{
+    if (![FBSession activeSession].isOpen)
+    {
+        [FBSession openActiveSessionWithAllowLoginUI:NO];
+    }
+    
+    return [FBSession activeSession].isOpen;
 }
 
 @end

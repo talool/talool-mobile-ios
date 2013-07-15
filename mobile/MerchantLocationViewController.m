@@ -31,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = merchant.name;
-    [self centerMap:merchant.location.location];
+    [self centerMap:[merchant getClosestLocation].location];
     
     sortDescriptors = [NSArray arrayWithObjects:
                        //[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], // TODO distance
@@ -44,7 +44,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self centerMap:merchant.location.location];
+    [self centerMap:[merchant getClosestLocation].location];
 }
 
 - (void)viewDidLoad

@@ -30,6 +30,8 @@
 		8151CB671791F05A007894B2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB651791F05A007894B2 /* bg.png */; };
 		8151CB681791F05A007894B2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB661791F05A007894B2 /* bg@2x.png */; };
 		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
+		8151CBAE1794A701007894B2 /* compass1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAC1794A701007894B2 /* compass1.png */; };
+		8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAD1794A701007894B2 /* compass1@2x.png */; };
 		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
 		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
@@ -220,6 +222,8 @@
 		8151CB651791F05A007894B2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		8151CB661791F05A007894B2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8151CBAC1794A701007894B2 /* compass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass1.png; sourceTree = "<group>"; };
+		8151CBAD1794A701007894B2 /* compass1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass1@2x.png"; sourceTree = "<group>"; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
@@ -655,6 +659,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8151CBAC1794A701007894B2 /* compass1.png */,
+				8151CBAD1794A701007894B2 /* compass1@2x.png */,
 				8151CB651791F05A007894B2 /* bg.png */,
 				8151CB661791F05A007894B2 /* bg@2x.png */,
 				81937B1F176A44FA002DDCA8 /* page-curl.png */,
@@ -961,6 +967,8 @@
 				81BD12BE178F527800AF7475 /* DealRedemptionView.xib in Resources */,
 				8151CB671791F05A007894B2 /* bg.png in Resources */,
 				8151CB681791F05A007894B2 /* bg@2x.png in Resources */,
+				8151CBAE1794A701007894B2 /* compass1.png in Resources */,
+				8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

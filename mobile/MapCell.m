@@ -39,7 +39,7 @@
 {
     //self.merchant = merch;
     [self plotMerchantLocations:merchant];
-    [self centerMap:merchant.location.location];
+    [self centerMap:[merchant getClosestLocation].location];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)locationMapView viewForAnnotation:(id <MKAnnotation>)annotation {

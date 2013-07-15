@@ -356,5 +356,4 @@
     [[self.activiyViewController navigationController] tabBarItem].badgeValue = badge;
 }
 
-
 @end

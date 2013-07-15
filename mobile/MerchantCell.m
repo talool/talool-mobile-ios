@@ -37,7 +37,7 @@
     if (newMerchant != merchant) {
         merchant = newMerchant;
         ttCategory *cat = (ttCategory *)newMerchant.category;
-        ttMerchantLocation *loc = newMerchant.location;
+        ttMerchantLocation *loc = [newMerchant getClosestLocation];
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         //[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -47,7 +47,16 @@
         
         [self setIcon:[helper getIcon:[cat.categoryId intValue]]];
         [self setName:merchant.name];
-        [self setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
+        
+        if (miles>0)
+        {
+            [self setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
+        }
+        else
+        {
+            [self setDistance: @"" ];
+        }
+        
         [self setAddress:[merchant getLocationLabel]];
 
     }

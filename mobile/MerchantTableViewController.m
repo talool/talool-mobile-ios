@@ -67,7 +67,7 @@
     
     [dealHeaderView setTitle:merchant.name];
     
-    [logoHeaderView updateLogo:merchant.location.logoUrl];
+    [logoHeaderView updateLogo:[merchant getClosestLocation].logoUrl];
     
     [self setLikeLabel];
     
@@ -96,7 +96,7 @@
     else
     {
         [merchant favorite:[CustomerHelper getLoggedInUser]];
-        [FacebookHelper postOGLikeAction:merchant.location];
+        [FacebookHelper postOGLikeAction:[merchant getClosestLocation]];
     }
     [self setLikeLabel];
 }
@@ -155,7 +155,7 @@
         {
             NSString *CellIdentifier = @"HeroImageCell";
             HeroImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell setImageUrl:merchant.location.imageUrl];
+            [cell setImageUrl:[merchant getClosestLocation].imageUrl];
             return cell;
         }
         else

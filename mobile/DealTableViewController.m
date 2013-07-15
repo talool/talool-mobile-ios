@@ -68,6 +68,12 @@
                               context:[CustomerHelper getContext]
                                 error:&error];
     
+    // double check the facebook session
+    if (![FBSession activeSession].isOpen && [[CustomerHelper getLoggedInUser] isFacebookUser])
+    {
+        [FacebookHelper reopenSession];
+    }
+    
     // Define the layout for the deal
     if ([deal hasExpired] || [deal hasBeenShared] || [deal hasBeenRedeemed])
     {
@@ -256,7 +262,7 @@
         
         if (err.code < 100) {
             // Post the FB redeem action
-            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.location];
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
             // update the table view
             dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
             [self.tableView reloadData];
@@ -438,7 +444,7 @@
                  }
              }];
         } else {
-            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:deal.deal.merchant.location];
+            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
         }
     }
 }

@@ -96,7 +96,7 @@
         
         if (err.code < 100) {
             // Post the FB redeem action
-            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.location];
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
             // Notify delegate and close
             [dealActionDelegate dealRedeemed:self];
             [self dismissViewControllerAnimated:YES completion:nil];

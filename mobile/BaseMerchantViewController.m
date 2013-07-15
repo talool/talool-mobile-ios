@@ -89,21 +89,21 @@
     ttMerchant *merchant = [merchants objectAtIndex:indexPath.row];
     //[cell setMerchant:merchant];
     ttCategory *cat = (ttCategory *)merchant.category;
-    ttMerchantLocation *loc = merchant.location;
+    ttMerchantLocation *loc = [merchant getClosestLocation];
     
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setPositiveFormat:@"###0.##"];
-    [formatter setLocale:[NSLocale currentLocale]];
-    NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
     CategoryHelper *helper = [[CategoryHelper alloc] init];
     [cell setIcon:[helper getIcon:[cat.categoryId intValue]]];
     [cell setName:merchant.name];
-    if (miles == nil)
+    if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
     {
         [cell setDistance:@"  "];
     }
     else
     {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setPositiveFormat:@"###0.##"];
+        [formatter setLocale:[NSLocale currentLocale]];
+        NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
         [cell setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
     }
     [cell setAddress:[merchant getLocationLabel]];

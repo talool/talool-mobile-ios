@@ -46,7 +46,7 @@
 {
     if (on)
     {
-        [FacebookHelper postOGLikeAction:merchant.location];
+        [FacebookHelper postOGLikeAction:[merchant getClosestLocation]];
     }
 }
 

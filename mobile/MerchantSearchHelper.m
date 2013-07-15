@@ -12,6 +12,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
+#import "talool-api-ios/GAI.h"
 
 @interface MerchantSearchHelper ()
 
@@ -54,13 +55,18 @@
     locationChanged = YES;
     proximityChanged = YES;
     
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
     // is the location service enabled?
     if ([CLLocationManager locationServicesEnabled] == NO)
     {
-        // It would be interesting to track this. (TODO)
         // the user will be prompted to turn them on when the location
         // manager starts up.
         NSLog(@"The user has disabled location services");
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Disabled"
+                             withValue:nil];
     }
     
     // is the location service authorized?
@@ -69,11 +75,14 @@
     {
         /*
          * TODO
-         - track this
          - message user about why it's needed?
          - flag the user obj, so we can avoid errors?
          */
         NSLog(@"The user has denied the use of their location");
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Denied"
+                             withValue:nil];
     }
     
     locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
@@ -153,7 +162,8 @@
     }
     else
     {
-        NSLog(@"TODO:::: The location manage is disable, so search won't work.  What should we show?");
+        // Can't search by proximity w/o a location, so just return the user's merchants
+        return YES;
     }
     
     return NO;
@@ -182,7 +192,6 @@
         prox = INFINITE_PROXIMITY;
     }
     int proximityInMeters = METERS_PER_MILE * prox;
-    //NSLog(@"DEBUG::: proximity in meters for filter = %lu",(unsigned long)proximityInMeters);
     
     return proximityInMeters;
 }
@@ -211,12 +220,10 @@
         // filter merchants
         tempArray = [NSMutableArray arrayWithArray:[merchants filteredArrayUsingPredicate:selectedPredicate]];
     }
-    //NSLog(@"DEBUG::: Category: filtered %lu merchants down to %lu",(unsigned long)[merchants count], (unsigned long)[tempArray count]);
     
     // filter the array based on proximity
     NSPredicate *proximityPredicate = [NSPredicate predicateWithFormat:@"ANY locations.distanceInMeters < %d",[self getProxmitityInMeters]];
     tempArray = [tempArray filteredArrayUsingPredicate:proximityPredicate];
-    //NSLog(@"DEBUG::: Proximity: filtered %lu merchants down to %lu",(unsigned long)[merchants count], (unsigned long)[tempArray count]);
     
     // Send the new array to the delegate
     [delegate merchantSetChanged:tempArray sender:self];
@@ -274,12 +281,13 @@
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error
 {
-    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Location Error"
-                                                        message:error.localizedDescription
-                                                       delegate:self
-                                              cancelButtonTitle:@"close"
-                                              otherButtonTitles:nil];
-	[errorView show];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"APP"
+                        withAction:@"MerchantSearchByProximity"
+                         withLabel:@"Fail:location_error"
+                         withValue:nil];
+
 }
 
 @end

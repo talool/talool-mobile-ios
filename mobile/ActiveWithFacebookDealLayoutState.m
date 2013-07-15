@@ -33,7 +33,8 @@
             break;
         default:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DoubleLogoCell" forIndexPath:indexPath];
-            [(DoubleLogoCell *)cell setOfferlogoUrl:self.offer.imageUrl merchantLogoUrl:self.deal.deal.merchant.location.logoUrl];
+            ttMerchantLocation *loc = [self.deal.deal.merchant getClosestLocation];
+            [(DoubleLogoCell *)cell setOfferlogoUrl:self.offer.imageUrl merchantLogoUrl:loc.logoUrl];
             break;
     }
     return cell;

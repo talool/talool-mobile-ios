@@ -12,6 +12,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
+#import "talool-api-ios/GAI.h"
 
 @interface DealOfferHelper()
 
@@ -45,13 +46,18 @@
         
         [self reset];
         
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        
         // is the location service enabled?
         if ([CLLocationManager locationServicesEnabled] == NO)
         {
-            // It would be interesting to track this. (TODO)
             // the user will be prompted to turn them on when the location
             // manager starts up.
             NSLog(@"The user has disabled location services");
+            [tracker sendEventWithCategory:@"APP"
+                                withAction:@"LocationServices"
+                                 withLabel:@"Disabled"
+                                 withValue:nil];
         }
         
         // is the location service authorized?
@@ -60,11 +66,14 @@
         {
             /*
              * TODO
-             - track this
              - message user about why it's needed?
              - flag the user obj, so we can avoid errors?
              */
             NSLog(@"The user has denied the use of their location");
+            [tracker sendEventWithCategory:@"APP"
+                                withAction:@"LocationServices"
+                                 withLabel:@"Denied"
+                                 withValue:nil];
         }
         
         _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
@@ -185,12 +194,12 @@
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error
 {
-    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Location Error"
-                                                        message:error.localizedDescription
-                                                       delegate:self
-                                              cancelButtonTitle:@"close"
-                                              otherButtonTitles:nil];
-	[errorView show];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"APP"
+                        withAction:@"ClosestDealOffer"
+                         withLabel:@"Fail:location_error"
+                         withValue:nil];
 }
 
 

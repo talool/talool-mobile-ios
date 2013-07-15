@@ -78,9 +78,8 @@
                                   
                               }];
     
-    // TODO get the closest location... test this
     ttMerchant *merch = (ttMerchant *)self.deal.deal.merchant;
-    ttMerchantLocation *ml = [merch getClosestLocation:0.0 longitude:0.0];
+    ttMerchantLocation *ml = [merch getClosestLocation];
     [self.merchantLogo setImageWithURL:[NSURL URLWithString:ml.logoUrl]
                       placeholderImage:[UIImage imageNamed:@"000.png"]
                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
@@ -477,7 +476,7 @@
                  }
              }];
         } else {
-            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:deal.deal.merchant.location];
+            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
         }
     }
 }

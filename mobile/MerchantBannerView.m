@@ -37,7 +37,7 @@
         texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320, 80)];
         [texture setAlpha:0.15];
         
-        [logo setImageWithURL:[NSURL URLWithString:merchant.location.logoUrl]
+        [logo setImageWithURL:[NSURL URLWithString:[merchant getClosestLocation].logoUrl]
                   placeholderImage:[UIImage imageNamed:@"000.png"]
                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                              if (error !=  nil) {

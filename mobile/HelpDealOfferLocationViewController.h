@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class TaloolUIButton;
+
 @protocol HelpDealOfferLocationDelegate <NSObject>
 - (void)locationSelected;
 @end
 
 @interface HelpDealOfferLocationViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *boulderButton;
-@property (strong, nonatomic) IBOutlet UIButton *vancouverButton;
+@property (strong, nonatomic) IBOutlet TaloolUIButton *boulderButton;
+@property (strong, nonatomic) IBOutlet TaloolUIButton *vancouverButton;
 
 @property (strong, nonatomic) id<HelpDealOfferLocationDelegate> delegate;
 

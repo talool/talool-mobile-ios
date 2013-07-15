@@ -35,5 +35,7 @@ extern NSString * const OG_MERCHANT_PAGE;
 
 + (void)trackNumberOfFriends;
 
++ (BOOL) reopenSession;
+
 
 @end

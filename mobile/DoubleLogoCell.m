@@ -31,7 +31,6 @@
                                    }
                                    
                                }];
-    NSLog(@"loading 2 logos: %@ %@",oUrl, mUrl);
 }
 
 @end
