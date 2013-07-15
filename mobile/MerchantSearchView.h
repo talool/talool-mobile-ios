@@ -13,15 +13,12 @@
 
 @interface MerchantSearchView : UIView
 {
-    IBOutlet UILabel *distanceLabel;
-    IBOutlet UISlider *distanceSlider;
+    IBOutlet UILabel *filterLabel;
     IBOutlet UIView *view;
     IBOutlet UIImageView *texture;
 }
 
-- (IBAction)proximitySliderValueChanged:(id)sender;
 - (void) categoryToggled;
-- (void) proximityChanged;
 - (void) fetchMerchants;
 
 @property (strong, nonatomic) MerchantFilterControl *filterControl;
