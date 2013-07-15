@@ -73,7 +73,7 @@
     {
         dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
     }
-    else if (FBSession.activeSession.isOpen)
+    else if ([FBSession.activeSession isOpen] || [[CustomerHelper getLoggedInUser] isFacebookUser])
     {
         dealLayout = [[ActiveWithFacebookDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
     }

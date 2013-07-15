@@ -31,11 +31,11 @@
     NSString *label;
     if (isEmailShare)
     {
-        label = @"Share via Email";
+        label = @"Gift via Email";
     }
     else
     {
-        label = @"Share via Facebook";
+        label = @"Gift via Facebook";
     }
     
     [self.shareButton useTaloolStyle];

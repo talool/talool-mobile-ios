@@ -20,6 +20,7 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import <AddressBook/AddressBook.h>
+#import "talool-api-ios/GAI.h"
 
 @implementation FacebookHelper
 
@@ -47,6 +48,22 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
     
     return ttsa;
+}
+
++ (void)trackNumberOfFriends
+{
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
+                                                  NSDictionary* result,
+                                                  NSError *error) {
+        NSArray* friends = [result objectForKey:@"data"];
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"facebook"
+                             withLabel:@"friends"
+                             withValue:[NSNumber numberWithInt:friends.count]];
+        
+    }];
 }
 
 + (ttCustomer *) createCustomerFromFacebookUser:(NSDictionary<FBGraphUser> *)fb_user

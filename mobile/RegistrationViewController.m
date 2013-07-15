@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.trackedViewName = @"Registration Screen";
 
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Register"];
     [emailField setInputAccessoryView:kav];
@@ -39,12 +41,6 @@
     [texture setAlpha:0.15];
     
     scroller.contentSize = CGSizeMake(self.view.frame.size.width, 1200.0);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
@@ -103,16 +99,6 @@
     {
         [lastNameField resignFirstResponder];
     }
-}
-
--(void) previous:(id)sender
-{
-    
-}
-
--(void) next:(id)sender
-{
-    
 }
 
 @end

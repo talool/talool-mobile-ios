@@ -29,6 +29,7 @@
 		8146D18C1774D29E0035F589 /* MerchantBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8146D18B1774D29E0035F589 /* MerchantBannerView.xib */; };
 		8151CB671791F05A007894B2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB651791F05A007894B2 /* bg.png */; };
 		8151CB681791F05A007894B2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB661791F05A007894B2 /* bg@2x.png */; };
+		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
 		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
 		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
@@ -218,6 +219,7 @@
 		8146D18B1774D29E0035F589 /* MerchantBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantBannerView.xib; sourceTree = "<group>"; };
 		8151CB651791F05A007894B2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		8151CB661791F05A007894B2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
 		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */,
 				817E53851770CE180049434A /* StoreKit.framework in Frameworks */,
 				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
@@ -560,6 +563,7 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8151CBA4179452F0007894B2 /* SystemConfiguration.framework */,
 				81BD1289178869F400AF7475 /* talool-api-ios.bundle */,
 				817E53841770CE180049434A /* StoreKit.framework */,
 				916B1166175D69590024A037 /* Security.framework */,

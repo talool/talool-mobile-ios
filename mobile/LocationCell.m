@@ -9,6 +9,9 @@
 #import "LocationCell.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttAddress.h"
+#import "IconHelper.h"
+#import "TaloolColor.h"
+#import "FontAwesomeKit.h"
 
 @implementation LocationCell
 
@@ -42,11 +45,11 @@
 {
     location = newLocation;
     
-    [self setName:location.name];
+    [self setName:location.address.address1];
     
-    [self setIcon:[UIImage imageNamed:@"Icon_teal.png"]];
+    [self setIcon:[IconHelper getImageForIcon:FAKIconMapMarker color:[TaloolColor orange]]];
     
-    [self setAddress:location.address.address1];
+    [self setAddress:[NSString stringWithFormat:@"%@, %@, %@",location.address.city, location.address.stateProvidenceCounty, location.address.zip]];
 
 }
 

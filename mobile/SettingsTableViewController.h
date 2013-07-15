@@ -10,6 +10,8 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "FacebookSDK/FacebookSDK.h"
 
+#define GA_TRACKING_ID  @"UA-42344079-1"
+
 @interface SettingsTableViewController : UITableViewController<FBLoginViewDelegate>
 {
     ttCustomer *customer;

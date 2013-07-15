@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
+#import "talool-api-ios/GAITrackedViewController.h"
 
 @class TaloolIconButton, TaloolUIButton;
 
-@interface WelcomeViewController : UIViewController<FBLoginViewDelegate>
+@interface WelcomeViewController : GAITrackedViewController<FBLoginViewDelegate>
 {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;

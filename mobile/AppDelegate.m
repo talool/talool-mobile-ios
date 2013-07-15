@@ -23,6 +23,7 @@
 #import "ActivityStreamHelper.h"
 #import "DealOfferHelper.h"
 #import "MerchantSearchView.h"
+#import "talool-api-ios/GAI.h"
 
 @implementation AppDelegate
 
@@ -86,6 +87,17 @@
     [DealOfferHelper sharedInstance];
     
     _activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
+    
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    //[GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
+
     
     return YES;
 }

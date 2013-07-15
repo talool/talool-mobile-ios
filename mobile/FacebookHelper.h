@@ -33,5 +33,7 @@ extern NSString * const OG_MERCHANT_PAGE;
 + (void)postOGPurchaseAction:(ttDealOffer*)pack;
 + (void)postOGLikeAction:(ttMerchantLocation*)loc;
 
++ (void)trackNumberOfFriends;
+
 
 @end

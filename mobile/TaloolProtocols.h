@@ -36,6 +36,7 @@
 
 @protocol TaloolKeyboardAccessoryDelegate<NSObject>
 - (void)submit:(id)sender;
+@optional
 - (void)next:(id)sender;
 - (void)previous:(id)sender;
 - (void)cancel:(id)sender;

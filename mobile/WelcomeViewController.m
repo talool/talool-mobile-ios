@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
     
+    self.trackedViewName = @"Welcome Screen";
+    
     [self.view setBackgroundColor:[TaloolColor gray_2]];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
@@ -77,7 +79,6 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-
 }
 
 - (void)viewDidUnload {
@@ -126,6 +127,8 @@
                      } else {
                          [CustomerHelper registerCustomer:customer password:passwordHack];
                      }
+                     
+                     [FacebookHelper trackNumberOfFriends];
                      
                      // remove the spinner
                      [spinner stopAnimating];
