@@ -18,27 +18,19 @@
 
 @synthesize delegate, searchHelper;
 
-- (id)initWithFrame:(CGRect)frame isExplore:(BOOL)explore merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate
+- (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
-        self.isExplore = explore;
         
         [[NSBundle mainBundle] loadNibNamed:@"MerchantSearchView" owner:self options:nil];
         
-        //self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(12.0, 40.0, 296.0, 35.0)];
         self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(12.0, 12.0, 296.0, 35.0)];
         
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];
         
-        if (explore)
-        {
-            [self.filterControl removeSegmentAtIndex:1 animated:NO];
-        }
-        
-        searchHelper = [[MerchantSearchHelper alloc] initWithDelegate:searchDelegate searchMode:explore];
+        searchHelper = [[MerchantSearchHelper alloc] initWithDelegate:searchDelegate];
         [self setDelegate:searchHelper];
         
         texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320.0, 90.0)];
@@ -66,7 +58,7 @@
 
 - (void) categoryToggled
 {
-    NSPredicate *predicate = [self.filterControl getPredicateAtSelectedIndex:self.isExplore];
+    NSPredicate *predicate = [self.filterControl getPredicateAtSelectedIndex];
     [self.delegate filterChanged:predicate sender:self];
     
     // change the label
@@ -79,7 +71,7 @@
             filterLabel.text = @"Showing your favorite merchants";
             break;
         default:
-            cat = [self.filterControl getCategoryAtSelectedIndex:self.isExplore];
+            cat = [self.filterControl getCategoryAtSelectedIndex];
             filterLabel.text = [NSString stringWithFormat:@"Showing the %@ category",cat.name ];
             break;
     }

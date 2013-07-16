@@ -72,91 +72,54 @@
     return self;
 }
 
-- (ttCategory *) getCategoryAtSelectedIndex:(Boolean)searchMode
+- (ttCategory *) getCategoryAtSelectedIndex
 {
     ttCategory *cat;
     
-    if (searchMode)
+    switch ([self selectedSegmentIndex])
     {
-        switch ([self selectedSegmentIndex])
-        {
-            case ExploreFoodIndex:
-                cat = [categoryHelper getCategory:CategoryFood];
-                break;
-            case ExploreFunIndex:
-                cat = [categoryHelper getCategory:CategoryFun];
-                break;
-            case ExploreShoppingIndex:
-                cat = [categoryHelper getCategory:CategoryShopping];
-                break;
-            case ExploreNightlifeIndex:
-                cat = [categoryHelper getCategory:CategoryNightlife];
-                break;
-            default:
-                cat = nil;
-                break;
-        }
+        case MyDealsFoodIndex:
+            cat = [categoryHelper getCategory:CategoryFood];
+            break;
+        case MyDealsFunIndex:
+            cat = [categoryHelper getCategory:CategoryFun];
+            break;
+        case MyDealsShoppingIndex:
+            cat = [categoryHelper getCategory:CategoryShopping];
+            break;
+        case MyDealsNightlifeIndex:
+            cat = [categoryHelper getCategory:CategoryNightlife];
+            break;
+        default:
+            cat = nil;
+            break;
     }
-    else
-    {
-        switch ([self selectedSegmentIndex])
-        {
-            case MyDealsFoodIndex:
-                cat = [categoryHelper getCategory:CategoryFood];
-                break;
-            case MyDealsFunIndex:
-                cat = [categoryHelper getCategory:CategoryFun];
-                break;
-            case MyDealsShoppingIndex:
-                cat = [categoryHelper getCategory:CategoryShopping];
-                break;
-            case MyDealsNightlifeIndex:
-                cat = [categoryHelper getCategory:CategoryNightlife];
-                break;
-            default:
-                cat = nil;
-                break;
-        }
-    }
+
     return cat;
 }
 
-- (NSPredicate *) getPredicateAtSelectedIndex:(Boolean)searchMode
+- (NSPredicate *) getPredicateAtSelectedIndex
 {
     NSPredicate *filter;
-    if (searchMode)
-    {
-        switch ([self selectedSegmentIndex])
-        {
-            case ExploreAllIndex:
-                filter = nil;
-                break;
-            default:
-                filter = [self getCategoryPredicate:searchMode];
-                break;
-        }
-    }
-    else
-    {
-        switch ([self selectedSegmentIndex]) {
-            case MyDealsAllIndex:
-                filter = nil;
-                break;
-            case MyDealsFavsIndex:
-                filter = [NSPredicate predicateWithFormat:@"SELF.isFav > %d",0];
-                break;
-            default:
-                filter = [self getCategoryPredicate:searchMode];
-                break;
-        }
+    
+    switch ([self selectedSegmentIndex]) {
+        case MyDealsAllIndex:
+            filter = nil;
+            break;
+        case MyDealsFavsIndex:
+            filter = [NSPredicate predicateWithFormat:@"SELF.isFav > %d",0];
+            break;
+        default:
+            filter = [self getCategoryPredicate];
+            break;
     }
     
     return filter;
 }
 
-- (NSPredicate *)getCategoryPredicate:(Boolean)searchMode
+- (NSPredicate *)getCategoryPredicate
 {
-    ttCategory *cat = [self getCategoryAtSelectedIndex:searchMode];
+    ttCategory *cat = [self getCategoryAtSelectedIndex];
     return [NSPredicate predicateWithFormat:@"category.categoryId = %@", cat.categoryId];
 }
 

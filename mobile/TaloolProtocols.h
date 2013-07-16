@@ -44,7 +44,6 @@
 
 @protocol MerchantFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
-- (void)proximityChanged:(float)valueInMiles sender:(id)sender;
 - (void)fetchMerchants;
 @end
 

@@ -7,7 +7,7 @@
 //
 
 #import "MyDealsViewController.h"
-#import "MerchantDealViewController.h"
+#import "MerchantTableViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "DealOfferHelper.h"
@@ -34,8 +34,7 @@
     [appDelegate.loginViewController registerAuthDelegate:self];
     
     self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
-                                                              isExplore:NO
-                                                 merchantSearchDelegate:self];
+                                         merchantSearchDelegate:self];
     [self.view addSubview:self.searchView];
 
 }
@@ -94,7 +93,7 @@
     if ([[segue identifier] isEqualToString:@"merchantDeals"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ttMerchant *merchant = [self.merchants objectAtIndex:[indexPath row]];
-        MerchantDealViewController *mvc = (MerchantDealViewController *)[segue destinationViewController];
+        MerchantTableViewController *mvc = (MerchantTableViewController *)[segue destinationViewController];
         [mvc setMerchant:merchant];
     }
     else if ([[segue identifier] isEqualToString:@"welcome"])

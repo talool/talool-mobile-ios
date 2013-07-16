@@ -22,10 +22,9 @@
 - (void) fetchMerchants;
 
 @property (strong, nonatomic) MerchantFilterControl *filterControl;
-@property BOOL isExplore;
 @property (retain, nonatomic) id<MerchantFilterDelegate> delegate;
 @property (retain, nonatomic) MerchantSearchHelper *searchHelper;
 
-- (id)initWithFrame:(CGRect)frame isExplore:(BOOL)explore merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate;
+- (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate;
 
 @end

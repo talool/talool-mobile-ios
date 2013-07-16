@@ -7,18 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "TaloolProtocols.h"
 
-@interface MerchantSearchHelper : NSObject<MerchantFilterDelegate, CLLocationManagerDelegate>
+@interface MerchantSearchHelper : NSObject<MerchantFilterDelegate>
 
-@property BOOL isSearch;
-@property (retain, nonatomic) NSNumber *distanceInMiles;
 @property (retain, nonatomic) NSPredicate *selectedPredicate;
 @property (retain, nonatomic) NSArray *merchants;
 @property (retain, nonatomic) id<MerchantSearchDelegate> delegate;
 
 - (void) fetchMerchants;
-- (id) initWithDelegate:(id<MerchantSearchDelegate>)searchDelegate searchMode:(BOOL)searchMode;
+- (id) initWithDelegate:(id<MerchantSearchDelegate>)searchDelegate;
 
 @end

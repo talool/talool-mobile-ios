@@ -33,7 +33,7 @@ typedef NSUInteger ExploreCategoryIndex;
 
 @property (nonatomic, retain) CategoryHelper *categoryHelper;
 
-- (ttCategory *) getCategoryAtSelectedIndex:(Boolean)searchMode;
-- (NSPredicate *) getPredicateAtSelectedIndex:(Boolean)searchMode;
+- (ttCategory *) getCategoryAtSelectedIndex;
+- (NSPredicate *) getPredicateAtSelectedIndex;
 
 @end
