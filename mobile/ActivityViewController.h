@@ -11,12 +11,7 @@
 
 @class ActivityFilterView;
 
-@interface ActivityViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, ActivityStreamDelegate, TaloolGiftAcceptedDelegate>
-{
-    IBOutlet UITableView *tableView;
-}
-@property (retain, nonatomic) UITableView *tableView;
-@property (retain, nonatomic) UIRefreshControl *refreshControl;
+@interface ActivityViewController : UITableViewController<ActivityStreamDelegate, TaloolGiftAcceptedDelegate>
 
 @property (retain, nonatomic) NSArray *activities;
 

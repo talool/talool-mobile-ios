@@ -9,6 +9,7 @@
 #import "ActivityViewController.h"
 #import "AcceptGiftViewController.h"
 #import "CustomerHelper.h"
+#import "TextureHelper.h"
 #import "ActivityCell.h"
 #import "ActivityFilterView.h"
 #import "TaloolColor.h"
@@ -26,20 +27,34 @@
 
 @implementation ActivityViewController
 
-@synthesize tableView, refreshControl, filterView, activities;
+@synthesize activities;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.tintColor = [TaloolColor gray_3];
-    [refreshControl addTarget:self action:@selector(refreshActivities) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshActivities) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.backgroundColor = [UIColor clearColor];
+    NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Activities"];
+    NSRange range = NSMakeRange(0,refreshLabel.length);
+    [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    self.refreshControl.attributedTitle = refreshLabel;
+    
+    // Creating view for extending background color
+    CGRect frame = self.tableView.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView* bgView = [[UIView alloc] initWithFrame:frame];
+    bgView.backgroundColor = [TaloolColor gray_5];
+    UIImageView *texture = [[UIImageView alloc] initWithImage:[TextureHelper getTextureWithColor:[TaloolColor gray_4] size:frame.size]];
+    [texture setAlpha:0.2];
+    [bgView addSubview:texture];
+    
+    // Adding the view below the refresh control
+    [self.tableView insertSubview:bgView atIndex:0];
     
     self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
                                          activityStreamDelegate:self];
-    [self.view addSubview:self.filterView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -132,6 +147,11 @@
     }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.filterView;
+}
+
 #pragma mark -
 #pragma mark - Refresh Control
 
@@ -143,7 +163,7 @@
 
 - (void) updateTable
 {
-    [filterView fetchActivities];
+    [self.filterView fetchActivities];
     [self.refreshControl endRefreshing];
 }
 
@@ -179,7 +199,7 @@
 
 - (void)giftAccepted:(ttDealAcquire *)deal sender:(id)sender
 {
-    [filterView fetchActivities];
+    [self.filterView fetchActivities];
 }
 
 @end

@@ -56,6 +56,9 @@
     [spinner startAnimating];
 }
 
+# pragma mark -
+# warning @"dev urls for web links"
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"logout"])
@@ -104,6 +107,11 @@
     {
         [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/vancouver"];
         [[segue destinationViewController] setViewTitle:@"Vancouver"];
+    }
+    else if ([[segue identifier] isEqualToString:@"faq"])
+    {
+        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/faq"];
+        [[segue destinationViewController] setViewTitle:@"FAQ"];
     }
 }
 

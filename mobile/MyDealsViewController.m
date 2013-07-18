@@ -9,39 +9,66 @@
 #import "MyDealsViewController.h"
 #import "MerchantTableViewController.h"
 #import "AppDelegate.h"
-#import "CustomerHelper.h"
 #import "DealOfferHelper.h"
 #import "FontAwesomeKit.h"
+#import "WelcomeViewController.h"
+#import "FavoriteMerchantCell.h"
+#import "MerchantCell.h"
+#import "MerchantFilterControl.h"
+#import "talool-api-ios/ttCategory.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
-#import "WelcomeViewController.h"
+#import "CustomerHelper.h"
+#import "CategoryHelper.h"
+#import "TextureHelper.h"
+#import "TaloolColor.h"
 #import "MerchantSearchView.h"
-
-@interface MyDealsViewController ()
-
-@end
 
 @implementation MyDealsViewController
 
 @synthesize helpButton;
+@synthesize merchants, searchView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.refreshControl.backgroundColor = [UIColor clearColor];
+    NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
+    NSRange range = NSMakeRange(0,refreshLabel.length);
+    [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    self.refreshControl.attributedTitle = refreshLabel;
+    [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
+    
+    // Creating view for extending background color
+    CGRect frame = self.tableView.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView* bgView = [[UIView alloc] initWithFrame:frame];
+    bgView.backgroundColor = [TaloolColor gray_5];
+    UIImageView *texture = [[UIImageView alloc] initWithImage:[TextureHelper getTextureWithColor:[TaloolColor gray_4] size:frame.size]];
+    [texture setAlpha:0.2];
+    [bgView addSubview:texture];
+    
+    // Adding the view below the refresh control
+    [self.tableView insertSubview:bgView atIndex:0];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.loginViewController registerAuthDelegate:self];
     
     self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
                                          merchantSearchDelegate:self];
-    [self.view addSubview:self.searchView];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
     
     if ([CustomerHelper getLoggedInUser] == nil) {
         // The user isn't logged in, so kick them to the welcome view
@@ -137,6 +164,88 @@
     {
         [helpButton removeFromSuperview];
     }
+}
+
+#pragma mark -
+#pragma mark UIViewController
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+#pragma mark -
+#pragma mark UITableView Delegate/Datasource
+
+// Determines the number of sections within this table view
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+// Determines the number of rows for the argument section number
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [merchants count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"MerchantCell";
+    
+    FavoriteMerchantCell *cell = (FavoriteMerchantCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	// Configure the data for the cell.
+    ttMerchant *merchant = [merchants objectAtIndex:indexPath.row];
+    //[cell setMerchant:merchant];
+    ttCategory *cat = (ttCategory *)merchant.category;
+    ttMerchantLocation *loc = [merchant getClosestLocation];
+    
+    CategoryHelper *helper = [[CategoryHelper alloc] init];
+    [cell setIcon:[helper getIcon:[cat.categoryId intValue]]];
+    [cell setName:merchant.name];
+    if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
+    {
+        [cell setDistance:@"  "];
+    }
+    else
+    {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setPositiveFormat:@"###0.##"];
+        [formatter setLocale:[NSLocale currentLocale]];
+        NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
+        [cell setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
+    }
+    [cell setAddress:[merchant getLocationLabel]];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.searchView;
+}
+
+#pragma mark -
+#pragma mark - Refresh Control
+
+- (void) refreshMerchants
+{
+    // Override in subclass to hit the service
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+}
+
+- (void) updateTable
+{
+    [searchView fetchMerchants];
+    [self.refreshControl endRefreshing];
+}
+
+#pragma mark -
+#pragma mark - MerchantSearchDelegate methods
+
+- (void)merchantSetChanged:(NSArray *)newMerchants sender:(id)sender
+{
+    merchants = newMerchants;
+    [self.tableView reloadData];
 }
 
 #pragma mark -

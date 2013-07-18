@@ -6,11 +6,15 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
-#import "BaseMerchantViewController.h"
+#import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@interface MyDealsViewController : BaseMerchantViewController<TaloolAuthenticationDelegate, TaloolGiftAcceptedDelegate>
+@class MerchantSearchView;
+
+@interface MyDealsViewController : UITableViewController<TaloolAuthenticationDelegate, TaloolGiftAcceptedDelegate, MerchantSearchDelegate>
 
 @property (strong, nonatomic) UIButton *helpButton;
+@property (nonatomic, retain) NSArray *merchants;
+@property (retain, nonatomic) MerchantSearchView *searchView;
 
 @end
