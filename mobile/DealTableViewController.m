@@ -9,16 +9,12 @@
 #import "DealTableViewController.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
-#import "DealRedemptionView.h"
+#import "DealActionBar3View.h"
 #import "BarCodeCell.h"
 #import "DealDetailCell.h"
-#import "LogoCell.h"
-#import "ShareCell.h"
 #import "HeroImageCell.h"
 #import "DealLayoutState.h"
-#import "ActiveDealLayoutState.h"
-#import "ActiveWithFacebookDealLayoutState.h"
-#import "InactiveDealLayoutState.h"
+#import "DefaultDealLayoutState.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttDeal.h"
@@ -35,7 +31,7 @@
 
 @implementation DealTableViewController
 
-@synthesize deal, offer, redemptionView, friendCache, dealLayout;
+@synthesize deal, offer, friendCache, dealLayout, actionBar3View;
 
 - (void) viewDidLoad
 {
@@ -49,10 +45,9 @@
     _customerLocation = nil;
     
     CGRect frame = self.view.bounds;
-    redemptionView = [[DealRedemptionView alloc]
-                                          initWithFrame:CGRectMake(0.0,0.0,frame.size.width,60.0)
-                                          deal:deal
-                                          delegate:self];
+    actionBar3View = [[DealActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,75.0)
+                                                          deal:deal
+                                                      delegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,18 +70,7 @@
     }
     
     // Define the layout for the deal
-    if ([deal hasExpired] || [deal hasBeenShared] || [deal hasBeenRedeemed])
-    {
-        dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
-    }
-    else if ([FBSession.activeSession isOpen] || [[CustomerHelper getLoggedInUser] isFacebookUser])
-    {
-        dealLayout = [[ActiveWithFacebookDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
-    }
-    else
-    {
-        dealLayout = [[ActiveDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
-    }
+    dealLayout = [[DefaultDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
 
 }
 
@@ -193,7 +177,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (section==0) ? 0.0:60.0;
+    return (section==0) ? 0.0:75.0;
 }
 
 
@@ -206,8 +190,8 @@
     }
     else
     {
-        [redemptionView updateView:deal];
-        return redemptionView;
+        [actionBar3View updateView:deal];
+        return actionBar3View;
     }
 }
 
@@ -264,7 +248,7 @@
             // Post the FB redeem action
             [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
             // update the table view
-            dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
+            [actionBar3View updateView:deal];
             [self.tableView reloadData];
         }
         else if (err.code == -1009)
@@ -432,8 +416,7 @@
     // change the status of the deal
     ttFriend *friend = [ttFriend initWithName:name email:email context:[CustomerHelper getContext]];
     [deal setSharedWith:friend];
-
-    dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
+    [actionBar3View updateView:deal];
     [self.tableView reloadData];
 }
 

@@ -1489,7 +1489,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="hzL-73-ANz">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeroImageCell" rowHeight="160" id="VmY-BN-5SM" customClass="HeroImageCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="160"/>
@@ -1567,43 +1567,8 @@
                                     <outlet property="summary" destination="zhM-cY-bgv" id="Fbt-EN-kfL"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShareCell" rowHeight="50" id="T2c-Ry-4Rc" customClass="ShareCell">
-                                <rect key="frame" x="0.0" y="282" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDv-LB-iJp" customClass="TaloolUIButton">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="43" type="user" id="AJV-Ky-tZX"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Share">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="shareAction:" destination="T2c-Ry-4Rc" eventType="touchUpInside" id="0yG-rC-yfN"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HDv-LB-iJp" secondAttribute="trailing" constant="20" type="default" id="6wX-Yg-cC2"/>
-                                    <constraint firstItem="HDv-LB-iJp" firstAttribute="leading" secondItem="T2c-Ry-4Rc" secondAttribute="leading" constant="20" type="default" id="UsY-ja-P6E"/>
-                                    <constraint firstItem="HDv-LB-iJp" firstAttribute="centerY" secondItem="T2c-Ry-4Rc" secondAttribute="centerY" type="default" id="x3g-Pk-zw5"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="shareButton" destination="HDv-LB-iJp" id="DtJ-OF-rTk"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BarCodeCell" rowHeight="30" id="wVh-MR-QyS" customClass="BarCodeCell">
-                                <rect key="frame" x="0.0" y="332" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="282" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
@@ -1626,32 +1591,8 @@
                                     <outlet property="barCodeImage" destination="70F-p3-gMz" id="od3-Gy-Z6K"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LogoCell" rowHeight="70" id="xeU-at-Egw" customClass="LogoCell">
-                                <rect key="frame" x="0.0" y="362" width="320" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8OD-Gj-N3A">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="69" id="5Hr-Zr-W5T"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="8OD-Gj-N3A" firstAttribute="top" secondItem="xeU-at-Egw" secondAttribute="top" type="default" id="6Md-zT-bqB"/>
-                                    <constraint firstItem="8OD-Gj-N3A" firstAttribute="leading" secondItem="xeU-at-Egw" secondAttribute="leading" constant="20" type="default" id="XZ7-VP-SYd"/>
-                                    <constraint firstAttribute="trailing" secondItem="8OD-Gj-N3A" secondAttribute="trailing" constant="20" type="default" id="e4u-GD-Ooz"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="logoImage" destination="8OD-Gj-N3A" id="sRP-q2-1Yd"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DoubleLogoCell" rowHeight="70" id="y68-3i-YOg" customClass="DoubleLogoCell">
-                                <rect key="frame" x="0.0" y="432" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="312" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
@@ -1830,12 +1771,6 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="LogoCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogoCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="logoImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
         <class className="MapCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapCell.h"/>
             <relationships>
@@ -1887,13 +1822,6 @@
                 <relationship kind="outlet" name="logoutCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="ShareCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShareCell.h"/>
-            <relationships>
-                <relationship kind="action" name="shareAction:"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>
         <class className="TaloolIconButton" superclassName="TaloolUIButton">

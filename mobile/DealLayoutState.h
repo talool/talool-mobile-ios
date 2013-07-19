@@ -10,11 +10,8 @@
 #import "TaloolProtocols.h"
 #import "BarCodeCell.h"
 #import "DealDetailCell.h"
-#import "LogoCell.h"
 #import "DoubleLogoCell.h"
-#import "ShareCell.h"
 
-#define ROW_HEIGHT_SHARE    60.0f
 #define ROW_HEIGHT_LOGO    70.0f
 #define ROW_HEIGHT_HERO    160.0f
 

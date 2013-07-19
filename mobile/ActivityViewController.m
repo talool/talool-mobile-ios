@@ -8,10 +8,12 @@
 
 #import "ActivityViewController.h"
 #import "AcceptGiftViewController.h"
+#import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "TextureHelper.h"
 #import "ActivityCell.h"
 #import "ActivityFilterView.h"
+#import "ActivityStreamHelper.h"
 #import "TaloolColor.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttGift.h"
@@ -32,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    activities = [[CustomerHelper getLoggedInUser] fetchActivities:[CustomerHelper getContext]];
     
     [self.refreshControl addTarget:self action:@selector(refreshActivities) forControlEvents:UIControlEventValueChanged];
     self.refreshControl.backgroundColor = [UIColor clearColor];
@@ -60,7 +64,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.filterView fetchActivities];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    activities = appDelegate.activityHelper.activities;
+    [self refreshActivities];
     [self.tableView reloadData];
 }
 
@@ -165,14 +171,6 @@
 {
     [self.filterView fetchActivities];
     [self.refreshControl endRefreshing];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (scrollView.contentOffset.y < -60 && ![self.refreshControl isRefreshing]) {
-        [self.refreshControl beginRefreshing];
-        [self refreshActivities];
-    }
 }
 
 #pragma mark -

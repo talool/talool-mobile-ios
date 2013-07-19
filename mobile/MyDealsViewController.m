@@ -61,21 +61,6 @@
     
     self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
                                          merchantSearchDelegate:self];
-
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.tableView reloadData];
-    
-    if ([CustomerHelper getLoggedInUser] == nil) {
-        // The user isn't logged in, so kick them to the welcome view
-        [self performSegueWithIdentifier:@"welcome" sender:self];
-    }
-    
-    self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
     
     // add the settings button
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
@@ -85,6 +70,19 @@
     self.navigationItem.rightBarButtonItem = settingsButton;
     [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                                   forState:UIControlStateNormal];
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] == nil) {
+        // The user isn't logged in, so kick them to the welcome view
+        [self performSegueWithIdentifier:@"welcome" sender:self];
+    }
+    
+    self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
     
     // load any merchants connected to this customer from the context
     if ([merchants count]==0)
@@ -94,6 +92,8 @@
         NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
         merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
     }
+    
+    [self.tableView reloadData];
     
     [self askForHelp];
 }

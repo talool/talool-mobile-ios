@@ -34,9 +34,15 @@
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
 		817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53791770A86A0049434A /* TaloolIAPHelper.m */; };
 		817E53851770CE180049434A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817E53841770CE180049434A /* StoreKit.framework */; };
+		818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
+		8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
+		8186418F17998DAC00DE0C2E /* buttonBar3Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */; };
+		8186419017998DAC00DE0C2E /* buttonBar3Brown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8186418E17998DAC00DE0C2E /* buttonBar3Brown@2x.png */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		81937B32176F7B7B002DDCA8 /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B31176F7B7B002DDCA8 /* DealOfferCell.m */; };
+		819B26A21799EE6E00744C04 /* buttonBar2Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26A01799EE6E00744C04 /* buttonBar2Brown.png */; };
+		819B26A31799EE6E00744C04 /* buttonBar2Brown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26A11799EE6E00744C04 /* buttonBar2Brown@2x.png */; };
 		819FA953177B99DE006A819B /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
 		819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA955177BA2CE006A819B /* ActivityFilterControl.m */; };
 		819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
@@ -72,10 +78,8 @@
 		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
 		81BD12BC178F525800AF7475 /* DealRedemptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12BB178F525400AF7475 /* DealRedemptionView.m */; };
 		81BD12BE178F527800AF7475 /* DealRedemptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD12BD178F527500AF7475 /* DealRedemptionView.xib */; };
-		81BD12C11791B9CC00AF7475 /* ActiveDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */; };
+		81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
 		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
-		81BD12C81791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */; };
-		81BD12CB1791C12D00AF7475 /* InactivedealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */; };
 		81BD12CE1791DD0D00AF7475 /* DoubleLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12CD1791DD0A00AF7475 /* DoubleLogoCell.m */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
@@ -213,11 +217,18 @@
 		817E537D1770A90A0049434A /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
 		817E537E1770A90A0049434A /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
 		817E53841770CE180049434A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		818641701798FED100DE0C2E /* DealActionBar3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealActionBar3View.xib; sourceTree = "<group>"; };
+		8186417A179904B500DE0C2E /* DealActionBar3View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealActionBar3View.h; sourceTree = "<group>"; };
+		8186417B179904B500DE0C2E /* DealActionBar3View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealActionBar3View.m; sourceTree = "<group>"; };
+		8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBar3Brown.png; sourceTree = "<group>"; };
+		8186418E17998DAC00DE0C2E /* buttonBar3Brown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonBar3Brown@2x.png"; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
 		81937B30176F7B7B002DDCA8 /* DealOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferCell.h; sourceTree = "<group>"; };
 		81937B31176F7B7B002DDCA8 /* DealOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferCell.m; sourceTree = "<group>"; };
+		819B26A01799EE6E00744C04 /* buttonBar2Brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBar2Brown.png; sourceTree = "<group>"; };
+		819B26A11799EE6E00744C04 /* buttonBar2Brown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonBar2Brown@2x.png"; sourceTree = "<group>"; };
 		819FA951177B99DD006A819B /* IconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconHelper.h; sourceTree = "<group>"; };
 		819FA952177B99DD006A819B /* IconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconHelper.m; sourceTree = "<group>"; };
 		819FA954177BA2CE006A819B /* ActivityFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterControl.h; sourceTree = "<group>"; };
@@ -277,14 +288,10 @@
 		81BD12BA178F525100AF7475 /* DealRedemptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealRedemptionView.h; sourceTree = "<group>"; };
 		81BD12BB178F525400AF7475 /* DealRedemptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealRedemptionView.m; sourceTree = "<group>"; };
 		81BD12BD178F527500AF7475 /* DealRedemptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealRedemptionView.xib; sourceTree = "<group>"; };
-		81BD12BF1791B9C900AF7475 /* ActiveDealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveDealLayoutState.h; sourceTree = "<group>"; };
-		81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveDealLayoutState.m; sourceTree = "<group>"; };
+		81BD12BF1791B9C900AF7475 /* DefaultDealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultDealLayoutState.h; sourceTree = "<group>"; };
+		81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDealLayoutState.m; sourceTree = "<group>"; };
 		81BD12C31791BCA300AF7475 /* DealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLayoutState.h; sourceTree = "<group>"; };
 		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
-		81BD12C61791C10100AF7475 /* ActiveWithFacebookDealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveWithFacebookDealLayoutState.h; sourceTree = "<group>"; };
-		81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveWithFacebookDealLayoutState.m; sourceTree = "<group>"; };
-		81BD12C91791C12C00AF7475 /* InactivedealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InactivedealLayoutState.h; sourceTree = "<group>"; };
-		81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InactivedealLayoutState.m; sourceTree = "<group>"; };
 		81BD12CC1791DD0700AF7475 /* DoubleLogoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleLogoCell.h; sourceTree = "<group>"; };
 		81BD12CD1791DD0A00AF7475 /* DoubleLogoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleLogoCell.m; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -490,12 +497,8 @@
 			children = (
 				81BD12C31791BCA300AF7475 /* DealLayoutState.h */,
 				81BD12C41791BCA300AF7475 /* DealLayoutState.m */,
-				81BD12BF1791B9C900AF7475 /* ActiveDealLayoutState.h */,
-				81BD12C01791B9CA00AF7475 /* ActiveDealLayoutState.m */,
-				81BD12C61791C10100AF7475 /* ActiveWithFacebookDealLayoutState.h */,
-				81BD12C71791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m */,
-				81BD12C91791C12C00AF7475 /* InactivedealLayoutState.h */,
-				81BD12CA1791C12C00AF7475 /* InactivedealLayoutState.m */,
+				81BD12BF1791B9C900AF7475 /* DefaultDealLayoutState.h */,
+				81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */,
 			);
 			name = "Deal Layouts";
 			sourceTree = "<group>";
@@ -609,6 +612,10 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				819B26A01799EE6E00744C04 /* buttonBar2Brown.png */,
+				819B26A11799EE6E00744C04 /* buttonBar2Brown@2x.png */,
+				8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */,
+				8186418E17998DAC00DE0C2E /* buttonBar3Brown@2x.png */,
 				81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */,
 				81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */,
 				81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */,
@@ -727,6 +734,9 @@
 				81BD127117872ACF00AF7475 /* OfferActionView.h */,
 				81BD127217872AD000AF7475 /* OfferActionView.m */,
 				81BD127417872AEB00AF7475 /* OfferActionView.xib */,
+				8186417A179904B500DE0C2E /* DealActionBar3View.h */,
+				8186417B179904B500DE0C2E /* DealActionBar3View.m */,
+				818641701798FED100DE0C2E /* DealActionBar3View.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -903,6 +913,11 @@
 				8151CBAE1794A701007894B2 /* compass1.png in Resources */,
 				8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */,
 				817914A91798948900576CDD /* talool-api-ios.bundle in Resources */,
+				818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */,
+				8186418F17998DAC00DE0C2E /* buttonBar3Brown.png in Resources */,
+				8186419017998DAC00DE0C2E /* buttonBar3Brown@2x.png in Resources */,
+				819B26A21799EE6E00744C04 /* buttonBar2Brown.png in Resources */,
+				819B26A31799EE6E00744C04 /* buttonBar2Brown@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -995,12 +1010,11 @@
 				81BD12B6178F456000AF7475 /* ShareCell.m in Sources */,
 				81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */,
 				81BD12BC178F525800AF7475 /* DealRedemptionView.m in Sources */,
-				81BD12C11791B9CC00AF7475 /* ActiveDealLayoutState.m in Sources */,
+				81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */,
 				81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */,
-				81BD12C81791C10100AF7475 /* ActiveWithFacebookDealLayoutState.m in Sources */,
-				81BD12CB1791C12D00AF7475 /* InactivedealLayoutState.m in Sources */,
 				81BD12CE1791DD0D00AF7475 /* DoubleLogoCell.m in Sources */,
 				817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */,
+				8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

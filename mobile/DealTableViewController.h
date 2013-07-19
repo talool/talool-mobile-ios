@@ -13,13 +13,14 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "FacebookSDK/FacebookSDK.h"
 
-@class ttDealAcquire, ttDealOffer, DealRedemptionView, DealLayoutState;
+@class ttDealAcquire, ttDealOffer, DealRedemptionView, DealLayoutState, DealActionBar3View;
 
 @interface DealTableViewController : UITableViewController<TaloolDealActionDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, ABPeoplePickerNavigationControllerDelegate>
 
 @property (strong, nonatomic) ttDealAcquire *deal;
 @property (strong, nonatomic) ttDealOffer *offer;
-@property (strong, nonatomic) DealRedemptionView *redemptionView;
+
+@property (strong, nonatomic) DealActionBar3View *actionBar3View;
 @property (nonatomic) DealLayoutState *dealLayout;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;

@@ -37,6 +37,7 @@
 @synthesize settingsViewController = _settingsViewController;
 @synthesize firstViewController = _firstViewController;
 @synthesize activiyViewController = _activiyViewController;
+@synthesize activityHelper;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -86,7 +87,7 @@
     [TaloolIAPHelper sharedInstance];
     [DealOfferHelper sharedInstance];
     
-    _activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
+    activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
     
     // Optional: automatically send uncaught exceptions to Google Analytics.
@@ -183,7 +184,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    [_activityHelper stopPollingActivity];
+    [activityHelper stopPollingActivity];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -203,7 +204,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     [FBAppCall handleDidBecomeActive];
-    [_activityHelper startPollingActivity];
+    [activityHelper startPollingActivity];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productPurchased:)
                                                  name:IAPHelperProductPurchasedNotification
