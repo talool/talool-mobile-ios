@@ -17,6 +17,16 @@
 
 static NSMutableDictionary *_categoryDictionary;
 
++ (CategoryHelper *)sharedInstance
+{
+    static dispatch_once_t once;
+    static CategoryHelper * sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (id) init
 {
     self = [super init];
@@ -25,6 +35,13 @@ static NSMutableDictionary *_categoryDictionary;
         return self;
     }
     
+    [self reset];
+    
+    return self;
+}
+
+-(void) reset
+{
     // build the dictionary
     _categoryDictionary = [[NSMutableDictionary alloc] init];
     NSArray *cats = [ttCategory getCategories:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext]];
@@ -58,6 +75,7 @@ static NSMutableDictionary *_categoryDictionary;
             default:
                 catObj = nil;
                 catKey = nil;
+                NSLog(@"DEBUG::: unknown cat id: %@", cat.categoryId);
                 break;
         }
         if (catObj != nil)
@@ -65,8 +83,6 @@ static NSMutableDictionary *_categoryDictionary;
             [_categoryDictionary setObject:catObj forKey:catKey];
         }
     }
-    
-    return self;
 }
 
 - (NSDictionary *) createCategoryDictionary:(ttCategory *)category icon:(UIImage *)image
@@ -84,10 +100,17 @@ static NSMutableDictionary *_categoryDictionary;
     return [catDic objectForKey:@"icon"];
 }
 
--(UIImage *) getCategory:(CategoryType)catType
+-(ttCategory *) getCategory:(CategoryType)catType
 {
     NSDictionary * catDic = [self getCategoryDictionary:catType];
-    return [catDic objectForKey:@"category"];
+    ttCategory *cat = [catDic objectForKey:@"category"];
+    
+    if (cat == nil)
+    {
+        [self reset];
+    }
+    
+    return cat;
 }
 
 -(NSDictionary *) getCategoryDictionary:(CategoryType)catType

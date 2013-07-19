@@ -87,6 +87,9 @@
  */
 - (void)reset
 {
+    // load the products
+    [[TaloolIAPHelper sharedInstance] requestProductsWithCompletionHandler:nil];
+    
     // Load all deal offers
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *err = nil;
@@ -153,6 +156,10 @@
 
 -(void) setLocationAsBoulder
 {
+    if (boulderBook==nil)
+    {
+        [self reset];
+    }
     closestBook = boulderBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER;
@@ -163,6 +170,10 @@
 
 -(void) setLocationAsVancouver
 {
+    if (vancouverBook==nil)
+    {
+        [self reset];
+    }
     closestBook = vancouverBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER;

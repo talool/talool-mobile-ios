@@ -260,13 +260,19 @@
                         error:&err
                       context:[CustomerHelper getContext]];
         
-        if (err.code < 100) {
+        if (!err.code) {
             // Post the FB redeem action
             [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
             // update the table view
             dealLayout = [[InactivedealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
             [self.tableView reloadData];
-        } else {
+        }
+        else if (err.code == -1009)
+        {
+            [CustomerHelper showNetworkError];
+        }
+        else
+        {
             // show an error
             UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
                                                                 message:@"We failed to redeem this deal."
@@ -316,11 +322,15 @@
                                      facebookId:facebookId
                                  receipientName:name
                                           error:&error];
-    if (error.code < 100)
+    if (!error.code)
     {
         [self announceShare:facebookId giftId:giftId];
         //[self sendFacebookAppRequest:facebookId giftId:giftId];
         [self confirmGiftSent:nil name:name];
+    }
+    else if (error.code == -1009)
+    {
+        [CustomerHelper showNetworkError];
     }
     else
     {
@@ -514,10 +524,14 @@
                                        email:email
                               receipientName:name
                                        error:&error];
-    if (error.code < 100)
+    if (!error.code)
     {
         [self announceShare:nil giftId:giftId];
         [self confirmGiftSent:email name:name];
+    }
+    else if (error.code == -1009)
+    {
+        [CustomerHelper showNetworkError];
     }
     else
     {

@@ -12,6 +12,8 @@
 
 @interface CategoryHelper : NSObject
 
++ (CategoryHelper *)sharedInstance;
+
 enum {
     CategoryFood = 1,
     CategoryShopping = 2,
@@ -22,6 +24,7 @@ typedef int CategoryType;
 
 -(UIImage *) getIcon:(CategoryType)catType;
 -(ttCategory *) getCategory:(CategoryType)catType;
+-(void) reset;
 
 @end
 

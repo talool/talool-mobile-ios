@@ -55,13 +55,12 @@
 						<string key="NSFrame">{{21, 61}, {279, 15}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Proximity: 10 miles</string>
+						<string key="IBUIText">Showing all merchants</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC43MjU0OTAxOTYxIDAuNjc0NTA5ODAzOSAwLjU5MjE1Njg2MjcAA</bytes>

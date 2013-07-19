@@ -19,6 +19,9 @@
 + (ttCustomer *) getLoggedInUser;
 
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password;
-+ (void) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
++ (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
+
++ (void) showNetworkError;
+
 
 @end

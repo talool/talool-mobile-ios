@@ -39,21 +39,40 @@ static NSManagedObjectContext *_context;
 {
     NSError *err = nil;
     [ttCustomer authenticate:email password:password context:_context error:&err];
-    if (err.code > 100) {
+    if (err.code == -1009)
+    {
+        [CustomerHelper showNetworkError];
+        return NO;
+    }
+    else if (err.code)
+    {
         NSLog(@"auth failed: %@",err.localizedDescription);
-        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"try again" withSender:nil];
+        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"Try again" withSender:nil];
         return NO;
     }
     return YES;
 }
 
-+ (void) registerCustomer:(ttCustomer *)customer password:(NSString *) password
++ (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *) password
 {
     NSError *err = [NSError alloc];
     [ttCustomer registerCustomer:customer password:password context:_context error:&err];
-    if (err.code > 200) {
-        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"try again" withSender:nil];
+    if (err.code == -1009)
+    {
+        [CustomerHelper showNetworkError];
+        return NO;
     }
+    else if (err.code)
+    {
+        [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"Try again" withSender:nil];
+        return NO;
+    }
+    return YES;
+}
+
++ (void) showNetworkError
+{
+    [self showErrorMessage:@"You appear to be offline." withTitle:@"No Internet Connection" withCancel:@"Try again later" withSender:nil];
 }
 
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender

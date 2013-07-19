@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ttCategory, CategoryHelper;
+@class ttCategory;
 
 @interface MerchantFilterControl : UISegmentedControl
 
@@ -21,17 +21,6 @@ enum {
     MyDealsNightlifeIndex = 5
 };
 typedef NSUInteger MyDealsCategoryIndex;
-
-enum {
-    ExploreAllIndex = 0,
-    ExploreFoodIndex = 1,
-    ExploreShoppingIndex = 2,
-    ExploreFunIndex = 3,
-    ExploreNightlifeIndex = 4
-};
-typedef NSUInteger ExploreCategoryIndex;
-
-@property (nonatomic, retain) CategoryHelper *categoryHelper;
 
 - (ttCategory *) getCategoryAtSelectedIndex;
 - (NSPredicate *) getPredicateAtSelectedIndex;

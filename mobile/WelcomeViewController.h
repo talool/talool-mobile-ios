@@ -13,7 +13,7 @@
 
 @class TaloolIconButton, TaloolUIButton;
 
-@interface WelcomeViewController : GAITrackedViewController<FBLoginViewDelegate>
+@interface WelcomeViewController : GAITrackedViewController<FBLoginViewDelegate,TaloolKeyboardAccessoryDelegate>
 {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;

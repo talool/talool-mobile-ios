@@ -198,8 +198,7 @@
     ttCategory *cat = (ttCategory *)merchant.category;
     ttMerchantLocation *loc = [merchant getClosestLocation];
     
-    CategoryHelper *helper = [[CategoryHelper alloc] init];
-    [cell setIcon:[helper getIcon:[cat.categoryId intValue]]];
+    [cell setIcon:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
     [cell setName:merchant.name];
     if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
     {
@@ -256,6 +255,7 @@
     self.merchants = [NSArray arrayWithObjects:nil];
     [self.searchView fetchMerchants];
     [[DealOfferHelper sharedInstance] reset];
+    [[CategoryHelper sharedInstance] reset];
     NSLog(@"new user with %d merchants", [self.merchants count]);
     [self.tableView reloadData];
 }

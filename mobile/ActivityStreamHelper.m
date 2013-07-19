@@ -28,7 +28,7 @@
 
 - (void) startPollingActivity
 {
-    NSLog(@"Start activity monitor timer");
+    //NSLog(@"Start activity monitor timer");
     [self fetchActivities];
     
     NSNumber *interval = [NSNumber numberWithInt:ACTIVITY_MONITOR_INTERVAL_IN_SECONDS];
@@ -42,7 +42,7 @@
 
 - (void) stopPollingActivity
 {
-    NSLog(@"Stop activity monitor timer");
+    //NSLog(@"Stop activity monitor timer");
     [activityMonitor invalidate];
 }
 

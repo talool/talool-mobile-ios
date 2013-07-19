@@ -23,8 +23,7 @@
     merchantLabel.text = deal.merchant.name;
     
     ttCategory *cat = (ttCategory *)deal.merchant.category;
-    CategoryHelper *helper = [[CategoryHelper alloc] init];
-    iconView.image =[helper getIcon:[cat.categoryId intValue]];
+    iconView.image =[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]];
 }
 
 @end

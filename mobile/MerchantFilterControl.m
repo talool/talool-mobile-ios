@@ -14,14 +14,10 @@
 
 @implementation MerchantFilterControl
 
-@synthesize categoryHelper;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        categoryHelper = [[CategoryHelper alloc ] init];
         
         int iconSize = 21;
         int fontSize = 21;
@@ -79,16 +75,16 @@
     switch ([self selectedSegmentIndex])
     {
         case MyDealsFoodIndex:
-            cat = [categoryHelper getCategory:CategoryFood];
+            cat = [[CategoryHelper sharedInstance] getCategory:CategoryFood];
             break;
         case MyDealsFunIndex:
-            cat = [categoryHelper getCategory:CategoryFun];
+            cat = [[CategoryHelper sharedInstance] getCategory:CategoryFun];
             break;
         case MyDealsShoppingIndex:
-            cat = [categoryHelper getCategory:CategoryShopping];
+            cat = [[CategoryHelper sharedInstance] getCategory:CategoryShopping];
             break;
         case MyDealsNightlifeIndex:
-            cat = [categoryHelper getCategory:CategoryNightlife];
+            cat = [[CategoryHelper sharedInstance] getCategory:CategoryNightlife];
             break;
         default:
             cat = nil;

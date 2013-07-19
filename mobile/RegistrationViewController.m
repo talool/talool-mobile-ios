@@ -69,11 +69,9 @@
                                     socialAccount:nil
                                           context:appDelegate.managedObjectContext];
     
-    // Register the user.  Check the response and display errors as needed
-    [CustomerHelper registerCustomer:user password:passwordField.text];
-    
+    // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
-    if ([CustomerHelper getLoggedInUser] != nil) {
+    if ([CustomerHelper registerCustomer:user password:passwordField.text] && [CustomerHelper getLoggedInUser]!=nil) {
         [authDelegate customerLoggedIn:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }

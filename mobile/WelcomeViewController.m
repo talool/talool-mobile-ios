@@ -18,6 +18,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
+#import "KeyboardAccessoryView.h"
 
 @interface WelcomeViewController ()
 
@@ -68,6 +69,10 @@
     
     spinner.hidesWhenStopped=YES;
     self.navigationItem.hidesBackButton = YES;
+    
+    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Login"];
+    [emailField setInputAccessoryView:kav];
+    [passwordField setInputAccessoryView:kav];
     
 }
 
@@ -179,11 +184,26 @@
         // for more context. For this sample, we will simply ignore it.
         NSLog(@"user cancelled login");
     } else {
-        // For simplicity, this sample treats other errors blindly, but you should
-        // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
-        alertTitle  = @"Unknown Error";
-        alertMessage = @"Error. Please try again later.";
-        NSLog(@"Unexpected error:%@", error);
+        NSError *innerError = [error.userInfo objectForKey:@"com.facebook.sdk:ErrorInnerErrorKey"];
+        if (innerError.code == -1009)
+        {
+            alertTitle  = @"No Internet Connection";
+            alertMessage = @"You appear to be offline.  Please try again later.";
+        }
+        else
+        {
+            // For simplicity, this sample treats other errors blindly, but you should
+            // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
+            alertTitle  = @"Unknown Error";
+            alertMessage = @"Error. Please try again later.";
+            NSLog(@"Unexpected error:%@", error);
+        }
+        
+    }
+    
+    if ([FBSession activeSession].isOpen)
+    {
+        [[FBSession activeSession] closeAndClearTokenInformation];
     }
     
     if (alertMessage) {
@@ -209,14 +229,7 @@
     if ([customer isFacebookUser])
     {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        if (appDelegate.isNavigating) {
-            // The delay is for the edge case where a session is immediately closed after
-            // logging in and our navigation controller is still animating a push.
-            [self performSelector:@selector(logOut) withObject:nil afterDelay:.5];
-        } else {
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate.settingsViewController logoutUser];
-        }
+        [appDelegate.settingsViewController logoutUser];
     }
 }
 
@@ -242,6 +255,26 @@
 - (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
 {
     authDelegate = delegate;
+}
+
+#pragma mark -
+#pragma mark - TaloolKeyboardAccessoryDelegate methods
+-(void) submit:(id)sender
+{
+    [self loginAction:self];
+    
+}
+-(void) cancel:(id)sender
+{
+    if ([emailField isFirstResponder])
+    {
+        [emailField resignFirstResponder];
+    }
+    else
+    {
+        [passwordField resignFirstResponder];
+    }
+    
 }
 
 

@@ -23,6 +23,7 @@
 #import "talool-api-ios/ttDealAcquire.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttCustomer.h"
+#import "HelpNetworkFailureViewController.h"
 
 @interface MerchantTableViewController ()
 
@@ -40,6 +41,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.refreshControl addTarget:self action:@selector(refreshDeals) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.backgroundColor = [UIColor clearColor];
+    NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
+    NSRange range = NSMakeRange(0,refreshLabel.length);
+    [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    self.refreshControl.attributedTitle = refreshLabel;
     
     CGRect frame = self.view.bounds;
     logoHeaderView = [[MerchantLogoView alloc]
@@ -75,15 +84,23 @@
     deals = [[CustomerHelper getLoggedInUser] getMyDealsForMerchant:merchant context:[CustomerHelper getContext] error:&err];
     
     sortDescriptors = [NSArray arrayWithObjects:
-                       //[NSSortDescriptor sortDescriptorWithKey:@"redeemed" ascending:YES],
                        [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
-                       //[NSSortDescriptor sortDescriptorWithKey:@"expires" ascending:YES],
                        [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
                        nil];
     
     deals = [[[NSArray alloc] initWithArray:deals] sortedArrayUsingDescriptors:sortDescriptors];
     
-    [self.tableView reloadData];
+    if ([deals count]==0)
+    {
+        // Show the network error message
+        HelpNetworkFailureViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"NetworkFailure"];
+        [helper setMessageType:DealsNotLoaded];
+        [self presentViewController:helper animated:NO completion:nil];
+    }
+    else
+    {
+        [self.tableView reloadData];
+    }
     
 }
 
@@ -181,6 +198,7 @@
 	// Configure the data for the cell.
     ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
+    
     NSString *date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
@@ -205,19 +223,33 @@
     {
         date = [NSString stringWithFormat:@"Expired on %@", [dateFormatter stringFromDate:deal.deal.expires]];
     }
+    
+    NSDictionary* strikethrough = @{
+                                 NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+                                 };
+    NSDictionary* normaltext = @{};
+    
+    NSString *dealTitle;
+    if (deal.deal.title)
+    {
+        dealTitle = deal.deal.title;
+    }
+    else
+    {
+        if (deal.deal==nil)
+        {
+            NSLog(@"deal is missing when pulled from the service");
+        }
+        dealTitle = @"messed up deal";
+    }
+    
     if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
     {
         cell.contentView.alpha = 0.5;
         cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_1]];
-        
-        NSDictionary* attributes = @{
-                                     NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
-                                     };
-        
-        NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:deal.deal.title attributes:attributes];
-        cell.nameLabel.text = nil;
-        cell.nameLabel.attributedText = attrText;
+
+        cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:strikethrough];
     }
     else
     {
@@ -231,8 +263,7 @@
         }
         cell.contentView.alpha = 1.0;
         cell.contentView.backgroundColor = [UIColor whiteColor];
-        cell.nameLabel.attributedText = nil;
-        cell.nameLabel.text = deal.deal.title;
+        cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:normaltext];
         cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
     }
     
@@ -280,6 +311,37 @@
     }
 }
 
+#pragma mark -
+#pragma mark - Refresh Control
 
+- (void) refreshDeals
+{
+    // Override in subclass to hit the service
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+}
+
+- (void) updateTable
+{
+    NSError *error;
+    NSArray *dealsFromServer = [[CustomerHelper getLoggedInUser] refreshMyDealsForMerchant:merchant
+                                                                                  context:[CustomerHelper getContext]
+                                                                                error:&error];
+    
+    [self.refreshControl endRefreshing];
+    
+    if (error.code) {
+        // if there was error we don't want to blow away anything that was already there.
+        return;
+    }
+    
+    NSLog(@"refreshed %d deals",[dealsFromServer count]);
+    sortDescriptors = [NSArray arrayWithObjects:
+                       [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
+                       [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
+                       nil];
+    
+    deals = [[[NSArray alloc] initWithArray:dealsFromServer] sortedArrayUsingDescriptors:sortDescriptors];
+    [self.tableView reloadData];
+}
 
 @end

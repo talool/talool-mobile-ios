@@ -14,17 +14,8 @@
 
 @implementation MerchantCell
 
-@synthesize merchant, icon, distance, address, name, helper;
+@synthesize merchant, icon, distance, address, name;
 
-
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder])
-    {
-        helper = [[CategoryHelper alloc] init];
-    }
-    return self;
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -45,7 +36,7 @@
         [formatter setLocale:[NSLocale currentLocale]];
         NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
         
-        [self setIcon:[helper getIcon:[cat.categoryId intValue]]];
+        [self setIcon:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
         [self setName:merchant.name];
         
         if (miles>0)
