@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TaloolProtocols.h"
-#import "BarCodeCell.h"
+#import "DealImageCell.h"
+#import "DealLocationCell.h"
 #import "DealDetailCell.h"
-#import "DoubleLogoCell.h"
+#import "DealOfferLogoCell.h"
 
-#define ROW_HEIGHT_LOGO    70.0f
-#define ROW_HEIGHT_HERO    160.0f
+#define ROW_HEIGHT_LOCATION    60.0f
+#define ROW_HEIGHT_HERO    100.0f
+#define ROW_HEIGHT_OFFER    50.0f
 
 @class ttDealAcquire;
 

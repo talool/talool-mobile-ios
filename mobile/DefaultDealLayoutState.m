@@ -21,13 +21,20 @@
     UITableViewCell *cell;
     switch (indexPath.row) {
         case 0:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"DealImageCell" forIndexPath:indexPath];
+            [(DealImageCell *)cell setDeal:self.deal.deal];
+            break;
+        case 1:
+            cell = [tableView dequeueReusableCellWithIdentifier:@"DealLocationCell" forIndexPath:indexPath];
+            [(DealLocationCell *)cell setMerchant:self.deal.deal.merchant];
+            break;
+        case 2:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealDetailCell" forIndexPath:indexPath];
             [(DealDetailCell *)cell setDeal:self.deal.deal];
             break;
         default:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"DoubleLogoCell" forIndexPath:indexPath];
-            ttMerchantLocation *loc = [self.deal.deal.merchant getClosestLocation];
-            [(DoubleLogoCell *)cell setOfferlogoUrl:self.offer.imageUrl merchantLogoUrl:loc.logoUrl];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"DealOfferLogoCell" forIndexPath:indexPath];
+            [(DealOfferLogoCell *)cell setDealOffer:self.offer deal:self.deal.deal];
             break;
     }
     return cell;
@@ -37,17 +44,25 @@
 {
     if (indexPath.row == 0)
     {
+        return ROW_HEIGHT_HERO;
+    }
+    else if (indexPath.row == 1)
+    {
+        return ROW_HEIGHT_LOCATION;
+    }
+    else if (indexPath.row == 2)
+    {
         return self.detailSize;
     }
     else
     {
-        return ROW_HEIGHT_LOGO;
+        return ROW_HEIGHT_OFFER;
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 4;
 }
 
 @end

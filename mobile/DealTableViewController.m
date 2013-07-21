@@ -132,67 +132,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0)
-    {
-        return 1;
-    }
-    else
-    {
-        return [dealLayout tableView:tableView numberOfRowsInSection:section];
-    }
+    return [dealLayout tableView:tableView numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    
-    if (indexPath.section==0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"HeroImageCell" forIndexPath:indexPath];
-        [(HeroImageCell *)cell setImageUrl:deal.deal.imageUrl];
-    }
-    else
-    {
-        cell = [dealLayout tableView:tableView cellForRowAtIndexPath:indexPath];
-    }
-    
-    return cell;
+    return [dealLayout tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0)
-    {
-        return ROW_HEIGHT_HERO;
-    }
-    else
-    {
-        return [dealLayout tableView:tableView heightForRowAtIndexPath:indexPath];
-    }
+    return [dealLayout tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (section==0) ? 0.0:75.0;
+    return 75.0;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
-    if (section==0)
-    {
-        return nil;
-    }
-    else
-    {
-        [actionBar3View updateView:deal];
-        return actionBar3View;
-    }
+    [actionBar3View updateView:deal];
+    return actionBar3View;
 }
 
 #pragma mark -

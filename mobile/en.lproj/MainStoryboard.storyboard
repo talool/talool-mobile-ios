@@ -1489,44 +1489,119 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="hzL-73-ANz">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeroImageCell" rowHeight="160" id="VmY-BN-5SM" customClass="HeroImageCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="160"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealImageCell" rowHeight="100" id="VmY-BN-5SM" customClass="DealImageCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNo-Lm-vhk">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNo-Lm-vhk" userLabel="Masked Deal Image">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="159" id="WXR-Pw-lnX"/>
+                                                <constraint firstAttribute="height" constant="95" type="user" id="qmZ-3y-8rK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-ym-qST" userLabel="Deal Image Border">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="95" type="user" id="QLi-Xq-99U"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="top" secondItem="VmY-BN-5SM" secondAttribute="top" type="default" id="7Lw-Gt-ALA"/>
+                                    <constraint firstItem="YLZ-ym-qST" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="DZf-wI-FoX"/>
+                                    <constraint firstItem="YLZ-ym-qST" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="nus-HT-4zW"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="oII-7I-fJn"/>
+                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="rNC-PP-SJl"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="trailing" secondItem="VmY-BN-5SM" secondAttribute="trailing" type="default" id="xmd-7J-24S"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="prettyPicture" destination="qNo-Lm-vhk" id="5Vz-nY-2wT"/>
+                                    <outlet property="dealImage" destination="qNo-Lm-vhk" id="tFR-rl-gn0"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailCell" rowHeight="100" id="AWp-60-eu0" customClass="DealDetailCell">
-                                <rect key="frame" x="0.0" y="182" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealLocationCell" rowHeight="60" id="wVh-MR-QyS" customClass="DealLocationCell">
+                                <rect key="frame" x="0.0" y="122" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealTop.png" translatesAutoresizingMaskIntoConstraints="NO" id="70F-p3-gMz" userLabel="Cell BG"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="y3U-Qo-4Au" userLabel="Merchant Logo">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="L6F-JQ-T9a"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Offer valid at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emL-US-TjB">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="113" id="82z-1L-W2K"/>
+                                                <constraint firstAttribute="height" constant="16" id="SLe-cX-Uvu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="123 Pearl St" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-Rx-o3p">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="Fgx-xB-Z2b"/>
+                                                <constraint firstAttribute="width" constant="134" id="SjU-Bm-Nbl"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Boulder, CO 80302" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey9-84-imd">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="kor-M6-Tze"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="centerY" secondItem="70F-p3-gMz" secondAttribute="centerY" type="default" id="14z-Pg-G22"/>
+                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="leading" secondItem="Mio-Rx-o3p" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7i2-L1-RAg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mio-Rx-o3p" secondAttribute="bottom" constant="20" type="default" id="HXh-Vy-K1X"/>
+                                    <constraint firstItem="ey9-84-imd" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="KA4-0h-iG6"/>
+                                    <constraint firstItem="Mio-Rx-o3p" firstAttribute="top" secondItem="emL-US-TjB" secondAttribute="bottom" type="user" id="Lf0-0N-dNg"/>
+                                    <constraint firstItem="70F-p3-gMz" firstAttribute="top" secondItem="wVh-MR-QyS" secondAttribute="top" type="default" id="RF4-BN-bwq"/>
+                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="leading" secondItem="ey9-84-imd" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="TvR-k3-36W"/>
+                                    <constraint firstItem="70F-p3-gMz" firstAttribute="bottom" secondItem="wVh-MR-QyS" secondAttribute="bottom" type="default" id="VDl-DA-lt2"/>
+                                    <constraint firstItem="Mio-Rx-o3p" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="foj-JW-tIc"/>
+                                    <constraint firstItem="ey9-84-imd" firstAttribute="top" secondItem="Mio-Rx-o3p" secondAttribute="bottom" type="user" id="gmv-wV-X9t"/>
+                                    <constraint firstItem="70F-p3-gMz" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" type="default" id="gp1-Uu-cu3"/>
+                                    <constraint firstItem="emL-US-TjB" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="qwm-02-93t"/>
+                                    <constraint firstItem="emL-US-TjB" firstAttribute="top" secondItem="y3U-Qo-4Au" secondAttribute="top" type="default" id="y4O-dS-J90"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="merchantAddress" destination="Mio-Rx-o3p" id="1n2-Wr-zxB"/>
+                                    <outlet property="merchantCityState" destination="ey9-84-imd" id="FSP-Mx-IdJ"/>
+                                    <outlet property="merchantLogo" destination="y3U-Qo-4Au" id="wHV-wm-5HT"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailCell" rowHeight="112" id="AWp-60-eu0" customClass="DealDetailCell">
+                                <rect key="frame" x="0.0" y="182" width="320" height="112"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealMiddle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5vn-w5-kyG">
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" type="user" id="8qV-HN-Zms"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-cY-bgv">
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="tnN-HV-Eov"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" type="user" id="tnN-HV-Eov"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1535,15 +1610,7 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="acw-CH-2Ly"/>
                                                 <constraint firstAttribute="height" constant="22" id="fC3-VU-Q2Y"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEZ-Kp-Yjh">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="0uA-fc-qYP"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1552,76 +1619,57 @@
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YTK-wy-HbG" secondAttribute="trailing" constant="20" type="default" id="1do-gn-fFm"/>
-                                    <constraint firstItem="wEZ-Kp-Yjh" firstAttribute="top" secondItem="YTK-wy-HbG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1u1-yv-0Uz"/>
+                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3iK-98-Rat"/>
+                                    <constraint firstItem="5vn-w5-kyG" firstAttribute="bottom" secondItem="AWp-60-eu0" secondAttribute="bottom" type="user" id="4dt-rL-XWS"/>
                                     <constraint firstItem="zhM-cY-bgv" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" type="default" id="6ag-hF-fW7"/>
-                                    <constraint firstItem="zhM-cY-bgv" firstAttribute="top" secondItem="AWp-60-eu0" secondAttribute="top" constant="15" type="user" id="GeN-Uv-3od"/>
-                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JBg-97-SCQ"/>
-                                    <constraint firstItem="wEZ-Kp-Yjh" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" type="default" id="UeB-Rw-0Ky"/>
+                                    <constraint firstItem="5vn-w5-kyG" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" type="default" id="FE2-kb-uD5"/>
                                     <constraint firstItem="YTK-wy-HbG" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" type="default" id="aNV-fr-MHn"/>
-                                    <constraint firstAttribute="trailing" secondItem="wEZ-Kp-Yjh" secondAttribute="trailing" constant="20" type="default" id="mae-en-jlX"/>
+                                    <constraint firstItem="zhM-cY-bgv" firstAttribute="top" secondItem="AWp-60-eu0" secondAttribute="top" constant="17" id="gVg-df-Tal"/>
+                                    <constraint firstItem="5vn-w5-kyG" firstAttribute="top" secondItem="AWp-60-eu0" secondAttribute="top" type="user" id="v2F-6k-PZJ"/>
                                     <constraint firstAttribute="trailing" secondItem="zhM-cY-bgv" secondAttribute="trailing" constant="20" type="default" id="xi3-4H-6KT"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="date" destination="wEZ-Kp-Yjh" id="W7r-4C-Kcz"/>
                                     <outlet property="details" destination="YTK-wy-HbG" id="Hsy-6B-11N"/>
                                     <outlet property="summary" destination="zhM-cY-bgv" id="Fbt-EN-kfL"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BarCodeCell" rowHeight="30" id="wVh-MR-QyS" customClass="BarCodeCell">
-                                <rect key="frame" x="0.0" y="282" width="320" height="30"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealOfferLogoCell" rowHeight="50" id="y68-3i-YOg" customClass="DealOfferLogoCell">
+                                <rect key="frame" x="0.0" y="294" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70F-p3-gMz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="dealBottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="pvY-Hp-54l" userLabel="Cell BG"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-sX-fWQ" userLabel="Logo">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="29" id="IDd-wO-4rb"/>
+                                                <constraint firstAttribute="height" constant="28" id="fcR-xA-ZzX"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires 09/01/2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giA-xy-QMy">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="132" id="73V-g8-x78"/>
+                                                <constraint firstAttribute="height" constant="21" id="ach-dP-9MF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="70F-p3-gMz" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="B1Q-pf-3tm"/>
-                                    <constraint firstItem="70F-p3-gMz" firstAttribute="top" secondItem="wVh-MR-QyS" secondAttribute="top" type="default" id="YEb-ue-dWN"/>
-                                    <constraint firstAttribute="trailing" secondItem="70F-p3-gMz" secondAttribute="trailing" constant="20" type="default" id="aI9-GT-nAq"/>
+                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="leading" secondItem="y68-3i-YOg" secondAttribute="leading" constant="20" type="default" id="4KK-cM-9WD"/>
+                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="top" secondItem="y68-3i-YOg" secondAttribute="top" type="default" id="Cu4-K0-awu"/>
+                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="bottom" secondItem="giA-xy-QMy" secondAttribute="bottom" type="default" id="LUP-Ny-F0U"/>
+                                    <constraint firstAttribute="trailing" secondItem="giA-xy-QMy" secondAttribute="trailing" constant="20" type="default" id="NHX-yP-mbg"/>
+                                    <constraint firstItem="giA-xy-QMy" firstAttribute="leading" secondItem="rx3-sX-fWQ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ZXG-KY-WVE"/>
+                                    <constraint firstItem="pvY-Hp-54l" firstAttribute="top" secondItem="y68-3i-YOg" secondAttribute="top" type="default" id="lHz-bW-jel"/>
+                                    <constraint firstItem="pvY-Hp-54l" firstAttribute="leading" secondItem="y68-3i-YOg" secondAttribute="leading" type="default" id="syu-Kh-hqr"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="barCodeImage" destination="70F-p3-gMz" id="od3-Gy-Z6K"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DoubleLogoCell" rowHeight="70" id="y68-3i-YOg" customClass="DoubleLogoCell">
-                                <rect key="frame" x="0.0" y="312" width="320" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="pvY-Hp-54l">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="130" id="6KZ-ho-sx3"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-sX-fWQ">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="130" id="PFz-Eb-lrl"/>
-                                                <constraint firstAttribute="height" constant="50" id="SCM-uz-aKm"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rx3-sX-fWQ" secondAttribute="trailing" constant="20" type="default" id="BBt-6S-cX8"/>
-                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="centerY" secondItem="y68-3i-YOg" secondAttribute="centerY" type="default" id="M7J-UC-vUn"/>
-                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="top" secondItem="pvY-Hp-54l" secondAttribute="top" type="default" id="RzX-9R-mSn"/>
-                                    <constraint firstItem="rx3-sX-fWQ" firstAttribute="bottom" secondItem="pvY-Hp-54l" secondAttribute="bottom" type="default" id="ZTH-TL-fjT"/>
-                                    <constraint firstItem="pvY-Hp-54l" firstAttribute="leading" secondItem="y68-3i-YOg" secondAttribute="leading" constant="20" type="default" id="q7N-ou-MEF"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="merchantLogoImage" destination="pvY-Hp-54l" id="dw8-lf-v12"/>
-                                    <outlet property="offerLogoImage" destination="rx3-sX-fWQ" id="sji-zf-bwv"/>
+                                    <outlet property="expires" destination="giA-xy-QMy" id="209-Bj-pWb"/>
+                                    <outlet property="logo" destination="rx3-sX-fWQ" id="uNN-4w-SbD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1640,6 +1688,10 @@
     <resources>
         <image name="000.png" width="1" height="1"/>
         <image name="compass1.png" width="195" height="195"/>
+        <image name="dealBottom.png" width="320" height="40"/>
+        <image name="dealMiddle.png" width="320" height="73"/>
+        <image name="dealTop.png" width="320" height="48"/>
+        <image name="imageMaskOutline.png" width="320" height="95"/>
     </resources>
     <classes>
         <class className="AcceptGiftViewController" superclassName="UIViewController">
@@ -1673,12 +1725,6 @@
         <class className="ActivityViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityViewController.h"/>
         </class>
-        <class className="BarCodeCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarCodeCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="barCodeImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
         <class className="DealAcquireCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DealAcquireCell.h"/>
             <relationships>
@@ -1699,9 +1745,29 @@
         <class className="DealDetailCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DealDetailCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="date" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="details" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="summary" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DealImageCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealImageCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="DealLocationCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealLocationCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="merchantAddress" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="merchantCityState" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="merchantLogo" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="DealOfferLogoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DealOfferLogoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="expires" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="DealOfferTableViewController" superclassName="UITableViewController">
@@ -1709,13 +1775,6 @@
         </class>
         <class className="DealTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DealTableViewController.h"/>
-        </class>
-        <class className="DoubleLogoCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DoubleLogoCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="merchantLogoImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="offerLogoImage" candidateClass="UIImageView"/>
-            </relationships>
         </class>
         <class className="FBLoginView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FBLoginView.h"/>

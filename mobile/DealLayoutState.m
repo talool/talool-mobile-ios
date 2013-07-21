@@ -22,21 +22,19 @@
     delegate = actionDelegate;
     
     // calc the detail size
-    UIFont *font = [UIFont fontWithName:@"Verdana-BoldItalic" size:17];
-    UIFont *font2 = [UIFont fontWithName:@"Verdana" size:14];
+    UIFont *font = [UIFont fontWithName:@"MarkerFelt-Wide" size:24];
+    UIFont *font2 = [UIFont fontWithName:@"MarkerFelt-Thin" size:14];
     CGSize summarySize = [deal.deal.summary sizeWithFont:font
                                        constrainedToSize:CGSizeMake(280, 800)
                                            lineBreakMode:NSLineBreakByWordWrapping];
     CGSize detailsSize = [deal.deal.details sizeWithFont:font2
                                        constrainedToSize:CGSizeMake(280, 800)
                                            lineBreakMode:NSLineBreakByWordWrapping];
-    CGSize dateSize = [@"expires" sizeWithFont:font2
-                             constrainedToSize:CGSizeMake(280, 800)
-                                 lineBreakMode:NSLineBreakByWordWrapping];
-    int padding = 40;
+    int padding = 42;
     int margin = 20;
-    detailSize = (summarySize.height + detailsSize.height + dateSize.height + padding + margin);
-    
+    detailSize = (summarySize.height + detailsSize.height + padding + margin);
+    NSLog(@"calculated the detailSize = %f",detailSize);
+    if (detailSize < 112) detailSize = 112;
     
     return self;
 }

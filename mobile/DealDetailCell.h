@@ -12,7 +12,6 @@
 
 @interface DealDetailCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *summary;
-@property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *details;
 
 - (void) setDeal:(ttDeal *)deal;
