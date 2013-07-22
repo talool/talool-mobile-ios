@@ -7,7 +7,6 @@
 //
 
 #import "OfferActionView.h"
-#import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TaloolIAPHelper.h"
 #import <StoreKit/StoreKit.h>
@@ -31,9 +30,6 @@
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         NSString *label = [NSString stringWithFormat:@"Buy Now For %@",[_priceFormatter stringFromNumber:product.price]];
-        
-        [self.buyButton useTaloolStyle];
-        [self.buyButton setBaseColor:[TaloolColor orange]];
         [self.buyButton setTitle:label forState:UIControlStateNormal];
         
         self.spinner.hidesWhenStopped = YES;
@@ -61,9 +57,6 @@
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         NSString *label = [NSString stringWithFormat:@"Buy Now For %@",[_priceFormatter stringFromNumber:defaultPrice]];
-        
-        [self.buyButton useTaloolStyle];
-        [self.buyButton setBaseColor:[TaloolColor orange]];
         [self.buyButton setTitle:label forState:UIControlStateNormal];
         
         self.spinner.hidesWhenStopped = YES;

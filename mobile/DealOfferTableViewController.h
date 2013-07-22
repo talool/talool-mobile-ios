@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TaloolProtocols.h"
 #import "HelpDealOfferLocationViewController.h"
 
-#define HEADER_HEIGHT 70.0f
-
-
-@class MerchantLogoView, OfferActionView, ttDealOffer, SKProduct;
+#define ACTION_VIEW_HEIGHT 75.0f
+#define ACCESS_CODE_HEIGHT 180.0f
+#define MAP_CELL_HEIGHT 120.0f
+#define DEAL_CELL_HEIGHT 60.0f
 
 @interface DealOfferTableViewController : UITableViewController<HelpDealOfferLocationDelegate>
 
-@property (strong, nonatomic) MerchantLogoView *detailView;
-@property (strong, nonatomic) OfferActionView *actionView;
 
 @end

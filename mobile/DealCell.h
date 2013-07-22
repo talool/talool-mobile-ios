@@ -25,5 +25,6 @@
 @property (retain, nonatomic) UILabel *summaryLabel;
 @property (retain, nonatomic) UIImageView *iconView;
 @property (retain, nonatomic) UILabel *merchantLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *cellBackground;
 
 @end

@@ -63,6 +63,10 @@
 		819B26E0179C69C700744C04 /* tableCell60Last.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26DE179C69C600744C04 /* tableCell60Last.png */; };
 		819B26E1179C69C700744C04 /* tableCell60Last@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26DF179C69C600744C04 /* tableCell60Last@2x.png */; };
 		819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26E8179C6F5E00744C04 /* FooterPromptCell.m */; };
+		819B26F0179D82C300744C04 /* tileTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26EE179D82C300744C04 /* tileTop.png */; };
+		819B26F1179D82C300744C04 /* tileTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26EF179D82C300744C04 /* tileTop@2x.png */; };
+		819B26F4179DA89600744C04 /* buttonBar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26F2179DA89400744C04 /* buttonBar1.png */; };
+		819B26F5179DA89600744C04 /* buttonBar1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26F3179DA89500744C04 /* buttonBar1@2x.png */; };
 		819FA953177B99DE006A819B /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
 		819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA955177BA2CE006A819B /* ActivityFilterControl.m */; };
 		819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
@@ -274,6 +278,10 @@
 		819B26DF179C69C600744C04 /* tableCell60Last@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell60Last@2x.png"; sourceTree = "<group>"; };
 		819B26E7179C6F5E00744C04 /* FooterPromptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterPromptCell.h; sourceTree = "<group>"; };
 		819B26E8179C6F5E00744C04 /* FooterPromptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterPromptCell.m; sourceTree = "<group>"; };
+		819B26EE179D82C300744C04 /* tileTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileTop.png; sourceTree = "<group>"; };
+		819B26EF179D82C300744C04 /* tileTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tileTop@2x.png"; sourceTree = "<group>"; };
+		819B26F2179DA89400744C04 /* buttonBar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBar1.png; sourceTree = "<group>"; };
+		819B26F3179DA89500744C04 /* buttonBar1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonBar1@2x.png"; sourceTree = "<group>"; };
 		819FA951177B99DD006A819B /* IconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconHelper.h; sourceTree = "<group>"; };
 		819FA952177B99DD006A819B /* IconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconHelper.m; sourceTree = "<group>"; };
 		819FA954177BA2CE006A819B /* ActivityFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterControl.h; sourceTree = "<group>"; };
@@ -657,6 +665,10 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				819B26F2179DA89400744C04 /* buttonBar1.png */,
+				819B26F3179DA89500744C04 /* buttonBar1@2x.png */,
+				819B26EE179D82C300744C04 /* tileTop.png */,
+				819B26EF179D82C300744C04 /* tileTop@2x.png */,
 				819B26DA179C65A700744C04 /* tableCell60.png */,
 				819B26DB179C65A700744C04 /* tableCell60@2x.png */,
 				819B26DE179C69C600744C04 /* tableCell60Last.png */,
@@ -1003,6 +1015,10 @@
 				819B26DD179C65A800744C04 /* tableCell60@2x.png in Resources */,
 				819B26E0179C69C700744C04 /* tableCell60Last.png in Resources */,
 				819B26E1179C69C700744C04 /* tableCell60Last@2x.png in Resources */,
+				819B26F0179D82C300744C04 /* tileTop.png in Resources */,
+				819B26F1179D82C300744C04 /* tileTop@2x.png in Resources */,
+				819B26F4179DA89600744C04 /* buttonBar1.png in Resources */,
+				819B26F5179DA89600744C04 /* buttonBar1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

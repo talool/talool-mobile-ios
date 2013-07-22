@@ -97,7 +97,7 @@
 
 - (void) plotMerchantLocations:(NSArray *)locs
 {
-    // our with the old
+    // out with the old
     for (id<MKAnnotation> annotation in locationMapView.annotations) {
         [locationMapView removeAnnotation:annotation];
     }

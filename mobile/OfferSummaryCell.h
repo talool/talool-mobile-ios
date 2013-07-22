@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class ttDealOffer;
+
 @interface OfferSummaryCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *summary;
+@property (strong, nonatomic) IBOutlet UIImageView *logo;
+
+- (void) setOffer:(ttDealOffer *)offer;
 
 @end

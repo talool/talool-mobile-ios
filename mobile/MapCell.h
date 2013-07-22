@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class ttDealOffer, ttMerchant;
-
-@interface MapCell : UITableViewCell
+@interface MapCell : UITableViewCell<MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UILabel *mapLabel;
 
-- (void) setOffer:(ttDealOffer *)offer;
-- (void) setMerchant:(ttMerchant *)merchant;
+- (void) setDeals:(NSArray *)deals;
 
 @end

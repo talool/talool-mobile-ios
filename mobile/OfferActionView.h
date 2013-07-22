@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class TaloolUIButton, SKProduct;
+@class SKProduct;
 
 @interface OfferActionView : UIView
 {
     IBOutlet UIView *view;
 }
-@property (strong, nonatomic) IBOutlet TaloolUIButton *buyButton;
+@property (strong, nonatomic) IBOutlet UIButton *buyButton;
 @property (strong, nonatomic) SKProduct *product;
 @property (strong, nonatomic) NSString *productId;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;

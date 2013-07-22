@@ -7,23 +7,24 @@
 //
 
 #import "OfferSummaryCell.h"
+#import "talool-api-ios/ttDealOffer.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OfferSummaryCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (void) setOffer:(ttDealOffer *)offer
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.summary.text = offer.summary;
+    
+    [self.logo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
+                        placeholderImage:[UIImage imageNamed:@"000.png"]
+                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                   if (error !=  nil) {
+                                       // TODO track these errors
+                                       NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                   }
+                                   
+                               }];
 }
 
 @end

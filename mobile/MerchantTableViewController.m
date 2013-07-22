@@ -254,6 +254,10 @@
     if (indexPath.row == [deals count]) {
         cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
     }
+    else
+    {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+    }
 
     return cell;
 }
