@@ -12,17 +12,7 @@
 
 @implementation DealAcquireCell
 
-@synthesize deal, nameLabel, iconView, dateLabel;
-
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    [super setBackgroundColor:backgroundColor];
-    
-    iconView.backgroundColor = backgroundColor;
-    nameLabel.backgroundColor = backgroundColor;
-    dateLabel.backgroundColor = backgroundColor;
-    redeemedView.backgroundColor = backgroundColor;
-}
+@synthesize deal, nameLabel, iconView, dateLabel, cellBackground;
 
 - (void)setIcon:(UIImage *)newIcon
 {

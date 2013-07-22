@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
+@class ttDealAcquire;
+
 @interface DealActionBar3View : UIView
 {
     IBOutlet UIView *view;

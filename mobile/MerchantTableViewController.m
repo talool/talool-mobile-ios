@@ -15,7 +15,8 @@
 #import "FontAwesomeKit.h"
 #import "DealAcquireCell.h"
 #import "MapCell.h"
-#import "HeroImageCell.h"
+#import "DealImageCell.h"
+#import "FooterPromptCell.h"
 #import "MerchantLogoView.h"
 #import "DealListHeaderView.h"
 #import "talool-api-ios/ttMerchant.h"
@@ -24,19 +25,20 @@
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "HelpNetworkFailureViewController.h"
+#import "MerchantActionBar3View.h"
+#import "TaloolMobileWebViewController.h"
 
 @interface MerchantTableViewController ()
 
 @property (nonatomic, retain) NSArray *deals;
 @property (nonatomic, retain) NSArray *sortDescriptors;
-@property (strong, nonatomic) MerchantLogoView *logoHeaderView;
-@property (strong, nonatomic) DealListHeaderView *dealHeaderView;
+@property (strong, nonatomic) MerchantActionBar3View *actionBar3View;
 
 @end
 
 @implementation MerchantTableViewController
 
-@synthesize deals, sortDescriptors, merchant, logoHeaderView, dealHeaderView;
+@synthesize deals, sortDescriptors, merchant, actionBar3View;
 
 - (void)viewDidLoad
 {
@@ -51,10 +53,8 @@
     self.refreshControl.attributedTitle = refreshLabel;
     
     CGRect frame = self.view.bounds;
-    logoHeaderView = [[MerchantLogoView alloc]
-                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT) url:nil];
-    dealHeaderView = [[DealListHeaderView alloc]
-                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)];
+
+    actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,75.0) delegate:self];
     
     // add the settings button
     UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconHeartEmpty
@@ -65,7 +65,7 @@
     [likeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                               forState:UIControlStateNormal];
     
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -73,10 +73,6 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.title = merchant.name;
-    
-    [dealHeaderView setTitle:merchant.name];
-    
-    [logoHeaderView updateLogo:[merchant getClosestLocation].logoUrl];
     
     [self setLikeLabel];
     
@@ -137,10 +133,17 @@
     {
         [[segue destinationViewController] setMerchant:merchant];
     }
+    else if ([[segue identifier] isEqualToString:@"showWebsite"])
+    {
+        ttMerchantLocation *loc = [merchant getClosestLocation];
+        [[segue destinationViewController] setMobileWebUrl:loc.websiteUrl];
+        [[segue destinationViewController] setViewTitle:@"Feedback"];
+    }
     else if ([[segue identifier] isEqualToString:@"showDeal"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttDealAcquire *deal = [deals objectAtIndex:[indexPath row]];
+        // minus 1 cuz the image is in the first row
+        ttDealAcquire *deal = [deals objectAtIndex:([indexPath row] - 1)];
         DealTableViewController *dtvc = [segue destinationViewController];
         [dtvc setDeal:deal];
     }
@@ -150,38 +153,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0)
-    {
-        return 2;
-    }
-    else
-    {
-        return [deals count];
-    }
+    // add 1 cuz the image is on top and the footer is at the bottom
+    return [deals count]+2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        if (indexPath.row==0)
-        {
-            NSString *CellIdentifier = @"HeroImageCell";
-            HeroImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell setImageUrl:[merchant getClosestLocation].imageUrl];
-            return cell;
-        }
-        else
-        {
-            NSString *CellIdentifier = @"MapCell";
-            MapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell setMerchant:merchant];
-            return cell;
-        }
+    // TODO add the image to the first position
+    if (indexPath.row == 0) {
+        NSString *CellIdentifier = @"DealImageCell";
+        DealImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setUrl:[merchant getClosestLocation].imageUrl];
+        return cell;
+    }
+    else if (indexPath.row == [deals count]+1) {
+        NSString *CellIdentifier = @"FooterCell";
+        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setMessage:@"Need Deals?"];
+        return cell;
     }
     else
     {
@@ -191,12 +185,16 @@
 
 - (UITableViewCell *) getDealCell:(NSIndexPath *)indexPath
 {
+    
+    // TODO change the bg image based on the position
+    
     static NSString *CellIdentifier = @"RewardCell";
     
     DealAcquireCell *cell = (DealAcquireCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
-    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
+    // substract 1 cuz the image is at the top
+    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:(indexPath.row - 1)];
     [cell setDeal:deal];
     
     NSString *date;
@@ -229,24 +227,10 @@
                                  };
     NSDictionary* normaltext = @{};
     
-    NSString *dealTitle;
-    if (deal.deal.title)
-    {
-        dealTitle = deal.deal.title;
-    }
-    else
-    {
-        if (deal.deal==nil)
-        {
-            NSLog(@"deal is missing when pulled from the service");
-        }
-        dealTitle = @"messed up deal";
-    }
+    NSString *dealTitle = deal.deal.title;
     
     if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
     {
-        cell.contentView.alpha = 0.5;
-        cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_1]];
 
         cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:strikethrough];
@@ -261,54 +245,35 @@
         {
             date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
         }
-        cell.contentView.alpha = 1.0;
-        cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:normaltext];
         cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
     }
     
     cell.dateLabel.text = date;
     
+    if (indexPath.row == [deals count]) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+    }
+
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0)
-    {
-        return (indexPath.row==0)?160.0:90.0;
-    }
-    else
-    {
-        return 60.0;
-    }
+    return (indexPath.row==0)?100.0:60.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section==0)
-    {
-        return 0;
-    }
-    else
-    {
-        return HEADER_HEIGHT;
-    }
+    return HEADER_HEIGHT;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    if (section==0)
-    {
-        return nil;//logoHeaderView;
-    }
-    else
-    {
-        return dealHeaderView;
-    }
+    return actionBar3View;
 }
 
 #pragma mark -
@@ -342,6 +307,26 @@
     
     deals = [[[NSArray alloc] initWithArray:dealsFromServer] sortedArrayUsingDescriptors:sortDescriptors];
     [self.tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark - TaloolMerchantActionDelegate methods
+
+- (void)openMap:(id)sender
+{
+    [self performSegueWithIdentifier:@"showMap" sender:self];
+}
+
+- (void)placeCall:(id)sender
+{
+    ttMerchantLocation *loc = [merchant getClosestLocation];
+    NSString *phoneNumber = [@"tel://" stringByAppendingString:loc.phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+}
+
+- (void)visitWebsite:(id)sender
+{
+    [self performSegueWithIdentifier:@"showWebsite" sender:self];
 }
 
 @end

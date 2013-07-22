@@ -12,11 +12,11 @@
 
 @implementation DealImageCell
 
--(void) setDeal:(ttDeal *)deal
+-(void) setUrl:(NSString *)url
 {
     __block DealImageCell *blocksafeSelf = self;
     
-    [dealImage setImageWithURL:[NSURL URLWithString:deal.imageUrl]
+    [dealImage setImageWithURL:[NSURL URLWithString:url]
          placeholderImage:[UIImage imageNamed:@"000.png"]
                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                     if (error !=  nil) {

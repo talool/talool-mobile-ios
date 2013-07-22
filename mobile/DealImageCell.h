@@ -15,7 +15,7 @@
     IBOutlet UIImageView *dealImage;
 }
 
--(void) setDeal:(ttDeal *)deal;
+-(void) setUrl:(NSString *)url;
 
 
 @end

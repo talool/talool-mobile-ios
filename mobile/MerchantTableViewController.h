@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
-#define HEADER_HEIGHT 60.0f
+#define HEADER_HEIGHT 75.0f
 
 @class ttMerchant;
 
-@interface MerchantTableViewController : UITableViewController
+@interface MerchantTableViewController : UITableViewController<TaloolMerchantActionDelegate>
 
 @property (nonatomic, retain) ttMerchant *merchant;
 

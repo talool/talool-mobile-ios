@@ -26,6 +26,12 @@
 - (void)giftAccepted:(ttDealAcquire *)deal sender:(id)sender;
 @end
 
+@protocol TaloolMerchantActionDelegate<NSObject>
+- (void)openMap:(id)sender;
+- (void)placeCall:(id)sender;
+- (void)visitWebsite:(id)sender;
+@end
+
 @protocol TaloolDealActionDelegate<NSObject>
 - (void)sendGiftViaEmail:(id)sender;
 - (void)sendGiftViaFacebook:(id)sender;

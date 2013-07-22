@@ -22,7 +22,7 @@
     switch (indexPath.row) {
         case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealImageCell" forIndexPath:indexPath];
-            [(DealImageCell *)cell setDeal:self.deal.deal];
+            [(DealImageCell *)cell setUrl:self.deal.deal.imageUrl];
             break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealLocationCell" forIndexPath:indexPath];
