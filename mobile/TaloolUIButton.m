@@ -33,7 +33,7 @@
                                        nil];
     
     self.cornerRadius = 5.f;
-    [self setStrokeColor:[TaloolColor gray_3]];
+    [self setStrokeColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3]];
     [self setStrokeWeight:0.5];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
