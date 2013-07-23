@@ -15,6 +15,7 @@
 #import "TaloolMobileWebViewController.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
+#import "TextureHelper.h"
 
 @interface SettingsTableViewController ()
 @property (strong, nonatomic) UIView *accountHeader;
@@ -41,6 +42,11 @@
     taloolHeader = [self createHeaderView:@"About Talool"];
     
     spinner.hidesWhenStopped=YES;
+    
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
+    [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
 }
 
 - (UIView *) createHeaderView:(NSString *)title
@@ -60,22 +66,29 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    
     if ([FBSession.activeSession isOpen] || [[CustomerHelper getLoggedInUser] isFacebookUser])
     {
         // hide the normal logout button and replace with a FB logout button
         [logoutButton setHidden:YES];
+        [nameLabel setHidden:YES];
         FBLoginView *loginView = [[FBLoginView alloc] init];
         loginView.delegate = self;
         [loginView setTransform:CGAffineTransformMakeScale(.75, .75)];
         // Align the button in the center horizontally
         loginView.frame = CGRectOffset(loginView.frame,
-                                       ((logoutCell.viewForBaselineLayout.frame.size.width - (loginView.frame.size.width)-50)),
+                                       (logoutCell.viewForBaselineLayout.frame.size.width/2 - loginView.frame.size.width/2 - 20.0),
                                        2);
         
         
         [logoutCell.viewForBaselineLayout addSubview:loginView];
         [loginView sizeToFit];
         
+    }
+    else
+    {
+        [logoutButton setHidden:NO];
+        [nameLabel setHidden:NO];
     }
 }
 
@@ -148,11 +161,11 @@
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
     [self logoutUser];
-    
-    [self performSegueWithIdentifier:@"logout" sender:self];
      
      // remove the spinner
      [spinner stopAnimating];
+    
+    [self performSegueWithIdentifier:@"logout" sender:self];
 
 }
 

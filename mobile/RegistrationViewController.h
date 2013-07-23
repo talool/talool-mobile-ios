@@ -8,17 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
-#import "talool-api-ios/GAITrackedViewController.h"
 
 @class TaloolUIButton;
 
-@interface RegistrationViewController : GAITrackedViewController<TaloolKeyboardAccessoryDelegate> {
+@interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate> {
     IBOutlet UITextField *emailField;
     IBOutlet UITextField *passwordField;
     IBOutlet UITextField *firstNameField;
     IBOutlet UITextField *lastNameField;
-    IBOutlet UIImageView *texture;
-    IBOutlet UIScrollView *scroller;
     UIAlertView *errorView;
     
     IBOutlet UIActivityIndicatorView *spinner;

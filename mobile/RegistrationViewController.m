@@ -14,6 +14,7 @@
 #import "TaloolColor.h"
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
+#import "talool-api-ios/GAI.h"
 
 @interface RegistrationViewController ()
 
@@ -27,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.trackedViewName = @"Registration Screen";
+    [self.navigationItem setTitle:@"Registration"];
 
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Register"];
     [emailField setInputAccessoryView:kav];
@@ -37,10 +38,18 @@
     
     spinner.hidesWhenStopped = YES;
     
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320.0, 1200.0)];
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
     [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    scroller.contentSize = CGSizeMake(self.view.frame.size.width, 1200.0);
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Registration Screen"];
 }
 
 - (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate

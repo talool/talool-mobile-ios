@@ -19,6 +19,8 @@
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
 #import "KeyboardAccessoryView.h"
+#import "talool-api-ios/GAI.h"
+#import "TextureHelper.h"
 
 @interface WelcomeViewController ()
 
@@ -26,15 +28,14 @@
 
 @implementation WelcomeViewController
 
-@synthesize spinner;
+@synthesize spinner, FBLoginView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.trackedViewName = @"Welcome Screen";
-    
-    [self.view setBackgroundColor:[TaloolColor gray_2]];
+    [self.navigationItem setTitle:@"Welcome to Talool"];
+    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
         // Push forward if we already have a user
@@ -64,21 +65,29 @@
                                           attributes:attr];
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
-    [regButton setTitle:@"Register" forState:UIControlStateNormal];
+    [regButton setTitle:@"Register a New Account" forState:UIControlStateNormal];
     [regButton setImage:userIcon forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
     self.navigationItem.hidesBackButton = YES;
     
-    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Login"];
+    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Sign In"];
     [emailField setInputAccessoryView:kav];
     [passwordField setInputAccessoryView:kav];
+    
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
+    [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
     
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Welcome Screen"];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
