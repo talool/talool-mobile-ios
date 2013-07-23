@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class WelcomeViewController, TaloolTabBarController, SettingsTableViewController, MyDealsViewController, ActivityViewController, ActivityStreamHelper;
+@class WelcomeViewController, TaloolTabBarController, SettingsTableViewController, MyDealsViewController, ActivityViewController, ActivityStreamHelper, SplashViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, ActivityStreamDelegate, UIAlertViewDelegate>
 
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) SettingsTableViewController* settingsViewController;
 @property (strong, nonatomic) ActivityViewController* activiyViewController;
 @property (strong, nonatomic) MyDealsViewController* firstViewController;
+@property (strong, nonatomic) SplashViewController* splashView;
 @property (strong, nonatomic) ActivityStreamHelper* activityHelper;
 @property BOOL isNavigating;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

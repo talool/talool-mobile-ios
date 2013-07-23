@@ -24,6 +24,7 @@
 		8146D18C1774D29E0035F589 /* MerchantBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8146D18B1774D29E0035F589 /* MerchantBannerView.xib */; };
 		81471F38179ECD0100C6DAB8 /* talool_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 81471F36179ECD0100C6DAB8 /* talool_logo.png */; };
 		81471F39179ECD0100C6DAB8 /* talool_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */; };
+		81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81471F3E179F0B3800C6DAB8 /* SplashViewController.m */; };
 		8151CB671791F05A007894B2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB651791F05A007894B2 /* bg.png */; };
 		8151CB681791F05A007894B2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB661791F05A007894B2 /* bg@2x.png */; };
 		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
@@ -228,6 +229,8 @@
 		8146D18B1774D29E0035F589 /* MerchantBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantBannerView.xib; sourceTree = "<group>"; };
 		81471F36179ECD0100C6DAB8 /* talool_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talool_logo.png; sourceTree = "<group>"; };
 		81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talool_logo@2x.png"; sourceTree = "<group>"; };
+		81471F3D179F0B3800C6DAB8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
+		81471F3E179F0B3800C6DAB8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashViewController.m; path = ../SplashViewController.m; sourceTree = "<group>"; };
 		8151CB651791F05A007894B2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		8151CB661791F05A007894B2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -758,6 +761,8 @@
 		9103117B16D467C500CEE814 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				81471F3D179F0B3800C6DAB8 /* SplashViewController.h */,
+				81471F3E179F0B3800C6DAB8 /* SplashViewController.m */,
 				91986F0D16DA9E8900D1CA96 /* TaloolTabBarController.h */,
 				91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */,
 				810BB7441781FFCF00C65540 /* Help Controllers */,
@@ -1129,6 +1134,7 @@
 				819B26C4179B223F00744C04 /* DealImageCell.m in Sources */,
 				819B26D7179B8A8200744C04 /* MerchantActionBar3View.m in Sources */,
 				819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */,
+				81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

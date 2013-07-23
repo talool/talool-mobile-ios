@@ -23,6 +23,7 @@
 #import "ActivityStreamHelper.h"
 #import "DealOfferHelper.h"
 #import "MerchantSearchView.h"
+#import "SplashViewController.h"
 #import "talool-api-ios/GAI.h"
 
 @implementation AppDelegate
@@ -37,18 +38,32 @@
 @synthesize settingsViewController = _settingsViewController;
 @synthesize firstViewController = _firstViewController;
 @synthesize activiyViewController = _activiyViewController;
-@synthesize activityHelper;
+@synthesize activityHelper, splashView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-
-    [CustomerHelper setContext:self.managedObjectContext];
-    [FacebookHelper setContext:self.managedObjectContext];
     
+    // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    
+    self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"SplashView"];
+    [self.window addSubview:self.splashView.view];
+    [self.window makeKeyAndVisible];
+    
+    [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
+    
+    return YES;
+}
+
+- (void) setupApp
+{
+    [CustomerHelper setContext:self.managedObjectContext];
+    [FacebookHelper setContext:self.managedObjectContext];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    
     self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
     //self.mainViewController.navigationItem.hidesBackButton = YES;
     
@@ -81,8 +96,6 @@
     [viewControllers addObject:navController];
     
     [self.mainViewController setViewControllers:viewControllers];
-    self.window.rootViewController = self.mainViewController;
-    [self.window makeKeyAndVisible];
     
     [TaloolIAPHelper sharedInstance];
     [DealOfferHelper sharedInstance];
@@ -98,9 +111,10 @@
     //[GAI sharedInstance].debug = YES;
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
-
     
-    return YES;
+    [self.splashView.view removeFromSuperview];
+    self.window.rootViewController = self.mainViewController;
+    [self.window makeKeyAndVisible];
 }
 
 - (BOOL)application:(UIApplication *)application
