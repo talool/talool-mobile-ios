@@ -112,6 +112,12 @@
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
     
+    [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
+    
+}
+
+- (void) finalizeSetup
+{
     [self.splashView.view removeFromSuperview];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
