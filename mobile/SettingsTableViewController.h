@@ -12,11 +12,13 @@
 
 #define GA_TRACKING_ID  @"UA-42344079-1"
 
+@class TaloolUIButton;
+
 @interface SettingsTableViewController : UITableViewController<FBLoginViewDelegate>
 {
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
-    IBOutlet UIButton *logoutButton;
+    IBOutlet TaloolUIButton *logoutButton;
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet UITableViewCell *logoutCell;
 }

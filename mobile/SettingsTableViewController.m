@@ -13,14 +13,17 @@
 #import "WelcomeViewController.h"
 #import "MyDealsViewController.h"
 #import "TaloolMobileWebViewController.h"
+#import "TaloolUIButton.h"
+#import "TaloolColor.h"
 
 @interface SettingsTableViewController ()
-
+@property (strong, nonatomic) UIView *accountHeader;
+@property (strong, nonatomic) UIView *taloolHeader;
 @end
 
 @implementation SettingsTableViewController
 
-@synthesize customer, spinner;
+@synthesize customer, spinner, accountHeader, taloolHeader;
 
 
 - (void)viewDidLoad
@@ -30,7 +33,29 @@
     nameLabel.text = [customer getFullName];
 	self.navigationItem.title = @"Settings";
     
+    [logoutButton useTaloolStyle];
+    [logoutButton setBaseColor:[TaloolColor teal]];
+    
+    // create table headers
+    accountHeader = [self createHeaderView:@"Account"];
+    taloolHeader = [self createHeaderView:@"About Talool"];
+    
     spinner.hidesWhenStopped=YES;
+}
+
+- (UIView *) createHeaderView:(NSString *)title
+{
+    CGRect frame = self.view.bounds;
+    CGRect headerFrame = CGRectMake(12.0,0.0,frame.size.width,60.0);
+    UIView *header = [[UIView alloc] initWithFrame:headerFrame];
+    UILabel *headerTitle = [[UILabel alloc] initWithFrame:headerFrame];
+    [headerTitle setTextColor:[UIColor whiteColor]];
+    headerTitle.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:21.0];
+    headerTitle.text = title;
+    [headerTitle setBackgroundColor:[UIColor clearColor]];
+    [header addSubview:headerTitle];
+    
+    return header;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -46,6 +71,8 @@
         loginView.frame = CGRectOffset(loginView.frame,
                                        ((logoutCell.viewForBaselineLayout.frame.size.width - (loginView.frame.size.width)-50)),
                                        2);
+        
+        
         [logoutCell.viewForBaselineLayout addSubview:loginView];
         [loginView sizeToFit];
         
@@ -206,6 +233,19 @@
     if ([user isFacebookUser]) {
         [self logout:self];
     }
+}
+
+#pragma mark - Table view data source
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 60.0;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return (section==0) ? accountHeader:taloolHeader;
 }
 
 @end
