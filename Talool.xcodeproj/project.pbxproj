@@ -22,6 +22,8 @@
 		8146D1781773EF140035F589 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1771773EF130035F589 /* ActivityViewController.m */; };
 		8146D18A1774D2740035F589 /* MerchantBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1891774D2740035F589 /* MerchantBannerView.m */; };
 		8146D18C1774D29E0035F589 /* MerchantBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8146D18B1774D29E0035F589 /* MerchantBannerView.xib */; };
+		81471F38179ECD0100C6DAB8 /* talool_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 81471F36179ECD0100C6DAB8 /* talool_logo.png */; };
+		81471F39179ECD0100C6DAB8 /* talool_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */; };
 		8151CB671791F05A007894B2 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB651791F05A007894B2 /* bg.png */; };
 		8151CB681791F05A007894B2 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CB661791F05A007894B2 /* bg@2x.png */; };
 		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
@@ -224,6 +226,8 @@
 		8146D1881774D2740035F589 /* MerchantBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantBannerView.h; sourceTree = "<group>"; };
 		8146D1891774D2740035F589 /* MerchantBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantBannerView.m; sourceTree = "<group>"; };
 		8146D18B1774D29E0035F589 /* MerchantBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantBannerView.xib; sourceTree = "<group>"; };
+		81471F36179ECD0100C6DAB8 /* talool_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talool_logo.png; sourceTree = "<group>"; };
+		81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talool_logo@2x.png"; sourceTree = "<group>"; };
 		8151CB651791F05A007894B2 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		8151CB661791F05A007894B2 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -665,6 +669,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81471F36179ECD0100C6DAB8 /* talool_logo.png */,
+				81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */,
 				819B26F2179DA89400744C04 /* buttonBar1.png */,
 				819B26F3179DA89500744C04 /* buttonBar1@2x.png */,
 				819B26EE179D82C300744C04 /* tileTop.png */,
@@ -1019,6 +1025,8 @@
 				819B26F1179D82C300744C04 /* tileTop@2x.png in Resources */,
 				819B26F4179DA89600744C04 /* buttonBar1.png in Resources */,
 				819B26F5179DA89600744C04 /* buttonBar1@2x.png in Resources */,
+				81471F38179ECD0100C6DAB8 /* talool_logo.png in Resources */,
+				81471F39179ECD0100C6DAB8 /* talool_logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

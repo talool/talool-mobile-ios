@@ -23,6 +23,7 @@
 {
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Load Deals"];
     [self.accessCodeFld setInputAccessoryView:kav];
+    [self.accessCodeFld setDelegate:self];
     
     spinner.hidesWhenStopped = YES;
     
@@ -74,14 +75,13 @@
     [self.accessCodeFld resignFirstResponder];
 }
 
--(void) previous:(id)sender
-{
-    
-}
+#pragma mark -
+#pragma mark - UITextFieldDelegate methods
 
--(void) next:(id)sender
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
+    [self submit:nil];
+    return YES;
 }
 
 

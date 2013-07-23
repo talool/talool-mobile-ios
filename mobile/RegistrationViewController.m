@@ -32,9 +32,13 @@
 
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Register"];
     [emailField setInputAccessoryView:kav];
+    [emailField setDelegate:self];
     [passwordField setInputAccessoryView:kav];
+    [passwordField setDelegate:self];
     [firstNameField setInputAccessoryView:kav];
+    [firstNameField setDelegate:self];
     [lastNameField setInputAccessoryView:kav];
+    [lastNameField setDelegate:self];
     
     spinner.hidesWhenStopped = YES;
     
@@ -106,6 +110,15 @@
     {
         [lastNameField resignFirstResponder];
     }
+}
+
+#pragma mark -
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self submit:nil];
+    return YES;
 }
 
 @end

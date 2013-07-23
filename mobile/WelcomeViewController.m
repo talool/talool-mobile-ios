@@ -55,8 +55,6 @@
      */
     self.FBLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"email",@"user_birthday"]];
     
-    [loginButton useTaloolStyle];
-    [loginButton setBaseColor:[TaloolColor teal]];
     
     NSDictionary *attr = @{ FAKImageAttributeForegroundColor:[UIColor whiteColor] };
     UIImage *userIcon = [FontAwesomeKit imageForIcon:FAKIconUser
@@ -74,6 +72,8 @@
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Sign In"];
     [emailField setInputAccessoryView:kav];
     [passwordField setInputAccessoryView:kav];
+    [passwordField setDelegate:self];
+    [emailField setDelegate:self];
     
     UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
     texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
@@ -284,6 +284,15 @@
         [passwordField resignFirstResponder];
     }
     
+}
+
+#pragma mark -
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self submit:nil];
+    return YES;
 }
 
 

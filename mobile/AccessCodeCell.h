@@ -11,7 +11,7 @@
 
 @class TaloolUIButton, ttDealOffer;
 
-@interface AccessCodeCell : UITableViewCell<TaloolKeyboardAccessoryDelegate>
+@interface AccessCodeCell : UITableViewCell<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *accessCodeFld;
 @property (strong, nonatomic) ttDealOffer *offer;
