@@ -40,7 +40,7 @@
     }
     else if ([activity isRejectGiftEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_2]];
+        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
     }
     else if ([activity isEmailSendGiftEvent] ||
              [activity isFacebookSendGiftEvent])
@@ -49,13 +49,20 @@
     }
     else if ([activity isPurchaseEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
+        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
     }
     else if ([activity isWelcomeEvent] ||
              [activity isMerchantReachEvent] ||
              [activity isTaloolReachEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor teal]];
+        if ([activity isClosed])
+        {
+            iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor gray_3]];
+        }
+        else
+        {
+            iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor teal]];
+        }
     }
     else if ([activity isRedeemEvent])
     {
