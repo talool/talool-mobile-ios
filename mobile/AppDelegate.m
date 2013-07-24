@@ -51,7 +51,9 @@
     self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"SplashView"];
     [self.window addSubview:self.splashView.view];
     [self.window makeKeyAndVisible];
-    
+    self.window.rootViewController = self.splashView;
+
+    // Dispatch a new thread so we'll see the Splash View and the user will get the progress spinner
     [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
     
     return YES;
@@ -59,10 +61,10 @@
 
 - (void) setupApp
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+     
     [CustomerHelper setContext:self.managedObjectContext];
     [FacebookHelper setContext:self.managedObjectContext];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     
     self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
     //self.mainViewController.navigationItem.hidesBackButton = YES;
@@ -96,13 +98,14 @@
     [viewControllers addObject:navController];
     
     [self.mainViewController setViewControllers:viewControllers];
+
+    // Back to the main thread for the work that needs to happen there
+    [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
     
-    [TaloolIAPHelper sharedInstance];
-    [DealOfferHelper sharedInstance];
-    
-    activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
-    
-    
+}
+
+- (void) finalizeSetup
+{
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
@@ -112,12 +115,10 @@
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
     
-    [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
+    [TaloolIAPHelper sharedInstance];
+    [DealOfferHelper sharedInstance];
+    activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
-}
-
-- (void) finalizeSetup
-{
     [self.splashView.view removeFromSuperview];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];

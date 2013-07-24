@@ -66,7 +66,7 @@
     [super viewWillAppear:animated];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     activities = appDelegate.activityHelper.activities;
-    [self refreshActivities];
+    [self updateTable];
     [self.tableView reloadData];
 }
 
@@ -163,7 +163,6 @@
 
 - (void) refreshActivities
 {
-    // Override in subclass to hit the service
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
 }
 

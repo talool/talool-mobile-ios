@@ -11,5 +11,6 @@
 @interface SplashViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) IBOutlet UIImageView *defaultImage;
 
 @end

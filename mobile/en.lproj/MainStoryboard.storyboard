@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="SplashView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="20T-kB-mH2" customClass="SplashViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ytO-jt-56l">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="bottom" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-eW-wzy"/>
@@ -25,6 +25,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="defaultImage" destination="9xP-eW-wzy" id="OUr-gt-qLz"/>
                         <outlet property="spinner" destination="fe4-NO-LPf" id="5vm-Tt-bnE"/>
                     </connections>
                 </viewController>
@@ -53,7 +54,7 @@
             <objects>
                 <tableViewController id="smi-JA-E6U" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="DTO-9v-0IT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -260,7 +261,7 @@
             <objects>
                 <tableViewController id="iSD-Ws-CbE" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Ai-hT-UFe">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -407,7 +408,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="Activity" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uvp-Gy-35R" customClass="ActivityViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="90" sectionFooterHeight="22" id="itE-4H-JfI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -624,7 +625,7 @@
             <objects>
                 <viewController storyboardIdentifier="AcceptGiftViewController" id="9Vz-pM-8dl" customClass="AcceptGiftViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v2S-WH-hWt">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;Gifter> has set you a gift!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="vl8-lG-hAO">
@@ -703,7 +704,6 @@
                             <constraint firstAttribute="trailing" secondItem="aSS-NF-py0" secondAttribute="trailing" constant="61" id="lu0-eu-P70"/>
                             <constraint firstItem="eQ4-8d-YQV" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mFf-CT-3as"/>
                             <constraint firstItem="WH6-UM-oeh" firstAttribute="bottom" secondItem="aSS-NF-py0" secondAttribute="bottom" type="default" id="tJT-xk-2QM"/>
-                            <constraint firstItem="aSS-NF-py0" firstAttribute="baseline" secondItem="WH6-UM-oeh" secondAttribute="baseline" type="default" id="vJM-4v-oLL"/>
                             <constraint firstItem="Pfz-2Y-9nH" firstAttribute="trailing" secondItem="v2S-WH-hWt" secondAttribute="trailing" type="default" id="xyz-Xh-iFN"/>
                             <constraint firstItem="Pfz-2Y-9nH" firstAttribute="top" secondItem="v2S-WH-hWt" secondAttribute="top" type="default" id="xzW-v8-3xw"/>
                             <constraint firstItem="vl8-lG-hAO" firstAttribute="top" secondItem="Pfz-2Y-9nH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zyz-PP-6RA"/>
@@ -729,7 +729,7 @@
             <objects>
                 <tableViewController title="Settings" id="T3Y-E6-Szt" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2fY-rk-O8c">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.72549019609999998" green="0.67450980390000004" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -737,7 +737,7 @@
                             <tableViewSection headerTitle="Account" id="dm4-XX-Wlk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LogoutCell" id="VH0-jv-Tde">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -934,7 +934,7 @@
             <objects>
                 <viewController storyboardIdentifier="MobileWeb" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kia-Ym-Kxg" customClass="TaloolMobileWebViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0hd-9A-sqJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vN-sa-wLC">
@@ -963,7 +963,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="MyDeals" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KRC-V0-KA0" customClass="MyDealsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="90" sectionFooterHeight="22" id="8k1-mI-Ha0">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1061,7 +1061,7 @@
             <objects>
                 <tableViewController id="nmK-ha-uWj" customClass="MerchantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uSd-9i-RfO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1072,12 +1072,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TP-Tq-I7N" userLabel="Masked Deal Image">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="4TP-Tq-I7N" userLabel="Masked Deal Image">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="95" type="user" id="aU4-Kp-ta3"/>
+                                                <constraint firstAttribute="height" constant="97" id="ElA-wo-9Uo"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-46-9Wd" userLabel="Deal Image Border">
+                                        <imageView userInteractionEnabled="NO" contentMode="top" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-46-9Wd" userLabel="Deal Image Border">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="95" type="user" id="Amc-aH-ZCk"/>
                                             </constraints>
@@ -1087,8 +1087,8 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="thZ-46-9Wd" firstAttribute="leading" secondItem="I3M-3z-7b5" secondAttribute="leading" type="default" id="B8x-LU-XEN"/>
-                                    <constraint firstItem="4TP-Tq-I7N" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="N7X-ry-lD5"/>
-                                    <constraint firstItem="thZ-46-9Wd" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="Yz8-4Z-MIG"/>
+                                    <constraint firstItem="thZ-46-9Wd" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="L5H-hU-QAi"/>
+                                    <constraint firstItem="4TP-Tq-I7N" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="eFk-jO-UpS"/>
                                     <constraint firstItem="4TP-Tq-I7N" firstAttribute="leading" secondItem="I3M-3z-7b5" secondAttribute="leading" type="default" id="muG-3N-SO1"/>
                                     <constraint firstItem="4TP-Tq-I7N" firstAttribute="trailing" secondItem="I3M-3z-7b5" secondAttribute="trailing" type="default" id="yfm-8O-T5z"/>
                                 </constraints>
@@ -1213,7 +1213,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="FindDeals1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g4k-iy-L6B" customClass="DealOfferTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sf9-qV-OZh">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1515,7 +1515,7 @@
             <objects>
                 <viewController storyboardIdentifier="ConfirmLocation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QYw-7j-0V8" customClass="HelpDealOfferLocationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AuD-wW-rdW">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We Can't Locate You!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="lgU-yE-rgZ">
@@ -1598,7 +1598,7 @@
             <objects>
                 <viewController storyboardIdentifier="NetworkFailure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rBS-Yu-9E9" customClass="HelpNetworkFailureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lYp-Pe-Otu">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We Can't Reach You!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqn-VP-LWX">
@@ -1671,7 +1671,7 @@
             <objects>
                 <viewController storyboardIdentifier="MerchantLocationler" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tP1-qM-RUx" customClass="MerchantLocationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="85x-wd-xtj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MrZ-h9-2c9">
@@ -1765,23 +1765,23 @@
             <objects>
                 <tableViewController storyboardIdentifier="DealTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2I0-5O-JeQ" customClass="DealTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="hzL-73-ANz">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealImageCell" rowHeight="100" id="VmY-BN-5SM" customClass="DealImageCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealImageCell" rowHeight="100" id="VmY-BN-5SM" customClass="DealImageCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNo-Lm-vhk" userLabel="Masked Deal Image">
+                                        <imageView userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="qNo-Lm-vhk" userLabel="Masked Deal Image">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="95" type="user" id="qmZ-3y-8rK"/>
+                                                <constraint firstAttribute="height" constant="97" id="CG1-a7-lgV"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-ym-qST" userLabel="Deal Image Border">
+                                        <imageView userInteractionEnabled="NO" contentMode="top" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-ym-qST" userLabel="Deal Image Border">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="95" type="user" id="QLi-Xq-99U"/>
                                             </constraints>
@@ -1793,7 +1793,7 @@
                                     <constraint firstItem="YLZ-ym-qST" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="DZf-wI-FoX"/>
                                     <constraint firstItem="YLZ-ym-qST" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="nus-HT-4zW"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="oII-7I-fJn"/>
-                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="rNC-PP-SJl"/>
+                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="wDf-8z-EwV"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="trailing" secondItem="VmY-BN-5SM" secondAttribute="trailing" type="default" id="xmd-7J-24S"/>
                                 </constraints>
                                 <connections>
@@ -2166,6 +2166,7 @@
         <class className="SplashViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="defaultImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
@@ -2201,10 +2202,10 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="HMP-oi-56u"/>
         <segue reference="wjI-dw-vyW"/>
-        <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
 </document>

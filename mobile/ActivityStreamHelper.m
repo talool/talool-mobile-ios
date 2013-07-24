@@ -84,11 +84,7 @@
     ttCustomer *user = [CustomerHelper getLoggedInUser];
     NSError *error;
     activities = [user getActivities:[CustomerHelper getContext] error:&error];
-    
-    //NSLog(@"DEBUG::: Activies: found %lu activities",(unsigned long)[activities count]);
-    
-    // Send the new array to the delegate
-    [delegate activitySetChanged:activities sender:self];
+    [self filterActivities];
     
     // preload any gifts too
     int openActivities = 0;

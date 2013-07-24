@@ -7,6 +7,7 @@
 //
 
 #import "SplashViewController.h"
+#import "UIImage+H568.h"
 
 @interface SplashViewController ()
 
@@ -14,12 +15,13 @@
 
 @implementation SplashViewController
 
-@synthesize spinner;
+@synthesize spinner, defaultImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	spinner.hidesWhenStopped = YES;
+    defaultImage.image = [UIImage imageNamed:@"Default.png"];
 }
 
 - (void) viewDidAppear:(BOOL)animated

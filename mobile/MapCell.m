@@ -31,7 +31,10 @@
     for (int i=0; i<[deals count]; i++)
     {
         ttDeal *deal = [deals objectAtIndex:i];
-        [merchants setObject:deal.merchant forKey:deal.merchant.merchantId];
+        if (deal.merchant.merchantId)
+        {
+            [merchants setObject:deal.merchant forKey:deal.merchant.merchantId];
+        }
         
         //  we'll center the map on the first location
         if (i==0)
