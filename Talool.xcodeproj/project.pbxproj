@@ -79,6 +79,9 @@
 		81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B71777822E0043ACE8 /* ActivityFilterView.m */; };
 		81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B91777824B0043ACE8 /* ActivityFilterView.xib */; };
 		81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */; };
+		81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAA179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png */; };
+		81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAB179F77CF000596E8 /* HelpBuyDealsWithCode.png */; };
+		81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAC179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png */; };
 		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
 		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
@@ -90,9 +93,6 @@
 		81BD127B1787602A00AF7475 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* MapCell.m */; };
 		81BD128D1788A4E000AF7475 /* AccessCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */; };
 		81BD1290178B29B900AF7475 /* DealOfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD128F178B29B900AF7475 /* DealOfferHelper.m */; };
-		81BD1294178B84E600AF7475 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */; };
-		81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */; };
-		81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */; };
 		81BD1299178C4A7800AF7475 /* HelpDealOfferLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */; };
 		81BD12A0178F117700AF7475 /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD129F178F117500AF7475 /* MerchantTableViewController.m */; };
 		81BD12A5178F1C1F00AF7475 /* DealListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A4178F1C1C00AF7475 /* DealListHeaderView.m */; };
@@ -305,6 +305,9 @@
 		81A869B91777824B0043ACE8 /* ActivityFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFilterView.xib; sourceTree = "<group>"; };
 		81A869BB177792CB0043ACE8 /* ActivityStreamHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityStreamHelper.h; sourceTree = "<group>"; };
 		81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityStreamHelper.m; sourceTree = "<group>"; };
+		81AE6DAA179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
+		81AE6DAB179F77CF000596E8 /* HelpBuyDealsWithCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDealsWithCode.png; sourceTree = "<group>"; };
+		81AE6DAC179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
 		81BD120E1784BA8B00AF7475 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
@@ -323,9 +326,6 @@
 		81BD128C1788A4DE00AF7475 /* AccessCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessCodeCell.m; sourceTree = "<group>"; };
 		81BD128E178B29B800AF7475 /* DealOfferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferHelper.h; sourceTree = "<group>"; };
 		81BD128F178B29B900AF7475 /* DealOfferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferHelper.m; sourceTree = "<group>"; };
-		81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
-		81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDealsWithCode.png; sourceTree = "<group>"; };
-		81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
 		81BD1297178C4A7800AF7475 /* HelpDealOfferLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpDealOfferLocationViewController.h; sourceTree = "<group>"; };
 		81BD1298178C4A7800AF7475 /* HelpDealOfferLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpDealOfferLocationViewController.m; sourceTree = "<group>"; };
 		81BD129E178F117500AF7475 /* MerchantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantTableViewController.h; sourceTree = "<group>"; };
@@ -696,9 +696,9 @@
 				819B26A11799EE6E00744C04 /* buttonBar2Brown@2x.png */,
 				8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */,
 				8186418E17998DAC00DE0C2E /* buttonBar3Brown@2x.png */,
-				81BD1291178B84E500AF7475 /* HelpBuyDealsWithCode-568h@2x.png */,
-				81BD1292178B84E500AF7475 /* HelpBuyDealsWithCode.png */,
-				81BD1293178B84E500AF7475 /* HelpBuyDealsWithCode@2x.png */,
+				81AE6DAA179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png */,
+				81AE6DAB179F77CF000596E8 /* HelpBuyDealsWithCode.png */,
+				81AE6DAC179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png */,
 				810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */,
 				810BB752178213E100C65540 /* HelpBuyDeals.png */,
 				810BB753178213E100C65540 /* HelpBuyDeals@2x.png */,
@@ -996,9 +996,6 @@
 				81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */,
 				81BD1270178710BA00AF7475 /* MerchantLogoView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
-				81BD1294178B84E600AF7475 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
-				81BD1295178B84E600AF7475 /* HelpBuyDealsWithCode.png in Resources */,
-				81BD1296178B84E600AF7475 /* HelpBuyDealsWithCode@2x.png in Resources */,
 				81BD12A7178F1C4800AF7475 /* DealListHeaderView.xib in Resources */,
 				81BD12BE178F527800AF7475 /* DealRedemptionView.xib in Resources */,
 				8151CB671791F05A007894B2 /* bg.png in Resources */,
@@ -1032,6 +1029,9 @@
 				819B26F5179DA89600744C04 /* buttonBar1@2x.png in Resources */,
 				81471F38179ECD0100C6DAB8 /* talool_logo.png in Resources */,
 				81471F39179ECD0100C6DAB8 /* talool_logo@2x.png in Resources */,
+				81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
+				81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */,
+				81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
