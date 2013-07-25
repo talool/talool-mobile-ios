@@ -14,14 +14,14 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="bottom" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-eW-wzy"/>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fe4-NO-LPf">
-                                <color key="color" red="0.85490196080000003" green="0.84313725490000002" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fe4-NO-LPf" firstAttribute="centerX" secondItem="9xP-eW-wzy" secondAttribute="centerX" type="default" id="6jW-Mp-tCl"/>
                             <constraint firstItem="9xP-eW-wzy" firstAttribute="leading" secondItem="ytO-jt-56l" secondAttribute="leading" type="default" id="E7I-TU-4tQ"/>
-                            <constraint firstAttribute="bottom" secondItem="fe4-NO-LPf" secondAttribute="bottom" constant="60" id="Tza-0P-Z1c"/>
+                            <constraint firstAttribute="bottom" secondItem="fe4-NO-LPf" secondAttribute="bottom" constant="183" id="M2x-8Y-xmU"/>
                             <constraint firstItem="9xP-eW-wzy" firstAttribute="top" secondItem="ytO-jt-56l" secondAttribute="top" type="default" id="hdN-37-nGN"/>
                             <constraint firstItem="9xP-eW-wzy" firstAttribute="bottom" secondItem="ytO-jt-56l" secondAttribute="bottom" type="default" id="zLY-Ov-HeH"/>
                         </constraints>

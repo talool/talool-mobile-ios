@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		810BB73E1781F8C900C65540 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7381781F8C900C65540 /* Default-568h@2x.png */; };
-		810BB73F1781F8C900C65540 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7391781F8C900C65540 /* Default.png */; };
-		810BB7401781F8C900C65540 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB73A1781F8C900C65540 /* Default@2x.png */; };
 		810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */; };
 		810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB752178213E100C65540 /* HelpBuyDeals.png */; };
 		810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810BB753178213E100C65540 /* HelpBuyDeals@2x.png */; };
@@ -94,8 +91,11 @@
 		81AE6DD817A1CE0A000596E8 /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
 		81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
 		81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
-		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
-		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
+		81AE6DE017A1E2E4000596E8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDD17A1E2E3000596E8 /* Default-568h@2x.png */; };
+		81AE6DE117A1E2E4000596E8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDE17A1E2E3000596E8 /* Default.png */; };
+		81AE6DE217A1E2E4000596E8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDF17A1E2E3000596E8 /* Default@2x.png */; };
+		81AE6DE517A1E412000596E8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DE317A1E412000596E8 /* Icon.png */; };
+		81AE6DE617A1E412000596E8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DE417A1E412000596E8 /* Icon@2x.png */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
 		81BD126F178710BA00AF7475 /* MerchantLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126D178710BA00AF7475 /* MerchantLogoView.m */; };
 		81BD1270178710BA00AF7475 /* MerchantLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD126E178710BA00AF7475 /* MerchantLogoView.xib */; };
@@ -217,9 +217,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		810BB7381781F8C900C65540 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		810BB7391781F8C900C65540 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		810BB73A1781F8C900C65540 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		810BB751178213E100C65540 /* HelpBuyDeals-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals-568h@2x.png"; sourceTree = "<group>"; };
 		810BB752178213E100C65540 /* HelpBuyDeals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpBuyDeals.png; sourceTree = "<group>"; };
 		810BB753178213E100C65540 /* HelpBuyDeals@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDeals@2x.png"; sourceTree = "<group>"; };
@@ -337,8 +334,11 @@
 		81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailCell.m; sourceTree = "<group>"; };
 		81AE6DD917A1D938000596E8 /* ribbonbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ribbonbadge.png; sourceTree = "<group>"; };
 		81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbonbadge@2x.png"; sourceTree = "<group>"; };
-		81BD120E1784BA8B00AF7475 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		81AE6DDD17A1E2E3000596E8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		81AE6DDE17A1E2E3000596E8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		81AE6DDF17A1E2E3000596E8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		81AE6DE317A1E412000596E8 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		81AE6DE417A1E412000596E8 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
 		81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferTableViewController.m; sourceTree = "<group>"; };
 		81BD126C178710BA00AF7475 /* MerchantLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantLogoView.h; sourceTree = "<group>"; };
@@ -668,11 +668,11 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				810BB7381781F8C900C65540 /* Default-568h@2x.png */,
-				810BB7391781F8C900C65540 /* Default.png */,
-				810BB73A1781F8C900C65540 /* Default@2x.png */,
-				81BD120E1784BA8B00AF7475 /* Icon.png */,
-				81BD120F1784BA8B00AF7475 /* Icon@2x.png */,
+				81AE6DE317A1E412000596E8 /* Icon.png */,
+				81AE6DE417A1E412000596E8 /* Icon@2x.png */,
+				81AE6DDD17A1E2E3000596E8 /* Default-568h@2x.png */,
+				81AE6DDE17A1E2E3000596E8 /* Default.png */,
+				81AE6DDF17A1E2E3000596E8 /* Default@2x.png */,
 				9103111416D1E53800CEE814 /* Talool-Info.plist */,
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
 				9103111816D1E53800CEE814 /* main.m */,
@@ -1031,15 +1031,10 @@
 				8146D18C1774D29E0035F589 /* MerchantBannerView.xib in Resources */,
 				81A869B217750BA30043ACE8 /* MerchantSearchView.xib in Resources */,
 				81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */,
-				810BB73E1781F8C900C65540 /* Default-568h@2x.png in Resources */,
-				810BB73F1781F8C900C65540 /* Default.png in Resources */,
-				810BB7401781F8C900C65540 /* Default@2x.png in Resources */,
 				810BB754178213E100C65540 /* HelpBuyDeals-568h@2x.png in Resources */,
 				810BB755178213E100C65540 /* HelpBuyDeals.png in Resources */,
 				810BB756178213E100C65540 /* HelpBuyDeals@2x.png in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
-				81BD12101784BA8B00AF7475 /* Icon.png in Resources */,
-				81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */,
 				81BD1270178710BA00AF7475 /* MerchantLogoView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
 				81BD12A7178F1C4800AF7475 /* DealListHeaderView.xib in Resources */,
@@ -1085,6 +1080,11 @@
 				81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */,
 				81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */,
 				81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */,
+				81AE6DE017A1E2E4000596E8 /* Default-568h@2x.png in Resources */,
+				81AE6DE117A1E2E4000596E8 /* Default.png in Resources */,
+				81AE6DE217A1E2E4000596E8 /* Default@2x.png in Resources */,
+				81AE6DE517A1E412000596E8 /* Icon.png in Resources */,
+				81AE6DE617A1E412000596E8 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
