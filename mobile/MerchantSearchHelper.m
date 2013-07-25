@@ -18,6 +18,10 @@
 
 - (void) filterMerchants;
 
+// location
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property BOOL locationManagerEnabled;
+
 @end
 
 @implementation MerchantSearchHelper
@@ -28,12 +32,47 @@
 {
     self = [super init];
     
+    [self initLocationManager];
+    
     [self setDelegate:searchDelegate];
+    
+    // make this call ver infrequently
+    [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
     
     [self fetchMerchants];
     [self filterMerchants];
     
     return self;
+}
+
+- (void) initLocationManager
+{
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // is the location service enabled?
+    if ([CLLocationManager locationServicesEnabled] == NO)
+    {
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Disabled"
+                             withValue:nil];
+    }
+    
+    // is the location service authorized?
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined ||
+        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+    {
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Denied"
+                             withValue:nil];
+    }
+    
+    _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 }
 
 
@@ -42,9 +81,25 @@
 
 - (void) fetchMerchants
 {
+    if (_locationManagerEnabled)
+    {
+        [_locationManager startUpdatingLocation];
+    }
+    else
+    {
+        [self fetchWithLocation:nil];
+    }
+    
+}
+
+- (void) fetchWithLocation:(CLLocation *)location
+{
+    if (location)
+    {
+        [_locationManager stopUpdatingLocation];
+    }
     ttCustomer *user = [CustomerHelper getLoggedInUser];
-    [user refreshMerchants:[CustomerHelper getContext]];
-    [user refreshFavoriteMerchants:[CustomerHelper getContext]];
+    [user refreshMerchants:location context:[CustomerHelper getContext]];
     merchants = [self sortMerchants:[user getMyMerchants]];
     [self filterMerchants];
 }
@@ -92,6 +147,37 @@
 {
     selectedPredicate = filter;
     [self filterMerchants];
+}
+
+#pragma mark -
+#pragma mark CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    
+    [self fetchWithLocation:newLocation];
+    
+    if (_locationManagerEnabled == NO)
+    {
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
+            // we were just authorized, so update the list
+            _locationManagerEnabled = YES;
+            [self fetchWithLocation:newLocation];
+        }
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+      didFailWithError:(NSError *)error
+{
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"APP"
+                        withAction:@"RefreshMerchants"
+                         withLabel:@"Fail:location_error"
+                         withValue:nil];
 }
 
 

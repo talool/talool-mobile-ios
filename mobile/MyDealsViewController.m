@@ -268,11 +268,11 @@
     }
     
     if (indexPath.row == [merchants count]) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90Last.png"];
     }
     else
     {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90.png"];
     }
     
     cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
@@ -281,6 +281,15 @@
                                                        attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0 || indexPath.row == [merchants count]+1)
+    {
+        return 60.0;
+    }
+    return 90.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

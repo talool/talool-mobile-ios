@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TaloolProtocols.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface MerchantSearchHelper : NSObject<MerchantFilterDelegate>
+@interface MerchantSearchHelper : NSObject<MerchantFilterDelegate, CLLocationManagerDelegate>
 
 @property (retain, nonatomic) NSPredicate *selectedPredicate;
 @property (retain, nonatomic) NSArray *merchants;
