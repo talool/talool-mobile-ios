@@ -164,7 +164,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO add the image to the first position
     if (indexPath.row == 0) {
         NSString *CellIdentifier = @"DealImageCell";
         DealImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -258,6 +257,13 @@
     {
         cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
     }
+
+    
+    cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
+                                                        imageSize:CGSizeMake(30, 30)
+                                                         fontSize:14
+                                                       attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
+     
 
     return cell;
 }

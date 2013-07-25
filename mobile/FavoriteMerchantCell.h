@@ -17,7 +17,10 @@
     IBOutlet UILabel *distanceLabel;
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *addressLabel;
-
+    IBOutlet UIImageView *cellBackground;
+    IBOutlet UIImageView *disclosureIndicator;
 }
+@property (retain, nonatomic) UIImageView *cellBackground;
+@property (strong, nonatomic) UIImageView *disclosureIndicator;
 
 @end

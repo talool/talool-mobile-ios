@@ -12,7 +12,7 @@
 
 @implementation DealAcquireCell
 
-@synthesize deal, nameLabel, iconView, dateLabel, cellBackground;
+@synthesize deal, nameLabel, iconView, dateLabel, cellBackground, disclosureIndicator;
 
 - (void)setIcon:(UIImage *)newIcon
 {

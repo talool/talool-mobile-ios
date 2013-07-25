@@ -18,6 +18,8 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "CustomerHelper.h"
 #import "LocationCell.h"
+#import "HeaderPromptCell.h"
+#import "FooterPromptCell.h"
 
 @interface MerchantLocationViewController ()
 
@@ -144,25 +146,67 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [locations count];
+    return [locations count]+2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"LocationCell";
-    LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (indexPath.row==0)
+    {
+        return [self getHeaderCell:indexPath];
+    }
+    else if (indexPath.row == [locations count]+1)
+    {
+        NSString *CellIdentifier = @"FooterCell";
+        FooterPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setMessage:@"Click the address to center the map."];
+        return cell;
+    }
+    else
+    {
+        NSString *CellIdentifier = @"LocationCell";
+        LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        // Configure the cell
+        ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
+        [cell setLocation:location];
+        
+        if (indexPath.row == [locations count]) {
+            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+        }
+        else
+        {
+            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+        }
+        
+        return cell;
+    }
+}
+
+- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"TileTop";
+    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
-    [cell setLocation:location];
-    
+    if ([locations count]==0) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+        [cell setMessage:[NSString stringWithFormat:@"No Locations for %@",merchant.name]];
+    }
+    else
+    {
+        [cell setMessage:@"Click the map to get directions."];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
-    [self centerMap:location.location];
+    if (indexPath.row > 0 && indexPath.row <= [locations count])
+    {
+        ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
+        [self centerMap:location.location];
+
+    }
 }
 
 @end

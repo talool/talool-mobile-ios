@@ -147,7 +147,7 @@
         [self setLocationAsVancouver];
     }
     
-    if (closestProduct != nil && closestBook != nil)
+    if (closestBook != nil)
     {
         //NSLog(@"DEBUG::: got the closest book (%@) and product (%@)",closestBook.title, closestProduct.productIdentifier);
         [_locationManager stopUpdatingLocation];

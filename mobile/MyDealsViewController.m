@@ -14,11 +14,15 @@
 #import "WelcomeViewController.h"
 #import "FavoriteMerchantCell.h"
 #import "MerchantCell.h"
+#import "HeaderPromptCell.h"
+#import "FooterPromptCell.h"
 #import "MerchantFilterControl.h"
 #import "talool-api-ios/ttCategory.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
+#import "talool-api-ios/ttLocation.h"
+#import "talool-api-ios/ttAddress.h"
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "CustomerHelper.h"
@@ -59,7 +63,7 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.loginViewController registerAuthDelegate:self];
     
-    self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
+    self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
                                          merchantSearchDelegate:self];
     
     // add the settings button
@@ -98,11 +102,6 @@
     [self askForHelp];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -119,7 +118,7 @@
 {
     if ([[segue identifier] isEqualToString:@"merchantDeals"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttMerchant *merchant = [self.merchants objectAtIndex:[indexPath row]];
+        ttMerchant *merchant = [self.merchants objectAtIndex:([indexPath row]-1)];
         MerchantTableViewController *mvc = (MerchantTableViewController *)[segue destinationViewController];
         [mvc setMerchant:merchant];
     }
@@ -183,23 +182,85 @@
 
 // Determines the number of rows for the argument section number
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [merchants count];
+    return [merchants count] + 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return [self getHeaderCell:indexPath];
+    }
+    else if (indexPath.row == [merchants count]+1) {
+        NSString *CellIdentifier = @"FooterCell";
+        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setMessage:@"Need Deals?"];
+        return cell;
+    }
+    else
+    {
+        return [self getMerchantCell:indexPath];
+    }
+}
+
+- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"TileTop";
+    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if ([merchants count]==0) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+        ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
+        if (cat)
+        {
+            [cell setMessage:[NSString stringWithFormat:@"No merchants in %@", cat.name]];
+        }
+        else if (searchView.filterControl.selectedSegmentIndex==1)
+        {
+            [cell setMessage:@"No favorite merchants"];
+        }
+        else
+        {
+            [cell setMessage:@"No merchants"];
+        }
+    }
+    else
+    {
+        NSString *merch = ([merchants count]==1)?@"merchant":@"merchants";
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+        ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
+        if (cat)
+        {
+            [cell setMessage:[NSString stringWithFormat:@"%d %@ %@", [merchants count], cat.name, merch]];
+        }
+        else if (searchView.filterControl.selectedSegmentIndex==1)
+        {
+            [cell setMessage:[NSString stringWithFormat:@"%d favorite %@", [merchants count], merch]];
+        }
+        else
+        {
+            [cell setMessage:[NSString stringWithFormat:@"%d %@", [merchants count], merch]];
+        }
+    }
+    return cell;
+}
+
+- (UITableViewCell *)getMerchantCell:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MerchantCell";
     
     FavoriteMerchantCell *cell = (FavoriteMerchantCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
-    ttMerchant *merchant = [merchants objectAtIndex:indexPath.row];
-    //[cell setMerchant:merchant];
-    ttCategory *cat = (ttCategory *)merchant.category;
-    ttMerchantLocation *loc = [merchant getClosestLocation];
+    ttMerchant *merchant = [merchants objectAtIndex:indexPath.row - 1];
     
+    ttCategory *cat = (ttCategory *)merchant.category;
     [cell setIcon:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
+    
     [cell setName:merchant.name];
+
+    [cell setAddress:[merchant getLocationLabel]];
+    
+    ttMerchantLocation *loc = [merchant getClosestLocation];
     if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
     {
         [cell setDistance:@"  "];
@@ -212,8 +273,19 @@
         NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
         [cell setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
     }
-    [cell setAddress:[merchant getLocationLabel]];
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    
+    if (indexPath.row == [merchants count]) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+    }
+    else
+    {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+    }
+    
+    cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
+                                                        imageSize:CGSizeMake(30, 30)
+                                                         fontSize:14
+                                                       attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
     
     return cell;
 }

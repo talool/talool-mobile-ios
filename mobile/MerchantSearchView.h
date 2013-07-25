@@ -13,9 +13,7 @@
 
 @interface MerchantSearchView : UIView
 {
-    IBOutlet UILabel *filterLabel;
     IBOutlet UIView *view;
-    IBOutlet UIImageView *texture;
 }
 
 - (void) categoryToggled;

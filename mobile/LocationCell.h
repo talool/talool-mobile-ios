@@ -15,11 +15,11 @@
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *nameLabel;
     IBOutlet UILabel *addressLabel;
-    
+    IBOutlet UIImageView *cellBackground;
     ttMerchantLocation *location;
     
 }
-
+@property (retain, nonatomic) UIImageView *cellBackground;
 @property (nonatomic, retain) ttMerchantLocation *location;
 
 @end

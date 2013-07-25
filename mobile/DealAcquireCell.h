@@ -17,6 +17,7 @@
     IBOutlet UILabel *dateLabel;
     IBOutlet UIView *redeemedView;
     
+    IBOutlet UIImageView *disclosureIndicator;
     IBOutlet UIImageView *cellBackground;
     
     ttDealAcquire *deal;
@@ -29,5 +30,6 @@
 @property (retain, nonatomic) UIImageView *iconView;
 @property (retain, nonatomic) UILabel *dateLabel;
 @property (retain, nonatomic) UIImageView *cellBackground;
+@property (strong, nonatomic) UIImageView *disclosureIndicator;
 
 @end

@@ -25,16 +25,13 @@
         
         [[NSBundle mainBundle] loadNibNamed:@"MerchantSearchView" owner:self options:nil];
         
-        self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(12.0, 12.0, 296.0, 35.0)];
+        self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(7.0, 12.0, 306.0, 35.0)];
         
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];
         
         searchHelper = [[MerchantSearchHelper alloc] initWithDelegate:searchDelegate];
         [self setDelegate:searchHelper];
-        
-        texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:CGSizeMake(320.0, 90.0)];
-        [texture setAlpha:0.15];
         
         [self addSubview:view];
     }
@@ -60,22 +57,6 @@
 {
     NSPredicate *predicate = [self.filterControl getPredicateAtSelectedIndex];
     [self.delegate filterChanged:predicate sender:self];
-    
-    // change the label
-    ttCategory *cat;
-    switch ([self.filterControl selectedSegmentIndex]) {
-        case 0:
-            filterLabel.text = @"Showing all merchants";
-            break;
-        case 1:
-            filterLabel.text = @"Showing your favorite merchants";
-            break;
-        default:
-            cat = [self.filterControl getCategoryAtSelectedIndex];
-            filterLabel.text = [NSString stringWithFormat:@"Showing the %@ category",cat.name ];
-            break;
-    }
-    
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @implementation FavoriteMerchantCell
 
+@synthesize disclosureIndicator, cellBackground;
+
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder])

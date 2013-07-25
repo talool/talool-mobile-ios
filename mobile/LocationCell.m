@@ -15,16 +15,8 @@
 
 @implementation LocationCell
 
-@synthesize location;
+@synthesize location, cellBackground;
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor
-{
-    [super setBackgroundColor:backgroundColor];
-    
-    iconView.backgroundColor = backgroundColor;
-    nameLabel.backgroundColor = backgroundColor;
-    addressLabel.backgroundColor = backgroundColor;
-}
 
 - (void)setIcon:(UIImage *)newIcon
 {
