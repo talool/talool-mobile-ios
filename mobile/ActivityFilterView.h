@@ -14,8 +14,6 @@
 @interface ActivityFilterView : UIView
 {
     IBOutlet UIView *view;
-    IBOutlet UIImageView *texture;
-    IBOutlet UILabel *prompt;
 }
 
 - (void) filterToggled;

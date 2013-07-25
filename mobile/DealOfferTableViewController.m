@@ -18,6 +18,7 @@
 #import "FooterPromptCell.h"
 #import "TaloolIAPHelper.h"
 #import "DealOfferHelper.h"
+#import "TextureHelper.h"
 #import "TaloolUIButton.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttCustomer.h"
@@ -44,6 +45,11 @@
     numberOfExtraCellsBeforeDeals = numberOfExtraCells - 1;
     
     [self initTableView];
+    
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
+    [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
 }
 
 - (void) viewWillAppear:(BOOL)animated

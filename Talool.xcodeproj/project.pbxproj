@@ -83,6 +83,11 @@
 		81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAB179F77CF000596E8 /* HelpBuyDealsWithCode.png */; };
 		81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAC179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png */; };
 		81AE6DB217A02053000596E8 /* UIImage+H568.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DB117A02053000596E8 /* UIImage+H568.m */; };
+		81AE6DB517A0823B000596E8 /* HeaderPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DB417A0823B000596E8 /* HeaderPromptCell.m */; };
+		81AE6DBA17A0B786000596E8 /* tableCell90.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB617A0B786000596E8 /* tableCell90.png */; };
+		81AE6DBB17A0B786000596E8 /* tableCell90@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB717A0B786000596E8 /* tableCell90@2x.png */; };
+		81AE6DBC17A0B786000596E8 /* tableCell90Last.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB817A0B786000596E8 /* tableCell90Last.png */; };
+		81AE6DBD17A0B786000596E8 /* tableCell90Last@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB917A0B786000596E8 /* tableCell90Last@2x.png */; };
 		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
 		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
@@ -311,6 +316,12 @@
 		81AE6DAC179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode@2x.png"; sourceTree = "<group>"; };
 		81AE6DB017A02053000596E8 /* UIImage+H568.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+H568.h"; sourceTree = "<group>"; };
 		81AE6DB117A02053000596E8 /* UIImage+H568.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+H568.m"; sourceTree = "<group>"; };
+		81AE6DB317A0823A000596E8 /* HeaderPromptCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderPromptCell.h; sourceTree = "<group>"; };
+		81AE6DB417A0823B000596E8 /* HeaderPromptCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderPromptCell.m; sourceTree = "<group>"; };
+		81AE6DB617A0B786000596E8 /* tableCell90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableCell90.png; sourceTree = "<group>"; };
+		81AE6DB717A0B786000596E8 /* tableCell90@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell90@2x.png"; sourceTree = "<group>"; };
+		81AE6DB817A0B786000596E8 /* tableCell90Last.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableCell90Last.png; sourceTree = "<group>"; };
+		81AE6DB917A0B786000596E8 /* tableCell90Last@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell90Last@2x.png"; sourceTree = "<group>"; };
 		81BD120E1784BA8B00AF7475 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
@@ -675,6 +686,10 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81AE6DB617A0B786000596E8 /* tableCell90.png */,
+				81AE6DB717A0B786000596E8 /* tableCell90@2x.png */,
+				81AE6DB817A0B786000596E8 /* tableCell90Last.png */,
+				81AE6DB917A0B786000596E8 /* tableCell90Last@2x.png */,
 				81471F36179ECD0100C6DAB8 /* talool_logo.png */,
 				81471F37179ECD0100C6DAB8 /* talool_logo@2x.png */,
 				819B26F2179DA89400744C04 /* buttonBar1.png */,
@@ -757,6 +772,8 @@
 				819B26C3179B223F00744C04 /* DealImageCell.m */,
 				819B26E7179C6F5E00744C04 /* FooterPromptCell.h */,
 				819B26E8179C6F5E00744C04 /* FooterPromptCell.m */,
+				81AE6DB317A0823A000596E8 /* HeaderPromptCell.h */,
+				81AE6DB417A0823B000596E8 /* HeaderPromptCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -1037,6 +1054,10 @@
 				81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
 				81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */,
 				81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */,
+				81AE6DBA17A0B786000596E8 /* tableCell90.png in Resources */,
+				81AE6DBB17A0B786000596E8 /* tableCell90@2x.png in Resources */,
+				81AE6DBC17A0B786000596E8 /* tableCell90Last.png in Resources */,
+				81AE6DBD17A0B786000596E8 /* tableCell90Last@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1162,7 @@
 				819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */,
 				81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */,
 				81AE6DB217A02053000596E8 /* UIImage+H568.m in Sources */,
+				81AE6DB517A0823B000596E8 /* HeaderPromptCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,7 +33,6 @@
     int padding = 42;
     int margin = 20;
     detailSize = (summarySize.height + detailsSize.height + padding + margin);
-    NSLog(@"calculated the detailSize = %f",detailSize);
     if (detailSize < 112) detailSize = 112;
     
     return self;

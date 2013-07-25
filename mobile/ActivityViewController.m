@@ -12,8 +12,11 @@
 #import "CustomerHelper.h"
 #import "TextureHelper.h"
 #import "ActivityCell.h"
+#import "HeaderPromptCell.h"
+#import "FooterPromptCell.h"
 #import "ActivityFilterView.h"
 #import "ActivityStreamHelper.h"
+#import "ActivityFilterControl.h"
 #import "TaloolColor.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttGift.h"
@@ -45,20 +48,13 @@
     [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     
-    // Creating view for extending background color
-    CGRect frame = self.tableView.bounds;
-    frame.origin.y = -frame.size.height;
-    UIView* bgView = [[UIView alloc] initWithFrame:frame];
-    bgView.backgroundColor = [TaloolColor gray_5];
-    UIImageView *texture = [[UIImageView alloc] initWithImage:[TextureHelper getTextureWithColor:[TaloolColor gray_4] size:frame.size]];
-    [texture setAlpha:0.2];
-    [bgView addSubview:texture];
-    
-    // Adding the view below the refresh control
-    [self.tableView insertSubview:bgView atIndex:0];
-    
-    self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 90.0)
+    self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
                                          activityStreamDelegate:self];
+    
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
+    [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -75,7 +71,7 @@
     if ([[segue identifier] isEqualToString:@"openGift"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+        ttActivity *activity = [self.activities objectAtIndex:([indexPath row]-1)];
         NSString *giftId = activity.link.elementId;
         
         // gifts were loaded when the activities where loaded, so we should
@@ -93,7 +89,7 @@
     else if ([[segue identifier] isEqualToString:@"WelcomeActivity"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+        ttActivity *activity = [self.activities objectAtIndex:([indexPath row]-1)];
         //NSLog(@"mobile web welcome url: %@",activity.link.elementId);
         [[segue destinationViewController] setMobileWebUrl:activity.link.elementId];
         [[segue destinationViewController] setViewTitle:@"Welcome"];
@@ -110,12 +106,71 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [activities count];
+    return [activities count]+2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+    
+    if (indexPath.row == 0) {
+        return [self getHeaderCell:indexPath];
+    }
+    else if (indexPath.row == [activities count]+1)
+    {
+        NSString *CellIdentifier = @"FooterCell";
+        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [cell setMessage:@"Need Deals?"];
+        return cell;
+    }
+    else
+    {
+        return [self getActivityCell:indexPath];
+    }
+}
+
+- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"TileTop";
+    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if ([activities count]==0) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
+    }
+    else
+    {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
+    }
+    NSString *prompt;
+    switch (self.filterView.filterControl.selectedSegmentIndex) {
+        case 1:
+            prompt = @"Gifts sent and received";
+            break;
+            
+        case 2:
+            prompt = @"Purchases and redeemed deals";
+            break;
+            
+        case 3:
+            prompt = @"Your friends' activity";
+            break;
+            
+        case 4:
+            prompt = @"Messages from merchants and Talool";
+            break;
+            
+        default:
+            prompt = @"All your activities on Talool";
+            break;
+    }
+
+    [cell setMessage:prompt];
+ 
+    return cell;
+}
+
+- (UITableViewCell *)getActivityCell:(NSIndexPath *)indexPath
+{
+    ttActivity *activity = [self.activities objectAtIndex:([indexPath row]-1)];
     
     NSString *CellIdentifier;
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
@@ -141,12 +196,25 @@
     ActivityCell *cell = (ActivityCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [cell setActivity:activity];
     
+    if (indexPath.row == [activities count]) {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90Last.png"];
+    }
+    else
+    {
+        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90.png"];
+    }
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.row==0 || indexPath.row == [activities count]+1)?60.0:90.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ttActivity *activity = [self.activities objectAtIndex:[indexPath row]];
+    ttActivity *activity = [self.activities objectAtIndex:([indexPath row]-1)];
     if ([activity isWelcomeEvent] || [activity isTaloolReachEvent] || [activity isMerchantReachEvent])
     {
         [activity actionTaken:[CustomerHelper getLoggedInUser]];

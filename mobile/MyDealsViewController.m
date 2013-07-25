@@ -48,18 +48,6 @@
     self.refreshControl.attributedTitle = refreshLabel;
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
-    // Creating view for extending background color
-    CGRect frame = self.tableView.bounds;
-    frame.origin.y = -frame.size.height;
-    UIView* bgView = [[UIView alloc] initWithFrame:frame];
-    bgView.backgroundColor = [TaloolColor gray_5];
-    UIImageView *texture = [[UIImageView alloc] initWithImage:[TextureHelper getTextureWithColor:[TaloolColor gray_4] size:frame.size]];
-    [texture setAlpha:0.2];
-    [bgView addSubview:texture];
-    
-    // Adding the view below the refresh control
-    [self.tableView insertSubview:bgView atIndex:0];
-    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.loginViewController registerAuthDelegate:self];
     
@@ -74,6 +62,11 @@
     self.navigationItem.rightBarButtonItem = settingsButton;
     [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
                                   forState:UIControlStateNormal];
+    
+    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
+    [texture setAlpha:0.15];
+    [self.tableView setBackgroundView:texture];
 
 }
 
