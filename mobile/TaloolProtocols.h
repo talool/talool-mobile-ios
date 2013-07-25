@@ -22,8 +22,12 @@
 - (void)customerLoggedIn:(id)sender;
 @end
 
-@protocol TaloolGiftAcceptedDelegate<NSObject>
+@protocol TaloolGiftActionDelegate<NSObject>
+@optional
+- (void)acceptGift:(id)sender;
+- (void)rejectGift:(id)sender;
 - (void)giftAccepted:(ttDealAcquire *)deal sender:(id)sender;
+- (void)giftRejected:(id)sender;
 @end
 
 @protocol TaloolMerchantActionDelegate<NSObject>

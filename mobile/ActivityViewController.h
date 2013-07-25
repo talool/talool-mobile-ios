@@ -11,7 +11,7 @@
 
 @class ActivityFilterView;
 
-@interface ActivityViewController : UITableViewController<ActivityStreamDelegate, TaloolGiftAcceptedDelegate>
+@interface ActivityViewController : UITableViewController<ActivityStreamDelegate, TaloolGiftActionDelegate>
 
 @property (retain, nonatomic) NSArray *activities;
 

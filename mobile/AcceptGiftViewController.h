@@ -9,24 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton, ttGift;
+@class ttGift, GiftActionBar2View, DealLayoutState;
 
-@interface AcceptGiftViewController : UIViewController
-{
+@interface AcceptGiftViewController : UITableViewController<TaloolGiftActionDelegate>
 
-    IBOutlet TaloolUIButton *acceptButton;
-    IBOutlet TaloolUIButton *rejectButton;
-    id <TaloolGiftAcceptedDelegate> giftDelegate;
-    
-}
+@property (retain) id<TaloolGiftActionDelegate> giftDelegate;
 
-@property (retain) id giftDelegate;
-@property (nonatomic, retain) IBOutlet UIImageView *giftImage;
-@property (nonatomic, retain) IBOutlet UILabel *dealSummary;
-@property (nonatomic, retain) IBOutlet UILabel *gifterName;
 @property (retain, nonatomic) ttGift *gift;
-
-- (IBAction)acceptGift:(id)sender;
-- (IBAction)rejectGift:(id)sender;
+@property (strong, nonatomic) GiftActionBar2View *actionBarView;
+@property (nonatomic) DealLayoutState *dealLayout;
 
 @end

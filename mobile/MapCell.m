@@ -24,6 +24,8 @@
 
 - (void) setDeals:(NSArray *)deals
 {
+    if ([deals count]==0) return;
+    
     ttMerchantLocation *centerLocation;
     
     // put the merchans in an dictionary

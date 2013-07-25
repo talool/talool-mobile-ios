@@ -591,7 +591,7 @@
                                     <outlet property="iconView" destination="bsx-Hq-BbU" id="dBU-qP-ZQi"/>
                                     <outlet property="subtitleLabel" destination="i1u-RW-5h7" id="VZm-0a-Fz2"/>
                                     <outlet property="titleLabel" destination="ofA-MD-heS" id="g5g-yh-Wdm"/>
-                                    <segue destination="9Vz-pM-8dl" kind="push" identifier="openGift" id="lB0-AV-beX"/>
+                                    <segue destination="t7S-Tz-gPL" kind="push" identifier="openGift" id="N5t-B5-FH9"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="WelcomeCell" id="fbh-DV-DEf" customClass="ActivityCell">
@@ -830,7 +830,263 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHC-pL-iQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="1074"/>
+            <point key="canvasLocation" x="1088" y="1499"/>
+        </scene>
+        <!--Accept Gift View Controller - A Gift For You!-->
+        <scene sceneID="cZY-0l-X29">
+            <objects>
+                <tableViewController id="t7S-Tz-gPL" customClass="AcceptGiftViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vzC-6c-N0d">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealImageCell" rowHeight="100" id="2gN-hv-ICD" customClass="DealImageCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="TIK-bE-gwR" userLabel="Masked Deal Image">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="97" id="Af5-gy-WCC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="top" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="NfF-xd-TJF" userLabel="Deal Image Border">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="95" type="user" id="L7w-hj-EOs"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="TIK-bE-gwR" firstAttribute="leading" secondItem="2gN-hv-ICD" secondAttribute="leading" type="default" id="6Lj-8r-Lxg"/>
+                                    <constraint firstItem="TIK-bE-gwR" firstAttribute="trailing" secondItem="2gN-hv-ICD" secondAttribute="trailing" type="default" id="NIK-m9-eUf"/>
+                                    <constraint firstItem="NfF-xd-TJF" firstAttribute="bottom" secondItem="2gN-hv-ICD" secondAttribute="bottom" type="default" id="QIR-LT-MhK"/>
+                                    <constraint firstItem="TIK-bE-gwR" firstAttribute="bottom" secondItem="2gN-hv-ICD" secondAttribute="bottom" type="default" id="ZWL-r1-bov"/>
+                                    <constraint firstItem="NfF-xd-TJF" firstAttribute="leading" secondItem="2gN-hv-ICD" secondAttribute="leading" type="default" id="e4h-ZC-OdO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dealImage" destination="TIK-bE-gwR" id="8le-3Z-Mji"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealLocationCell" rowHeight="60" id="CPc-IE-w7Z" customClass="DealLocationCell">
+                                <rect key="frame" x="0.0" y="122" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealTop.png" translatesAutoresizingMaskIntoConstraints="NO" id="e37-bc-Xpp" userLabel="Cell BG">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="X1J-EP-pBO"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-mf-wiP" userLabel="Merchant Logo">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="yb7-P8-v6W"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Offer valid at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-NR-HTi">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="113" id="ZzN-Lm-Xng"/>
+                                                <constraint firstAttribute="height" constant="16" id="pYr-YV-91k"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="123 Pearl St" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNE-4B-Ngw">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="E8k-KB-xIf"/>
+                                                <constraint firstAttribute="width" constant="134" id="ggR-Np-LXf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Boulder, CO 80302" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hK-cT-mBs">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="sEl-MY-Hea"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="e37-bc-Xpp" firstAttribute="leading" secondItem="CPc-IE-w7Z" secondAttribute="leading" type="default" id="9H9-to-OcH"/>
+                                    <constraint firstItem="gqG-NR-HTi" firstAttribute="top" secondItem="NgO-mf-wiP" secondAttribute="top" type="default" id="BPz-ve-mBD"/>
+                                    <constraint firstItem="0hK-cT-mBs" firstAttribute="top" secondItem="gNE-4B-Ngw" secondAttribute="bottom" type="user" id="Eqr-LO-v8Z"/>
+                                    <constraint firstItem="NgO-mf-wiP" firstAttribute="leading" secondItem="0hK-cT-mBs" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Uyk-x9-IBm"/>
+                                    <constraint firstAttribute="bottom" secondItem="gNE-4B-Ngw" secondAttribute="bottom" constant="20" type="default" id="Yqn-nm-60S"/>
+                                    <constraint firstItem="gqG-NR-HTi" firstAttribute="leading" secondItem="CPc-IE-w7Z" secondAttribute="leading" constant="20" type="default" id="drw-TH-c2X"/>
+                                    <constraint firstItem="0hK-cT-mBs" firstAttribute="leading" secondItem="CPc-IE-w7Z" secondAttribute="leading" constant="20" type="default" id="g0p-PA-edW"/>
+                                    <constraint firstItem="gNE-4B-Ngw" firstAttribute="leading" secondItem="CPc-IE-w7Z" secondAttribute="leading" constant="20" type="default" id="hWo-Bz-Vce"/>
+                                    <constraint firstItem="NgO-mf-wiP" firstAttribute="centerY" secondItem="CPc-IE-w7Z" secondAttribute="centerY" type="default" id="nmt-DN-X0P"/>
+                                    <constraint firstItem="NgO-mf-wiP" firstAttribute="leading" secondItem="gNE-4B-Ngw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="tQK-q9-NQd"/>
+                                    <constraint firstItem="gNE-4B-Ngw" firstAttribute="top" secondItem="gqG-NR-HTi" secondAttribute="bottom" type="user" id="xmM-09-rqD"/>
+                                    <constraint firstItem="e37-bc-Xpp" firstAttribute="top" secondItem="CPc-IE-w7Z" secondAttribute="top" type="default" id="zgs-OB-dVq"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="merchantAddress" destination="gNE-4B-Ngw" id="61F-lT-y29"/>
+                                    <outlet property="merchantCityState" destination="0hK-cT-mBs" id="hhT-Rx-6m5"/>
+                                    <outlet property="merchantLogo" destination="NgO-mf-wiP" id="glg-fb-2yO"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GiftDetails" rowHeight="90" id="pyx-ha-OIg" userLabel="Gift Details" customClass="GiftDetailCell">
+                                <rect key="frame" x="0.0" y="182" width="320" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealTop.png" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-PU-k0H">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="TJI-4E-VQD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ribbonbadge.png" translatesAutoresizingMaskIntoConstraints="NO" id="MDM-bh-a7u" userLabel="Ribbon"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="IjM-oR-DcG">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="67" id="iRj-la-Y7o"/>
+                                                <constraint firstAttribute="height" constant="24" id="ucE-6K-eo0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="from" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-hc-Rdw" userLabel="from">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="ebs-ZE-H1P"/>
+                                                <constraint firstAttribute="width" constant="67" id="ivU-Oa-uRK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="10"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="MDM-bh-a7u" firstAttribute="leading" secondItem="pyx-ha-OIg" secondAttribute="leading" type="default" id="6K2-qc-b9b"/>
+                                    <constraint firstItem="IjM-oR-DcG" firstAttribute="centerX" secondItem="MDM-bh-a7u" secondAttribute="centerX" type="default" id="Q3m-Sv-ykR"/>
+                                    <constraint firstItem="eaj-PU-k0H" firstAttribute="bottom" secondItem="pyx-ha-OIg" secondAttribute="bottom" type="default" id="VG0-to-IiX"/>
+                                    <constraint firstItem="eaj-PU-k0H" firstAttribute="leading" secondItem="pyx-ha-OIg" secondAttribute="leading" type="default" id="dJC-6J-1Zm"/>
+                                    <constraint firstItem="MDM-bh-a7u" firstAttribute="top" secondItem="pyx-ha-OIg" secondAttribute="top" type="default" id="g4u-Sm-2D6"/>
+                                    <constraint firstItem="Sfg-hc-Rdw" firstAttribute="leading" secondItem="pyx-ha-OIg" secondAttribute="leading" constant="126" id="gby-vk-KF4"/>
+                                    <constraint firstItem="IjM-oR-DcG" firstAttribute="top" secondItem="pyx-ha-OIg" secondAttribute="top" constant="31" id="kJW-QW-UJZ"/>
+                                    <constraint firstItem="Sfg-hc-Rdw" firstAttribute="top" secondItem="pyx-ha-OIg" secondAttribute="top" constant="12" id="tvz-Xh-kMP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="details" destination="IjM-oR-DcG" id="Chx-Tt-Td0"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailCell" rowHeight="112" id="tgp-nN-IhN" customClass="DealDetailCell">
+                                <rect key="frame" x="0.0" y="272" width="320" height="112"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealMiddle.png" translatesAutoresizingMaskIntoConstraints="NO" id="C7G-pm-7ko">
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" type="user" id="7Nz-EV-huu"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gift Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Vuz-Of-vcI">
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" type="user" id="dxl-of-oT4"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-mG-m40">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="CPT-ry-4Pf"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="n1K-XR-aBj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="KV0-mG-m40" firstAttribute="top" secondItem="Vuz-Of-vcI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9ub-QG-hqP"/>
+                                    <constraint firstItem="KV0-mG-m40" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" constant="20" type="default" id="BIT-aR-sFJ"/>
+                                    <constraint firstItem="C7G-pm-7ko" firstAttribute="top" secondItem="tgp-nN-IhN" secondAttribute="top" type="user" id="DmS-aa-CED"/>
+                                    <constraint firstItem="C7G-pm-7ko" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" type="default" id="EfF-2v-YEO"/>
+                                    <constraint firstItem="C7G-pm-7ko" firstAttribute="bottom" secondItem="tgp-nN-IhN" secondAttribute="bottom" type="user" id="Hbh-oV-AbF"/>
+                                    <constraint firstItem="Vuz-Of-vcI" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" constant="20" type="default" id="QfB-m4-pGp"/>
+                                    <constraint firstItem="Vuz-Of-vcI" firstAttribute="top" secondItem="tgp-nN-IhN" secondAttribute="top" constant="17" id="nig-jZ-ehs"/>
+                                    <constraint firstAttribute="trailing" secondItem="KV0-mG-m40" secondAttribute="trailing" constant="20" type="default" id="niu-KS-UbM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vuz-Of-vcI" secondAttribute="trailing" constant="20" type="default" id="rLF-JX-CWz"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="details" destination="KV0-mG-m40" id="N06-4f-3cU"/>
+                                    <outlet property="summary" destination="Vuz-Of-vcI" id="rBz-fd-TZL"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealOfferLogoCell" rowHeight="50" id="gQ5-5m-YZv" customClass="DealOfferLogoCell">
+                                <rect key="frame" x="0.0" y="384" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="dealBottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="WNB-al-UHP" userLabel="Cell BG"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rgk-0U-lgM" userLabel="Logo">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="GAc-uC-c94"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires 09/01/2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKM-Zy-Kx1">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="8Ik-ym-et7"/>
+                                                <constraint firstAttribute="width" constant="132" id="ukD-Yq-gWX"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Rgk-0U-lgM" firstAttribute="top" secondItem="gQ5-5m-YZv" secondAttribute="top" type="default" id="4Un-kn-hWu"/>
+                                    <constraint firstItem="Rgk-0U-lgM" firstAttribute="bottom" secondItem="yKM-Zy-Kx1" secondAttribute="bottom" type="default" id="bAV-Fy-61K"/>
+                                    <constraint firstItem="WNB-al-UHP" firstAttribute="leading" secondItem="gQ5-5m-YZv" secondAttribute="leading" type="default" id="jFa-2o-78s"/>
+                                    <constraint firstItem="Rgk-0U-lgM" firstAttribute="leading" secondItem="gQ5-5m-YZv" secondAttribute="leading" constant="20" type="default" id="oaO-UT-6Mm"/>
+                                    <constraint firstItem="yKM-Zy-Kx1" firstAttribute="leading" secondItem="Rgk-0U-lgM" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="plu-9N-Rew"/>
+                                    <constraint firstAttribute="trailing" secondItem="yKM-Zy-Kx1" secondAttribute="trailing" constant="20" type="default" id="rkM-rC-oY2"/>
+                                    <constraint firstItem="WNB-al-UHP" firstAttribute="top" secondItem="gQ5-5m-YZv" secondAttribute="top" type="default" id="ufK-in-C64"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="expires" destination="yKM-Zy-Kx1" id="YXA-y9-xIH"/>
+                                    <outlet property="logo" destination="Rgk-0U-lgM" id="Di5-ET-MpL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t7S-Tz-gPL" id="laP-hE-dK2"/>
+                            <outlet property="delegate" destination="t7S-Tz-gPL" id="dV0-VN-u6f"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="A Gift For You!" id="r9s-S3-665"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U72-uF-vER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="1075"/>
         </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="3FZ-Fi-RuH">
@@ -845,7 +1101,7 @@
                             <tableViewSection headerTitle="Account" id="dm4-XX-Wlk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LogoutCell" id="VH0-jv-Tde">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -991,7 +1247,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rsx-3n-tpd">
-                                        <rect key="frame" x="0.0" y="314" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="314" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -2261,22 +2517,14 @@
         <image name="dealMiddle.png" width="320" height="73"/>
         <image name="dealTop.png" width="320" height="48"/>
         <image name="imageMaskOutline.png" width="320" height="95"/>
+        <image name="ribbonbadge.png" width="320" height="90"/>
         <image name="tableCell60.png" width="320" height="60"/>
         <image name="tableCell90.png" width="320" height="90"/>
         <image name="tileTop.png" width="320" height="9"/>
     </resources>
     <classes>
-        <class className="AcceptGiftViewController" superclassName="UIViewController">
+        <class className="AcceptGiftViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AcceptGiftViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="acceptGift:"/>
-                <relationship kind="action" name="rejectGift:"/>
-                <relationship kind="outlet" name="acceptButton" candidateClass="TaloolUIButton"/>
-                <relationship kind="outlet" name="dealSummary" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="giftImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="gifterName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rejectButton" candidateClass="TaloolUIButton"/>
-            </relationships>
         </class>
         <class className="AccessCodeCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccessCodeCell.h"/>
@@ -2374,6 +2622,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FooterPromptCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="promptMessage" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GiftDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GiftDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="details" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="GradientButton" superclassName="UIButton">

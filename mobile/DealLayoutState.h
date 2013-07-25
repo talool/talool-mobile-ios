@@ -22,6 +22,7 @@
 @interface DealLayoutState : NSObject<TaloolDealLayoutDelegate>
 
 - (id) initWithDeal:(ttDealAcquire *)dealAcquire offer:(ttDealOffer *)dealOffer actionDelegate:(id<TaloolDealActionDelegate>)actionDelegate;
+- (void) calcDetailSize:(ttDeal *)deal;
 
 @property (nonatomic, strong) ttDealAcquire *deal;
 @property (nonatomic, strong) ttDealOffer *offer;

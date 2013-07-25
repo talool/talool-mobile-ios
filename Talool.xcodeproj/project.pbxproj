@@ -88,6 +88,12 @@
 		81AE6DBB17A0B786000596E8 /* tableCell90@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB717A0B786000596E8 /* tableCell90@2x.png */; };
 		81AE6DBC17A0B786000596E8 /* tableCell90Last.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB817A0B786000596E8 /* tableCell90Last.png */; };
 		81AE6DBD17A0B786000596E8 /* tableCell90Last@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DB917A0B786000596E8 /* tableCell90Last@2x.png */; };
+		81AE6DCD17A1BB78000596E8 /* GiftActionBar2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */; };
+		81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */; };
+		81AE6DD517A1BE75000596E8 /* DefaultGiftLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */; };
+		81AE6DD817A1CE0A000596E8 /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
+		81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
+		81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
 		81BD12101784BA8B00AF7475 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120E1784BA8B00AF7475 /* Icon.png */; };
 		81BD12111784BA8B00AF7475 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BD120F1784BA8B00AF7475 /* Icon@2x.png */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
@@ -322,6 +328,15 @@
 		81AE6DB717A0B786000596E8 /* tableCell90@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell90@2x.png"; sourceTree = "<group>"; };
 		81AE6DB817A0B786000596E8 /* tableCell90Last.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableCell90Last.png; sourceTree = "<group>"; };
 		81AE6DB917A0B786000596E8 /* tableCell90Last@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell90Last@2x.png"; sourceTree = "<group>"; };
+		81AE6DCB17A1BB78000596E8 /* GiftActionBar2View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftActionBar2View.h; sourceTree = "<group>"; };
+		81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftActionBar2View.m; sourceTree = "<group>"; };
+		81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiftActionBar2View.xib; sourceTree = "<group>"; };
+		81AE6DD317A1BE75000596E8 /* DefaultGiftLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultGiftLayoutState.h; sourceTree = "<group>"; };
+		81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultGiftLayoutState.m; sourceTree = "<group>"; };
+		81AE6DD617A1CE09000596E8 /* GiftDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftDetailCell.h; sourceTree = "<group>"; };
+		81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailCell.m; sourceTree = "<group>"; };
+		81AE6DD917A1D938000596E8 /* ribbonbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ribbonbadge.png; sourceTree = "<group>"; };
+		81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbonbadge@2x.png"; sourceTree = "<group>"; };
 		81BD120E1784BA8B00AF7475 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		81BD120F1784BA8B00AF7475 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
@@ -573,6 +588,8 @@
 				81BD12C41791BCA300AF7475 /* DealLayoutState.m */,
 				81BD12BF1791B9C900AF7475 /* DefaultDealLayoutState.h */,
 				81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */,
+				81AE6DD317A1BE75000596E8 /* DefaultGiftLayoutState.h */,
+				81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */,
 			);
 			name = "Deal Layouts";
 			sourceTree = "<group>";
@@ -686,6 +703,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81AE6DD917A1D938000596E8 /* ribbonbadge.png */,
+				81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */,
 				81AE6DB617A0B786000596E8 /* tableCell90.png */,
 				81AE6DB717A0B786000596E8 /* tableCell90@2x.png */,
 				81AE6DB817A0B786000596E8 /* tableCell90Last.png */,
@@ -774,6 +793,8 @@
 				819B26E8179C6F5E00744C04 /* FooterPromptCell.m */,
 				81AE6DB317A0823A000596E8 /* HeaderPromptCell.h */,
 				81AE6DB417A0823B000596E8 /* HeaderPromptCell.m */,
+				81AE6DD617A1CE09000596E8 /* GiftDetailCell.h */,
+				81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -850,6 +871,9 @@
 				819B26D5179B8A8100744C04 /* MerchantActionBar3View.h */,
 				819B26D6179B8A8200744C04 /* MerchantActionBar3View.m */,
 				819B26D8179B8AA100744C04 /* MerchantActionBar3View.xib */,
+				81AE6DCB17A1BB78000596E8 /* GiftActionBar2View.h */,
+				81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */,
+				81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1058,6 +1082,9 @@
 				81AE6DBB17A0B786000596E8 /* tableCell90@2x.png in Resources */,
 				81AE6DBC17A0B786000596E8 /* tableCell90Last.png in Resources */,
 				81AE6DBD17A0B786000596E8 /* tableCell90Last@2x.png in Resources */,
+				81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */,
+				81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */,
+				81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1190,9 @@
 				81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */,
 				81AE6DB217A02053000596E8 /* UIImage+H568.m in Sources */,
 				81AE6DB517A0823B000596E8 /* HeaderPromptCell.m in Sources */,
+				81AE6DCD17A1BB78000596E8 /* GiftActionBar2View.m in Sources */,
+				81AE6DD517A1BE75000596E8 /* DefaultGiftLayoutState.m in Sources */,
+				81AE6DD817A1CE0A000596E8 /* GiftDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,19 +78,16 @@
         // be able to get the gift from the context
         NSError *error;
         ttGift *gift = [ttGift getGiftById:giftId customer:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
-        //NSLog(@"show Gift: %@",gift.deal.title);
+
         AcceptGiftViewController *agvc = (AcceptGiftViewController *)[segue destinationViewController];
         [agvc setGift:gift];
-        
-        // TODO we may have to register multiple deletages.  My Deals should reload too.
-        // * could chain delegates together
         [agvc setGiftDelegate:self];
     }
     else if ([[segue identifier] isEqualToString:@"WelcomeActivity"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ttActivity *activity = [self.activities objectAtIndex:([indexPath row]-1)];
-        //NSLog(@"mobile web welcome url: %@",activity.link.elementId);
+
         [[segue destinationViewController] setMobileWebUrl:activity.link.elementId];
         [[segue destinationViewController] setViewTitle:@"Welcome"];
     }
