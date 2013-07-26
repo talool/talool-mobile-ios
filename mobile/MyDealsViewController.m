@@ -137,17 +137,6 @@
         [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:helpButton];
     }
-    else
-    {
-        // check if there are deals
-        if (![[CustomerHelper getLoggedInUser] hasDeals:[CustomerHelper getContext]])
-        {
-            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDeals.png"] forState:UIControlStateNormal];
-            [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
-            [self.view addSubview:helpButton];
-        }
-    }
 }
 
 - (void)closeHelp
