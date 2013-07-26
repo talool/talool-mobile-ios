@@ -30,6 +30,7 @@
 #import "TextureHelper.h"
 #import "TaloolColor.h"
 #import "MerchantSearchView.h"
+#import "ActivityStreamHelper.h"
 
 @implementation MyDealsViewController
 
@@ -319,6 +320,7 @@
     [self.searchView fetchMerchants];
     [[DealOfferHelper sharedInstance] reset];
     [[CategoryHelper sharedInstance] reset];
+    
     NSLog(@"new user with %d merchants", [self.merchants count]);
     [self.tableView reloadData];
 }

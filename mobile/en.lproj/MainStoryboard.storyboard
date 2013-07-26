@@ -38,7 +38,7 @@
         <!--Talool Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController storyboardIdentifier="MainViewController" id="4" customClass="TaloolTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4" customClass="TaloolTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Zcy-e6-YP8"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -46,6 +46,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="wjd-Bl-EPa" kind="relationship" relationship="viewControllers" id="ZC1-UD-p0b"/>
+                        <segue destination="2nQ-Cp-l0B" kind="relationship" relationship="viewControllers" id="92h-j8-Pkz"/>
+                        <segue destination="Hbb-Xy-GJX" kind="relationship" relationship="viewControllers" id="fY4-Es-rDZ"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,9 +59,9 @@
         <!--Welcome View Controller - Welcome to Talool-->
         <scene sceneID="Cnn-fG-aJo">
             <objects>
-                <tableViewController id="smi-JA-E6U" customClass="WelcomeViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Welcome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="smi-JA-E6U" customClass="WelcomeViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="DTO-9v-0IT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -256,14 +261,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpq-Bj-eSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="-2259"/>
+            <point key="canvasLocation" x="1655" y="-1775"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="YWw-G9-qca">
             <objects>
-                <tableViewController id="iSD-Ws-CbE" customClass="RegistrationViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Registration" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iSD-Ws-CbE" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Ai-hT-UFe">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -403,14 +408,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIl-Lz-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="-2259"/>
+            <point key="canvasLocation" x="2530" y="-1775"/>
         </scene>
         <!--Activity View Controller - Activity-->
         <scene sceneID="s5q-0c-13S">
             <objects>
                 <tableViewController storyboardIdentifier="Activity" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uvp-Gy-35R" customClass="ActivityViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="50" sectionFooterHeight="22" id="itE-4H-JfI">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -726,118 +731,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOs-BK-Atm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="1074"/>
-        </scene>
-        <!--Accept Gift View Controller - A Gift For You-->
-        <scene sceneID="I1M-kP-2aO">
-            <objects>
-                <viewController storyboardIdentifier="AcceptGiftViewController" id="9Vz-pM-8dl" customClass="AcceptGiftViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v2S-WH-hWt">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;Gifter> has set you a gift!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="vl8-lG-hAO">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="uZ7-fb-AWj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-2Y-9nH">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="tF7-GQ-zzy"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;deal summary>" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MYB-Hk-QQv">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="VEu-TZ-cbd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WH6-UM-oeh" customClass="TaloolUIButton">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="iAc-Jl-M7X"/>
-                                    <constraint firstAttribute="height" constant="45" id="jjQ-B0-Vag"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Accept">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="acceptGift:" destination="9Vz-pM-8dl" eventType="touchUpInside" id="lkh-1q-mv7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-NF-py0" customClass="TaloolUIButton">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="7hB-8t-yZT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Reject">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="rejectGift:" destination="9Vz-pM-8dl" eventType="touchUpInside" id="9c8-Fk-eMD"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Do you want to keep it?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ4-8d-YQV">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="WH6-UM-oeh" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3cj-GD-fP0"/>
-                            <constraint firstAttribute="bottom" secondItem="WH6-UM-oeh" secondAttribute="bottom" constant="18" id="8bd-4h-JUe"/>
-                            <constraint firstItem="aSS-NF-py0" firstAttribute="top" secondItem="eQ4-8d-YQV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="L8p-gD-mn7"/>
-                            <constraint firstAttribute="trailing" secondItem="eQ4-8d-YQV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OfY-dC-tNd"/>
-                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="top" secondItem="vl8-lG-hAO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="TB4-Jx-ZoK"/>
-                            <constraint firstAttribute="trailing" secondItem="MYB-Hk-QQv" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Th0-Hb-LE3"/>
-                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" type="default" id="UFU-49-nBs"/>
-                            <constraint firstItem="WH6-UM-oeh" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="70" id="Ypy-9w-hqS"/>
-                            <constraint firstItem="vl8-lG-hAO" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="djE-Qo-ya2"/>
-                            <constraint firstAttribute="trailing" secondItem="vl8-lG-hAO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hMf-3d-1Q2"/>
-                            <constraint firstItem="MYB-Hk-QQv" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jmH-3t-c0B"/>
-                            <constraint firstAttribute="trailing" secondItem="aSS-NF-py0" secondAttribute="trailing" constant="61" id="lu0-eu-P70"/>
-                            <constraint firstItem="eQ4-8d-YQV" firstAttribute="leading" secondItem="v2S-WH-hWt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="mFf-CT-3as"/>
-                            <constraint firstItem="WH6-UM-oeh" firstAttribute="bottom" secondItem="aSS-NF-py0" secondAttribute="bottom" type="default" id="tJT-xk-2QM"/>
-                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="trailing" secondItem="v2S-WH-hWt" secondAttribute="trailing" type="default" id="xyz-Xh-iFN"/>
-                            <constraint firstItem="Pfz-2Y-9nH" firstAttribute="top" secondItem="v2S-WH-hWt" secondAttribute="top" type="default" id="xzW-v8-3xw"/>
-                            <constraint firstItem="vl8-lG-hAO" firstAttribute="top" secondItem="Pfz-2Y-9nH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zyz-PP-6RA"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="A Gift For You" id="iLU-Wi-YHi">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="MO6-Nl-ci8"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="acceptButton" destination="WH6-UM-oeh" id="gHm-nz-yXC"/>
-                        <outlet property="dealSummary" destination="MYB-Hk-QQv" id="64Y-2F-FCm"/>
-                        <outlet property="giftImage" destination="Pfz-2Y-9nH" id="Cfy-KC-Xye"/>
-                        <outlet property="gifterName" destination="vl8-lG-hAO" id="vUJ-MB-xbb"/>
-                        <outlet property="rejectButton" destination="aSS-NF-py0" id="9aa-15-JDR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dHC-pL-iQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1088" y="1499"/>
+            <point key="canvasLocation" x="1250" y="1074"/>
         </scene>
         <!--Accept Gift View Controller - A Gift For You!-->
         <scene sceneID="cZY-0l-X29">
             <objects>
-                <tableViewController id="t7S-Tz-gPL" customClass="AcceptGiftViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GiftView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7S-Tz-gPL" customClass="AcceptGiftViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vzC-6c-N0d">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1086,14 +987,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U72-uF-vER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1474" y="1075"/>
+            <point key="canvasLocation" x="1688" y="1074"/>
         </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="3FZ-Fi-RuH">
             <objects>
-                <tableViewController title="Settings" id="T3Y-E6-Szt" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Settings" title="Settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T3Y-E6-Szt" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="2fY-rk-O8c">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.72549019609999998" green="0.67450980390000004" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1101,7 +1002,7 @@
                             <tableViewSection headerTitle="Account" id="dm4-XX-Wlk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LogoutCell" id="VH0-jv-Tde">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -1247,7 +1148,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rsx-3n-tpd">
-                                        <rect key="frame" x="0.0" y="314" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="314" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -1291,14 +1192,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wD6-DU-ZHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wci-Hs-PRq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="-1620"/>
+            <point key="canvasLocation" x="1662" y="-1056"/>
         </scene>
         <!--Talool Mobile Web View Controller-->
         <scene sceneID="4vm-L8-T8Y">
             <objects>
                 <viewController storyboardIdentifier="MobileWeb" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kia-Ym-Kxg" customClass="TaloolMobileWebViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0hd-9A-sqJ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vN-sa-wLC">
@@ -1320,14 +1221,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAL-9Z-vV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-1612"/>
+            <point key="canvasLocation" x="2530" y="-1056"/>
         </scene>
         <!--My Deals View Controller-->
         <scene sceneID="WAl-Ln-O8T">
             <objects>
                 <tableViewController storyboardIdentifier="MyDeals" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KRC-V0-KA0" customClass="MyDealsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="50" sectionFooterHeight="22" id="8k1-mI-Ha0">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1511,14 +1412,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pq-2a-uqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="-304"/>
+            <point key="canvasLocation" x="1240" y="-304"/>
         </scene>
         <!--Merchant Table View Controller - Title-->
         <scene sceneID="0Og-SG-dlz">
             <objects>
-                <tableViewController id="nmK-ha-uWj" customClass="MerchantTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MerchantView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nmK-ha-uWj" customClass="MerchantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uSd-9i-RfO">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1672,14 +1573,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJE-gQ-N0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="-304"/>
+            <point key="canvasLocation" x="1655" y="-304"/>
         </scene>
         <!--Deal Offer Table View Controller-->
         <scene sceneID="sek-B7-El3">
             <objects>
                 <tableViewController storyboardIdentifier="FindDeals1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g4k-iy-L6B" customClass="DealOfferTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sf9-qV-OZh">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1974,7 +1875,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibb-FS-5mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="379"/>
+            <point key="canvasLocation" x="1232" y="379"/>
         </scene>
         <!--Help Deal Offer Location View Controller-->
         <scene sceneID="ExE-mZ-aXJ">
@@ -2057,7 +1958,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nal-J4-QYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="385"/>
+            <point key="canvasLocation" x="-230" y="-952"/>
         </scene>
         <!--Help Network Failure View Controller-->
         <scene sceneID="OQz-vb-6tR">
@@ -2130,14 +2031,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVK-Rw-Dhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="390"/>
+            <point key="canvasLocation" x="-711" y="-952"/>
         </scene>
         <!--Merchant Location View Controller-->
         <scene sceneID="d9G-s8-gAF">
             <objects>
                 <viewController storyboardIdentifier="MerchantLocationler" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tP1-qM-RUx" customClass="MerchantLocationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="85x-wd-xtj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MrZ-h9-2c9">
@@ -2304,14 +2205,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvD-bN-0ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-929"/>
+            <point key="canvasLocation" x="2530" y="-304"/>
         </scene>
         <!--Deal Table View Controller-->
         <scene sceneID="ORh-y5-dwy">
             <objects>
                 <tableViewController storyboardIdentifier="DealTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2I0-5O-JeQ" customClass="DealTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="hzL-73-ANz">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2506,7 +2407,67 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xt-l1-w9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-304"/>
+            <point key="canvasLocation" x="2102" y="-304"/>
+        </scene>
+        <!--My Deals Nav-->
+        <scene sceneID="N06-2z-WXY">
+            <objects>
+                <navigationController storyboardIdentifier="MyDealsNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wjd-Bl-EPa" userLabel="My Deals Nav" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aeH-t4-Ran"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="MyDealsNavBar" barStyle="blackTranslucent" id="605-4a-OeK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KRC-V0-KA0" kind="relationship" relationship="rootViewController" id="dLO-lr-u4f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXn-Fu-znN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="-304"/>
+        </scene>
+        <!--Find Deals Nav-->
+        <scene sceneID="ao3-57-edJ">
+            <objects>
+                <navigationController storyboardIdentifier="FindDealsNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2nQ-Cp-l0B" userLabel="Find Deals Nav" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="neT-CR-j3y"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="FindDealsNavBar" barStyle="blackTranslucent" id="Qyr-JY-A1U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g4k-iy-L6B" kind="relationship" relationship="rootViewController" id="2MT-XI-a4M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EOV-U3-5dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="386"/>
+        </scene>
+        <!--Activity Nav-->
+        <scene sceneID="eK6-ke-7AL">
+            <objects>
+                <navigationController storyboardIdentifier="ActivityNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hbb-Xy-GJX" userLabel="Activity Nav" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="YtD-Mt-Iuf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Xqn-ia-xOg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uvp-Gy-35R" kind="relationship" relationship="rootViewController" id="ipl-oT-Wal"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="os9-VR-VZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="706" y="1074"/>
         </scene>
     </scenes>
     <resources>
@@ -2764,7 +2725,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lZZ-Le-LNs"/>
-        <segue reference="q3T-VT-ua5"/>
+        <segue reference="ZYY-Ve-nGY"/>
+        <segue reference="wjI-dw-vyW"/>
     </inferredMetricsTieBreakers>
 </document>

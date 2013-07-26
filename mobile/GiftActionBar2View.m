@@ -31,7 +31,7 @@
         int iconSize = 35;
         NSDictionary *attr =@{FAKImageAttributeForegroundColor:[UIColor whiteColor]};
         
-        UIImage *icon = [FontAwesomeKit imageForIcon:FAKIconSmile
+        UIImage *icon = [FontAwesomeKit imageForIcon:FAKIconThumbsUp
                                            imageSize:CGSizeMake(iconSize, iconSize)
                                             fontSize:iconFontSize
                                           attributes:attr];
@@ -39,7 +39,7 @@
         acceptLabel.text = @"Accept Gift";
         
         
-        icon = [FontAwesomeKit imageForIcon:FAKIconFrown
+        icon = [FontAwesomeKit imageForIcon:FAKIconThumbsDown
                                   imageSize:CGSizeMake(iconSize, iconSize)
                                    fontSize:iconFontSize
                                  attributes:attr];

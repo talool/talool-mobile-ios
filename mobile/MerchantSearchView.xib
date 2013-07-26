@@ -37,7 +37,6 @@
 				<string key="NSFrameSize">{320, 50}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC4zMjU0OTAxOTYxIDAuMjc4NDMxMzcyNSAwLjI1NDkwMTk2MDgAA</bytes>
@@ -46,6 +45,7 @@
 					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
 					<string key="IBUIDisplayName">Freeform</string>
 				</object>
+				<string key="IBUIRestorationIdentifier">MerchantFilter</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>

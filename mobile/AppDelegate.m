@@ -62,42 +62,12 @@
 - (void) setupApp
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-     
+    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"];
+    self.activiyViewController = [storyboard instantiateViewControllerWithIdentifier:@"Activity"];
+    
     [CustomerHelper setContext:self.managedObjectContext];
     [FacebookHelper setContext:self.managedObjectContext];
-    
-    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    //self.mainViewController.navigationItem.hidesBackButton = YES;
-    
-    // Add the view controller for My Deals
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
-    UINavigationController *navController;
-    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"];
-    navController = [[UINavigationController alloc]
-                     initWithRootViewController:self.firstViewController];
-    navController.delegate = self;
-    [navController.navigationBar setTintColor:[TaloolColor teal]];
-    [navController.navigationBar setBarStyle:UIBarStyleBlack];
-    [viewControllers addObject:navController];
-    
-    // Add the view controller for Find Deals
-    navController = [[UINavigationController alloc]
-                     initWithRootViewController:[storyboard instantiateViewControllerWithIdentifier:@"FindDeals1"]];
-    navController.delegate = self;
-    [navController.navigationBar setTintColor:[TaloolColor teal]];
-    [navController.navigationBar setBarStyle:UIBarStyleBlack];
-    [viewControllers addObject:navController];
-    
-    // Add the view controller for Activity
-    self.activiyViewController = [storyboard instantiateViewControllerWithIdentifier:@"Activity"];
-    navController = [[UINavigationController alloc]
-                     initWithRootViewController:self.activiyViewController];
-    navController.delegate = self;
-    [navController.navigationBar setTintColor:[TaloolColor teal]];
-    [navController.navigationBar setBarStyle:UIBarStyleBlack];
-    [viewControllers addObject:navController];
-    
-    [self.mainViewController setViewControllers:viewControllers];
 
     // Back to the main thread for the work that needs to happen there
     [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
@@ -236,6 +206,16 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [FBSession.activeSession close];
+}
+
+-(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+{
+    return NO;
+}
+
+-(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+{
+    return NO;
 }
 
 // Helper method to wrap logic for handling app links.
