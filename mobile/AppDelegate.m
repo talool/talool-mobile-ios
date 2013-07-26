@@ -89,6 +89,11 @@
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
+    if ([CustomerHelper getLoggedInUser] != nil)
+    {
+        [activityHelper startPollingActivity];
+    }
+    
     [self.splashView.view removeFromSuperview];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
@@ -355,7 +360,10 @@
     {
         badge = [NSString stringWithFormat:@"%d",count];
     }
-    [[self.activiyViewController navigationController] tabBarItem].badgeValue = badge;
+    UIViewController *controller = [[self.mainViewController viewControllers] objectAtIndex:2];
+    UITabBarItem *activityTab = [controller tabBarItem];
+    activityTab.badgeValue = badge;
+    
 }
 
 @end
