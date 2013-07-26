@@ -2099,10 +2099,9 @@
                                     <action selector="confirmAction:" destination="rBS-Yu-9E9" eventType="touchUpInside" id="ckD-wz-QE9"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxa-Ny-nzB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="no-wifi-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dxa-Ny-nzB">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="195" id="EdJ-nv-eKU"/>
-                                    <constraint firstAttribute="height" constant="195" id="SZJ-lq-3ae"/>
+                                    <constraint firstAttribute="height" constant="162" id="e3t-e0-Gi4"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -2111,13 +2110,14 @@
                             <constraint firstAttribute="trailing" secondItem="IPw-xm-DmZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="09x-eS-IlL"/>
                             <constraint firstItem="tLN-23-tuj" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0t5-qo-c9h"/>
                             <constraint firstItem="IPw-xm-DmZ" firstAttribute="top" secondItem="tLN-23-tuj" secondAttribute="bottom" constant="16" type="user" id="Efl-o4-t0d"/>
-                            <constraint firstItem="Dxa-Ny-nzB" firstAttribute="centerX" secondItem="Sqn-VP-LWX" secondAttribute="centerX" type="default" id="L6k-1k-A80"/>
+                            <constraint firstAttribute="trailing" secondItem="Dxa-Ny-nzB" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IfI-4u-tY5"/>
+                            <constraint firstItem="Dxa-Ny-nzB" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="SPE-Cb-kRe"/>
                             <constraint firstItem="Sqn-VP-LWX" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WCf-rd-0yx"/>
                             <constraint firstItem="IPw-xm-DmZ" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ylx-bh-FYC"/>
-                            <constraint firstItem="Dxa-Ny-nzB" firstAttribute="top" secondItem="Sqn-VP-LWX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="d6Y-o5-mr8"/>
                             <constraint firstAttribute="trailing" secondItem="Sqn-VP-LWX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dJh-LY-Dut"/>
+                            <constraint firstItem="tLN-23-tuj" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="271" id="upg-sL-AlI"/>
+                            <constraint firstItem="Dxa-Ny-nzB" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="85" id="wG9-zF-lNN"/>
                             <constraint firstAttribute="trailing" secondItem="tLN-23-tuj" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="wLA-7F-3zx"/>
-                            <constraint firstItem="tLN-23-tuj" firstAttribute="top" secondItem="Dxa-Ny-nzB" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xmI-nS-uA6"/>
                             <constraint firstItem="Sqn-VP-LWX" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xq8-0h-9CG"/>
                         </constraints>
                     </view>
@@ -2517,6 +2517,7 @@
         <image name="dealMiddle.png" width="320" height="73"/>
         <image name="dealTop.png" width="320" height="48"/>
         <image name="imageMaskOutline.png" width="320" height="95"/>
+        <image name="no-wifi-icon.png" width="247" height="195"/>
         <image name="ribbonbadge.png" width="320" height="90"/>
         <image name="tableCell60.png" width="320" height="60"/>
         <image name="tableCell90.png" width="320" height="90"/>
