@@ -61,11 +61,6 @@
 - (void)merchantSetChanged:(NSArray *)merchants sender:(id)sender;
 @end
 
-@protocol MerchantBannerDelegate<NSObject>
-- (void)like:(BOOL)on sender:(id)sender;
-- (void)openMap:(id)sender;
-@end
-
 @protocol ActivityFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
 - (void)fetchActivities;

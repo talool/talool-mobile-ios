@@ -5,6 +5,7 @@
 #import <StoreKit/StoreKit.h>
 #import "VerificationController.h"
 #import "talool-api-ios/ttDealOffer.h"
+#import "talool-api-ios/GAI.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCanceledNotification";
@@ -55,7 +56,6 @@ NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCance
 }
 
 - (void)buyProduct:(SKProduct *)product {
-    NSLog(@"Purchased Started for %@", product.productIdentifier);
     SKPayment * payment = [SKPayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
@@ -67,6 +67,11 @@ NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCance
             [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
         } else {
             NSLog(@"Failed to validate receipt.");
+            id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+            [tracker sendEventWithCategory:@"ITUNES"
+                                withAction:@"Validation"
+                                 withLabel:@"Fail"
+                                 withValue:nil];
             [self cancelPurchase:transaction.payment.productIdentifier];
             [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
         }
@@ -102,6 +107,13 @@ NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCance
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
     
     NSLog(@"Failed to load list of products.  Probably can't connect to the itunes store.");
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"ITUNES"
+                        withAction:@"LoadProducts"
+                         withLabel:error.domain
+                         withValue:[NSNumber numberWithInteger:error.code]];
+    
     _productsRequest = nil;
     
     if (_completionHandler)
@@ -138,11 +150,15 @@ NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCance
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
     
-    NSLog(@"failedTransaction...");
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
         
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker sendEventWithCategory:@"ITUNES"
+                            withAction:@"Transaction"
+                             withLabel:transaction.error.domain
+                             withValue:[NSNumber numberWithInteger:transaction.error.code]];
         
         UIAlertView *itunesError = [[UIAlertView alloc] initWithTitle:@"We're Sorry"
                                                               message:@"We're not able to connect to iTunes in order to complete your purchase.  Please try again later."

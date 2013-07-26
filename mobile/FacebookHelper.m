@@ -296,16 +296,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://dev-talool.com/location";
 
 + (void) handleFBOGError:(NSError *)error
 {
-    NSString *alertText = [NSString stringWithFormat:
-                           @"error: domain = %@, code = %d",
-                           error.domain, error.code];
-    
-    [[[UIAlertView alloc] initWithTitle:@"Debug Info for Facebook Post"
-                                message:alertText
-                               delegate:nil
-                      cancelButtonTitle:@"Thanks!"
-                      otherButtonTitles:nil]
-     show];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"FACEBOOK"
+                        withAction:@"Post"
+                         withLabel:error.domain
+                         withValue:[NSNumber numberWithInteger:error.code]];
 }
 
 + (BOOL) reopenSession

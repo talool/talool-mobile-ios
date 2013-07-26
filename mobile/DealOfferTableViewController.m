@@ -7,7 +7,6 @@
 //
 
 #import "DealOfferTableViewController.h"
-#import "MerchantLogoView.h"
 #import "OfferActionView.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"

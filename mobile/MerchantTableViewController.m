@@ -17,8 +17,6 @@
 #import "MapCell.h"
 #import "DealImageCell.h"
 #import "FooterPromptCell.h"
-#import "MerchantLogoView.h"
-#import "DealListHeaderView.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttDealAcquire.h"

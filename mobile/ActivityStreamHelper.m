@@ -28,7 +28,6 @@
 
 - (void) startPollingActivity
 {
-    //NSLog(@"Start activity monitor timer");
     [self fetchActivities];
     
     NSNumber *interval = [NSNumber numberWithInt:ACTIVITY_MONITOR_INTERVAL_IN_SECONDS];
@@ -42,7 +41,6 @@
 
 - (void) stopPollingActivity
 {
-    //NSLog(@"Stop activity monitor timer");
     [activityMonitor invalidate];
 }
 
@@ -53,7 +51,6 @@
     
     if ([activities count]==0)
     {
-        NSLog(@"DEBUG::: no activities to filter");
         return;
     }
     
@@ -70,7 +67,6 @@
         // filter merchants
         tempArray = [NSMutableArray arrayWithArray:[activities filteredArrayUsingPredicate:selectedPredicate]];
     }
-    //NSLog(@"DEBUG::: Activities: filtered %lu activities down to %lu",(unsigned long)[activities count], (unsigned long)[tempArray count]);
     
     // Send the new array to the delegate
     [delegate activitySetChanged:tempArray sender:self];

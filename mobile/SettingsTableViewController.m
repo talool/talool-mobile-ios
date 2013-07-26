@@ -16,6 +16,7 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
+#import "talool-api-ios/GAI.h"
 
 @interface SettingsTableViewController ()
 @property (strong, nonatomic) UIView *accountHeader;
@@ -235,6 +236,12 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil] show];
     }
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"FACEBOOK"
+                        withAction:@"LogoutButton"
+                         withLabel:error.domain
+                         withValue:[NSNumber numberWithInteger:error.code]];
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView

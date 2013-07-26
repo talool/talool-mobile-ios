@@ -12,7 +12,6 @@
 #import "DealActionBar3View.h"
 #import "BarCodeCell.h"
 #import "DealDetailCell.h"
-#import "HeroImageCell.h"
 #import "DealLayoutState.h"
 #import "DefaultDealLayoutState.h"
 #import "talool-api-ios/ttCustomer.h"

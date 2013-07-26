@@ -18,6 +18,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttMerchant.h"
+#import "talool-api-ios/GAI.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AcceptGiftViewController ()
@@ -95,6 +96,12 @@
 
 - (void) displayError:(NSError *)error
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"GIFT"
+                        withAction:@"RecipientAction"
+                         withLabel:error.domain
+                         withValue:[NSNumber numberWithInteger:error.code]];
+    
     UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
                                                         message:@"We failed to handle this gift."
                                                        delegate:self

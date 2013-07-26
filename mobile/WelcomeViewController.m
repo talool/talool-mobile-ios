@@ -216,6 +216,13 @@
     }
     
     if (alertMessage) {
+        
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker sendEventWithCategory:@"FACEBOOK"
+                            withAction:@"LoginButton"
+                             withLabel:error.domain
+                             withValue:[NSNumber numberWithInteger:error.code]];
+        
         [[[UIAlertView alloc] initWithTitle:alertTitle
                                     message:alertMessage
                                    delegate:nil
