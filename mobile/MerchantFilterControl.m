@@ -47,16 +47,11 @@
         UIImage *funIcon = [FontAwesomeKit imageForIcon:FAKIconTicket
                                               imageSize:CGSizeMake(iconSize, iconSize)
                                                fontSize:fontSize
-                                             attributes:iconAttrs];
-        UIImage *nightlifeIcon = [FontAwesomeKit imageForIcon:FAKIconGlass
-                                                    imageSize:CGSizeMake(iconSize, iconSize)
-                                                     fontSize:fontSize
-                                                   attributes:iconAttrs];
+                                             attributes:iconAttrs];;
         [self insertSegmentWithImage:heartIcon atIndex:1 animated:animated];
         [self insertSegmentWithImage:foodIcon atIndex:2 animated:animated];
         [self insertSegmentWithImage:shoppingIcon atIndex:3 animated:animated];
         [self insertSegmentWithImage:funIcon atIndex:4 animated:animated];
-        [self insertSegmentWithImage:nightlifeIcon atIndex:5 animated:animated];
         
         // Set up the color and general style
         self.tintColor = [TaloolColor gray_4];
