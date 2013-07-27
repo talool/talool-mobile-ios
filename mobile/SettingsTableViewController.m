@@ -97,9 +97,6 @@
     [spinner startAnimating];
 }
 
-# pragma mark -
-# warning @"dev urls for web links"
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"logout"])
@@ -109,32 +106,32 @@
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/privacy"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/privacy"];
         [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
     }
     else if ([[segue identifier] isEqualToString:@"terms"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/terms"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/terms"];
         [[segue destinationViewController] setViewTitle:@"Terms of Service"];
     }
     else if ([[segue identifier] isEqualToString:@"merchant"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/services/merchants"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/services/merchants"];
         [[segue destinationViewController] setViewTitle:@"Merchant Services"];
     }
     else if ([[segue identifier] isEqualToString:@"publisher"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/services/publishers"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/services/publishers"];
         [[segue destinationViewController] setViewTitle:@"Publisher Services"];
     }
     else if ([[segue identifier] isEqualToString:@"feedback"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/feedback"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/feedback"];
         [[segue destinationViewController] setViewTitle:@"Feedback"];
     }
     else if ([[segue identifier] isEqualToString:@"partnership"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/partnership"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/payback/partnership"];
         [[segue destinationViewController] setViewTitle:@"Feedback"];
     }
     else if ([[segue identifier] isEqualToString:@"boulder"])
@@ -149,7 +146,7 @@
     }
     else if ([[segue identifier] isEqualToString:@"faq"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/faq"];
+        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/faq"];
         [[segue destinationViewController] setViewTitle:@"FAQ"];
     }
 }
