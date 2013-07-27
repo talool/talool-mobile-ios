@@ -18,10 +18,7 @@
     IBOutlet UITextField *passwordField;
     IBOutlet TaloolIconButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
-    id <TaloolAuthenticationDelegate> authDelegate;
 }
-
-- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate;
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;

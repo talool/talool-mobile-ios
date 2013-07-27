@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class MerchantFilterControl, MerchantSearchHelper;
+@class MerchantFilterControl;
 
 @interface MerchantSearchView : UIView
 {
@@ -21,7 +21,6 @@
 
 @property (strong, nonatomic) MerchantFilterControl *filterControl;
 @property (retain, nonatomic) id<MerchantFilterDelegate> delegate;
-@property (retain, nonatomic) MerchantSearchHelper *searchHelper;
 
 - (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate;
 

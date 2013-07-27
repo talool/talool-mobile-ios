@@ -16,6 +16,9 @@
 #import "talool-api-ios/ttDealAcquire.h"
 #import <AddressBook/AddressBook.h>
 #import "AppDelegate.h"
+#import "MerchantSearchHelper.h"
+#import "DealOfferHelper.h"
+#import "CategoryHelper.h"
 
 @implementation CustomerHelper
 
@@ -50,6 +53,7 @@ static NSManagedObjectContext *_context;
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Authentication Failed" withCancel:@"Try again" withSender:nil];
         return NO;
     }
+    [CustomerHelper handleNewLogin];
     return YES;
 }
 
@@ -67,7 +71,16 @@ static NSManagedObjectContext *_context;
         [CustomerHelper showErrorMessage:err.localizedDescription withTitle:@"Registration Failed" withCancel:@"Try again" withSender:nil];
         return NO;
     }
+    [CustomerHelper handleNewLogin];
     return YES;
+}
+
++(void) handleNewLogin
+{
+    [[MerchantSearchHelper sharedInstance] fetchMerchants];
+    [[DealOfferHelper sharedInstance] reset];
+    [[CategoryHelper sharedInstance] reset];
+    [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
 }
 
 + (void) showNetworkError

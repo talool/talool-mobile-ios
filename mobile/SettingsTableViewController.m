@@ -105,8 +105,6 @@
     if ([[segue identifier] isEqualToString:@"logout"])
     {
         WelcomeViewController *wvc = [segue destinationViewController];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [wvc registerAuthDelegate:appDelegate.firstViewController];
         [wvc setHidesBottomBarWhenPushed:YES];
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])

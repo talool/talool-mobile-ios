@@ -18,10 +18,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 @end
 
-@protocol TaloolAuthenticationDelegate<NSObject>
-- (void)customerLoggedIn:(id)sender;
-@end
-
 @protocol TaloolGiftActionDelegate<NSObject>
 @optional
 - (void)acceptGift:(id)sender;

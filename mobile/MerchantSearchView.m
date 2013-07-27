@@ -16,7 +16,7 @@
 
 @implementation MerchantSearchView
 
-@synthesize delegate, searchHelper;
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate
 {
@@ -30,8 +30,8 @@
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];
         
-        searchHelper = [[MerchantSearchHelper alloc] initWithDelegate:searchDelegate];
-        [self setDelegate:searchHelper];
+        [[MerchantSearchHelper sharedInstance] setDelegate:searchDelegate];
+        [self setDelegate:[MerchantSearchHelper sharedInstance]];
         
         [self addSubview:view];
     }

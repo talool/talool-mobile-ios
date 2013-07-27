@@ -26,15 +26,23 @@
 
 @implementation MerchantSearchHelper
 
-@synthesize merchants, selectedPredicate, delegate;
+@synthesize merchants, filteredMerchants, selectedPredicate, delegate;
 
-- (id) initWithDelegate:(id<MerchantSearchDelegate>)searchDelegate
++ (MerchantSearchHelper *)sharedInstance
+{
+    static dispatch_once_t once;
+    static MerchantSearchHelper * sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (id) init
 {
     self = [super init];
     
     [self initLocationManager];
-    
-    [self setDelegate:searchDelegate];
     
     // make this call ver infrequently
     [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
@@ -116,28 +124,27 @@
 - (void) filterMerchants
 {
     
-    if ([merchants count]==0)
+    if ([merchants count]== 0)
     {
-        NSLog(@"DEBUG::: no merchants to filter");
-        return;
-    }
-    
-    NSArray *tempArray;
-    
-    // optional filter based on category or favorites
-    if (selectedPredicate == nil)
-    {
-        // show all merchants
-        tempArray = [NSMutableArray arrayWithArray:merchants];
+        filteredMerchants = merchants;
     }
     else
     {
-        // filter merchants
-        tempArray = [NSMutableArray arrayWithArray:[merchants filteredArrayUsingPredicate:selectedPredicate]];
+        // optional filter based on category or favorites
+        if (selectedPredicate == nil)
+        {
+            // show all merchants
+            filteredMerchants = [NSMutableArray arrayWithArray:merchants];
+        }
+        else
+        {
+            // filter merchants
+            filteredMerchants = [NSMutableArray arrayWithArray:[merchants filteredArrayUsingPredicate:selectedPredicate]];
+        }
     }
     
     // Send the new array to the delegate
-    [delegate merchantSetChanged:tempArray sender:self];
+    [delegate merchantSetChanged:filteredMerchants sender:self];
 }
 
 #pragma mark -

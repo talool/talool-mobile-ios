@@ -56,11 +56,6 @@
     [tracker sendView:@"Registration Screen"];
 }
 
-- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
-{
-    authDelegate = delegate;
-}
-
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
 }
@@ -85,7 +80,6 @@
     // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
     if ([CustomerHelper registerCustomer:user password:passwordField.text] && [CustomerHelper getLoggedInUser]!=nil) {
-        [authDelegate customerLoggedIn:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     

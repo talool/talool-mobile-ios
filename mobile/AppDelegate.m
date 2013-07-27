@@ -65,6 +65,8 @@
     self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
     self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"];
     self.activiyViewController = [storyboard instantiateViewControllerWithIdentifier:@"Activity"];
+    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
+    self.settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
     
     [CustomerHelper setContext:self.managedObjectContext];
     [FacebookHelper setContext:self.managedObjectContext];
@@ -92,6 +94,7 @@
     if ([CustomerHelper getLoggedInUser] != nil)
     {
         [activityHelper startPollingActivity];
+        [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
     }
     
     [self.splashView.view removeFromSuperview];

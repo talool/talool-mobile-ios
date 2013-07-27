@@ -2711,6 +2711,7 @@
         <class className="WelcomeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="loginAction:"/>
                 <relationship kind="outlet" name="FBLoginView" candidateClass="FBLoginView"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>

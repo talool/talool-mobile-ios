@@ -12,11 +12,13 @@
 
 @interface MerchantSearchHelper : NSObject<MerchantFilterDelegate, CLLocationManagerDelegate>
 
++ (MerchantSearchHelper *)sharedInstance;
+
 @property (retain, nonatomic) NSPredicate *selectedPredicate;
 @property (retain, nonatomic) NSArray *merchants;
+@property (retain, nonatomic) NSArray *filteredMerchants;
 @property (retain, nonatomic) id<MerchantSearchDelegate> delegate;
 
 - (void) fetchMerchants;
-- (id) initWithDelegate:(id<MerchantSearchDelegate>)searchDelegate;
 
 @end

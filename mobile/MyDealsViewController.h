@@ -11,7 +11,7 @@
 
 @class MerchantSearchView;
 
-@interface MyDealsViewController : UITableViewController<TaloolAuthenticationDelegate, TaloolGiftActionDelegate, MerchantSearchDelegate>
+@interface MyDealsViewController : UITableViewController<TaloolGiftActionDelegate, MerchantSearchDelegate>
 
 @property (strong, nonatomic) UIButton *helpButton;
 @property (nonatomic, retain) NSArray *merchants;

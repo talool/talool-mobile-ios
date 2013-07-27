@@ -110,7 +110,6 @@
 {
     if ([[segue identifier] isEqualToString:@"showReg"])
     {
-        [[segue destinationViewController] registerAuthDelegate:authDelegate];
         [[segue destinationViewController] setHidesBottomBarWhenPushed:YES];
     }
 }
@@ -152,7 +151,6 @@
                  // If we have a logged in user (possibly as a result of the FB reg above)
                  // Then we should check if any FB data has changed and navigate to the main view
                  if ([CustomerHelper getLoggedInUser] != nil) {
-                     [authDelegate customerLoggedIn:self];
                      // TODO consider updating the user if needed
                      if (self.navigationController.visibleViewController != appDelegate.firstViewController) {
                          [self.navigationController popToRootViewControllerAnimated:YES];
@@ -260,17 +258,11 @@
     
     // don't leave the page if login failed
     if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
-        [authDelegate customerLoggedIn:self];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
     // remove the spinner
     [spinner stopAnimating];
-}
-
-- (void) registerAuthDelegate:(id <TaloolAuthenticationDelegate>)delegate
-{
-    authDelegate = delegate;
 }
 
 #pragma mark -

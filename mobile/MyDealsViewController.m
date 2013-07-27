@@ -30,6 +30,7 @@
 #import "TextureHelper.h"
 #import "TaloolColor.h"
 #import "MerchantSearchView.h"
+#import "MerchantSearchHelper.h"
 #import "ActivityStreamHelper.h"
 
 @implementation MyDealsViewController
@@ -48,9 +49,6 @@
     [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.loginViewController registerAuthDelegate:self];
     
     self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
                                          merchantSearchDelegate:self];
@@ -82,7 +80,8 @@
     
     self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
     
-    // load any merchants connected to this customer from the context
+    // reset with the latest list of merchants
+    merchants = [MerchantSearchHelper sharedInstance].filteredMerchants;
     if ([merchants count]==0)
     {
         NSArray *unsortedMerchants = [[CustomerHelper getLoggedInUser] getMyMerchants];
@@ -119,7 +118,6 @@
     else if ([[segue identifier] isEqualToString:@"welcome"])
     {
         WelcomeViewController *wvc = [segue destinationViewController];
-        [wvc registerAuthDelegate:self];
         [wvc setHidesBottomBarWhenPushed:YES];
     }
 }
@@ -269,7 +267,6 @@
                                                         imageSize:CGSizeMake(30, 30)
                                                          fontSize:14
                                                        attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
-    
     return cell;
 }
 
@@ -308,20 +305,6 @@
 - (void)merchantSetChanged:(NSArray *)newMerchants sender:(id)sender
 {
     merchants = newMerchants;
-    [self.tableView reloadData];
-}
-
-#pragma mark -
-#pragma mark - TaloolAuthenticationDelegate methods
-
-- (void) customerLoggedIn:(id)sender
-{
-    self.merchants = [NSArray arrayWithObjects:nil];
-    [self.searchView fetchMerchants];
-    [[DealOfferHelper sharedInstance] reset];
-    [[CategoryHelper sharedInstance] reset];
-    
-    NSLog(@"new user with %d merchants", [self.merchants count]);
     [self.tableView reloadData];
 }
 
