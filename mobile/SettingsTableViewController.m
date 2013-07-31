@@ -27,6 +27,7 @@
 
 @synthesize customer, spinner, accountHeader, taloolHeader;
 
+static NSString *host = @"http://www.talool.com";
 
 - (void)viewDidLoad
 {
@@ -106,48 +107,35 @@
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/privacy"];
+        NSString *pUrl = [NSString stringWithFormat:@"%@/privacy",host];
+        [[segue destinationViewController] setMobileWebUrl:pUrl];
         [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
     }
     else if ([[segue identifier] isEqualToString:@"terms"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/terms"];
-        [[segue destinationViewController] setViewTitle:@"Terms of Service"];
+        NSString *tUrl = [NSString stringWithFormat:@"%@/termsofservice",host];
+        [[segue destinationViewController] setMobileWebUrl:tUrl];
+        [[segue destinationViewController] setViewTitle:@"Terms of Use"];
     }
     else if ([[segue identifier] isEqualToString:@"merchant"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/services/merchants"];
+        NSString *smUrl = [NSString stringWithFormat:@"%@/services/merchants",host];
+        [[segue destinationViewController] setMobileWebUrl:smUrl];
         [[segue destinationViewController] setViewTitle:@"Merchant Services"];
     }
     else if ([[segue identifier] isEqualToString:@"publisher"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/services/publishers"];
+        NSString *spUrl = [NSString stringWithFormat:@"%@/services/publishers",host];
+        [[segue destinationViewController] setMobileWebUrl:spUrl];
         [[segue destinationViewController] setViewTitle:@"Publisher Services"];
     }
     else if ([[segue identifier] isEqualToString:@"feedback"])
     {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/feedback"];
+        ttCustomer *user = [CustomerHelper getLoggedInUser];
+        NSString *feedbackUrl = [NSString stringWithFormat:@"%@/feedback?fromEmail=%@&feedbackSrc=ios",host,user.email];
+        NSLog(@"open url %@",feedbackUrl);
+        [[segue destinationViewController] setMobileWebUrl:feedbackUrl];
         [[segue destinationViewController] setViewTitle:@"Feedback"];
-    }
-    else if ([[segue identifier] isEqualToString:@"partnership"])
-    {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/payback/partnership"];
-        [[segue destinationViewController] setViewTitle:@"Feedback"];
-    }
-    else if ([[segue identifier] isEqualToString:@"boulder"])
-    {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/boulder"];
-        [[segue destinationViewController] setViewTitle:@"Boulder"];
-    }
-    else if ([[segue identifier] isEqualToString:@"vancouver"])
-    {
-        [[segue destinationViewController] setMobileWebUrl:@"http://dev-www.talool.com/payback/vancouver"];
-        [[segue destinationViewController] setViewTitle:@"Vancouver"];
-    }
-    else if ([[segue identifier] isEqualToString:@"faq"])
-    {
-        [[segue destinationViewController] setMobileWebUrl:@"http://www.talool.com/faq"];
-        [[segue destinationViewController] setViewTitle:@"FAQ"];
     }
 }
 

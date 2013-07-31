@@ -18,8 +18,11 @@
     IBOutlet UITextField *lastNameField;
     UIAlertView *errorView;
     
+    IBOutlet TaloolUIButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
 }
+
+- (IBAction)regAction:(id)sender;
 
 @property (nonatomic, retain) UIAlertView *errorView;
 

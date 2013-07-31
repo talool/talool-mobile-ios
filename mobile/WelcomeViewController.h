@@ -18,6 +18,7 @@
     IBOutlet UITextField *passwordField;
     IBOutlet TaloolIconButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
+    IBOutlet TaloolUIButton *signinButton;
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;

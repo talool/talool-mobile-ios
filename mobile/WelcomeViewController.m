@@ -66,6 +66,10 @@
     [regButton setTitle:@"Register a New Account" forState:UIControlStateNormal];
     [regButton setImage:userIcon forState:UIControlStateNormal];
     
+    [signinButton useTaloolStyle];
+    [signinButton setBaseColor:[TaloolColor teal]];
+    [signinButton setTitle:@"Sign In" forState:UIControlStateNormal];
+    
     spinner.hidesWhenStopped=YES;
     self.navigationItem.hidesBackButton = YES;
     
@@ -293,6 +297,5 @@
     [self submit:nil];
     return YES;
 }
-
 
 @end

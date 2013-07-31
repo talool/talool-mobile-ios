@@ -7,6 +7,7 @@
 //
 
 #import "TaloolMobileWebViewController.h"
+#import "TaloolColor.h"
 
 @interface TaloolMobileWebViewController ()
 
@@ -28,6 +29,7 @@
     NSURL *taloolUrl = [NSURL URLWithString:mobileWebUrl];
     [mobileWeb loadRequest:[NSURLRequest requestWithURL:taloolUrl]];
     self.navigationItem.title = viewTitle;
+    [self.view setBackgroundColor:[TaloolColor gray_5]];
 }
 
 @end

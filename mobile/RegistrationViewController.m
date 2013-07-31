@@ -15,6 +15,7 @@
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
+#import "TaloolUIButton.h"
 
 @interface RegistrationViewController ()
 
@@ -46,6 +47,10 @@
     texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
     [texture setAlpha:0.15];
     [self.tableView setBackgroundView:texture];
+    
+    [regButton useTaloolStyle];
+    [regButton setBaseColor:[TaloolColor teal]];
+    [regButton setTitle:@"Register" forState:UIControlStateNormal];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -113,6 +118,10 @@
 {
     [self submit:nil];
     return YES;
+}
+
+- (IBAction)regAction:(id)sender {
+    [self submit:sender];
 }
 
 @end
