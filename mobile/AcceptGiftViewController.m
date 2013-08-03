@@ -12,6 +12,7 @@
 #import "DefaultGiftLayoutState.h"
 #import "GiftActionBar2View.h"
 #import "CustomerHelper.h"
+#import "MerchantSearchHelper.h"
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttDealOffer.h"
@@ -70,7 +71,7 @@
     {
         // tell the delegate what happened
         [giftDelegate giftAccepted:deal sender:self];
-        
+        [[MerchantSearchHelper sharedInstance] fetchMerchants];
         [self.navigationController popViewControllerAnimated:YES];
         
     }

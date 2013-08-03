@@ -1497,11 +1497,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="4TP-Tq-I7N" userLabel="Masked Deal Image">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="97" id="ElA-wo-9Uo"/>
-                                            </constraints>
-                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="4TP-Tq-I7N" userLabel="Masked Deal Image"/>
                                         <imageView userInteractionEnabled="NO" contentMode="top" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="thZ-46-9Wd" userLabel="Deal Image Border">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="95" type="user" id="Amc-aH-ZCk"/>
@@ -1512,8 +1508,9 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="thZ-46-9Wd" firstAttribute="leading" secondItem="I3M-3z-7b5" secondAttribute="leading" type="default" id="B8x-LU-XEN"/>
-                                    <constraint firstItem="thZ-46-9Wd" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="L5H-hU-QAi"/>
-                                    <constraint firstItem="4TP-Tq-I7N" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="eFk-jO-UpS"/>
+                                    <constraint firstItem="thZ-46-9Wd" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="Rft-pR-Gw4"/>
+                                    <constraint firstItem="4TP-Tq-I7N" firstAttribute="bottom" secondItem="I3M-3z-7b5" secondAttribute="bottom" type="default" id="Vpa-CY-iSh"/>
+                                    <constraint firstItem="4TP-Tq-I7N" firstAttribute="centerY" secondItem="thZ-46-9Wd" secondAttribute="centerY" type="default" id="cZc-Mj-H6u"/>
                                     <constraint firstItem="4TP-Tq-I7N" firstAttribute="leading" secondItem="I3M-3z-7b5" secondAttribute="leading" type="default" id="muG-3N-SO1"/>
                                     <constraint firstItem="4TP-Tq-I7N" firstAttribute="trailing" secondItem="I3M-3z-7b5" secondAttribute="trailing" type="default" id="yfm-8O-T5z"/>
                                 </constraints>
@@ -2292,7 +2289,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="qNo-Lm-vhk" userLabel="Masked Deal Image">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="97" id="CG1-a7-lgV"/>
+                                                <constraint firstAttribute="height" constant="97" type="user" id="bQ2-X7-ALi"/>
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="top" image="imageMaskOutline.png" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-ym-qST" userLabel="Deal Image Border">
@@ -2304,10 +2301,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="YLZ-ym-qST" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="DZf-wI-FoX"/>
                                     <constraint firstItem="YLZ-ym-qST" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="nus-HT-4zW"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="leading" secondItem="VmY-BN-5SM" secondAttribute="leading" type="default" id="oII-7I-fJn"/>
-                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="default" id="wDf-8z-EwV"/>
+                                    <constraint firstItem="qNo-Lm-vhk" firstAttribute="top" secondItem="VmY-BN-5SM" secondAttribute="top" constant="3" type="user" id="qsM-mV-rIN"/>
+                                    <constraint firstItem="YLZ-ym-qST" firstAttribute="bottom" secondItem="VmY-BN-5SM" secondAttribute="bottom" type="user" id="wR2-oA-idA"/>
                                     <constraint firstItem="qNo-Lm-vhk" firstAttribute="trailing" secondItem="VmY-BN-5SM" secondAttribute="trailing" type="default" id="xmd-7J-24S"/>
                                 </constraints>
                                 <connections>
@@ -2322,9 +2319,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dealTop.png" translatesAutoresizingMaskIntoConstraints="NO" id="70F-p3-gMz" userLabel="Cell BG"/>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="y3U-Qo-4Au" userLabel="Merchant Logo">
+                                        <imageView userInteractionEnabled="NO" contentMode="right" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="y3U-Qo-4Au" userLabel="Merchant Logo">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="140" id="L6F-JQ-T9a"/>
+                                                <constraint firstAttribute="width" priority="356" constant="140" type="user" id="L6F-JQ-T9a"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Offer valid at" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emL-US-TjB">
@@ -2339,7 +2336,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="123 Pearl St" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-Rx-o3p">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="Fgx-xB-Z2b"/>
-                                                <constraint firstAttribute="width" constant="134" id="SjU-Bm-Nbl"/>
+                                                <constraint firstAttribute="width" constant="134" type="user" id="SjU-Bm-Nbl"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
                                             <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2358,14 +2355,14 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="y3U-Qo-4Au" firstAttribute="centerY" secondItem="70F-p3-gMz" secondAttribute="centerY" type="default" id="14z-Pg-G22"/>
-                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="leading" secondItem="Mio-Rx-o3p" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7i2-L1-RAg"/>
                                     <constraint firstAttribute="bottom" secondItem="Mio-Rx-o3p" secondAttribute="bottom" constant="20" type="default" id="HXh-Vy-K1X"/>
                                     <constraint firstItem="ey9-84-imd" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="KA4-0h-iG6"/>
                                     <constraint firstItem="Mio-Rx-o3p" firstAttribute="top" secondItem="emL-US-TjB" secondAttribute="bottom" type="user" id="Lf0-0N-dNg"/>
                                     <constraint firstItem="70F-p3-gMz" firstAttribute="top" secondItem="wVh-MR-QyS" secondAttribute="top" type="default" id="RF4-BN-bwq"/>
-                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="leading" secondItem="ey9-84-imd" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="TvR-k3-36W"/>
+                                    <constraint firstItem="y3U-Qo-4Au" firstAttribute="leading" secondItem="ey9-84-imd" secondAttribute="trailing" priority="350" constant="8" symbolic="YES" type="user" id="TvR-k3-36W"/>
                                     <constraint firstItem="70F-p3-gMz" firstAttribute="bottom" secondItem="wVh-MR-QyS" secondAttribute="bottom" type="default" id="VDl-DA-lt2"/>
-                                    <constraint firstItem="Mio-Rx-o3p" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="foj-JW-tIc"/>
+                                    <constraint firstAttribute="trailing" secondItem="y3U-Qo-4Au" secondAttribute="trailing" constant="18" type="user" id="fQ2-nl-ESU"/>
+                                    <constraint firstItem="Mio-Rx-o3p" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="user" id="foj-JW-tIc"/>
                                     <constraint firstItem="ey9-84-imd" firstAttribute="top" secondItem="Mio-Rx-o3p" secondAttribute="bottom" type="user" id="gmv-wV-X9t"/>
                                     <constraint firstItem="70F-p3-gMz" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" type="default" id="gp1-Uu-cu3"/>
                                     <constraint firstItem="emL-US-TjB" firstAttribute="leading" secondItem="wVh-MR-QyS" secondAttribute="leading" constant="20" type="default" id="qwm-02-93t"/>
@@ -2780,8 +2777,6 @@
         <class className="WelcomeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="loginAction:"/>
-                <relationship kind="action" name="signin:"/>
                 <relationship kind="outlet" name="FBLoginView" candidateClass="FBLoginView"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
@@ -2797,7 +2792,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="CnZ-T1-KmD"/>
+        <segue reference="HMP-oi-56u"/>
         <segue reference="wjI-dw-vyW"/>
     </inferredMetricsTieBreakers>
 </document>

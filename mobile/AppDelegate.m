@@ -23,6 +23,7 @@
 #import "ActivityStreamHelper.h"
 #import "DealOfferHelper.h"
 #import "MerchantSearchView.h"
+#import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
 #import "talool-api-ios/GAI.h"
 
@@ -270,7 +271,7 @@
 -(void) presentNewDeals
 {
     // refresh the deals
-    [self.firstViewController.searchView fetchMerchants];
+    [[MerchantSearchHelper sharedInstance] fetchMerchants];
     
     if (self.mainViewController.selectedViewController != self.firstViewController)
     {
