@@ -14,6 +14,8 @@
     IBOutlet UILabel *promptMessage;
 }
 
--(void) setMessage:(NSString *)url;
+-(void) setSimpleMessage:(NSString *)message;
+-(void) setMessage:(NSAttributedString *)message;
+-(void) setSimpleAttributedMessage:(NSString *)message icon:(NSString *)icon1 icon:(NSString *)icon2;
 
 @end

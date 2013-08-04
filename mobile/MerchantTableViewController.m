@@ -171,7 +171,7 @@
     else if (indexPath.row == [deals count]+1) {
         NSString *CellIdentifier = @"FooterCell";
         FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setMessage:@"Need Deals?"];
+        [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
         return cell;
     }
     else

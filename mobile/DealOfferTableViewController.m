@@ -23,6 +23,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttDeal.h"
+#import "FontAwesomeKit.h"
 
 @interface DealOfferTableViewController ()
 @property (nonatomic) int detailSize;
@@ -188,7 +189,7 @@
         {
             NSString *CellIdentifier = @"FooterCell";
             FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            [cell setMessage:@"That's a lot of deals!"];
+            [cell setSimpleAttributedMessage:@"That's a lot of deals!" icon:FAKIconMoney icon:FAKIconMoney];
             
             return cell;
         }

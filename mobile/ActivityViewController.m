@@ -25,6 +25,7 @@
 #import "talool-api-ios/ttActivity.h"
 #import "talool-api-ios/ttActivityLink.h"
 #import "TaloolMobileWebViewController.h"
+#import "FontAwesomeKit.h"
 
 @interface ActivityViewController ()
 
@@ -116,7 +117,7 @@
     {
         NSString *CellIdentifier = @"FooterCell";
         FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setMessage:@"Need Deals?"];
+        [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
         return cell;
     }
     else

@@ -46,7 +46,7 @@
         offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     }
     
-    NSLog(@"submit my access code for %@", offer.title);
+    NSLog(@"submit my access code (%@) for %@", self.accessCodeFld.text, offer.title);
     [self.accessCodeFld resignFirstResponder];
     
     NSError *err;

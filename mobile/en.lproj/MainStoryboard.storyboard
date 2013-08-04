@@ -135,7 +135,7 @@
                                             <constraint firstItem="GKE-HB-3e6" firstAttribute="centerX" secondItem="1XX-qe-Kf9" secondAttribute="centerX" type="default" id="vty-dB-glj"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="60" id="pEi-0v-Q0i" userLabel="Signin Button Cell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="pEi-0v-Q0i" userLabel="Signin Button Cell">
                                         <rect key="frame" x="0.0" y="130" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -422,7 +422,7 @@
                                             <constraint firstItem="IG8-BV-pgS" firstAttribute="centerY" secondItem="ga6-e5-xye" secondAttribute="centerY" type="default" id="yd5-nu-n8I"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="60" id="rcJ-c6-83e">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="rcJ-c6-83e">
                                         <rect key="frame" x="0.0" y="226" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -739,7 +739,7 @@
                                     <segue destination="Kia-Ym-Kxg" kind="push" identifier="WelcomeActivity" id="q3T-VT-ua5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="FpQ-My-Dh9" userLabel="Buy More Prompt" customClass="FooterPromptCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="FpQ-My-Dh9" userLabel="Buy More Prompt" customClass="FooterPromptCell">
                                 <rect key="frame" x="0.0" y="380" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1582,7 +1582,7 @@
                                     <segue destination="2I0-5O-JeQ" kind="push" identifier="showDeal" id="0h2-q7-qUa"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="ay7-7u-wXJ" userLabel="Buy More Prompt" customClass="FooterPromptCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="ay7-7u-wXJ" userLabel="Buy More Prompt" customClass="FooterPromptCell">
                                 <rect key="frame" x="0.0" y="182" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1895,7 +1895,7 @@
                                     <outlet property="summaryLabel" destination="G7d-Jj-xE6" id="t7G-EZ-rZF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="eN4-TP-pay" userLabel="Buy More Prompt" customClass="FooterPromptCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="eN4-TP-pay" userLabel="Buy More Prompt" customClass="FooterPromptCell">
                                 <rect key="frame" x="0.0" y="552" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2792,7 +2792,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="lZZ-Le-LNs"/>
         <segue reference="HMP-oi-56u"/>
-        <segue reference="wjI-dw-vyW"/>
     </inferredMetricsTieBreakers>
 </document>
