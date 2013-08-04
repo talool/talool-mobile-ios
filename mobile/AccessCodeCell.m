@@ -19,11 +19,19 @@
 
 @synthesize offer, spinner;
 
+- (IBAction)submitAction:(id)sender {
+    [self submit:sender];
+}
+
 - (void) setupKeyboardAccessory:(ttDealOffer *)dealOffer
 {
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Load Deals"];
     [self.accessCodeFld setInputAccessoryView:kav];
     [self.accessCodeFld setDelegate:self];
+    
+    [self.submit useTaloolStyle];
+    [self.submit setBaseColor:[TaloolColor teal]];
+    [self.submit setTitle:@"Load Deals" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped = YES;
     

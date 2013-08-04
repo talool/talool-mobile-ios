@@ -973,23 +973,22 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" type="user" id="dxl-of-oT4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-mG-m40">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="22" id="CPT-ry-4Pf"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="n1K-XR-aBj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="KV0-mG-m40" firstAttribute="top" secondItem="Vuz-Of-vcI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9ub-QG-hqP"/>
+                                    <constraint firstItem="KV0-mG-m40" firstAttribute="top" secondItem="Vuz-Of-vcI" secondAttribute="bottom" constant="20" type="user" id="9ub-QG-hqP"/>
                                     <constraint firstItem="KV0-mG-m40" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" constant="20" type="default" id="BIT-aR-sFJ"/>
                                     <constraint firstItem="C7G-pm-7ko" firstAttribute="top" secondItem="tgp-nN-IhN" secondAttribute="top" type="user" id="DmS-aa-CED"/>
                                     <constraint firstItem="C7G-pm-7ko" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" type="default" id="EfF-2v-YEO"/>
@@ -1023,7 +1022,7 @@
                                                 <constraint firstAttribute="width" constant="132" id="ukD-Yq-gWX"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
-                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
@@ -1692,14 +1691,33 @@
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-cy-5CE">
                                             <color key="color" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er3-6y-SgU" customClass="TaloolUIButton">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" type="user" id="YX7-nU-AGL"/>
+                                                <constraint firstAttribute="width" constant="107" id="ig1-Cf-MeI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Submit">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="submitAction:" destination="crq-kV-FoY" eventType="touchUpInside" id="6Me-hS-Hb7"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="er3-6y-SgU" firstAttribute="leading" secondItem="XGB-IJ-HFj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2FN-cT-Zza"/>
                                     <constraint firstItem="4dj-g8-oXj" firstAttribute="top" secondItem="pVj-Vx-2Ja" secondAttribute="bottom" type="user" id="4MG-qt-qmK"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="Bbi-7G-y1L"/>
                                     <constraint firstItem="VN8-Uz-MGL" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="Eqq-yH-b90"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="20" type="default" id="KGn-Hb-rP4"/>
+                                    <constraint firstItem="er3-6y-SgU" firstAttribute="bottom" secondItem="XGB-IJ-HFj" secondAttribute="bottom" type="user" id="REe-c2-jbm"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="centerX" secondItem="PoI-cy-5CE" secondAttribute="centerX" type="default" id="SIJ-7o-WfV"/>
                                     <constraint firstItem="VN8-Uz-MGL" firstAttribute="top" secondItem="pLg-c9-AiA" secondAttribute="bottom" type="user" id="T5o-hQ-qIF"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="top" secondItem="VN8-Uz-MGL" secondAttribute="bottom" type="user" id="Tw6-8a-3RW"/>
@@ -1708,12 +1726,15 @@
                                     <constraint firstItem="XGB-IJ-HFj" firstAttribute="top" secondItem="oMa-a5-IsU" secondAttribute="bottom" constant="15" type="user" id="ZNj-wT-hvF"/>
                                     <constraint firstItem="pLg-c9-AiA" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="cZs-sv-4G6"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="top" secondItem="pLg-c9-AiA" secondAttribute="bottom" constant="8" type="user" id="evp-pg-ZZz"/>
+                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="31" id="fKW-z8-B1h"/>
+                                    <constraint firstItem="er3-6y-SgU" firstAttribute="baseline" secondItem="XGB-IJ-HFj" secondAttribute="baseline" type="default" id="uhq-eh-nPv"/>
+                                    <constraint firstItem="er3-6y-SgU" firstAttribute="top" secondItem="XGB-IJ-HFj" secondAttribute="top" type="user" id="vB3-7h-zY0"/>
                                     <constraint firstItem="XGB-IJ-HFj" firstAttribute="top" secondItem="PoI-cy-5CE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vb2-1V-jMi"/>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="centerX" secondItem="4dj-g8-oXj" secondAttribute="centerX" type="default" id="yPk-U7-Oet"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="accessCodeFld" destination="XGB-IJ-HFj" id="qDq-Kl-qqi"/>
                                     <outlet property="spinner" destination="PoI-cy-5CE" id="zNg-Ax-2lf"/>
+                                    <outlet property="submit" destination="er3-6y-SgU" id="BjO-yg-aJI"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DetailCell" rowHeight="170" id="pdO-Fe-sBL" customClass="OfferSummaryCell">
@@ -2269,7 +2290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvD-bN-0ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="-304"/>
+            <point key="canvasLocation" x="2641" y="-472"/>
         </scene>
         <!--Deal Table View Controller-->
         <scene sceneID="ORh-y5-dwy">
@@ -2372,6 +2393,7 @@
                                     <outlet property="merchantAddress" destination="Mio-Rx-o3p" id="1n2-Wr-zxB"/>
                                     <outlet property="merchantCityState" destination="ey9-84-imd" id="FSP-Mx-IdJ"/>
                                     <outlet property="merchantLogo" destination="y3U-Qo-4Au" id="wHV-wm-5HT"/>
+                                    <segue destination="tP1-qM-RUx" kind="push" identifier="showMap" id="EGa-Bg-TS6"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailCell" rowHeight="112" id="AWp-60-eu0" customClass="DealDetailCell">
@@ -2391,16 +2413,15 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" type="user" id="tnN-HV-Eov"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="YTK-wy-HbG">
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="acw-CH-2Ly"/>
-                                                <constraint firstAttribute="height" constant="22" id="fC3-VU-Q2Y"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
@@ -2408,7 +2429,7 @@
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YTK-wy-HbG" secondAttribute="trailing" constant="20" type="default" id="1do-gn-fFm"/>
-                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="3iK-98-Rat"/>
+                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="20" type="user" id="3iK-98-Rat"/>
                                     <constraint firstItem="5vn-w5-kyG" firstAttribute="bottom" secondItem="AWp-60-eu0" secondAttribute="bottom" type="user" id="4dt-rL-XWS"/>
                                     <constraint firstItem="zhM-cY-bgv" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" type="default" id="6ag-hF-fW7"/>
                                     <constraint firstItem="5vn-w5-kyG" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" type="default" id="FE2-kb-uD5"/>
@@ -2467,7 +2488,9 @@
                             <outlet property="delegate" destination="2I0-5O-JeQ" id="hMV-ry-CPj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JbL-a9-hfs"/>
+                    <navigationItem key="navigationItem" id="JbL-a9-hfs">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="rUC-A7-rr3"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xt-l1-w9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2555,8 +2578,10 @@
         <class className="AccessCodeCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AccessCodeCell.h"/>
             <relationships>
+                <relationship kind="action" name="submitAction:"/>
                 <relationship kind="outlet" name="accessCodeFld" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submit" candidateClass="TaloolUIButton"/>
             </relationships>
         </class>
         <class className="ActivityCell" superclassName="UITableViewCell">
@@ -2794,5 +2819,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="lZZ-Le-LNs"/>
         <segue reference="HMP-oi-56u"/>
+        <segue reference="EGa-Bg-TS6"/>
     </inferredMetricsTieBreakers>
 </document>

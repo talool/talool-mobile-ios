@@ -37,7 +37,7 @@
     CGSize detailsSize = [thedeal.details sizeWithFont:font2
                                        constrainedToSize:CGSizeMake(280, 800)
                                            lineBreakMode:NSLineBreakByWordWrapping];
-    int padding = 42;
+    int padding = 54;
     int margin = 20;
     detailSize = (summarySize.height + detailsSize.height + padding + margin);
     if (detailSize < 112) detailSize = 112;

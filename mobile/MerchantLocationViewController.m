@@ -159,7 +159,7 @@
     {
         NSString *CellIdentifier = @"FooterCell";
         FooterPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setSimpleAttributedMessage:@"Click the address to center the map." icon:FAKIconArrowDown icon:FAKIconArrowUp];
+        [cell setSimpleMessage:@"Touch the address to center the map."];
         return cell;
     }
     else
@@ -194,7 +194,7 @@
     }
     else
     {
-        [cell setMessage:@"Click the map to get directions."];
+        [cell setMessage:@"Touch the map to get directions."];
     }
     return cell;
 }

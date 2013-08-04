@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *accessCodeFld;
 @property (strong, nonatomic) ttDealOffer *offer;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) IBOutlet TaloolUIButton *submit;
+- (IBAction)submitAction:(id)sender;
 
 - (void) setupKeyboardAccessory:(ttDealOffer *)offer;
 

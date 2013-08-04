@@ -127,6 +127,14 @@
      */
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showMap"])
+    {
+        [[segue destinationViewController] setMerchant:deal.deal.merchant];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
