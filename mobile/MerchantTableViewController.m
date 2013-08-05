@@ -25,6 +25,7 @@
 #import "HelpNetworkFailureViewController.h"
 #import "MerchantActionBar3View.h"
 #import "TaloolMobileWebViewController.h"
+#import "talool-api-ios/GAI.h"
 
 @interface MerchantTableViewController ()
 
@@ -135,7 +136,7 @@
     {
         ttMerchantLocation *loc = [merchant getClosestLocation];
         [[segue destinationViewController] setMobileWebUrl:loc.websiteUrl];
-        [[segue destinationViewController] setViewTitle:@"Feedback"];
+        [[segue destinationViewController] setViewTitle:merchant.name];
     }
     else if ([[segue identifier] isEqualToString:@"showDeal"])
     {
@@ -322,18 +323,47 @@
 
 - (void)openMap:(id)sender
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"MERCHANT"
+                        withAction:@"ActionButton"
+                         withLabel:@"Map"
+                         withValue:nil];
+    
     [self performSegueWithIdentifier:@"showMap" sender:self];
 }
 
 - (void)placeCall:(id)sender
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"MERCHANT"
+                        withAction:@"ActionButton"
+                         withLabel:@"Call"
+                         withValue:nil];
+    
     ttMerchantLocation *loc = [merchant getClosestLocation];
-    NSString *phoneNumber = [@"tel://" stringByAppendingString:loc.phone];
+    
+    NSMutableString *cleanPhoneNumber = [NSMutableString
+                                       stringWithCapacity:10];
+    
+    for (int i=0; i<[loc.phone length]; i++) {
+        if (isdigit([loc.phone characterAtIndex:i])) {
+            [cleanPhoneNumber appendFormat:@"%c",[loc.phone characterAtIndex:i]];
+        }
+    }
+    
+    NSLog(@"calling %@",cleanPhoneNumber);
+    NSString *phoneNumber = [@"tel://" stringByAppendingString:cleanPhoneNumber];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
 - (void)visitWebsite:(id)sender
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendEventWithCategory:@"MERCHANT"
+                        withAction:@"ActionButton"
+                         withLabel:@"Website"
+                         withValue:nil];
+    
     [self performSegueWithIdentifier:@"showWebsite" sender:self];
 }
 

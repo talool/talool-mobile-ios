@@ -851,7 +851,7 @@
                                                 <constraint firstAttribute="height" constant="150" id="X1J-EP-pBO"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-mf-wiP" userLabel="Merchant Logo">
+                                        <imageView userInteractionEnabled="NO" contentMode="right" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-mf-wiP" userLabel="Merchant Logo">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="yb7-P8-v6W"/>
                                             </constraints>
@@ -1067,7 +1067,7 @@
                             <tableViewSection headerTitle="Account" id="dm4-XX-Wlk">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LogoutCell" id="VH0-jv-Tde">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -1213,7 +1213,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Zq-0H-MTc">
-                                        <rect key="frame" x="0.0" y="314" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="314" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
@@ -1716,19 +1716,18 @@
                                     <constraint firstItem="4dj-g8-oXj" firstAttribute="top" secondItem="pVj-Vx-2Ja" secondAttribute="bottom" type="user" id="4MG-qt-qmK"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="Bbi-7G-y1L"/>
                                     <constraint firstItem="VN8-Uz-MGL" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="Eqq-yH-b90"/>
+                                    <constraint firstAttribute="bottom" secondItem="er3-6y-SgU" secondAttribute="bottom" constant="23" id="Fco-LJ-ZJ0"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="20" type="default" id="KGn-Hb-rP4"/>
-                                    <constraint firstItem="er3-6y-SgU" firstAttribute="bottom" secondItem="XGB-IJ-HFj" secondAttribute="bottom" type="user" id="REe-c2-jbm"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="centerX" secondItem="PoI-cy-5CE" secondAttribute="centerX" type="default" id="SIJ-7o-WfV"/>
                                     <constraint firstItem="VN8-Uz-MGL" firstAttribute="top" secondItem="pLg-c9-AiA" secondAttribute="bottom" type="user" id="T5o-hQ-qIF"/>
                                     <constraint firstItem="pVj-Vx-2Ja" firstAttribute="top" secondItem="VN8-Uz-MGL" secondAttribute="bottom" type="user" id="Tw6-8a-3RW"/>
                                     <constraint firstItem="4dj-g8-oXj" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="WIY-2e-zSc"/>
                                     <constraint firstItem="pLg-c9-AiA" firstAttribute="top" secondItem="crq-kV-FoY" secondAttribute="top" constant="8" type="user" id="Xpc-Ah-1b3"/>
-                                    <constraint firstItem="XGB-IJ-HFj" firstAttribute="top" secondItem="oMa-a5-IsU" secondAttribute="bottom" constant="15" type="user" id="ZNj-wT-hvF"/>
                                     <constraint firstItem="pLg-c9-AiA" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" type="default" id="cZs-sv-4G6"/>
+                                    <constraint firstItem="PoI-cy-5CE" firstAttribute="top" secondItem="crq-kV-FoY" secondAttribute="top" constant="75" id="emu-ge-KKd"/>
                                     <constraint firstItem="oMa-a5-IsU" firstAttribute="top" secondItem="pLg-c9-AiA" secondAttribute="bottom" constant="8" type="user" id="evp-pg-ZZz"/>
                                     <constraint firstItem="XGB-IJ-HFj" firstAttribute="leading" secondItem="crq-kV-FoY" secondAttribute="leading" constant="31" id="fKW-z8-B1h"/>
                                     <constraint firstItem="er3-6y-SgU" firstAttribute="baseline" secondItem="XGB-IJ-HFj" secondAttribute="baseline" type="default" id="uhq-eh-nPv"/>
-                                    <constraint firstItem="er3-6y-SgU" firstAttribute="top" secondItem="XGB-IJ-HFj" secondAttribute="top" type="user" id="vB3-7h-zY0"/>
                                     <constraint firstItem="XGB-IJ-HFj" firstAttribute="top" secondItem="PoI-cy-5CE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vb2-1V-jMi"/>
                                 </constraints>
                                 <connections>

@@ -68,11 +68,15 @@
 {
     // manage the state of the view
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy 'at' HH:mm:ss"];
     
     if ([dealAcquire hasBeenRedeemed])
     {
-        if (dealAcquire.redemptionCode)
+        if (dealAcquire.redemptionCode && dealAcquire.redeemed)
+        {
+            message.text = [NSString stringWithFormat:@"Redemption Code %@ issued on %@", dealAcquire.redemptionCode, [dateFormatter stringFromDate:dealAcquire.redeemed]];
+        }
+        else if (dealAcquire.redemptionCode)
         {
             message.text = [NSString stringWithFormat:@"Redemption Code: %@", dealAcquire.redemptionCode];
         }
