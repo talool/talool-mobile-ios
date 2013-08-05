@@ -485,7 +485,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TileTop" rowHeight="60" id="kQQ-6U-KCQ" customClass="HeaderPromptCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TileTop" rowHeight="60" id="kQQ-6U-KCQ" customClass="HeaderPromptCell">
                                 <rect key="frame" x="0.0" y="50" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -527,7 +527,7 @@
                                     <outlet property="promptMessage" destination="KQC-80-ohC" id="qMr-Fx-jqi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="qid-w6-WlB" customClass="ActivityCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="qid-w6-WlB" customClass="ActivityCell">
                                 <rect key="frame" x="0.0" y="110" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -739,7 +739,7 @@
                                     <segue destination="Kia-Ym-Kxg" kind="push" identifier="WelcomeActivity" id="q3T-VT-ua5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="FpQ-My-Dh9" userLabel="Buy More Prompt" customClass="FooterPromptCell">
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="FpQ-My-Dh9" userLabel="Buy More Prompt" customClass="FooterPromptCell">
                                 <rect key="frame" x="0.0" y="380" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -2817,7 +2817,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="lZZ-Le-LNs"/>
-        <segue reference="HMP-oi-56u"/>
+        <segue reference="q3T-VT-ua5"/>
         <segue reference="EGa-Bg-TS6"/>
     </inferredMetricsTieBreakers>
 </document>
