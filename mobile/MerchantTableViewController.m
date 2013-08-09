@@ -167,6 +167,7 @@
         NSString *CellIdentifier = @"DealImageCell";
         DealImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         [cell setUrl:[merchant getClosestLocation].imageUrl];
+        //NSLog(@"image url: %@",[merchant getClosestLocation].imageUrl);
         return cell;
     }
     else if (indexPath.row == [deals count]+1) {

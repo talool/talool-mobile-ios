@@ -78,6 +78,9 @@
 - (void) fetchActivities
 {
     ttCustomer *user = [CustomerHelper getLoggedInUser];
+    
+    if (!user) return;
+    
     NSError *error;
     activities = [user getActivities:[CustomerHelper getContext] error:&error];
     [self filterActivities];

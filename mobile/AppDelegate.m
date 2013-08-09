@@ -92,12 +92,6 @@
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
-    if ([CustomerHelper getLoggedInUser] != nil)
-    {
-        [activityHelper startPollingActivity];
-        [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
-    }
-    
     [self.splashView.view removeFromSuperview];
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];

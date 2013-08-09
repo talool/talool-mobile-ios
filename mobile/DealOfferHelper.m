@@ -16,9 +16,6 @@
 
 @interface DealOfferHelper()
 
-// location
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property BOOL locationManagerEnabled;
 
 @end
 
@@ -40,43 +37,7 @@
 {
     if ((self = [super init])) {
         
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        _locationManager.delegate = self;
-        
         [self reset];
-        
-        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-        
-        // is the location service enabled?
-        if ([CLLocationManager locationServicesEnabled] == NO)
-        {
-            // the user will be prompted to turn them on when the location
-            // manager starts up.
-            NSLog(@"The user has disabled location services");
-            [tracker sendEventWithCategory:@"APP"
-                                withAction:@"LocationServices"
-                                 withLabel:@"Disabled"
-                                 withValue:nil];
-        }
-        
-        // is the location service authorized?
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined ||
-            [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
-        {
-            /*
-             * TODO
-             - message user about why it's needed?
-             - flag the user obj, so we can avoid errors?
-             */
-            NSLog(@"The user has denied the use of their location");
-            [tracker sendEventWithCategory:@"APP"
-                                withAction:@"LocationServices"
-                                 withLabel:@"Denied"
-                                 withValue:nil];
-        }
-        
-        _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
         
     }
     return self;
@@ -109,7 +70,6 @@
         }
     }
     
-    [_locationManager startUpdatingLocation];
 }
 
 - (ttDealOffer *) getClosestDealOffer
@@ -147,11 +107,6 @@
         [self setLocationAsVancouver];
     }
     
-    if (closestBook != nil)
-    {
-        //NSLog(@"DEBUG::: got the closest book (%@) and product (%@)",closestBook.title, closestProduct.productIdentifier);
-        [_locationManager stopUpdatingLocation];
-    }
 }
 
 -(void) setLocationAsBoulder
@@ -192,26 +147,8 @@
     
     [self setClosestLocation:newLocation];
     
-    if (_locationManagerEnabled == NO)
-    {
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
-            // we were just authorized, so update the list
-            _locationManagerEnabled = YES;
-            [self setClosestLocation:newLocation];
-        }
-    }
 }
 
--(void)locationManager:(CLLocationManager *)manager
-      didFailWithError:(NSError *)error
-{
-    
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"APP"
-                        withAction:@"ClosestDealOffer"
-                         withLabel:@"Fail:location_error"
-                         withValue:nil];
-}
 
 
 @end

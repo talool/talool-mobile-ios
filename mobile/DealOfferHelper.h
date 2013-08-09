@@ -10,8 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 #warning @"environment specific deal offer ids";
-#define DEAL_OFFER_ID_PAYBACK_BOULDER        @"e11dcc50-3ee1-477d-9e2d-ab99f0c28675"
-#define DEAL_OFFER_ID_PAYBACK_VANCOUVER      @"231d6a36-1a40-44c6-ba25-402f42d05f6d"
+#define DEAL_OFFER_ID_PAYBACK_BOULDER        @"4d54d8ef-febb-4719-b9f0-a73578a41803"
+#define DEAL_OFFER_ID_PAYBACK_VANCOUVER      @"a067de54-d63d-4613-8d60-9d995765cd52"
 
 #define BOULDER_LATITUDE        40.0150
 #define BOULDER_LONGITUDE       -105.2700

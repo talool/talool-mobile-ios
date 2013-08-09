@@ -13,6 +13,7 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/GAI.h"
+#import "DealOfferHelper.h"
 
 @interface MerchantSearchHelper ()
 
@@ -21,6 +22,7 @@
 // location
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property BOOL locationManagerEnabled;
+@property BOOL fetching;
 
 @end
 
@@ -44,9 +46,6 @@
     
     [self initLocationManager];
     
-    // make this call ver infrequently
-    [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
-    
     [self fetchMerchants];
     [self filterMerchants];
     
@@ -55,6 +54,7 @@
 
 - (void) initLocationManager
 {
+    
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
@@ -89,6 +89,7 @@
 
 - (void) fetchMerchants
 {
+    self.fetching = YES;
     if (_locationManagerEnabled)
     {
         [_locationManager startUpdatingLocation];
@@ -102,14 +103,15 @@
 
 - (void) fetchWithLocation:(CLLocation *)location
 {
-    if (location)
+    if (self.fetching)
     {
-        [_locationManager stopUpdatingLocation];
+        ttCustomer *user = [CustomerHelper getLoggedInUser];
+        [user refreshMerchants:location context:[CustomerHelper getContext]];
+        merchants = [self sortMerchants:[user getMyMerchants]];
+        [self filterMerchants];
+        self.fetching = NO;
     }
-    ttCustomer *user = [CustomerHelper getLoggedInUser];
-    [user refreshMerchants:location context:[CustomerHelper getContext]];
-    merchants = [self sortMerchants:[user getMyMerchants]];
-    [self filterMerchants];
+    
 }
 
 - (NSArray *) sortMerchants:(NSArray *)unsortedMerchants
@@ -164,22 +166,33 @@
           fromLocation:(CLLocation *)oldLocation
 {
     
-    [self fetchWithLocation:newLocation];
-    
     if (_locationManagerEnabled == NO)
     {
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
             // we were just authorized, so update the list
             _locationManagerEnabled = YES;
-            [self fetchWithLocation:newLocation];
         }
+    }
+    
+    if (newLocation && self.fetching)
+    {
+        [_locationManager stopUpdatingLocation];
+        [self fetchWithLocation:newLocation];
+        
+        // This is a bit of a hack, but in order to reduce the load on the device and improve perf
+        // the DealOfferHelper relies on this objects location manager
+        [[DealOfferHelper sharedInstance] locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
+        
+    }
+    if (newLocation || !self.fetching)
+    {
+        [_locationManager stopUpdatingLocation];
     }
 }
 
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error
 {
-    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker sendEventWithCategory:@"APP"
                         withAction:@"RefreshMerchants"
