@@ -19,7 +19,6 @@
 		8151CBAE1794A701007894B2 /* compass1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAC1794A701007894B2 /* compass1.png */; };
 		8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAD1794A701007894B2 /* compass1@2x.png */; };
 		8157632817A2FA0F00D8F3AC /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157632717A2FA0F00D8F3AC /* no-wifi-icon.png */; };
-		817914A91798948900576CDD /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 817914A81798948900576CDD /* talool-api-ios.bundle */; };
 		817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */; };
 		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
 		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
@@ -105,6 +104,7 @@
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		81FD676F17B67C9900D3C4D1 /* talool-api-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81FD676E17B67C9900D3C4D1 /* talool-api-ios.bundle */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
@@ -217,7 +217,6 @@
 		8151CBAC1794A701007894B2 /* compass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass1.png; sourceTree = "<group>"; };
 		8151CBAD1794A701007894B2 /* compass1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass1@2x.png"; sourceTree = "<group>"; };
 		8157632717A2FA0F00D8F3AC /* no-wifi-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-wifi-icon.png"; sourceTree = "<group>"; };
-		817914A81798948900576CDD /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		817914AA1798D34300576CDD /* HelpNetworkFailureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpNetworkFailureViewController.h; sourceTree = "<group>"; };
 		817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpNetworkFailureViewController.m; sourceTree = "<group>"; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
@@ -344,6 +343,7 @@
 		81F24B22175950C9003A3A1A /* TaloolIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIconButton.h; sourceTree = "<group>"; };
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
+		81FD676E17B67C9900D3C4D1 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -629,7 +629,7 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				817914A81798948900576CDD /* talool-api-ios.bundle */,
+				81FD676E17B67C9900D3C4D1 /* talool-api-ios.bundle */,
 				8151CBA4179452F0007894B2 /* SystemConfiguration.framework */,
 				817E53841770CE180049434A /* StoreKit.framework */,
 				916B1166175D69590024A037 /* Security.framework */,
@@ -983,7 +983,6 @@
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
 				8151CBAE1794A701007894B2 /* compass1.png in Resources */,
 				8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */,
-				817914A91798948900576CDD /* talool-api-ios.bundle in Resources */,
 				818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */,
 				8186418F17998DAC00DE0C2E /* buttonBar3Brown.png in Resources */,
 				8186419017998DAC00DE0C2E /* buttonBar3Brown@2x.png in Resources */,
@@ -1024,6 +1023,7 @@
 				8157632817A2FA0F00D8F3AC /* no-wifi-icon.png in Resources */,
 				81AE459517A379D300F5643E /* Icon.png in Resources */,
 				81AE459617A379D300F5643E /* Icon@2x.png in Resources */,
+				81FD676F17B67C9900D3C4D1 /* talool-api-ios.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

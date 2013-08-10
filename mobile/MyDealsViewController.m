@@ -289,14 +289,12 @@
 
 - (void) refreshMerchants
 {
-    // Override in subclass to hit the service
-    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:.1];
 }
 
 - (void) updateTable
 {
-    [searchView fetchMerchants];
-    [self.refreshControl endRefreshing];
+    [[MerchantSearchHelper sharedInstance] fetchMerchants];
 }
 
 #pragma mark -
@@ -306,6 +304,7 @@
 {
     merchants = newMerchants;
     [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark -

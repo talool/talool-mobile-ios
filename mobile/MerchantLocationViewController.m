@@ -12,8 +12,6 @@
 #import "TaloolColor.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttAddress.h"
-#import "talool-api-ios/ttLocation.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "CustomerHelper.h"
@@ -33,7 +31,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationItem.title = merchant.name;
-    [self centerMap:[merchant getClosestLocation].location];
+    [self centerMap:[merchant getClosestLocation]];
     
     sortDescriptors = [NSArray arrayWithObjects:
                        //[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], // TODO distance
@@ -46,7 +44,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self centerMap:[merchant getClosestLocation].location];
+    [self centerMap:[merchant getClosestLocation]];
 }
 
 - (void)viewDidLoad
@@ -113,15 +111,15 @@
         NSString *name = (loc.name == nil) ? merchant.name : loc.name;
         
         CLLocationCoordinate2D coordinate;
-        coordinate.latitude = [loc.location.latitude doubleValue];
-        coordinate.longitude = [loc.location.longitude doubleValue];
+        coordinate.latitude = [loc.latitude doubleValue];
+        coordinate.longitude = [loc.longitude doubleValue];
         
-        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address.address1 coordinate:coordinate];
+        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address1 coordinate:coordinate];
         [locationMapView addAnnotation:annotation];
 	}
 }
 
-- (void)centerMap:(ttLocation *) loc
+- (void)centerMap:(ttMerchantLocation *) loc
 {
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [loc.latitude doubleValue];
@@ -204,7 +202,7 @@
     if (indexPath.row > 0 && indexPath.row <= [locations count])
     {
         ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
-        [self centerMap:location.location];
+        [self centerMap:location];
 
     }
 }

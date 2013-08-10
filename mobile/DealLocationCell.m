@@ -9,7 +9,6 @@
 #import "DealLocationCell.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttAddress.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FontAwesomeKit.h"
 
@@ -45,11 +44,11 @@
     }
     else
     {
-        [merchantAddress setText:merchantLocation.address.address1];
+        [merchantAddress setText:merchantLocation.address1];
         [merchantCityState setText:[NSString stringWithFormat:@"%@, %@ %@",
-                                    merchantLocation.address.city,
-                                    merchantLocation.address.stateProvidenceCounty,
-                                    merchantLocation.address.zip]];
+                                    merchantLocation.city,
+                                    merchantLocation.stateProvidenceCounty,
+                                    merchantLocation.zip]];
     }
     
 }

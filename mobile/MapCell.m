@@ -13,8 +13,6 @@
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "talool-api-ios/ttDealOffer.h"
 #import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttLocation.h"
-#import "talool-api-ios/ttAddress.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 
@@ -63,14 +61,14 @@
     }
     
     // center the map
-    [self centerMap:centerLocation.location];
+    [self centerMap:centerLocation];
 
 }
 
 - (void) setMerchant:(ttMerchant *)merchant
 {
     [self plotMerchantLocations:merchant];
-    [self centerMap:[merchant getClosestLocation].location];
+    [self centerMap:[merchant getClosestLocation]];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)locationMapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -112,15 +110,15 @@
         NSString *name = (loc.name == nil) ? merchant.name : loc.name;
         
         CLLocationCoordinate2D coordinate;
-        coordinate.latitude = [loc.location.latitude doubleValue];
-        coordinate.longitude = [loc.location.longitude doubleValue];
+        coordinate.latitude = [loc.latitude doubleValue];
+        coordinate.longitude = [loc.longitude doubleValue];
         
-        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address.address1 coordinate:coordinate];
+        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address1 coordinate:coordinate];
         [mapView addAnnotation:annotation];
 	}
 }
 
-- (void)centerMap:(ttLocation *) loc
+- (void)centerMap:(ttMerchantLocation *) loc
 {
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [loc.latitude doubleValue];

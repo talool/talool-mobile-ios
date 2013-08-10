@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class ttMerchant, ttLocation;
+@class ttMerchant, ttMerchantLocation;
 
 @interface MerchantLocationViewController : UIViewController<MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -18,7 +18,7 @@
     NSArray *locations;
 }
 
-- (void)centerMap:(ttLocation *) loc;
+- (void)centerMap:(ttMerchantLocation *) loc;
 
 @property (weak, nonatomic) IBOutlet MKMapView *locationMapView;
 @property (nonatomic, retain) ttMerchant *merchant;
