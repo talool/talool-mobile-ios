@@ -21,8 +21,6 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttLocation.h"
-#import "talool-api-ios/ttAddress.h"
 #import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/TaloolFrameworkHelper.h"
 #import "CustomerHelper.h"
@@ -92,6 +90,11 @@
     
     [self.tableView reloadData];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     [self askForHelp];
 }
 
@@ -129,12 +132,16 @@
 - (void) askForHelp
 {
     // if merchants are still 0, we should show the user some help
-    if ([merchants count]==0)
+    if ([merchants count]==0 && helpButton==nil)
     {
         helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
         [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:helpButton];
+    }
+    else if ([merchants count]>0)
+    {
+        [self closeHelp];
     }
 }
 
@@ -143,6 +150,7 @@
     if (helpButton)
     {
         [helpButton removeFromSuperview];
+        helpButton = nil;
     }
 }
 
@@ -303,6 +311,7 @@
 - (void)merchantSetChanged:(NSArray *)newMerchants sender:(id)sender
 {
     merchants = newMerchants;
+    [self askForHelp];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }

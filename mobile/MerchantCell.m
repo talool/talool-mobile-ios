@@ -7,7 +7,6 @@
 //
 
 #import "MerchantCell.h"
-#import "talool-api-ios/TaloolAddress.h"
 #import "talool-api-ios/ttCategory.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "CategoryHelper.h"

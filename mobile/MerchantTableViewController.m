@@ -166,7 +166,23 @@
     if (indexPath.row == 0) {
         NSString *CellIdentifier = @"DealImageCell";
         DealImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setUrl:[merchant getClosestLocation].imageUrl];
+        
+        // TODO: figure out why the image is missing for some locations
+        __block NSString *url = [merchant getClosestLocation].imageUrl;
+        if (!url)
+        {
+            NSLog(@"no image url for %@ at %@",merchant.name, [merchant getClosestLocation].address1);
+            [merchant.locations enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                ttMerchantLocation *loc = (ttMerchantLocation *)obj;
+                NSLog(@"image url for %@ is %@",loc.address1, loc.imageUrl);
+                if (loc.imageUrl)
+                {
+                    url = loc.imageUrl;
+                }
+            }];
+        }
+        
+        [cell setUrl:url];
         //NSLog(@"image url: %@",[merchant getClosestLocation].imageUrl);
         return cell;
     }

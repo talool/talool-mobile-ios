@@ -70,6 +70,9 @@
         }
     }
     
+    closestBook=nil;
+    closestProduct=nil;
+    
 }
 
 - (ttDealOffer *) getClosestDealOffer
