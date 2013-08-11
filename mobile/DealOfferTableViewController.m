@@ -34,7 +34,7 @@
 
 @implementation DealOfferTableViewController
 
-@synthesize actionView, detailSize,numberOfExtraCells,numberOfExtraCellsBeforeDeals;
+@synthesize actionView, detailSize,numberOfExtraCells,numberOfExtraCellsBeforeDeals, helpButton;
 
 - (void)viewDidLoad
 {
@@ -56,14 +56,6 @@
 {
     [super viewWillAppear:animated];
     
-    if ([[DealOfferHelper sharedInstance] getClosestDealOffer]==nil)
-    {
-        // show the modal location helper view
-        HelpDealOfferLocationViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmLocation"];
-        [helper setDelegate:self];
-        [self presentViewController:helper animated:NO completion:nil];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(productPurchased)
                                                  name:IAPHelperProductPurchasedNotification
@@ -72,19 +64,62 @@
                                              selector:@selector(purchaseCanceled)
                                                  name:IAPHelperPurchaseCanceledNotification
                                                object:nil];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    
+    [self askForHelp];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self closeHelp];
+}
+
+#pragma mark -
+#pragma mark - Help Overlay Methods
+
+- (void) askForHelp
+{
+    // if the closest deal offer is still nil, we should show the user some help
+    if ([DealOfferHelper sharedInstance].closestProductId==nil)
+    {
+        // show the modal location helper view
+        HelpDealOfferLocationViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmLocation"];
+        [helper setDelegate:self];
+        [self presentViewController:helper animated:NO completion:nil];
+    }
+    else if ([[DealOfferHelper sharedInstance] getClosestDealOffer]==nil || [[DealOfferHelper sharedInstance].closestDeals count] == 0)
+    {
+        [[DealOfferHelper sharedInstance] setSelectedBook];
+        if (helpButton == nil)
+        {
+            self.navigationItem.title = @"Find Deals";
+            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpDealOffers.png"] forState:UIControlStateNormal];
+            [self.view addSubview:helpButton];
+            [self.tableView setUserInteractionEnabled:NO];
+            [self.tableView reloadData];
+            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 100) animated:NO];
+        }
+    }
+    else
+    {
+        [self closeHelp];
+    }
+}
+
+- (void)closeHelp
+{
+    if (helpButton)
+    {
+        [helpButton removeFromSuperview];
+        helpButton = nil;
+        [self.tableView setUserInteractionEnabled:YES];
+    }
 }
 
 - (void) productPurchased
@@ -128,6 +163,8 @@
     int logoHeight = 40;
     detailSize = (size.height + logoHeight + padding);
     
+    [self.tableView reloadData];
+    
 }
 
 
@@ -144,6 +181,10 @@
     if (section == 0)
     {
         return 1; // the access code cell
+    }
+    else if ([[DealOfferHelper sharedInstance].closestDeals count]==0)
+    {
+        return 0;
     }
     else
     {
@@ -174,7 +215,6 @@
             NSString *CellIdentifier = @"DetailCell";
             OfferSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
             [cell setOffer:offer];
-            
             return cell;
         }
         else if (indexPath.row == 1)
@@ -264,8 +304,13 @@
 
 -(void) locationSelected
 {
-    [self initTableView];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([[DealOfferHelper sharedInstance].closestDeals count] > 0)
+    {
+        [self initTableView];
+    }
+    
 }
 
 

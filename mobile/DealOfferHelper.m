@@ -48,6 +48,16 @@
  */
 - (void)reset
 {
+    [self loadProducts];
+    
+    closestBook=nil;
+    closestProduct=nil;
+    closestProductId=nil;
+    
+}
+
+-(void) loadProducts
+{
     // load the products
     [[TaloolIAPHelper sharedInstance] requestProductsWithCompletionHandler:nil];
     
@@ -69,10 +79,6 @@
             vancouverBook = dOff;
         }
     }
-    
-    closestBook=nil;
-    closestProduct=nil;
-    
 }
 
 - (ttDealOffer *) getClosestDealOffer
@@ -114,10 +120,6 @@
 
 -(void) setLocationAsBoulder
 {
-    if (boulderBook==nil)
-    {
-        [self reset];
-    }
     closestBook = boulderBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER;
@@ -128,16 +130,33 @@
 
 -(void) setLocationAsVancouver
 {
-    if (vancouverBook==nil)
-    {
-        [self reset];
-    }
     closestBook = vancouverBook;
     closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER];
     closestProductId = PRODUCT_IDENTIFIER_OFFER_PAYBACK_VANCOUVER;
     
-    NSError *error;
-    closestDeals = [closestBook getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+    
+}
+
+-(void) setSelectedBook
+{
+    if (boulderBook==nil || vancouverBook==nil)
+    {
+        [self loadProducts];
+    }
+    else if (closestProductId!=nil)
+    {
+        closestProduct = [[TaloolIAPHelper sharedInstance] getProductForIdentifier:closestProductId];
+        if ([closestProductId isEqual:PRODUCT_IDENTIFIER_OFFER_PAYBACK_BOULDER])
+        {
+            closestBook = boulderBook;
+        }
+        else
+        {
+            closestBook = vancouverBook;
+        }
+        NSError *error;
+        closestDeals = [closestBook getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+    }
 }
 
 #pragma mark -

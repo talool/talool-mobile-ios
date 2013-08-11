@@ -195,11 +195,14 @@
 -(void)locationManager:(CLLocationManager *)manager
       didFailWithError:(NSError *)error
 {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"APP"
-                        withAction:@"RefreshMerchants"
-                         withLabel:@"Fail:location_error"
-                         withValue:nil];
+    NSLog(@"location error: %@", error.localizedDescription);
+    [self fetchWithLocation:nil];
+    [_locationManager stopUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    _locationManagerEnabled = (status == kCLAuthorizationStatusAuthorized);
 }
 
 

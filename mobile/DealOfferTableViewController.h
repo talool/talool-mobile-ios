@@ -16,5 +16,6 @@
 
 @interface DealOfferTableViewController : UITableViewController<HelpDealOfferLocationDelegate>
 
+@property (strong, nonatomic) UIButton *helpButton;
 
 @end

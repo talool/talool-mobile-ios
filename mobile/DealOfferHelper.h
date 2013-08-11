@@ -40,6 +40,7 @@
 
 -(void) setLocationAsBoulder;
 -(void) setLocationAsVancouver;
+-(void) setSelectedBook;
 -(void) reset;
 
 @end

@@ -132,7 +132,7 @@
 - (void) askForHelp
 {
     // if merchants are still 0, we should show the user some help
-    if ([merchants count]==0 && helpButton==nil)
+    if ([merchants count]==0 && helpButton==nil && [self.searchView.filterControl selectedSegmentIndex]==0)
     {
         helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
