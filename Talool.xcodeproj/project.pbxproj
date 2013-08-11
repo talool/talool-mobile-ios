@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81058AFB17B70D1900BDD260 /* HelpDealOffers-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81058AF817B70D1900BDD260 /* HelpDealOffers-568h@2x.png */; };
+		81058AFC17B70D1900BDD260 /* HelpDealOffers.png in Resources */ = {isa = PBXBuildFile; fileRef = 81058AF917B70D1900BDD260 /* HelpDealOffers.png */; };
+		81058AFD17B70D1900BDD260 /* HelpDealOffers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81058AFA17B70D1900BDD260 /* HelpDealOffers@2x.png */; };
 		810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
 		810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
@@ -181,13 +184,6 @@
 			remoteGlobalIDString = 914A1AE416E6ECAC0043989A;
 			remoteInfo = "talool-api-ios";
 		};
-		91CC60E916F6CC1600647AEC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 914A1AF516E6ECAD0043989A;
-			remoteInfo = "talool-api-iosTests";
-		};
 		91CC60EB16F6CC1600647AEC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 91CC60E016F6CC1500647AEC /* talool-api-ios.xcodeproj */;
@@ -198,6 +194,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81058AF817B70D1900BDD260 /* HelpDealOffers-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpDealOffers-568h@2x.png"; sourceTree = "<group>"; };
+		81058AF917B70D1900BDD260 /* HelpDealOffers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpDealOffers.png; sourceTree = "<group>"; };
+		81058AFA17B70D1900BDD260 /* HelpDealOffers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpDealOffers@2x.png"; sourceTree = "<group>"; };
 		810BB75D1783295500C65540 /* KeyboardAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardAccessoryView.h; sourceTree = "<group>"; };
 		810BB75E1783295500C65540 /* KeyboardAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardAccessoryView.m; sourceTree = "<group>"; };
 		810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
@@ -717,6 +716,9 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81058AF817B70D1900BDD260 /* HelpDealOffers-568h@2x.png */,
+				81058AF917B70D1900BDD260 /* HelpDealOffers.png */,
+				81058AFA17B70D1900BDD260 /* HelpDealOffers@2x.png */,
 				81AE6DD917A1D938000596E8 /* ribbonbadge.png */,
 				81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */,
 				81AE6DB617A0B786000596E8 /* tableCell90.png */,
@@ -863,7 +865,6 @@
 			isa = PBXGroup;
 			children = (
 				91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */,
-				91CC60EA16F6CC1600647AEC /* talool-api-iosTests.octest */,
 				91CC60EC16F6CC1600647AEC /* talool-api-ios.bundle */,
 			);
 			name = Products;
@@ -950,13 +951,6 @@
 			remoteRef = 91CC60E716F6CC1600647AEC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		91CC60EA16F6CC1600647AEC /* talool-api-iosTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "talool-api-iosTests.octest";
-			remoteRef = 91CC60E916F6CC1600647AEC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		91CC60EC16F6CC1600647AEC /* talool-api-ios.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1024,6 +1018,9 @@
 				81AE459517A379D300F5643E /* Icon.png in Resources */,
 				81AE459617A379D300F5643E /* Icon@2x.png in Resources */,
 				81FD676F17B67C9900D3C4D1 /* talool-api-ios.bundle in Resources */,
+				81058AFB17B70D1900BDD260 /* HelpDealOffers-568h@2x.png in Resources */,
+				81058AFC17B70D1900BDD260 /* HelpDealOffers.png in Resources */,
+				81058AFD17B70D1900BDD260 /* HelpDealOffers@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
