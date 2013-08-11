@@ -93,9 +93,8 @@ static VerificationController *singleton;
     
     NSData *payloadData = [payload dataUsingEncoding:NSUTF8StringEncoding];
     
-#warning Check for the correct itms verify receipt URL
     // Use ITMS_SANDBOX_VERIFY_RECEIPT_URL while testing against the sandbox.
-    NSString *serverURL = ITMS_SANDBOX_VERIFY_RECEIPT_URL; //ITMS_PROD_VERIFY_RECEIPT_URL;
+    NSString *serverURL = ITMS_PROD_VERIFY_RECEIPT_URL;
     
     // Create the POST request to the server.
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverURL]];
