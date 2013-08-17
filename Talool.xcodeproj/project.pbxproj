@@ -23,11 +23,8 @@
 		8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAD1794A701007894B2 /* compass1@2x.png */; };
 		8157632817A2FA0F00D8F3AC /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157632717A2FA0F00D8F3AC /* no-wifi-icon.png */; };
 		817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */; };
-		817E537F1770A90A0049434A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537C1770A90A0049434A /* NSData+Base64.m */; };
-		817E53801770A90A0049434A /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E537E1770A90A0049434A /* VerificationController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
 		817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53791770A86A0049434A /* TaloolIAPHelper.m */; };
-		817E53851770CE180049434A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817E53841770CE180049434A /* StoreKit.framework */; };
 		818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
 		8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
 		8186418F17998DAC00DE0C2E /* buttonBar3Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */; };
@@ -222,10 +219,6 @@
 		817E53731770A82C0049434A /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		817E53781770A86A0049434A /* TaloolIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIAPHelper.h; sourceTree = "<group>"; };
 		817E53791770A86A0049434A /* TaloolIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIAPHelper.m; sourceTree = "<group>"; };
-		817E537B1770A90A0049434A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		817E537C1770A90A0049434A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		817E537D1770A90A0049434A /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
-		817E537E1770A90A0049434A /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
 		817E53841770CE180049434A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		818641701798FED100DE0C2E /* DealActionBar3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealActionBar3View.xib; sourceTree = "<group>"; };
 		8186417A179904B500DE0C2E /* DealActionBar3View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealActionBar3View.h; sourceTree = "<group>"; };
@@ -421,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */,
-				817E53851770CE180049434A /* StoreKit.framework in Frameworks */,
 				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
 				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
@@ -520,17 +512,6 @@
 				819FA958177CC563006A819B /* TaloolMobileWebViewController.m */,
 			);
 			name = "Customer Account";
-			sourceTree = "<group>";
-		};
-		817E53831770A9490049434A /* In App Purchase Verification */ = {
-			isa = PBXGroup;
-			children = (
-				817E537B1770A90A0049434A /* NSData+Base64.h */,
-				817E537C1770A90A0049434A /* NSData+Base64.m */,
-				817E537D1770A90A0049434A /* VerificationController.h */,
-				817E537E1770A90A0049434A /* VerificationController.m */,
-			);
-			name = "In App Purchase Verification";
 			sourceTree = "<group>";
 		};
 		81AE6DEC17A2B5DA000596E8 /* Deal Offer */ = {
@@ -662,7 +643,6 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
-				817E53831770A9490049434A /* In App Purchase Verification */,
 				916148D016ED1C18001C546C /* Helpers */,
 				81AE6DEE17A2BCE7000596E8 /* Table Headers */,
 				9103117A16D467AE00CEE814 /* Table Cells */,
@@ -1078,8 +1058,6 @@
 				81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */,
 				811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
-				817E537F1770A90A0049434A /* NSData+Base64.m in Sources */,
-				817E53801770A90A0049434A /* VerificationController.m in Sources */,
 				817E53811770A9150049434A /* IAPHelper.m in Sources */,
 				817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */,
 				8146D169177274450035F589 /* ActivityCell.m in Sources */,

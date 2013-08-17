@@ -29,12 +29,11 @@
 @property (nonatomic) int detailSize;
 @property (nonatomic) int numberOfExtraCells;
 @property (nonatomic) int numberOfExtraCellsBeforeDeals;
-@property (strong, nonatomic) OfferActionView *actionView;
 @end
 
 @implementation DealOfferTableViewController
 
-@synthesize actionView, detailSize,numberOfExtraCells,numberOfExtraCellsBeforeDeals, helpButton;
+@synthesize detailSize,numberOfExtraCells,numberOfExtraCellsBeforeDeals, helpButton;
 
 - (void)viewDidLoad
 {
@@ -55,22 +54,12 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased)
-                                                 name:IAPHelperProductPurchasedNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(purchaseCanceled)
-                                                 name:IAPHelperPurchaseCanceledNotification
-                                               object:nil];
     [self askForHelp];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -122,39 +111,10 @@
     }
 }
 
-- (void) productPurchased
-{
-    [actionView stopSpinner];
-}
-
-- (void) purchaseCanceled
-{
-    [actionView stopSpinner];
-}
-
 - (void) initTableView
 {
     ttDealOffer *offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
     self.navigationItem.title = offer.title;
-    
-    CGRect frame = self.view.bounds;
-    
-    // Create the action view that will be used for the second section header
-    SKProduct *product = [[DealOfferHelper sharedInstance] getClosestProduct];
-    if (product==nil)
-    {
-        // looks like we haven't gotten a product back from itunes, so init with
-        // just the productId
-        actionView = [[OfferActionView alloc]
-                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT)
-                      productId:[DealOfferHelper sharedInstance].closestProductId];
-    }
-    else
-    {
-        actionView = [[OfferActionView alloc]
-                      initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT)
-                      product:product];
-    }
     
     // calculate the height of the cells in the detail section
     UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
@@ -277,25 +237,6 @@
         {
             return DEAL_CELL_HEIGHT;
         }
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return (section == 0) ? 0.0:ACTION_VIEW_HEIGHT;
-}
-
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-
-    if (section==0)
-    {
-        return nil;
-    }
-    else
-    {
-        return actionView;
     }
 }
 

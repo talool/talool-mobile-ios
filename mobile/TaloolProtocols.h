@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
-#import <StoreKit/StoreKit.h>
 
 @class ttDealAcquire, ttDealOffer;
 

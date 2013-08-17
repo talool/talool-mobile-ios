@@ -21,8 +21,6 @@
 
 - (IBAction)buyAction:(id)sender;
 
-- (id)initWithFrame:(CGRect)frame product:(SKProduct *)product;
-
 - (id)initWithFrame:(CGRect)frame productId:(NSString *)productId;
 
 - (void) stopSpinner;

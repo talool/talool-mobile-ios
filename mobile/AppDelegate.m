@@ -14,7 +14,6 @@
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
-#import "TaloolIAPHelper.h"
 #import "TaloolTabBarController.h"
 #import "WelcomeViewController.h"
 #import "SettingsTableViewController.h"
@@ -88,7 +87,6 @@
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
     
-    [TaloolIAPHelper sharedInstance];
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
@@ -199,10 +197,6 @@
     
     [FBAppCall handleDidBecomeActive];
     [activityHelper startPollingActivity];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(productPurchased:)
-                                                 name:IAPHelperProductPurchasedNotification
-                                               object:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -239,27 +233,6 @@
                                   [self.loginViewController loginView:nil handleError:error];
                               }
                           }];
-}
-
-#pragma mark - 
-#pragma mark - IAP Helpers 
-
-- (void)productPurchased:(NSNotification *)notification
-{
-    
-    ttDealOffer *offer = [[TaloolIAPHelper sharedInstance] getOfferForIdentifier:notification.object];
-    
-    NSError *err;
-    BOOL success = [[CustomerHelper getLoggedInUser] purchaseDealOffer:offer error:&err];
-    if (success)
-    {
-        [self presentNewDeals];
-    }
-    else
-    {
-        // TODO handle failure.  The user has purchased, but we haven't delivered the deals.
-        // * Store the offer in the user's NSUserDefaults and retry later
-    }
 }
 
 -(void) presentNewDeals
