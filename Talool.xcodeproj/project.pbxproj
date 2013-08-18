@@ -157,6 +157,7 @@
 		919A331917453B120093FAC4 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
 		919A331B17453B120093FAC4 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
+		B4DC84C796A54FFFA1EFE66E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E72693BE3F2470FA01650AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E72693BE3F2470FA01650AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		81058AF817B70D1900BDD260 /* HelpDealOffers-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpDealOffers-568h@2x.png"; sourceTree = "<group>"; };
 		81058AF917B70D1900BDD260 /* HelpDealOffers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpDealOffers.png; sourceTree = "<group>"; };
 		81058AFA17B70D1900BDD260 /* HelpDealOffers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpDealOffers@2x.png"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
 		81FD676E17B67C9900D3C4D1 /* talool-api-ios.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "talool-api-ios.bundle"; sourceTree = "<group>"; };
+		843003D6BAD848B686C8001D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -436,6 +439,7 @@
 				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
 				9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */,
 				916B1172175D6B1B0024A037 /* FacebookSDK.framework in Frameworks */,
+				B4DC84C796A54FFFA1EFE66E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +598,7 @@
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
 				9103110A16D1E53800CEE814 /* Products */,
+				843003D6BAD848B686C8001D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -636,6 +641,7 @@
 				9103110E16D1E53800CEE814 /* Foundation.framework */,
 				9103111016D1E53800CEE814 /* CoreGraphics.framework */,
 				9103113B16D1E53800CEE814 /* SenTestingKit.framework */,
+				2E72693BE3F2470FA01650AB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -857,9 +863,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9103114C16D1E53900CEE814 /* Build configuration list for PBXNativeTarget "Talool" */;
 			buildPhases = (
+				111215F30E8A4EA88E171360 /* Check Pods Manifest.lock */,
 				9103110516D1E53800CEE814 /* Sources */,
 				9103110616D1E53800CEE814 /* Frameworks */,
 				9103110716D1E53800CEE814 /* Resources */,
+				0CA549415929488E95603D66 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1015,6 +1023,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0CA549415929488E95603D66 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		111215F30E8A4EA88E171360 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		9103113816D1E53800CEE814 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1215,6 +1253,7 @@
 		};
 		9103114D16D1E53900CEE814 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 843003D6BAD848B686C8001D /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1228,6 +1267,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"${inherited}",
 				);
 				INFOPLIST_FILE = "mobile/Talool-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1238,6 +1278,7 @@
 					"-all_load",
 					"-lsqlite3.0",
 					"-ObjC",
+					"${inherited}",
 				);
 				PRODUCT_NAME = Talool;
 				PROVISIONING_PROFILE = "";
@@ -1248,6 +1289,7 @@
 		};
 		9103114E16D1E53900CEE814 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 843003D6BAD848B686C8001D /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1261,6 +1303,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"${inherited}",
 				);
 				INFOPLIST_FILE = "mobile/Talool-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1271,6 +1314,7 @@
 					"-all_load",
 					"-lsqlite3.0",
 					"-ObjC",
+					"${inherited}",
 				);
 				PRODUCT_NAME = Talool;
 				PROVISIONING_PROFILE = "";
