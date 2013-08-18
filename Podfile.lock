@@ -1,0 +1,14 @@
+PODS:
+  - Braintree (2.1.0)
+
+DEPENDENCIES:
+  - Braintree (from `https://github.com/braintree/braintree_ios.git`)
+
+EXTERNAL SOURCES:
+  Braintree:
+    :git: https://github.com/braintree/braintree_ios.git
+
+SPEC CHECKSUMS:
+  Braintree: d5d239942067d584e22effe399e556cc1d33e803
+
+COCOAPODS: 0.23.0
