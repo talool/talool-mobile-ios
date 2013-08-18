@@ -12,11 +12,12 @@
 @implementation OfferActionView
 {
     NSNumberFormatter * _priceFormatter;
+    id<TaloolDealOfferActionDelegate> _delegate;
 }
 
 @synthesize product, spinner;
 
-- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId
+- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId delegate:(id<TaloolDealOfferActionDelegate>)delegate
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -24,6 +25,7 @@
         
         product = nil;
         _productId = productId;
+        _delegate = delegate;
         
         // NOTE: harding the default price of the books
         NSNumber *defaultPrice = [NSNumber numberWithFloat:9.99];
@@ -46,8 +48,7 @@
 }
 
 - (IBAction)buyAction:(id)sender {
-
-    
+    [_delegate buyNow:self];
 }
 
 - (void) stopSpinner

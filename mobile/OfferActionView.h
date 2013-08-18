@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
 @class SKProduct;
 
@@ -21,7 +22,7 @@
 
 - (IBAction)buyAction:(id)sender;
 
-- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId;
+- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId delegate:(id<TaloolDealOfferActionDelegate>)delegate;
 
 - (void) stopSpinner;
 

@@ -31,6 +31,10 @@
 - (void)visitWebsite:(id)sender;
 @end
 
+@protocol TaloolDealOfferActionDelegate<NSObject>
+- (void)buyNow:(id)sender;
+@end
+
 @protocol TaloolDealActionDelegate<NSObject>
 - (void)sendGiftViaEmail:(id)sender;
 - (void)sendGiftViaFacebook:(id)sender;

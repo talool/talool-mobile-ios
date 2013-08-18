@@ -25,6 +25,7 @@
 #import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
 #import "talool-api-ios/GAI.h"
+#import <VenmoTouch/VenmoTouch.h>
 
 @implementation AppDelegate
 
@@ -89,6 +90,7 @@
     
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
+    [self initVTClient];
     
     [self.splashView.view removeFromSuperview];
     self.window.rootViewController = self.mainViewController;
@@ -335,6 +337,17 @@
     UITabBarItem *activityTab = [controller tabBarItem];
     activityTab.badgeValue = badge;
     
+}
+
+#pragma mark -
+#pragma mark - Braintree - Venmo Touch client methods
+
+- (void) initVTClient {
+    [VTClient
+     startWithMerchantID:@"mkf3rwysqz6w9x44"
+     customerEmail:@"doug@talool.com"
+     braintreeClientSideEncryptionKey:@"MIIBCgKCAQEA2CWCSS/z/FrWMJqPb8ysca5+N7edz3Kiz9EpNwZFQ4Rx9lS02mXXLG0jHWFC41y8IFKDjzKk01OGB6Li0VL/RcB88ASdJALBpiuyTkIiiFSTFLzcGehagmfuozv7TQOnd8biYOOKvJ692laOdr7rdqLi3zFvncgg49JTnKewXZF8RRLHObpFHSj7r7O7o4Boy6aVaD06wuytf9mKxUYqp2juqVT4UgG4uhuc4EcgRYHfW5GZ0OtotKev1SsrzEC4s5N1QSBkkEeyagzGxdrp5apJkdIQLjIcx++N76SMR9Ybce2ApiScK14st96bZ760QBPMSXrMAVfYvYAEkR1B5QIDAQAB"
+     environment:VTEnvironmentSandbox];
 }
 
 @end
