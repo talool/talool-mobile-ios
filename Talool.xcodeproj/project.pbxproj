@@ -21,7 +21,12 @@
 		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
 		8151CBAE1794A701007894B2 /* compass1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAC1794A701007894B2 /* compass1.png */; };
 		8151CBAF1794A701007894B2 /* compass1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8151CBAD1794A701007894B2 /* compass1@2x.png */; };
+		815615EE17CCFF9000688B3F /* teal_header_ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 815615ED17CCFF9000688B3F /* teal_header_ios6.png */; };
+		815615F017CD001B00688B3F /* teal_header_ios6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815615EF17CD001B00688B3F /* teal_header_ios6@2x.png */; };
 		8157632817A2FA0F00D8F3AC /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157632717A2FA0F00D8F3AC /* no-wifi-icon.png */; };
+		8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
+		8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D317CC0DA400061B62 /* Icon_58.png */; };
+		8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D417CC0DA400061B62 /* Icon_80.png */; };
 		817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */; };
 		817E53811770A9150049434A /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53731770A82C0049434A /* IAPHelper.m */; };
 		817E53821770A91D0049434A /* TaloolIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E53791770A86A0049434A /* TaloolIAPHelper.m */; };
@@ -212,7 +217,13 @@
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8151CBAC1794A701007894B2 /* compass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass1.png; sourceTree = "<group>"; };
 		8151CBAD1794A701007894B2 /* compass1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass1@2x.png"; sourceTree = "<group>"; };
+		815615ED17CCFF9000688B3F /* teal_header_ios6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teal_header_ios6.png; sourceTree = "<group>"; };
+		815615EF17CD001B00688B3F /* teal_header_ios6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "teal_header_ios6@2x.png"; sourceTree = "<group>"; };
 		8157632717A2FA0F00D8F3AC /* no-wifi-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-wifi-icon.png"; sourceTree = "<group>"; };
+		8157F8D117CC0D8000061B62 /* Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_120.png; sourceTree = "<group>"; };
+		8157F8D217CC0DA400061B62 /* Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_29.png; sourceTree = "<group>"; };
+		8157F8D317CC0DA400061B62 /* Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_58.png; sourceTree = "<group>"; };
+		8157F8D417CC0DA400061B62 /* Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_80.png; sourceTree = "<group>"; };
 		817914AA1798D34300576CDD /* HelpNetworkFailureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpNetworkFailureViewController.h; sourceTree = "<group>"; };
 		817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpNetworkFailureViewController.m; sourceTree = "<group>"; };
 		817E53721770A82C0049434A /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
@@ -661,6 +672,10 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8157F8D217CC0DA400061B62 /* Icon_29.png */,
+				8157F8D317CC0DA400061B62 /* Icon_58.png */,
+				8157F8D417CC0DA400061B62 /* Icon_80.png */,
+				8157F8D117CC0D8000061B62 /* Icon_120.png */,
 				81AE459317A379D300F5643E /* Icon.png */,
 				81AE459417A379D300F5643E /* Icon@2x.png */,
 				81AE6DDD17A1E2E3000596E8 /* Default-568h@2x.png */,
@@ -696,6 +711,8 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				815615ED17CCFF9000688B3F /* teal_header_ios6.png */,
+				815615EF17CD001B00688B3F /* teal_header_ios6@2x.png */,
 				81058AF817B70D1900BDD260 /* HelpDealOffers-568h@2x.png */,
 				81058AF917B70D1900BDD260 /* HelpDealOffers.png */,
 				81058AFA17B70D1900BDD260 /* HelpDealOffers@2x.png */,
@@ -978,12 +995,15 @@
 				819B26E0179C69C700744C04 /* tableCell60Last.png in Resources */,
 				819B26E1179C69C700744C04 /* tableCell60Last@2x.png in Resources */,
 				819B26F0179D82C300744C04 /* tileTop.png in Resources */,
+				8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */,
 				819B26F1179D82C300744C04 /* tileTop@2x.png in Resources */,
 				819B26F4179DA89600744C04 /* buttonBar1.png in Resources */,
 				819B26F5179DA89600744C04 /* buttonBar1@2x.png in Resources */,
 				81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
 				81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */,
+				8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */,
 				81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */,
+				8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */,
 				81AE6DBA17A0B786000596E8 /* tableCell90.png in Resources */,
 				81AE6DBB17A0B786000596E8 /* tableCell90@2x.png in Resources */,
 				81AE6DBC17A0B786000596E8 /* tableCell90Last.png in Resources */,
@@ -1001,6 +1021,8 @@
 				81058AFB17B70D1900BDD260 /* HelpDealOffers-568h@2x.png in Resources */,
 				81058AFC17B70D1900BDD260 /* HelpDealOffers.png in Resources */,
 				81058AFD17B70D1900BDD260 /* HelpDealOffers@2x.png in Resources */,
+				815615EE17CCFF9000688B3F /* teal_header_ios6.png in Resources */,
+				815615F017CD001B00688B3F /* teal_header_ios6@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

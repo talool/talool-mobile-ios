@@ -56,6 +56,10 @@
     texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
     [texture setAlpha:0.15];
     [self.tableView setBackgroundView:texture];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"teal_header_ios6"] forBarMetrics:UIBarMetricsDefault];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
