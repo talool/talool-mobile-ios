@@ -99,7 +99,14 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     [self askForHelp];
+    
+    if (![MerchantSearchHelper sharedInstance].locationManagerStatusKnown)
+    {
+        // The user hasn't approved or denied location services
+        [[MerchantSearchHelper sharedInstance] promptForLocationServiceAuthorization];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated

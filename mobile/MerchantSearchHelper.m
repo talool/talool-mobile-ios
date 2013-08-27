@@ -28,7 +28,7 @@
 
 @implementation MerchantSearchHelper
 
-@synthesize merchants, filteredMerchants, selectedPredicate, delegate;
+@synthesize merchants, filteredMerchants, selectedPredicate, delegate, locationManagerStatusKnown;
 
 + (MerchantSearchHelper *)sharedInstance
 {
@@ -54,32 +54,22 @@
 
 - (void) initLocationManager
 {
-    
+
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
     
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
+    _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
     
-    // is the location service enabled?
-    if ([CLLocationManager locationServicesEnabled] == NO)
-    {
-        [tracker sendEventWithCategory:@"APP"
-                            withAction:@"LocationServices"
-                             withLabel:@"Disabled"
-                             withValue:nil];
-    }
-    
-    // is the location service authorized?
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined ||
-        [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
-    {
-        [tracker sendEventWithCategory:@"APP"
-                            withAction:@"LocationServices"
-                             withLabel:@"Denied"
-                             withValue:nil];
-    }
-    
+}
+
+- (void) promptForLocationServiceAuthorization
+{
+    _locationManagerEnabled=YES;
+    [self fetchMerchants];
+    [self filterMerchants];
+    locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
     _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
 }
 
@@ -203,6 +193,26 @@
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     _locationManagerEnabled = (status == kCLAuthorizationStatusAuthorized);
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // is the location service enabled?
+    if ([CLLocationManager locationServicesEnabled] == NO)
+    {
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Disabled"
+                             withValue:nil];
+    }
+    
+    // is the location service authorized?
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
+    {
+        [tracker sendEventWithCategory:@"APP"
+                            withAction:@"LocationServices"
+                             withLabel:@"Denied"
+                             withValue:nil];
+    }
 }
 
 

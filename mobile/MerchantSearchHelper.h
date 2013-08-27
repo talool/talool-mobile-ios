@@ -18,7 +18,9 @@
 @property (retain, nonatomic) NSArray *merchants;
 @property (retain, nonatomic) NSArray *filteredMerchants;
 @property (retain, nonatomic) id<MerchantSearchDelegate> delegate;
+@property (nonatomic) BOOL locationManagerStatusKnown;
 
 - (void) fetchMerchants;
+- (void) promptForLocationServiceAuthorization;
 
 @end
