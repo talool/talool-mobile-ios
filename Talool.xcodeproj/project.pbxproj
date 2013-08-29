@@ -34,6 +34,7 @@
 		8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
 		8186418F17998DAC00DE0C2E /* buttonBar3Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8186418D17998DAC00DE0C2E /* buttonBar3Brown.png */; };
 		8186419017998DAC00DE0C2E /* buttonBar3Brown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8186418E17998DAC00DE0C2E /* buttonBar3Brown@2x.png */; };
+		81867EC817CFEC7A0069EC9E /* Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D117CC0D8000061B62 /* Icon_120.png */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		819B26A21799EE6E00744C04 /* buttonBar2Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B26A01799EE6E00744C04 /* buttonBar2Brown.png */; };
@@ -962,6 +963,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81867EC817CFEC7A0069EC9E /* Icon_120.png in Resources */,
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */,
