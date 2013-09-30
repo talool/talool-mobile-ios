@@ -10,17 +10,13 @@
 #import "WelcomeViewController.h"
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
-#import "TaloolIconButton.h"
 #import "TaloolUIButton.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
-#import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
-#import "TextureHelper.h"
 
 @interface WelcomeViewController ()
 
@@ -35,7 +31,6 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Welcome to Talool"];
-    [self.navigationItem.backBarButtonItem setTitle:@"Back"];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
         // Push forward if we already have a user
@@ -55,34 +50,12 @@
      */
     self.FBLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"email",@"user_birthday"]];
     
-    
-    NSDictionary *attr = @{ FAKImageAttributeForegroundColor:[UIColor whiteColor] };
-    UIImage *userIcon = [FontAwesomeKit imageForIcon:FAKIconUser
-                                           imageSize:CGSizeMake(44, 44)
-                                            fontSize:36
-                                          attributes:attr];
-    [regButton useTaloolStyle];
-    [regButton setBaseColor:[TaloolColor teal]];
-    [regButton setTitle:@"Register a New Account" forState:UIControlStateNormal];
-    [regButton setImage:userIcon forState:UIControlStateNormal];
-    
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
-    [signinButton setTitle:@"Sign In" forState:UIControlStateNormal];
+    [signinButton setTitle:@"Sign In with Talool" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
     self.navigationItem.hidesBackButton = YES;
-    
-    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Sign In"];
-    [emailField setInputAccessoryView:kav];
-    [passwordField setInputAccessoryView:kav];
-    [passwordField setDelegate:self];
-    [emailField setDelegate:self];
-    
-    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
-    [texture setAlpha:0.15];
-    [self.tableView setBackgroundView:texture];
     
 }
 
@@ -253,49 +226,6 @@
 
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
-}
-
-- (IBAction)loginAction:(id) sender
-{
-    // add a spinner
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-    
-    // don't leave the page if login failed
-    if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
-    // remove the spinner
-    [spinner stopAnimating];
-}
-
-#pragma mark -
-#pragma mark - TaloolKeyboardAccessoryDelegate methods
--(void) submit:(id)sender
-{
-    [self loginAction:self];
-    
-}
--(void) cancel:(id)sender
-{
-    if ([emailField isFirstResponder])
-    {
-        [emailField resignFirstResponder];
-    }
-    else
-    {
-        [passwordField resignFirstResponder];
-    }
-    
-}
-
-#pragma mark -
-#pragma mark - UITextFieldDelegate methods
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [self submit:nil];
-    return YES;
 }
 
 @end

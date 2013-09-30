@@ -1,24 +1,24 @@
 //
-//  WelcomeViewController.h
-//  mobile
+//  LoginViewController.h
+//  Talool
 //
-//  Created by Douglas McCuen on 3/2/13.
+//  Created by Douglas McCuen on 9/30/13.
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
 
 @class TaloolUIButton;
 
-@interface WelcomeViewController : UITableViewController<FBLoginViewDelegate>
+@interface LoginViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
 {
+    IBOutlet UITextField *emailField;
+    IBOutlet UITextField *passwordField;
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *signinButton;
 }
 
-@property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
 @end
