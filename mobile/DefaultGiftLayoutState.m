@@ -34,19 +34,15 @@
 {
     UITableViewCell *cell;
     switch (indexPath.row) {
-        case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"DealImageCell" forIndexPath:indexPath];
-            [(DealImageCell *)cell setUrl:self.gift.deal.imageUrl];
-            break;
-        case 1:
+        case 2:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealLocationCell" forIndexPath:indexPath];
             [(DealLocationCell *)cell setMerchant:self.gift.deal.merchant];
             break;
-        case 2:
+        case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetails" forIndexPath:indexPath];
             [(GiftDetailCell *)cell setGift:self.gift];
             break;
-        case 3:
+        case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealDetailCell" forIndexPath:indexPath];
             [(DealDetailCell *)cell setDeal:self.gift.deal];
             break;
@@ -60,19 +56,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return ROW_HEIGHT_HERO;
-    }
-    else if (indexPath.row == 1)
+    if (indexPath.row == 2)
     {
         return ROW_HEIGHT_LOCATION;
     }
-    else if (indexPath.row == 2)
+    else if (indexPath.row == 0)
     {
         return ROW_GIFT_DETAIL;
     }
-    else if (indexPath.row == 3)
+    else if (indexPath.row == 1)
     {
         return self.detailSize;
     }
@@ -84,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 @end

@@ -8,7 +8,7 @@
 
 #import "DealLayoutState.h"
 
-#define ROW_GIFT_DETAIL    90.0f
+#define ROW_GIFT_DETAIL    100.0f
 
 @class ttGift;
 

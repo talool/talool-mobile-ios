@@ -20,15 +20,11 @@
 {
     UITableViewCell *cell;
     switch (indexPath.row) {
-        case 0:
-            cell = [tableView dequeueReusableCellWithIdentifier:@"DealImageCell" forIndexPath:indexPath];
-            [(DealImageCell *)cell setUrl:self.deal.deal.imageUrl];
-            break;
         case 1:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealLocationCell" forIndexPath:indexPath];
             [(DealLocationCell *)cell setMerchant:self.deal.deal.merchant];
             break;
-        case 2:
+        case 0:
             cell = [tableView dequeueReusableCellWithIdentifier:@"DealDetailCell" forIndexPath:indexPath];
             [(DealDetailCell *)cell setDeal:self.deal.deal];
             break;
@@ -42,15 +38,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return ROW_HEIGHT_HERO;
-    }
-    else if (indexPath.row == 1)
+    if (indexPath.row == 1)
     {
         return ROW_HEIGHT_LOCATION;
     }
-    else if (indexPath.row == 2)
+    else if (indexPath.row == 0)
     {
         return self.detailSize;
     }
@@ -62,7 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 @end
