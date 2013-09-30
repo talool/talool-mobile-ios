@@ -13,12 +13,15 @@
 static UIColor * ORANGE;
 static UIColor * RED;
 static UIColor * TEAL;
+static UIColor * DARK_TEAL;
 static UIColor * GREEN;
 static UIColor * GRAY_1;
 static UIColor * GRAY_2;
 static UIColor * GRAY_3;
 static UIColor * GRAY_4;
 static UIColor * GRAY_5;
+static UIColor * TRUE_GRAY;
+static UIColor * TRUE_DARK_GRAY;
 
 + (UIColor *)orange
 {
@@ -44,6 +47,14 @@ static UIColor * GRAY_5;
         TEAL = [UIColor colorWithRed:25.0/255.0 green:188.0/255.0 blue:185.0/255.0 alpha:1.0];
     }
     return TEAL;
+}
+
++ (UIColor *)dark_teal
+{
+    if (!DARK_TEAL) {
+        DARK_TEAL = [UIColor colorWithRed:18.0/255.0 green:141.0/255.0 blue:139.0/255.0 alpha:1.0];
+    }
+    return DARK_TEAL;
 }
 
 
@@ -95,6 +106,22 @@ static UIColor * GRAY_5;
         GRAY_5 = [UIColor colorWithRed:83.0/255.0 green:71.0/255.0 blue:65.0/255.0 alpha:1.0];
     }
     return GRAY_5;
+}
+
++ (UIColor *)true_gray
+{
+    if (!TRUE_GRAY) {
+        TRUE_GRAY = [UIColor colorWithRed:230.0/255.0 green:230.0/255.0 blue:230.0/255.0 alpha:1.0];
+    }
+    return TRUE_GRAY;
+}
+
++ (UIColor *)true_dark_gray
+{
+    if (!TRUE_DARK_GRAY) {
+        TRUE_DARK_GRAY = [UIColor colorWithRed:110.0/255.0 green:110.0/255.0 blue:110.0/255.0 alpha:1.0];
+    }
+    return TRUE_DARK_GRAY;
 }
 
 @end

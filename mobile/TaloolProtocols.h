@@ -32,8 +32,7 @@
 @end
 
 @protocol TaloolDealActionDelegate<NSObject>
-- (void)sendGiftViaEmail:(id)sender;
-- (void)sendGiftViaFacebook:(id)sender;
+- (void)sendGift:(id)sender;
 - (void)dealRedeemed:(id)sender;
 @optional
 - (void)dealActionCanceled:(id)sender;

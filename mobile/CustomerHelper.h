@@ -22,6 +22,6 @@
 + (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 
 + (void) showNetworkError;
-
++ (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
 
 @end
