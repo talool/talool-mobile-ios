@@ -40,11 +40,10 @@
 {
     [super viewDidLoad];
     
-    self.refreshControl.backgroundColor = [UIColor clearColor];
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
-    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
@@ -57,17 +56,10 @@
                                                                       target:self
                                                                       action:@selector(settings:)];
     self.navigationItem.rightBarButtonItem = settingsButton;
-    [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+    [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:24], UITextAttributeTextColor:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
     
-    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
-    [texture setAlpha:0.15];
-    [self.tableView setBackgroundView:texture];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"teal_header_ios6"] forBarMetrics:UIBarMetricsDefault];
-    }
 
 }
 

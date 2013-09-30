@@ -35,7 +35,7 @@
     [super viewDidLoad];
 
     CGRect frame = self.view.bounds;
-    actionBarView = [[GiftActionBar2View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,75.0)
+    actionBarView = [[GiftActionBar2View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
                                                           gift:gift
                                                       delegate:self];
 }
@@ -135,7 +135,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 75.0;
+    return HEADER_HEIGHT;
 }
 
 

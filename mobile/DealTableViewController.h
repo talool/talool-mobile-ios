@@ -13,9 +13,11 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "FacebookSDK/FacebookSDK.h"
 
+#define HEADER_HEIGHT 145.0f
+
 @class ttDealAcquire, ttDealOffer, DealRedemptionView, DealLayoutState, DealActionBar3View;
 
-@interface DealTableViewController : UITableViewController<TaloolDealActionDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, ABPeoplePickerNavigationControllerDelegate>
+@interface DealTableViewController : UITableViewController<TaloolDealActionDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, ABPeoplePickerNavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) ttDealAcquire *deal;
 @property (strong, nonatomic) ttDealOffer *offer;

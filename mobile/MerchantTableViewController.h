@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-#define HEADER_HEIGHT 75.0f
+#define HEADER_HEIGHT 145.0f
 
 @class ttMerchant;
 

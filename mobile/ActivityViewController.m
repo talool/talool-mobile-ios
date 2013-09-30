@@ -10,7 +10,6 @@
 #import "AcceptGiftViewController.h"
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
-#import "TextureHelper.h"
 #import "ActivityCell.h"
 #import "HeaderPromptCell.h"
 #import "FooterPromptCell.h"
@@ -46,20 +45,12 @@
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Activities"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
-    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     
     self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
                                          activityStreamDelegate:self];
     
-    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
-    [texture setAlpha:0.15];
-    [self.tableView setBackgroundView:texture];
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"teal_header_ios6"] forBarMetrics:UIBarMetricsDefault];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated

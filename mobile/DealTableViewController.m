@@ -44,7 +44,7 @@
     _customerLocation = nil;
     
     CGRect frame = self.view.bounds;
-    actionBar3View = [[DealActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,75.0)
+    actionBar3View = [[DealActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
                                                           deal:deal
                                                       delegate:self];
 }
@@ -159,7 +159,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 75.0;
+    return HEADER_HEIGHT;
 }
 
 
@@ -171,6 +171,31 @@
 
 #pragma mark -
 #pragma mark - TaloolDealActionDelegate methods
+
+- (void)sendGift:(id)sender
+{
+    if ([FBSession activeSession].isOpen || [[CustomerHelper getLoggedInUser] isFacebookUser])
+    {
+        // open action sheet
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"How would you like to send this deal as a gift?"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Send Gift via Facebook", @"Send Gift via Email", nil];
+
+        [actionSheet showInView:self.view.window];
+    }
+    else
+    {
+        [self sendGiftViaEmail:sender];
+    }
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) [self sendGiftViaFacebook:self];
+    else if (buttonIndex == 1) [self sendGiftViaEmail:self];
+}
 
 - (void)sendGiftViaEmail:(id)sender
 {

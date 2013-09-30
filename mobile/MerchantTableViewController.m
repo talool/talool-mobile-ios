@@ -48,12 +48,12 @@
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
-    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor gray_2] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     
     CGRect frame = self.view.bounds;
 
-    actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,75.0) delegate:self];
+    actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT) delegate:self];
     
     // add the settings button
     UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconHeartEmpty
@@ -61,7 +61,7 @@
                                                                   target:self
                                                                   action:@selector(likeAction)];
     self.navigationItem.rightBarButtonItem = likeButton;
-    [likeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+    [likeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20], UITextAttributeTextColor: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
     
@@ -72,6 +72,9 @@
     [super viewWillAppear:animated];
     
     self.navigationItem.title = merchant.name;
+    
+    NSString *url = [merchant getClosestLocation].imageUrl;
+    [actionBar3View setMerchantImage:url];
     
     [self setLikeLabel];
     
@@ -141,8 +144,7 @@
     else if ([[segue identifier] isEqualToString:@"showDeal"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        // minus 1 cuz the image is in the first row
-        ttDealAcquire *deal = [deals objectAtIndex:([indexPath row] - 1)];
+        ttDealAcquire *deal = [deals objectAtIndex:[indexPath row]];
         DealTableViewController *dtvc = [segue destinationViewController];
         [dtvc setDeal:deal];
     }
@@ -157,36 +159,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // add 1 cuz the image is on top and the footer is at the bottom
-    return [deals count]+2;
+    // add 1 cuz the footer is at the bottom
+    return [deals count]+1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        NSString *CellIdentifier = @"DealImageCell";
-        DealImageCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        // TODO: figure out why the image is missing for some locations
-        __block NSString *url = [merchant getClosestLocation].imageUrl;
-        if (!url)
-        {
-            NSLog(@"no image url for %@ at %@",merchant.name, [merchant getClosestLocation].address1);
-            [merchant.locations enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                ttMerchantLocation *loc = (ttMerchantLocation *)obj;
-                NSLog(@"image url for %@ is %@",loc.address1, loc.imageUrl);
-                if (loc.imageUrl)
-                {
-                    url = loc.imageUrl;
-                }
-            }];
-        }
-        
-        [cell setUrl:url];
-        //NSLog(@"image url: %@",[merchant getClosestLocation].imageUrl);
-        return cell;
-    }
-    else if (indexPath.row == [deals count]+1) {
+    if (indexPath.row == [deals count]) {
         NSString *CellIdentifier = @"FooterCell";
         FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
@@ -208,8 +187,7 @@
     DealAcquireCell *cell = (DealAcquireCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	// Configure the data for the cell.
-    // substract 1 cuz the image is at the top
-    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:(indexPath.row - 1)];
+    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
     [cell setDeal:deal];
     
     NSString *date;
@@ -282,12 +260,6 @@
      
 
     return cell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return (indexPath.row==0)?100.0:60.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
+#define HEADER_HEIGHT 145.0f
+
 @class ttGift, GiftActionBar2View, DealLayoutState;
 
 @interface AcceptGiftViewController : UITableViewController<TaloolGiftActionDelegate>
