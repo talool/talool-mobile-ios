@@ -29,7 +29,7 @@
     NSURL *taloolUrl = [NSURL URLWithString:mobileWebUrl];
     [mobileWeb loadRequest:[NSURLRequest requestWithURL:taloolUrl]];
     self.navigationItem.title = viewTitle;
-    [self.view setBackgroundColor:[TaloolColor gray_5]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
 }
 
 @end

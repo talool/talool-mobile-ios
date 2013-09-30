@@ -43,11 +43,6 @@
     
     spinner.hidesWhenStopped = YES;
     
-    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
-    [texture setAlpha:0.15];
-    [self.tableView setBackgroundView:texture];
-    
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
     [regButton setTitle:@"Register" forState:UIControlStateNormal];

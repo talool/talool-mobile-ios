@@ -44,11 +44,7 @@ static NSString *host = @"http://www.talool.com";
     taloolHeader = [self createHeaderView:@"About Talool"];
     
     spinner.hidesWhenStopped=YES;
-    
-    UIImageView *texture = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    texture.image = [TextureHelper getTextureWithColor:[TaloolColor gray_3] size:self.view.bounds.size];
-    [texture setAlpha:0.15];
-    [self.tableView setBackgroundView:texture];
+
 }
 
 - (UIView *) createHeaderView:(NSString *)title
@@ -57,7 +53,7 @@ static NSString *host = @"http://www.talool.com";
     CGRect headerFrame = CGRectMake(12.0,0.0,frame.size.width,60.0);
     UIView *header = [[UIView alloc] initWithFrame:headerFrame];
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:headerFrame];
-    [headerTitle setTextColor:[UIColor whiteColor]];
+    [headerTitle setTextColor:[TaloolColor gray_5]];
     headerTitle.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:21.0];
     headerTitle.text = title;
     [headerTitle setBackgroundColor:[UIColor clearColor]];
