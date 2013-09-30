@@ -14,13 +14,10 @@
 @interface MerchantActionBar3View : UIView
 {
     IBOutlet UIView *view;
-    
-    IBOutlet UILabel *webLabel;
-    IBOutlet UILabel *callLabel;
-    IBOutlet UILabel *mapLabel;
-    IBOutlet UIImageView *webIcon;
-    IBOutlet UIImageView *callIcon;
-    IBOutlet UIImageView *mapIcon;
+    IBOutlet UIImageView *image;
+    IBOutlet UIBarButtonItem *mapButton;
+    IBOutlet UIBarButtonItem *callButton;
+    IBOutlet UIBarButtonItem *webButton;
 }
 
 - (IBAction)mapAction:(id)sender;
@@ -30,5 +27,6 @@
 @property (nonatomic, strong) id<TaloolMerchantActionDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<TaloolMerchantActionDelegate>)actionDelegate;
+- (void)setMerchantImage:(NSString *)url;
 
 @end

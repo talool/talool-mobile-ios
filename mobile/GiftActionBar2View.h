@@ -17,13 +17,10 @@
     
     IBOutlet UIView *inactiveView;
     IBOutlet UIView *twoButtonView;
-    
+    IBOutlet UIImageView *dealImage;
     IBOutlet UILabel *message;
-    
-    IBOutlet UILabel *rejectLabel;
-    IBOutlet UILabel *acceptLabel;
-    IBOutlet UIImageView *acceptIcon;
-    IBOutlet UIImageView *rejectIcon;
+    IBOutlet UIBarButtonItem *rejectButton;
+    IBOutlet UIBarButtonItem *acceptButton;
 }
 
 - (id)initWithFrame:(CGRect)frame gift:(ttGift *)gift delegate:(id<TaloolGiftActionDelegate>)actionDelegate;

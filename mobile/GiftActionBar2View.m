@@ -10,11 +10,13 @@
 #import "FontAwesomeKit.h"
 #import "TaloolColor.h"
 #import "talool-api-ios/ttDealAcquire.h"
+#import "talool-api-ios/ttGift.h"
 #import "talool-api-ios/ttDeal.h"
 #import "talool-api-ios/ttFriend.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation GiftActionBar2View
 
@@ -27,24 +29,16 @@
         
         self.delegate = actionDelegate;
         
-        int iconFontSize = 32;
-        int iconSize = 35;
-        NSDictionary *attr =@{FAKImageAttributeForegroundColor:[UIColor whiteColor]};
-        
-        UIImage *icon = [FontAwesomeKit imageForIcon:FAKIconThumbsUp
-                                           imageSize:CGSizeMake(iconSize, iconSize)
-                                            fontSize:iconFontSize
-                                          attributes:attr];
-        acceptIcon.image = icon;
-        acceptLabel.text = @"Accept Gift";
-        
-        
-        icon = [FontAwesomeKit imageForIcon:FAKIconThumbsDown
-                                  imageSize:CGSizeMake(iconSize, iconSize)
-                                   fontSize:iconFontSize
-                                 attributes:attr];
-        rejectIcon.image = icon;
-        rejectLabel.text = @"No Thanks";
+        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
+                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        NSDictionary *attr2 =@{UITextAttributeTextColor:[TaloolColor orange],
+                               UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                               };
+        [acceptButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconThumbsUp, @"Accept Gift"]];
+        [acceptButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
+        [rejectButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconThumbsDown, @"No Thanks"]];
+        [rejectButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         
         [self updateView:gift];
@@ -57,6 +51,16 @@
 
 - (void) updateView:(ttGift *)gift
 {
+    [dealImage setImageWithURL:[NSURL URLWithString:gift.deal.imageUrl]
+              placeholderImage:[UIImage imageNamed:@"000.png"]
+                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                         if (error !=  nil) {
+                             // TODO track these errors
+                             NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                         }
+                         
+                     }];
+    
     [inactiveView setHidden:YES];
     [twoButtonView setHidden:NO];
 }

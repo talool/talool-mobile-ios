@@ -25,7 +25,7 @@
         
         [[NSBundle mainBundle] loadNibNamed:@"MerchantSearchView" owner:self options:nil];
         
-        self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(7.0, 12.0, 306.0, 35.0)];
+        self.filterControl = [[MerchantFilterControl alloc] initWithFrame:CGRectMake(7.0, 7.0, 306.0, 35.0)];
         
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];

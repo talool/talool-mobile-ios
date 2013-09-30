@@ -9,6 +9,7 @@
 #import "MerchantActionBar3View.h"
 #import "FontAwesomeKit.h"
 #import "TaloolColor.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation MerchantActionBar3View
 
@@ -20,31 +21,16 @@
         
         self.delegate = actionDelegate;
         
-        int iconFontSize = 32;
-        int iconSize = 35;
-        NSDictionary *attr =@{FAKImageAttributeForegroundColor:[UIColor whiteColor]};
-        
-        UIImage *icon = [FontAwesomeKit imageForIcon:FAKIconMapMarker
-                                           imageSize:CGSizeMake(iconSize, iconSize)
-                                            fontSize:iconFontSize
-                                          attributes:attr];
-        mapIcon.image = icon;
-        mapLabel.text = @"Open Map";
-        
-        
-        icon = [FontAwesomeKit imageForIcon:FAKIconPhoneSign
-                                  imageSize:CGSizeMake(iconSize, iconSize)
-                                   fontSize:iconFontSize
-                                 attributes:attr];
-        callIcon.image = icon;
-        callLabel.text = @"Call";
-        
-        icon = [FontAwesomeKit imageForIcon:FAKIconInfoSign
-                                  imageSize:CGSizeMake(iconSize, iconSize)
-                                   fontSize:iconFontSize
-                                 attributes:attr];
-        webIcon.image = icon;
-        webLabel.text = @"Visit Website";
+        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
+                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        [mapButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMapMarker, @"Map"]];
+        [mapButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+        [callButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconPhoneSign, @"Call"]];
+        [callButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+        [webButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconInfoSign, @"Web"]];
+        [webButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+
         
         [self addSubview:view];
     }
@@ -56,6 +42,19 @@
     [super awakeFromNib];
     
     [self addSubview:view];
+}
+
+- (void)setMerchantImage:(NSString *)url
+{
+    [image setImageWithURL:[NSURL URLWithString:url]
+         placeholderImage:[UIImage imageNamed:@"000.png"]
+                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                    if (error !=  nil) {
+                        // TODO track these errors
+                        NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                    }
+                    
+                }];
 }
 
 - (IBAction)mapAction:(id)sender {

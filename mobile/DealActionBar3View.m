@@ -15,6 +15,7 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation DealActionBar3View
 
@@ -27,35 +28,16 @@
         
         self.delegate = actionDelegate;
         
-        int iconFontSize = 32;
-        int iconSize = 35;
-        NSDictionary *attr =@{FAKImageAttributeForegroundColor:[UIColor whiteColor]};
-        
-        UIImage *icon = [FontAwesomeKit imageForIcon:FAKIconMoney
-                                           imageSize:CGSizeMake(iconSize, iconSize)
-                                            fontSize:iconFontSize
-                                          attributes:attr];
-        redeemIcon.image = icon;
-        redeemLabel.text = @"Use Deal Now";
-        redeemIcon2.image = icon;
-        redeemLabel2.text = @"Use Deal Now";
-        
-        
-        icon = [FontAwesomeKit imageForIcon:FAKIconFacebook
-                                  imageSize:CGSizeMake(iconSize, iconSize)
-                                   fontSize:iconFontSize
-                                 attributes:attr];
-        facebookIcon.image = icon;
-        facebookLabel.text = @"Gift via Facebook";
-        
-        icon = [FontAwesomeKit imageForIcon:FAKIconEnvelopeAlt
-                                  imageSize:CGSizeMake(iconSize, iconSize)
-                                   fontSize:iconFontSize
-                                 attributes:attr];
-        emailIcon.image = icon;
-        emailLabel.text = @"Gift via Email";
-        emailIcon2.image = icon;
-        emailLabel2.text = @"Gift via Email";
+        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
+                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        NSDictionary *attr2 =@{UITextAttributeTextColor:[TaloolColor orange],
+                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        [redeemButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMoney, @"Redeem Now"]];
+        [redeemButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
+        [emailButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconGift, @"Give As Gift"]];
+        [emailButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         [self updateView:dealAcq];
         
@@ -66,6 +48,17 @@
 
 - (void) updateView:(ttDealAcquire *)dealAcquire
 {
+    
+    [dealImage setImageWithURL:[NSURL URLWithString:dealAcquire.deal.imageUrl]
+          placeholderImage:[UIImage imageNamed:@"000.png"]
+                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                     if (error !=  nil) {
+                         // TODO track these errors
+                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                     }
+                     
+                 }];
+    
     // manage the state of the view
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy 'at' HH:mm:ss"];
@@ -91,7 +84,6 @@
         }
         
         [twoButtonView setHidden:YES];
-        [threeButtonView setHidden:YES];
         [inactiveView setHidden:NO];
     }
     else if ([dealAcquire hasBeenShared])
@@ -120,31 +112,19 @@
         }
         
         [twoButtonView setHidden:YES];
-         [threeButtonView setHidden:YES];
-         [inactiveView setHidden:NO];
+        [inactiveView setHidden:NO];
     }
     else if ([dealAcquire hasExpired])
     {
         message.text = [NSString stringWithFormat:@"Expired on %@",
                         [dateFormatter stringFromDate:dealAcquire.deal.expires]];
-        [twoButtonView setHidden:YES];
-        [threeButtonView setHidden:YES];
         [inactiveView setHidden:NO];
+        [twoButtonView setHidden:YES];
     }
     else
     {
-        if ([FBSession activeSession].isOpen || [[CustomerHelper getLoggedInUser] isFacebookUser])
-        {
-            [threeButtonView setHidden:NO];
-            [twoButtonView setHidden:YES];
-        }
-        else
-        {
-            [threeButtonView setHidden:YES];
-            [twoButtonView setHidden:NO];
-        }
-        
         [inactiveView setHidden:YES];
+        [twoButtonView setHidden:NO];
     }
     
 }
@@ -160,11 +140,8 @@
     [self.delegate dealRedeemed:self];
 }
 
-- (IBAction)facebookAction:(id)sender {
-    [self.delegate sendGiftViaFacebook:self];
+- (IBAction)giftAction:(id)sender {
+    [self.delegate sendGift:self];
 }
 
-- (IBAction)emailAction:(id)sender {
-    [self.delegate sendGiftViaEmail:self];
-}
 @end

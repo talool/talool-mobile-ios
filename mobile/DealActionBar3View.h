@@ -17,26 +17,15 @@
     
     IBOutlet UIView *inactiveView;
     IBOutlet UIView *twoButtonView;
-    IBOutlet UIView *threeButtonView;
     
     IBOutlet UILabel *message;
+    IBOutlet UIImageView *dealImage;
     
-    IBOutlet UILabel *redeemLabel;
-    IBOutlet UIImageView *redeemIcon;
-    IBOutlet UILabel *redeemLabel2;
-    IBOutlet UIImageView *redeemIcon2;
-    
-    IBOutlet UILabel *facebookLabel;
-    IBOutlet UIImageView *facebookIcon;
-    
-    IBOutlet UILabel *emailLabel;
-    IBOutlet UIImageView *emailIcon;
-    IBOutlet UILabel *emailLabel2;
-    IBOutlet UIImageView *emailIcon2;
+    IBOutlet UIBarButtonItem *redeemButton;
+    IBOutlet UIBarButtonItem *emailButton;
 }
 - (IBAction)redeemAction:(id)sender;
-- (IBAction)facebookAction:(id)sender;
-- (IBAction)emailAction:(id)sender;
+- (IBAction)giftAction:(id)sender;
 
 @property (nonatomic, strong) id<TaloolDealActionDelegate> delegate;
 
