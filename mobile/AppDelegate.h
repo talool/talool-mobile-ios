@@ -23,6 +23,7 @@
 @property (strong, nonatomic) SplashViewController* splashView;
 @property (strong, nonatomic) ActivityStreamHelper* activityHelper;
 @property BOOL isNavigating;
+@property BOOL isSplashing;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 

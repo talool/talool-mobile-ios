@@ -25,6 +25,7 @@
 #import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
 #import "talool-api-ios/GAI.h"
+#import "TaloolAppCall.h"
 
 @implementation AppDelegate
 
@@ -32,7 +33,8 @@
             navigationController = _navigationController,
             mainViewController = _mainViewController,
             loginViewController = _loginViewController,
-            isNavigating = _isNavigating;
+            isNavigating = _isNavigating,
+            isSplashing = _isSplashing;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize settingsViewController = _settingsViewController;
@@ -55,6 +57,8 @@
 
     // Dispatch a new thread so we'll see the Splash View and the user will get the progress spinner
     [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
+    
+    self.isSplashing = YES;
     
     return YES;
 }
@@ -91,8 +95,12 @@
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     
     [self.splashView.view removeFromSuperview];
+    self.isSplashing = NO;
+    
     self.window.rootViewController = self.mainViewController;
     [self.window makeKeyAndVisible];
+    
+    [[TaloolAppCall sharedInstance] handleDidBecomeActive];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -102,6 +110,11 @@
     
     if (!url || ![url absoluteString]) {
         return NO;
+    }
+    
+    if ([[url scheme] isEqualToString:@"talool"]) {
+        [[TaloolAppCall sharedInstance] handleOpenURL:url sourceApplication:sourceApplication];
+        return YES;
     }
     
     if ([[url scheme] isEqualToString:@"taloolmydeals"]) {
@@ -194,7 +207,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
+    [[TaloolAppCall sharedInstance] handleDidBecomeActive];
     [FBAppCall handleDidBecomeActive];
     [activityHelper startPollingActivity];
 }
