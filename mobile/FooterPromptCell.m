@@ -14,12 +14,12 @@
 
 -(void) setMessage:(NSAttributedString *)message
 {
-    promptMessage.textColor = [TaloolColor gray_3];
+    promptMessage.textColor = [TaloolColor true_dark_gray];
     promptMessage.attributedText = message;
 }
 -(void) setSimpleMessage:(NSString *)message
 {
-    promptMessage.textColor = [TaloolColor gray_3];
+    promptMessage.textColor = [TaloolColor true_dark_gray];
     promptMessage.text = message;
 }
 -(void) setSimpleAttributedMessage:(NSString *)message icon:(NSString *)icon1 icon:(NSString *)icon2

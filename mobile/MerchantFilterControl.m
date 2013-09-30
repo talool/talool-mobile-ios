@@ -25,7 +25,7 @@
         
         // Set up the All button
         NSDictionary *fontAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [UIColor whiteColor], UITextAttributeTextColor,
+                                   [TaloolColor dark_teal], UITextAttributeTextColor,
                                    [UIFont fontWithName:@"Arial-BoldMT" size:fontSize-4], UITextAttributeFont,nil];
         [self setTitleTextAttributes:fontAttrs forState:UIControlStateNormal];
         [self insertSegmentWithTitle:@"All" atIndex:0 animated:animated];
@@ -54,7 +54,7 @@
         [self insertSegmentWithImage:funIcon atIndex:4 animated:animated];
         
         // Set up the color and general style
-        self.tintColor = [TaloolColor gray_4];
+        self.tintColor = [TaloolColor dark_teal];
         self.segmentedControlStyle = UISegmentedControlStyleBar;
         
         self.selectedSegmentIndex = 0;
