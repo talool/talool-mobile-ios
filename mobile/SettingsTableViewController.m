@@ -76,7 +76,7 @@ static NSString *host = @"http://www.talool.com";
         // Align the button in the center horizontally
         loginView.frame = CGRectOffset(loginView.frame,
                                        (logoutCell.viewForBaselineLayout.frame.size.width/2 - loginView.frame.size.width/2 - 20.0),
-                                       2);
+                                       -1);
         
         
         [logoutCell.viewForBaselineLayout addSubview:loginView];

@@ -2674,6 +2674,11 @@
     </scenes>
     <resources>
         <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="TaloolLogoIcon2.png" width="199" height="50"/>
         <image name="compass.png" width="390" height="390"/>

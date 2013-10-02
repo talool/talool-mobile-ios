@@ -148,9 +148,6 @@
 		916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
 		9168A4DB170496CC00E53EB1 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
 		916B1167175D69590024A037 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
-		916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */; };
-		916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */; };
-		916B1172175D6B1B0024A037 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1171175D6B1B0024A037 /* FacebookSDK.framework */; };
 		917CBE5317457C0F00383EA1 /* libtalool-api-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC60E816F6CC1600647AEC /* libtalool-api-ios.a */; };
 		917F0FD916DC66AB008A56E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
 		917F0FDA16DC66AB008A56E3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
@@ -415,9 +412,6 @@
 		9168A4D9170496CC00E53EB1 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		916B1166175D69590024A037 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		916B1171175D6B1B0024A037 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		917F0FD716DC66AB008A56E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		917F0FD816DC66AB008A56E3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9183F4C4170342B000ED4844 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -474,7 +468,6 @@
 				9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */,
 				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
 				9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */,
-				916B1172175D6B1B0024A037 /* FacebookSDK.framework in Frameworks */,
 				6D1542516A0F4B2F8BB1C81A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,9 +656,6 @@
 				817E53841770CE180049434A /* StoreKit.framework */,
 				916B1166175D69590024A037 /* Security.framework */,
 				81F24B021750280D003A3A1A /* AddressBookUI.framework */,
-				916B1171175D6B1B0024A037 /* FacebookSDK.framework */,
-				916B116B175D6AD50024A037 /* FacebookSDKResources.bundle */,
-				916B116C175D6AD50024A037 /* FBUserSettingsViewResources.bundle */,
 				91490D301745DBD000622A85 /* CoreText.framework */,
 				919A3310174510A90093FAC4 /* MapKit.framework */,
 				9197F97A170CB50500BDAA58 /* SDWebImage.framework */,
@@ -1015,8 +1005,6 @@
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				91490D3C1745E02100622A85 /* FontAwesome.otf in Resources */,
 				81517B4F17FBB5470020A688 /* hero@2x.png in Resources */,
-				916B116D175D6AD50024A037 /* FacebookSDKResources.bundle in Resources */,
-				916B116E175D6AD50024A037 /* FBUserSettingsViewResources.bundle in Resources */,
 				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
 				81A869B217750BA30043ACE8 /* MerchantSearchView.xib in Resources */,
 				81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */,
