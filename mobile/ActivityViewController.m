@@ -45,7 +45,7 @@
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Activities"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"MarkerFelt-Thin" size:12.0] range:range];
-    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal] range:range];
+    [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor true_dark_gray] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
     
     self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
