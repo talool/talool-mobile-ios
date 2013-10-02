@@ -252,6 +252,8 @@
     [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
     self.paymentViewController.delegate = self;
 
+    self.paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
+    
     // Add paymentViewController to a navigation controller.
     UINavigationController *paymentNavigationController =
     [[UINavigationController alloc] initWithRootViewController:self.paymentViewController];
@@ -261,6 +263,9 @@
     [[UIBarButtonItem alloc]
         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:paymentNavigationController
         action:@selector(dismissModalViewControllerAnimated:)];
+    
+    [self.paymentViewController.navigationItem.leftBarButtonItem setTitleTextAttributes:@{UITextAttributeTextColor:[TaloolColor dark_teal]}
+                                  forState:UIControlStateNormal];
 
     NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
     [priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -279,6 +284,8 @@
                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                              target:activateViewNavigationController
                                              action:@selector(dismissModalViewControllerAnimated:)];
+    [activateView.navigationItem.leftBarButtonItem setTitleTextAttributes:@{UITextAttributeTextColor:[TaloolColor dark_teal]}
+                                                                               forState:UIControlStateNormal];
     activateView.navigationItem.title = @"Activate Deals";
     
     [self presentViewController:activateViewNavigationController animated:YES completion:nil];
