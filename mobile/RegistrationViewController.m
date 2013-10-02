@@ -16,6 +16,7 @@
 #import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
 #import "TaloolUIButton.h"
+#import "TaloolTextField.h"
 
 @interface RegistrationViewController ()
 
@@ -30,6 +31,8 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Registration"];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
 
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Register"];
     [emailField setInputAccessoryView:kav];
@@ -40,6 +43,11 @@
     [firstNameField setDelegate:self];
     [lastNameField setInputAccessoryView:kav];
     [lastNameField setDelegate:self];
+    
+    [emailField setDefaultBorderColor];
+    [passwordField setDefaultBorderColor];
+    [firstNameField setDefaultBorderColor];
+    [lastNameField setDefaultBorderColor];
     
     spinner.hidesWhenStopped = YES;
     

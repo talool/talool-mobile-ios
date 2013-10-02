@@ -8,11 +8,13 @@
 
 #import "ResetPasswordViewController.h"
 #import "TaloolUIButton.h"
+#import "TaloolTextField.h"
 #import "TaloolColor.h"
 #import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "CustomerHelper.h"
+#import "TextureHelper.h"
 
 @interface ResetPasswordViewController ()
 
@@ -26,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
 
     [changePasswordButton useTaloolStyle];
     [changePasswordButton setBaseColor:[TaloolColor teal]];
@@ -38,7 +42,8 @@
     [confirmPasswordField setInputAccessoryView:kav];
     [passwordField setDelegate:self];
     [confirmPasswordField setDelegate:self];
-    
+    [passwordField setDefaultBorderColor];
+    [confirmPasswordField setDefaultBorderColor];
 }
 
 -(void) viewWillAppear:(BOOL)animated

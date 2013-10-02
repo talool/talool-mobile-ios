@@ -38,6 +38,11 @@
 - (void)dealActionCanceled:(id)sender;
 @end
 
+@protocol TaloolDealOfferActionDelegate<NSObject>
+- (void)buyNow:(id)sender;
+- (void)activateCode:(id)sender;
+@end
+
 @protocol TaloolKeyboardAccessoryDelegate<NSObject>
 - (void)submit:(id)sender;
 @optional

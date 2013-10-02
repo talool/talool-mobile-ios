@@ -12,4 +12,6 @@
 
 +(UIImage *) getTextureWithColor:(UIColor *)color size:(CGSize)size;
 
++(UIView *) getBackgroundView:(CGRect)frame;
+
 @end

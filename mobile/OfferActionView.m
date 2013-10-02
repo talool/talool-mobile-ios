@@ -7,52 +7,66 @@
 //
 
 #import "OfferActionView.h"
+#import "FontAwesomeKit.h"
 #import "TaloolColor.h"
+#import "talool-api-ios/ttDealOffer.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OfferActionView
 {
     NSNumberFormatter * _priceFormatter;
+    id<TaloolDealOfferActionDelegate> _delegate;
 }
 
-@synthesize product, spinner;
+@synthesize offer;
 
-- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId
+- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer delegate:(id<TaloolDealOfferActionDelegate>)delegate
 {
     self = [super initWithFrame:frame];
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"OfferActionView" owner:self options:nil];
         
-        product = nil;
-        _productId = productId;
+        offer = dealOffer;
+        _delegate = delegate;
         
-        // NOTE: harding the default price of the books
-        NSNumber *defaultPrice = [NSNumber numberWithFloat:9.99];
+        [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.imageUrl]
+                       placeholderImage:[UIImage imageNamed:@"000.png"]
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                  if (error !=  nil) {
+                                      // TODO track these errors
+                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                  }
+                             
+                              }];
         
         _priceFormatter = [[NSNumberFormatter alloc] init];
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        NSString *label = [NSString stringWithFormat:@"Buy Now For %@",[_priceFormatter stringFromNumber:defaultPrice]];
-        [self.buyButton setTitle:label forState:UIControlStateNormal];
+        priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
         
-        self.spinner.hidesWhenStopped = YES;
+        
+        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
+                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        NSDictionary *attr2 =@{UITextAttributeTextColor:[TaloolColor orange],
+                               UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                               };
+        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMoney, @"Buy Now"]];
+        [buyButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
+        [activateButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconBook, @"Enter Code"]];
+        [activateButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         [self addSubview:view];
     }
     return self;
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 - (IBAction)buyAction:(id)sender {
-
-    
+    [_delegate buyNow:self];
 }
 
-- (void) stopSpinner
-{
-    [spinner stopAnimating];
+- (IBAction)activateAction:(id)sender {
+    [_delegate activateCode:self];
 }
 
 

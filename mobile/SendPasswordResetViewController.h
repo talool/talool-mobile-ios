@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton;
+@class TaloolUIButton, TaloolTextField;
 
 @interface SendPasswordResetViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
 {
-    IBOutlet UITextField *emailField;
+    IBOutlet TaloolTextField *emailField;
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *sendEmailButton;
 }

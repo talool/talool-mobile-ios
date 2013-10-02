@@ -7,70 +7,58 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OfferActionView">
             <connections>
-                <outlet property="buyButton" destination="4" id="10"/>
-                <outlet property="spinner" destination="45" id="48"/>
+                <outlet property="activateButton" destination="1Ct-wa-sfa" id="OkC-Jz-p6i"/>
+                <outlet property="buyButton" destination="Txo-fd-szk" id="8a8-Sl-cgh"/>
+                <outlet property="dealOfferImage" destination="X17-Zj-AFT" id="qIC-eN-Tjv"/>
+                <outlet property="priceLabel" destination="YYG-36-S3Y" id="FhK-n1-gCR"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="OfferActionBar" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="buttonBar1.png" translatesAutoresizingMaskIntoConstraints="NO" id="49">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-a1-cII">
+                    <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="vJK-cx-6Om"/>
+                        <barButtonItem title="Purchase" id="Txo-fd-szk">
+                            <color key="tintColor" red="0.94509803920000002" green="0.35294117650000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="buyAction:" destination="-1" id="BSj-l7-r6o"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="QXk-oO-0Pv"/>
+                        <barButtonItem title="Enter Code" id="1Ct-wa-sfa">
+                            <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="activateAction:" destination="-1" id="w4r-0j-lon"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="7dP-Rt-lci"/>
+                    </items>
+                </toolbar>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2o-ca-CbI">
+                    <rect key="frame" x="0.0" y="94" width="320" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="480" id="123"/>
-                    </constraints>
-                </imageView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="45">
-                    <rect key="frame" x="142" y="18" width="37" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </activityIndicatorView>
-                <view alpha="0.029999999329447746" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80" userLabel="highlight">
-                    <rect key="frame" x="7" y="7" width="305" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="8" y="0.0" width="306" height="75"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X17-Zj-AFT">
+                    <rect key="frame" x="186" y="9" width="114" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="306" id="79"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="32"/>
-                    <state key="normal" title="Buy Now For $99.99">
-                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="buyAction:" destination="-1" eventType="touchUpInside" id="11"/>
-                    </connections>
-                </button>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price: $20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYG-36-S3Y">
+                    <rect key="frame" x="20" y="9" width="128" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstItem="49" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="54"/>
-                <constraint firstItem="49" firstAttribute="top" secondItem="1" secondAttribute="top" id="55"/>
-                <constraint firstAttribute="bottom" secondItem="45" secondAttribute="bottom" constant="20" symbolic="YES" id="66"/>
-                <constraint firstItem="4" firstAttribute="bottom" secondItem="1" secondAttribute="bottom" id="75"/>
-                <constraint firstItem="4" firstAttribute="top" secondItem="1" secondAttribute="top" id="76"/>
-                <constraint firstItem="4" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="77"/>
-                <constraint firstItem="49" firstAttribute="centerX" secondItem="45" secondAttribute="centerX" id="78"/>
-                <constraint firstItem="80" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="7" id="91"/>
-                <constraint firstItem="80" firstAttribute="top" secondItem="1" secondAttribute="top" constant="7" id="93"/>
-                <constraint firstAttribute="trailing" secondItem="80" secondAttribute="trailing" constant="8" id="119"/>
-                <constraint firstAttribute="bottom" secondItem="80" secondAttribute="bottom" constant="35" id="122"/>
-            </constraints>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
-    <resources>
-        <image name="buttonBar1.png" width="320" height="75"/>
-    </resources>
 </document>

@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton;
+@class TaloolUIButton, TaloolTextField;
 
 @interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate> {
-    IBOutlet UITextField *emailField;
-    IBOutlet UITextField *passwordField;
-    IBOutlet UITextField *firstNameField;
-    IBOutlet UITextField *lastNameField;
+    IBOutlet TaloolTextField *emailField;
+    IBOutlet TaloolTextField *passwordField;
+    IBOutlet TaloolTextField *firstNameField;
+    IBOutlet TaloolTextField *lastNameField;
     UIAlertView *errorView;
     
     IBOutlet TaloolUIButton *regButton;

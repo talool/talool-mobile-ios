@@ -8,7 +8,9 @@
 
 #import "SendPasswordResetViewController.h"
 #import "TaloolUIButton.h"
+#import "TaloolTextField.h"
 #import "TaloolColor.h"
+#import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
 #import "talool-api-ios/ttCustomer.h"
@@ -25,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
 
     [sendEmailButton useTaloolStyle];
     [sendEmailButton setBaseColor:[TaloolColor teal]];
@@ -35,6 +39,7 @@
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Submit"];
     [emailField setInputAccessoryView:kav];
     [emailField setDelegate:self];
+    [emailField setDefaultBorderColor];
     
 }
 

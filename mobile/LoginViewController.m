@@ -9,10 +9,12 @@
 #import "LoginViewController.h"
 #import "CustomerHelper.h"
 #import "TaloolUIButton.h"
+#import "TaloolTextField.h"
 #import "TaloolColor.h"
 #import "talool-api-ios/ttCustomer.h"
 #import "KeyboardAccessoryView.h"
 #import "talool-api-ios/GAI.h"
+#import "TextureHelper.h"
 
 @interface LoginViewController ()
 
@@ -25,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
 
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
@@ -37,6 +41,10 @@
     [passwordField setInputAccessoryView:kav];
     [passwordField setDelegate:self];
     [emailField setDelegate:self];
+    
+    [emailField setDefaultBorderColor];
+    [passwordField setDefaultBorderColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

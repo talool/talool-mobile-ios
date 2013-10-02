@@ -10,6 +10,14 @@
 
 @implementation TextureHelper
 
++(UIView *) getBackgroundView:(CGRect)frame
+{
+    UIImageView *hero = [[UIImageView alloc] initWithFrame:frame];
+    hero.image = [UIImage imageNamed:@"hero"];
+    [hero setAlpha:0.15];
+    return hero;
+}
+
 +(UIImage *) getTextureWithColor:(UIColor *)color  size:(CGSize)size
 {
     // create a new bitmap image context

@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton;
+@class TaloolUIButton, TaloolTextField;
 
 @interface ResetPasswordViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
 {
-    IBOutlet UITextField *passwordField;
-    IBOutlet UITextField *confirmPasswordField;
+    IBOutlet TaloolTextField *passwordField;
+    IBOutlet TaloolTextField *confirmPasswordField;
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *changePasswordButton;
 }

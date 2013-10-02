@@ -7,22 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
-@class SKProduct;
+@class ttDealOffer;
 
 @interface OfferActionView : UIView
 {
     IBOutlet UIView *view;
+    IBOutlet UIImageView *dealOfferImage;
+    IBOutlet UILabel *priceLabel;
+    IBOutlet UIBarButtonItem *buyButton;
+    IBOutlet UIBarButtonItem *activateButton;
 }
-@property (strong, nonatomic) IBOutlet UIButton *buyButton;
-@property (strong, nonatomic) SKProduct *product;
-@property (strong, nonatomic) NSString *productId;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) ttDealOffer *offer;
 
 - (IBAction)buyAction:(id)sender;
+- (IBAction)activateAction:(id)sender;
 
-- (id)initWithFrame:(CGRect)frame productId:(NSString *)productId;
-
-- (void) stopSpinner;
+- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer delegate:(id<TaloolDealOfferActionDelegate>)delegate;
 
 @end

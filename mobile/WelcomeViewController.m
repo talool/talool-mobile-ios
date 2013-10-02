@@ -17,6 +17,7 @@
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
 #import "talool-api-ios/GAI.h"
+#import "TextureHelper.h"
 
 @interface WelcomeViewController ()
 
@@ -31,6 +32,8 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:@"Welcome to Talool"];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
         // Push forward if we already have a user
