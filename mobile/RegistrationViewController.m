@@ -18,6 +18,8 @@
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 
+#define kDatePickerTag 100
+
 @interface RegistrationViewController ()
 
 @end
@@ -43,11 +45,14 @@
     [firstNameField setDelegate:self];
     [lastNameField setInputAccessoryView:kav];
     [lastNameField setDelegate:self];
+    [birthDateField setInputAccessoryView:kav];
+    [birthDateField setDelegate:self];
     
     [emailField setDefaultBorderColor];
     [passwordField setDefaultBorderColor];
     [firstNameField setDefaultBorderColor];
     [lastNameField setDefaultBorderColor];
+    [birthDateField setDefaultBorderColor];
     
     spinner.hidesWhenStopped = YES;
     
@@ -76,14 +81,16 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    NSNumber *sex = [[NSNumber alloc] initWithInt:1]; // TODO ask the user for this
-    
     ttCustomer *user = [ttCustomer createCustomer:firstNameField.text
                                          lastName:lastNameField.text
                                             email:emailField.text
-                                              sex:sex
                                     socialAccount:nil
                                           context:appDelegate.managedObjectContext];
+    
+    
+    if ([sexPicker selectedSegmentIndex]!=0) {
+        [user setAsFemale:([sexPicker selectedSegmentIndex]==1)];
+    }
     
     // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
@@ -123,8 +130,48 @@
     return YES;
 }
 
+#pragma mark -
+
 - (IBAction)regAction:(id)sender {
     [self submit:sender];
 }
+
+- (IBAction)dateAction:(id)sender {
+    // open action sheet for date selection
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Please enter your date of birth."
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Done", nil];
+    
+    [actionSheet showInView:self.view.window];
+}
+
+- (void) willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    UIDatePicker *pickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 320, 216)];
+    
+    //Configure picker...
+    [pickerView setMinuteInterval:5];
+    [pickerView setTag: kDatePickerTag];
+    
+    //Add picker to action sheet
+    [actionSheet addSubview:pickerView];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //set Date formatter
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/YYYY"];
+    
+    //Gets our picker
+    UIDatePicker *ourDatePicker = (UIDatePicker *) [actionSheet viewWithTag:kDatePickerTag];
+    
+    NSDate *selectedDate = [ourDatePicker date];
+    
+    NSLog(@"get the date from the picker: %@", selectedDate);
+}
+
 
 @end

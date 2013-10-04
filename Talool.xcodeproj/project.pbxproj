@@ -1363,6 +1363,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = "mobile/Talool-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
