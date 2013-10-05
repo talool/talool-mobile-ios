@@ -11,19 +11,23 @@
 
 @class TaloolUIButton, TaloolTextField;
 
-@interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, UIActionSheetDelegate> {
+@interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate> {
     IBOutlet TaloolTextField *emailField;
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolTextField *firstNameField;
     IBOutlet TaloolTextField *lastNameField;
     IBOutlet TaloolTextField *birthDateField;
     IBOutlet UISegmentedControl *sexPicker;
+    IBOutlet UITableViewCell *datePickerCell;
+    IBOutlet UIDatePicker *datePicker;
     
     UIAlertView *errorView;
     
     IBOutlet TaloolUIButton *regButton;
     IBOutlet UIActivityIndicatorView *spinner;
 }
+
+- (IBAction)dateChanged:(id)sender;
 
 - (IBAction)regAction:(id)sender;
 - (IBAction)dateAction:(id)sender;

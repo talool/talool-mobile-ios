@@ -648,7 +648,7 @@
                         <sections>
                             <tableViewSection id="7w5-Qg-08H">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Kgr-FJ-Nrg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="Kgr-FJ-Nrg" userLabel="Header Cell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kgr-FJ-Nrg" id="crt-yi-aF6">
@@ -673,7 +673,7 @@
                                             <constraint firstItem="sUQ-tO-hpR" firstAttribute="top" secondItem="Kgr-FJ-Nrg" secondAttribute="top" constant="14" id="y4T-2X-gpc"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wqI-4L-peM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wqI-4L-peM" userLabel="Sex Cell">
                                         <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wqI-4L-peM" id="uob-62-SNr">
@@ -681,7 +681,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-b1-3NG">
-                                                    <rect key="frame" x="35" y="8" width="250" height="29"/>
+                                                    <rect key="frame" x="34" y="6" width="252" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <segments>
@@ -695,7 +695,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6b1-0j-Gon">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6b1-0j-Gon" userLabel="First Name Cell">
                                         <rect key="frame" x="0.0" y="94" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6b1-0j-Gon" id="W6a-3m-oA7">
@@ -718,7 +718,7 @@
                                             <constraint firstItem="3sL-nz-wID" firstAttribute="centerX" secondItem="6b1-0j-Gon" secondAttribute="centerX" id="I4g-tq-c49"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="goS-iQ-MLJ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="goS-iQ-MLJ" userLabel="Last Name Cell">
                                         <rect key="frame" x="0.0" y="138" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="goS-iQ-MLJ" id="FLI-Lm-Nm9">
@@ -747,7 +747,7 @@
                                             <constraint firstItem="BCW-n7-ipt" firstAttribute="top" secondItem="goS-iQ-MLJ" secondAttribute="top" constant="3" id="if5-dO-ykj"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OBs-zk-JqO">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="OBs-zk-JqO" userLabel="Birthdate Cell">
                                         <rect key="frame" x="0.0" y="182" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OBs-zk-JqO" id="cXh-31-svS">
@@ -755,13 +755,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthdate" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E1W-N7-UbE" customClass="TaloolTextField">
-                                                    <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <rect key="frame" x="35" y="5" width="250" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYq-JX-fX5">
-                                                    <rect key="frame" x="20" y="6" width="280" height="30"/>
+                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -774,8 +774,56 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="abH-r4-rCt">
-                                        <rect key="frame" x="0.0" y="226" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="190" id="dyZ-HT-6XJ" userLabel="Date Picker Cell">
+                                        <rect key="frame" x="0.0" y="226" width="320" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dyZ-HT-6XJ" id="Kur-7H-NG4">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KdS-Dx-rMi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="402635108.07303101">
+                                                        <!--2013-10-05 03:05:08 +0000-->
+                                                    </date>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                                        <!--1970-01-01 11:00:00 +0000-->
+                                                    </date>
+                                                    <date key="maximumDate" timeIntervalSinceReferenceDate="315486000">
+                                                        <!--2010-12-31 11:00:00 +0000-->
+                                                    </date>
+                                                    <timeZone key="timeZone" name="America/Los_Angeles">
+                                                        <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                                    </timeZone>
+                                                    <connections>
+                                                        <action selector="dateChanged:" destination="iSD-Ws-CbE" eventType="valueChanged" id="h6t-2c-tKb"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="abH-r4-rCt" userLabel="Email Cell">
+                                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="abH-r4-rCt" id="y9i-iX-L0L">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -797,8 +845,8 @@
                                             <constraint firstItem="hOL-rh-5Zb" firstAttribute="centerX" secondItem="abH-r4-rCt" secondAttribute="centerX" id="wnc-D1-Q2s"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ga6-e5-xye">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ga6-e5-xye" userLabel="Password Cell">
+                                        <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ga6-e5-xye" id="kBS-ii-EQ3">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -820,15 +868,15 @@
                                             <constraint firstItem="IG8-BV-pgS" firstAttribute="centerY" secondItem="ga6-e5-xye" secondAttribute="centerY" id="fwz-K4-iXk"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="90" id="rcJ-c6-83e">
-                                        <rect key="frame" x="0.0" y="314" width="320" height="90"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="90" id="rcJ-c6-83e" userLabel="Submit Button Cell">
+                                        <rect key="frame" x="0.0" y="504" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rcJ-c6-83e" id="xjo-Dt-X2w">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xar-xf-w6Y" customClass="TaloolUIButton">
-                                                    <rect key="frame" x="35" y="27" width="251" height="43"/>
+                                                    <rect key="frame" x="35" y="23" width="251" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <size key="titleShadowOffset" width="1" height="1"/>
                                                     <state key="normal" title="Button">
@@ -841,10 +889,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="xar-xf-w6Y" secondAttribute="bottom" constant="20" symbolic="YES" id="5Ns-o9-PIK"/>
-                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="centerX" secondItem="xjo-Dt-X2w" secondAttribute="centerX" id="Hdv-lf-svt"/>
-                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="leading" secondItem="xjo-Dt-X2w" secondAttribute="leading" constant="35" id="euE-FX-a8F"/>
-                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="top" secondItem="xjo-Dt-X2w" secondAttribute="top" constant="27" id="iJB-IE-DPo"/>
+                                                <constraint firstAttribute="bottom" secondItem="xar-xf-w6Y" secondAttribute="bottom" constant="24" id="WAF-wQ-0QP"/>
+                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="centerX" secondItem="xjo-Dt-X2w" secondAttribute="centerX" id="Zhp-qe-TbB"/>
+                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="top" secondItem="xjo-Dt-X2w" secondAttribute="top" constant="23" id="q2l-RJ-tWc"/>
+                                                <constraint firstItem="xar-xf-w6Y" firstAttribute="leading" secondItem="xjo-Dt-X2w" secondAttribute="leading" constant="35" id="xXo-Gq-NLM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -860,6 +908,8 @@
                     <navigationItem key="navigationItem" id="1DZ-XM-sRG"/>
                     <connections>
                         <outlet property="birthDateField" destination="E1W-N7-UbE" id="d4F-Ko-iBO"/>
+                        <outlet property="datePicker" destination="KdS-Dx-rMi" id="MJ9-h6-QYG"/>
+                        <outlet property="datePickerCell" destination="dyZ-HT-6XJ" id="tKW-8w-hYW"/>
                         <outlet property="emailField" destination="hOL-rh-5Zb" id="xQT-Og-zOs"/>
                         <outlet property="firstNameField" destination="3sL-nz-wID" id="m0a-nE-nyv"/>
                         <outlet property="lastNameField" destination="VV2-7d-Vpc" id="yiP-kI-vkj"/>
@@ -2718,6 +2768,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
         <image name="000.png" width="1" height="1"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="TaloolLogoIcon2.png" width="199" height="50"/>

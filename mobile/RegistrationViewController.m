@@ -21,7 +21,9 @@
 #define kDatePickerTag 100
 
 @interface RegistrationViewController ()
-
+@property (nonatomic, retain) NSIndexPath *datePickerIndexPath;
+@property (assign) BOOL datePickerOpen;
+@property (nonatomic, retain) NSDateFormatter *formatter;
 @end
 
 @implementation RegistrationViewController
@@ -59,6 +61,12 @@
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
     [regButton setTitle:@"Register" forState:UIControlStateNormal];
+    
+    self.datePickerIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+    self.datePickerOpen = NO;
+    
+    self.formatter = [[NSDateFormatter alloc] init];
+    [self.formatter setDateFormat:@"MM/dd/YYYY"];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -130,47 +138,62 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.datePickerOpen) [self dateAction:self];
+}
+
 #pragma mark -
+
+- (IBAction)dateChanged:(id)sender {
+    
+    NSLog(@"get the date from the picker: %@", [self.formatter stringFromDate:[datePicker date]]);
+    birthDateField.text = [self.formatter stringFromDate:[datePicker date]];
+}
 
 - (IBAction)regAction:(id)sender {
     [self submit:sender];
 }
 
 - (IBAction)dateAction:(id)sender {
-    // open action sheet for date selection
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Please enter your date of birth."
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Done", nil];
+
+    self.datePickerOpen = !self.datePickerOpen;
     
-    [actionSheet showInView:self.view.window];
+    if (self.datePickerOpen) [self cancel:self];
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+
 }
 
-- (void) willPresentActionSheet:(UIActionSheet *)actionSheet
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIDatePicker *pickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 320, 216)];
-    
-    //Configure picker...
-    [pickerView setMinuteInterval:5];
-    [pickerView setTag: kDatePickerTag];
-    
-    //Add picker to action sheet
-    [actionSheet addSubview:pickerView];
+    if ([indexPath compare:self.datePickerIndexPath] == NSOrderedSame)
+    {
+        if (self.datePickerOpen) return 200;
+        else return 0;
+    }
+    else if (indexPath.row==0)
+    {
+        return 50;
+    }
+    else if (indexPath.row == 8)
+    {
+        return 90;
+    }
+    return 40;
 }
 
-- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //set Date formatter
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd/YYYY"];
-    
-    //Gets our picker
-    UIDatePicker *ourDatePicker = (UIDatePicker *) [actionSheet viewWithTag:kDatePickerTag];
-    
-    NSDate *selectedDate = [ourDatePicker date];
-    
-    NSLog(@"get the date from the picker: %@", selectedDate);
+    if ([indexPath compare:self.datePickerIndexPath] != NSOrderedSame)
+    {
+        if (indexPath.row==4)
+        {
+            [self dateAction:self];
+        }
+    }
+    return;
 }
 
 
