@@ -132,6 +132,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 }
 
+/*
 + (void)postOGShareAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
 {
     // bail if not connected & we couldn't reopen it
@@ -155,21 +156,10 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
         action.tags = friends;
     }
     
-    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
-    action.place = locationObject;
+    //id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
+    //action.place = locationObject;
     
-    /*
-     // TODO additional photos for the merchant?
-    if (photoURL) {
-        NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
-        [image setObject:photoURL forKey:@"url"];
-        
-        NSMutableArray *images = [[NSMutableArray alloc] init];
-        [images addObject:image];
-        
-        action.image = images;
-    }
-     */
+
     
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
@@ -188,6 +178,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
      }
      ];
 }
+*/
 
 + (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location
 {
@@ -236,13 +227,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     
     // Now create an Open Graph purchase action with the deal offer
     id<OGPurchaseDealPackAction> action = (id<OGPurchaseDealPackAction>)[FBGraphObject graphObject];
-    action.pack = dealPackObject;
-    
-    // the merchant location (so Ted gets brand on the post)
-    ttMerchant *merchant = (ttMerchant *)pack.merchant;
-    ttMerchantLocation *location = [merchant getClosestLocation];
-    id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
-    action.place = locationObject;
+    action.deal_pack = dealPackObject;
     
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];

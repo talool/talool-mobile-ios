@@ -89,7 +89,7 @@
 @end
 
 @protocol OGPurchaseDealPackAction<FBOpenGraphAction>
-@property (retain, nonatomic) id<OGDealPack> pack;
+@property (retain, nonatomic) id<OGDealPack> deal_pack;
 @end
 
 @protocol OGLocation<FBGraphPlace>

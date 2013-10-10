@@ -53,6 +53,15 @@
     [tracker sendView:@"Login Screen"];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
 }

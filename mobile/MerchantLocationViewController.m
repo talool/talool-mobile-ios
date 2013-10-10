@@ -18,6 +18,7 @@
 #import "LocationCell.h"
 #import "HeaderPromptCell.h"
 #import "FooterPromptCell.h"
+#import "talool-api-ios/GAI.h"
 
 @interface MerchantLocationViewController ()
 
@@ -39,6 +40,9 @@
                        nil];
     locations = [[[NSArray alloc] initWithArray:[merchant.locations allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
     [self.tableView reloadData];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Merchant Location Screen"];
 }
 
 -(void)viewDidAppear:(BOOL)animated

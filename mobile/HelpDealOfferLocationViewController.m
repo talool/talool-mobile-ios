@@ -10,6 +10,7 @@
 #import "DealOfferHelper.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
+#import "talool-api-ios/GAI.h"
 
 @interface HelpDealOfferLocationViewController ()
 
@@ -32,6 +33,14 @@
     [vancouverButton useTaloolStyle];
     [vancouverButton setBaseColor:[TaloolColor teal]];
     [vancouverButton.titleLabel setFont:[UIFont fontWithName:@"Verdana-BoldItalic" size:21.0]];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Help Deal Offer Screen"];
     
 }
 

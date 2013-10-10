@@ -54,6 +54,9 @@
     // Define the layout for the gift
     dealLayout = [[DefaultGiftLayoutState alloc] initWithGift:gift offer:offer actionDelegate:self];
     
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Accept Gift Screen"];
+    
 }
 
 - (void)didReceiveMemoryWarning

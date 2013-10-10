@@ -24,7 +24,7 @@
         [self addSubview:view];
         
         [closeButton setTitle:FAKIconCircleArrowDown];
-        [closeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20]}
+        [closeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:20]}
                                    forState:UIControlStateNormal];
         
         [submitButton setTitle:label];

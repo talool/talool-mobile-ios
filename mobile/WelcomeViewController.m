@@ -73,6 +73,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidUnload {

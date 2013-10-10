@@ -25,6 +25,7 @@
 #import "talool-api-ios/ttActivityLink.h"
 #import "TaloolMobileWebViewController.h"
 #import "FontAwesomeKit.h"
+#import "talool-api-ios/GAI.h"
 
 @interface ActivityViewController ()
 
@@ -60,6 +61,9 @@
     activities = appDelegate.activityHelper.activities;
     [self updateTable];
     [self.tableView reloadData];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Activity Screen"];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -18,7 +18,16 @@
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 
-#define kDatePickerTag 100
+#define sexUndefinedIndex   0
+#define sexFemaleIndex      1
+#define sexMaleIndex        2
+#define tableRowHeader      0
+#define tableRowBirthDate   4
+#define tableRowSubmit      8
+#define rowHeightDefault    40
+#define rowHeightPicker     200
+#define rowHeightHeader     50
+#define rowHeightSubmit     90
 
 @interface RegistrationViewController ()
 @property (nonatomic, retain) NSIndexPath *datePickerIndexPath;
@@ -77,6 +86,15 @@
     [tracker sendView:@"Registration Screen"];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
 }
@@ -96,8 +114,8 @@
                                           context:appDelegate.managedObjectContext];
     
     
-    if ([sexPicker selectedSegmentIndex]!=0) {
-        [user setAsFemale:([sexPicker selectedSegmentIndex]==1)];
+    if ([sexPicker selectedSegmentIndex]!=sexUndefinedIndex) {
+        [user setAsFemale:([sexPicker selectedSegmentIndex]==sexFemaleIndex)];
     }
     
     // Register the user.  The Helper will display errors.
@@ -170,25 +188,25 @@
 {
     if ([indexPath compare:self.datePickerIndexPath] == NSOrderedSame)
     {
-        if (self.datePickerOpen) return 200;
+        if (self.datePickerOpen) return rowHeightPicker;
         else return 0;
     }
-    else if (indexPath.row==0)
+    else if (indexPath.row == tableRowHeader)
     {
-        return 50;
+        return rowHeightHeader;
     }
-    else if (indexPath.row == 8)
+    else if (indexPath.row == tableRowSubmit)
     {
-        return 90;
+        return rowHeightSubmit;
     }
-    return 40;
+    return rowHeightDefault;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath compare:self.datePickerIndexPath] != NSOrderedSame)
     {
-        if (indexPath.row==4)
+        if (indexPath.row==tableRowBirthDate)
         {
             [self dateAction:self];
         }

@@ -31,12 +31,22 @@
     // calc the detail size
     UIFont *font = [UIFont fontWithName:@"MarkerFelt-Wide" size:24];
     UIFont *font2 = [UIFont fontWithName:@"MarkerFelt-Thin" size:14];
-    CGSize summarySize = [thedeal.summary sizeWithFont:font
-                                       constrainedToSize:CGSizeMake(280, 800)
-                                           lineBreakMode:NSLineBreakByWordWrapping];
-    CGSize detailsSize = [thedeal.details sizeWithFont:font2
-                                       constrainedToSize:CGSizeMake(280, 800)
-                                           lineBreakMode:NSLineBreakByWordWrapping];
+
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSFontAttributeName] = font;
+    CGSize summarySize = [thedeal.summary boundingRectWithSize:CGSizeMake(280, 800)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:attributes
+                                                        context:nil].size;
+    
+    NSMutableDictionary *attributes2 = [NSMutableDictionary dictionary];
+    attributes2[NSFontAttributeName] = font2;
+    CGSize detailsSize = [thedeal.details boundingRectWithSize:CGSizeMake(280, 800)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:attributes2
+                                                        context:nil].size;
+    
     int padding = 54;
     int margin = 20;
     detailSize = (summarySize.height + detailsSize.height + padding + margin);

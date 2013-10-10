@@ -9,6 +9,7 @@
 #import "HelpNetworkFailureViewController.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
+#import "talool-api-ios/GAI.h"
 
 @implementation HelpNetworkFailureViewController
 
@@ -36,6 +37,9 @@
         default:
             break;
     }
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Help Network Screen"];
     
 }
 

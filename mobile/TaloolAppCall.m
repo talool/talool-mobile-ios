@@ -60,6 +60,8 @@ NSString * const CALL_PASSWORD = @"password";
     if ([callHost isEqualToString:CALL_PASSWORD])
     {
         ResetPasswordViewController *view = [currentView.storyboard instantiateViewControllerWithIdentifier:@"ResetPassword"];
+        view.customerId = resetPasswordCustomerId;
+        view.resetCode = resetPasswordCode;
         [currentView presentViewController:view animated:NO completion:nil];
     }
     

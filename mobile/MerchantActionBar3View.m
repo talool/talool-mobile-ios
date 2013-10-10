@@ -21,8 +21,8 @@
         
         self.delegate = actionDelegate;
         
-        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
-                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+        NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
+                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
                               };
         [mapButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMapMarker, @"Map"]];
         [mapButton setTitleTextAttributes:attr forState:UIControlStateNormal];

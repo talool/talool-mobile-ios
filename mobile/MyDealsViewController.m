@@ -30,6 +30,7 @@
 #import "MerchantSearchView.h"
 #import "MerchantSearchHelper.h"
 #import "ActivityStreamHelper.h"
+#import "talool-api-ios/GAI.h"
 
 @implementation MyDealsViewController
 
@@ -56,7 +57,7 @@
                                                                       target:self
                                                                       action:@selector(settings:)];
     self.navigationItem.rightBarButtonItem = settingsButton;
-    [settingsButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:24], UITextAttributeTextColor:[TaloolColor dark_teal]}
+    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:24], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
     
     
@@ -85,6 +86,9 @@
     }
     
     [self.tableView reloadData];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"My Deals Screen"];
     
 }
 

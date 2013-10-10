@@ -8,6 +8,7 @@
 
 #import "TaloolMobileWebViewController.h"
 #import "TaloolColor.h"
+#import "talool-api-ios/GAI.h"
 
 @interface TaloolMobileWebViewController ()
 
@@ -30,6 +31,9 @@
     [mobileWeb loadRequest:[NSURLRequest requestWithURL:taloolUrl]];
     self.navigationItem.title = viewTitle;
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Mobile Web Screen"];
 }
 
 @end

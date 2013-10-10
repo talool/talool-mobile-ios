@@ -27,6 +27,8 @@
 #import "FontAwesomeKit.h"
 #import "AppDelegate.h"
 #import "ActivateCodeViewController.h"
+#import "FacebookHelper.h"
+#import "talool-api-ios/GAI.h"
 
 @interface DealOfferTableViewController ()
 @property (nonatomic) int detailSize;
@@ -56,6 +58,9 @@
 {
     [super viewWillAppear:animated];
     [self askForHelp];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Deal Offer Screen"];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -122,7 +127,14 @@
     
     // calculate the height of the cells in the detail section
     UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
-    CGSize size = [offer.summary sizeWithFont:font constrainedToSize:CGSizeMake(280, 800) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSFontAttributeName] = font;
+    CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                            attributes:attributes
+                                               context:nil].size;
+    
     int padding = 24;
     detailSize = (size.height + padding);
     
@@ -264,7 +276,7 @@
         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:paymentNavigationController
         action:@selector(dismissModalViewControllerAnimated:)];
     
-    [self.paymentViewController.navigationItem.leftBarButtonItem setTitleTextAttributes:@{UITextAttributeTextColor:[TaloolColor dark_teal]}
+    [self.paymentViewController.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
 
     NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
@@ -284,7 +296,7 @@
                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                              target:activateViewNavigationController
                                              action:@selector(dismissModalViewControllerAnimated:)];
-    [activateView.navigationItem.leftBarButtonItem setTitleTextAttributes:@{UITextAttributeTextColor:[TaloolColor dark_teal]}
+    [activateView.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                                                                forState:UIControlStateNormal];
     activateView.navigationItem.title = @"Activate Deals";
     
@@ -344,6 +356,7 @@
         [paymentViewController dismissViewControllerAnimated:YES completion:^{
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [appDelegate presentNewDeals];
+            [FacebookHelper postOGPurchaseAction:offer];
         }];
     }
     else

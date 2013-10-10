@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-#warning @"environment specific deal offer ids";
-#define DEAL_OFFER_ID_PAYBACK_BOULDER        @"4d54d8ef-febb-4719-b9f0-a73578a41803"
-#define DEAL_OFFER_ID_PAYBACK_VANCOUVER      @"a067de54-d63d-4613-8d60-9d995765cd52"
+#define DEAL_OFFER_ID_PAYBACK_BOULDER        @"4d54d8ef-febb-4719-b9f0-a73578a41803"    // prod
+#define DEAL_OFFER_ID_PAYBACK_VANCOUVER      @"a067de54-d63d-4613-8d60-9d995765cd52"    // prod
 
 #define BOULDER_LATITUDE        40.0150
 #define BOULDER_LONGITUDE       -105.2700

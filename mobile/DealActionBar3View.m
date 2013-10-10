@@ -28,11 +28,11 @@
         
         self.delegate = actionDelegate;
         
-        NSDictionary *attr =@{UITextAttributeTextColor:[TaloolColor dark_teal],
-                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+        NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
+                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
                               };
-        NSDictionary *attr2 =@{UITextAttributeTextColor:[TaloolColor orange],
-                              UITextAttributeFont:[UIFont fontWithName:@"FontAwesome" size:16.0]
+        NSDictionary *attr2 =@{NSForegroundColorAttributeName:[TaloolColor orange],
+                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
                               };
         [redeemButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMoney, @"Redeem Now"]];
         [redeemButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];

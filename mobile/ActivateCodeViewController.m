@@ -16,6 +16,8 @@
 #import "AppDelegate.h"
 #import "DealOfferHelper.h"
 #import "TextureHelper.h"
+#import "FacebookHelper.h"
+#import "talool-api-ios/GAI.h"
 
 @interface ActivateCodeViewController ()
 
@@ -41,6 +43,14 @@
     [submit setTitle:@"Load Deals" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped = YES;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Activate Code Screen"];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,11 +88,18 @@
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate presentNewDeals];
         accessCodeFld.text = @"";
+        [FacebookHelper postOGPurchaseAction:offer];
     }
     else
     {
+        NSString *mess = @"Please double check your code and try again.";
+        if (err.localizedDescription)
+        {
+            mess = err.localizedDescription;
+        }
+        
         UIAlertView *activationError = [[UIAlertView alloc] initWithTitle:@"Activation Error"
-                                                                  message:@"Please double check your code and try again."
+                                                                  message:mess
                                                                  delegate:self
                                                         cancelButtonTitle:@"OK"
                                                         otherButtonTitles:nil];

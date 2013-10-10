@@ -32,7 +32,7 @@
 
     [sendEmailButton useTaloolStyle];
     [sendEmailButton setBaseColor:[TaloolColor teal]];
-    [sendEmailButton setTitle:@"Change Password" forState:UIControlStateNormal];
+    [sendEmailButton setTitle:@"Request Password Change" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
     
@@ -49,6 +49,15 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker sendView:@"Send Password Reset Email Screen"];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,6 +83,7 @@
         if ([ttCustomer sendResetPasswordEmail:emailField.text error:&err])
         {
             [CustomerHelper showErrorMessage:@"Please check your inbox shortly" withTitle:@"Email Sent" withCancel:@"Ok" withSender:nil];
+            [emailField resignFirstResponder];
         }
         else
         {

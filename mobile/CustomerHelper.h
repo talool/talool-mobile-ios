@@ -23,5 +23,6 @@
 
 + (void) showNetworkError;
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
++ (void) handleNewLogin;
 
 @end

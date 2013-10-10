@@ -15,6 +15,9 @@
 #import "talool-api-ios/ttCustomer.h"
 #import "CustomerHelper.h"
 #import "TextureHelper.h"
+#import "AppDelegate.h"
+#import "TaloolTabBarController.h"
+#import "MyDealsViewController.h"
 
 @interface ResetPasswordViewController ()
 
@@ -54,6 +57,15 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([CustomerHelper getLoggedInUser] != nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -91,14 +103,15 @@
     else
     {
         NSError *err;
-        if ([ttCustomer resetPassword:customerId password:passwordField.text code:resetCode error:&err])
+        ttCustomer *customer = [ttCustomer resetPassword:customerId
+                                                password:passwordField.text
+                                                    code:resetCode
+                                                 context:[CustomerHelper getContext]
+                                                   error:&err];
+        if (customer.token != nil)
         {
-            // TODO show the my deals view
-            //[self.navigationController popToRootViewControllerAnimated:YES];
-            [CustomerHelper showErrorMessage:@"You are now logged in."
-                                   withTitle:@"Password Changed"
-                                  withCancel:@"Ok"
-                                  withSender:nil];
+            [CustomerHelper handleNewLogin];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else
         {

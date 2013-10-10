@@ -22,6 +22,7 @@
 #import "talool-api-ios/ttMerchant.h"
 #import "talool-api-ios/ttMerchantLocation.h"
 #import "ZXingObjC/ZXingObjC.h"
+#import "talool-api-ios/GAI.h"
 
 
 @interface DealTableViewController ()
@@ -70,6 +71,9 @@
     
     // Define the layout for the deal
     dealLayout = [[DefaultDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Deal Screen"];
 
 }
 
@@ -307,8 +311,25 @@
                                           error:&error];
     if (!error.code)
     {
-        [self announceShare:facebookId giftId:giftId];
-        //[self sendFacebookAppRequest:facebookId giftId:giftId];
+        if (YES)
+        {
+            // let the user write their own message, so it shows up on the timeline (explicit share)
+            // This would give us great placement on the timeline and notify the user
+            // but if the user cancels the post, the gift would be orphaned.
+            [self openFBPickerActionInShareDialog:self facebookId:facebookId name:name];
+        }
+        else
+        {
+            // Can only post if we drop the tag for the user, but then they wouldn't be notified
+            [self announceShare:facebookId giftId:giftId];
+        
+            // Send private message to the facebook friend via App Request.
+            // No additional user action required, but doesn't send an email and the,
+            // app request is hard to find on facebook.com,
+            // and who knows if we'd get approved for it.
+            [self sendFacebookAppRequest:facebookId giftId:giftId];
+        }
+        // Update the view so it's clear that the deal was gifted
         [self confirmGiftSent:nil name:name];
     }
     else if (error.code == -1009)
@@ -381,32 +402,33 @@
     
 }
 
-/*
+
  
- THIS WOULD REACH USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
+ // THIS WOULD REACH USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
  
- - (IBAction)openFBPickerActionInShareDialog:(id)sender
+ - (void)openFBPickerActionInShareDialog:(id)sender facebookId:(NSString *)facebookId name:(NSString *)name
  {
- // First create the Open Graph deal object for the deal being shared.
- ttDeal *deal = (ttDeal *)dealAcquire.deal;
- id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal];
+     // First create the Open Graph deal object for the deal being shared.
+     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal.deal];
  
- // Now create an Open Graph share action with the deal,
- id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
- action.deal = dealObject;
+     // Now create an Open Graph share action with the deal,
+     id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
+     action.deal = dealObject;
+     
+     [action setTags:@[facebookId]];
  
- [FBDialogs presentShareDialogWithOpenGraphAction:action
- actionType:@"taloolclient:share"
- previewPropertyName:@"deal"
- handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
- if(error) {
- NSLog(@"Error: %@", error.description);
- } else {
- NSLog(@"Success!");
- }
- }];
- }
- */
+     [FBDialogs presentShareDialogWithOpenGraphAction:action
+                                           actionType:@"taloolclient:share"
+                                  previewPropertyName:@"deal"
+                                              handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                                  if(error) {
+                                                      NSLog(@"Error: %@", error.description);
+                                                  } else {
+                                                      NSLog(@"Success!");
+                                                  }
+                                              }];
+}
+
 
 #pragma mark - Facebook Open Graph helpers
 

@@ -88,6 +88,9 @@ static NSString *host = @"http://www.talool.com";
         [logoutButton setHidden:NO];
         [nameLabel setHidden:NO];
     }
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Settings Screen"];
 }
 
 - (void) threadStartSpinner:(id)data {

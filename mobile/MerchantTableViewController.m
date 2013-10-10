@@ -61,7 +61,7 @@
                                                                   target:self
                                                                   action:@selector(likeAction)];
     self.navigationItem.rightBarButtonItem = likeButton;
-    [likeButton setTitleTextAttributes:@{UITextAttributeFont:[FontAwesomeKit fontWithSize:20], UITextAttributeTextColor: [TaloolColor dark_teal]}
+    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:20], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
     
@@ -99,6 +99,9 @@
     {
         [self.tableView reloadData];
     }
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker sendView:@"Merchant Screen"];
     
 }
 
