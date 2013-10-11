@@ -530,7 +530,8 @@
                                        error:&error];
     if (!error.code)
     {
-        [self announceShare:nil giftId:giftId];
+        //[self announceShare:nil giftId:giftId];
+        NSLog(@"Gift sent by email: %@.  Look into a facebook post for this at some point.", giftId);
         [self confirmGiftSent:email name:name];
     }
     else if (error.code == -1009)

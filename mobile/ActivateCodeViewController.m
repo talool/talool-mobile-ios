@@ -85,6 +85,7 @@
     NSError *err;
     if ([offer activiateCode:[CustomerHelper getLoggedInUser] code:accessCodeFld.text error:&err])
     {
+        [self dismissViewControllerAnimated:YES completion:nil];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate presentNewDeals];
         accessCodeFld.text = @"";
