@@ -459,7 +459,7 @@
                  }
              }];
         } else {
-            [FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
+            //[FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
         }
     }
 }
