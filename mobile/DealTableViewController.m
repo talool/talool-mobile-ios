@@ -418,7 +418,7 @@
      [action setTags:@[facebookId]];
  
      [FBDialogs presentShareDialogWithOpenGraphAction:action
-                                           actionType:@"taloolclient:share"
+                                           actionType:@"taloolclient:gift"
                                   previewPropertyName:@"deal"
                                               handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
                                                   if(error) {
@@ -427,6 +427,7 @@
                                                       NSLog(@"Success!");
                                                   }
                                               }];
+
 }
 
 

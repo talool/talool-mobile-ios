@@ -32,11 +32,11 @@
 
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
-    [signinButton setTitle:@"Sign In" forState:UIControlStateNormal];
+    [signinButton setTitle:@"Log In" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
     
-    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Sign In"];
+    KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Log In"];
     [emailField setInputAccessoryView:kav];
     [passwordField setInputAccessoryView:kav];
     [passwordField setDelegate:self];

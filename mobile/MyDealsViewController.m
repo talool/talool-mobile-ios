@@ -57,7 +57,7 @@
                                                                       target:self
                                                                       action:@selector(settings:)];
     self.navigationItem.rightBarButtonItem = settingsButton;
-    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:24], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
+    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
     
     

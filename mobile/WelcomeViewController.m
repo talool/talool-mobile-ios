@@ -55,7 +55,7 @@
     
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
-    [signinButton setTitle:@"Sign In with Talool" forState:UIControlStateNormal];
+    [signinButton setTitle:@"Log in with Talool" forState:UIControlStateNormal];
     
     spinner.hidesWhenStopped=YES;
     self.navigationItem.hidesBackButton = YES;

@@ -61,7 +61,7 @@
                                                                   target:self
                                                                   action:@selector(likeAction)];
     self.navigationItem.rightBarButtonItem = likeButton;
-    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:20], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:26], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
     
