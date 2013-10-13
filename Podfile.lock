@@ -1,10 +1,12 @@
 PODS:
   - Braintree (2.1.2)
   - Facebook-iOS-SDK (3.8.0)
+  - FontAwesomeKit (1.1.3)
 
 DEPENDENCIES:
   - Braintree (from `https://github.com/braintree/braintree_ios.git`)
   - Facebook-iOS-SDK (~> 3.8)
+  - FontAwesomeKit (~> 1.1.3)
 
 EXTERNAL SOURCES:
   Braintree:
@@ -13,5 +15,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Braintree: e65cee4227df4dfc6ec396c969a1caeac4a2b039
   Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
+  FontAwesomeKit: 4c839de6549fabe8dd50db00fc7e3dd177ac98a9
 
 COCOAPODS: 0.25.0
