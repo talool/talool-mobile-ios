@@ -1,0 +1,17 @@
+PODS:
+  - Braintree (2.1.2)
+  - Facebook-iOS-SDK (3.8.0)
+
+DEPENDENCIES:
+  - Braintree (from `https://github.com/braintree/braintree_ios.git`)
+  - Facebook-iOS-SDK (~> 3.8)
+
+EXTERNAL SOURCES:
+  Braintree:
+    :git: https://github.com/braintree/braintree_ios.git
+
+SPEC CHECKSUMS:
+  Braintree: e65cee4227df4dfc6ec396c969a1caeac4a2b039
+  Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
+
+COCOAPODS: 0.25.0
