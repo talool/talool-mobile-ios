@@ -1,20 +1,34 @@
 PODS:
   - Braintree (2.1.2)
   - Facebook-iOS-SDK (3.8.0)
-  - FontAwesomeKit (1.1.3)
+  - FontAwesomeKit (1.1.4)
+  - GoogleAnalytics-iOS-SDK (3.0.1)
+  - Talool-API (1.0.11):
+    - GoogleAnalytics-iOS-SDK (~> 3.0.1)
+  - TestFlightSDK (2.0.2)
 
 DEPENDENCIES:
-  - Braintree (from `https://github.com/braintree/braintree_ios.git`)
+  - Braintree (from `https://github.com/braintree/braintree_ios.git`, tag `2.1.2`)
   - Facebook-iOS-SDK (~> 3.8)
   - FontAwesomeKit (~> 1.1.3)
+  - GoogleAnalytics-iOS-SDK (~> 3.0.1)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.0.11`)
+  - TestFlightSDK (~> 2.0.2)
 
 EXTERNAL SOURCES:
   Braintree:
     :git: https://github.com/braintree/braintree_ios.git
+    :tag: 2.1.2
+  Talool-API:
+    :git: https://github.com/talool/talool-api-ios.git
+    :tag: v1.0.11
 
 SPEC CHECKSUMS:
   Braintree: e65cee4227df4dfc6ec396c969a1caeac4a2b039
   Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
-  FontAwesomeKit: 4c839de6549fabe8dd50db00fc7e3dd177ac98a9
+  FontAwesomeKit: 5898a51ceadcdb05d72b04991ecf04469332b20c
+  GoogleAnalytics-iOS-SDK: 4a788a66154b395717a31bfec1050f8c47b6d122
+  Talool-API: f006a262f1bf229b3151ebf5cb04cdadbe0f70d9
+  TestFlightSDK: 0811097c1f831afb71f68ccd07ae71325cb90f43
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.26.2
