@@ -7,10 +7,10 @@
 //
 
 #import "ActivityCell.h"
-#import "talool-api-ios/ttActivity.h"
+#import "Talool-API/ttActivity.h"
 #import "IconHelper.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @implementation ActivityCell
 

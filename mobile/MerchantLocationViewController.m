@@ -8,17 +8,19 @@
 
 #import "MerchantLocationViewController.h"
 #import "MerchantLocationAnnotation.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/TaloolFrameworkHelper.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/ttCustomer.h"
 #import "CustomerHelper.h"
 #import "LocationCell.h"
 #import "HeaderPromptCell.h"
 #import "FooterPromptCell.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface MerchantLocationViewController ()
 
@@ -42,7 +44,8 @@
     [self.tableView reloadData];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Merchant Location Screen"];
+    [tracker set:kGAIScreenName value:@"Merchant Location Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 -(void)viewDidAppear:(BOOL)animated

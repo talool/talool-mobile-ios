@@ -8,19 +8,21 @@
 
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
-#import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
-#import "talool-api-ios/Friend.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/ttDealAcquire.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttSocialAccount.h"
-#import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttMerchant.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
+#import "Talool-API/Friend.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttDealOffer.h"
+#import "Talool-API/ttDealAcquire.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttSocialAccount.h"
+#import "Talool-API/ttMerchantLocation.h"
+#import "Talool-API/ttMerchant.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <AddressBook/AddressBook.h>
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @implementation FacebookHelper
 
@@ -58,10 +60,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
                                                   NSDictionary* result,
                                                   NSError *error) {
         NSArray* friends = [result objectForKey:@"data"];
-        [tracker sendEventWithCategory:@"APP"
-                            withAction:@"facebook"
-                             withLabel:@"friends"
-                             withValue:[NSNumber numberWithInt:friends.count]];
+        
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"APP"
+                                                              action:@"facebook"
+                                                               label:@"friends"
+                                                               value:[NSNumber numberWithInt:friends.count]] build]];
         
     }];
 }
@@ -281,10 +284,10 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 + (void) handleFBOGError:(NSError *)error
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"FACEBOOK"
-                        withAction:@"Post"
-                         withLabel:error.domain
-                         withValue:[NSNumber numberWithInteger:error.code]];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"FACEBOOK"
+                                                          action:@"Post"
+                                                           label:error.domain
+                                                           value:[NSNumber numberWithInteger:error.code]] build]];
 }
 
 + (BOOL) reopenSession

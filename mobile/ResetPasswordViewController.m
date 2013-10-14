@@ -11,8 +11,10 @@
 #import "TaloolTextField.h"
 #import "TaloolColor.h"
 #import "KeyboardAccessoryView.h"
-#import "talool-api-ios/GAI.h"
-#import "talool-api-ios/ttCustomer.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import "Talool-API/ttCustomer.h"
 #import "CustomerHelper.h"
 #import "TextureHelper.h"
 #import "AppDelegate.h"
@@ -53,7 +55,8 @@
 {
     [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Reset Password Screen"];
+    [tracker set:kGAIScreenName value:@"Reset Password Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 

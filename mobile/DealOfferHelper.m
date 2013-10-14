@@ -9,10 +9,9 @@
 #import "DealOfferHelper.h"
 #import "CustomerHelper.h"
 #import "TaloolIAPHelper.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/TaloolFrameworkHelper.h"
-#import "talool-api-ios/GAI.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttDealOffer.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
 
 @interface DealOfferHelper()
 

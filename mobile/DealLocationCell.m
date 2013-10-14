@@ -7,10 +7,10 @@
 //
 
 #import "DealLocationCell.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @implementation DealLocationCell
 

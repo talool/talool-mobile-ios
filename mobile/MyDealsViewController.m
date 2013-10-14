@@ -10,19 +10,19 @@
 #import "MerchantTableViewController.h"
 #import "AppDelegate.h"
 #import "DealOfferHelper.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "WelcomeViewController.h"
 #import "FavoriteMerchantCell.h"
 #import "MerchantCell.h"
 #import "HeaderPromptCell.h"
 #import "FooterPromptCell.h"
 #import "MerchantFilterControl.h"
-#import "talool-api-ios/ttCategory.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/TaloolFrameworkHelper.h"
+#import "Talool-API/ttCategory.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
 #import "CustomerHelper.h"
 #import "CategoryHelper.h"
 #import "TextureHelper.h"
@@ -30,7 +30,9 @@
 #import "MerchantSearchView.h"
 #import "MerchantSearchHelper.h"
 #import "ActivityStreamHelper.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @implementation MyDealsViewController
 
@@ -88,7 +90,8 @@
     [self.tableView reloadData];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"My Deals Screen"];
+    [tracker set:kGAIScreenName value:@"My Deals Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 

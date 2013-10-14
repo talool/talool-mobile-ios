@@ -8,7 +8,7 @@
 
 #import "IconHelper.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @implementation IconHelper
 

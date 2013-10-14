@@ -13,13 +13,15 @@
 #import "GiftActionBar2View.h"
 #import "CustomerHelper.h"
 #import "MerchantSearchHelper.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttFriend.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/GAI.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttDealOffer.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttFriend.h"
+#import "Talool-API/ttMerchant.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AcceptGiftViewController ()
@@ -55,8 +57,8 @@
     dealLayout = [[DefaultGiftLayoutState alloc] initWithGift:gift offer:offer actionDelegate:self];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Accept Gift Screen"];
-    
+    [tracker set:kGAIScreenName value:@"Accept Gift Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,10 +103,10 @@
 - (void) displayError:(NSError *)error
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"GIFT"
-                        withAction:@"RecipientAction"
-                         withLabel:error.domain
-                         withValue:[NSNumber numberWithInteger:error.code]];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GIFT"
+                                                          action:@"RecipientAction"
+                                                           label:error.domain
+                                                           value:[NSNumber numberWithInteger:error.code]] build]];
     
     UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
                                                         message:@"We failed to handle this gift."

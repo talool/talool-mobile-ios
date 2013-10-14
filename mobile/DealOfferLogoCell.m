@@ -7,8 +7,8 @@
 //
 
 #import "DealOfferLogoCell.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttDealOffer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation DealOfferLogoCell

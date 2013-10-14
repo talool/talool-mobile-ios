@@ -11,9 +11,11 @@
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttCustomer.h"
 #import "KeyboardAccessoryView.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
 
 @interface LoginViewController ()
@@ -50,7 +52,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Login Screen"];
+    [tracker set:kGAIScreenName value:@"Login Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void) viewDidAppear:(BOOL)animated

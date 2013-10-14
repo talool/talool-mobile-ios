@@ -7,7 +7,7 @@
 //
 
 #import "DealImageCell.h"
-#import "talool-api-ios/ttDeal.h"
+#import "Talool-API/ttDeal.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation DealImageCell

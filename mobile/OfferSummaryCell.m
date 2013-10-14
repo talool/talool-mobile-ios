@@ -7,7 +7,7 @@
 //
 
 #import "OfferSummaryCell.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import "Talool-API/ttDealOffer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OfferSummaryCell

@@ -10,7 +10,9 @@
 #import "DealOfferHelper.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface HelpDealOfferLocationViewController ()
 
@@ -40,8 +42,8 @@
 {
     [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Help Deal Offer Screen"];
-    
+    [tracker set:kGAIScreenName value:@"Help Deal Offer Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (IBAction)selectBoulder:(id)sender {

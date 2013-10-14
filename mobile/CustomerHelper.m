@@ -8,12 +8,12 @@
 
 #import "CustomerHelper.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttSocialAccount.h"
-#import "talool-api-ios/ttToken.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttDealAcquire.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttSocialAccount.h"
+#import "Talool-API/ttToken.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttDealAcquire.h"
 #import <AddressBook/AddressBook.h>
 #import "AppDelegate.h"
 #import "MerchantSearchHelper.h"

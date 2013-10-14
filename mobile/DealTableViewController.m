@@ -14,15 +14,17 @@
 #import "DealDetailCell.h"
 #import "DealLayoutState.h"
 #import "DefaultDealLayoutState.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttFriend.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttDealAcquire.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttFriend.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttDealAcquire.h"
+#import "Talool-API/ttDealOffer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
 #import "ZXingObjC/ZXingObjC.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 
 @interface DealTableViewController ()
@@ -73,7 +75,8 @@
     dealLayout = [[DefaultDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Deal Screen"];
+    [tracker set:kGAIScreenName value:@"Deal Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 
 }
 

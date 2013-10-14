@@ -8,7 +8,7 @@
 
 #import "KeyboardAccessoryView.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @implementation KeyboardAccessoryView
 

@@ -13,10 +13,12 @@
 #import "TaloolUIButton.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttCustomer.h"
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
 
 @interface WelcomeViewController ()
@@ -66,7 +68,8 @@
 {
     [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Welcome Screen"];
+    [tracker set:kGAIScreenName value:@"Welcome Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 
@@ -200,10 +203,11 @@
     if (alertMessage) {
         
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-        [tracker sendEventWithCategory:@"FACEBOOK"
-                            withAction:@"LoginButton"
-                             withLabel:error.domain
-                             withValue:[NSNumber numberWithInteger:error.code]];
+        
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"FACEBOOK"
+                                                              action:@"LoginButton"
+                                                               label:error.domain
+                                                               value:[NSNumber numberWithInteger:error.code]] build]];
         
         [[[UIAlertView alloc] initWithTitle:alertTitle
                                     message:alertMessage

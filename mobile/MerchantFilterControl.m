@@ -7,9 +7,9 @@
 //
 
 #import "MerchantFilterControl.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
-#import "talool-api-ios/ttCategory.h"
+#import "Talool-API/ttCategory.h"
 #import "CategoryHelper.h"
 
 @implementation MerchantFilterControl

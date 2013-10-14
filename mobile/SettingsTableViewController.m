@@ -16,7 +16,9 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface SettingsTableViewController ()
 @property (strong, nonatomic) UIView *accountHeader;
@@ -90,7 +92,8 @@ static NSString *host = @"http://www.talool.com";
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Settings Screen"];
+    [tracker set:kGAIScreenName value:@"Settings Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void) threadStartSpinner:(id)data {
@@ -220,10 +223,10 @@ static NSString *host = @"http://www.talool.com";
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"FACEBOOK"
-                        withAction:@"LogoutButton"
-                         withLabel:error.domain
-                         withValue:[NSNumber numberWithInteger:error.code]];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"FACEBOOK"
+                                                          action:@"LogoutButton"
+                                                           label:error.domain
+                                                           value:[NSNumber numberWithInteger:error.code]] build]];
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView

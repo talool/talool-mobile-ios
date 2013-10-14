@@ -7,8 +7,8 @@
 //
 
 #import "GiftDetailCell.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttFriend.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttFriend.h"
 
 @implementation GiftDetailCell
 

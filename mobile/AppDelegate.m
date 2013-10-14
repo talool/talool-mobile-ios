@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "FacebookSDK/FBSessionTokenCachingStrategy.h"
-#import "talool-api-ios/TaloolPersistentStoreCoordinator.h"
-#import "talool-api-ios/ttActivity.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/ttActivity.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
@@ -24,7 +25,7 @@
 #import "MerchantSearchView.h"
 #import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
 #import <VenmoTouch/VenmoTouch.h>
 
@@ -90,7 +91,7 @@
     // Optional: set debug to YES for extra debugging information.
     //[GAI sharedInstance].debug = YES;
     // Create tracker instance.
-    [[GAI sharedInstance] trackerWithTrackingId:GA_TRACKING_ID];
+    [[GAI sharedInstance] trackerWithName:@"Talool" trackingId:GA_TRACKING_ID];
     
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];

@@ -12,8 +12,10 @@
 #import "TaloolColor.h"
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
-#import "talool-api-ios/GAI.h"
-#import "talool-api-ios/ttCustomer.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import "Talool-API/ttCustomer.h"
 #import "CustomerHelper.h"
 
 @interface SendPasswordResetViewController ()
@@ -47,7 +49,8 @@
 {
     [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Send Password Reset Email Screen"];
+    [tracker set:kGAIScreenName value:@"Send Password Reset Email Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 

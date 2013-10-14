@@ -8,7 +8,9 @@
 
 #import "TaloolMobileWebViewController.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface TaloolMobileWebViewController ()
 
@@ -33,7 +35,8 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Mobile Web Screen"];
+    [tracker set:kGAIScreenName value:@"Mobile Web Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 @end

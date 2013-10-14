@@ -7,9 +7,9 @@
 //
 
 #import "OfferActionView.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import "Talool-API/ttDealOffer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OfferActionView

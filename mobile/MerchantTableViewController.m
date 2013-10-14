@@ -12,20 +12,22 @@
 #import "FacebookHelper.h"
 #import "IconHelper.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "DealAcquireCell.h"
 #import "MapCell.h"
 #import "DealImageCell.h"
 #import "FooterPromptCell.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/ttDealAcquire.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
+#import "Talool-API/ttDealAcquire.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttCustomer.h"
 #import "HelpNetworkFailureViewController.h"
 #import "MerchantActionBar3View.h"
 #import "TaloolMobileWebViewController.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface MerchantTableViewController ()
 
@@ -101,7 +103,8 @@
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Merchant Screen"];
+    [tracker set:kGAIScreenName value:@"Merchant Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 
@@ -316,10 +319,10 @@
 - (void)openMap:(id)sender
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"MERCHANT"
-                        withAction:@"ActionButton"
-                         withLabel:@"Map"
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"MERCHANT"
+                                                          action:@"ActionButton"
+                                                           label:@"Map"
+                                                           value:nil] build]];
     
     [self performSegueWithIdentifier:@"showMap" sender:self];
 }
@@ -327,10 +330,10 @@
 - (void)placeCall:(id)sender
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"MERCHANT"
-                        withAction:@"ActionButton"
-                         withLabel:@"Call"
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"MERCHANT"
+                                                          action:@"ActionButton"
+                                                           label:@"Call"
+                                                           value:nil] build]];
     
     ttMerchantLocation *loc = [merchant getClosestLocation];
     
@@ -351,10 +354,10 @@
 - (void)visitWebsite:(id)sender
 {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendEventWithCategory:@"MERCHANT"
-                        withAction:@"ActionButton"
-                         withLabel:@"Website"
-                         withValue:nil];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"MERCHANT"
+                                                          action:@"ActionButton"
+                                                           label:@"Website"
+                                                           value:nil] build]];
     
     [self performSegueWithIdentifier:@"showWebsite" sender:self];
 }

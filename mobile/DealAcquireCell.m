@@ -7,8 +7,8 @@
 //
 
 #import "DealAcquireCell.h"
-#import "talool-api-ios/ttDealAcquire.h"
-#import "talool-api-ios/ttDeal.h"
+#import "Talool-API/ttDealAcquire.h"
+#import "Talool-API/ttDeal.h"
 
 @implementation DealAcquireCell
 

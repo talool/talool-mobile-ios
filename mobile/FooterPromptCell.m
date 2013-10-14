@@ -7,7 +7,7 @@
 //
 
 #import "FooterPromptCell.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
 
 @implementation FooterPromptCell

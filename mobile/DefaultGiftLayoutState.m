@@ -8,11 +8,11 @@
 
 #import "DefaultGiftLayoutState.h"
 #import "GiftDetailCell.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttDealOffer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
 
 @implementation DefaultGiftLayoutState
 

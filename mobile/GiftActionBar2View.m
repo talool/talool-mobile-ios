@@ -7,13 +7,13 @@
 //
 
 #import "GiftActionBar2View.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
-#import "talool-api-ios/ttDealAcquire.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttFriend.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttDealAcquire.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttFriend.h"
+#import "Talool-API/ttCustomer.h"
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>

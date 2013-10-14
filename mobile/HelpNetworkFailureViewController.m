@@ -9,7 +9,9 @@
 #import "HelpNetworkFailureViewController.h"
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @implementation HelpNetworkFailureViewController
 
@@ -39,7 +41,8 @@
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Help Network Screen"];
+    [tracker set:kGAIScreenName value:@"Help Network Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 

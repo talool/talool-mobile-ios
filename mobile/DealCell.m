@@ -7,9 +7,9 @@
 //
 
 #import "DealCell.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttCategory.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttCategory.h"
 #import "CategoryHelper.h"
 
 @implementation DealCell

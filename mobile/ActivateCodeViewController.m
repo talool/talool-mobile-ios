@@ -12,12 +12,14 @@
 #import "TaloolColor.h"
 #import "KeyboardAccessoryView.h"
 #import "CustomerHelper.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import "Talool-API/ttDealOffer.h"
 #import "AppDelegate.h"
 #import "DealOfferHelper.h"
 #import "TextureHelper.h"
 #import "FacebookHelper.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface ActivateCodeViewController ()
 
@@ -49,8 +51,8 @@
 {
     [super viewWillAppear:animated];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Activate Code Screen"];
-    
+    [tracker set:kGAIScreenName value:@"Activate Code Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)didReceiveMemoryWarning

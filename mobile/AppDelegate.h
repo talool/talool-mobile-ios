@@ -30,6 +30,8 @@
 - (NSURL *)applicationDocumentsDirectory;
 - (void) presentNewDeals;
 
+#define GA_TRACKING_ID  @"UA-42344079-1"
+
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @end

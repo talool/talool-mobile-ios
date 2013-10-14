@@ -9,8 +9,8 @@
 #import "MerchantSearchView.h"
 #import "MerchantFilterControl.h"
 #import "MerchantSearchHelper.h"
-#import "talool-api-ios/TaloolFrameworkHelper.h"
-#import "talool-api-ios/ttCategory.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/ttCategory.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
 

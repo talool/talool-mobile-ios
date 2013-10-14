@@ -8,11 +8,13 @@
 
 #import "MerchantSearchHelper.h"
 #import "CustomerHelper.h"
-#import "talool-api-ios/TaloolFrameworkHelper.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttMerchant.h"
-#import "talool-api-ios/ttMerchantLocation.h"
-#import "talool-api-ios/GAI.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "DealOfferHelper.h"
 
 @interface MerchantSearchHelper ()
@@ -199,19 +201,19 @@
     // is the location service enabled?
     if ([CLLocationManager locationServicesEnabled] == NO)
     {
-        [tracker sendEventWithCategory:@"APP"
-                            withAction:@"LocationServices"
-                             withLabel:@"Disabled"
-                             withValue:nil];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"APP"
+                                                              action:@"LocationServices"
+                                                               label:@"Disabled"
+                                                               value:nil] build]];
     }
     
     // is the location service authorized?
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
     {
-        [tracker sendEventWithCategory:@"APP"
-                            withAction:@"LocationServices"
-                             withLabel:@"Denied"
-                             withValue:nil];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"APP"
+                                                              action:@"LocationServices"
+                                                               label:@"Denied"
+                                                               value:nil] build]];
     }
 }
 

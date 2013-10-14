@@ -2,8 +2,7 @@
 
 #import "IAPHelper.h"
 #import "DealOfferHelper.h"
-#import "talool-api-ios/ttDealOffer.h"
-#import "talool-api-ios/GAI.h"
+#import "Talool-API/ttDealOffer.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 NSString *const IAPHelperPurchaseCanceledNotification = @"IAPHelperPurchaseCanceledNotification";

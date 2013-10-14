@@ -10,11 +10,13 @@
 #import "AppDelegate.h"
 #import "RegistrationViewController.h"
 #import "CustomerHelper.h"
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttCustomer.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
-#import "talool-api-ios/GAI.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 
@@ -83,7 +85,8 @@
     [super viewWillAppear:animated];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Registration Screen"];
+    [tracker set:kGAIScreenName value:@"Registration Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void) viewDidAppear:(BOOL)animated

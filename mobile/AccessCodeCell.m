@@ -11,7 +11,7 @@
 #import "TaloolColor.h"
 #import "KeyboardAccessoryView.h"
 #import "CustomerHelper.h"
-#import "talool-api-ios/ttDealOffer.h"
+#import "Talool-API/ttDealOffer.h"
 #import "AppDelegate.h"
 #import "DealOfferHelper.h"
 

@@ -7,10 +7,10 @@
 //
 
 #import "LocationCell.h"
-#import "talool-api-ios/ttMerchantLocation.h"
+#import "Talool-API/ttMerchantLocation.h"
 #import "IconHelper.h"
 #import "TaloolColor.h"
-#import "FontAwesomeKit.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @implementation LocationCell
 

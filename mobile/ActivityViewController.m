@@ -17,15 +17,17 @@
 #import "ActivityStreamHelper.h"
 #import "ActivityFilterControl.h"
 #import "TaloolColor.h"
-#import "talool-api-ios/ttCustomer.h"
-#import "talool-api-ios/ttGift.h"
-#import "talool-api-ios/ttDeal.h"
-#import "talool-api-ios/ttFriend.h"
-#import "talool-api-ios/ttActivity.h"
-#import "talool-api-ios/ttActivityLink.h"
+#import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttGift.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttFriend.h"
+#import "Talool-API/ttActivity.h"
+#import "Talool-API/ttActivityLink.h"
 #import "TaloolMobileWebViewController.h"
-#import "FontAwesomeKit.h"
-#import "talool-api-ios/GAI.h"
+#import <FontAwesomeKit/FontAwesomeKit.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+#import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface ActivityViewController ()
 
@@ -63,7 +65,8 @@
     [self.tableView reloadData];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker sendView:@"Activity Screen"];
+    [tracker set:kGAIScreenName value:@"Activity Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

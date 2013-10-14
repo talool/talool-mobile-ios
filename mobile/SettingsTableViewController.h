@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "talool-api-ios/ttCustomer.h"
+#import "Talool-API/ttCustomer.h"
 #import "FacebookSDK/FacebookSDK.h"
-
-#define GA_TRACKING_ID  @"UA-42344079-1"
 
 @class TaloolUIButton;
 
