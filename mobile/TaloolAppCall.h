@@ -19,6 +19,7 @@
 
 @property (retain, nonatomic) NSString * resetPasswordCode;
 @property (retain, nonatomic) NSString * resetPasswordCustomerId;
+@property (retain, nonatomic) NSString * giftId;
 
 
 @end

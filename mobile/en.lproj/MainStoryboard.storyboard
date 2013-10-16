@@ -513,7 +513,7 @@
         <!--Login View Controller - Log In-->
         <scene sceneID="RO0-Bt-GUL">
             <objects>
-                <tableViewController id="uBs-OK-FZH" customClass="LoginViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LoginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uBs-OK-FZH" customClass="LoginViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2ss-65-jNy">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2781,8 +2781,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wjI-dw-vyW"/>
+        <segue reference="q3T-VT-ua5"/>
         <segue reference="EGa-Bg-TS6"/>
-        <segue reference="ZYY-Ve-nGY"/>
+        <segue reference="wjI-dw-vyW"/>
     </inferredMetricsTieBreakers>
 </document>

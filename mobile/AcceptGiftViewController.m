@@ -75,7 +75,10 @@
     if (deal)
     {
         // tell the delegate what happened
-        [giftDelegate giftAccepted:deal sender:self];
+        if (giftDelegate)
+        {
+            [giftDelegate giftAccepted:deal sender:self];
+        }
         [[MerchantSearchHelper sharedInstance] fetchMerchants];
         [self.navigationController popViewControllerAnimated:YES];
         

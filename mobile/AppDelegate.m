@@ -28,6 +28,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
 #import <VenmoTouch/VenmoTouch.h>
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
@@ -41,7 +42,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize settingsViewController = _settingsViewController;
 @synthesize firstViewController = _firstViewController;
-@synthesize activiyViewController = _activiyViewController;
 @synthesize activityHelper, splashView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -68,11 +68,10 @@
 - (void) setupApp
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"];
-    self.activiyViewController = [storyboard instantiateViewControllerWithIdentifier:@"Activity"];
-    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-    self.settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"]; // Handy reference to the tab controller
+    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"]; // We can refactor this out
+    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"]; // Used for FB errors
+    self.settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"Settings"]; // Used to logout.  We can refactor this out
     
     [CustomerHelper setContext:self.managedObjectContext];
     [FacebookHelper setContext:self.managedObjectContext];
@@ -84,6 +83,7 @@
 
 - (void) finalizeSetup
 {
+    
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
@@ -92,6 +92,24 @@
     //[GAI sharedInstance].debug = YES;
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithName:@"Talool" trackingId:GA_TRACKING_ID];
+    
+    
+    // installs HandleExceptions as the Uncaught Exception Handler
+    NSSetUncaughtExceptionHandler(&HandleExceptions);
+    // create the signal action structure
+    struct sigaction newSignalAction;
+    // initialize the signal action structure
+    memset(&newSignalAction, 0, sizeof(newSignalAction));
+    // set SignalHandler as the handler in the signal action structure
+    newSignalAction.sa_handler = &SignalHandler;
+    // set SignalHandler as the handlers for SIGABRT, SIGILL and SIGBUS
+    sigaction(SIGABRT, &newSignalAction, NULL);
+    sigaction(SIGILL, &newSignalAction, NULL);
+    sigaction(SIGBUS, &newSignalAction, NULL);
+    // Call takeOff after install your own unhandled exception and signal handlers
+    [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
+    [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
+    
     
     [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
@@ -104,6 +122,8 @@
     [self.window makeKeyAndVisible];
     
     [[TaloolAppCall sharedInstance] handleDidBecomeActive];
+    
+    [TestFlight passCheckpoint:@"LAUNCH_COMPLETE"];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -363,6 +383,23 @@
                customerEmail:@"doug@talool.com"
                braintreeClientSideEncryptionKey:@"MIIBCgKCAQEA2CWCSS/z/FrWMJqPb8ysca5+N7edz3Kiz9EpNwZFQ4Rx9lS02mXXLG0jHWFC41y8IFKDjzKk01OGB6Li0VL/RcB88ASdJALBpiuyTkIiiFSTFLzcGehagmfuozv7TQOnd8biYOOKvJ692laOdr7rdqLi3zFvncgg49JTnKewXZF8RRLHObpFHSj7r7O7o4Boy6aVaD06wuytf9mKxUYqp2juqVT4UgG4uhuc4EcgRYHfW5GZ0OtotKev1SsrzEC4s5N1QSBkkEeyagzGxdrp5apJkdIQLjIcx++N76SMR9Ybce2ApiScK14st96bZ760QBPMSXrMAVfYvYAEkR1B5QIDAQAB"
                environment:VTEnvironmentSandbox];
+}
+
+/*
+My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest
+*/
+void HandleExceptions(NSException *exception) {
+    NSLog(@"This is where we save the application data during a exception");
+    [TestFlight passCheckpoint:@"CRASH"];
+    // Save application data on crash
+}
+/*
+ My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
+ */
+void SignalHandler(int sig) {
+    NSLog(@"This is where we save the application data during a signal");
+    [TestFlight passCheckpoint:@"SIGNAL"];
+    // Save application data on crash
 }
 
 

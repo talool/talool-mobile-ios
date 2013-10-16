@@ -23,7 +23,6 @@
 		81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
 		81517B4F17FBB5470020A688 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
 		81517B5217FC62650020A688 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
-		8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8151CBA4179452F0007894B2 /* SystemConfiguration.framework */; };
 		815615EE17CCFF9000688B3F /* teal_header_ios6.png in Resources */ = {isa = PBXBuildFile; fileRef = 815615ED17CCFF9000688B3F /* teal_header_ios6.png */; };
 		815615F017CD001B00688B3F /* teal_header_ios6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815615EF17CD001B00688B3F /* teal_header_ios6@2x.png */; };
 		8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
@@ -127,11 +126,6 @@
 		9103111916D1E53800CEE814 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111816D1E53800CEE814 /* main.m */; };
 		9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
 		9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
-		9103113C16D1E53900CEE814 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103113B16D1E53800CEE814 /* SenTestingKit.framework */; };
-		9103113D16D1E53900CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
-		9103113E16D1E53900CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
-		9103114616D1E53900CEE814 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103114416D1E53900CEE814 /* InfoPlist.strings */; };
-		9103114916D1E53900CEE814 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103114816D1E53900CEE814 /* mobileTests.m */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
 		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		91490D311745DBD000622A85 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
@@ -158,25 +152,12 @@
 		91986EFC16D7150400D1CA96 /* DealAcquireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* DealAcquireCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
 		91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
-		919A330C17447C3B0093FAC4 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
 		919A3311174510AA0093FAC4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919A3310174510A90093FAC4 /* MapKit.framework */; };
-		919A3314174516620093FAC4 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
-		919A331717452F1C0093FAC4 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
 		919A331817453AF70093FAC4 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
 		919A331917453B120093FAC4 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
 		919A331B17453B120093FAC4 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
 		91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9103113F16D1E53900CEE814 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9103110116D1E53800CEE814 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9103110816D1E53800CEE814;
-			remoteInfo = mobile;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -357,7 +338,6 @@
 		9103111B16D1E53800CEE814 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9103111C16D1E53800CEE814 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9103112516D1E53800CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9103113A16D1E53800CEE814 /* TaloolTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaloolTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103113B16D1E53800CEE814 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9103114316D1E53900CEE814 /* TaloolTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TaloolTests-Info.plist"; sourceTree = "<group>"; };
 		9103114516D1E53900CEE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -416,7 +396,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8151CBA61794530F007894B2 /* SystemConfiguration.framework in Frameworks */,
 				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
 				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
@@ -438,16 +417,6 @@
 				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
 				9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */,
 				6D1542516A0F4B2F8BB1C81A /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9103113616D1E53800CEE814 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9103113C16D1E53900CEE814 /* SenTestingKit.framework in Frameworks */,
-				9103113D16D1E53900CEE814 /* UIKit.framework in Frameworks */,
-				9103113E16D1E53900CEE814 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +580,6 @@
 			isa = PBXGroup;
 			children = (
 				9103110916D1E53800CEE814 /* Talool.app */,
-				9103113A16D1E53800CEE814 /* TaloolTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -872,25 +840,6 @@
 			productReference = 9103110916D1E53800CEE814 /* Talool.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9103113916D1E53800CEE814 /* TaloolTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9103114F16D1E53900CEE814 /* Build configuration list for PBXNativeTarget "TaloolTests" */;
-			buildPhases = (
-				9103113516D1E53800CEE814 /* Sources */,
-				9103113616D1E53800CEE814 /* Frameworks */,
-				9103113716D1E53800CEE814 /* Resources */,
-				9103113816D1E53800CEE814 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9103114016D1E53900CEE814 /* PBXTargetDependency */,
-			);
-			name = TaloolTests;
-			productName = mobileTests;
-			productReference = 9103113A16D1E53800CEE814 /* TaloolTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -918,7 +867,6 @@
 			projectRoot = "";
 			targets = (
 				9103110816D1E53800CEE814 /* Talool */,
-				9103113916D1E53800CEE814 /* TaloolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -992,30 +940,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9103113716D1E53800CEE814 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9103114616D1E53900CEE814 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9103113816D1E53800CEE814 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		CA0F455FCD9744A4B2147823 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1124,26 +1051,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9103113516D1E53800CEE814 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9103114916D1E53900CEE814 /* mobileTests.m in Sources */,
-				919A330C17447C3B0093FAC4 /* MerchantLocationViewController.m in Sources */,
-				919A3314174516620093FAC4 /* MerchantLocationAnnotation.m in Sources */,
-				919A331717452F1C0093FAC4 /* LocationCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9103114016D1E53900CEE814 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9103110816D1E53800CEE814 /* Talool */;
-			targetProxy = 9103113F16D1E53900CEE814 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9103111516D1E53800CEE814 /* InfoPlist.strings */ = {
@@ -1241,6 +1149,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
@@ -1277,6 +1186,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
@@ -1303,40 +1213,6 @@
 			};
 			name = Release;
 		};
-		9103115016D1E53900CEE814 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mobile.app/mobile";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
-				INFOPLIST_FILE = "mobileTests/TaloolTests-Info.plist";
-				PRODUCT_NAME = TaloolTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		9103115116D1E53900CEE814 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mobile.app/mobile";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "mobile/mobile-Prefix.pch";
-				INFOPLIST_FILE = "mobileTests/TaloolTests-Info.plist";
-				PRODUCT_NAME = TaloolTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1354,15 +1230,6 @@
 			buildConfigurations = (
 				9103114D16D1E53900CEE814 /* Debug */,
 				9103114E16D1E53900CEE814 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9103114F16D1E53900CEE814 /* Build configuration list for PBXNativeTarget "TaloolTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9103115016D1E53900CEE814 /* Debug */,
-				9103115116D1E53900CEE814 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

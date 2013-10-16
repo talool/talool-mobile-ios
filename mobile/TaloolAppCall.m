@@ -10,13 +10,19 @@
 #import "AppDelegate.h"
 #import "TaloolTabBarController.h"
 #import "ResetPasswordViewController.h"
+#import "AcceptGiftViewController.h"
+#import "CustomerHelper.h"
+#import "Talool-API/ttGift.h"
 
 NSString * const CALL_PASSWORD = @"password";
+NSString * const CALL_GIFT = @"gift";
+
+static int ACTIVITY_TAB_INDEX = 2;
 
 @implementation TaloolAppCall
 
 @synthesize callHost;
-@synthesize resetPasswordCode, resetPasswordCustomerId;
+@synthesize resetPasswordCode, resetPasswordCustomerId, giftId;
 
 + (TaloolAppCall *)sharedInstance
 {
@@ -46,6 +52,10 @@ NSString * const CALL_PASSWORD = @"password";
         resetPasswordCustomerId = [components objectAtIndex:1];
         resetPasswordCode = [components objectAtIndex:2];
     }
+    else if ([callHost isEqualToString:CALL_GIFT])
+    {
+        giftId = [components objectAtIndex:1];
+    }
 }
 
 - (void)handleDidBecomeActive
@@ -64,8 +74,60 @@ NSString * const CALL_PASSWORD = @"password";
         view.resetCode = resetPasswordCode;
         [currentView presentViewController:view animated:NO completion:nil];
     }
+    else if ([callHost isEqualToString:CALL_GIFT])
+    {
+        // if the user isn't logged in, we don't need to deep link
+        if (![CustomerHelper getLoggedInUser]) return;
+        
+        // select the activity tab
+        [appDelegate.mainViewController setSelectedIndex:ACTIVITY_TAB_INDEX];
+        
+        // let the main thread continue and try to fetch the gift
+        [self performSelector:@selector(fetchGift) withObject:nil afterDelay:.1];
+        
+    }
     
     callHost = nil;
+}
+
+- (void) fetchGift
+{
+    // try to fetch and show the gift
+    NSError *err;
+    ttGift *gift = [ttGift getGiftById:giftId
+                              customer:[CustomerHelper getLoggedInUser]
+                               context:[CustomerHelper getContext]
+                                 error:&err];
+    
+    // TODO handle some error cases:
+    //  * not your gift
+    //  * gift already accepted or rejected
+    
+    if (gift)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UINavigationController *nav = [[appDelegate.mainViewController viewControllers] objectAtIndex:ACTIVITY_TAB_INDEX];
+        
+        AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
+        view.gift = gift;
+        
+        [nav pushViewController:view animated:YES];
+
+    }
+    else if (err.code)
+    {
+        [CustomerHelper showErrorMessage:err.localizedDescription
+                               withTitle:@"We're Sorry"
+                              withCancel:@"Ok"
+                              withSender:nil];
+    }
+    else
+    {
+        [CustomerHelper showErrorMessage:@"We couldn't locate your Gift"
+                               withTitle:@"We're Sorry"
+                              withCancel:@"OK"
+                              withSender:nil];
+    }
 }
 
 @end
