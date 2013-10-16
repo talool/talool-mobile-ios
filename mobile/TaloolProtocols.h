@@ -79,7 +79,7 @@
 @property (retain, nonatomic) id<OGDeal> deal;
 @end
 
-@protocol OGShareDealAction<FBOpenGraphAction>
+@protocol OGGiftDealAction<FBOpenGraphAction>
 @property (retain, nonatomic) id<OGDeal> deal;
 @end
 

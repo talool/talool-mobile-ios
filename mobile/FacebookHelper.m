@@ -79,7 +79,13 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     [user setFirstName:fb_user.first_name];
     [user setLastName:fb_user.last_name];
     
-    //NSLog(@"birthday: %@",fb_user.birthday);
+    NSString *gender = [fb_user objectForKey:@"gender"];
+    if ([gender isEqualToString:@"male"] || [gender isEqualToString:@"female"])
+    {
+        [user setAsFemale:[gender isEqualToString:@"female"]];
+    }
+    
+    NSLog(@"birthday: %@",fb_user.birthday);
     // convert the bday string to a date
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
@@ -135,8 +141,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 }
 
-/*
-+ (void)postOGShareAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
++ (void)postOGGiftAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
 {
     // bail if not connected & we couldn't reopen it
     if (![FBSession activeSession].isOpen)
@@ -149,7 +154,7 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     id<OGDeal> dealObject = [FacebookHelper dealObjectForGift:giftId];
     
     // Now create an Open Graph share action with the deal,
-    id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
+    id<OGGiftDealAction> action = (id<OGGiftDealAction>)[FBGraphObject graphObject];
     action.deal = dealObject;
     if (facebookId != nil)
     {
@@ -162,13 +167,11 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
     //id<OGLocation> locationObject = [FacebookHelper locationObjectForMerchantLocation:location];
     //action.place = locationObject;
     
-
-    
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];
     
     // Create the request and post the action to the share path.
-    NSString *ogPath = [NSString stringWithFormat:@"me/%@:share", APP_NAMESPACE];
+    NSString *ogPath = [NSString stringWithFormat:@"me/%@:gift", APP_NAMESPACE];
     [FBRequestConnection startForPostWithGraphPath:ogPath
                                        graphObject:action
                                  completionHandler:
@@ -181,7 +184,6 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
      }
      ];
 }
-*/
 
 + (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location
 {

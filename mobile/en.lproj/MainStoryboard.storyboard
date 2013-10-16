@@ -2256,6 +2256,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="compass.png" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-CU-7vF">
                                 <rect key="frame" x="58" y="68" width="195" height="195"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="195" id="DVp-JG-vJO"/>
                                 </constraints>
@@ -2768,6 +2769,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
         <image name="000.png" width="1" height="1"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="TaloolLogoIcon2.png" width="199" height="50"/>

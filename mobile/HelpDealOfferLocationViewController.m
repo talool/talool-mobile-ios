@@ -26,8 +26,6 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[TaloolColor gray_2]];
-    
     [boulderButton useTaloolStyle];
     [boulderButton setBaseColor:[TaloolColor teal]];
     [boulderButton.titleLabel setFont:[UIFont fontWithName:@"Verdana-BoldItalic" size:21.0]];

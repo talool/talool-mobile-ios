@@ -28,7 +28,7 @@ extern NSString * const OG_MERCHANT_PAGE;
 + (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal;
 + (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer;
 + (id<OGLocation>)locationObjectForMerchantLocation:(ttMerchantLocation*)loc;
-//+ (void)postOGShareAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location;
++ (void)postOGGiftAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location;
 + (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location;
 + (void)postOGPurchaseAction:(ttDealOffer*)pack;
 + (void)postOGLikeAction:(ttMerchantLocation*)loc;

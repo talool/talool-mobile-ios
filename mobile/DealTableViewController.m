@@ -312,26 +312,14 @@
                                      facebookId:facebookId
                                  receipientName:name
                                           error:&error];
+    NSLog(@"Gift created: %@", giftId);
+    
     if (!error.code)
     {
-        if (YES)
-        {
-            // let the user write their own message, so it shows up on the timeline (explicit share)
-            // This would give us great placement on the timeline and notify the user
-            // but if the user cancels the post, the gift would be orphaned.
-            [self openFBPickerActionInShareDialog:self facebookId:facebookId name:name];
-        }
-        else
-        {
-            // Can only post if we drop the tag for the user, but then they wouldn't be notified
-            [self announceShare:facebookId giftId:giftId];
-        
-            // Send private message to the facebook friend via App Request.
-            // No additional user action required, but doesn't send an email and the,
-            // app request is hard to find on facebook.com,
-            // and who knows if we'd get approved for it.
-            [self sendFacebookAppRequest:facebookId giftId:giftId];
-        }
+        // Post to FB
+        [self openFBPickerActionInShareDialog:self facebookId:facebookId name:name];
+        //[self announceShare:facebookId giftId:giftId];  // TODO find a way to do this if the user hits "cancel" in the share dialog
+
         // Update the view so it's clear that the deal was gifted
         [self confirmGiftSent:nil name:name];
     }
@@ -355,67 +343,17 @@
     [errorView show];
 }
 
-- (void) sendFacebookAppRequest:(NSString *)facebookId giftId:(NSString *)giftId
-{
-    friendCache = [[FBFrictionlessRecipientCache alloc] init];
-    [friendCache prefetchAndCacheForSession:nil];
-    
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization
-                        dataWithJSONObject:@{
-                        @"giftId": giftId}
-                        options:0
-                        error:&error];
-    if (!jsonData) {
-        NSLog(@"JSON error: %@", error);
-        return;
-    }
-    NSString *giftStr = [[NSString alloc]
-                         initWithData:jsonData
-                         encoding:NSUTF8StringEncoding];
-    
-    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     facebookId, @"to",
-                                     giftStr, @"data",
-                                     nil];
-    
-    ttDeal *d = (ttDeal *)deal.deal;
-    NSString *message = [NSString stringWithFormat:@"I thought you might like this deal!  %@", d.title];
-    
-    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:message
-                                                    title:@"Send an Additional Private Message"
-                                               parameters:params
-                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                                                      if (error) {
-                                                          // Case A: Error launching the dialog or sending request.
-                                                          NSLog(@"Error sending request.");
-                                                      } else {
-                                                          if (result == FBWebDialogResultDialogNotCompleted) {
-                                                              // Case B: User clicked the "x" icon
-                                                              NSLog(@"User canceled request.");
-                                                          } else {
-                                                              NSLog(@"Request Sent.");
-                                                          }
-                                                      }}
-                                              friendCache:friendCache
-     ];
-    
-    
-    
-}
-
-
- 
- // THIS WOULD REACH USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
- 
+// THIS REACHES USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
+// let the user write their own message, so it shows up on the timeline (explicit share)
+// This would give us great placement on the timeline and notify the user
+// but if the user cancels the post, the gift would be orphaned.
  - (void)openFBPickerActionInShareDialog:(id)sender facebookId:(NSString *)facebookId name:(NSString *)name
  {
      // First create the Open Graph deal object for the deal being shared.
      id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal.deal];
  
      // Now create an Open Graph share action with the deal,
-     id<OGShareDealAction> action = (id<OGShareDealAction>)[FBGraphObject graphObject];
+     id<OGGiftDealAction> action = (id<OGGiftDealAction>)[FBGraphObject graphObject];
      action.deal = dealObject;
      
      [action setTags:@[facebookId]];
@@ -462,7 +400,7 @@
                  }
              }];
         } else {
-            //[FacebookHelper postOGShareAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
+            [FacebookHelper postOGGiftAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
         }
     }
 }
@@ -534,8 +472,7 @@
                                        error:&error];
     if (!error.code)
     {
-        //[self announceShare:nil giftId:giftId];
-        NSLog(@"Gift sent by email: %@.  Look into a facebook post for this at some point.", giftId);
+        [self announceShare:nil giftId:giftId];
         [self confirmGiftSent:email name:name];
     }
     else if (error.code == -1009)
