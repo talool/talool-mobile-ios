@@ -14,13 +14,6 @@
 
 @interface FacebookHelper : NSObject
 
-extern NSString * const APP_NAMESPACE;
-extern NSString * const APP_ID;
-extern NSString * const OG_GIFT_PAGE;
-extern NSString * const OG_DEAL_PAGE;
-extern NSString * const OG_OFFER_PAGE;
-extern NSString * const OG_MERCHANT_PAGE;
-
 +(void) setContext:(NSManagedObjectContext *)context;
 +(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user;
 +(ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;

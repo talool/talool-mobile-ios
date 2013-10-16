@@ -317,8 +317,8 @@
     if (!error.code)
     {
         // Post to FB
-        [self openFBPickerActionInShareDialog:self facebookId:facebookId name:name];
-        //[self announceShare:facebookId giftId:giftId];  // TODO find a way to do this if the user hits "cancel" in the share dialog
+        //[self openFBPickerActionInShareDialog:self facebookId:facebookId name:name giftId:giftId];
+        [self announceShare:facebookId giftId:giftId];  // TODO find a way to do this if the user hits "cancel" in the share dialog
 
         // Update the view so it's clear that the deal was gifted
         [self confirmGiftSent:nil name:name];
@@ -347,10 +347,11 @@
 // let the user write their own message, so it shows up on the timeline (explicit share)
 // This would give us great placement on the timeline and notify the user
 // but if the user cancels the post, the gift would be orphaned.
- - (void)openFBPickerActionInShareDialog:(id)sender facebookId:(NSString *)facebookId name:(NSString *)name
+- (void)openFBPickerActionInShareDialog:(id)sender facebookId:(NSString *)facebookId name:(NSString *)name giftId:(NSString *)giftId
  {
      // First create the Open Graph deal object for the deal being shared.
-     id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal.deal];
+     //id<OGDeal> dealObject = [FacebookHelper dealObjectForDeal:deal.deal];
+     id<OGDeal> dealObject = [FacebookHelper dealObjectForGift:giftId];
  
      // Now create an Open Graph share action with the deal,
      id<OGGiftDealAction> action = (id<OGGiftDealAction>)[FBGraphObject graphObject];
@@ -446,7 +447,9 @@
 {
     if (property == kABPersonEmailProperty)
     {
-        NSString *name = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        NSString *fname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+        NSString *lname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        NSString *name = [NSString stringWithFormat:@"%@ %@",fname, lname];
         NSString *email = [self getEmailFromContact:person identifier:identifier];
         NSLog(@"Email picked: %@", email);
         [self dismissViewControllerAnimated:YES completion:nil];

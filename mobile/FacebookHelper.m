@@ -9,6 +9,7 @@
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
 #import "Talool-API/Friend.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOffer.h"
@@ -28,12 +29,18 @@
 
 static NSManagedObjectContext *_context;
 
-NSString * const APP_NAMESPACE = @"taloolclient";
-NSString * const APP_ID = @"342739092494152";
-NSString * const OG_GIFT_PAGE = @"http://talool.com/gift";
-NSString * const OG_DEAL_PAGE = @"http://talool.com/deal";
-NSString * const OG_OFFER_PAGE = @"http://talool.com/offer";
-NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
+#define APP_NAMESPACE @"taloolclient"
+#define APP_ID @"342739092494152"
+
+#define OG_GIFT_PAGE_PROD @"http://talool.com/gift"
+#define OG_DEAL_PAGE_PROD @"http://talool.com/deal"
+#define OG_OFFER_PAGE_PROD @"http://talool.com/offer"
+#define OG_MERCHANT_PAGE_PROD @"http://talool.com/location"
+
+#define OG_GIFT_PAGE_DEV @"http://dev-www.talool.com/gift"
+#define OG_DEAL_PAGE_DEV @"http://dev-www.talool.com/deal"
+#define OG_OFFER_PAGE_DEV @"http://dev-www.talool.com/offer"
+#define OG_MERCHANT_PAGE_DEV @"http://dev-www.talool.com/location"
 
 +(void) setContext:(NSManagedObjectContext *)context
 {
@@ -109,33 +116,37 @@ NSString * const OG_MERCHANT_PAGE = @"http://talool.com/location";
 
 + (id<OGDeal>)dealObjectForGift:(NSString*)giftId
 {
+    NSString *host = ([[TaloolFrameworkHelper sharedInstance] isProduction])? OG_GIFT_PAGE_PROD:OG_GIFT_PAGE_DEV;
     id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:@"%@/%@", OG_GIFT_PAGE, giftId];
+    result.url = [NSString stringWithFormat:@"%@/%@", host, giftId];
 
     return result;
 }
 
 + (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal
 {
+    NSString *host = ([[TaloolFrameworkHelper sharedInstance] isProduction])? OG_DEAL_PAGE_PROD:OG_DEAL_PAGE_DEV;
     id<OGDeal> result = (id<OGDeal>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:@"%@/%@", OG_DEAL_PAGE, deal.dealId];
+    result.url = [NSString stringWithFormat:@"%@/%@", host, deal.dealId];
     
     return result;
 }
 
 + (id<OGLocation>)locationObjectForMerchantLocation:(ttMerchantLocation*)loc
 {
+    NSString *host = ([[TaloolFrameworkHelper sharedInstance] isProduction])? OG_MERCHANT_PAGE_PROD:OG_MERCHANT_PAGE_DEV;
     NSNumber *locId = loc.locationId;
     id<OGLocation> result = (id<OGLocation>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:@"%@/%@", OG_MERCHANT_PAGE, locId];
+    result.url = [NSString stringWithFormat:@"%@/%@", host, locId];
     
     return result;
 }
 
 + (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer
 {
+    NSString *host = ([[TaloolFrameworkHelper sharedInstance] isProduction])? OG_OFFER_PAGE_PROD:OG_OFFER_PAGE_DEV;
     id<OGDealPack> result = (id<OGDealPack>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:@"%@/%@", OG_OFFER_PAGE, dealOffer.dealOfferId];
+    result.url = [NSString stringWithFormat:@"%@/%@", host, dealOffer.dealOfferId];
     
     return result;
 
