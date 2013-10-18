@@ -151,6 +151,19 @@
     //if ([[FBSession activeSession] handleOpenURL:url]) {
     if ([FBAppCall handleOpenURL:url sourceApplication:sourceApplication])
     {
+        NSString *query = [url fragment];
+        if (!query) {
+            query = [url query];
+        }
+        NSDictionary *params = [self parseURLParams:query];
+        // Check if target URL exists
+        NSString *targetURLString = [params valueForKey:@"target_url"];
+        if (targetURLString) {
+            NSURL *targetURL = [NSURL URLWithString:targetURLString];
+            NSString *taloolUrlString = [NSString stringWithFormat:@"talool:/%@", [targetURL path]];
+            NSURL *taloolUrl = [NSURL URLWithString:taloolUrlString];
+            [[TaloolAppCall sharedInstance] handleOpenURL:taloolUrl sourceApplication:sourceApplication];
+        }
         return YES;
     } else {
         // Facebook SDK * App Linking *
@@ -171,6 +184,21 @@
         }
     }
     return NO;
+}
+
+/**
+ * A function for parsing URL parameters.
+ */
+- (NSDictionary*)parseURLParams:(NSString *)query {
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val = [[kv objectAtIndex:1]
+                         stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [params setObject:val forKey:[kv objectAtIndex:0]];
+    }
+    return params;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
