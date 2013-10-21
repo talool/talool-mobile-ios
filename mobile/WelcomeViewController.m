@@ -15,6 +15,7 @@
 #import "TaloolColor.h"
 #import "Talool-API/ttCustomer.h"
 #import "SettingsTableViewController.h"
+#import "EmailViewController.h"
 #import "MyDealsViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -115,18 +116,30 @@
                      
                      // add a spinner
                      [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-                     
-                     ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
-                     
-                     // TODO: see if we have come up with a better method to generate a password for FB users
-                     NSString *passwordHack = [ttCustomer nonrandomPassword:[user objectForKey:@"email"]];
-                     
-                     if ([ttCustomer doesCustomerExist:customer.email]) {
+ 
+                     if ([CustomerHelper doesFacebookCustomerExist:user.id])
+                     {
                          // auth the user
-                         [CustomerHelper loginUser:customer.email password:passwordHack];
-                     } else {
-                         [CustomerHelper registerCustomer:customer password:passwordHack];
+                         [CustomerHelper loginFacebookUser:user.id];
                      }
+                     else
+                     {
+                         NSString *email = [user objectForKey:@"email"];
+                         ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
+                         if ([CustomerHelper isEmailValid:email])
+                         {
+                             [CustomerHelper registerCustomer:customer
+                                                     password:[ttCustomer nonrandomPassword:email]];
+                         }
+                         else
+                         {
+                             // Prompt the user for their email
+                             EmailViewController *evc = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailView"];
+                             [evc setCustomer:customer];
+                             [self presentViewController:evc animated:YES completion:nil];
+                         }
+                     }
+
                      
                      [FacebookHelper trackNumberOfFriends];
                      

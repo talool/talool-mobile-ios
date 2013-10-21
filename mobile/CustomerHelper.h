@@ -21,6 +21,10 @@
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password;
 + (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 
++ (BOOL) isEmailValid:(NSString *)email;
++ (BOOL) doesFacebookCustomerExist:(NSString *)facebookId;
++ (BOOL) loginFacebookUser:(NSString *)facebookId;
+
 + (void) showNetworkError;
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
 + (void) handleNewLogin;

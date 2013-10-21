@@ -92,7 +92,6 @@ static NSManagedObjectContext *_context;
         [user setAsFemale:[gender isEqualToString:@"female"]];
     }
     
-    NSLog(@"birthday: %@",fb_user.birthday);
     // convert the bday string to a date
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
