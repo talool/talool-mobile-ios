@@ -56,6 +56,16 @@
         [activateButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconBook, @"Enter Code"]];
         [activateButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
+        
+        // Hide the buy button if the deal offer is expired
+        NSDate *today = [NSDate date];
+#warning "TODO we should add the isActive flag and check that too"
+        if ([today compare:offer.expires] == NSOrderedAscending) {
+            NSMutableArray *newToolBarArray = [NSMutableArray arrayWithArray:toolbar.items];
+            [newToolBarArray removeObjectAtIndex:1];
+            //[toolbar setItems:newToolBarArray animated:NO];
+        }
+        
         [self addSubview:view];
     }
     return self;

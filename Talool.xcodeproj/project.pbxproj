@@ -1172,9 +1172,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-lsqlite3.0",
-					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;
@@ -1209,9 +1207,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
-					"-all_load",
 					"-lsqlite3.0",
-					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;

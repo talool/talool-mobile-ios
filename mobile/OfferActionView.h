@@ -16,6 +16,7 @@
     IBOutlet UIView *view;
     IBOutlet UIImageView *dealOfferImage;
     IBOutlet UILabel *priceLabel;
+    IBOutlet UIToolbar *toolbar;
     IBOutlet UIBarButtonItem *buyButton;
     IBOutlet UIBarButtonItem *activateButton;
 }
