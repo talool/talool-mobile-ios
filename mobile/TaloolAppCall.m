@@ -11,6 +11,7 @@
 #import "TaloolTabBarController.h"
 #import "ResetPasswordViewController.h"
 #import "AcceptGiftViewController.h"
+#import "DealTableViewController.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttGift.h"
 
@@ -99,19 +100,27 @@ static int ACTIVITY_TAB_INDEX = 2;
                                context:[CustomerHelper getContext]
                                  error:&err];
     
-    // TODO handle some error cases:
-    //  * not your gift
-    //  * gift already accepted or rejected
-    
     if (gift)
     {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         UINavigationController *nav = [[appDelegate.mainViewController viewControllers] objectAtIndex:ACTIVITY_TAB_INDEX];
-        
-        AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
-        view.gift = gift;
-        
-        [nav pushViewController:view animated:YES];
+        if ([gift isPending])
+        {
+            AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
+            view.gift = gift;
+            [nav pushViewController:view animated:YES];
+        }
+        else
+        {
+            // get the dealAcquire for this accepted gift
+            ttDealAcquire *deal = [gift getDealAquire:[CustomerHelper getContext]];
+            if (deal)
+            {
+                DealTableViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+                [view setDeal:deal];
+                [nav pushViewController:view animated:YES];
+            }
+        }
 
     }
     else if (err.code)
