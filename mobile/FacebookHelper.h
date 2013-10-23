@@ -30,5 +30,10 @@
 
 + (BOOL) reopenSession;
 
+enum {
+    FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL = 50
+};
+typedef int FacebookErrorCode;
+
 
 @end

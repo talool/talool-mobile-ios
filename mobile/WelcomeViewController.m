@@ -117,19 +117,24 @@
                      // add a spinner
                      [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
  
-                     if ([CustomerHelper doesFacebookCustomerExist:user.id])
-                     {
-                         // auth the user
-                         [CustomerHelper loginFacebookUser:user.id];
-                     }
-                     else
+                     NSError *error = nil;
+                     [CustomerHelper loginFacebookUser:user.id
+                                         facebookToken:[[[FBSession activeSession] accessTokenData] accessToken]
+                                                 error:&error];
+                     
+                     if (error.code && error.code == FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL)
                      {
                          NSString *email = [user objectForKey:@"email"];
                          ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
                          if ([CustomerHelper isEmailValid:email])
                          {
-                             [CustomerHelper registerCustomer:customer
-                                                     password:[ttCustomer nonrandomPassword:email]];
+                             if (![CustomerHelper registerCustomer:customer
+                                                          password:[ttCustomer nonrandomPassword:email]])
+                             {
+                                 // Reg failed so log out of Facebook
+                                 [[FBSession activeSession] closeAndClearTokenInformation];
+                             }
+                             
                          }
                          else
                          {
@@ -139,9 +144,16 @@
                              [self presentViewController:evc animated:YES completion:nil];
                          }
                      }
-
-                     
-                     [FacebookHelper trackNumberOfFriends];
+                     else if (error.code)
+                     {
+                         // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+                         [CustomerHelper showErrorMessage:error.localizedDescription
+                                                withTitle:@"Authentication Failed"
+                                               withCancel:@"Try again"
+                                               withSender:nil];
+                         // logout of facebook
+                         [[FBSession activeSession] closeAndClearTokenInformation];
+                     }
                      
                      // remove the spinner
                      [spinner stopAnimating];
@@ -151,6 +163,9 @@
                  // If we have a logged in user (possibly as a result of the FB reg above)
                  // Then we should check if any FB data has changed and navigate to the main view
                  if ([CustomerHelper getLoggedInUser] != nil) {
+                     
+                     [FacebookHelper trackNumberOfFriends];
+                     
                      // TODO consider updating the user if needed
                      if (self.navigationController.visibleViewController != appDelegate.firstViewController) {
                          [self.navigationController popToRootViewControllerAnimated:YES];

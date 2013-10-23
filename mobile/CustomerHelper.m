@@ -7,6 +7,7 @@
 //
 
 #import "CustomerHelper.h"
+#import "FacebookHelper.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttCustomer.h"
@@ -108,16 +109,22 @@ static NSManagedObjectContext *_context;
     return [emailTest evaluateWithObject:email];
 }
 
-+ (BOOL) doesFacebookCustomerExist:(NSString *)facebookId
++ (BOOL) loginFacebookUser:(NSString *)facebookId facebookToken:(NSString *)fbToken error:(NSError **)err
 {
-#warning "TODO: doesFacebookCustomerExist"
-    return NO;
-}
+    ttCustomer *user = [ttCustomer authenticateFacebook:facebookId facebookToken:fbToken context:_context error:err];
 
-+ (BOOL) loginFacebookUser:(NSString *)facebookId
-{
-#warning "TODO: loginFacebookUser"
-    return NO;
+    if (user==nil)
+    {
+        // Create a new error object to message that we need to register this user
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        NSString *errorDetails = @"Facebook user not registered";
+        [details setValue:errorDetails forKey:NSLocalizedDescriptionKey];
+        *err = [NSError errorWithDomain:@"FacebookAuthentication" code:FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL userInfo:details];
+        return NO;
+    }
+
+    [CustomerHelper handleNewLogin];
+    return YES;
 }
 
 @end
