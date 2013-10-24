@@ -122,8 +122,6 @@
     [self.window makeKeyAndVisible];
     
     [[TaloolAppCall sharedInstance] handleDidBecomeActive];
-    
-    [TestFlight passCheckpoint:@"LAUNCH_COMPLETE"];
 }
 
 - (BOOL)application:(UIApplication *)application
