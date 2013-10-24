@@ -17,6 +17,8 @@
 #define VANCOUVER_LATITUDE      45.6389
 #define VANCOUVER_LONGITUDE     -122.6603
 
+#define OFFER_MONITOR_INTERVAL_IN_SECONDS 180.0
+
 @class ttDealOffer, SKProduct;
 
 @interface DealOfferHelper : NSObject<CLLocationManagerDelegate>
@@ -33,6 +35,8 @@
 @property (strong, nonatomic) NSString *closestProductId;
 @property (strong, nonatomic) NSArray *closestDeals;
 
+@property (retain, nonatomic) NSTimer *offerMonitor;
+
 - (ttDealOffer *) getClosestDealOffer;
 - (SKProduct *) getClosestProduct;
 - (NSArray *) getClosestDeals;
@@ -41,5 +45,8 @@
 -(void) setLocationAsVancouver;
 -(void) setSelectedBook;
 -(void) reset;
+
+- (void) stopPollingOffers;
+- (void) startPollingOffers;
 
 @end

@@ -25,6 +25,8 @@
 - (IBAction)buyAction:(id)sender;
 - (IBAction)activateAction:(id)sender;
 
+-(void) updateOffer:(ttDealOffer *)newOffer;
+
 - (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer delegate:(id<TaloolDealOfferActionDelegate>)delegate;
 
 @end

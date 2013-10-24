@@ -15,6 +15,8 @@
 @implementation OfferActionView
 {
     NSNumberFormatter * _priceFormatter;
+    NSArray * _originalToolbarItems;
+    NSArray * _limitedToolbarItems;
     id<TaloolDealOfferActionDelegate> _delegate;
 }
 
@@ -26,24 +28,11 @@
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"OfferActionView" owner:self options:nil];
         
-        offer = dealOffer;
         _delegate = delegate;
-        
-        [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.imageUrl]
-                       placeholderImage:[UIImage imageNamed:@"000.png"]
-                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                  if (error !=  nil) {
-                                      // TODO track these errors
-                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                  }
-                             
-                              }];
         
         _priceFormatter = [[NSNumberFormatter alloc] init];
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-        priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
-        
         
         NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
                               NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
@@ -56,15 +45,12 @@
         [activateButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconBook, @"Enter Code"]];
         [activateButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
+        _originalToolbarItems = toolbar.items;
+        NSMutableArray *newToolBarArray = [NSMutableArray arrayWithArray:toolbar.items];
+        [newToolBarArray removeObjectAtIndex:1];
+        _limitedToolbarItems = newToolBarArray;
         
-        // Hide the buy button if the deal offer is expired
-        NSDate *today = [NSDate date];
-#warning "TODO we should add the isActive flag and check that too"
-        if ([today compare:offer.expires] == NSOrderedAscending) {
-            NSMutableArray *newToolBarArray = [NSMutableArray arrayWithArray:toolbar.items];
-            [newToolBarArray removeObjectAtIndex:1];
-            //[toolbar setItems:newToolBarArray animated:NO];
-        }
+        [self updateOffer:dealOffer];
         
         [self addSubview:view];
     }
@@ -77,6 +63,36 @@
 
 - (IBAction)activateAction:(id)sender {
     [_delegate activateCode:self];
+}
+
+-(void) updateOffer:(ttDealOffer *)newOffer
+{
+    offer = newOffer;
+    
+    [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.imageUrl]
+                   placeholderImage:[UIImage imageNamed:@"000.png"]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              if (error !=  nil) {
+                                  // TODO track these errors
+                                  NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                              }
+                              
+                          }];
+    
+    priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
+    
+    // Hide the buy button if the deal offer is expired
+    NSDate *today = [NSDate date];
+    if ([today compare:offer.expires] == NSOrderedDescending) {
+        [toolbar setItems:_limitedToolbarItems animated:NO];
+    }
+    else
+    {
+        [toolbar setItems:_originalToolbarItems animated:NO];
+    }
+    
+#warning "TODO we should hide the buy button is the offer is inactive."
+    
 }
 
 

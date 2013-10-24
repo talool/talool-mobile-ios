@@ -52,23 +52,18 @@
     // add 3 cuz we put the summary and map on top and a footer on the bottom
     numberOfExtraCells = 3;
     numberOfExtraCellsBeforeDeals = numberOfExtraCells - 1;
-    
-    [self initTableView];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self askForHelp];
+    
+    [self updateOffer];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Offer Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -77,11 +72,52 @@
     [self closeHelp];
 }
 
+- (void) updateOffer
+{
+    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
+    if (offer)
+    {
+        self.navigationItem.title = offer.title;
+        
+        if (actionView)
+        {
+            [actionView updateOffer:offer];
+        }
+        else
+        {
+            CGRect frame = self.view.bounds;
+            actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) offer:offer delegate:self];
+        }
+        
+        // calculate the height of the cells in the detail section
+        UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
+        
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        attributes[NSFontAttributeName] = font;
+        CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:attributes
+                                                  context:nil].size;
+        
+        int padding = 24;
+        detailSize = (size.height + padding);
+        
+        [self.tableView reloadData];
+    }
+    else
+    {
+        [self askForHelp];
+    }
+    
+}
+
+
 #pragma mark -
 #pragma mark - Help Overlay Methods
 
 - (void) askForHelp
 {
+    
     // if the closest deal offer is still nil, we should show the user some help
     if ([DealOfferHelper sharedInstance].closestProductId==nil)
     {
@@ -90,9 +126,9 @@
         [helper setDelegate:self];
         [self presentViewController:helper animated:NO completion:nil];
     }
-    else if ([[DealOfferHelper sharedInstance] getClosestDealOffer]==nil || [[DealOfferHelper sharedInstance].closestDeals count] == 0)
+    else if ([[DealOfferHelper sharedInstance].closestDeals count] == 0)
     {
-        [[DealOfferHelper sharedInstance] setSelectedBook];
+        // if the deals are still missing, there must be network error
         if (helpButton == nil)
         {
             self.navigationItem.title = @"Find Deals";
@@ -119,32 +155,6 @@
         [self.tableView setUserInteractionEnabled:YES];
     }
 }
-
-- (void) initTableView
-{
-    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
-    self.navigationItem.title = offer.title;
-    
-    CGRect frame = self.view.bounds;
-    actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) offer:offer delegate:self];
-    
-    // calculate the height of the cells in the detail section
-    UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-    attributes[NSFontAttributeName] = font;
-    CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:attributes
-                                               context:nil].size;
-    
-    int padding = 24;
-    detailSize = (size.height + padding);
-    
-    [self.tableView reloadData];
-    
-}
-
 
 #pragma mark -
 #pragma mark - Table view data source
@@ -250,10 +260,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    if ([[DealOfferHelper sharedInstance].closestDeals count] > 0)
-    {
-        [self initTableView];
-    }
+    [self updateOffer];
     
 }
 

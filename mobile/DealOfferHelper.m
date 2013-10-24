@@ -20,7 +20,7 @@
 
 @implementation DealOfferHelper
 
-@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct, closestProductId, closestDeals;
+@synthesize dealOffers, boulderBook, vancouverBook, closestBook, closestProduct, closestProductId, closestDeals, offerMonitor;
 
 + (DealOfferHelper *)sharedInstance
 {
@@ -47,12 +47,35 @@
  */
 - (void)reset
 {
-    [self loadProducts];
-    
+    [self stopPollingOffers];
     closestBook=nil;
     closestProduct=nil;
     closestProductId=nil;
+    [self startPollingOffers];
+}
+
+- (void) startPollingOffers
+{
+    [self pollingAction];
     
+    NSNumber *interval = [NSNumber numberWithInt:OFFER_MONITOR_INTERVAL_IN_SECONDS];
+    
+    offerMonitor = [NSTimer scheduledTimerWithTimeInterval:[interval floatValue]
+                                                       target:self
+                                                     selector:@selector(pollingAction)
+                                                     userInfo:nil
+                                                      repeats:YES];
+}
+
+- (void) stopPollingOffers
+{
+    [offerMonitor invalidate];
+}
+
+-(void) pollingAction
+{
+    [self loadProducts];
+    [self setSelectedBook];
 }
 
 -(void) loadProducts
