@@ -3,6 +3,9 @@
 //
 
 #import <Availability.h>
+#import "Talool-API/TTLog.h"
+
+#define NSLog TTLog
 
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."

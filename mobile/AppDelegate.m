@@ -175,9 +175,7 @@
                                                                                   appID:appID
                                                                         urlSchemeSuffix:nil];
         if (appLinkToken) {
-            if ([FBSession activeSession].isOpen) {
-                NSLog(@"INFO: Ignoring app link because current session is open.");
-            } else {
+            if (![FBSession activeSession].isOpen) {
                 [self handleAppLink:appLinkToken];
                 return YES;
             }
@@ -433,7 +431,6 @@
 My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest
 */
 void HandleExceptions(NSException *exception) {
-    NSLog(@"This is where we save the application data during a exception");
     [TestFlight passCheckpoint:@"CRASH"];
     // Save application data on crash
 }
@@ -441,7 +438,6 @@ void HandleExceptions(NSException *exception) {
  My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
  */
 void SignalHandler(int sig) {
-    NSLog(@"This is where we save the application data during a signal");
     [TestFlight passCheckpoint:@"SIGNAL"];
     // Save application data on crash
 }
