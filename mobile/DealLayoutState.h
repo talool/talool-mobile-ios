@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TaloolProtocols.h"
-#import "DealImageCell.h"
 #import "DealLocationCell.h"
 #import "DealDetailCell.h"
 #import "DealOfferLogoCell.h"

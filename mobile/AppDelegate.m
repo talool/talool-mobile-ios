@@ -29,6 +29,7 @@
 #import "TaloolAppCall.h"
 #import <VenmoTouch/VenmoTouch.h>
 #import "TestFlight.h"
+#import "BraintreeHelper.h"
 
 @implementation AppDelegate
 
@@ -403,27 +404,26 @@
 - (void) initVTClient
 {
     if ([[TaloolFrameworkHelper sharedInstance] isProduction]) {
-#warning "update the Braintree production keys"
-        // TODO change this when we are ready to be charged
         [VTClient
-         startWithMerchantID:@"mkf3rwysqz6w9x44"
-         customerEmail:@"doug@talool.com"
-         braintreeClientSideEncryptionKey:@"MIIBCgKCAQEA2CWCSS/z/FrWMJqPb8ysca5+N7edz3Kiz9EpNwZFQ4Rx9lS02mXXLG0jHWFC41y8IFKDjzKk01OGB6Li0VL/RcB88ASdJALBpiuyTkIiiFSTFLzcGehagmfuozv7TQOnd8biYOOKvJ692laOdr7rdqLi3zFvncgg49JTnKewXZF8RRLHObpFHSj7r7O7o4Boy6aVaD06wuytf9mKxUYqp2juqVT4UgG4uhuc4EcgRYHfW5GZ0OtotKev1SsrzEC4s5N1QSBkkEeyagzGxdrp5apJkdIQLjIcx++N76SMR9Ybce2ApiScK14st96bZ760QBPMSXrMAVfYvYAEkR1B5QIDAQAB"
+         startWithMerchantID:BRAINTREE_MERCHANT_ID_PROD
+         customerEmail:BRAINTREE_EMAIL_PROD
+         braintreeClientSideEncryptionKey:BRAINTREE_KEY_PROD
          environment:VTEnvironmentSandbox];
-        
     }
     else
     {
-        
         [VTClient
-         startWithMerchantID:@"mkf3rwysqz6w9x44"
-         customerEmail:@"doug@talool.com"
-         braintreeClientSideEncryptionKey:@"MIIBCgKCAQEA2CWCSS/z/FrWMJqPb8ysca5+N7edz3Kiz9EpNwZFQ4Rx9lS02mXXLG0jHWFC41y8IFKDjzKk01OGB6Li0VL/RcB88ASdJALBpiuyTkIiiFSTFLzcGehagmfuozv7TQOnd8biYOOKvJ692laOdr7rdqLi3zFvncgg49JTnKewXZF8RRLHObpFHSj7r7O7o4Boy6aVaD06wuytf9mKxUYqp2juqVT4UgG4uhuc4EcgRYHfW5GZ0OtotKev1SsrzEC4s5N1QSBkkEeyagzGxdrp5apJkdIQLjIcx++N76SMR9Ybce2ApiScK14st96bZ760QBPMSXrMAVfYvYAEkR1B5QIDAQAB"
+         startWithMerchantID:BRAINTREE_MERCHANT_ID_DEV
+         customerEmail:BRAINTREE_EMAIL_DEV
+         braintreeClientSideEncryptionKey:BRAINTREE_KEY_DEV
          environment:VTEnvironmentSandbox];
-        
     }
     
 }
+
+
+#pragma mark -
+#pragma mark - TestFlight - Exception Handlers
 
 /*
 My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest

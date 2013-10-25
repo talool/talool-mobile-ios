@@ -14,7 +14,6 @@
 #import "DealCell.h"
 #import "OfferSummaryCell.h"
 #import "MapCell.h"
-#import "AccessCodeCell.h"
 #import "FooterPromptCell.h"
 #import "TaloolIAPHelper.h"
 #import "DealOfferHelper.h"

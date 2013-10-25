@@ -15,7 +15,6 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "DealAcquireCell.h"
 #import "MapCell.h"
-#import "DealImageCell.h"
 #import "FooterPromptCell.h"
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
