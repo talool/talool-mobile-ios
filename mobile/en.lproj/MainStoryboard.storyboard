@@ -90,7 +90,7 @@
                                                         <fragment content="Enter your email address below, so we can send you instructions for resetting your password.">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="20" name="MarkerFelt-Thin"/>
+                                                                <font key="NSFont" size="18" name="TrebuchetMS-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                             </attributes>
                                                         </fragment>
@@ -210,7 +210,8 @@
                                                         <fragment content="Enter your new password below.  You will be logged-in to Talool when the change is complete.">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="20" name="MarkerFelt-Thin"/>
+                                                                <font key="NSFont" size="18" name="TrebuchetMS-Bold"/>
+                                                                <font key="NSOriginalFont" size="18" name="TrebuchetMS-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                             </attributes>
                                                         </fragment>
@@ -369,7 +370,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your email address to complete your registration." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Kz9-XY-Qve">
                                                     <rect key="frame" x="20" y="20" width="280" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                                     <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -537,7 +538,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="43" id="NM4-HX-pqM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -764,7 +765,9 @@
                             <outlet property="delegate" destination="uBs-OK-FZH" id="qD0-Yp-XfS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Log In" id="rgI-FJ-TEC"/>
+                    <navigationItem key="navigationItem" title="Log In" id="rgI-FJ-TEC">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7Wa-Sc-5Hq"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailField" destination="Vh7-mu-9w1" id="VeQ-Uj-fPe"/>
                         <outlet property="passwordField" destination="6IM-kO-l59" id="enL-ut-oUD"/>
@@ -800,7 +803,7 @@
                                                         <constraint firstAttribute="width" constant="268" id="x6U-RP-f2o"/>
                                                         <constraint firstAttribute="height" constant="21" id="zRc-y1-US6"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
                                                     <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1080,7 +1083,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="List Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQC-80-ohC">
                                             <rect key="frame" x="20" y="22" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1299,7 +1302,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="5Ma-CA-dtn"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1428,7 +1431,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="67" id="RYQ-tK-Rzd"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1439,7 +1442,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="67" id="BKx-cC-cJb"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="10"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="10"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="1"/>
@@ -1471,32 +1474,33 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gift Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Vuz-Of-vcI">
                                             <rect key="frame" x="20" y="17" width="280" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="dxl-of-oT4"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="LwV-Et-G3y"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="24"/>
                                             <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-mG-m40">
-                                            <rect key="frame" x="20" y="69" width="280" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-mG-m40">
+                                            <rect key="frame" x="20" y="67" width="280" height="23"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="n1K-XR-aBj"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="oBh-qH-8VV"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Vuz-Of-vcI" firstAttribute="leading" secondItem="JgW-Vj-yrj" secondAttribute="leading" constant="20" symbolic="YES" id="2BE-KS-Cqi"/>
+                                        <constraint firstItem="KV0-mG-m40" firstAttribute="top" secondItem="Vuz-Of-vcI" secondAttribute="bottom" constant="18" id="4Bw-5b-03W"/>
+                                        <constraint firstItem="Vuz-Of-vcI" firstAttribute="leading" secondItem="KV0-mG-m40" secondAttribute="leading" id="JsE-Qb-dQs"/>
+                                        <constraint firstAttribute="bottom" secondItem="KV0-mG-m40" secondAttribute="bottom" constant="22" id="ROd-Vh-hBq"/>
+                                        <constraint firstItem="Vuz-Of-vcI" firstAttribute="trailing" secondItem="KV0-mG-m40" secondAttribute="trailing" id="T0O-rj-Hy1"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vuz-Of-vcI" secondAttribute="trailing" constant="20" symbolic="YES" id="WC4-Z9-1l4"/>
+                                        <constraint firstItem="Vuz-Of-vcI" firstAttribute="top" secondItem="JgW-Vj-yrj" secondAttribute="top" constant="17" id="n57-3J-xQa"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Vuz-Of-vcI" firstAttribute="top" secondItem="tgp-nN-IhN" secondAttribute="top" constant="17" id="723-mH-6zn"/>
-                                    <constraint firstAttribute="trailing" secondItem="Vuz-Of-vcI" secondAttribute="trailing" constant="20" id="8DB-fI-zix"/>
-                                    <constraint firstItem="KV0-mG-m40" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" constant="20" id="ln8-d7-Jw8"/>
-                                    <constraint firstAttribute="trailing" secondItem="KV0-mG-m40" secondAttribute="trailing" constant="20" id="mIH-no-aqx"/>
-                                    <constraint firstItem="Vuz-Of-vcI" firstAttribute="leading" secondItem="tgp-nN-IhN" secondAttribute="leading" constant="20" id="sYd-ZI-8eQ"/>
-                                    <constraint firstItem="KV0-mG-m40" firstAttribute="top" secondItem="Vuz-Of-vcI" secondAttribute="bottom" constant="20" id="tTy-PS-sTh"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="details" destination="KV0-mG-m40" id="N06-4f-3cU"/>
                                     <outlet property="summary" destination="Vuz-Of-vcI" id="rBz-fd-TZL"/>
@@ -1812,7 +1816,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="List Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifg-EM-Sdo">
                                             <rect key="frame" x="20" y="22" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1902,7 +1906,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="6H0-KK-3p1"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -2022,7 +2026,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="LSB-IC-uvN"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -2204,7 +2208,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ylM-B7-eWD"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -2265,7 +2269,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you purchased a paper copy of the Payback Book, there is an access code inside for free access to the digital deals." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-oY-sf6">
                                                     <rect key="frame" x="20" y="11" width="280" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                                     <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2350,16 +2354,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="We Can't Locate You!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="lgU-yE-rgZ">
                                 <rect key="frame" x="20" y="20" width="280" height="40"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="28"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Can you tell us which Payback Book you're interested in?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="79p-Ke-E92">
                                 <rect key="frame" x="20" y="271" width="280" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="xbA-DG-Wv0"/>
+                                    <constraint firstAttribute="height" constant="56" id="mZO-Jk-fNq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="19"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2404,20 +2408,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="lgU-yE-rgZ" secondAttribute="trailing" constant="20" symbolic="YES" id="7JL-nM-drV"/>
+                            <constraint firstItem="79p-Ke-E92" firstAttribute="top" secondItem="MTp-CU-7vF" secondAttribute="bottom" constant="8" symbolic="YES" id="7M2-lA-K1a"/>
                             <constraint firstItem="MTp-CU-7vF" firstAttribute="top" secondItem="lgU-yE-rgZ" secondAttribute="bottom" constant="8" symbolic="YES" id="8EJ-yE-FqS"/>
                             <constraint firstAttribute="trailing" secondItem="MTp-CU-7vF" secondAttribute="trailing" constant="67" id="AOp-oQ-Qb3"/>
+                            <constraint firstItem="79p-Ke-E92" firstAttribute="top" secondItem="AuD-wW-rdW" secondAttribute="top" constant="271" id="BPi-q3-fgG"/>
                             <constraint firstItem="fRx-En-g7J" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" id="Bfd-vO-Uuv"/>
+                            <constraint firstItem="fRx-En-g7J" firstAttribute="top" secondItem="79p-Ke-E92" secondAttribute="bottom" constant="16" id="GSP-fD-xtl"/>
                             <constraint firstItem="lgU-yE-rgZ" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" id="IBT-qX-WQa"/>
                             <constraint firstItem="lgU-yE-rgZ" firstAttribute="top" secondItem="AuD-wW-rdW" secondAttribute="top" constant="20" symbolic="YES" id="JNi-dT-K88"/>
                             <constraint firstAttribute="trailing" secondItem="fRx-En-g7J" secondAttribute="trailing" constant="20" symbolic="YES" id="W9E-4P-Wtt"/>
                             <constraint firstItem="ZUi-mX-hfb" firstAttribute="top" secondItem="fRx-En-g7J" secondAttribute="bottom" constant="8" symbolic="YES" id="WhK-4B-5LN"/>
+                            <constraint firstItem="79p-Ke-E92" firstAttribute="trailing" secondItem="fRx-En-g7J" secondAttribute="trailing" id="bh3-O7-Lec"/>
                             <constraint firstItem="ZUi-mX-hfb" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="20" symbolic="YES" id="d0Y-fJ-4FJ"/>
-                            <constraint firstItem="79p-Ke-E92" firstAttribute="leading" secondItem="fRx-En-g7J" secondAttribute="leading" id="dni-Gq-D8h"/>
                             <constraint firstAttribute="trailing" secondItem="ZUi-mX-hfb" secondAttribute="trailing" constant="20" symbolic="YES" id="fNB-Pg-52N"/>
+                            <constraint firstItem="79p-Ke-E92" firstAttribute="leading" secondItem="fRx-En-g7J" secondAttribute="leading" id="h4z-xJ-AKZ"/>
                             <constraint firstItem="MTp-CU-7vF" firstAttribute="leading" secondItem="AuD-wW-rdW" secondAttribute="leading" constant="58" id="kfH-Li-SmV"/>
-                            <constraint firstItem="79p-Ke-E92" firstAttribute="top" secondItem="AuD-wW-rdW" secondAttribute="top" constant="271" id="rqN-F1-s6A"/>
-                            <constraint firstItem="fRx-En-g7J" firstAttribute="top" secondItem="79p-Ke-E92" secondAttribute="bottom" constant="16" id="sfJ-oT-D9n"/>
-                            <constraint firstItem="79p-Ke-E92" firstAttribute="top" secondItem="MTp-CU-7vF" secondAttribute="bottom" constant="8" symbolic="YES" id="wzx-9t-QU2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2446,7 +2451,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="RfI-9R-YOt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="28"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2455,14 +2460,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="bg2-oi-f4J"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="19"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPw-xm-DmZ" customClass="TaloolUIButton">
                                 <rect key="frame" x="20" y="342" width="280" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="72y-wJ-cIV"/>
+                                    <constraint firstAttribute="height" constant="43" id="Y4K-rh-r1S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
@@ -2483,14 +2488,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="IPw-xm-DmZ" secondAttribute="trailing" constant="20" symbolic="YES" id="09x-eS-IlL"/>
                             <constraint firstItem="tLN-23-tuj" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" id="0t5-qo-c9h"/>
-                            <constraint firstItem="IPw-xm-DmZ" firstAttribute="top" secondItem="tLN-23-tuj" secondAttribute="bottom" constant="16" id="Efl-o4-t0d"/>
+                            <constraint firstItem="IPw-xm-DmZ" firstAttribute="top" secondItem="tLN-23-tuj" secondAttribute="bottom" constant="16" id="Db3-G6-MdG"/>
                             <constraint firstAttribute="trailing" secondItem="Dxa-Ny-nzB" secondAttribute="trailing" constant="20" symbolic="YES" id="IfI-4u-tY5"/>
                             <constraint firstItem="Dxa-Ny-nzB" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" id="SPE-Cb-kRe"/>
+                            <constraint firstItem="ReF-lW-4de" firstAttribute="top" secondItem="IPw-xm-DmZ" secondAttribute="bottom" constant="183" id="Tli-J7-TmJ"/>
+                            <constraint firstItem="IPw-xm-DmZ" firstAttribute="leading" secondItem="tLN-23-tuj" secondAttribute="leading" id="Vqh-AU-66Q"/>
                             <constraint firstItem="Sqn-VP-LWX" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="20" symbolic="YES" id="WCf-rd-0yx"/>
-                            <constraint firstItem="IPw-xm-DmZ" firstAttribute="leading" secondItem="lYp-Pe-Otu" secondAttribute="leading" constant="20" symbolic="YES" id="Ylx-bh-FYC"/>
                             <constraint firstAttribute="trailing" secondItem="Sqn-VP-LWX" secondAttribute="trailing" constant="20" symbolic="YES" id="dJh-LY-Dut"/>
+                            <constraint firstItem="IPw-xm-DmZ" firstAttribute="trailing" secondItem="tLN-23-tuj" secondAttribute="trailing" id="mUd-Cu-RgX"/>
                             <constraint firstItem="tLN-23-tuj" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="271" id="upg-sL-AlI"/>
                             <constraint firstItem="Dxa-Ny-nzB" firstAttribute="top" secondItem="lYp-Pe-Otu" secondAttribute="top" constant="85" id="wG9-zF-lNN"/>
                             <constraint firstAttribute="trailing" secondItem="tLN-23-tuj" secondAttribute="trailing" constant="20" symbolic="YES" id="wLA-7F-3zx"/>
@@ -2541,7 +2547,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="List Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USU-Gs-DYb">
                                                     <rect key="frame" x="20" y="22" width="280" height="21"/>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                     <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -2620,7 +2626,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="YwP-Q2-z1p"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -2747,32 +2753,33 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Summary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-cY-bgv">
                                             <rect key="frame" x="20" y="17" width="280" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tnN-HV-Eov"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="S3f-cX-AAd"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="24"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="24"/>
                                             <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="YTK-wy-HbG">
-                                            <rect key="frame" x="20" y="69" width="280" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="YTK-wy-HbG">
+                                            <rect key="frame" x="20" y="67" width="280" height="23"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="acw-CH-2Ly"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="xOY-6G-bjI"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zhM-cY-bgv" firstAttribute="leading" secondItem="YTK-wy-HbG" secondAttribute="leading" id="6Pv-Gj-Gij"/>
+                                        <constraint firstAttribute="bottom" secondItem="YTK-wy-HbG" secondAttribute="bottom" constant="22" id="EvH-0J-MfB"/>
+                                        <constraint firstItem="zhM-cY-bgv" firstAttribute="top" secondItem="2un-PI-cwi" secondAttribute="top" constant="17" id="R8b-hn-ZJw"/>
+                                        <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="18" id="hLG-zZ-SUA"/>
+                                        <constraint firstAttribute="trailing" secondItem="zhM-cY-bgv" secondAttribute="trailing" constant="20" symbolic="YES" id="wdW-UO-594"/>
+                                        <constraint firstItem="zhM-cY-bgv" firstAttribute="leading" secondItem="2un-PI-cwi" secondAttribute="leading" constant="20" symbolic="YES" id="yT9-88-eyv"/>
+                                        <constraint firstItem="zhM-cY-bgv" firstAttribute="trailing" secondItem="YTK-wy-HbG" secondAttribute="trailing" id="zyG-GA-DTb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" id="1R9-wE-n6C"/>
-                                    <constraint firstAttribute="trailing" secondItem="zhM-cY-bgv" secondAttribute="trailing" constant="20" id="aVO-nL-YCY"/>
-                                    <constraint firstItem="zhM-cY-bgv" firstAttribute="top" secondItem="AWp-60-eu0" secondAttribute="top" constant="17" id="n42-9E-3g4"/>
-                                    <constraint firstAttribute="trailing" secondItem="YTK-wy-HbG" secondAttribute="trailing" constant="20" id="oUQ-K9-eTN"/>
-                                    <constraint firstItem="YTK-wy-HbG" firstAttribute="top" secondItem="zhM-cY-bgv" secondAttribute="bottom" constant="20" id="tg6-M4-3xJ"/>
-                                    <constraint firstItem="zhM-cY-bgv" firstAttribute="leading" secondItem="AWp-60-eu0" secondAttribute="leading" constant="20" id="wTS-1T-OzG"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="details" destination="YTK-wy-HbG" id="Hsy-6B-11N"/>
                                     <outlet property="summary" destination="zhM-cY-bgv" id="Fbt-EN-kfL"/>
@@ -2909,6 +2916,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
+        <image name="000.png" width="1" height="1"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="TaloolLogoIcon2.png" width="199" height="50"/>
         <image name="compass.png" width="390" height="390"/>
@@ -2922,7 +2934,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="q3T-VT-ua5"/>
+        <segue reference="lZZ-Le-LNs"/>
         <segue reference="EGa-Bg-TS6"/>
-        <segue reference="wjI-dw-vyW"/>
     </inferredMetricsTieBreakers>
 </document>

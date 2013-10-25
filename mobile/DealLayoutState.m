@@ -29,8 +29,8 @@
 - (void) calcDetailSize:(ttDeal *)thedeal
 {
     // calc the detail size
-    UIFont *font = [UIFont fontWithName:@"MarkerFelt-Wide" size:24];
-    UIFont *font2 = [UIFont fontWithName:@"MarkerFelt-Thin" size:14];
+    UIFont *font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:24];
+    UIFont *font2 = [UIFont fontWithName:@"TrebuchetMS" size:14];
 
     
     NSMutableDictionary *attributes = [NSMutableDictionary dictionary];

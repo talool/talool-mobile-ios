@@ -56,7 +56,7 @@ static NSString *host = @"http://www.talool.com";
     UIView *header = [[UIView alloc] initWithFrame:headerFrame];
     UILabel *headerTitle = [[UILabel alloc] initWithFrame:headerFrame];
     [headerTitle setTextColor:[TaloolColor gray_5]];
-    headerTitle.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:21.0];
+    headerTitle.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:21.0];
     headerTitle.text = title;
     [headerTitle setBackgroundColor:[UIColor clearColor]];
     [header addSubview:headerTitle];

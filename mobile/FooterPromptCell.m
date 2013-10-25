@@ -25,8 +25,8 @@
 -(void) setSimpleAttributedMessage:(NSString *)message icon:(NSString *)icon1 icon:(NSString *)icon2
 { 
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  %@  %@", icon1, message, icon2]];
-    UIFont *fa = [UIFont fontWithName:@"FontAwesome" size:18.0];
-    UIFont *marker = [UIFont fontWithName:@"MarkerFelt-Thin" size:18.0];
+    UIFont *fa = [UIFont fontWithName:@"FontAwesome" size:17.0];
+    UIFont *marker = [UIFont fontWithName:@"TrebuchetMS" size:15.0];
     [text addAttribute:NSFontAttributeName value:fa range:NSMakeRange(0, 1)];
     [text addAttribute:NSFontAttributeName value:marker range:NSMakeRange(3, [message length])];
     [text addAttribute:NSFontAttributeName value:fa range:NSMakeRange([text length] - 1, 1)];
