@@ -48,6 +48,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+#warning "Setting the ENV to Dev";
+    //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+    
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -408,7 +411,7 @@
          startWithMerchantID:BRAINTREE_MERCHANT_ID_PROD
          customerEmail:BRAINTREE_EMAIL_PROD
          braintreeClientSideEncryptionKey:BRAINTREE_KEY_PROD
-         environment:VTEnvironmentSandbox];
+         environment:VTEnvironmentProduction];
     }
     else
     {
