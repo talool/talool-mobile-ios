@@ -290,7 +290,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *) getEmailFromContact:(ABRecordRef)person identifier:(ABMultiValueIdentifier)idx
+- (NSString *) copyEmailFromContact:(ABRecordRef)person identifier:(ABMultiValueIdentifier)idx
 {
     NSString *email;
     ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
@@ -298,7 +298,17 @@
     {
         CFStringRef emailRef = ABMultiValueCopyValueAtIndex(multi, idx);
         email = (__bridge NSString *)(emailRef);
+        if (emailRef)
+        {
+            CFRelease(emailRef);
+        }
     }
+    
+    if (multi)
+    {
+        CFRelease(multi);
+    }
+    
     return email;
 }
 
@@ -450,8 +460,7 @@
         NSString *fname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
         NSString *lname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
         NSString *name = [NSString stringWithFormat:@"%@ %@",fname, lname];
-        NSString *email = [self getEmailFromContact:person identifier:identifier];
-        NSLog(@"Email picked: %@", email);
+        NSString *email = [self copyEmailFromContact:person identifier:identifier];
         [self dismissViewControllerAnimated:YES completion:nil];
         [self handleUserContact:email name:name];
     }
