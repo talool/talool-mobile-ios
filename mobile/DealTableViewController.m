@@ -459,6 +459,10 @@
     {
         NSString *fname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
         NSString *lname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+        
+        if (!fname) fname=@"";
+        if (!lname) lname=@"";
+        
         NSString *name = [NSString stringWithFormat:@"%@ %@",fname, lname];
         NSString *email = [self copyEmailFromContact:person identifier:identifier];
         [self dismissViewControllerAnimated:YES completion:nil];
