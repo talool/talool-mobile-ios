@@ -108,17 +108,20 @@
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     ttCustomer *user = [ttCustomer createCustomer:firstNameField.text
                                          lastName:lastNameField.text
                                             email:emailField.text
                                     socialAccount:nil
-                                          context:appDelegate.managedObjectContext];
+                                          context:[CustomerHelper getContext]];
     
     
     if ([sexPicker selectedSegmentIndex]!=sexUndefinedIndex) {
         [user setAsFemale:([sexPicker selectedSegmentIndex]==sexFemaleIndex)];
+    }
+    
+    if (birthDateField.text)
+    {
+        [user setBirthDate:[datePicker date]];
     }
     
     // Register the user.  The Helper will display errors.

@@ -10,6 +10,8 @@
 #import "TaloolProtocols.h"
 
 #define HEADER_HEIGHT 145.0f
+#define ROW_HEIGHT 75.0f
+#define FOOTER_HEIGHT 60.0f
 
 @class ttMerchant;
 

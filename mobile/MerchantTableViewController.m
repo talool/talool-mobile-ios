@@ -248,14 +248,6 @@
     }
     
     cell.dateLabel.text = date;
-    
-    if (indexPath.row == [deals count]) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
-    }
-    else
-    {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
-    }
 
     
     cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
@@ -265,6 +257,17 @@
      
 
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == [deals count]) {
+        return FOOTER_HEIGHT;
+    }
+    else
+    {
+        return ROW_HEIGHT;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

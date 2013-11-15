@@ -7,8 +7,6 @@
 //
 
 #import "HelpNetworkFailureViewController.h"
-#import "TaloolUIButton.h"
-#import "TaloolColor.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -21,9 +19,6 @@
 {
     [super viewDidLoad];
     
-    [confirmButton useTaloolStyle];
-    [confirmButton setBaseColor:[TaloolColor teal]];
-    [confirmButton.titleLabel setFont:[UIFont fontWithName:@"Verdana-BoldItalic" size:21.0]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

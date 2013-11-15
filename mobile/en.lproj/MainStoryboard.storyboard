@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Splash View Controller-->
@@ -1964,15 +1964,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell opaque="NO" contentMode="scaleToFill" restorationIdentifier="RewardCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RewardCell" rowHeight="60" id="ZRF-NE-LFo" customClass="DealAcquireCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="60"/>
+                            <tableViewCell opaque="NO" contentMode="scaleToFill" restorationIdentifier="RewardCell" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RewardCell" rowHeight="75" id="ZRF-NE-LFo" customClass="DealAcquireCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZRF-NE-LFo" id="WKc-He-atT">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gth-bB-J5C">
-                                            <rect key="frame" x="78" y="5" width="196" height="27"/>
+                                            <rect key="frame" x="78" y="7" width="196" height="27"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="196" id="D3C-6R-LsJ"/>
                                                 <constraint firstAttribute="height" constant="27" id="xfK-aQ-OOE"/>
@@ -1981,31 +1981,31 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires on | Redeemed on" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXr-aq-9HK">
-                                            <rect key="frame" x="78" y="34" width="158" height="21"/>
+                                            <rect key="frame" x="78" y="47" width="158" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="SNz-69-Ltd"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="e7z-ZH-sS6">
-                                            <rect key="frame" x="15" y="5" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="0GC-0i-dno"/>
-                                                <constraint firstAttribute="width" constant="50" id="29t-GO-3fX"/>
-                                            </constraints>
+                                            <rect key="frame" x="15" y="13" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="leading" secondItem="gth-bB-J5C" secondAttribute="leading" id="VvJ-Ie-F7J"/>
-                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="bottom" secondItem="e7z-ZH-sS6" secondAttribute="bottom" id="X18-qw-CCm"/>
-                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="top" secondItem="gth-bB-J5C" secondAttribute="bottom" constant="2" id="cmE-nZ-HeO"/>
-                                        <constraint firstAttribute="bottom" secondItem="JXr-aq-9HK" secondAttribute="bottom" constant="4" id="ucL-Vu-1Lu"/>
+                                        <constraint firstItem="e7z-ZH-sS6" firstAttribute="leading" secondItem="WKc-He-atT" secondAttribute="leading" constant="15" id="C0r-bm-cKg"/>
+                                        <constraint firstItem="e7z-ZH-sS6" firstAttribute="top" secondItem="WKc-He-atT" secondAttribute="top" constant="13" id="K6S-Oh-YyC"/>
+                                        <constraint firstAttribute="bottom" secondItem="JXr-aq-9HK" secondAttribute="bottom" constant="6" id="Yyj-3g-3Ze"/>
+                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="top" secondItem="gth-bB-J5C" secondAttribute="bottom" constant="13" id="bd4-yI-NyI"/>
+                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="leading" secondItem="gth-bB-J5C" secondAttribute="leading" id="f0F-tK-CTe"/>
+                                        <constraint firstItem="JXr-aq-9HK" firstAttribute="leading" secondItem="e7z-ZH-sS6" secondAttribute="trailing" constant="13" id="fb4-zw-sOG"/>
+                                        <constraint firstAttribute="bottom" secondItem="e7z-ZH-sS6" secondAttribute="bottom" constant="11" id="qEi-T0-xLt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="gth-bB-J5C" firstAttribute="leading" secondItem="ZRF-NE-LFo" secondAttribute="leading" constant="78" id="T4c-ge-PEg"/>
-                                    <constraint firstItem="e7z-ZH-sS6" firstAttribute="leading" secondItem="ZRF-NE-LFo" secondAttribute="leading" constant="15" id="fpZ-On-cJs"/>
-                                    <constraint firstItem="gth-bB-J5C" firstAttribute="top" secondItem="e7z-ZH-sS6" secondAttribute="top" id="jnp-kN-bgV"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dateLabel" destination="JXr-aq-9HK" id="ydQ-1L-Nok"/>
@@ -2015,7 +2015,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="ay7-7u-wXJ" userLabel="Buy More Prompt" customClass="FooterPromptCell">
-                                <rect key="frame" x="0.0" y="82" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="97" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ay7-7u-wXJ" id="EsJ-cn-EGY">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
@@ -2367,7 +2367,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRx-En-g7J" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRx-En-g7J">
                                 <rect key="frame" x="20" y="343" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wIV-0Z-r7B"/>
@@ -2375,14 +2375,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Boulder County, CO">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="selectBoulder:" destination="QYw-7j-0V8" eventType="touchUpInside" id="Woa-lM-drM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUi-mX-hfb" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUi-mX-hfb">
                                 <rect key="frame" x="20" y="395" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="VxZ-eD-r6b"/>
@@ -2390,8 +2389,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Vancouver, WA">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="selectVancouver:" destination="QYw-7j-0V8" eventType="touchUpInside" id="QIX-kw-EvC"/>
@@ -2464,7 +2462,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPw-xm-DmZ" customClass="TaloolUIButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPw-xm-DmZ">
                                 <rect key="frame" x="20" y="342" width="280" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="Y4K-rh-r1S"/>
@@ -2472,8 +2470,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Will Do">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="confirmAction:" destination="rBS-Yu-9E9" eventType="touchUpInside" id="ckD-wz-QE9"/>
@@ -2928,8 +2925,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="q3T-VT-ua5"/>
         <segue reference="lZZ-Le-LNs"/>
-        <segue reference="EGa-Bg-TS6"/>
+        <segue reference="EQC-lS-Jb5"/>
+        <segue reference="HMP-oi-56u"/>
     </inferredMetricsTieBreakers>
 </document>

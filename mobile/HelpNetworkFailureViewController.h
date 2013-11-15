@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class TaloolUIButton;
-
 @interface HelpNetworkFailureViewController : UIViewController
 
 enum {
@@ -21,7 +19,7 @@ typedef int NetworkMessageType;
 @property (strong, nonatomic) IBOutlet UIImageView *funnyImage;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *messageLabel;
-@property (strong, nonatomic) IBOutlet TaloolUIButton *confirmButton;
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 - (IBAction)confirmAction:(id)sender;
 
 

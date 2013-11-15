@@ -8,8 +8,6 @@
 
 #import "HelpDealOfferLocationViewController.h"
 #import "DealOfferHelper.h"
-#import "TaloolUIButton.h"
-#import "TaloolColor.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -25,14 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [boulderButton useTaloolStyle];
-    [boulderButton setBaseColor:[TaloolColor teal]];
-    [boulderButton.titleLabel setFont:[UIFont fontWithName:@"Verdana-BoldItalic" size:21.0]];
-    
-    [vancouverButton useTaloolStyle];
-    [vancouverButton setBaseColor:[TaloolColor teal]];
-    [vancouverButton.titleLabel setFont:[UIFont fontWithName:@"Verdana-BoldItalic" size:21.0]];
     
 }
 
