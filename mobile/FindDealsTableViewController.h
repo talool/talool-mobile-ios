@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FindDealsTableViewController : UITableViewController
-
-@property (retain, nonatomic) NSArray *offers;
+@interface FindDealsTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @end
