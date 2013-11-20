@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HelpDealOfferLocationViewController.h"
 #import <Braintree/BTPaymentViewController.h>
 #import "TaloolProtocols.h"
 
@@ -16,8 +15,9 @@
 #define MAP_CELL_HEIGHT 120.0f
 #define DEAL_CELL_HEIGHT 60.0f
 
-@interface DealOfferTableViewController : UITableViewController<HelpDealOfferLocationDelegate, BTPaymentViewControllerDelegate, TaloolDealOfferActionDelegate>
+@interface DealOfferTableViewController : UITableViewController<BTPaymentViewControllerDelegate, TaloolDealOfferActionDelegate>
 
 @property (strong, nonatomic) UIButton *helpButton;
+@property (strong, nonatomic) ttDealOffer *offer;
 
 @end

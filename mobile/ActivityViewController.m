@@ -133,13 +133,6 @@
     NSString *CellIdentifier = @"TileTop";
     HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if ([activities count]==0) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
-    }
-    else
-    {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
-    }
     NSString *prompt;
     switch (self.filterView.filterControl.selectedSegmentIndex) {
         case 1:
@@ -195,14 +188,6 @@
     
     ActivityCell *cell = (ActivityCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [cell setActivity:activity];
-    
-    if (indexPath.row == [activities count]) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90Last.png"];
-    }
-    else
-    {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90.png"];
-    }
     
     return cell;
 }

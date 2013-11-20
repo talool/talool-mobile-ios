@@ -14,7 +14,6 @@
 #import "CustomerHelper.h"
 #import "Talool-API/ttDealOffer.h"
 #import "AppDelegate.h"
-#import "DealOfferHelper.h"
 #import "TextureHelper.h"
 #import "FacebookHelper.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
@@ -74,12 +73,6 @@
 -(void) submit:(id)sender
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-    
-    // make sure we have a valid dealOffer.  It can be bad if the user logs out/in
-    if (offer.dealOfferId == nil)
-    {
-        offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
-    }
     
     NSLog(@"submit my access code (%@) for %@", accessCodeFld.text, offer.title);
     [accessCodeFld resignFirstResponder];

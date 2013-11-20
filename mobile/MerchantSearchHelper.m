@@ -15,7 +15,6 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
-#import "DealOfferHelper.h"
 
 @interface MerchantSearchHelper ()
 
@@ -170,13 +169,6 @@
     {
         [_locationManager stopUpdatingLocation];
         [self fetchWithLocation:newLocation];
-        
-        // This is a bit of a hack, but in order to reduce the load on the device and improve perf
-        // the DealOfferHelper relies on this objects location manager
-        if ([DealOfferHelper sharedInstance].closestBook==nil)
-        {
-            [[DealOfferHelper sharedInstance] locationManager:manager didUpdateToLocation:newLocation fromLocation:oldLocation];
-        }
     }
     if (newLocation || !self.fetching)
     {

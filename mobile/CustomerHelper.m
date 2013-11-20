@@ -18,7 +18,6 @@
 #import <AddressBook/AddressBook.h>
 #import "AppDelegate.h"
 #import "MerchantSearchHelper.h"
-#import "DealOfferHelper.h"
 #import "CategoryHelper.h"
 
 @implementation CustomerHelper
@@ -79,7 +78,6 @@ static NSManagedObjectContext *_context;
 +(void) handleNewLogin
 {
     [[MerchantSearchHelper sharedInstance] fetchMerchants];
-    [[DealOfferHelper sharedInstance] reset];
     [[CategoryHelper sharedInstance] reset];
     [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
 }

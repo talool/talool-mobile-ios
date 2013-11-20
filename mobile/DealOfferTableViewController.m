@@ -15,8 +15,6 @@
 #import "OfferSummaryCell.h"
 #import "MapCell.h"
 #import "FooterPromptCell.h"
-#import "TaloolIAPHelper.h"
-#import "DealOfferHelper.h"
 #import "TextureHelper.h"
 #import "TaloolUIButton.h"
 #import "Talool-API/ttDealOffer.h"
@@ -37,7 +35,7 @@
 @property (nonatomic) int numberOfExtraCellsBeforeDeals;
 @property (strong, nonatomic) BTPaymentViewController *paymentViewController;
 @property (strong, nonatomic) OfferActionView *actionView;
-@property (strong, nonatomic) ttDealOffer *offer;
+@property (strong, nonatomic) NSArray *deals;
 @end
 
 @implementation DealOfferTableViewController
@@ -65,95 +63,43 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [self closeHelp];
-}
-
 - (void) updateOffer
 {
-    offer = [[DealOfferHelper sharedInstance] getClosestDealOffer];
-    if (offer)
+
+    self.navigationItem.title = offer.title;
+    
+    NSError *error;
+    _deals = [offer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+    
+    if (actionView)
     {
-        self.navigationItem.title = offer.title;
-        
-        if (actionView)
-        {
-            [actionView updateOffer:offer];
-        }
-        else
-        {
-            CGRect frame = self.view.bounds;
-            actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) offer:offer delegate:self];
-        }
-        
-        // calculate the height of the cells in the detail section
-        UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
-        
-        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-        attributes[NSFontAttributeName] = font;
-        CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
-                                                  options:NSStringDrawingUsesLineFragmentOrigin
-                                               attributes:attributes
-                                                  context:nil].size;
-        
-        int padding = 24;
-        detailSize = (size.height + padding);
-        
-        [self.tableView reloadData];
+        [actionView updateOffer:offer];
     }
     else
     {
-        [self askForHelp];
+        CGRect frame = self.view.bounds;
+        actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) offer:offer delegate:self];
     }
     
-}
-
-
-#pragma mark -
-#pragma mark - Help Overlay Methods
-
-- (void) askForHelp
-{
+    // calculate the height of the cells in the detail section
+    UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
     
-    // if the closest deal offer is still nil, we should show the user some help
-    if ([DealOfferHelper sharedInstance].closestProductId==nil)
-    {
-        // show the modal location helper view
-        HelpDealOfferLocationViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfirmLocation"];
-        [helper setDelegate:self];
-        [self presentViewController:helper animated:NO completion:nil];
-    }
-    else if ([[DealOfferHelper sharedInstance].closestDeals count] == 0)
-    {
-        // if the deals are still missing, there must be network error
-        if (helpButton == nil)
-        {
-            self.navigationItem.title = @"Find Deals";
-            helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-            [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpDealOffers.png"] forState:UIControlStateNormal];
-            [self.view addSubview:helpButton];
-            [self.tableView setUserInteractionEnabled:NO];
-            [self.tableView reloadData];
-            [self.tableView scrollRectToVisible:CGRectMake(0, 0, 320, 100) animated:NO];
-        }
-    }
-    else
-    {
-        [self closeHelp];
-    }
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSFontAttributeName] = font;
+    CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:attributes
+                                              context:nil].size;
+    
+    int padding = 24;
+    detailSize = (size.height + padding);
+    
+    [self.tableView reloadData];
+
 }
 
-- (void)closeHelp
-{
-    if (helpButton)
-    {
-        [helpButton removeFromSuperview];
-        helpButton = nil;
-        [self.tableView setUserInteractionEnabled:YES];
-    }
-}
+
+
 
 #pragma mark -
 #pragma mark - Table view data source
@@ -165,20 +111,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([[DealOfferHelper sharedInstance].closestDeals count]==0)
+    if ([_deals count]==0)
     {
         return 0;
     }
     else
     {
-        return [[DealOfferHelper sharedInstance].closestDeals count] + numberOfExtraCells;
+        return [_deals count] + numberOfExtraCells;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    int dealCount = [[DealOfferHelper sharedInstance].closestDeals count];
+    int dealCount = [_deals count];
     int rowCount = dealCount + numberOfExtraCells;
     
     if (indexPath.row==0)
@@ -192,7 +138,7 @@
     {
         NSString *CellIdentifier = @"MapCell";
         MapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setDeals:[DealOfferHelper sharedInstance].closestDeals];
+        [cell setDeals:_deals];
         
         return cell;
     }
@@ -210,7 +156,7 @@
         DealCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         int index = indexPath.row - numberOfExtraCellsBeforeDeals;
-        ttDeal *deal = [[DealOfferHelper sharedInstance].closestDeals objectAtIndex:index];
+        ttDeal *deal = [_deals objectAtIndex:index];
         [cell setDeal:deal];
         
         if (index == dealCount-1) {
@@ -252,16 +198,6 @@
     return actionView;
 }
 
-#pragma mark -
-#pragma mark - HelpDealOfferLocationDelegate methods
-
--(void) locationSelected
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    [self updateOffer];
-    
-}
 
 #pragma mark -
 #pragma mark - TaloolDealOfferActionDelegate
@@ -308,6 +244,8 @@
     [activateView.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                                                                forState:UIControlStateNormal];
     activateView.navigationItem.title = @"Activate Deals";
+    
+    [activateView setOffer:offer];
     
     [self presentViewController:activateViewNavigationController animated:YES completion:nil];
 }

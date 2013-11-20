@@ -9,7 +9,6 @@
 #import "MyDealsViewController.h"
 #import "MerchantTableViewController.h"
 #import "AppDelegate.h"
-#import "DealOfferHelper.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "WelcomeViewController.h"
 #import "FavoriteMerchantCell.h"

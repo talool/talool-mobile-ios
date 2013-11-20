@@ -21,7 +21,6 @@
 #import "MyDealsViewController.h"
 #import "ActivityViewController.h"
 #import "ActivityStreamHelper.h"
-#import "DealOfferHelper.h"
 #import "MerchantSearchView.h"
 #import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
@@ -111,8 +110,6 @@
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
     
-    
-    [DealOfferHelper sharedInstance];
     activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     [self initVTClient];
     

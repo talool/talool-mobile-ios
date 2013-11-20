@@ -13,6 +13,7 @@
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttFriend.h"
 #import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttGiftDetail.h"
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -88,7 +89,11 @@
     }
     else if ([dealAcquire hasBeenShared])
     {
-        if (dealAcquire.sharedTo)
+        if ((dealAcquire.giftDetail))
+        {
+            message.text = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.giftDetail.toEmail];
+        }
+        else if (dealAcquire.sharedTo)
         {
             NSString *friendLabel;
             if (dealAcquire.sharedTo.email == nil)
@@ -108,7 +113,7 @@
         }
         else
         {
-            message.text = @"Gifted to a friend";
+            message.text = @"Gifted to a friend %@";
         }
         
         [twoButtonView setHidden:YES];
