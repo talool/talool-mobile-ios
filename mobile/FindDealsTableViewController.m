@@ -10,6 +10,8 @@
 #import "DealOfferTableViewController.h"
 #import "DealOfferCell.h"
 #import "CustomerHelper.h"
+#import "MerchantSearchHelper.h"
+#import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttDealOfferGeoSummary.h"
 #import "TaloolColor.h"
@@ -49,7 +51,7 @@
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     
     _sortDescriptors = [NSArray arrayWithObjects:
-                            [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES],
+                            [NSSortDescriptor sortDescriptorWithKey:@"distanceInMeters" ascending:YES],
                             nil];
     
     NSError *error;
@@ -88,9 +90,9 @@
     if ([[segue identifier] isEqualToString:@"viewOffer"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttDealOffer *offer = [_fetchedResultsController objectAtIndexPath:indexPath];
+        ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
         DealOfferTableViewController *dovc = (DealOfferTableViewController *)[segue destinationViewController];
-        [dovc setOffer:offer];
+        [dovc setOffer:(ttDealOffer *)offerSummary.dealOffer];
     }
 }
 
@@ -113,7 +115,7 @@
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:DEAL_OFFER_ENTITY_NAME inManagedObjectContext:[CustomerHelper getContext]];
+                                   entityForName:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME inManagedObjectContext:[CustomerHelper getContext]];
     [fetchRequest setEntity:entity];
     
     if (predicate)
@@ -168,16 +170,16 @@
 
 - (void) configureCell:(DealOfferCell *)cell path:(NSIndexPath *)indexPath
 {
-    ttDealOffer *offer = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ttDealOfferGeoSummary *offerSummary = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
 
     [cell.titleLabel setText:offer.title];
     [cell.summaryLabel setText:offer.summary];
     [cell.priceLabel setText:[NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]]];
     
-    // TODO start using the new call for merchants with a geo summary
-    NSNumber *deals = [NSNumber numberWithInt:70];
-    NSNumber *merchants = [NSNumber numberWithInt:30];
-    [cell.statsLabel setText:[NSString stringWithFormat:@"%@ deals from %@ merchants",deals, merchants]];
+    [cell.statsLabel setText:[NSString stringWithFormat:@"%@ deals from %@ merchants",
+                              offerSummary.totalDeals,
+                              offerSummary.totalMerchants]];
     
     // Use a branded background image
     if (offer.backgroundUrl)
@@ -233,9 +235,12 @@
 - (void) getDealOffers
 {
     NSError *error;
-    NSArray *offers = [ttDealOffer getDealOffers:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
+    CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
+    if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:loc context:[CustomerHelper getContext] error:&error])
+    {
+        NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
+    }
     
-    NSLog(@"got %d offers from the service",[offers count]);
 }
 
 #pragma mark -

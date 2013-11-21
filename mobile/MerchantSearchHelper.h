@@ -17,6 +17,7 @@
 @property (retain, nonatomic) NSPredicate *selectedPredicate;
 @property (retain, nonatomic) NSArray *merchants;
 @property (retain, nonatomic) NSArray *filteredMerchants;
+@property (retain, nonatomic) CLLocation *lastLocation;
 @property (retain, nonatomic) id<MerchantSearchDelegate> delegate;
 @property (nonatomic) BOOL locationManagerStatusKnown;
 

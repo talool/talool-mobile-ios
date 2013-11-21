@@ -29,7 +29,7 @@
 
 @implementation MerchantSearchHelper
 
-@synthesize merchants, filteredMerchants, selectedPredicate, delegate, locationManagerStatusKnown;
+@synthesize merchants, filteredMerchants, selectedPredicate, delegate, locationManagerStatusKnown, lastLocation;
 
 + (MerchantSearchHelper *)sharedInstance
 {
@@ -169,6 +169,7 @@
     {
         [_locationManager stopUpdatingLocation];
         [self fetchWithLocation:newLocation];
+        lastLocation = newLocation;
     }
     if (newLocation || !self.fetching)
     {
