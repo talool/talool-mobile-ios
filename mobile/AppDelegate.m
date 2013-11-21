@@ -56,6 +56,8 @@
     [self.window addSubview:self.splashView.view];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = self.splashView;
+    
+    [self setUserAgent];
 
     // Dispatch a new thread so we'll see the Splash View and the user will get the progress spinner
     [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
@@ -310,6 +312,25 @@
         
     }
 
+}
+
+-(void) setUserAgent
+{
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    // You can get a real useragent by plucking it from a webview, but that is overkill
+    //
+    // UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    // NSString *secretAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    //
+    // That will return something like:
+    // Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/11B554a
+    
+    NSString *iosVersion = [[UIDevice currentDevice] systemVersion];
+    iosVersion = [iosVersion stringByReplacingOccurrencesOfString:@"." withString:@"_"];
+    iosVersion = [NSString stringWithFormat:@"iPhone; CPU iPhone OS %@ like Mac OS X",iosVersion];
+    
+    [[TaloolFrameworkHelper sharedInstance] setUserAgent:appVersion iosVersion:iosVersion];
 }
 
 #pragma mark - UIAlertViewDelegate 
