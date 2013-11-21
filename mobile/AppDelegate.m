@@ -56,8 +56,6 @@
     [self.window addSubview:self.splashView.view];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = self.splashView;
-    
-    [self setUserAgent];
 
     // Dispatch a new thread so we'll see the Splash View and the user will get the progress spinner
     [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
@@ -257,6 +255,8 @@
     [[TaloolAppCall sharedInstance] handleDidBecomeActive];
     [FBAppCall handleDidBecomeActive];
     [activityHelper startPollingActivity];
+    
+    [self setUserAgent];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

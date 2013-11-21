@@ -75,7 +75,6 @@ static NSMutableDictionary *_categoryDictionary;
             default:
                 catObj = nil;
                 catKey = nil;
-                NSLog(@"DEBUG::: unknown cat id: %@", cat.categoryId);
                 break;
         }
         if (catObj != nil)

@@ -36,8 +36,6 @@
 {
     [super viewDidLoad];
 
-    [self getDealOffers];
-    
     [self.refreshControl addTarget:self action:@selector(refreshOffers) forControlEvents:UIControlEventValueChanged];
     self.refreshControl.backgroundColor = [UIColor clearColor];
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
@@ -76,6 +74,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self getDealOffers];
     
     [self.tableView reloadData];
     
