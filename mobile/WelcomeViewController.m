@@ -14,7 +14,6 @@
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
 #import "Talool-API/ttCustomer.h"
-#import "SettingsTableViewController.h"
 #import "EmailViewController.h"
 #import "MyDealsViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
@@ -39,10 +38,7 @@
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        // Push forward if we already have a user
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        //[self.navigationController pushViewController:((UIViewController *)appDelegate.mainViewController) animated:YES];
-        [appDelegate.settingsViewController logoutUser];
+        [CustomerHelper logoutUser];
     }
     
     // TODO: set up FB permissions
@@ -258,8 +254,7 @@
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     if ([customer isFacebookUser])
     {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate.settingsViewController logoutUser];
+        [CustomerHelper logoutUser];
     }
 }
 

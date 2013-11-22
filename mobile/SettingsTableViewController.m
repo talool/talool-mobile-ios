@@ -158,12 +158,7 @@ static NSString *host = @"http://www.talool.com";
 // Called from other controllers as needed
 - (void)logoutUser
 {
-    // CHECK FOR A FACEBOOK SESSION
-    if ([FBSession.activeSession isOpen]) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ttCustomer logoutUser:appDelegate.managedObjectContext];
+    [CustomerHelper logoutUser];
 }
 
 - (void)didReceiveMemoryWarning
