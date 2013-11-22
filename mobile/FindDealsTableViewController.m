@@ -10,13 +10,13 @@
 #import "DealOfferTableViewController.h"
 #import "DealOfferCell.h"
 #import "CustomerHelper.h"
-#import "MerchantSearchHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttDealOfferGeoSummary.h"
 #import "TaloolColor.h"
 #import "IconHelper.h"
 #import "TextureHelper.h"
+#import "OperationQueueManager.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -28,6 +28,8 @@
 @property NSNumberFormatter *priceFormatter;
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) DealOfferTableViewController *detailView;
+@property (strong, nonatomic) NSString *cacheName;
 @end
 
 @implementation FindDealsTableViewController
@@ -52,52 +54,57 @@
                             [NSSortDescriptor sortDescriptorWithKey:@"distanceInMeters" ascending:YES],
                             nil];
     
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-}
-
-- (void)viewDidUnload {
-    _fetchedResultsController = nil;
-    _sortDescriptors = nil;
-    _priceFormatter = nil;
+    [self resetFetchRestulsController];
+    [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"FindDeals memory warning");
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self getDealOffers];
-    
-    [self.tableView reloadData];
-    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Find Deals Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (DealOfferTableViewController *) getDetailView:(ttDealOffer *)offer
 {
-    if ([[segue identifier] isEqualToString:@"viewOffer"])
+    if (!_detailView)
     {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
-        DealOfferTableViewController *dovc = (DealOfferTableViewController *)[segue destinationViewController];
-        [dovc setOffer:(ttDealOffer *)offerSummary.dealOffer];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _detailView = [storyboard instantiateViewControllerWithIdentifier:@"DealOfferView"];
     }
+    [_detailView setOffer:offer];
+    return _detailView;
+}
+
+- (void) setNewCacheName
+{
+    _cacheName = [NSString stringWithFormat:@"%@_%@",@"FD",[NSDate date]];
 }
 
 #pragma mark -
 #pragma mark - FetchedResultsController
+
+- (void)resetFetchRestulsController
+{
+    _fetchedResultsController = nil;
+    [self setNewCacheName];
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     
@@ -106,12 +113,12 @@
     }
     [self.tableView reloadData];
     
-    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil cacheName:@"Root"];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
     return _fetchedResultsController;
     
 }
 
-- (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate cacheName:(NSString *)cacheName
+- (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
@@ -131,7 +138,7 @@
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:cacheName];
+                                                   cacheName:_cacheName];
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
@@ -218,29 +225,35 @@
     }
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
+    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
+    [self.navigationController pushViewController:[self getDetailView:offer] animated:YES];
+}
+
 #pragma mark -
 #pragma mark - Refresh Control
 
 - (void) refreshOffers
 {
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+    [[OperationQueueManager sharedInstance] startDealOfferOperation:self];
 }
 
 - (void) updateTable
 {
-    [self getDealOffers];
     [self.refreshControl endRefreshing];
 }
 
-- (void) getDealOffers
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void)dealOfferOperationComplete:(id)sender
 {
-    NSError *error;
-    CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
-    if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:loc context:[CustomerHelper getContext] error:&error])
-    {
-        NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
-    }
-    
+    //[self resetFetchRestulsController];
+    [self performSelectorOnMainThread:(@selector(resetFetchRestulsController)) withObject:nil waitUntilDone:NO];
+    NSLog(@"Fetch controller reset after delegate called");
 }
 
 #pragma mark -

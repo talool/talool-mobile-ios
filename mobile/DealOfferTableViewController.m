@@ -17,10 +17,11 @@
 #import "FooterPromptCell.h"
 #import "TextureHelper.h"
 #import "TaloolUIButton.h"
+#import "OperationQueueManager.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttMerchant.h"
-#import "Talool-API/ttDeal.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "AppDelegate.h"
 #import "ActivateCodeViewController.h"
@@ -30,76 +31,150 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface DealOfferTableViewController ()
-@property (nonatomic) int detailSize;
-@property (nonatomic) int numberOfExtraCells;
-@property (nonatomic) int numberOfExtraCellsBeforeDeals;
 @property (strong, nonatomic) BTPaymentViewController *paymentViewController;
 @property (strong, nonatomic) OfferActionView *actionView;
-@property (strong, nonatomic) NSArray *deals;
+@property (strong, nonatomic) NSArray *sortDescriptors;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) NSMutableDictionary *cacheNames;
 @end
 
 @implementation DealOfferTableViewController
 
-@synthesize offer, actionView, detailSize,numberOfExtraCells,numberOfExtraCellsBeforeDeals, helpButton;
+@synthesize offer, actionView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // add 3 cuz we put the summary and map on top and a footer on the bottom
-    numberOfExtraCells = 3;
-    numberOfExtraCellsBeforeDeals = numberOfExtraCells - 1;
+    CGRect frame = self.view.bounds;
+    actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) delegate:self];
+    
+    _sortDescriptors = [NSArray arrayWithObjects:
+                        [NSSortDescriptor sortDescriptorWithKey:@"merchant.category.name" ascending:YES],
+                        [NSSortDescriptor sortDescriptorWithKey:@"merchant.name" ascending:YES],
+                        [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES],
+                        nil];
+    
+    _cacheNames = [[NSMutableDictionary alloc] init];
 
+}
+
+- (void) didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    NSLog(@"DealOfferView memory warning");
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self updateOffer];
+    self.navigationItem.title = offer.title;
+    
+    [self updateDeals];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Offer Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void) updateOffer
+- (void) viewDidAppear:(BOOL)animated
 {
-
-    self.navigationItem.title = offer.title;
-    
-    NSError *error;
-    _deals = [offer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
-    
-    if (actionView)
-    {
-        [actionView updateOffer:offer];
-    }
-    else
-    {
-        CGRect frame = self.view.bounds;
-        actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) offer:offer delegate:self];
-    }
-    
-    // calculate the height of the cells in the detail section
-    UIFont *font = [UIFont fontWithName:@"Verdana" size:15];
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-    attributes[NSFontAttributeName] = font;
-    CGSize size = [offer.summary boundingRectWithSize:CGSizeMake(280, 800)
-                                              options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:attributes
-                                              context:nil].size;
-    
-    int padding = 24;
-    detailSize = (size.height + padding);
-    
+    [super viewDidAppear:animated];
     [self.tableView reloadData];
+}
 
+- (void) updateDeals
+{
+    [self resetFetchRestulsController];
+    [[OperationQueueManager sharedInstance] startDealOfferDealsOperation:offer withDelegate:self];
+    
+    [actionView updateOffer:offer];
+    
+    //[self resetFetchRestulsController];
+    
 }
 
 
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
 
+- (void)dealOfferDealsOperationComplete:(id)sender
+{
+    //[self resetFetchRestulsController];
+    [self performSelectorOnMainThread:(@selector(resetFetchRestulsController)) withObject:nil waitUntilDone:NO];
+    NSLog(@"Fetch controller reset after delegate called");
+}
+
+
+#pragma mark -
+#pragma mark - FetchedResultsController
+
+- (void)resetFetchRestulsController
+{
+    _fetchedResultsController = nil;
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    [self.tableView reloadData];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.dealOfferId = %@", offer.dealOfferId];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
+    return _fetchedResultsController;
+    
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:DEAL_ENTITY_NAME inManagedObjectContext:[CustomerHelper getContext]];
+    [fetchRequest setEntity:entity];
+    
+    if (predicate)
+    {
+        [fetchRequest setPredicate:predicate];
+    }
+    
+    [fetchRequest setSortDescriptors:_sortDescriptors];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[CustomerHelper getContext]
+                                          sectionNameKeyPath:nil
+                                                   cacheName:[self getCacheName:offer.dealOfferId]];
+    theFetchedResultsController.delegate = self;
+    
+    return theFetchedResultsController;
+}
+
+- (NSString *) getCacheName:(NSString *)key
+{
+    NSString *name = [self.cacheNames objectForKey:key];
+    if (!name) {
+        name = [self setNewCacheName:key];
+    }
+    return name;
+}
+
+- (NSString *) setNewCacheName:(NSString *)key
+{
+    NSString *name = [NSString stringWithFormat:@"%@_%@", key, [[NSDate alloc] init]];
+    [self.cacheNames setObject:name forKey:key];
+    return name;
+}
 
 #pragma mark -
 #pragma mark - Table view data source
@@ -111,80 +186,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([_deals count]==0)
-    {
-        return 0;
-    }
-    else
-    {
-        return [_deals count] + numberOfExtraCells;
-    }
+    id sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    int dealCount = [_deals count];
-    int rowCount = dealCount + numberOfExtraCells;
+    static NSString *CellIdentifier = @"DealCell";
+    DealCell *cell = (DealCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if (indexPath.row==0)
-    {
-        NSString *CellIdentifier = @"DetailCell";
-        OfferSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setOffer:offer];
-        return cell;
-    }
-    else if (indexPath.row == 1)
-    {
-        NSString *CellIdentifier = @"MapCell";
-        MapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setDeals:_deals];
-        
-        return cell;
-    }
-    else if (indexPath.row == rowCount-1)
-    {
-        NSString *CellIdentifier = @"FooterCell";
-        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setSimpleAttributedMessage:@"That's a lot of deals!" icon:FAKIconMoney icon:FAKIconMoney];
-        
-        return cell;
-    }
-    else
-    {
-        NSString *CellIdentifier = @"DealCell";
-        DealCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
-        int index = indexPath.row - numberOfExtraCellsBeforeDeals;
-        ttDeal *deal = [_deals objectAtIndex:index];
-        [cell setDeal:deal];
-        
-        if (index == dealCount-1) {
-            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
-        }
-        else
-        {
-            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
-        }
-        return cell;
-    }
+    // Configure the cell...
+    [self configureCell:cell path:indexPath];
+    
+    return cell;
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) configureCell:(DealCell *)cell path:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        return detailSize;
-    }
-    else if (indexPath.row == 1)
-    {
-        return MAP_CELL_HEIGHT;
-    }
-    else
-    {
-        return DEAL_CELL_HEIGHT;
-    }
+    ttDeal *deal = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setDeal:deal];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -311,6 +333,64 @@
         // show error  message
         [paymentViewController showErrorWithTitle:@"Payment Error" message:[err localizedDescription]];
     }
+}
+
+
+#pragma mark -
+#pragma mark - NSFetchedResultsControllerDelegate methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:(DealCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
 }
 
 @end

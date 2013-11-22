@@ -2157,7 +2157,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="statsLabel" destination="8LB-w6-oio" id="iJ6-Pu-gLY"/>
                                     <outlet property="summaryLabel" destination="ksd-sZ-d53" id="lIt-El-F8b"/>
                                     <outlet property="titleLabel" destination="OcA-Jx-cau" id="E5t-8l-DbA"/>
-                                    <segue destination="g4k-iy-L6B" kind="push" identifier="viewOffer" id="q3d-QQ-fhN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2181,9 +2180,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Deal Offer Table View Controller-->
         <scene sceneID="sek-B7-El3">
             <objects>
-                <tableViewController storyboardIdentifier="FindDeals1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g4k-iy-L6B" customClass="DealOfferTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DealOfferView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g4k-iy-L6B" customClass="DealOfferTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Sf9-qV-OZh">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>

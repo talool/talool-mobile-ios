@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaloolProtocols.h"
 
-@interface FindDealsTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface FindDealsTableViewController : UITableViewController<NSFetchedResultsControllerDelegate, OperationQueueDelegate>
 
 @end
