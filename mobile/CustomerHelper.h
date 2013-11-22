@@ -18,6 +18,7 @@
 
 + (ttCustomer *) getLoggedInUser;
 
++ (void) logoutUser;
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password;
 + (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 

@@ -19,10 +19,12 @@
 #import "AppDelegate.h"
 #import "MerchantSearchHelper.h"
 #import "CategoryHelper.h"
+#import "OperationQueueManager.h"
 
 @implementation CustomerHelper
 
 static NSManagedObjectContext *_context;
+static ttCustomer *_customer;
 
 +(void) setContext:(NSManagedObjectContext *)context
 {
@@ -35,7 +37,21 @@ static NSManagedObjectContext *_context;
 
 + (ttCustomer *) getLoggedInUser
 {
-    return [ttCustomer getLoggedInUser:_context];
+    if (!_customer)
+    {
+        _customer = [ttCustomer getLoggedInUser:_context];
+    }
+    return _customer;
+}
+
++ (void) logoutUser
+{
+    // CHECK FOR A FACEBOOK SESSION
+    if ([FBSession.activeSession isOpen]) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+    }
+    [ttCustomer logoutUser:_context];
+    _customer = nil;
 }
 
 + (BOOL) loginUser:(NSString *)email password:(NSString *)password
@@ -80,6 +96,7 @@ static NSManagedObjectContext *_context;
     [[MerchantSearchHelper sharedInstance] fetchMerchants];
     [[CategoryHelper sharedInstance] reset];
     [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
+    [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
 }
 
 + (void) showNetworkError

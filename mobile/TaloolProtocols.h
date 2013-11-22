@@ -17,6 +17,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 @end
 
+@protocol OperationQueueDelegate<NSObject>
+@optional
+- (void)dealOfferOperationComplete:(id)sender;
+- (void)dealOfferDealsOperationComplete:(id)sender;
+- (void)newUserSetupComplete:(id)sender;
+- (void)dealAcquireOperationComplete:(id)sender;
+- (void)handleCats:(NSArray *)cats;
+- (void)handleMerchants:(NSArray *)merchants;
+@end
+
 @protocol TaloolGiftActionDelegate<NSObject>
 @optional
 - (void)acceptGift:(id)sender;
