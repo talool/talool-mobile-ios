@@ -19,6 +19,7 @@
     IBOutlet UIToolbar *toolbar;
     IBOutlet UIBarButtonItem *buyButton;
     IBOutlet UIBarButtonItem *activateButton;
+    IBOutlet UILabel *summaryLabel;
 }
 @property (strong, nonatomic) ttDealOffer *offer;
 
@@ -27,6 +28,6 @@
 
 -(void) updateOffer:(ttDealOffer *)newOffer;
 
-- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer delegate:(id<TaloolDealOfferActionDelegate>)delegate;
+- (id)initWithFrame:(CGRect)frame delegate:(id<TaloolDealOfferActionDelegate>)delegate;
 
 @end

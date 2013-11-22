@@ -22,7 +22,7 @@
 
 @synthesize offer;
 
-- (id)initWithFrame:(CGRect)frame offer:(ttDealOffer *)dealOffer delegate:(id<TaloolDealOfferActionDelegate>)delegate
+- (id)initWithFrame:(CGRect)frame delegate:(id<TaloolDealOfferActionDelegate>)delegate
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -50,8 +50,6 @@
         [newToolBarArray removeObjectAtIndex:1];
         _limitedToolbarItems = newToolBarArray;
         
-        [self updateOffer:dealOffer];
-        
         [self addSubview:view];
     }
     return self;
@@ -68,18 +66,26 @@
 -(void) updateOffer:(ttDealOffer *)newOffer
 {
     offer = newOffer;
-    
-    [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.imageUrl]
-                   placeholderImage:[UIImage imageNamed:@"000.png"]
-                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                              if (error !=  nil) {
-                                  // TODO track these errors
-                                  NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                              }
-                              
-                          }];
+    if (offer.backgroundUrl)
+    {
+        [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
+                       placeholderImage:[UIImage imageNamed:@"000.png"]
+                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                  if (error !=  nil) {
+                                      // TODO track these errors
+                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                  }
+                                  
+                              }];
+    }
+    else
+    {
+        dealOfferImage.image = [UIImage imageNamed:@"DealOfferBG"];
+    }
     
     priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
+    
+    summaryLabel.text = offer.summary;
     
     // Hide the buy button if the deal offer is expired
     NSDate *today = [NSDate date];
@@ -90,8 +96,6 @@
     {
         [toolbar setItems:_originalToolbarItems animated:NO];
     }
-    
-#warning "TODO we should hide the buy button is the offer is inactive."
     
 }
 
