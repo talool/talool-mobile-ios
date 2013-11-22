@@ -11,8 +11,8 @@
 @class ttDeal;
 
 @interface DealDetailCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *summary;
-@property (strong, nonatomic) IBOutlet UILabel *details;
+@property (weak, nonatomic) IBOutlet UILabel *summary;
+@property (weak, nonatomic) IBOutlet UILabel *details;
 
 - (void) setDeal:(ttDeal *)deal;
 

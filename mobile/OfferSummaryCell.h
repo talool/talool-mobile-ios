@@ -11,8 +11,8 @@
 @class ttDealOffer;
 
 @interface OfferSummaryCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *summary;
-@property (strong, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UILabel *summary;
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
 
 - (void) setOffer:(ttDealOffer *)offer;
 

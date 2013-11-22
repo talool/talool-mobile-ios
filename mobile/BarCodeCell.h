@@ -10,7 +10,7 @@
 
 @interface BarCodeCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *barCodeImage;
+@property (weak, nonatomic) IBOutlet UIImageView *barCodeImage;
 
 - (void) setImage:(UIImage *)image;
 

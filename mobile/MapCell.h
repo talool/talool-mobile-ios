@@ -11,8 +11,8 @@
 
 @interface MapCell : UITableViewCell<MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UILabel *mapLabel;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *mapLabel;
 
 - (void) setDeals:(NSArray *)deals;
 

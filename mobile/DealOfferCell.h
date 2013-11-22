@@ -10,11 +10,11 @@
 
 @interface DealOfferCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *brandingView;
-@property (strong, nonatomic) IBOutlet UIImageView *iconView;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *priceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *statsLabel;
-@property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *brandingView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 
 @end
