@@ -14,15 +14,23 @@
 
 @implementation DealCell
 
-@synthesize deal, summaryLabel, merchantLabel, iconView;
+@synthesize summaryLabel, merchantLabel, iconView;
 
-- (void)setDeal:(ttDeal *)newDeal
+- (void)setDeal:(ttDeal *)deal
 {
-    deal = newDeal;
-    summaryLabel.text = deal.title;
-    merchantLabel.text = deal.merchant.name;
+    summaryLabel.text = deal.merchant.name;
+    merchantLabel.text = [deal.merchant getLocationLabel];
     
     ttCategory *cat = (ttCategory *)deal.merchant.category;
+    iconView.image =[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]];
+}
+
+- (void)setMerchant:(ttMerchant *)merchant
+{
+    summaryLabel.text = merchant.name;
+    merchantLabel.text = [merchant getLocationLabel];
+    
+    ttCategory *cat = (ttCategory *)merchant.category;
     iconView.image =[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]];
 }
 

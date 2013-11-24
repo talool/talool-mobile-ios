@@ -16,6 +16,9 @@
 		810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
 		810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */; };
+		8130BFC31841410900EE30B9 /* OfferMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC21841410900EE30B9 /* OfferMerchantView.m */; };
+		8130BFC51841412B00EE30B9 /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
 		8145C45F177A1CE800880294 /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
 		8146D169177274450035F589 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
 		8146D175177394BD0035F589 /* MyDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D174177394BC0035F589 /* MyDealsViewController.m */; };
@@ -39,6 +42,7 @@
 		819092D417FCCB3B00699C39 /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
+		8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
 		819A0E21183D0653008D43C8 /* DealOfferIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E20183D0653008D43C8 /* DealOfferIcon.png */; };
 		819A0E25183D19E9008D43C8 /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
 		819B26BE179B1DA400744C04 /* DealLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26BD179B1DA400744C04 /* DealLocationCell.m */; };
@@ -70,6 +74,8 @@
 		81AE6DD817A1CE0A000596E8 /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
 		81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
 		81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
+		81AF1E2E183FA9C900D64A3B /* OperationQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */; };
+		81AF1E32183FAB9100D64A3B /* DealOfferOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */; };
 		81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
 		81BD127317872AD000AF7475 /* OfferActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127217872AD000AF7475 /* OfferActionView.m */; };
 		81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
@@ -145,6 +151,11 @@
 		810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
+		8130BFBE184136CE00EE30B9 /* MerchantDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantDealsViewController.h; sourceTree = "<group>"; };
+		8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantDealsViewController.m; sourceTree = "<group>"; };
+		8130BFC11841410900EE30B9 /* OfferMerchantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferMerchantView.h; sourceTree = "<group>"; };
+		8130BFC21841410900EE30B9 /* OfferMerchantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferMerchantView.m; sourceTree = "<group>"; };
+		8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferMerchantView.xib; sourceTree = "<group>"; };
 		8145C45D177A1CE800880294 /* DealCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealCell.h; sourceTree = "<group>"; };
 		8145C45E177A1CE800880294 /* DealCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealCell.m; sourceTree = "<group>"; };
 		8146D167177274450035F589 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
@@ -180,6 +191,8 @@
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
+		8195F073183FB16F00CAC6A9 /* DealOfferDealsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferDealsOperation.h; sourceTree = "<group>"; };
+		8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferDealsOperation.m; sourceTree = "<group>"; };
 		819A0E20183D0653008D43C8 /* DealOfferIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DealOfferIcon.png; sourceTree = "<group>"; };
 		819A0E24183D19E9008D43C8 /* DealOfferBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DealOfferBG.png; sourceTree = "<group>"; };
 		819B26BC179B1DA400744C04 /* DealLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLocationCell.h; sourceTree = "<group>"; };
@@ -228,6 +241,10 @@
 		81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailCell.m; sourceTree = "<group>"; };
 		81AE6DD917A1D938000596E8 /* ribbonbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ribbonbadge.png; sourceTree = "<group>"; };
 		81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbonbadge@2x.png"; sourceTree = "<group>"; };
+		81AF1E2C183FA9C900D64A3B /* OperationQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationQueueManager.h; sourceTree = "<group>"; };
+		81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationQueueManager.m; sourceTree = "<group>"; };
+		81AF1E30183FAB9100D64A3B /* DealOfferOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferOperation.h; sourceTree = "<group>"; };
+		81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferOperation.m; sourceTree = "<group>"; };
 		81BB9143181ABB3A00C4D2CF /* BraintreeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BraintreeHelper.h; sourceTree = "<group>"; };
 		81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferTableViewController.h; sourceTree = "<group>"; };
 		81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferTableViewController.m; sourceTree = "<group>"; };
@@ -379,6 +396,8 @@
 				919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */,
 				81BD129E178F117500AF7475 /* MerchantTableViewController.h */,
 				81BD129F178F117500AF7475 /* MerchantTableViewController.m */,
+				8130BFBE184136CE00EE30B9 /* MerchantDealsViewController.h */,
+				8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */,
 			);
 			name = "Merchant Detail";
 			sourceTree = "<group>";
@@ -477,6 +496,9 @@
 				81BD127117872ACF00AF7475 /* OfferActionView.h */,
 				81BD127217872AD000AF7475 /* OfferActionView.m */,
 				81BD127417872AEB00AF7475 /* OfferActionView.xib */,
+				8130BFC11841410900EE30B9 /* OfferMerchantView.h */,
+				8130BFC21841410900EE30B9 /* OfferMerchantView.m */,
+				8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */,
 				8186417A179904B500DE0C2E /* DealActionBar3View.h */,
 				8186417B179904B500DE0C2E /* DealActionBar3View.m */,
 				818641701798FED100DE0C2E /* DealActionBar3View.xib */,
@@ -488,6 +510,19 @@
 				81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */,
 			);
 			name = "Table Headers";
+			sourceTree = "<group>";
+		};
+		81AF1E2F183FA9D700D64A3B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				81AF1E2C183FA9C900D64A3B /* OperationQueueManager.h */,
+				81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */,
+				81AF1E30183FAB9100D64A3B /* DealOfferOperation.h */,
+				81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */,
+				8195F073183FB16F00CAC6A9 /* DealOfferDealsOperation.h */,
+				8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		81BD12C21791BB4000AF7475 /* Deal Layouts */ = {
@@ -556,6 +591,7 @@
 		9103111216D1E53800CEE814 /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				81AF1E2F183FA9D700D64A3B /* Operations */,
 				916148D016ED1C18001C546C /* Helpers */,
 				81AE6DEE17A2BCE7000596E8 /* Table Headers */,
 				9103117A16D467AE00CEE814 /* Table Cells */,
@@ -798,6 +834,7 @@
 				81A57C8717EBA57A00A68B71 /* TaloolLogoAndIcon.png in Resources */,
 				819B26D9179B8AA200744C04 /* MerchantActionBar3View.xib in Resources */,
 				81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */,
+				8130BFC51841412B00EE30B9 /* OfferMerchantView.xib in Resources */,
 				8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */,
 				81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */,
 				81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */,
@@ -889,6 +926,8 @@
 				81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */,
 				81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */,
 				81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */,
+				8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */,
+				8130BFC31841410900EE30B9 /* OfferMerchantView.m in Sources */,
 				811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
 				8146D169177274450035F589 /* ActivityCell.m in Sources */,
@@ -901,6 +940,7 @@
 				8145C45F177A1CE800880294 /* DealCell.m in Sources */,
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
+				8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */,
 				81FBEC5B1815ACC600751F3A /* EmailViewController.m in Sources */,
 				819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */,
 				810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */,
@@ -914,6 +954,7 @@
 				81BD12B3178F453D00AF7475 /* DealDetailCell.m in Sources */,
 				81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */,
 				81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */,
+				81AF1E32183FAB9100D64A3B /* DealOfferOperation.m in Sources */,
 				81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */,
 				817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */,
 				8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */,
@@ -924,6 +965,7 @@
 				819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */,
 				81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */,
 				81AE6DB217A02053000596E8 /* UIImage+H568.m in Sources */,
+				81AF1E2E183FA9C900D64A3B /* OperationQueueManager.m in Sources */,
 				81AE6DB517A0823B000596E8 /* HeaderPromptCell.m in Sources */,
 				81AE6DCD17A1BB78000596E8 /* GiftActionBar2View.m in Sources */,
 				81AE6DD517A1BE75000596E8 /* DefaultGiftLayoutState.m in Sources */,

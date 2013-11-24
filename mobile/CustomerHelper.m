@@ -93,10 +93,23 @@ static ttCustomer *_customer;
 
 +(void) handleNewLogin
 {
-    [[MerchantSearchHelper sharedInstance] fetchMerchants];
-    [[CategoryHelper sharedInstance] reset];
-    [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
-    [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
+    if ([CustomerHelper getLoggedInUser])
+    {
+        [[MerchantSearchHelper sharedInstance] fetchMerchants];
+        [[CategoryHelper sharedInstance] reset];
+        [[CustomerHelper getLoggedInUser] refreshFavoriteMerchants:[CustomerHelper getContext]];
+        
+        //[[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
+        // KEEPING THESE INLINE (NOT IN THE BACKGROUND) SO THE APP DOESN'T CRASH
+        // TODO: send them to the OperationQueueManager, but don't move forward in the UI until the delegate is called
+        NSError *error;
+        if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:[MerchantSearchHelper sharedInstance].lastLocation
+                                                               context:[CustomerHelper getContext]
+                                                                 error:&error])
+        {
+            NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
+        }
+    }
 }
 
 + (void) showNetworkError

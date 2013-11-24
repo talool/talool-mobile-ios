@@ -8,22 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class ttDeal;
+@class ttDeal, ttMerchant;
 
 @interface DealCell : UITableViewCell
 {
     IBOutlet UIImageView *iconView;
     IBOutlet UILabel *summaryLabel;
     IBOutlet UILabel *merchantLabel;
-    
-    ttDeal *deal;
-    
 }
 
 
-@property (nonatomic, retain) ttDeal *deal;
 @property (retain, nonatomic) UILabel *summaryLabel;
 @property (retain, nonatomic) UIImageView *iconView;
 @property (retain, nonatomic) UILabel *merchantLabel;
+
+- (void)setMerchant:(ttMerchant *)merchant;
+- (void)setDeal:(ttDeal *)deal;
 
 @end

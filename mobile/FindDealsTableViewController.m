@@ -52,6 +52,7 @@
     
     _sortDescriptors = [NSArray arrayWithObjects:
                             [NSSortDescriptor sortDescriptorWithKey:@"distanceInMeters" ascending:YES],
+                            [NSSortDescriptor sortDescriptorWithKey:@"dealOffer.title" ascending:YES],
                             nil];
     
     [self resetFetchRestulsController];

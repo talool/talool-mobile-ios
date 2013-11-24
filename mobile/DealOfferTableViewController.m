@@ -7,25 +7,21 @@
 //
 
 #import "DealOfferTableViewController.h"
-#import "AppDelegate.h"
+#import <MerchantDealsViewController.h>
 #import "OfferActionView.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
 #import "DealCell.h"
-#import "OfferSummaryCell.h"
-#import "MapCell.h"
-#import "FooterPromptCell.h"
-#import "TextureHelper.h"
-#import "TaloolUIButton.h"
 #import "OperationQueueManager.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttMerchant.h"
-#import <FontAwesomeKit/FontAwesomeKit.h>
+#import "Talool-API/ttMerchantLocation.h"
 #import "AppDelegate.h"
 #import "ActivateCodeViewController.h"
 #import "FacebookHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -36,6 +32,7 @@
 @property (strong, nonatomic) NSArray *sortDescriptors;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSMutableDictionary *cacheNames;
+@property (strong, nonatomic) MerchantDealsViewController *detailView;
 @end
 
 @implementation DealOfferTableViewController
@@ -50,9 +47,8 @@
     actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) delegate:self];
     
     _sortDescriptors = [NSArray arrayWithObjects:
-                        [NSSortDescriptor sortDescriptorWithKey:@"merchant.category.name" ascending:YES],
-                        [NSSortDescriptor sortDescriptorWithKey:@"merchant.name" ascending:YES],
-                        [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES],
+                        [NSSortDescriptor sortDescriptorWithKey:@"category.name" ascending:YES],
+                        [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
     
     _cacheNames = [[NSMutableDictionary alloc] init];
@@ -91,8 +87,18 @@
     
     [actionView updateOffer:offer];
     
-    //[self resetFetchRestulsController];
-    
+}
+
+- (MerchantDealsViewController *) getDetailView:(ttMerchant *)merch
+{
+    if (!_detailView)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _detailView = [storyboard instantiateViewControllerWithIdentifier:@"MerchantDeals"];
+    }
+    [_detailView setOffer:offer];
+    [_detailView setMerchant:merch];
+    return _detailView;
 }
 
 
@@ -128,7 +134,10 @@
     }
     [self.tableView reloadData];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.dealOfferId = %@", offer.dealOfferId];
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.dealOfferId = %@", offer.dealOfferId];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", offer.dealOfferId];
+    
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
     
@@ -137,8 +146,8 @@
 - (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:DEAL_ENTITY_NAME inManagedObjectContext:[CustomerHelper getContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:MERCHANT_ENTITY_NAME
+                                              inManagedObjectContext:[CustomerHelper getContext]];
     [fetchRequest setEntity:entity];
     
     if (predicate)
@@ -205,8 +214,9 @@
 
 - (void) configureCell:(DealCell *)cell path:(NSIndexPath *)indexPath
 {
-    ttDeal *deal = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell setDeal:deal];
+    ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setMerchant:merchant];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -220,6 +230,11 @@
     return actionView;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:[self getDetailView:merchant] animated:YES];
+}
 
 #pragma mark -
 #pragma mark - TaloolDealOfferActionDelegate

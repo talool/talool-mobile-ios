@@ -16,6 +16,7 @@
     IBOutlet TaloolTextField *accessCodeFld;
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *submit;
+    IBOutlet UILabel *instructions;
 }
 
 - (IBAction)submitAction:(id)sender;

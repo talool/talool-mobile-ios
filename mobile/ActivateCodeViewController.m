@@ -49,6 +49,9 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    instructions.text = [NSString stringWithFormat:@"If you have an access code for the %@ collection, please enter it below to download your deals.", offer.title];
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Activate Code Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
