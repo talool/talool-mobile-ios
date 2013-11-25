@@ -8,7 +8,6 @@
 
 #import "SettingsTableViewController.h"
 #import "CustomerHelper.h"
-#import "AppDelegate.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "WelcomeViewController.h"
 #import "MyDealsViewController.h"

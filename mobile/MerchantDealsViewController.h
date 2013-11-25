@@ -10,7 +10,7 @@
 
 @class ttDealOffer, ttMerchant;
 
-#define OFFER_MERCHANT_VIEW_HEIGHT 200.0f
+#define OFFER_MERCHANT_VIEW_HEIGHT 182.0f
 
 @interface MerchantDealsViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 

@@ -14,7 +14,6 @@
 {
     IBOutlet UIView *view;
     IBOutlet UIImageView *dealOfferImage;
-    IBOutlet UIImageView *publisherLogo;
     IBOutlet UIImageView *merchantLogo;
     IBOutlet UILabel *summaryLabel;
 }

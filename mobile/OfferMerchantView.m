@@ -49,16 +49,6 @@
         dealOfferImage.image = [UIImage imageNamed:@"DealOfferBG"];
     }
     
-    [publisherLogo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
-                   placeholderImage:[UIImage imageNamed:@"000.png"]
-                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                              if (error !=  nil) {
-                                  // TODO track these errors
-                                  NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                              }
-                              
-                          }];
-    
     [merchantLogo setImageWithURL:[NSURL URLWithString:[merchant getClosestLocation].logoUrl]
                    placeholderImage:[UIImage imageNamed:@"000.png"]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {

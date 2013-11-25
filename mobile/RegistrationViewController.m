@@ -7,7 +7,6 @@
 //
 
 // TODO: enable/disable the button based on ttCustomer.isValid
-#import "AppDelegate.h"
 #import "RegistrationViewController.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttCustomer.h"

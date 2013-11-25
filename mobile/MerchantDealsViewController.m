@@ -8,6 +8,7 @@
 
 #import "MerchantDealsViewController.h"
 #import "OfferMerchantView.h"
+#import <DealOfferDealCell.h>
 #import "CustomerHelper.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttDealOffer.h"
@@ -54,6 +55,12 @@
 {
     [super viewWillAppear:animated];
     
+    if (!offer || !merchant)
+    {
+        NSLog(@"Offer is nil, so pop to the root");
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    }
+    
     self.navigationItem.title = offer.title;
     
     [self updateMerchant];
@@ -61,6 +68,13 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Offer Merchant Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    offer = nil;
+    merchant = nil;
 }
 
 - (void) updateMerchant
@@ -158,7 +172,7 @@
 {
     
     static NSString *CellIdentifier = @"DealCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    DealOfferDealCell *cell = (DealOfferDealCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     [self configureCell:cell path:indexPath];
@@ -167,10 +181,10 @@
     
 }
 
-- (void) configureCell:(UITableViewCell *)cell path:(NSIndexPath *)indexPath
+- (void) configureCell:(DealOfferDealCell *)cell path:(NSIndexPath *)indexPath
 {
     ttDeal *deal = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = deal.summary;
+    [cell setDeal:deal];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -208,7 +222,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            [self configureCell:(DealOfferDealCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:

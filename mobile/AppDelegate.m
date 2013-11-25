@@ -350,16 +350,37 @@
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (_managedObjectContext != nil) {
+    NSThread *thisThread = [NSThread currentThread];
+    if (thisThread == [NSThread mainThread])
+    {
+        if (_managedObjectContext != nil) {
+            return _managedObjectContext;
+        }
+        
+        NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+        if (coordinator != nil) {
+            _managedObjectContext = [[NSManagedObjectContext alloc] init];
+            [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+            
+            // TODO not sure about this...
+            [_managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
+        }
         return _managedObjectContext;
     }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    else
+    {
+        //Return separate MOC for each new thread
+        NSManagedObjectContext *threadManagedObjectContext = [[thisThread threadDictionary] objectForKey:@"MOC_KEY"];
+        if (threadManagedObjectContext == nil)
+        {
+            threadManagedObjectContext = [[NSManagedObjectContext alloc] init];
+            [threadManagedObjectContext setPersistentStoreCoordinator: [self persistentStoreCoordinator]];
+            [threadManagedObjectContext setMergePolicy:NSMergeByPropertyStoreTrumpMergePolicy];
+            [[thisThread threadDictionary] setObject:threadManagedObjectContext forKey:@"MOC_KEY"];
+                                          
+        }
+        return threadManagedObjectContext;
     }
-    return _managedObjectContext;
 }
 
 // Returns the persistent store coordinator for the application.

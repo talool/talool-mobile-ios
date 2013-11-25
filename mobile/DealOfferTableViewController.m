@@ -11,7 +11,7 @@
 #import "OfferActionView.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
-#import "DealCell.h"
+#import "DealOfferMerchantCell.h"
 #import "OperationQueueManager.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttDealOffer.h"
@@ -107,7 +107,7 @@
 
 - (void)dealOfferDealsOperationComplete:(id)sender
 {
-    //[self resetFetchRestulsController];
+    [self setNewCacheName:offer.dealOfferId];
     [self performSelectorOnMainThread:(@selector(resetFetchRestulsController)) withObject:nil waitUntilDone:NO];
     NSLog(@"Fetch controller reset after delegate called");
 }
@@ -134,9 +134,11 @@
     }
     [self.tableView reloadData];
     
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.dealOfferId = %@", offer.dealOfferId];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", offer.dealOfferId];
+    NSPredicate *predicate;
+    if (offer)
+    {
+        predicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", offer.dealOfferId];
+    }
     
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
@@ -180,7 +182,11 @@
 
 - (NSString *) setNewCacheName:(NSString *)key
 {
-    NSString *name = [NSString stringWithFormat:@"%@_%@", key, [[NSDate alloc] init]];
+    if (!key)
+    {
+        key=@"root";
+    }
+    NSString *name = [NSString stringWithFormat:@"%@_%@", key, [NSDate date]];
     [self.cacheNames setObject:name forKey:key];
     return name;
 }
@@ -202,8 +208,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *CellIdentifier = @"DealCell";
-    DealCell *cell = (DealCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"MerchantCell";
+    DealOfferMerchantCell *cell = (DealOfferMerchantCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     [self configureCell:cell path:indexPath];
@@ -212,7 +218,7 @@
     
 }
 
-- (void) configureCell:(DealCell *)cell path:(NSIndexPath *)indexPath
+- (void) configureCell:(DealOfferMerchantCell *)cell path:(NSIndexPath *)indexPath
 {
     ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell setMerchant:merchant];
@@ -375,7 +381,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(DealCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            [self configureCell:(DealOfferMerchantCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:

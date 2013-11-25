@@ -71,6 +71,8 @@
 {
     [super viewWillAppear:animated];
     
+    [self resetFetchRestulsController];
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Find Deals Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
