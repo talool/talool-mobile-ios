@@ -14,12 +14,9 @@
 @interface OfferActionView : UIView
 {
     IBOutlet UIView *view;
-    IBOutlet UIImageView *dealOfferImage;
-    IBOutlet UILabel *priceLabel;
     IBOutlet UIToolbar *toolbar;
     IBOutlet UIBarButtonItem *buyButton;
     IBOutlet UIBarButtonItem *activateButton;
-    IBOutlet UILabel *summaryLabel;
 }
 @property (strong, nonatomic) ttDealOffer *offer;
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="OfferSummaryView" customClass="OfferSummaryView">
+            <connections>
+                <outlet property="dealOfferImage" destination="pSU-XK-gYA" id="308-V7-wu0"/>
+                <outlet property="priceLabel" destination="NzR-PR-L6k" id="Gs8-0k-op3"/>
+                <outlet property="summaryLabel" destination="3F3-kL-kwM" id="lZB-j7-32M"/>
+                <outlet property="view" destination="1" id="fNX-jB-GWE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pSU-XK-gYA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="3F3-kL-kwM" userLabel="Summary">
+                    <rect key="frame" x="20" y="20" width="280" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Bz3-mo-SWV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzR-PR-L6k" userLabel="Price">
+                    <rect key="frame" x="20" y="161" width="280" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                    <color key="textColor" red="0.94509803920000002" green="0.35294117650000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pSU-XK-gYA" firstAttribute="top" secondItem="1" secondAttribute="top" id="17p-vX-b3m"/>
+                <constraint firstAttribute="bottom" secondItem="pSU-XK-gYA" secondAttribute="bottom" id="3ZL-8G-36X"/>
+                <constraint firstItem="3F3-kL-kwM" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="9uQ-Hu-mJM"/>
+                <constraint firstAttribute="trailing" secondItem="3F3-kL-kwM" secondAttribute="trailing" constant="20" symbolic="YES" id="CMW-9T-K0B"/>
+                <constraint firstAttribute="bottom" secondItem="NzR-PR-L6k" secondAttribute="bottom" constant="8" id="HMy-ZI-246"/>
+                <constraint firstItem="pSU-XK-gYA" firstAttribute="top" secondItem="1" secondAttribute="top" id="Khg-Uc-PiJ"/>
+                <constraint firstAttribute="trailing" secondItem="pSU-XK-gYA" secondAttribute="trailing" id="L4W-sF-Ojq"/>
+                <constraint firstItem="pSU-XK-gYA" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="OjC-dW-Xzk"/>
+                <constraint firstItem="pSU-XK-gYA" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="WuZ-SS-Pjp"/>
+                <constraint firstItem="3F3-kL-kwM" firstAttribute="centerX" secondItem="pSU-XK-gYA" secondAttribute="centerX" id="gR1-QD-d4y"/>
+                <constraint firstItem="NzR-PR-L6k" firstAttribute="trailing" secondItem="3F3-kL-kwM" secondAttribute="trailing" id="nFf-FU-uW9"/>
+                <constraint firstAttribute="bottom" secondItem="pSU-XK-gYA" secondAttribute="bottom" id="sNt-S5-gko"/>
+                <constraint firstItem="NzR-PR-L6k" firstAttribute="leading" secondItem="3F3-kL-kwM" secondAttribute="leading" id="vGo-XY-nT2"/>
+                <constraint firstItem="3F3-kL-kwM" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="vde-pC-N2y"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

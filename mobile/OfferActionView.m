@@ -10,7 +10,6 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
 #import "Talool-API/ttDealOffer.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation OfferActionView
 {
@@ -66,26 +65,6 @@
 -(void) updateOffer:(ttDealOffer *)newOffer
 {
     offer = newOffer;
-    if (offer.backgroundUrl)
-    {
-        [dealOfferImage setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
-                       placeholderImage:[UIImage imageNamed:@"000.png"]
-                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                  if (error !=  nil) {
-                                      // TODO track these errors
-                                      NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                  }
-                                  
-                              }];
-    }
-    else
-    {
-        dealOfferImage.image = [UIImage imageNamed:@"DealOfferBG"];
-    }
-    
-    priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
-    
-    summaryLabel.text = offer.summary;
     
     // Hide the buy button if the deal offer is expired
     NSDate *today = [NSDate date];

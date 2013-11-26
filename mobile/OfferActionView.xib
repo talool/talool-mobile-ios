@@ -9,24 +9,17 @@
             <connections>
                 <outlet property="activateButton" destination="1Ct-wa-sfa" id="OkC-Jz-p6i"/>
                 <outlet property="buyButton" destination="Txo-fd-szk" id="8a8-Sl-cgh"/>
-                <outlet property="dealOfferImage" destination="X17-Zj-AFT" id="qIC-eN-Tjv"/>
-                <outlet property="priceLabel" destination="YYG-36-S3Y" id="FhK-n1-gCR"/>
-                <outlet property="summaryLabel" destination="ZCG-47-JwT" id="S9J-2o-RDz"/>
                 <outlet property="toolbar" destination="Djt-a1-cII" id="sBk-6k-YDv"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="OfferActionBar" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X17-Zj-AFT">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-a1-cII">
-                    <rect key="frame" x="0.0" y="192" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem width="5" style="plain" systemItem="fixedSpace" id="vJK-cx-6Om"/>
@@ -47,51 +40,19 @@
                     </items>
                 </toolbar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2o-ca-CbI">
-                    <rect key="frame" x="0.0" y="236" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="44" width="320" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price: $20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYG-36-S3Y">
-                    <rect key="frame" x="20" y="159" width="128" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="J4n-xW-Cdy"/>
-                        <constraint firstAttribute="width" constant="128" id="pim-6y-JBN"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
-                    <color key="textColor" red="0.94509803920000002" green="0.35294117650000001" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <size key="shadowOffset" width="1" height="1"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ZCG-47-JwT">
-                    <rect key="frame" x="20" y="20" width="280" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="1em-T8-rtx"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="YYG-36-S3Y" secondAttribute="bottom" constant="45" id="4p6-gX-PsB"/>
-                <constraint firstItem="X17-Zj-AFT" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="9Ri-de-d0o"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="centerX" secondItem="X17-Zj-AFT" secondAttribute="centerX" id="9WW-xT-dHE"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="centerX" secondItem="l2o-ca-CbI" secondAttribute="centerX" id="9kp-nW-eXt"/>
-                <constraint firstItem="YYG-36-S3Y" firstAttribute="bottom" secondItem="X17-Zj-AFT" secondAttribute="bottom" id="Bam-XO-wzL"/>
                 <constraint firstAttribute="bottom" secondItem="l2o-ca-CbI" secondAttribute="bottom" id="FRO-Go-SbC"/>
-                <constraint firstItem="X17-Zj-AFT" firstAttribute="leading" secondItem="Djt-a1-cII" secondAttribute="leading" id="HYD-z8-pcQ"/>
-                <constraint firstItem="YYG-36-S3Y" firstAttribute="bottom" secondItem="Djt-a1-cII" secondAttribute="top" id="L6t-aH-rxl"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="OZG-ki-BSa"/>
-                <constraint firstItem="X17-Zj-AFT" firstAttribute="leading" secondItem="l2o-ca-CbI" secondAttribute="leading" id="T7E-ny-qXk"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" symbolic="YES" id="bCU-FO-oUG"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="centerX" secondItem="Djt-a1-cII" secondAttribute="centerX" id="fvd-Gx-tMT"/>
-                <constraint firstItem="ZCG-47-JwT" firstAttribute="leading" secondItem="YYG-36-S3Y" secondAttribute="leading" id="nwu-s7-xU4"/>
-                <constraint firstItem="X17-Zj-AFT" firstAttribute="top" secondItem="1" secondAttribute="top" id="sTH-3A-kuI"/>
-                <constraint firstAttribute="trailing" secondItem="ZCG-47-JwT" secondAttribute="trailing" constant="20" symbolic="YES" id="xJm-nq-XaD"/>
+                <constraint firstItem="Djt-a1-cII" firstAttribute="top" secondItem="1" secondAttribute="top" id="Kzc-9B-TmK"/>
+                <constraint firstItem="Djt-a1-cII" firstAttribute="leading" secondItem="l2o-ca-CbI" secondAttribute="leading" id="PZt-j2-rYx"/>
+                <constraint firstItem="Djt-a1-cII" firstAttribute="trailing" secondItem="l2o-ca-CbI" secondAttribute="trailing" id="QQJ-1Z-jfF"/>
+                <constraint firstItem="Djt-a1-cII" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="SWE-OI-8br"/>
+                <constraint firstAttribute="trailing" secondItem="Djt-a1-cII" secondAttribute="trailing" id="vFt-wF-xxQ"/>
                 <constraint firstItem="l2o-ca-CbI" firstAttribute="top" secondItem="Djt-a1-cII" secondAttribute="bottom" id="z1X-b6-YJW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

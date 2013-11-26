@@ -10,7 +10,8 @@
 #import <Braintree/BTPaymentViewController.h>
 #import "TaloolProtocols.h"
 
-#define ACTION_VIEW_HEIGHT 237.0f
+#define ACTION_VIEW_HEIGHT 40.0f
+#define SUMMARY_VIEW_HEIGHT 190.0f
 
 @interface DealOfferTableViewController : UITableViewController<BTPaymentViewControllerDelegate, TaloolDealOfferActionDelegate, NSFetchedResultsControllerDelegate, OperationQueueDelegate>
 

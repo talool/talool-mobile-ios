@@ -79,27 +79,6 @@
 
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate
 {
-    /*
-    NSError *error;
-    CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSManagedObjectContext *context = [self getContext];
-    if (![customer fetchDealOfferSummaries:loc context:context error:&error])
-    {
-        NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
-    }
-    //NSLog(@"DealOfferOperation executed fetchDealOfferSummaries");
-    
-    NSError *saveError;
-    if (![context save:&saveError]) {
-        NSLog(@"API: OH SHIT!!!! Failed to save context after fetchDealOfferSummaries: %@ %@",saveError, [saveError userInfo]);
-    }
-    
-    if (delegate)
-    {
-        [delegate dealOfferOperationComplete:self];
-    }
-    */
     
     dispatch_async(self.queue,^{
         NSError *error;
@@ -133,22 +112,6 @@
 
 - (void) startDealOfferDealsOperation:(ttDealOffer *)offer withDelegate:(id<OperationQueueDelegate>)delegate
 {
-    /*
-    NSManagedObjectContext *context = [self getContext];
-    NSError *error;
-    [offer getDeals:[CustomerHelper getLoggedInUser] context:context error:&error];
-    //NSLog(@"DealOfferDealsOperation executed getDeals");
-    
-    NSError *saveError;
-    if (![context save:&saveError]) {
-        NSLog(@"API: OH SHIT!!!! Failed to save context after getDeals: %@ %@",saveError, [saveError userInfo]);
-    }
-    
-    if (delegate)
-    {
-        [delegate dealOfferDealsOperationComplete:self];
-    }
-    */
     
     dispatch_async(self.queue,^{
         

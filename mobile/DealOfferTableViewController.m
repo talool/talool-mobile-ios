@@ -9,6 +9,7 @@
 #import "DealOfferTableViewController.h"
 #import <MerchantDealsViewController.h>
 #import "OfferActionView.h"
+#import "OfferSummaryView.h"
 #import "TaloolColor.h"
 #import "CustomerHelper.h"
 #import "DealOfferMerchantCell.h"
@@ -28,6 +29,7 @@
 
 @interface DealOfferTableViewController ()
 @property (strong, nonatomic) BTPaymentViewController *paymentViewController;
+@property (strong, nonatomic) OfferSummaryView *summaryView;
 @property (strong, nonatomic) OfferActionView *actionView;
 @property (strong, nonatomic) NSArray *sortDescriptors;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -37,7 +39,7 @@
 
 @implementation DealOfferTableViewController
 
-@synthesize offer, actionView;
+@synthesize offer, actionView, summaryView;
 
 - (void)viewDidLoad
 {
@@ -45,6 +47,7 @@
     
     CGRect frame = self.view.bounds;
     actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) delegate:self];
+    summaryView = [[OfferSummaryView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,SUMMARY_VIEW_HEIGHT)];
     
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"category.name" ascending:YES],
@@ -86,6 +89,7 @@
     [[OperationQueueManager sharedInstance] startDealOfferDealsOperation:offer withDelegate:self];
     
     [actionView updateOffer:offer];
+    [summaryView updateOffer:offer];
     
 }
 
@@ -165,8 +169,8 @@
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:[self getCacheName:offer.dealOfferId]];
-    theFetchedResultsController.delegate = self;
+                                                   cacheName:nil];
+    //theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
 }
@@ -196,20 +200,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    if ((int)section==0) return 0;
+    id sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
+    int rows = [sectionInfo numberOfObjects];
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     static NSString *CellIdentifier = @"MerchantCell";
-    DealOfferMerchantCell *cell = (DealOfferMerchantCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:indexPath.row inSection:1];
+    DealOfferMerchantCell *cell = (DealOfferMerchantCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier
+                                                                                            forIndexPath:indexPath2];
     
     // Configure the cell...
     [self configureCell:cell path:indexPath];
@@ -220,25 +228,27 @@
 
 - (void) configureCell:(DealOfferMerchantCell *)cell path:(NSIndexPath *)indexPath
 {
-    ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath2];
     [cell setMerchant:merchant];
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return ACTION_VIEW_HEIGHT;
+    return ((int)section==0) ? SUMMARY_VIEW_HEIGHT:ACTION_VIEW_HEIGHT;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return actionView;
+    return ((int)section==0) ? summaryView:actionView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath];
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+    ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath2];
     [self.navigationController pushViewController:[self getDetailView:merchant] animated:YES];
 }
 
@@ -368,27 +378,30 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
+    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:indexPath.row inSection:1];
+    NSIndexPath *newIndexPath2 = [NSIndexPath indexPathForRow:newIndexPath.row inSection:1];
+    
     UITableView *tableView = self.tableView;
     
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath2] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath2] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:(DealOfferMerchantCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            [self configureCell:(DealOfferMerchantCell *)[tableView cellForRowAtIndexPath:indexPath2] path:indexPath2];
             break;
             
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                                               arrayWithObject:indexPath2] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:[NSArray
-                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+                                               arrayWithObject:newIndexPath2] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
