@@ -12,6 +12,7 @@
 #import "TaloolColor.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "Talool-API/ttCategory.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 
 @implementation CategoryHelper
 
@@ -42,12 +43,20 @@ static NSMutableDictionary *_categoryDictionary;
 
 -(void) reset
 {
-    // build the dictionary
+
     _categoryDictionary = [[NSMutableDictionary alloc] init];
-    NSArray *cats = [ttCategory getCategories:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext]];
+    
+    // get the categories from the context
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:CATEGORY_ENTITY_NAME inManagedObjectContext:context];
+    [request setEntity:entity];
+    NSError *error;
+    NSMutableArray *cats = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
     NSDictionary *catObj;
     NSNumber *catKey;
-    UIImage *icon; // [UIImage imageNamed:@"Icon_teal.png"]
+    UIImage *icon;
     
     for (ttCategory *cat in cats)
     {

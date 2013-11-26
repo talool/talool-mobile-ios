@@ -112,8 +112,7 @@
 - (void)dealOfferDealsOperationComplete:(id)sender
 {
     [self setNewCacheName:offer.dealOfferId];
-    [self performSelectorOnMainThread:(@selector(resetFetchRestulsController)) withObject:nil waitUntilDone:NO];
-    NSLog(@"Fetch controller reset after delegate called");
+    [self resetFetchRestulsController];
 }
 
 

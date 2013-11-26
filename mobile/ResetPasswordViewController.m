@@ -113,7 +113,8 @@
                                                    error:&err];
         if (customer.token != nil)
         {
-            [CustomerHelper handleNewLogin];
+            //[CustomerHelper handleNewLogin];
+#warning @"ResetPassword needs an operation"
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else

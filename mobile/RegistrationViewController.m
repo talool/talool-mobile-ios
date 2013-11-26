@@ -18,6 +18,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
+#import "OperationQueueManager.h"
 
 #define sexUndefinedIndex   0
 #define sexFemaleIndex      1
@@ -107,29 +108,26 @@
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    ttCustomer *user = [ttCustomer createCustomer:firstNameField.text
-                                         lastName:lastNameField.text
-                                            email:emailField.text
-                                    socialAccount:nil
-                                          context:[CustomerHelper getContext]];
-    
-    
+    BOOL isFemale = NO;
     if ([sexPicker selectedSegmentIndex]!=sexUndefinedIndex) {
-        [user setAsFemale:([sexPicker selectedSegmentIndex]==sexFemaleIndex)];
+        isFemale = ([sexPicker selectedSegmentIndex]==sexFemaleIndex);
     }
     
+    NSDate *bday = nil;
     if (birthDateField.text)
     {
-        [user setBirthDate:[datePicker date]];
+        bday = [datePicker date];
     }
     
     // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
-    if ([CustomerHelper registerCustomer:user password:passwordField.text] && [CustomerHelper getLoggedInUser]!=nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
-    [spinner stopAnimating];
+    [[OperationQueueManager sharedInstance] regUser:emailField.text
+                                           password:passwordField.text
+                                          firstName:firstNameField.text
+                                           lastName:lastNameField.text
+                                           isFemale:NO
+                                          birthDate:nil
+                                           delegate:self];
     
 }
 -(void) cancel:(id)sender
@@ -217,6 +215,29 @@
         }
     }
     return;
+}
+
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate delegate
+
+- (void)userAuthComplete:(NSError *)error
+{
+    // remove the spinner
+    [spinner stopAnimating];
+    
+    if (error)
+    {
+        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+        [CustomerHelper showErrorMessage:error.localizedDescription
+                               withTitle:@"Authentication Failed"
+                              withCancel:@"Try again"
+                              withSender:nil];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 

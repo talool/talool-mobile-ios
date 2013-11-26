@@ -17,6 +17,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
+#import "OperationQueueManager.h"
 
 @interface LoginViewController ()
 
@@ -71,16 +72,8 @@
 
 - (IBAction)loginAction:(id) sender
 {
-    // add a spinner
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-    
-    // don't leave the page if login failed
-    if ([CustomerHelper loginUser:emailField.text password:passwordField.text]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    
-    // remove the spinner
-    [spinner stopAnimating];
+    [[OperationQueueManager sharedInstance] authUser:emailField.text password:passwordField.text delegate:self];
 }
 
 #pragma mark -
@@ -110,6 +103,28 @@
 {
     [self submit:nil];
     return YES;
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate delegate
+
+- (void)userAuthComplete:(NSError *)error
+{
+    // remove the spinner
+    [spinner stopAnimating];
+    
+    if (error)
+    {
+        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+        [CustomerHelper showErrorMessage:error.localizedDescription
+                               withTitle:@"Authentication Failed"
+                              withCancel:@"Try again"
+                              withSender:nil];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 @end

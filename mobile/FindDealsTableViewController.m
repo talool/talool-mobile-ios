@@ -254,9 +254,7 @@
 
 - (void)dealOfferOperationComplete:(id)sender
 {
-    //[self resetFetchRestulsController];
-    [self performSelectorOnMainThread:(@selector(resetFetchRestulsController)) withObject:nil waitUntilDone:NO];
-    NSLog(@"Fetch controller reset after delegate called");
+    [self resetFetchRestulsController];
 }
 
 #pragma mark -

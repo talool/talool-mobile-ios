@@ -54,6 +54,16 @@
 		819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26E8179C6F5E00744C04 /* FooterPromptCell.m */; };
 		819B27631844227200105479 /* OfferSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27621844227200105479 /* OfferSummaryView.m */; };
 		819B27651844228900105479 /* OfferSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B27641844228900105479 /* OfferSummaryView.xib */; };
+		819B27681844FBC900105479 /* TaloolOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27671844FBC900105479 /* TaloolOperation.m */; };
+		819B277318450C1F00105479 /* CategoryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276A18450C1F00105479 /* CategoryOperation.m */; };
+		819B277418450C1F00105479 /* FavoriteMerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */; };
+		819B277518450C1F00105479 /* MerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276E18450C1F00105479 /* MerchantOperation.m */; };
+		819B277618450C1F00105479 /* ActivityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277018450C1F00105479 /* ActivityOperation.m */; };
+		819B277718450C1F00105479 /* DealAcquireOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277218450C1F00105479 /* DealAcquireOperation.m */; };
+		819B277A184524E300105479 /* AuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B2779184524E300105479 /* AuthenticationOperation.m */; };
+		819B277D1845259100105479 /* FacebookAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277C1845259100105479 /* FacebookAuthenticationOperation.m */; };
+		819B27801845457C00105479 /* UserAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277F1845457C00105479 /* UserAuthenticationOperation.m */; };
+		819B27831845459700105479 /* RegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27821845459700105479 /* RegistrationOperation.m */; };
 		819FA953177B99DE006A819B /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
 		819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA955177BA2CE006A819B /* ActivityFilterControl.m */; };
 		819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
@@ -215,6 +225,26 @@
 		819B27611844227100105479 /* OfferSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferSummaryView.h; sourceTree = "<group>"; };
 		819B27621844227200105479 /* OfferSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferSummaryView.m; sourceTree = "<group>"; };
 		819B27641844228900105479 /* OfferSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OfferSummaryView.xib; sourceTree = "<group>"; };
+		819B27661844FBC900105479 /* TaloolOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolOperation.h; sourceTree = "<group>"; };
+		819B27671844FBC900105479 /* TaloolOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolOperation.m; sourceTree = "<group>"; };
+		819B276918450C1F00105479 /* CategoryOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryOperation.h; sourceTree = "<group>"; };
+		819B276A18450C1F00105479 /* CategoryOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryOperation.m; sourceTree = "<group>"; };
+		819B276B18450C1F00105479 /* FavoriteMerchantOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantOperation.h; sourceTree = "<group>"; };
+		819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantOperation.m; sourceTree = "<group>"; };
+		819B276D18450C1F00105479 /* MerchantOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantOperation.h; sourceTree = "<group>"; };
+		819B276E18450C1F00105479 /* MerchantOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantOperation.m; sourceTree = "<group>"; };
+		819B276F18450C1F00105479 /* ActivityOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityOperation.h; sourceTree = "<group>"; };
+		819B277018450C1F00105479 /* ActivityOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityOperation.m; sourceTree = "<group>"; };
+		819B277118450C1F00105479 /* DealAcquireOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealAcquireOperation.h; sourceTree = "<group>"; };
+		819B277218450C1F00105479 /* DealAcquireOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealAcquireOperation.m; sourceTree = "<group>"; };
+		819B2778184524E300105479 /* AuthenticationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationOperation.h; sourceTree = "<group>"; };
+		819B2779184524E300105479 /* AuthenticationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationOperation.m; sourceTree = "<group>"; };
+		819B277B1845259100105479 /* FacebookAuthenticationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAuthenticationOperation.h; sourceTree = "<group>"; };
+		819B277C1845259100105479 /* FacebookAuthenticationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAuthenticationOperation.m; sourceTree = "<group>"; };
+		819B277E1845457B00105479 /* UserAuthenticationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAuthenticationOperation.h; sourceTree = "<group>"; };
+		819B277F1845457C00105479 /* UserAuthenticationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAuthenticationOperation.m; sourceTree = "<group>"; };
+		819B27811845459700105479 /* RegistrationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationOperation.h; sourceTree = "<group>"; };
+		819B27821845459700105479 /* RegistrationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationOperation.m; sourceTree = "<group>"; };
 		819FA951177B99DD006A819B /* IconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconHelper.h; sourceTree = "<group>"; };
 		819FA952177B99DD006A819B /* IconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconHelper.m; sourceTree = "<group>"; };
 		819FA954177BA2CE006A819B /* ActivityFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterControl.h; sourceTree = "<group>"; };
@@ -531,10 +561,30 @@
 			children = (
 				81AF1E2C183FA9C900D64A3B /* OperationQueueManager.h */,
 				81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */,
+				819B27661844FBC900105479 /* TaloolOperation.h */,
+				819B27671844FBC900105479 /* TaloolOperation.m */,
 				81AF1E30183FAB9100D64A3B /* DealOfferOperation.h */,
 				81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */,
 				8195F073183FB16F00CAC6A9 /* DealOfferDealsOperation.h */,
 				8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */,
+				819B276918450C1F00105479 /* CategoryOperation.h */,
+				819B276A18450C1F00105479 /* CategoryOperation.m */,
+				819B276B18450C1F00105479 /* FavoriteMerchantOperation.h */,
+				819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */,
+				819B276D18450C1F00105479 /* MerchantOperation.h */,
+				819B276E18450C1F00105479 /* MerchantOperation.m */,
+				819B276F18450C1F00105479 /* ActivityOperation.h */,
+				819B277018450C1F00105479 /* ActivityOperation.m */,
+				819B277118450C1F00105479 /* DealAcquireOperation.h */,
+				819B277218450C1F00105479 /* DealAcquireOperation.m */,
+				819B2778184524E300105479 /* AuthenticationOperation.h */,
+				819B2779184524E300105479 /* AuthenticationOperation.m */,
+				819B277B1845259100105479 /* FacebookAuthenticationOperation.h */,
+				819B277C1845259100105479 /* FacebookAuthenticationOperation.m */,
+				819B277E1845457B00105479 /* UserAuthenticationOperation.h */,
+				819B277F1845457C00105479 /* UserAuthenticationOperation.m */,
+				819B27811845459700105479 /* RegistrationOperation.h */,
+				819B27821845459700105479 /* RegistrationOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -919,12 +969,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819B277518450C1F00105479 /* MerchantOperation.m in Sources */,
 				81E5505217F9FB58000BF3A5 /* LoginViewController.m in Sources */,
 				919A331917453B120093FAC4 /* LocationCell.m in Sources */,
+				819B27681844FBC900105479 /* TaloolOperation.m in Sources */,
 				919A331B17453B120093FAC4 /* MerchantLocationAnnotation.m in Sources */,
 				919A331817453AF70093FAC4 /* MerchantLocationViewController.m in Sources */,
 				9103111916D1E53800CEE814 /* main.m in Sources */,
 				9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */,
+				819B277718450C1F00105479 /* DealAcquireOperation.m in Sources */,
 				81A57C8C17ECEAA400A68B71 /* SendPasswordResetViewController.m in Sources */,
 				9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */,
 				81517B5217FC62650020A688 /* TaloolTextField.m in Sources */,
@@ -944,6 +997,7 @@
 				91490D401746805400622A85 /* MerchantFilterControl.m in Sources */,
 				91490D80174810A600622A85 /* CategoryHelper.m in Sources */,
 				81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */,
+				819B277318450C1F00105479 /* CategoryOperation.m in Sources */,
 				81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */,
 				81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */,
 				8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */,
@@ -951,6 +1005,7 @@
 				811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
 				8146D169177274450035F589 /* ActivityCell.m in Sources */,
+				819B27801845457C00105479 /* UserAuthenticationOperation.m in Sources */,
 				8146D175177394BD0035F589 /* MyDealsViewController.m in Sources */,
 				8146D1781773EF140035F589 /* ActivityViewController.m in Sources */,
 				81A869AD17750B810043ACE8 /* MerchantSearchView.m in Sources */,
@@ -958,6 +1013,7 @@
 				81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */,
 				81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */,
 				8145C45F177A1CE800880294 /* DealCell.m in Sources */,
+				819B277D1845259100105479 /* FacebookAuthenticationOperation.m in Sources */,
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
 				8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */,
@@ -966,9 +1022,12 @@
 				810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */,
 				819B27631844227200105479 /* OfferSummaryView.m in Sources */,
 				81BD126B17870F4E00AF7475 /* DealOfferTableViewController.m in Sources */,
+				819B277418450C1F00105479 /* FavoriteMerchantOperation.m in Sources */,
+				819B27831845459700105479 /* RegistrationOperation.m in Sources */,
 				81BD127317872AD000AF7475 /* OfferActionView.m in Sources */,
 				81BD12781787575A00AF7475 /* OfferSummaryCell.m in Sources */,
 				81BD127B1787602A00AF7475 /* MapCell.m in Sources */,
+				819B277618450C1F00105479 /* ActivityOperation.m in Sources */,
 				8108CBB81836D032006E39EC /* DealOfferCell.m in Sources */,
 				81BD12A0178F117700AF7475 /* MerchantTableViewController.m in Sources */,
 				81BD12AA178F37B200AF7475 /* DealTableViewController.m in Sources */,
@@ -982,6 +1041,7 @@
 				819B26BE179B1DA400744C04 /* DealLocationCell.m in Sources */,
 				819B26C1179B203200744C04 /* DealOfferLogoCell.m in Sources */,
 				819B26D7179B8A8200744C04 /* MerchantActionBar3View.m in Sources */,
+				819B277A184524E300105479 /* AuthenticationOperation.m in Sources */,
 				81E3AA6317EB71D100B5EE5A /* TaloolAppCall.m in Sources */,
 				819B26E9179C6F5F00744C04 /* FooterPromptCell.m in Sources */,
 				81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */,

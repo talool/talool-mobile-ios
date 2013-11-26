@@ -1,5 +1,5 @@
 //
-//  DealOfferOperation.h
+//  DealAcquireOperation.h
 //  Talool
 //
 //  Created by Douglas McCuen on 11/6/13.
@@ -10,10 +10,12 @@
 #import <TaloolOperation.h>
 #import "TaloolProtocols.h"
 
-@interface DealOfferOperation : TaloolOperation
+@class ttMerchant;
 
-- (id)initWithDelegate:(id<OperationQueueDelegate>)delegate;
+@interface DealAcquireOperation : TaloolOperation
 
+- (id)initWithMerchant:(ttMerchant *)merchant delegate:(id<OperationQueueDelegate>)delegate;
+@property (nonatomic, readwrite, strong) ttMerchant *merchant;
 @property id<OperationQueueDelegate> delegate;
 
 @end

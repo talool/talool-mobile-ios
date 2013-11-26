@@ -76,10 +76,11 @@
     {
         // add a spinner
         [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-        
+#warning "EmailView needs to be retired"
+        /*
         NSError *err;
         [customer setEmail:emailField.text];
-        
+
         if ([CustomerHelper registerCustomer:customer password:[ttCustomer nonrandomPassword:emailField.text]])
         {
             [CustomerHelper handleNewLogin];
@@ -94,7 +95,7 @@
                                   withCancel:@"Ok"
                                   withSender:nil];
         }
-        
+        */
         // remove the spinner
         [spinner stopAnimating];
         

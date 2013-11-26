@@ -21,10 +21,10 @@
 @optional
 - (void)dealOfferOperationComplete:(id)sender;
 - (void)dealOfferDealsOperationComplete:(id)sender;
-- (void)newUserSetupComplete:(id)sender;
+- (void)userAuthComplete:(NSError *)error;
 - (void)dealAcquireOperationComplete:(id)sender;
-- (void)handleCats:(NSArray *)cats;
-- (void)handleMerchants:(NSArray *)merchants;
+- (void)handleCats:(id)sender;
+- (void)merchantOperationComplete:(id)sender;
 @end
 
 @protocol TaloolGiftActionDelegate<NSObject>

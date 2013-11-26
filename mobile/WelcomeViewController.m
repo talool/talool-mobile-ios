@@ -20,6 +20,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
+#import <OperationQueueManager.h>
 
 @interface WelcomeViewController ()
 
@@ -105,67 +106,16 @@
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
              if (!error) {
-                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                 // If there is not saved user (in core data), but there is an active FB session
-                 // Then we should create the user (if needed) and save the user (to core data)
-                 if ([CustomerHelper getLoggedInUser] == nil) {
-                     
-                     // add a spinner
-                     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
- 
-                     NSError *error = nil;
-                     [CustomerHelper loginFacebookUser:user.id
-                                         facebookToken:[[[FBSession activeSession] accessTokenData] accessToken]
-                                                 error:&error];
-                     
-                     if (error.code && error.code == FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL)
-                     {
-                         NSString *email = [user objectForKey:@"email"];
-                         ttCustomer *customer = [FacebookHelper createCustomerFromFacebookUser:user];
-                         if ([CustomerHelper isEmailValid:email])
-                         {
-                             if (![CustomerHelper registerCustomer:customer
-                                                          password:[ttCustomer nonrandomPassword:email]])
-                             {
-                                 // Reg failed so log out of Facebook
-                                 [[FBSession activeSession] closeAndClearTokenInformation];
-                             }
-                             
-                         }
-                         else
-                         {
-                             // Prompt the user for their email
-                             EmailViewController *evc = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailView"];
-                             [evc setCustomer:customer];
-                             [self presentViewController:evc animated:YES completion:nil];
-                         }
-                     }
-                     else if (error.code)
-                     {
-                         // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-                         [CustomerHelper showErrorMessage:error.localizedDescription
-                                                withTitle:@"Authentication Failed"
-                                               withCancel:@"Try again"
-                                               withSender:nil];
-                         // logout of facebook
-                         [[FBSession activeSession] closeAndClearTokenInformation];
-                     }
-                     
-                     // remove the spinner
-                     [spinner stopAnimating];
-                     
-                 }
-                 
-                 // If we have a logged in user (possibly as a result of the FB reg above)
-                 // Then we should check if any FB data has changed and navigate to the main view
-                 if ([CustomerHelper getLoggedInUser] != nil) {
-                     
+
+                 if ([CustomerHelper getLoggedInUser])
+                 {
                      [FacebookHelper trackNumberOfFriends];
-                     
-                     // TODO consider updating the user if needed
-                     if (self.navigationController.visibleViewController != appDelegate.firstViewController) {
-                         [self.navigationController popToRootViewControllerAnimated:YES];
-                     }
+                     [self.navigationController popToRootViewControllerAnimated:YES];
+                 }
+                 else
+                 {
+                     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+                     [[OperationQueueManager sharedInstance] authFacebookUser:user delegate:self];
                  }
                  
              }
@@ -260,6 +210,35 @@
 
 - (void) threadStartSpinner:(id)data {
     [spinner startAnimating];
+}
+
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate delegate
+
+- (void)userAuthComplete:(NSError *)error
+{
+    // remove the spinner
+    [spinner stopAnimating];
+    
+    if (error)
+    {
+
+#warning "TODO handle the user is incomplete and open the reg form with the FB user obj seeding the form"
+        
+        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+        [CustomerHelper showErrorMessage:error.localizedDescription
+                               withTitle:@"Authentication Failed"
+                              withCancel:@"Try again"
+                              withSender:nil];
+        // logout of facebook
+        [[FBSession activeSession] closeAndClearTokenInformation];
+    }
+    else
+    {
+        [FacebookHelper trackNumberOfFriends];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 @end

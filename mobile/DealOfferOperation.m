@@ -27,19 +27,30 @@
 {
     @autoreleasepool {
         
-        NSLog(@"DealOfferOperation started");
-        
         if ([self isCancelled]) return;
         if ([CustomerHelper getLoggedInUser] == nil) return;
         
         NSError *error;
         CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
-        if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:loc context:[CustomerHelper getContext] error:&error])
+        NSManagedObjectContext *context = [self getContext];
+        if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:loc context:context error:&error])
         {
             NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
         }
-        NSLog(@"DealOfferOperation executed fetchDealOfferSummaries");
         
+        // TODO move this to ttCustomer
+        NSError *saveError;
+        if (![context save:&saveError]) {
+            NSLog(@"API: OH SHIT!!!! Failed to save context after fetchDealOfferSummaries: %@ %@",saveError, [saveError userInfo]);
+        }
+        
+        if (self.delegate)
+        {
+            //[self.delegate dealOfferOperationComplete:self];
+            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferOperationComplete:))
+                                                        withObject:nil
+                                                     waitUntilDone:NO];
+        }
         
     }
     

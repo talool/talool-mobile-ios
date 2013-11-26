@@ -12,7 +12,7 @@
 
 @class TaloolUIButton;
 
-@interface WelcomeViewController : UITableViewController<FBLoginViewDelegate>
+@interface WelcomeViewController : UITableViewController<FBLoginViewDelegate, OperationQueueDelegate>
 {
     IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *signinButton;

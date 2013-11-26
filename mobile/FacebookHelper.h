@@ -31,7 +31,8 @@
 + (BOOL) reopenSession;
 
 enum {
-    FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL = 50
+    FacebookErrorCode_USER_NOT_REGISTERED_WITH_TALOOL = 50,
+    FacebookErrorCode_USER_INVALID = 51
 };
 typedef int FacebookErrorCode;
 

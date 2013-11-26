@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
 
 #define OFFER_MONITOR_INTERVAL_IN_SECONDS 360.0
@@ -24,7 +25,7 @@
 
 #define LOGOUT_NOTIFICATION @"CUSTOMER_LOGGED_OUT";
 
-@class ttDealOffer;
+@class ttDealOffer, ttCustomer;
 
 @interface OperationQueueManager : NSObject
 
@@ -32,6 +33,17 @@
 
 - (void) handleBackgroundState;
 - (void) handleForegroundState;
+
+- (void) authFacebookUser:(NSDictionary<FBGraphUser> *)user delegate:(id<OperationQueueDelegate>)delegate;
+- (void) authUser:(NSString *)email password:(NSString *)password delegate:(id<OperationQueueDelegate>)delegate;
+- (void) regUser:(NSString *)email
+        password:(NSString *)password
+       firstName:(NSString *)firstName
+        lastName:(NSString *)lastName
+        isFemale:(BOOL)isFemale
+       birthDate:(NSDate *)birthDate
+        delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startUserLogout;
 
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate;
 - (void) startDealOfferDealsOperation:(ttDealOffer *)offer withDelegate:(id<OperationQueueDelegate>)delegate;

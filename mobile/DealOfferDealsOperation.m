@@ -30,12 +30,19 @@
         if ([self isCancelled]) return;
         if ([CustomerHelper getLoggedInUser] == nil) return;
         
+        NSManagedObjectContext *context = [self getContext];
         NSError *error;
-        [self.dealOffer getDeals:[CustomerHelper getLoggedInUser] context:[CustomerHelper getContext] error:&error];
-        NSLog(@"DealOfferDealsOperation executed getDeals");
+        [self.dealOffer getDeals:[CustomerHelper getLoggedInUser] context:context error:&error];
+        
+        // TODO move this to ttDealOffer
+        NSError *saveError;
+        if (![context save:&saveError]) {
+            NSLog(@"API: OH SHIT!!!! Failed to save context after getDeals: %@ %@",saveError, [saveError userInfo]);
+        }
         
         if (self.delegate)
         {
+            //[self.delegate dealOfferDealsOperationComplete:self];
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferDealsOperationComplete:))
                                                         withObject:nil
                                                      waitUntilDone:NO];

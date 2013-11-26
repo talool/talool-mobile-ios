@@ -11,7 +11,7 @@
 
 @class TaloolUIButton, TaloolTextField;
 
-@interface LoginViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
+@interface LoginViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, OperationQueueDelegate>
 {
     IBOutlet TaloolTextField *emailField;
     IBOutlet TaloolTextField *passwordField;

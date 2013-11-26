@@ -19,14 +19,10 @@
 + (ttCustomer *) getLoggedInUser;
 
 + (void) logoutUser;
-+ (BOOL) loginUser:(NSString *)email password:(NSString *)password;
-+ (BOOL) registerCustomer:(ttCustomer *)customer password:(NSString *)password;
 
 + (BOOL) isEmailValid:(NSString *)email;
-+ (BOOL) loginFacebookUser:(NSString *)facebookId facebookToken:(NSString *)fbToken error:(NSError **)error;
 
 + (void) showNetworkError;
 + (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
-+ (void) handleNewLogin;
 
 @end

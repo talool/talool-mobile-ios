@@ -11,7 +11,7 @@
 
 @class TaloolUIButton, TaloolTextField;
 
-@interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate> {
+@interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, OperationQueueDelegate> {
     IBOutlet TaloolTextField *emailField;
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolTextField *firstNameField;

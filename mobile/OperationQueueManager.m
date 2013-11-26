@@ -10,8 +10,15 @@
 #import "AppDelegate.h"
 #import "DealOfferOperation.h"
 #import "DealOfferDealsOperation.h"
+#import "MerchantOperation.h"
+#import "FavoriteMerchantOperation.h"
+#import "CategoryOperation.h"
+#import "UserAuthenticationOperation.h"
+#import "FacebookAuthenticationOperation.h"
+#import <RegistrationOperation.h>
 #import "MerchantSearchHelper.h"
 #import "CustomerHelper.h"
+#import "CategoryHelper.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
@@ -20,9 +27,6 @@
 
 @property (strong, nonatomic) NSOperationQueue *foregroundQueue;
 @property (strong, nonatomic) NSOperationQueue *backgroundQueue;
-@property (nonatomic, strong) NSMutableDictionary *pendingForegroundOperations;
-@property id<OperationQueueDelegate> opDelegate;
-@property dispatch_queue_t queue;
 
 @end
 
@@ -38,14 +42,11 @@
         sharedInstance.foregroundQueue.name = @"Talool Foreground Queue";
         sharedInstance.backgroundQueue = [[NSOperationQueue alloc] init];
         sharedInstance.backgroundQueue.name = @"Talool Background Queue";
-        sharedInstance.pendingForegroundOperations = [[NSMutableDictionary alloc] init];
         
         // Thrift will drop requests on the floor if we set this higher
         // TODO test this again when the code stabilizes
         sharedInstance.foregroundQueue.maxConcurrentOperationCount = 1;
         sharedInstance.backgroundQueue.maxConcurrentOperationCount = 1;
-        
-        sharedInstance.queue = dispatch_queue_create("com.talool.mobile",NULL);
         
     });
     return sharedInstance;
@@ -73,6 +74,67 @@
     //return [CustomerHelper getContext];
 }
 
+#pragma mark -
+#pragma mark - Login/Logout Operation Management
+
+- (void) authFacebookUser:(NSDictionary<FBGraphUser> *)user delegate:(id<OperationQueueDelegate>)delegate
+{
+    FacebookAuthenticationOperation *fao = [[FacebookAuthenticationOperation alloc] initWithUser:user delegate:delegate];
+
+    __weak id weakSelf = self;
+    [fao setCompletionBlock: ^{
+        [weakSelf startUserBackgroundOperations];
+    }];
+
+    [self.foregroundQueue addOperation:fao];
+}
+
+- (void) authUser:(NSString *)email password:(NSString *)password delegate:(id<OperationQueueDelegate>)delegate
+{
+    UserAuthenticationOperation *ao = [[UserAuthenticationOperation alloc] initWithUser:email password:password delegate:delegate];
+    
+    __weak id weakSelf = self;
+    [ao setCompletionBlock: ^{
+        [weakSelf startUserBackgroundOperations];
+    }];
+    
+    [self.foregroundQueue addOperation:ao];
+}
+
+- (void) regUser:(NSString *)email
+        password:(NSString *)password
+       firstName:(NSString *)firstName
+        lastName:(NSString *)lastName
+        isFemale:(BOOL)isFemale
+       birthDate:(NSDate *)birthDate
+        delegate:(id<OperationQueueDelegate>)delegate
+{
+    RegistrationOperation *ao = [[RegistrationOperation alloc] initWithUser:email
+                                                                   password:password
+                                                                  firstName:firstName
+                                                                   lastName:lastName
+                                                                   isFemale:isFemale
+                                                                  birthDate:birthDate
+                                                                   delegate:delegate];
+    
+    __weak id weakSelf = self;
+    [ao setCompletionBlock: ^{
+        [weakSelf startUserBackgroundOperations];
+    }];
+    
+    [self.foregroundQueue addOperation:ao];
+}
+
+- (void) startUserBackgroundOperations
+{
+    NSLog(@"start the sheduled updates");
+    // TODO kick off the location manager
+}
+
+- (void) startUserLogout
+{
+#warning "move logout to background"
+}
 
 #pragma mark -
 #pragma mark - Deal Offer Operation Management
@@ -80,28 +142,9 @@
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate
 {
     
-    dispatch_async(self.queue,^{
-        NSError *error;
-        CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        NSManagedObjectContext *context = [self getContext];
-        if (![customer fetchDealOfferSummaries:loc context:context error:&error])
-        {
-            NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
-        }
-        //NSLog(@"DealOfferOperation executed fetchDealOfferSummaries");
-        
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after fetchDealOfferSummaries: %@ %@",saveError, [saveError userInfo]);
-        }
-        
-        if (delegate)
-        {
-            [delegate dealOfferOperationComplete:self];
-        }
-    });
-    
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithDelegate:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
 
 }
 
@@ -113,24 +156,9 @@
 - (void) startDealOfferDealsOperation:(ttDealOffer *)offer withDelegate:(id<OperationQueueDelegate>)delegate
 {
     
-    dispatch_async(self.queue,^{
-        
-        NSManagedObjectContext *context = [self getContext];
-        NSError *error;
-        [offer getDeals:[CustomerHelper getLoggedInUser] context:context error:&error];
-        //NSLog(@"DealOfferDealsOperation executed getDeals");
-        
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after getDeals: %@ %@",saveError, [saveError userInfo]);
-        }
-        
-        if (delegate)
-        {
-            [delegate dealOfferDealsOperationComplete:self];
-        }
-    });
-    
+    DealOfferDealsOperation *dodo = [[DealOfferDealsOperation alloc] initWithOffer:offer delegate:delegate];
+    [dodo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:dodo];
 
 }
 
