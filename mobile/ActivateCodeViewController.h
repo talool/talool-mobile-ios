@@ -11,7 +11,7 @@
 
 @class TaloolUIButton, TaloolTextField, ttDealOffer;
 
-@interface ActivateCodeViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
+@interface ActivateCodeViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, OperationQueueDelegate>
 {
     IBOutlet TaloolTextField *accessCodeFld;
     IBOutlet UIActivityIndicatorView *spinner;

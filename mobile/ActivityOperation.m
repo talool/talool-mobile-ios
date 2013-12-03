@@ -8,11 +8,39 @@
 
 #import "ActivityOperation.h"
 #import "CustomerHelper.h"
-#import "ActivityStreamHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttActivity.h"
 
+@interface ActivityOperation()
+
+@property id<OperationQueueDelegate> delegate;
+@property NSString *activityId;
+
+@property BOOL isActivityAction;
+
+@end
+
 @implementation ActivityOperation
+
+- (id)initWithDelegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+    }
+    return self;
+}
+
+- (id)initWithActivityId:(NSString *)aId delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.activityId = aId;
+        self.isActivityAction = YES;
+    }
+    return self;
+}
 
 - (void)main
 {
@@ -20,36 +48,69 @@
         
         if ([self isCancelled]) return;
         
-        ttCustomer *user = [CustomerHelper getLoggedInUser];
-        
-        if (!user) return;
-        
-        NSError *error;
-        NSArray *activities = [user getActivities:[CustomerHelper getContext] error:&error];
-        
-        // preload any gifts too
-        int openActivities = 0;
-        for (int i=0; i<[activities count]; i++)
+        if (self.isActivityAction)
         {
-            ttActivity *act = [activities objectAtIndex:i];
-            if ([act isWelcomeEvent] ||
-                [act isTaloolReachEvent] ||
-                [act isMerchantReachEvent] ||
-                [act isFacebookReceiveGiftEvent] ||
-                [act isEmailReceiveGiftEvent])
-            {
-                if (![act isClosed])
-                {
-                    openActivities++;
-                }
-            }
+            [self closeActivity];
         }
-        
-#warning @"We need to get back on the main thread to handle those activites"
-        //[[ActivityStreamHelper sharedInstance] handleFetchedActivities:activities openCount:openActivities];
-        //[(NSObject *)self.delegate performSelectorOnMainThread:(@selector(completeUserLogout:)) withObject:nil waitUntilDone:NO];
+        else
+        {
+            [self getActivities];
+        }
     }
     
+}
+
+- (void) closeActivity
+{
+    if ([self isCancelled]) return;
+    
+    ttCustomer *user = [CustomerHelper getLoggedInUser];
+    ttActivity *activity = [ttActivity fetchById:self.activityId context:[self getContext]];
+    if (!user || !activity) return;
+    
+    NSError *error;
+    BOOL success = [activity actionTaken:user context:[self getContext] error:&error];
+    if (!success || error)
+    {
+        NSLog(@"failed to get activities: %@",error);
+    }
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:success] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activityOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+- (void) getActivities
+{
+    if ([self isCancelled]) return;
+    
+    ttCustomer *user = [CustomerHelper getLoggedInUser];
+    
+    if (!user) return;
+    
+    NSError *error;
+    NSDictionary *response = [ttActivity getActivities:user context:[self getContext] error:&error];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [NSMutableDictionary dictionaryWithDictionary:response];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activityOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
 }
 
 @end

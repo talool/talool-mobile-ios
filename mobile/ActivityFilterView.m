@@ -7,16 +7,15 @@
 //
 
 #import "ActivityFilterView.h"
-#import "ActivityStreamHelper.h"
 #import "ActivityFilterControl.h"
 #import "TextureHelper.h"
 #import "TaloolColor.h"
 
 @implementation ActivityFilterView
 
-@synthesize filterControl, delegate, activityHelper;
+@synthesize filterControl, delegate;
 
-- (id)initWithFrame:(CGRect)frame activityStreamDelegate:(id<ActivityStreamDelegate>)streamDelegate
+- (id)initWithFrame:(CGRect)frame activityFilterDelegate:(id<ActivityFilterDelegate>)d
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,8 +26,7 @@
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(filterToggled) forControlEvents:UIControlEventValueChanged];
         
-        activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:streamDelegate];
-        [self setDelegate:activityHelper];
+        [self setDelegate:d];
         
         [self addSubview:view];
         
@@ -41,11 +39,6 @@
     [super awakeFromNib];
     
     [self addSubview:view];
-}
-
-- (void) fetchActivities
-{
-    [delegate fetchActivities];
 }
 
 - (void) filterToggled

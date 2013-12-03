@@ -30,16 +30,30 @@
 
 @synthesize locationMapView, merchant, tableView, locations, sortDescriptors;
 
--(void)viewWillAppear:(BOOL)animated
+
+- (void)viewDidLoad
 {
-    [super viewWillAppear:animated];
-    self.navigationItem.title = merchant.name;
-    [self centerMap:[merchant getClosestLocation]];
+    [super viewDidLoad];
     
     sortDescriptors = [NSArray arrayWithObjects:
                        //[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES], // TODO distance
                        [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                        nil];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = merchant.name;
+    
+    [self plotMerchantLocations:[merchant.locations allObjects]];
+    
     locations = [[[NSArray alloc] initWithArray:[merchant.locations allObjects]] sortedArrayUsingDescriptors:sortDescriptors];
     [self.tableView reloadData];
     
@@ -53,20 +67,6 @@
     [super viewDidAppear:animated];
     [self centerMap:[merchant getClosestLocation]];
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    [self plotMerchantLocations:[merchant.locations allObjects]];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"MerchantLocation";
@@ -151,41 +151,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [locations count]+2;
+    return [locations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
-    {
-        return [self getHeaderCell:indexPath];
-    }
-    else if (indexPath.row == [locations count]+1)
-    {
-        NSString *CellIdentifier = @"FooterCell";
-        FooterPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setSimpleMessage:@"Touch the address to center the map."];
-        return cell;
-    }
-    else
-    {
-        NSString *CellIdentifier = @"LocationCell";
-        LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        // Configure the cell
-        ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
-        [cell setLocation:location];
-        
-        if (indexPath.row == [locations count]) {
-            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
-        }
-        else
-        {
-            cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
-        }
-        
-        return cell;
-    }
+    NSString *CellIdentifier = @"LocationCell";
+    LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
+    [cell setLocation:location];
+    
+    return cell;
 }
 
 - (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
@@ -194,7 +172,6 @@
     HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if ([locations count]==0) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
         [cell setMessage:[NSString stringWithFormat:@"No Locations for %@",merchant.name]];
     }
     else

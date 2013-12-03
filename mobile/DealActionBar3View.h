@@ -14,7 +14,7 @@
 @interface DealActionBar3View : UIView
 {
     IBOutlet UIView *view;
-    
+    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet UIView *inactiveView;
     IBOutlet UIView *twoButtonView;
     
@@ -31,5 +31,8 @@
 
 - (id)initWithFrame:(CGRect)frame deal:(ttDealAcquire *)dealAcquire delegate:(id<TaloolDealActionDelegate>)actionDelegate;
 - (void) updateView:(ttDealAcquire *)dealAcquire;
+
+- (void) startSpinner;
+- (void) stopSpinner;
 
 @end

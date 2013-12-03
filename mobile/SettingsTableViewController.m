@@ -15,6 +15,7 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
+#import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -144,20 +145,8 @@ static NSString *host = @"http://www.talool.com";
 {
     // add a spinner
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [[OperationQueueManager sharedInstance] startUserLogout:self];
     
-    [self logoutUser];
-     
-     // remove the spinner
-     [spinner stopAnimating];
-    
-    [self performSegueWithIdentifier:@"logout" sender:self];
-
-}
-
-// Called from other controllers as needed
-- (void)logoutUser
-{
-    [CustomerHelper logoutUser];
 }
 
 - (void)didReceiveMemoryWarning
@@ -245,6 +234,25 @@ static NSString *host = @"http://www.talool.com";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return (section==0) ? accountHeader:taloolHeader;
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate delegate
+
+- (void) logoutComplete:(NSDictionary *)response
+{
+    // remove the spinner
+    [spinner stopAnimating];
+    
+    BOOL result = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (result)
+    {
+        if ([FBSession.activeSession isOpen])
+        {
+            [FBSession.activeSession closeAndClearTokenInformation];
+        }
+        [self performSegueWithIdentifier:@"logout" sender:self];
+    }
 }
 
 @end

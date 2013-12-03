@@ -14,9 +14,8 @@
 
 @interface FacebookHelper : NSObject
 
-+(void) setContext:(NSManagedObjectContext *)context;
-+(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user;
-+(ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user;
++(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user context:(NSManagedObjectContext *)context;
++(ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user context:(NSManagedObjectContext *)context;
 + (id<OGDeal>)dealObjectForGift:(NSString*)giftId;
 + (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal;
 + (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer;

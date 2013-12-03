@@ -13,12 +13,13 @@
 
 @implementation FacebookAuthenticationOperation
 
-- (id) initWithUser:(NSDictionary<FBGraphUser> *)u delegate:(id<OperationQueueDelegate>)d
+- (id) initWithUser:(NSDictionary<FBGraphUser> *)u token:(NSString *)t delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
         self.user = u;
         self.delegate = d;
+        self.token = t;
     }
     return self;
 }
@@ -27,27 +28,25 @@
 {
     @autoreleasepool {
         
-        NSError *error = nil;
+        ttCustomer *customer;
+        
+        NSMutableDictionary *delegateResponse;
+        
+        NSError *error;
         NSManagedObjectContext *context = [self getContext];
-        ttCustomer *customer = [ttCustomer authenticateFacebook:self.user.id
-                                              facebookToken:[[[FBSession activeSession] accessTokenData] accessToken]
+        BOOL result = [ttCustomer authenticateFacebook:self.user.id
+                                              facebookToken:self.token
                                                     context:context
                                                       error:&error];
-        if (!error && !customer)
+        if (!error && !result)
         {
+            // Register the user
             NSString *email = [self.user objectForKey:@"email"];
-            customer = [FacebookHelper createCustomerFromFacebookUser:self.user];
+            customer = [FacebookHelper createCustomerFromFacebookUser:self.user context:context];
             if ([CustomerHelper isEmailValid:email])
             {
                 NSString *password = [ttCustomer nonrandomPassword:email];
-                [ttCustomer registerCustomer:customer password:password context:context error:&error];
-                
-                if (error)
-                {
-                    // Reg failed so log out of Facebook
-                    [[FBSession activeSession] closeAndClearTokenInformation];
-                }
-                
+                result = [ttCustomer registerCustomer:customer password:password context:context error:&error];
             }
             else
             {
@@ -61,28 +60,35 @@
                                         userInfo:details];
             }
         }
-        else if (error)
-        {
-            // Reg failed so log out of Facebook
-            [[FBSession activeSession] closeAndClearTokenInformation];
-        }
         
-        if (!error)
+        customer = [CustomerHelper getLoggedInUser];
+        if (!error && customer)
         {
-            if (![self setUpUser:&error])
+            delegateResponse = [self setUpUser:&error];
+            result = [[delegateResponse objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+            if (!result)
             {
-                // setup failed so log out of Facebook
-                [[FBSession activeSession] closeAndClearTokenInformation];
-                // TODO logout of the app
-#warning "need to logout the user here"
+                NSLog(@"user setup failed for Facebook Auth: %@", error);
+                // logout of the app
+                NSError *err;
+                [ttCustomer logoutUser:context error:&err];
             }
         }
 
         
         if (self.delegate)
         {
+            if (!delegateResponse)
+            {
+                delegateResponse = [[NSMutableDictionary alloc] init];
+            }
+            [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            if (error)
+            {
+                [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+            }
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(userAuthComplete:))
-                                                        withObject:error
+                                                        withObject:delegateResponse
                                                      waitUntilDone:NO];
         }
         

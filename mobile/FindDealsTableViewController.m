@@ -58,6 +58,12 @@
     [self resetFetchRestulsController];
     [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
     
+    NSString *logoutNotification = LOGOUT_NOTIFICATION;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogout)
+                                                 name:logoutNotification
+                                               object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +71,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     NSLog(@"FindDeals memory warning");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -76,6 +83,11 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Find Deals Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
+- (void) handleUserLogout
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (DealOfferTableViewController *) getDetailView:(ttDealOffer *)offer
@@ -252,7 +264,7 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate methods
 
-- (void)dealOfferOperationComplete:(id)sender
+- (void)dealOfferOperationComplete:(NSDictionary *)response
 {
     [self resetFetchRestulsController];
 }

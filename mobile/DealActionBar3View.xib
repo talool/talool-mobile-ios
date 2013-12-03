@@ -12,6 +12,7 @@
                 <outlet property="inactiveView" destination="992" id="1003"/>
                 <outlet property="message" destination="1016" id="1023"/>
                 <outlet property="redeemButton" destination="Dec-8L-pZq" id="dsL-fC-g5S"/>
+                <outlet property="spinner" destination="Nbi-be-YvL" id="eHh-Ak-kg5"/>
                 <outlet property="twoButtonView" destination="1004" id="1015"/>
                 <outlet property="view" destination="1" id="130"/>
             </connections>
@@ -77,6 +78,10 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-be-YvL">
+                    <rect key="frame" x="142" y="31" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>

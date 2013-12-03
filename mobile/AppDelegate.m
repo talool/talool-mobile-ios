@@ -12,17 +12,12 @@
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
 #import "Talool-API/ttActivity.h"
-#import "CustomerHelper.h"
-#import "FacebookHelper.h"
 #import "TaloolColor.h"
 #import "TaloolTabBarController.h"
 #import "WelcomeViewController.h"
 #import "SettingsTableViewController.h"
 #import "MyDealsViewController.h"
 #import "ActivityViewController.h"
-#import "ActivityStreamHelper.h"
-#import "MerchantSearchView.h"
-#import "MerchantSearchHelper.h"
 #import "SplashViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
@@ -40,9 +35,7 @@
             isSplashing = _isSplashing;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize firstViewController = _firstViewController;
-@synthesize activityHelper, splashView;
+@synthesize splashView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -69,13 +62,8 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"]; // Handy reference to the tab controller
-    self.firstViewController = [storyboard instantiateViewControllerWithIdentifier:@"MyDeals"]; // We can refactor this out
     self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"]; // Used for FB errors
-    self.settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"Settings"]; // Used to logout.  We can refactor this out
     
-    [CustomerHelper setContext:self.managedObjectContext];
-    [FacebookHelper setContext:self.managedObjectContext];
-
     // Back to the main thread for the work that needs to happen there
     [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
     
@@ -110,7 +98,6 @@
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
     
-    activityHelper = [[ActivityStreamHelper alloc] initWithDelegate:self];
     [self initVTClient];
     
     [self.splashView.view removeFromSuperview];
@@ -234,7 +221,6 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    [activityHelper stopPollingActivity];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -255,7 +241,6 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [[TaloolAppCall sharedInstance] handleDidBecomeActive];
     [FBAppCall handleDidBecomeActive];
-    [activityHelper startPollingActivity];
     
     [self setUserAgent];
 }
@@ -298,10 +283,8 @@
 
 -(void) presentNewDeals
 {
-    // refresh the deals
-    [[MerchantSearchHelper sharedInstance] fetchMerchants];
     
-    if (self.mainViewController.selectedViewController != self.firstViewController)
+    if (self.mainViewController.selectedIndex > 0)
     {
         // the user is on FindDeals or Activity, so we should ask if they want to be redirected
         UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got Deals!"
@@ -365,6 +348,7 @@
             
             // TODO not sure about this...
             [_managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
+            //[_managedObjectContext setStalenessInterval:0];
         }
         return _managedObjectContext;
     }

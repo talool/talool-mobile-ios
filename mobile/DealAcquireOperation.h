@@ -10,12 +10,10 @@
 #import <TaloolOperation.h>
 #import "TaloolProtocols.h"
 
-@class ttMerchant;
-
 @interface DealAcquireOperation : TaloolOperation
 
-- (id)initWithMerchant:(ttMerchant *)merchant delegate:(id<OperationQueueDelegate>)delegate;
-@property (nonatomic, readwrite, strong) ttMerchant *merchant;
+- (id)initWithMerchantId:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate;
+@property (nonatomic, readwrite, strong) NSString *merchantId;
 @property id<OperationQueueDelegate> delegate;
 
 @end

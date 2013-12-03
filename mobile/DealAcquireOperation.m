@@ -9,17 +9,16 @@
 #import "DealAcquireOperation.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttMerchant.h"
+#import <Talool-API/ttDealAcquire.h>
 #import "CustomerHelper.h"
 
 @implementation DealAcquireOperation
 
-@synthesize merchant;
-
-- (id)initWithMerchant:(ttMerchant *)m delegate:(id<OperationQueueDelegate>)d
+- (id)initWithMerchantId:(NSString *)mid delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
-        self.merchant = m;
+        self.merchantId = mid;
         self.delegate = d;
     }
     return self;
@@ -29,36 +28,35 @@
 {
     @autoreleasepool {
         
-        if ([self isCancelled]) {
-            [self sendCompletionMessage];
-            return;
-        }
-        if ([CustomerHelper getLoggedInUser] == nil) return;
+        if ([self isCancelled]) return;
 
         NSError *error;
         NSManagedObjectContext *context = [self getContext];
-        [[CustomerHelper getLoggedInUser] refreshMyDealsForMerchant:merchant
-                                                            context:context
-                                                              error:&error];
         
-        // TODO move this to ttCustomer
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after refreshMyDealsForMerchant: %@ %@",saveError, [saveError userInfo]);
+        // make sure we have a merchant from this context
+        ttMerchant *merchant = [ttMerchant fetchMerchantById:self.merchantId context:context];
+        
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        BOOL result = [ttDealAcquire getDealAcquires:customer forMerchant:merchant context:context error:&error];
+        
+        if (self.delegate)
+        {
+            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealAcquireOperationComplete:)) withObject:self waitUntilDone:NO];
+            
+            NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+            [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            if (error)
+            {
+                [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+            }
+            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealAcquireOperationComplete:))
+                                                        withObject:delegateResponse
+                                                     waitUntilDone:NO];
         }
         
-        [self sendCompletionMessage];
     }
     
 }
 
-- (void) sendCompletionMessage
-{
-    if (self.delegate)
-    {
-        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealAcquireOperationComplete:)) withObject:self waitUntilDone:NO];
-        NSLog(@"sent DAO completion message for %@", self.merchant.name);
-    }
-}
 
 @end

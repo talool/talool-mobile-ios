@@ -94,10 +94,10 @@
     
     switch ([self selectedSegmentIndex]) {
         case MyDealsAllIndex:
-            filter = nil;
+            filter = [NSPredicate predicateWithFormat:@"customer != nil"];
             break;
         case MyDealsFavsIndex:
-            filter = [NSPredicate predicateWithFormat:@"SELF.isFav > %d",0];
+            filter = [NSPredicate predicateWithFormat:@"customer != nil AND SELF.isFav > %d",0];
             break;
         default:
             filter = [self getCategoryPredicate];
@@ -110,7 +110,7 @@
 - (NSPredicate *)getCategoryPredicate
 {
     ttCategory *cat = [self getCategoryAtSelectedIndex];
-    return [NSPredicate predicateWithFormat:@"category.categoryId = %@", cat.categoryId];
+    return [NSPredicate predicateWithFormat:@"customer != nil AND category.categoryId = %@", cat.categoryId];
 }
 
 @end

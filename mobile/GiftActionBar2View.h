@@ -14,7 +14,7 @@
 @interface GiftActionBar2View : UIView
 {
     IBOutlet UIView *view;
-    
+    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet UIView *inactiveView;
     IBOutlet UIView *twoButtonView;
     IBOutlet UIImageView *dealImage;
@@ -25,6 +25,8 @@
 
 - (id)initWithFrame:(CGRect)frame gift:(ttGift *)gift delegate:(id<TaloolGiftActionDelegate>)actionDelegate;
 - (void) updateView:(ttGift *)gift;
+- (void) startSpinner;
+- (void) stopSpinner;
 - (IBAction)rejectGift:(id)sender;
 - (IBAction)acceptGift:(id)sender;
 

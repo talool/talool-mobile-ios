@@ -39,7 +39,7 @@
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [CustomerHelper logoutUser];
+        [[OperationQueueManager sharedInstance] startUserLogout:self];
     }
     
     // TODO: set up FB permissions
@@ -75,7 +75,7 @@
 {
     [super viewDidAppear:animated];
     
-    if ([CustomerHelper getLoggedInUser] != nil) {
+    if ([CustomerHelper getLoggedInUser]) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
@@ -96,6 +96,11 @@
     if ([[segue identifier] isEqualToString:@"showReg"])
     {
         [[segue destinationViewController] setHidesBottomBarWhenPushed:YES];
+        if (_failedUser)
+        {
+            [[segue destinationViewController] setFailedUser:_failedUser];
+            _failedUser = nil;
+        }
     }
 }
 
@@ -204,7 +209,7 @@
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     if ([customer isFacebookUser])
     {
-        [CustomerHelper logoutUser];
+        [[OperationQueueManager sharedInstance] startUserLogout:self];
     }
 }
 
@@ -216,29 +221,58 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate delegate
 
-- (void)userAuthComplete:(NSError *)error
+- (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
     [spinner stopAnimating];
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
     
-    if (error)
-    {
-
-#warning "TODO handle the user is incomplete and open the reg form with the FB user obj seeding the form"
-        
-        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-        [CustomerHelper showErrorMessage:error.localizedDescription
-                               withTitle:@"Authentication Failed"
-                              withCancel:@"Try again"
-                              withSender:nil];
-        // logout of facebook
-        [[FBSession activeSession] closeAndClearTokenInformation];
-    }
-    else
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    
+    if (success && customer)
     {
         [FacebookHelper trackNumberOfFriends];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        if (error)
+        {
+            if (error.code == FacebookErrorCode_USER_INVALID)
+            {
+                _failedUser = [FacebookHelper createCustomerFromFacebookUser:[error.userInfo objectForKey:@"fbUser"]
+                                                                     context:[CustomerHelper getContext]];
+                [self.navigationController performSegueWithIdentifier:@"showReg" sender:self];
+            }
+            else
+            {
+                // Reg failed so log out of Facebook
+                [[FBSession activeSession] closeAndClearTokenInformation];
+                
+                // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+                [CustomerHelper showErrorMessage:error.localizedDescription
+                                       withTitle:@"Authentication Failed"
+                                      withCancel:@"Try again"
+                                      withSender:nil];
+            }
+            
+        }
+        else
+        {
+            // logout of facebook
+            [[FBSession activeSession] closeAndClearTokenInformation];
+            
+            NSLog(@"FAIL: No user stored after authentication");
+            
+            // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+            [CustomerHelper showErrorMessage:@"We were unable to store your credentials."
+                                   withTitle:@"Authentication Failed"
+                                  withCancel:@"Try again"
+                                  withSender:nil];
+        }
+    }
+    
 }
 
 @end

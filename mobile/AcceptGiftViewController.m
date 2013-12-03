@@ -12,25 +12,25 @@
 #import "DefaultGiftLayoutState.h"
 #import "GiftActionBar2View.h"
 #import "CustomerHelper.h"
-#import "MerchantSearchHelper.h"
 #import "Talool-API/ttGift.h"
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttFriend.h"
 #import "Talool-API/ttMerchant.h"
+#import <OperationQueueManager.h>
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AcceptGiftViewController ()
-
+@property (retain, nonatomic) ttGift *gift;
 @end
 
 @implementation AcceptGiftViewController
 
-@synthesize gift, actionBarView, giftDelegate, dealLayout;
+@synthesize giftId, actionBarView, dealLayout;
 
 - (void)viewDidLoad
 {
@@ -38,7 +38,7 @@
 
     CGRect frame = self.view.bounds;
     actionBarView = [[GiftActionBar2View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
-                                                          gift:gift
+                                                          gift:_gift
                                                       delegate:self];
 }
 
@@ -46,15 +46,19 @@
 {
     [super viewWillAppear:animated];
     
-    NSError *error;
-    NSString *doId = gift.deal.dealOfferId;
-    ttDealOffer *offer = [ttDealOffer getDealOffer:doId
-                             customer:[CustomerHelper getLoggedInUser]
-                              context:[CustomerHelper getContext]
-                                error:&error];
-    
-    // Define the layout for the gift
-    dealLayout = [[DefaultGiftLayoutState alloc] initWithGift:gift offer:offer actionDelegate:self];
+    // gifts were loaded when the activities where loaded, so we should
+    // be able to get the gift from the context, but... you never know...
+    _gift = [ttGift fetchById:giftId context:[CustomerHelper getContext]];
+    if (_gift)
+    {
+        [self updateGift];
+    }
+    else
+    {
+#warning "need to test this case"
+        [actionBarView startSpinner];
+        [[OperationQueueManager sharedInstance] startGiftLookupOperation:giftId delegate:self];
+    }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Accept Gift Screen"];
@@ -67,40 +71,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) updateGift
+{
+    // Define the layout for the gift
+    ttDealOffer *offer = [ttDealOffer fetchById:_gift.deal.dealOfferId
+                                        context:[CustomerHelper getContext]];
+    dealLayout = [[DefaultGiftLayoutState alloc] initWithGift:_gift
+                                                        offer:offer
+                                               actionDelegate:self];
+    [actionBarView updateView:_gift];
+    [self.tableView reloadData];
+}
+
 - (void)acceptGift:(id)sender
 {
-    NSError *err;
-    ttCustomer *customer = (ttCustomer *)[CustomerHelper getLoggedInUser];
-    ttDealAcquire *deal = [customer acceptGift:gift.giftId context:[CustomerHelper getContext] error:&err];
-    if (deal)
-    {
-        // tell the delegate what happened
-        if (giftDelegate)
-        {
-            [giftDelegate giftAccepted:deal sender:self];
-        }
-        [[MerchantSearchHelper sharedInstance] fetchMerchants];
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }
-    else
-    {
-        [self displayError:err];
-    }
+    [actionBarView startSpinner];
+    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId accept:YES delegate:self];
 }
 
 - (void)rejectGift:(id)sender
 {
-    NSError *err;
-    ttCustomer *customer = (ttCustomer *)[CustomerHelper getLoggedInUser];
-    if ([customer rejectGift:gift.giftId error:&err])
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    else
-    {
-        [self displayError:err];
-    }
+    [actionBarView startSpinner];
+    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId accept:NO delegate:self];
 }
 
 - (void) displayError:(NSError *)error
@@ -149,8 +141,42 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    [actionBarView updateView:gift];
     return actionBarView;
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void) giftAcceptOperationComplete:(NSDictionary *)response
+{
+    [actionBarView stopSpinner];
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        // close the modal
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        [self displayError:error];
+    }
+}
+
+- (void) giftLookupOperationComplete:(NSDictionary *)response
+{
+    [actionBarView stopSpinner];
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        _gift = [ttGift fetchById:giftId context:[CustomerHelper getContext]];
+        [self updateGift];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        [self displayError:error];
+    }
 }
 
 @end

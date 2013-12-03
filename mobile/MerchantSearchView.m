@@ -8,7 +8,6 @@
 
 #import "MerchantSearchView.h"
 #import "MerchantFilterControl.h"
-#import "MerchantSearchHelper.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
 #import "Talool-API/ttCategory.h"
 #import "TaloolColor.h"
@@ -18,7 +17,7 @@
 
 @synthesize delegate;
 
-- (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate
+- (id)initWithFrame:(CGRect)frame merchantFilterDelegate:(id<MerchantFilterDelegate>)d
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,8 +29,7 @@
         [view addSubview:self.filterControl];
         [self.filterControl addTarget:self action:@selector(categoryToggled) forControlEvents:UIControlEventValueChanged];
         
-        [[MerchantSearchHelper sharedInstance] setDelegate:searchDelegate];
-        [self setDelegate:[MerchantSearchHelper sharedInstance]];
+        [self setDelegate:d];
         
         [self addSubview:view];
     }
@@ -45,10 +43,6 @@
     [self addSubview:view];
 }
 
-- (void) fetchMerchants
-{
-    [delegate fetchMerchants];
-}
 
 #pragma mark -
 #pragma mark - Selectors for the Controls

@@ -10,7 +10,7 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton;
+@class TaloolUIButton, ttCustomer;
 
 @interface WelcomeViewController : UITableViewController<FBLoginViewDelegate, OperationQueueDelegate>
 {
@@ -20,5 +20,6 @@
 
 @property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) ttCustomer *failedUser;
 
 @end

@@ -1554,7 +1554,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U72-uF-vER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="1074"/>
+            <point key="canvasLocation" x="1655" y="1074"/>
         </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="3FZ-Fi-RuH">
@@ -1770,11 +1770,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <viewControllerLayoutGuide type="bottom" id="6fD-CN-aww"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0hd-9A-sqJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vN-sa-wLC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </webView>
@@ -1802,7 +1802,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <scene sceneID="WAl-Ln-O8T">
             <objects>
                 <tableViewController storyboardIdentifier="MyDeals" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KRC-V0-KA0" customClass="MyDealsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="50" sectionFooterHeight="22" id="8k1-mI-Ha0">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="50" sectionFooterHeight="22" id="8k1-mI-Ha0">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -1833,7 +1833,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="promptMessage" destination="ifg-EM-Sdo" id="2gW-1e-Awu"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="MerchantCell" rowHeight="90" id="bZ1-yj-4ib" customClass="FavoriteMerchantCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="MerchantCell" id="bZ1-yj-4ib" customClass="MerchantCell">
                                 <rect key="frame" x="0.0" y="110" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bZ1-yj-4ib" id="vA7-Ue-fC7">
@@ -1891,7 +1891,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="distanceLabel" destination="RVq-kx-6hW" id="s4g-2C-ZVo"/>
                                     <outlet property="iconView" destination="HVO-Iq-jv2" id="Beo-hg-9eE"/>
                                     <outlet property="nameLabel" destination="sn2-tp-leA" id="8Re-u6-Q33"/>
-                                    <segue destination="nmK-ha-uWj" kind="push" identifier="merchantDeals" id="7zO-q2-BBx"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="vKH-YK-2WO" userLabel="Buy More Prompt" customClass="FooterPromptCell">
@@ -1960,7 +1959,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <tableViewController storyboardIdentifier="MerchantView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nmK-ha-uWj" customClass="MerchantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="uSd-9i-RfO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2011,7 +2010,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="dateLabel" destination="JXr-aq-9HK" id="ydQ-1L-Nok"/>
                                     <outlet property="iconView" destination="e7z-ZH-sS6" id="vax-3e-6p9"/>
                                     <outlet property="nameLabel" destination="gth-bB-J5C" id="qSX-m0-nbd"/>
-                                    <segue destination="2I0-5O-JeQ" kind="push" identifier="showDeal" id="0h2-q7-qUa"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="ay7-7u-wXJ" userLabel="Buy More Prompt" customClass="FooterPromptCell">
@@ -2060,7 +2058,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="tintColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="tP1-qM-RUx" kind="push" identifier="showMap" id="EQC-lS-Jb5"/>
                         <segue destination="Kia-Ym-Kxg" kind="push" identifier="showWebsite" id="HMP-oi-56u"/>
                     </connections>
                 </tableViewController>
@@ -2282,7 +2279,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibb-FS-5mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682" y="386"/>
+            <point key="canvasLocation" x="1655" y="386"/>
         </scene>
         <!--Activate Code View Controller-->
         <scene sceneID="k5b-aW-HGP">
@@ -2384,7 +2381,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgp-BF-BGg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079" y="386"/>
+            <point key="canvasLocation" x="2099" y="386"/>
         </scene>
         <!--Merchant Deals View Controller-->
         <scene sceneID="eWo-fd-d6i">
@@ -2451,7 +2448,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcd-QC-6Z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2553" y="387"/>
+            <point key="canvasLocation" x="2530" y="385"/>
         </scene>
         <!--Help Network Failure View Controller-->
         <scene sceneID="OQz-vb-6tR">
@@ -2535,23 +2532,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Merchant Location View Controller-->
         <scene sceneID="d9G-s8-gAF">
             <objects>
-                <viewController storyboardIdentifier="MerchantLocationler" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tP1-qM-RUx" customClass="MerchantLocationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MerchantLocationView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tP1-qM-RUx" customClass="MerchantLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lmk-4C-cvD"/>
                         <viewControllerLayoutGuide type="bottom" id="OGo-K5-mfY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="85x-wd-xtj">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MrZ-h9-2c9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="288"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
                                 <connections>
                                     <outlet property="delegate" destination="tP1-qM-RUx" id="AKN-Qr-iMI"/>
                                 </connections>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hnB-Hn-uGq">
-                                <rect key="frame" x="0.0" y="288" width="320" height="167"/>
+                                <rect key="frame" x="0.0" y="401" width="320" height="167"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="167" id="rCq-9Y-2Fi"/>
                                 </constraints>
@@ -2686,14 +2683,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvD-bN-0ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-304"/>
+            <point key="canvasLocation" x="2525" y="-304"/>
         </scene>
         <!--Deal Table View Controller-->
         <scene sceneID="ORh-y5-dwy">
             <objects>
                 <tableViewController storyboardIdentifier="DealTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2I0-5O-JeQ" customClass="DealTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="hzL-73-ANz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2758,7 +2755,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="merchantAddress" destination="Mio-Rx-o3p" id="1n2-Wr-zxB"/>
                                     <outlet property="merchantCityState" destination="ey9-84-imd" id="FSP-Mx-IdJ"/>
                                     <outlet property="merchantLogo" destination="y3U-Qo-4Au" id="wHV-wm-5HT"/>
-                                    <segue destination="tP1-qM-RUx" kind="push" identifier="showMap" id="EGa-Bg-TS6"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailCell" rowHeight="112" id="AWp-60-eu0" customClass="DealDetailCell">
@@ -2857,7 +2853,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xt-l1-w9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2102" y="-304"/>
+            <point key="canvasLocation" x="2099" y="-304"/>
         </scene>
         <!--My Deals Nav-->
         <scene sceneID="N06-2z-WXY">
@@ -2947,6 +2943,5 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <inferredMetricsTieBreakers>
         <segue reference="lZZ-Le-LNs"/>
         <segue reference="HMP-oi-56u"/>
-        <segue reference="EGa-Bg-TS6"/>
     </inferredMetricsTieBreakers>
 </document>

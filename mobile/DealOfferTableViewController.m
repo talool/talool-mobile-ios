@@ -22,6 +22,7 @@
 #import "AppDelegate.h"
 #import "ActivateCodeViewController.h"
 #import "FacebookHelper.h"
+#import "OperationQueueManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -109,12 +110,30 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate methods
 
-- (void)dealOfferDealsOperationComplete:(id)sender
+- (void)dealOfferDealsOperationComplete:(NSDictionary *)response
 {
     [self setNewCacheName:offer.dealOfferId];
     [self resetFetchRestulsController];
 }
 
+- (void)purchaseOperationComplete:(NSDictionary *)response
+{
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        [self.paymentViewController prepareForDismissal];
+        [self.paymentViewController dismissViewControllerAnimated:YES completion:^{
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate presentNewDeals];
+        }];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        [self.paymentViewController showErrorWithTitle:@"Payment Error" message:[error localizedDescription]];
+    }
+
+}
 
 #pragma mark -
 #pragma mark - FetchedResultsController
@@ -315,54 +334,21 @@
     NSString *security = [cardInfoEncrypted objectForKey:@"cvv"];
     NSString *zip = [cardInfoEncrypted objectForKey:@"zipcode"];
     NSString *session = [cardInfoEncrypted objectForKey:@"venmo_sdk_session"];
-    NSError *err;
+
+    [[OperationQueueManager sharedInstance] startPurchaseByCardOperation:card
+                                                                expMonth:expMonth
+                                                                 expYear:expYear
+                                                            securityCode:security
+                                                                 zipCode:zip
+                                                            venmoSession:session
+                                                                   offer:offer
+                                                                delegate:self];
     
-    BOOL result = [offer purchaseByCard:card
-                               expMonth:expMonth
-                                expYear:expYear
-                           securityCode:security
-                                zipCode:zip
-                           venmoSession:session
-                               customer:[CustomerHelper getLoggedInUser]
-                                  error:&err];
-    
-    if (result)
-    {
-        [self.paymentViewController prepareForDismissal];
-        [paymentViewController dismissViewControllerAnimated:YES completion:^{
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate presentNewDeals];
-        }];
-        
-    }
-    else
-    {
-        // show error  message
-        [paymentViewController showErrorWithTitle:@"Payment Error" message:[err localizedDescription]];
-    }
 }
 
 - (void) paymentViewController:(BTPaymentViewController *)paymentViewController didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode
 {
-    NSError *err;
-    BOOL result = [offer purchaseByCode:paymentMethodCode
-                               customer:[CustomerHelper getLoggedInUser]
-                                  error:&err];
-    
-    if (result)
-    {
-        [self.paymentViewController prepareForDismissal];
-        [paymentViewController dismissViewControllerAnimated:YES completion:^{
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate presentNewDeals];
-            [FacebookHelper postOGPurchaseAction:offer];
-        }];
-    }
-    else
-    {
-        // show error  message
-        [paymentViewController showErrorWithTitle:@"Payment Error" message:[err localizedDescription]];
-    }
+    [[OperationQueueManager sharedInstance] startPurchaseByCodeOperation:paymentMethodCode offer:offer delegate:self];
 }
 
 

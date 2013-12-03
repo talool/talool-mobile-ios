@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ttCategory;
+
 @interface HeaderPromptCell : UITableViewCell
 {
-    IBOutlet UIImageView *cellBackground;
     IBOutlet UILabel *promptMessage;
 }
 
 @property (retain, nonatomic) UIImageView *cellBackground;
 
 -(void) setMessage:(NSString *)url;
+
+-(void) setMessageForMerchantCount:(int)count category:(ttCategory *)cat favorite:(BOOL)isFav;
 
 @end

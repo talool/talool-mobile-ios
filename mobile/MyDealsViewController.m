@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "WelcomeViewController.h"
-#import "FavoriteMerchantCell.h"
 #import "MerchantCell.h"
 #import "HeaderPromptCell.h"
 #import "FooterPromptCell.h"
@@ -22,21 +21,25 @@
 #import "Talool-API/ttMerchantLocation.h"
 #import "Talool-API/ttGift.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "CustomerHelper.h"
-#import "CategoryHelper.h"
-#import "TextureHelper.h"
+#import "LocationHelper.h"
 #import "TaloolColor.h"
 #import "MerchantSearchView.h"
-#import "MerchantSearchHelper.h"
-#import "ActivityStreamHelper.h"
+#import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
+@interface MyDealsViewController ()
+@property (nonatomic, retain) NSArray *sortDescriptors;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) MerchantTableViewController *detailView;
+@end
+
 @implementation MyDealsViewController
 
-@synthesize helpButton;
-@synthesize merchants, searchView;
+@synthesize helpButton, searchView;
 
 - (void)viewDidLoad
 {
@@ -50,7 +53,7 @@
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
     self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
-                                         merchantSearchDelegate:self];
+                                         merchantFilterDelegate:self];
     
     // add the settings button
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
@@ -61,32 +64,48 @@
     [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
     
+    _sortDescriptors = [NSArray arrayWithObjects:
+                        [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                        nil];
     
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+    
+    NSString *logoutNotification = LOGOUT_NOTIFICATION;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogout)
+                                                 name:logoutNotification
+                                               object:nil];
+    NSString *giftNotification = CUSTOMER_ACCEPTED_GIFT;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAcceptedGift)
+                                                 name:giftNotification
+                                               object:nil];
 
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    NSLog(@"My Deals memory warning");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if ([CustomerHelper getLoggedInUser] == nil) {
+    if (![CustomerHelper getLoggedInUser]) {
         // The user isn't logged in, so kick them to the welcome view
         [self performSegueWithIdentifier:@"welcome" sender:self];
     }
     
     self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
-    
-    // reset with the latest list of merchants
-    merchants = [MerchantSearchHelper sharedInstance].filteredMerchants;
-    if ([merchants count]==0)
-    {
-        NSArray *unsortedMerchants = [[CustomerHelper getLoggedInUser] getMyMerchants];
-        NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        NSArray *sortDescriptors = [NSArray arrayWithObject:sortByName];
-        merchants = [[[NSArray alloc] initWithArray:unsortedMerchants] sortedArrayUsingDescriptors:sortDescriptors];
-    }
-    
-    [self.tableView reloadData];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"My Deals Screen"];
@@ -100,10 +119,10 @@
     
     [self askForHelp];
     
-    if (![MerchantSearchHelper sharedInstance].locationManagerStatusKnown)
+    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
     {
         // The user hasn't approved or denied location services
-        [[MerchantSearchHelper sharedInstance] promptForLocationServiceAuthorization];
+        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
 }
 
@@ -113,21 +132,47 @@
     [self closeHelp];
 }
 
+- (void) handleUserLogout
+{
+    _fetchedResultsController = nil;
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    [self.tableView reloadData];
+}
+
+- (void) handleAcceptedGift
+{
+    _fetchedResultsController = nil;
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    [self.tableView reloadData];
+}
 
 - (void)settings:(id)sender
 {
     [self performSegueWithIdentifier:@"showSettings" sender:self];
 }
 
+- (MerchantTableViewController *) getDetailView:(ttMerchant *)merchant
+{
+    if (!_detailView)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _detailView = [storyboard instantiateViewControllerWithIdentifier:@"MerchantView"];
+    }
+    [_detailView setMerchant:merchant];
+    return _detailView;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"merchantDeals"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttMerchant *merchant = [self.merchants objectAtIndex:([indexPath row]-1)];
-        MerchantTableViewController *mvc = (MerchantTableViewController *)[segue destinationViewController];
-        [mvc setMerchant:merchant];
-    }
-    else if ([[segue identifier] isEqualToString:@"welcome"])
+    if ([[segue identifier] isEqualToString:@"welcome"])
     {
         WelcomeViewController *wvc = [segue destinationViewController];
         [wvc setHidesBottomBarWhenPushed:YES];
@@ -136,19 +181,62 @@
 
 
 #pragma mark -
+#pragma mark - FetchedResultsController
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    [self.tableView reloadData];
+    
+    NSPredicate *predicate = [searchView.filterControl getPredicateAtSelectedIndex];
+
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
+    return _fetchedResultsController;
+    
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:MERCHANT_ENTITY_NAME
+                                              inManagedObjectContext:[CustomerHelper getContext]];
+    [fetchRequest setEntity:entity];
+    
+    if (predicate)
+    {
+        [fetchRequest setPredicate:predicate];
+    }
+    
+    [fetchRequest setSortDescriptors:_sortDescriptors];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[CustomerHelper getContext]
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    theFetchedResultsController.delegate = self;
+    
+    return theFetchedResultsController;
+}
+
+#pragma mark -
 #pragma mark - Help Overlay Methods
 
 - (void) askForHelp
 {
     // if merchants are still 0, we should show the user some help
-    if ([merchants count]==0 && helpButton==nil && [self.searchView.filterControl selectedSegmentIndex]==0)
+    if ([self merchantCount]==0 && helpButton==nil && [self.searchView.filterControl selectedSegmentIndex]==0)
     {
         helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
         [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:helpButton];
     }
-    else if ([merchants count]>0)
+    else if ([self merchantCount]>0)
     {
         [self closeHelp];
     }
@@ -163,12 +251,11 @@
     }
 }
 
-#pragma mark -
-#pragma mark UIViewController
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+- (int)merchantCount
+{
+    return [_fetchedResultsController.fetchedObjects count];
 }
+
 
 #pragma mark -
 #pragma mark UITableView Delegate/Datasource
@@ -180,125 +267,78 @@
 
 // Determines the number of rows for the argument section number
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [merchants count] + 2;
+    return [self merchantCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    /*
+    if (indexPath.row == 0)
+    {
         return [self getHeaderCell:indexPath];
     }
-    else if (indexPath.row == [merchants count]+1) {
-        NSString *CellIdentifier = @"FooterCell";
-        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
-        return cell;
+    else if (indexPath.row == [self merchantCount]+1)
+    {
+        return [self getFooterCell:indexPath];
     }
     else
     {
         return [self getMerchantCell:indexPath];
     }
+    */
+    return [self getMerchantCell:indexPath];
 }
 
 - (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = @"TileTop";
     HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if ([merchants count]==0) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60Last.png"];
-        ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
-        if (cat)
-        {
-            [cell setMessage:[NSString stringWithFormat:@"No merchants in %@", cat.name]];
-        }
-        else if (searchView.filterControl.selectedSegmentIndex==1)
-        {
-            [cell setMessage:@"No favorite merchants"];
-        }
-        else
-        {
-            [cell setMessage:@"No merchants"];
-        }
-    }
-    else
-    {
-        NSString *merch = ([merchants count]==1)?@"merchant":@"merchants";
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell60.png"];
-        ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
-        if (cat)
-        {
-            [cell setMessage:[NSString stringWithFormat:@"%d %@ %@", [merchants count], cat.name, merch]];
-        }
-        else if (searchView.filterControl.selectedSegmentIndex==1)
-        {
-            [cell setMessage:[NSString stringWithFormat:@"%d favorite %@", [merchants count], merch]];
-        }
-        else
-        {
-            [cell setMessage:[NSString stringWithFormat:@"%d %@", [merchants count], merch]];
-        }
-    }
+    ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
+    [cell setMessageForMerchantCount:[self merchantCount] category:cat favorite:(searchView.filterControl.selectedSegmentIndex==1)];
+    return cell;
+}
+
+- (UITableViewCell *)getFooterCell:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"FooterCell";
+    FooterPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
     return cell;
 }
 
 - (UITableViewCell *)getMerchantCell:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MerchantCell";
-    
-    FavoriteMerchantCell *cell = (FavoriteMerchantCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-	// Configure the data for the cell.
-    ttMerchant *merchant = [merchants objectAtIndex:indexPath.row - 1];
-    
-    ttCategory *cat = (ttCategory *)merchant.category;
-    [cell setIcon:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
-    
-    [cell setName:merchant.name];
-
-    [cell setAddress:[merchant getLocationLabel]];
-    
-    ttMerchantLocation *loc = [merchant getClosestLocation];
-    if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
-    {
-        [cell setDistance:@"  "];
-    }
-    else
-    {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setPositiveFormat:@"###0.##"];
-        [formatter setLocale:[NSLocale currentLocale]];
-        NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
-        [cell setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
-    }
-    
-    if (indexPath.row == [merchants count]) {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90Last.png"];
-    }
-    else
-    {
-        cell.cellBackground.image = [UIImage imageNamed:@"tableCell90.png"];
-    }
-    
-    cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
-                                                        imageSize:CGSizeMake(30, 30)
-                                                         fontSize:14
-                                                       attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
+    MerchantCell *cell = (MerchantCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	[self configureCell:cell path:indexPath];
     return cell;
 }
 
+- (void) configureCell:(MerchantCell *)cell path:(NSIndexPath *)indexPath
+{
+    ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setMerchant:merchant];
+}
+
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0 || indexPath.row == [merchants count]+1)
+    if (indexPath.row==0 || indexPath.row == [self merchantCount]+1)
     {
         return 60.0;
     }
     return 90.0;
 }
-
+*/
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return self.searchView;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttMerchant *merch = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:[self getDetailView:merch] animated:YES];
 }
 
 #pragma mark -
@@ -306,32 +346,103 @@
 
 - (void) refreshMerchants
 {
-    [self performSelector:@selector(updateTable) withObject:nil afterDelay:.1];
+    [[OperationQueueManager sharedInstance] startMerchantOperation:self];
+    [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
 }
 
 - (void) updateTable
 {
-    [[MerchantSearchHelper sharedInstance] fetchMerchants];
-}
-
-#pragma mark -
-#pragma mark - MerchantSearchDelegate methods
-
-- (void)merchantSetChanged:(NSArray *)newMerchants sender:(id)sender
-{
-    merchants = newMerchants;
-    [self askForHelp];
-    [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
-#pragma mark -
-#pragma mark - TaloolGiftAcceptedDelegate methods
 
-- (void) giftAccepted:(ttDealAcquire *)deal sender:(id)sender
+#pragma mark -
+#pragma mark - MerchantFilterDelegate methods
+
+- (void)filterChanged:(NSPredicate *)predicate sender:(id)sender
 {
-    // TODO add the merchant and the deal to the customer w/o pulling everything
-    [self.searchView fetchMerchants];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+    
+    if (!predicate)
+    {
+        [self askForHelp];
+    }
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void) merchantOperationComplete:(NSDictionary *)response
+{
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark - NSFetchedResultsControllerDelegate methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:(MerchantCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
 }
 
 @end

@@ -7,9 +7,14 @@
 //
 
 #import "AuthenticationOperation.h"
+#import "AppDelegate.h"
+#import <TaloolTabBarController.h>
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttCategory.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttActivity.h"
 #import "CategoryHelper.h"
+#import <LocationHelper.h>
 
 @implementation AuthenticationOperation
 
@@ -19,40 +24,64 @@
     return self;
 }
 
-- (BOOL) setUpUser:(NSError **)error
+- (NSMutableDictionary *) setUpUser:(NSError **)error
 {
+    NSMutableDictionary *result;
+    BOOL success = NO;
+    
     NSManagedObjectContext *context = [self getContext];
     ttCustomer *customer = [ttCustomer getLoggedInUser:context];
     if (customer)
     {
-        [ttCategory getCategories:customer context:context];
-        
-        // refresh merchants without location
-        [customer refreshMerchants:nil context:context];
-        
-        [customer refreshFavoriteMerchants:context];
-        
-        // TODO move this to tt objects
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after getCategories: %@ %@",saveError, [saveError userInfo]);
+        if ([ttCategory getCategories:customer context:context error:error])
+        {
+            if ([ttMerchant getMerchants:customer withLocation:nil context:context error:error])
+            {
+                if ([ttMerchant getFavoriteMerchants:customer context:context error:error])
+                {
+                    NSDictionary *activityResponse = [ttActivity getActivities:customer context:context error:error];
+                    NSNumber *activityResult = [activityResponse objectForKey:@"success"];
+                    if ([activityResult boolValue])
+                    {
+                        result = [NSMutableDictionary dictionaryWithDictionary:activityResponse];
+                        
+                        [(NSObject *)[CategoryHelper sharedInstance] performSelectorOnMainThread:(@selector(reset))
+                                                                                      withObject:nil
+                                                                                   waitUntilDone:NO];
+                        
+                        // init the location helper to start monitoring
+                        [LocationHelper sharedInstance];
+                        
+                        success = YES;
+                    }
+                    else
+                    {
+                        NSLog(@"failed to get activities.");
+                    }
+                }
+                else
+                {
+                    NSLog(@"failed to get favs.");
+                }
+            }
+            else
+            {
+                NSLog(@"failed to get merchants.");
+            }
         }
-        
-        [(NSObject *)[CategoryHelper sharedInstance] performSelectorOnMainThread:(@selector(reset))
-                                                                      withObject:nil
-                                                                   waitUntilDone:NO];
-        return YES;
+        else
+        {
+            NSLog(@"failed to get categories.");
+        }
     }
     
-    // Create a new error object to message that we need to register this user
-    NSMutableDictionary* details = [NSMutableDictionary dictionary];
-    NSString *errorDetails = @"We were unable to prepare your account (Didn't find user in context).";
-    [details setValue:errorDetails forKey:NSLocalizedDescriptionKey];
-    *error = [NSError errorWithDomain:@"PostAuthenticationSetUp"
-                                code:AuthenticationErrorCode_SETUP_FAILED
-                            userInfo:details];
+    if (!success)
+    {
+        result = [[NSMutableDictionary alloc] init];
+        [result setObject:[NSNumber numberWithBool:success] forKey:DELEGATE_RESPONSE_SUCCESS];
+    }
     
-    return NO;
+    return result;
 }
 
 @end

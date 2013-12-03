@@ -17,11 +17,10 @@
 }
 
 - (void) categoryToggled;
-- (void) fetchMerchants;
 
 @property (strong, nonatomic) MerchantFilterControl *filterControl;
 @property (retain, nonatomic) id<MerchantFilterDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame merchantSearchDelegate:(id<MerchantSearchDelegate>)searchDelegate;
+- (id)initWithFrame:(CGRect)frame merchantFilterDelegate:(id<MerchantFilterDelegate>)delegate;
 
 @end

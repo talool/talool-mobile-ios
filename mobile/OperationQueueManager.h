@@ -24,8 +24,9 @@
 #define DEAL_ACQUIRE_OPERATION_KEY @"DAO";
 
 #define LOGOUT_NOTIFICATION @"CUSTOMER_LOGGED_OUT";
+#define CUSTOMER_ACCEPTED_GIFT @"CUSTOMER_ACCEPTED_GIFT";
 
-@class ttDealOffer, ttCustomer;
+@class ttDealOffer, ttCustomer, ttMerchant;
 
 @interface OperationQueueManager : NSObject
 
@@ -40,13 +41,37 @@
         password:(NSString *)password
        firstName:(NSString *)firstName
         lastName:(NSString *)lastName
-        isFemale:(BOOL)isFemale
+             sex:(NSNumber *)sex
        birthDate:(NSDate *)birthDate
         delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startUserLogout;
+- (void) startPasswordResetOperation:(NSString *)customerId
+                            password:(NSString *)pw
+                         changeToken:(NSString *)changeToken
+                            delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startUserLogout:(id<OperationQueueDelegate>)delegate;
 
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate;
 - (void) startDealOfferDealsOperation:(ttDealOffer *)offer withDelegate:(id<OperationQueueDelegate>)delegate;
+- (void) startMerchantOperation:(id<OperationQueueDelegate>)delegate;
+- (void) startDealAcquireOperation:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startFacebookGiftOperation:(NSString *)facebookId dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startEmailGiftOperation:(NSString *)email dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startGiftLookupOperation:(NSString *)giftId delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startGiftAcceptanceOperation:(NSString *)giftId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startRedeemOperation:(NSString *)dealAcquireId delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startFavoriteOperation:(NSString *)merchantId isFavorite:(BOOL)isFav delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate;
+- (void) startCloseActivityOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startPurchaseByCardOperation:(NSString *)card
+                             expMonth:(NSString *)expMonth
+                              expYear:(NSString *)expYear
+                         securityCode:(NSString *)security
+                              zipCode:(NSString *)zip
+                         venmoSession:(NSString *)session
+                                offer:(ttDealOffer *)offer
+                             delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
 /*
 - (void) startCategoryOperation;

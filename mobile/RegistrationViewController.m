@@ -39,7 +39,7 @@
 
 @implementation RegistrationViewController
 
-@synthesize errorView, spinner;
+@synthesize errorView, spinner, failedUser;
 
 - (void)viewDidLoad
 {
@@ -84,6 +84,17 @@
 {
     [super viewWillAppear:animated];
     
+    if (failedUser)
+    {
+#warning "test this"
+        // preload the form
+        emailField.text = failedUser.email;
+        firstNameField.text = failedUser.firstName;
+        lastNameField.text = failedUser.lastName;
+        // TODO preload the bday and sex
+        // TODO confirm the failed user has the FB id stored
+    }
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Registration Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
@@ -108,24 +119,21 @@
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
     
-    BOOL isFemale = NO;
-    if ([sexPicker selectedSegmentIndex]!=sexUndefinedIndex) {
-        isFemale = ([sexPicker selectedSegmentIndex]==sexFemaleIndex);
-    }
+    NSNumber *sex = [NSNumber numberWithInt:[sexPicker selectedSegmentIndex]];
     
     NSDate *bday = nil;
     if (birthDateField.text)
     {
         bday = [datePicker date];
     }
-    
+#warning "pass the FB ID if we have it"
     // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
     [[OperationQueueManager sharedInstance] regUser:emailField.text
                                            password:passwordField.text
                                           firstName:firstNameField.text
                                            lastName:lastNameField.text
-                                           isFemale:NO
+                                                sex:sex
                                           birthDate:nil
                                            delegate:self];
     
@@ -221,22 +229,24 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate delegate
 
-- (void)userAuthComplete:(NSError *)error
+- (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
     [spinner stopAnimating];
     
-    if (error)
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
     {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
         [CustomerHelper showErrorMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];
-    }
-    else
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

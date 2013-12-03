@@ -27,21 +27,24 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
-        if ([CustomerHelper getLoggedInUser] == nil) return;
+        
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
         
         NSManagedObjectContext *context = [self getContext];
-        [ttCategory getCategories:[CustomerHelper getLoggedInUser] context:context];
-        
-        // TODO move this to ttCategory
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after getCategories: %@ %@",saveError, [saveError userInfo]);
-        }
+        NSError *error;
+        BOOL result = [ttCategory getCategories:customer context:context error:&error];
         
         if (self.delegate)
         {
+            
+            NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+            [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            if (error)
+            {
+                [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+            }
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(handleCats:))
-                                                        withObject:self
+                                                        withObject:delegateResponse
                                                      waitUntilDone:NO];
         }
         

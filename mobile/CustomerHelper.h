@@ -7,18 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FacebookSDK/FacebookSDK.h"
 
-@class ttDealAcquire, ttCustomer, ttSocialAccount;
+@class ttCustomer;
 
 @interface CustomerHelper : NSObject
 
-+ (void) setContext:(NSManagedObjectContext *)context;
 + (NSManagedObjectContext *) getContext;
 
 + (ttCustomer *) getLoggedInUser;
-
-+ (void) logoutUser;
 
 + (BOOL) isEmailValid:(NSString *)email;
 

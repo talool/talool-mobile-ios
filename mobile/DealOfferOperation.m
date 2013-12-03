@@ -8,9 +8,32 @@
 
 #import "DealOfferOperation.h"
 #import "CustomerHelper.h"
-#import "MerchantSearchHelper.h"
+#import "LocationHelper.h"
+#import "FacebookHelper.h"
 #import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttDealOfferGeoSummary.h"
 #import "Talool-API/ttDealOffer.h"
+
+@interface DealOfferOperation()
+
+@property id<OperationQueueDelegate> delegate;
+
+@property (strong, nonatomic) NSString *card;
+@property (strong, nonatomic) NSString *expMonth;
+@property (strong, nonatomic) NSString *expYear;
+@property (strong, nonatomic) NSString *securityCode;
+@property (strong, nonatomic) NSString *zip;
+@property (strong, nonatomic) NSString *session;
+
+@property (strong, nonatomic) NSString *code;
+
+@property (strong, nonatomic) ttDealOffer *offer;
+
+@property BOOL isCardPurchase;
+@property BOOL isCodePurchase;
+@property BOOL isActivation;
+
+@end
 
 @implementation DealOfferOperation
 
@@ -23,37 +46,174 @@
     return self;
 }
 
+- (id)initWithCard:(NSString *)cd
+          expMonth:(NSString *)expM
+           expYear:(NSString *)expY
+      securityCode:(NSString *)sec
+           zipCode:(NSString *)z
+      venmoSession:(NSString *)s
+             offer:(ttDealOffer *)o
+          delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.expMonth = expM;
+        self.expYear = expY;
+        self.securityCode = sec;
+        self.zip = z;
+        self.session = s;
+        self.offer = o;
+        self.isCardPurchase = YES;
+    }
+    return self;
+}
+
+- (id)initWithPurchaseCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.offer = o;
+        self.code = c;
+        self.isCodePurchase = YES;
+    }
+    return self;
+}
+
+- (id)initWithActivationCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.offer = o;
+        self.code = c;
+        self.isActivation = YES;
+    }
+    return self;
+}
+
 - (void)main
 {
     @autoreleasepool {
         
         if ([self isCancelled]) return;
-        if ([CustomerHelper getLoggedInUser] == nil) return;
         
-        NSError *error;
-        CLLocation *loc = [MerchantSearchHelper sharedInstance].lastLocation;
-        NSManagedObjectContext *context = [self getContext];
-        if (![[CustomerHelper getLoggedInUser] fetchDealOfferSummaries:loc context:context error:&error])
+        if (self.isCardPurchase)
         {
-            NSLog(@"geo summary request failed.  HANDLE THE ERROR!");
+            [self purchaseWithCard];
         }
-        
-        // TODO move this to ttCustomer
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after fetchDealOfferSummaries: %@ %@",saveError, [saveError userInfo]);
-        }
-        
-        if (self.delegate)
+        else if (self.isCodePurchase)
         {
-            //[self.delegate dealOfferOperationComplete:self];
-            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferOperationComplete:))
-                                                        withObject:nil
-                                                     waitUntilDone:NO];
+            [self purchaseWithCode];
         }
+        else if (self.isActivation)
+        {
+            [self activate];
+        }
+        else
+        {
+            [self fetch];
+        }
+        
         
     }
     
+}
+
+-(void) purchaseWithCard
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    BOOL result = [self.offer purchaseByCard:self.card
+                                    expMonth:self.expMonth
+                                     expYear:self.expYear
+                                securityCode:self.securityCode
+                                     zipCode:self.zip
+                                venmoSession:self.session
+                                    customer:customer
+                                       error:&error];
+    
+    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(purchaseOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) purchaseWithCode
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    BOOL result = [self.offer purchaseByCode:self.code customer:customer error:&error];
+    
+    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(purchaseOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) activate
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    BOOL result = [self.offer activiateCode:customer code:self.code error:&error];
+    
+    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activationOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) fetch
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    CLLocation *loc = [LocationHelper sharedInstance].lastLocation;
+    NSManagedObjectContext *context = [self getContext];
+    BOOL result = [ttDealOfferGeoSummary fetchDealOfferSummaries:customer location:loc context:context error:&error];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
 }
 
 @end

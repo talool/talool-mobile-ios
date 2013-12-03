@@ -13,47 +13,28 @@
 
 @implementation MerchantCell
 
-@synthesize merchant, icon, distance, address, name;
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+- (void)setMerchant:(ttMerchant *)merchant
 {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-- (void)setMerchant:(ttMerchant *)newMerchant {
-    if (newMerchant != merchant) {
-        merchant = newMerchant;
-        ttCategory *cat = (ttCategory *)newMerchant.category;
-        ttMerchantLocation *loc = [newMerchant getClosestLocation];
-        
+    ttCategory *cat = (ttCategory *)merchant.category;
+    [iconView setImage:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
+    
+    [nameLabel setText:merchant.name];
+    
+    [addressLabel setText:[merchant getLocationLabel]];
+    
+    ttMerchantLocation *loc = [merchant getClosestLocation];
+    if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
+    {
+        [distanceLabel setText:@"  "];
+    }
+    else
+    {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        //[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         [formatter setPositiveFormat:@"###0.##"];
         [formatter setLocale:[NSLocale currentLocale]];
         NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
-        
-        [self setIcon:[[CategoryHelper sharedInstance] getIcon:[cat.categoryId intValue]]];
-        [self setName:merchant.name];
-        
-        if (miles>0)
-        {
-            [self setDistance: [NSString stringWithFormat:@"%@ miles",miles] ];
-        }
-        else
-        {
-            [self setDistance: @"" ];
-        }
-        
-        [self setAddress:[merchant getLocationLabel]];
-
+        [distanceLabel setText:[NSString stringWithFormat:@"%@ miles",miles] ];
     }
-}
-
-- (ttMerchant *)merchant {
-    return merchant;
 }
 
 

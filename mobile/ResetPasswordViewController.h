@@ -11,7 +11,7 @@
 
 @class TaloolUIButton, TaloolTextField;
 
-@interface ResetPasswordViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
+@interface ResetPasswordViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, OperationQueueDelegate>
 {
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolTextField *confirmPasswordField;

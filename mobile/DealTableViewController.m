@@ -7,13 +7,16 @@
 //
 
 #import "DealTableViewController.h"
+#import <MerchantLocationViewController.h>
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
+#import <LocationHelper.h>
 #import "DealActionBar3View.h"
 #import "BarCodeCell.h"
 #import "DealDetailCell.h"
 #import "DealLayoutState.h"
 #import "DefaultDealLayoutState.h"
+#import <OperationQueueManager.h>
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttFriend.h"
 #import "Talool-API/ttDeal.h"
@@ -21,6 +24,7 @@
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
+#import <CoreLocation/CoreLocation.h>
 #import "ZXingObjC/ZXingObjC.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -28,7 +32,7 @@
 
 
 @interface DealTableViewController ()
-
+@property (strong, nonatomic) MerchantLocationViewController *locationViewController;
 @end
 
 @implementation DealTableViewController
@@ -38,13 +42,6 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.delegate = self;
-    [_locationManager startUpdatingLocation];
-    _merchantLocation = nil;
-    _customerLocation = nil;
     
     CGRect frame = self.view.bounds;
     actionBar3View = [[DealActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT)
@@ -58,12 +55,8 @@
     
     self.navigationItem.title = deal.deal.merchant.name;
     
-    NSError *error;
     NSString *doId = deal.deal.dealOfferId;
-    offer = [ttDealOffer getDealOffer:doId
-                             customer:[CustomerHelper getLoggedInUser]
-                              context:[CustomerHelper getContext]
-                                error:&error];
+    offer = [ttDealOffer fetchById:doId context:[CustomerHelper getContext]];
     
     // double check the facebook session
     if (![FBSession activeSession].isOpen && [[CustomerHelper getLoggedInUser] isFacebookUser])
@@ -73,11 +66,25 @@
     
     // Define the layout for the deal
     dealLayout = [[DefaultDealLayoutState alloc] initWithDeal:deal offer:offer actionDelegate:self];
+    [self.tableView reloadData];
+    
+    [actionBar3View updateView:deal];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 
+}
+
+- (MerchantLocationViewController *) getLocationView
+{
+    if (!_locationViewController)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _locationViewController = [storyboard instantiateViewControllerWithIdentifier:@"MerchantLocationView"];
+    }
+    [_locationViewController setMerchant:deal.deal.merchant];
+    return _locationViewController;
 }
 
 - (void)addBarCode
@@ -134,14 +141,6 @@
      */
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showMap"])
-    {
-        [[segue destinationViewController] setMerchant:deal.deal.merchant];
-    }
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -169,11 +168,86 @@
     return HEADER_HEIGHT;
 }
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     [actionBar3View updateView:deal];
     return actionBar3View;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==1)
+    {
+        [self.navigationController pushViewController:[self getLocationView] animated:YES];
+    }
+    
+}
+
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void) giftSendOperationComplete:(NSDictionary *)response
+{
+    [actionBar3View stopSpinner];
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        [context refreshObject:deal mergeChanges:YES];
+        [actionBar3View updateView:deal];
+        [self.tableView reloadData];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        if (error.code == -1009)
+        {
+            [CustomerHelper showNetworkError];
+        }
+        else
+        {
+            // show an error
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                                message:@"We failed to send this gift."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Please Try Again"
+                                                      otherButtonTitles:nil];
+            [errorView show];
+        }
+    }
+    
+}
+
+- (void) redeemOperationComplete:(NSDictionary *)response
+{
+    [actionBar3View stopSpinner];
+    NSNumber *success = [response objectForKey:@"success"];
+    if ([success boolValue])
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        [context refreshObject:deal mergeChanges:YES];
+        [actionBar3View updateView:deal];
+        [self.tableView reloadData];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:@"error"];
+        if (error && error.code == -1009)
+        {
+            [CustomerHelper showNetworkError];
+        }
+        else
+        {
+            // show an error
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
+                                                                message:@"We failed to redeem this deal."
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Please Try Again"
+                                                      otherButtonTitles:nil];
+            [errorView show];
+        }
+    }
 }
 
 #pragma mark -
@@ -242,35 +316,8 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        NSError *err = [NSError alloc];
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        [self.deal setCustomer:customer];
-        [self.deal redeemHere:_customerLocation.coordinate.latitude
-                    longitude:_customerLocation.coordinate.longitude
-                        error:&err
-                      context:[CustomerHelper getContext]];
-        
-        if (!err.code) {
-            // Post the FB redeem action
-            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
-            // update the table view
-            [actionBar3View updateView:deal];
-            [self.tableView reloadData];
-        }
-        else if (err.code == -1009)
-        {
-            [CustomerHelper showNetworkError];
-        }
-        else
-        {
-            // show an error
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                                message:@"We failed to redeem this deal."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Please Try Again"
-                                                      otherButtonTitles:nil];
-            [errorView show];
-        }
+        [actionBar3View startSpinner];
+        [[OperationQueueManager sharedInstance] startRedeemOperation:deal.dealAcquireId delegate:self];
     }
 }
 
@@ -316,31 +363,11 @@
 
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
 {
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSError *error;
-    NSString *giftId = [customer giftToFacebook:deal.dealAcquireId
-                                     facebookId:facebookId
-                                 receipientName:name
-                                          error:&error];
-    NSLog(@"Gift created: %@", giftId);
-    
-    if (!error.code)
-    {
-        // Post to FB
-        //[self openFBPickerActionInShareDialog:self facebookId:facebookId name:name giftId:giftId];
-        [self announceShare:facebookId giftId:giftId];  // TODO find a way to do this if the user hits "cancel" in the share dialog
-
-        // Update the view so it's clear that the deal was gifted
-        [self confirmGiftSent:nil name:name];
-    }
-    else if (error.code == -1009)
-    {
-        [CustomerHelper showNetworkError];
-    }
-    else
-    {
-        [self displayError:error];
-    }
+    [actionBar3View startSpinner];
+    [[OperationQueueManager sharedInstance] startFacebookGiftOperation:facebookId
+                                                         dealAcquireId:deal.dealAcquireId
+                                                         recipientName:name
+                                                              delegate:self];
 }
 
 - (void) displayError:(NSError *)error
@@ -382,75 +409,11 @@
 
 }
 
-
-#pragma mark - Facebook Open Graph helpers
-
-- (void)confirmGiftSent:(NSString *)email name:(NSString *)name
-{
-    // change the status of the deal
-    ttFriend *friend = [ttFriend initWithName:name email:email context:[CustomerHelper getContext]];
-    [deal setSharedWith:friend];
-    [actionBar3View updateView:deal];
-    [self.tableView reloadData];
-}
-
-- (void)announceShare:(NSString *)facebookId giftId:(NSString *)giftId
-{
-    if ([FBSession.activeSession isOpen])
-    {
-        if ([FBSession.activeSession.permissions
-             indexOfObject:@"publish_actions"] == NSNotFound) {
-            
-            [FBSession.activeSession
-             requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
-             defaultAudience:FBSessionDefaultAudienceFriends
-             completionHandler:^(FBSession *session, NSError *error) {
-                 if (!error) {
-                     // re-call assuming we now have the permission
-                     [self announceShare:facebookId giftId:giftId];
-                 }
-             }];
-        } else {
-            [FacebookHelper postOGGiftAction:giftId toFacebookId:facebookId atLocation:[deal.deal.merchant getClosestLocation]];
-        }
-    }
-}
-
 #pragma mark - ABPeoplePickerNavigationControllerDelegate delegate methods
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
     return YES;
-    /*
-     NSString *name = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-     NSString *email;
-     ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
-     BOOL continueToProperties;
-     
-     if (ABMultiValueGetCount(multi)==0)
-     {
-     // Can we prevent users from selecting contacts without emails?
-     NSLog(@"Contact picked with no emails: %@", name);
-     // TODO alert user
-     // let the user see there is no email address for this contact
-     continueToProperties = YES;
-     
-     }
-     else if (ABMultiValueGetCount(multi)==1)
-     {
-     email = [self getEmailFromContact:person identifier:0];
-     NSLog(@"Contact picked: %@, %@", name, email);
-     continueToProperties = NO;
-     [self dismissViewControllerAnimated:YES completion:nil];
-     [self handleUserContact:email name:name];
-     }
-     else
-     {
-     // let the user pick the right email from the contact properties
-     continueToProperties = YES;
-     }
-     return continueToProperties;
-     */
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
@@ -480,26 +443,11 @@
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
 {
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSError *error;
-    NSString *giftId = [customer giftToEmail:deal.dealAcquireId
-                                       email:email
-                              receipientName:name
-                                       error:&error];
-    if (!error.code)
-    {
-        [self announceShare:nil giftId:giftId];
-        [self confirmGiftSent:email name:name];
-    }
-    else if (error.code == -1009)
-    {
-        [CustomerHelper showNetworkError];
-    }
-    else
-    {
-        [self displayError:error];
-    }
-    
+    [actionBar3View startSpinner];
+    [[OperationQueueManager sharedInstance] startEmailGiftOperation:email
+                                                      dealAcquireId:deal.dealAcquireId
+                                                      recipientName:name
+                                                           delegate:self];
 }
 
 @end

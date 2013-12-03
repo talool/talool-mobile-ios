@@ -28,23 +28,21 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
-        if ([CustomerHelper getLoggedInUser] == nil) return;
         
         NSManagedObjectContext *context = [self getContext];
         NSError *error;
-        [self.dealOffer getDeals:[CustomerHelper getLoggedInUser] context:context error:&error];
-        
-        // TODO move this to ttDealOffer
-        NSError *saveError;
-        if (![context save:&saveError]) {
-            NSLog(@"API: OH SHIT!!!! Failed to save context after getDeals: %@ %@",saveError, [saveError userInfo]);
-        }
+        BOOL result = [self.dealOffer getDeals:[CustomerHelper getLoggedInUser] context:context error:&error];
         
         if (self.delegate)
         {
-            //[self.delegate dealOfferDealsOperationComplete:self];
+            NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+            [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            if (error)
+            {
+                [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+            }
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferDealsOperationComplete:))
-                                                        withObject:nil
+                                                        withObject:delegateResponse
                                                      waitUntilDone:NO];
         }
         

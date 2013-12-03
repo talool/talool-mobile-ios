@@ -65,6 +65,16 @@
     [twoButtonView setHidden:NO];
 }
 
+- (void) startSpinner
+{
+    [spinner startAnimating];
+}
+
+- (void) stopSpinner
+{
+    [spinner stopAnimating];
+}
+
 - (void) awakeFromNib
 {
     [super awakeFromNib];

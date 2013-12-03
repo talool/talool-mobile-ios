@@ -14,15 +14,8 @@
            password:(NSString *)password
           firstName:(NSString *)firstName
            lastName:(NSString *)lastName
-           isFemale:(BOOL)isFemale
+                sex:(NSNumber *)sex
           birthDate:(NSDate *)birthDate
            delegate:(id<OperationQueueDelegate>)delegate;
-
-@property (nonatomic, readwrite, strong) NSString *email;
-@property (nonatomic, readwrite, strong) NSString *password;
-@property (nonatomic, readwrite, strong) NSString *lastName;
-@property (nonatomic, readwrite, strong) NSString *firstName;
-@property BOOL isFemale;
-@property (nonatomic, readwrite, strong) NSDate *birthDate;
 
 @end

@@ -14,6 +14,8 @@
 #import "DealTableViewController.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttGift.h"
+#import "Talool-API/ttDealAcquire.h"
+#import <OperationQueueManager.h>
 
 NSString * const CALL_PASSWORD = @"password";
 NSString * const CALL_GIFT = @"gift";
@@ -83,60 +85,69 @@ static int ACTIVITY_TAB_INDEX = 2;
         // select the activity tab
         [appDelegate.mainViewController setSelectedIndex:ACTIVITY_TAB_INDEX];
         
-        // let the main thread continue and try to fetch the gift
-        [self performSelector:@selector(fetchGift) withObject:nil afterDelay:.1];
-        
+        ttGift *gift = [ttGift fetchById:self.giftId context:[CustomerHelper getContext]];
+        if (gift)
+        {
+            [self showGift:gift];
+        }
+        else
+        {
+            [[OperationQueueManager sharedInstance] startGiftLookupOperation:giftId delegate:self];
+        }
     }
     
     callHost = nil;
 }
 
-- (void) fetchGift
+- (void) showGift:(ttGift *)gift
 {
-    // try to fetch and show the gift
-    NSError *err;
-    ttGift *gift = [ttGift getGiftById:giftId
-                              customer:[CustomerHelper getLoggedInUser]
-                               context:[CustomerHelper getContext]
-                                 error:&err];
-    
-    if (gift)
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    [context refreshObject:gift mergeChanges:YES];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UINavigationController *nav = [[appDelegate.mainViewController viewControllers] objectAtIndex:ACTIVITY_TAB_INDEX];
+    if ([gift isPending])
     {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        UINavigationController *nav = [[appDelegate.mainViewController viewControllers] objectAtIndex:ACTIVITY_TAB_INDEX];
-        if ([gift isPending])
+        AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
+        [view setGiftId:giftId];
+        [nav pushViewController:view animated:YES];
+    }
+    else
+    {
+        // get the dealAcquire for this accepted gift from the context
+        ttDealAcquire *deal = [gift getDealAquire:context];
+        if (deal)
         {
-            AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
-            view.gift = gift;
+            [context refreshObject:deal mergeChanges:YES];
+            DealTableViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+            [view setDeal:deal];
             [nav pushViewController:view animated:YES];
         }
-        else
-        {
-            // get the dealAcquire for this accepted gift
-            ttDealAcquire *deal = [gift getDealAquire:[CustomerHelper getContext]];
-            if (deal)
-            {
-                DealTableViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
-                [view setDeal:deal];
-                [nav pushViewController:view animated:YES];
-            }
-        }
-
     }
-    else if (err.code)
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void)giftLookupOperationComplete:(NSDictionary *)response
+{
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
     {
-        [CustomerHelper showErrorMessage:err.localizedDescription
+        ttGift *gift = [ttGift fetchById:giftId context:[CustomerHelper getContext]];
+        if (gift)
+        {
+            [self showGift:gift];
+        }
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        [CustomerHelper showErrorMessage:error.localizedDescription
                                withTitle:@"We're Sorry"
                               withCancel:@"Ok"
                               withSender:nil];
     }
-    else
-    {
-        [CustomerHelper showErrorMessage:@"We couldn't locate your Gift"
-                               withTitle:@"We're Sorry"
-                              withCancel:@"OK"
-                              withSender:nil];
-    }
+    
 }
 
 @end

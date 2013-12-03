@@ -10,10 +10,23 @@
 #import <TaloolOperation.h>
 #import "TaloolProtocols.h"
 
+@class ttDealOffer;
+
 @interface DealOfferOperation : TaloolOperation
 
 - (id)initWithDelegate:(id<OperationQueueDelegate>)delegate;
 
-@property id<OperationQueueDelegate> delegate;
+- (id)initWithCard:(NSString *)cd
+          expMonth:(NSString *)expM
+           expYear:(NSString *)expY
+      securityCode:(NSString *)sec
+           zipCode:(NSString *)z
+      venmoSession:(NSString *)s
+             offer:(ttDealOffer *)offer
+          delegate:(id<OperationQueueDelegate>)d;
+
+- (id)initWithPurchaseCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
+
+- (id)initWithActivationCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
 
 @end

@@ -14,21 +14,12 @@
 
 @interface MerchantCell : UITableViewCell
 {
-    
-    ttMerchant *merchant;
-    
-    UIImage *icon;
-    NSString *distance;
-    NSString *name;
-    NSString *address;
-
+    IBOutlet UIImageView *iconView;
+    IBOutlet UILabel *distanceLabel;
+    IBOutlet UILabel *nameLabel;
+    IBOutlet UILabel *addressLabel;
 }
 
-@property (nonatomic, retain) ttMerchant *merchant;
-
-@property(retain) UIImage *icon;
-@property(retain) NSString *distance;
-@property(retain) NSString *name;
-@property(retain) NSString *address;
+- (void)setMerchant:(ttMerchant *)merchant;
 
 @end

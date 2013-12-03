@@ -7,51 +7,24 @@
 //
 
 #import "CustomerHelper.h"
-#import "FacebookHelper.h"
-#import <FacebookSDK/FacebookSDK.h>
-#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/ttCustomer.h"
-#import "Talool-API/ttSocialAccount.h"
-#import "Talool-API/ttToken.h"
-#import "Talool-API/ttMerchant.h"
-#import "Talool-API/ttDealAcquire.h"
-#import <AddressBook/AddressBook.h>
-#import "AppDelegate.h"
-#import "MerchantSearchHelper.h"
-#import "CategoryHelper.h"
-#import "OperationQueueManager.h"
+#import <AppDelegate.h>
 
 @implementation CustomerHelper
 
-static NSManagedObjectContext *_context;
-static ttCustomer *_customer;
 
-+(void) setContext:(NSManagedObjectContext *)context
-{
-    _context = context;
-}
 + (NSManagedObjectContext *) getContext
 {
-    return _context;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    return context;
 }
 
 + (ttCustomer *) getLoggedInUser
 {
-    if (!_customer)
-    {
-        _customer = [ttCustomer getLoggedInUser:_context];
-    }
-    return _customer;
-}
-
-+ (void) logoutUser
-{
-    // CHECK FOR A FACEBOOK SESSION
-    if ([FBSession.activeSession isOpen]) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
-    [ttCustomer logoutUser:_context];
-    _customer = nil;
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    ttCustomer *customer = [ttCustomer getLoggedInUser:context];
+    return customer;
 }
 
 + (void) showNetworkError

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TaloolProtocols.h"
 
-@interface TaloolAppCall : NSObject
+@interface TaloolAppCall : NSObject<OperationQueueDelegate>
 
 + (TaloolAppCall *)sharedInstance;
 

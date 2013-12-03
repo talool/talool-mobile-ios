@@ -27,8 +27,6 @@
 
 @implementation FacebookHelper
 
-static NSManagedObjectContext *_context;
-
 #define APP_NAMESPACE @"taloolclient"
 #define APP_ID @"342739092494152"
 
@@ -42,16 +40,11 @@ static NSManagedObjectContext *_context;
 #define OG_OFFER_PAGE_DEV @"http://dev-www.talool.com/offer"
 #define OG_MERCHANT_PAGE_DEV @"http://dev-www.talool.com/location"
 
-+(void) setContext:(NSManagedObjectContext *)context
-{
-    _context = context;
-}
-
-+(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user
++(ttSocialAccount *) createSocialAccount:(NSDictionary<FBGraphUser> *)user context:(NSManagedObjectContext *)context
 {
     ttSocialAccount *ttsa = (ttSocialAccount *)[NSEntityDescription
                                               insertNewObjectForEntityForName:SOCIAL_ACCOUNT_ENTITY_NAME
-                                              inManagedObjectContext:_context];
+                                              inManagedObjectContext:context];
 
     ttsa.loginId = user.id;
     ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
@@ -76,11 +69,11 @@ static NSManagedObjectContext *_context;
     }];
 }
 
-+ (ttCustomer *) createCustomerFromFacebookUser:(NSDictionary<FBGraphUser> *)fb_user
++ (ttCustomer *) createCustomerFromFacebookUser:(NSDictionary<FBGraphUser> *)fb_user context:(NSManagedObjectContext *)context
 {
     ttCustomer *user = (ttCustomer *)[NSEntityDescription
                                       insertNewObjectForEntityForName:CUSTOMER_ENTITY_NAME
-                                      inManagedObjectContext:_context];
+                                      inManagedObjectContext:context];
     
     [user setCreated:[NSDate date]];
     [user setFirstName:fb_user.first_name];
@@ -107,7 +100,7 @@ static NSManagedObjectContext *_context;
     ttSocialAccount *sa = [ttSocialAccount createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
                                                        loginId:fb_user.id
                                                          token:fbToken
-                                                       context:_context];
+                                                       context:context];
     [user addSocialAccountsObject:sa];
     
     return user;

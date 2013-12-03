@@ -108,23 +108,26 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate delegate
 
-- (void)userAuthComplete:(NSError *)error
+- (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
     [spinner stopAnimating];
     
-    if (error)
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
     {
-        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        
         [CustomerHelper showErrorMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];
     }
-    else
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+
 }
 
 @end

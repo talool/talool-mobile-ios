@@ -8,6 +8,7 @@
 
 #import "MerchantTableViewController.h"
 #import "DealTableViewController.h"
+#import "MerchantLocationViewController.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "IconHelper.h"
@@ -21,24 +22,29 @@
 #import "Talool-API/ttDealAcquire.h"
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttCustomer.h"
+#import <OperationQueueManager.h>
 #import "HelpNetworkFailureViewController.h"
 #import "MerchantActionBar3View.h"
 #import "TaloolMobileWebViewController.h"
+#import "Talool-API/TaloolFrameworkHelper.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface MerchantTableViewController ()
 
-@property (nonatomic, retain) NSArray *deals;
-@property (nonatomic, retain) NSArray *sortDescriptors;
+@property (strong, nonatomic) NSArray *sortDescriptors;
 @property (strong, nonatomic) MerchantActionBar3View *actionBar3View;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) DealTableViewController *dealViewController;
+@property (strong, nonatomic) MerchantLocationViewController *locationViewController;
 
 @end
 
 @implementation MerchantTableViewController
 
-@synthesize deals, sortDescriptors, merchant, actionBar3View;
+@synthesize merchant, actionBar3View;
 
 - (void)viewDidLoad
 {
@@ -65,7 +71,17 @@
     [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:26], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
-    
+    _sortDescriptors = [NSArray arrayWithObjects:
+                       [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
+                       [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
+                       nil];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    NSLog(@"Merchant View memory warning");
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -79,27 +95,16 @@
     
     [self setLikeLabel];
     
-    NSError *err = nil;
-    deals = [[CustomerHelper getLoggedInUser] getMyDealsForMerchant:merchant context:[CustomerHelper getContext] error:&err];
-    
-    sortDescriptors = [NSArray arrayWithObjects:
-                       [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
-                       [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
-                       nil];
-    
-    deals = [[[NSArray alloc] initWithArray:deals] sortedArrayUsingDescriptors:sortDescriptors];
-    
-    if ([deals count]==0)
-    {
-        // Show the network error message
-        HelpNetworkFailureViewController *helper = [self.storyboard instantiateViewControllerWithIdentifier:@"NetworkFailure"];
-        [helper setMessageType:DealsNotLoaded];
-        [self presentViewController:helper animated:NO completion:nil];
+    [[OperationQueueManager sharedInstance] startDealAcquireOperation:merchant.merchantId delegate:self];
+
+    _fetchedResultsController = nil;
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
     }
-    else
-    {
-        [self.tableView reloadData];
-    }
+    [self.tableView reloadData];
+    
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Merchant Screen"];
@@ -109,16 +114,9 @@
 
 - (void) likeAction
 {
-    if ([merchant isFavorite])
-    {
-        [merchant unfavorite:[CustomerHelper getLoggedInUser]];
-    }
-    else
-    {
-        [merchant favorite:[CustomerHelper getLoggedInUser]];
-        [FacebookHelper postOGLikeAction:[merchant getClosestLocation]];
-    }
-    [self setLikeLabel];
+    [[OperationQueueManager sharedInstance] startFavoriteOperation:merchant.merchantId
+                                                        isFavorite:![merchant isFavorite]
+                                                          delegate:self];
 }
 
 - (void) setLikeLabel
@@ -136,24 +134,84 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showMap"])
-    {
-        [[segue destinationViewController] setMerchant:merchant];
-    }
-    else if ([[segue identifier] isEqualToString:@"showWebsite"])
+    if ([[segue identifier] isEqualToString:@"showWebsite"])
     {
         ttMerchantLocation *loc = [merchant getClosestLocation];
         [[segue destinationViewController] setMobileWebUrl:loc.websiteUrl];
         [[segue destinationViewController] setViewTitle:merchant.name];
     }
-    else if ([[segue identifier] isEqualToString:@"showDeal"])
-    {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ttDealAcquire *deal = [deals objectAtIndex:[indexPath row]];
-        DealTableViewController *dtvc = [segue destinationViewController];
-        [dtvc setDeal:deal];
-    }
 }
+
+- (DealTableViewController *) getDealView:(ttDealAcquire *)deal
+{
+    if (!_dealViewController)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _dealViewController = [storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+    }
+    [_dealViewController setDeal:deal];
+    return _dealViewController;
+}
+
+- (MerchantLocationViewController *) getLocationlView
+{
+    if (!_locationViewController)
+    {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        _locationViewController = [storyboard instantiateViewControllerWithIdentifier:@"MerchantLocationView"];
+    }
+    [_locationViewController setMerchant:merchant];
+    return _locationViewController;
+}
+
+#pragma mark -
+#pragma mark - FetchedResultsController
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    [self.tableView reloadData];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deal.merchant.merchantId = %@", merchant.merchantId];
+    
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
+    return _fetchedResultsController;
+    
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerWithPredicate:(NSPredicate *)predicate
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:DEAL_ACQUIRE_ENTITY_NAME
+                                              inManagedObjectContext:[CustomerHelper getContext]];
+    [fetchRequest setEntity:entity];
+    
+    if (predicate)
+    {
+        [fetchRequest setPredicate:predicate];
+    }
+    
+    [fetchRequest setSortDescriptors:_sortDescriptors];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[CustomerHelper getContext]
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    theFetchedResultsController.delegate = self;
+    
+    return theFetchedResultsController;
+}
+
+- (int)dealCount
+{
+    return [_fetchedResultsController.fetchedObjects count];
+}
+
 
 #pragma mark - Table view data source
 
@@ -164,110 +222,34 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // add 1 cuz the footer is at the bottom
-    return [deals count]+1;
+    return [self dealCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [deals count]) {
-        NSString *CellIdentifier = @"FooterCell";
-        FooterPromptCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
-        return cell;
-    }
-    else
-    {
-        return [self getDealCell:indexPath];
-    }
+    return [self getDealCell:indexPath];
 }
 
 - (UITableViewCell *) getDealCell:(NSIndexPath *)indexPath
 {
     
-    // TODO change the bg image based on the position
-    
     static NSString *CellIdentifier = @"RewardCell";
     
     DealAcquireCell *cell = (DealAcquireCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	[self configureCell:cell path:indexPath];
 	
-	// Configure the data for the cell.
-    ttDealAcquire *deal = (ttDealAcquire *)[deals objectAtIndex:indexPath.row];
-    [cell setDeal:deal];
-    
-    NSString *date;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    if ([deal hasBeenRedeemed])
-    {
-        date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];
-        
-    }
-    else if ([deal hasBeenShared])
-    {
-        if (deal.shared == nil)
-        {
-            date = @"Shared";
-        }
-        else
-        {
-            date = [NSString stringWithFormat:@"Shared on %@", [dateFormatter stringFromDate:deal.shared]];
-        }
-        
-    }
-    else if ([deal hasExpired])
-    {
-        date = [NSString stringWithFormat:@"Expired on %@", [dateFormatter stringFromDate:deal.deal.expires]];
-    }
-    
-    NSDictionary* strikethrough = @{
-                                 NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
-                                 };
-    NSDictionary* normaltext = @{};
-    
-    NSString *dealTitle = deal.deal.title;
-    
-    if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
-    {
-        cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_1]];
-
-        cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:strikethrough];
-    }
-    else
-    {
-        if (deal.deal.expires ==  nil)
-        {
-            date = @"Never Expires";
-        }
-        else
-        {
-            date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
-        }
-        cell.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:normaltext];
-        cell.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
-    }
-    
-    cell.dateLabel.text = date;
-
-    
-    cell.disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
-                                                        imageSize:CGSizeMake(30, 30)
-                                                         fontSize:14
-                                                       attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
-     
-
     return cell;
+}
+
+- (void) configureCell:(DealAcquireCell *)cell path:(NSIndexPath *)indexPath
+{
+    ttDealAcquire *deal = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell setDeal:deal];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == [deals count]) {
-        return FOOTER_HEIGHT;
-    }
-    else
-    {
-        return ROW_HEIGHT;
-    }
+    return ROW_HEIGHT;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -282,6 +264,12 @@
     return actionBar3View;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ttDealAcquire *deal = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:[self getDealView:deal] animated:YES];
+}
+
 #pragma mark -
 #pragma mark - Refresh Control
 
@@ -289,30 +277,12 @@
 {
     // Override in subclass to hit the service
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
+    [[OperationQueueManager sharedInstance] startDealAcquireOperation:merchant.merchantId delegate:self];
 }
 
 - (void) updateTable
 {
-    NSError *error;
-    NSArray *dealsFromServer = [[CustomerHelper getLoggedInUser] refreshMyDealsForMerchant:merchant
-                                                                                  context:[CustomerHelper getContext]
-                                                                                error:&error];
-    
     [self.refreshControl endRefreshing];
-    
-    if (error.code) {
-        // if there was error we don't want to blow away anything that was already there.
-        return;
-    }
-    
-    NSLog(@"refreshed %d deals",[dealsFromServer count]);
-    sortDescriptors = [NSArray arrayWithObjects:
-                       [NSSortDescriptor sortDescriptorWithKey:@"invalidated" ascending:YES],
-                       [NSSortDescriptor sortDescriptorWithKey:@"deal.title" ascending:YES],
-                       nil];
-    
-    deals = [[[NSArray alloc] initWithArray:dealsFromServer] sortedArrayUsingDescriptors:sortDescriptors];
-    [self.tableView reloadData];
 }
 
 #pragma mark -
@@ -326,7 +296,7 @@
                                                            label:@"Map"
                                                            value:nil] build]];
     
-    [self performSegueWithIdentifier:@"showMap" sender:self];
+    [self.navigationController pushViewController:[self getLocationlView] animated:YES];
 }
 
 - (void)placeCall:(id)sender
@@ -362,6 +332,86 @@
                                                            value:nil] build]];
     
     [self performSegueWithIdentifier:@"showWebsite" sender:self];
+}
+
+
+#pragma mark -
+#pragma mark - NSFetchedResultsControllerDelegate methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:(DealAcquireCell *)[tableView cellForRowAtIndexPath:indexPath] path:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
+}
+
+
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void)dealAcquireOperationComplete:(NSDictionary *)response
+{
+    NSError *error;
+    _fetchedResultsController = nil;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    [self.tableView reloadData];
+}
+
+- (void) favoriteOperationComplete:(NSDictionary *)response
+{
+    [[CustomerHelper getContext] refreshObject:merchant mergeChanges:YES];
+    [self setLikeLabel];
 }
 
 @end

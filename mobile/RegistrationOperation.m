@@ -9,13 +9,24 @@
 #import "RegistrationOperation.h"
 #import "Talool-API/ttCustomer.h"
 
+@interface RegistrationOperation()
+
+@property (nonatomic, readwrite, strong) NSString *email;
+@property (nonatomic, readwrite, strong) NSString *password;
+@property (nonatomic, readwrite, strong) NSString *lastName;
+@property (nonatomic, readwrite, strong) NSString *firstName;
+@property (strong, nonatomic) NSNumber *sex;
+@property (nonatomic, readwrite, strong) NSDate *birthDate;
+
+@end
+
 @implementation RegistrationOperation
 
 - (id) initWithUser:(NSString *)e
            password:(NSString *)p
           firstName:(NSString *)fName
            lastName:(NSString *)lName
-           isFemale:(BOOL)female
+                sex:(NSNumber *)s
           birthDate:(NSDate *)bDate
            delegate:(id<OperationQueueDelegate>)d
 {
@@ -26,7 +37,7 @@
         self.delegate = d;
         self.firstName = fName;
         self.lastName = lName;
-        self.isFemale = female;
+        self.sex = s;
         self.birthDate = bDate;
     }
     return self;
@@ -36,6 +47,8 @@
 {
     @autoreleasepool {
         
+        NSMutableDictionary *delegateResponse;
+        
         NSError *error = nil;
         NSManagedObjectContext *context = [self getContext];
         ttCustomer *customer = [ttCustomer createCustomer:self.firstName
@@ -44,24 +57,33 @@
                                             socialAccount:nil
                                                   context:context];
         
-#warning "need to account for unspecified"
-        if (self.isFemale) {
-            [customer setAsFemale:self.isFemale];
+        if ([self.sex intValue] > 0) {
+            [customer setAsFemale:([self.sex intValue]==1)];
         }
         [customer setBirthDate:self.birthDate];
         
-        [ttCustomer registerCustomer:customer password:self.password context:context error:&error];
+        BOOL result = [ttCustomer registerCustomer:customer password:self.password context:context error:&error];
         
-        if (!error)
+        if (result)
         {
-            [self setUpUser:&error];
+            delegateResponse = [self setUpUser:&error];
+            result = [[delegateResponse objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
         }
         
         
         if (self.delegate)
         {
+            if (!delegateResponse)
+            {
+                delegateResponse = [[NSMutableDictionary alloc] init];
+            }
+            [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            if (error)
+            {
+                [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+            }
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(userAuthComplete:))
-                                                        withObject:error
+                                                        withObject:delegateResponse
                                                      waitUntilDone:NO];
         }
         

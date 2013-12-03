@@ -15,7 +15,7 @@
 
 @class ttMerchant;
 
-@interface MerchantTableViewController : UITableViewController<TaloolMerchantActionDelegate>
+@interface MerchantTableViewController : UITableViewController<TaloolMerchantActionDelegate, NSFetchedResultsControllerDelegate, OperationQueueDelegate>
 
 @property (nonatomic, retain) ttMerchant *merchant;
 

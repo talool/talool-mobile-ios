@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Talool-API/ttCustomer.h"
 #import "FacebookSDK/FacebookSDK.h"
+#import "TaloolProtocols.h"
 
 @class TaloolUIButton;
 
-@interface SettingsTableViewController : UITableViewController<FBLoginViewDelegate>
+@interface SettingsTableViewController : UITableViewController<FBLoginViewDelegate, OperationQueueDelegate>
 {
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
@@ -21,7 +22,6 @@
     IBOutlet UITableViewCell *logoutCell;
 }
 - (IBAction)logout:(id)sender;
-- (void)logoutUser;
 
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) ttCustomer *customer;

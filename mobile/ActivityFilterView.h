@@ -17,12 +17,10 @@
 }
 
 - (void) filterToggled;
-- (void) fetchActivities;
 
 @property (strong, nonatomic) ActivityFilterControl *filterControl;
 @property (retain, nonatomic) id<ActivityFilterDelegate> delegate;
-@property (retain, nonatomic) ActivityStreamHelper *activityHelper;
 
-- (id)initWithFrame:(CGRect)frame activityStreamDelegate:(id<ActivityStreamDelegate>)streamDelegate;
+- (id)initWithFrame:(CGRect)frame activityFilterDelegate:(id<ActivityFilterDelegate>)delegate;
 
 @end

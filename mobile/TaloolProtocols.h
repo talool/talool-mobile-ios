@@ -11,6 +11,10 @@
 
 @class ttDealAcquire, ttDealOffer;
 
+static NSString *DELEGATE_RESPONSE_ERROR = @"error";
+static NSString *DELEGATE_RESPONSE_SUCCESS = @"success";
+static NSString *DELEGATE_RESPONSE_COUNT = @"openCount";
+
 @protocol TaloolDealLayoutDelegate <NSObject>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -19,12 +23,22 @@
 
 @protocol OperationQueueDelegate<NSObject>
 @optional
-- (void)dealOfferOperationComplete:(id)sender;
-- (void)dealOfferDealsOperationComplete:(id)sender;
-- (void)userAuthComplete:(NSError *)error;
-- (void)dealAcquireOperationComplete:(id)sender;
-- (void)handleCats:(id)sender;
-- (void)merchantOperationComplete:(id)sender;
+- (void)dealOfferOperationComplete:(NSDictionary *)response;
+- (void)dealOfferDealsOperationComplete:(NSDictionary *)response;
+- (void)userAuthComplete:(NSDictionary *)response;
+- (void)giftLookupOperationComplete:(NSDictionary *)response;
+- (void)giftAcceptOperationComplete:(NSDictionary *)response;
+- (void)giftSendOperationComplete:(NSDictionary *)response;
+- (void)redeemOperationComplete:(NSDictionary *)response;
+- (void)favoriteOperationComplete:(NSDictionary *)response;
+- (void)dealAcquireOperationComplete:(NSDictionary *)response;
+- (void)handleCats:(NSDictionary *)response;
+- (void)logoutComplete:(NSDictionary *)response;
+- (void)passwordResetOperationComplete:(NSDictionary *)response;
+- (void)activityOperationComplete:(NSDictionary *)response;
+- (void)merchantOperationComplete:(NSDictionary *)response;
+- (void)purchaseOperationComplete:(NSDictionary *)response;
+- (void)activationOperationComplete:(NSDictionary *)response;
 @end
 
 @protocol TaloolGiftActionDelegate<NSObject>
@@ -63,21 +77,10 @@
 
 @protocol MerchantFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
-- (void)fetchMerchants;
-@end
-
-@protocol MerchantSearchDelegate <NSObject>
-- (void)merchantSetChanged:(NSArray *)merchants sender:(id)sender;
 @end
 
 @protocol ActivityFilterDelegate <NSObject>
 - (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
-- (void)fetchActivities;
-@end
-
-@protocol ActivityStreamDelegate <NSObject>
-- (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender;
-- (void)openActivityCountChanged:(int)count sender:(id)sender;
 @end
 
 @protocol OGDeal<FBGraphObject>

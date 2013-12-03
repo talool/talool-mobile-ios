@@ -42,6 +42,9 @@
 		819092D017FCB2CF00699C39 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092CD17FCB2CF00699C39 /* Default@2x.png */; };
 		819092D217FCCB0800699C39 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
 		819092D417FCCB3B00699C39 /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
+		8190F2D0184AA73300FF0AFB /* GiftOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2CF184AA73300FF0AFB /* GiftOperation.m */; };
+		8190F2D3184AA74800FF0AFB /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
+		8190F2D6184CE3A800FF0AFB /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
@@ -64,6 +67,7 @@
 		819B277D1845259100105479 /* FacebookAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277C1845259100105479 /* FacebookAuthenticationOperation.m */; };
 		819B27801845457C00105479 /* UserAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277F1845457C00105479 /* UserAuthenticationOperation.m */; };
 		819B27831845459700105479 /* RegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27821845459700105479 /* RegistrationOperation.m */; };
+		819B27861845536600105479 /* LogoutOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27851845536600105479 /* LogoutOperation.m */; };
 		819FA953177B99DE006A819B /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
 		819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA955177BA2CE006A819B /* ActivityFilterControl.m */; };
 		819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
@@ -71,10 +75,9 @@
 		81A57C8C17ECEAA400A68B71 /* SendPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A57C8B17ECEAA400A68B71 /* SendPasswordResetViewController.m */; };
 		81A869AD17750B810043ACE8 /* MerchantSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869AC17750B810043ACE8 /* MerchantSearchView.m */; };
 		81A869B217750BA30043ACE8 /* MerchantSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B117750BA30043ACE8 /* MerchantSearchView.xib */; };
-		81A869B5177633220043ACE8 /* MerchantSearchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B4177633220043ACE8 /* MerchantSearchHelper.m */; };
+		81A869B5177633220043ACE8 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B4177633220043ACE8 /* LocationHelper.m */; };
 		81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B71777822E0043ACE8 /* ActivityFilterView.m */; };
 		81A869BA1777824B0043ACE8 /* ActivityFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B91777824B0043ACE8 /* ActivityFilterView.xib */; };
-		81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */; };
 		81AE459517A379D300F5643E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE459317A379D300F5643E /* Icon.png */; };
 		81AE459617A379D300F5643E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE459417A379D300F5643E /* Icon@2x.png */; };
 		81AE6DAD179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DAA179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png */; };
@@ -118,7 +121,6 @@
 		9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
 		9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
 		9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
-		9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103116016D317E800CEE814 /* FavoriteMerchantCell.m */; };
 		91490D311745DBD000622A85 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
 		91490D401746805400622A85 /* MerchantFilterControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D3F1746805400622A85 /* MerchantFilterControl.m */; };
 		91490D80174810A600622A85 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D7F174810A600622A85 /* CategoryHelper.m */; };
@@ -206,6 +208,12 @@
 		819092CD17FCB2CF00699C39 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		819092D117FCCB0800699C39 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
 		819092D317FCCB3B00699C39 /* no-wifi-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-wifi-icon.png"; sourceTree = "<group>"; };
+		8190F2CE184AA73300FF0AFB /* GiftOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftOperation.h; sourceTree = "<group>"; };
+		8190F2CF184AA73300FF0AFB /* GiftOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftOperation.m; sourceTree = "<group>"; };
+		8190F2D1184AA74800FF0AFB /* RedeemOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedeemOperation.h; sourceTree = "<group>"; };
+		8190F2D2184AA74800FF0AFB /* RedeemOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedeemOperation.m; sourceTree = "<group>"; };
+		8190F2D4184CE3A800FF0AFB /* ResetPasswordOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordOperation.h; sourceTree = "<group>"; };
+		8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordOperation.m; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
@@ -245,6 +253,8 @@
 		819B277F1845457C00105479 /* UserAuthenticationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAuthenticationOperation.m; sourceTree = "<group>"; };
 		819B27811845459700105479 /* RegistrationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationOperation.h; sourceTree = "<group>"; };
 		819B27821845459700105479 /* RegistrationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationOperation.m; sourceTree = "<group>"; };
+		819B27841845536600105479 /* LogoutOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutOperation.h; sourceTree = "<group>"; };
+		819B27851845536600105479 /* LogoutOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutOperation.m; sourceTree = "<group>"; };
 		819FA951177B99DD006A819B /* IconHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconHelper.h; sourceTree = "<group>"; };
 		819FA952177B99DD006A819B /* IconHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconHelper.m; sourceTree = "<group>"; };
 		819FA954177BA2CE006A819B /* ActivityFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterControl.h; sourceTree = "<group>"; };
@@ -257,13 +267,11 @@
 		81A869AB17750B810043ACE8 /* MerchantSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantSearchView.h; sourceTree = "<group>"; };
 		81A869AC17750B810043ACE8 /* MerchantSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantSearchView.m; sourceTree = "<group>"; };
 		81A869B117750BA30043ACE8 /* MerchantSearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MerchantSearchView.xib; sourceTree = "<group>"; };
-		81A869B3177633220043ACE8 /* MerchantSearchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantSearchHelper.h; sourceTree = "<group>"; };
-		81A869B4177633220043ACE8 /* MerchantSearchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantSearchHelper.m; sourceTree = "<group>"; };
+		81A869B3177633220043ACE8 /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
+		81A869B4177633220043ACE8 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
 		81A869B61777822E0043ACE8 /* ActivityFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityFilterView.h; sourceTree = "<group>"; };
 		81A869B71777822E0043ACE8 /* ActivityFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityFilterView.m; sourceTree = "<group>"; };
 		81A869B91777824B0043ACE8 /* ActivityFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityFilterView.xib; sourceTree = "<group>"; };
-		81A869BB177792CB0043ACE8 /* ActivityStreamHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityStreamHelper.h; sourceTree = "<group>"; };
-		81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityStreamHelper.m; sourceTree = "<group>"; };
 		81AE459317A379D300F5643E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		81AE459417A379D300F5643E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		81AE6DAA179F77CF000596E8 /* HelpBuyDealsWithCode-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HelpBuyDealsWithCode-568h@2x.png"; sourceTree = "<group>"; };
@@ -343,8 +351,6 @@
 		9103114816D1E53900CEE814 /* mobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mobileTests.m; sourceTree = "<group>"; };
 		9103115C16D3179E00CEE814 /* MerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantCell.h; sourceTree = "<group>"; };
 		9103115D16D3179E00CEE814 /* MerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantCell.m; sourceTree = "<group>"; };
-		9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteMerchantCell.h; sourceTree = "<group>"; };
-		9103116016D317E800CEE814 /* FavoriteMerchantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteMerchantCell.m; sourceTree = "<group>"; };
 		91490D301745DBD000622A85 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		91490D3E1746805400622A85 /* MerchantFilterControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantFilterControl.h; sourceTree = "<group>"; };
 		91490D3F1746805400622A85 /* MerchantFilterControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantFilterControl.m; sourceTree = "<group>"; };
@@ -573,6 +579,10 @@
 				819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */,
 				819B276D18450C1F00105479 /* MerchantOperation.h */,
 				819B276E18450C1F00105479 /* MerchantOperation.m */,
+				8190F2CE184AA73300FF0AFB /* GiftOperation.h */,
+				8190F2CF184AA73300FF0AFB /* GiftOperation.m */,
+				8190F2D1184AA74800FF0AFB /* RedeemOperation.h */,
+				8190F2D2184AA74800FF0AFB /* RedeemOperation.m */,
 				819B276F18450C1F00105479 /* ActivityOperation.h */,
 				819B277018450C1F00105479 /* ActivityOperation.m */,
 				819B277118450C1F00105479 /* DealAcquireOperation.h */,
@@ -585,6 +595,10 @@
 				819B277F1845457C00105479 /* UserAuthenticationOperation.m */,
 				819B27811845459700105479 /* RegistrationOperation.h */,
 				819B27821845459700105479 /* RegistrationOperation.m */,
+				819B27841845536600105479 /* LogoutOperation.h */,
+				819B27851845536600105479 /* LogoutOperation.m */,
+				8190F2D4184CE3A800FF0AFB /* ResetPasswordOperation.h */,
+				8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -738,8 +752,6 @@
 			children = (
 				9103115C16D3179E00CEE814 /* MerchantCell.h */,
 				9103115D16D3179E00CEE814 /* MerchantCell.m */,
-				9103115F16D317E800CEE814 /* FavoriteMerchantCell.h */,
-				9103116016D317E800CEE814 /* FavoriteMerchantCell.m */,
 				91986EFA16D7150400D1CA96 /* DealAcquireCell.h */,
 				91986EFB16D7150400D1CA96 /* DealAcquireCell.m */,
 				919A331517452F1B0093FAC4 /* LocationCell.h */,
@@ -817,10 +829,8 @@
 				91490D7F174810A600622A85 /* CategoryHelper.m */,
 				81937B2A176B6B1E002DDCA8 /* TextureHelper.h */,
 				81937B2B176B6B1E002DDCA8 /* TextureHelper.m */,
-				81A869B3177633220043ACE8 /* MerchantSearchHelper.h */,
-				81A869B4177633220043ACE8 /* MerchantSearchHelper.m */,
-				81A869BB177792CB0043ACE8 /* ActivityStreamHelper.h */,
-				81A869BC177792CB0043ACE8 /* ActivityStreamHelper.m */,
+				81A869B3177633220043ACE8 /* LocationHelper.h */,
+				81A869B4177633220043ACE8 /* LocationHelper.m */,
 				819FA951177B99DD006A819B /* IconHelper.h */,
 				819FA952177B99DD006A819B /* IconHelper.m */,
 				81AE6DB017A02053000596E8 /* UIImage+H568.h */,
@@ -978,10 +988,10 @@
 				9103111916D1E53800CEE814 /* main.m in Sources */,
 				9103111D16D1E53800CEE814 /* AppDelegate.m in Sources */,
 				819B277718450C1F00105479 /* DealAcquireOperation.m in Sources */,
+				8190F2D0184AA73300FF0AFB /* GiftOperation.m in Sources */,
 				81A57C8C17ECEAA400A68B71 /* SendPasswordResetViewController.m in Sources */,
 				9103115E16D3179E00CEE814 /* MerchantCell.m in Sources */,
 				81517B5217FC62650020A688 /* TaloolTextField.m in Sources */,
-				9103116116D317E800CEE814 /* FavoriteMerchantCell.m in Sources */,
 				91986EFC16D7150400D1CA96 /* DealAcquireCell.m in Sources */,
 				8130BFC818439C9300EE30B9 /* DealOfferDealCell.m in Sources */,
 				91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */,
@@ -1003,15 +1013,17 @@
 				8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */,
 				8130BFC31841410900EE30B9 /* OfferMerchantView.m in Sources */,
 				811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */,
+				8190F2D6184CE3A800FF0AFB /* ResetPasswordOperation.m in Sources */,
 				81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */,
+				819B27861845536600105479 /* LogoutOperation.m in Sources */,
+				8190F2D3184AA74800FF0AFB /* RedeemOperation.m in Sources */,
 				8146D169177274450035F589 /* ActivityCell.m in Sources */,
 				819B27801845457C00105479 /* UserAuthenticationOperation.m in Sources */,
 				8146D175177394BD0035F589 /* MyDealsViewController.m in Sources */,
 				8146D1781773EF140035F589 /* ActivityViewController.m in Sources */,
 				81A869AD17750B810043ACE8 /* MerchantSearchView.m in Sources */,
-				81A869B5177633220043ACE8 /* MerchantSearchHelper.m in Sources */,
+				81A869B5177633220043ACE8 /* LocationHelper.m in Sources */,
 				81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */,
-				81A869BD177792CB0043ACE8 /* ActivityStreamHelper.m in Sources */,
 				8145C45F177A1CE800880294 /* DealCell.m in Sources */,
 				819B277D1845259100105479 /* FacebookAuthenticationOperation.m in Sources */,
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,

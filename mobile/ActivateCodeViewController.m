@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "TextureHelper.h"
 #import "FacebookHelper.h"
+#import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -76,38 +77,11 @@
 -(void) submit:(id)sender
 {
     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-    
-    NSLog(@"submit my access code (%@) for %@", accessCodeFld.text, offer.title);
+
     [accessCodeFld resignFirstResponder];
-    
-    NSError *err;
-    if ([offer activiateCode:[CustomerHelper getLoggedInUser] code:accessCodeFld.text error:&err])
-    {
-        [self dismissViewControllerAnimated:YES completion:nil];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate presentNewDeals];
-        accessCodeFld.text = @"";
-        [FacebookHelper postOGPurchaseAction:offer];
-    }
-    else
-    {
-        NSString *mess = @"Please double check your code and try again.";
-        if (err.localizedDescription)
-        {
-            mess = err.localizedDescription;
-        }
-        
-        UIAlertView *activationError = [[UIAlertView alloc] initWithTitle:@"Activation Error"
-                                                                  message:mess
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles:nil];
-        [activationError show];
-        
-    }
-    
-    [spinner stopAnimating];
-    
+
+    [[OperationQueueManager sharedInstance] startActivateCodeOperation:accessCodeFld.text offer:offer delegate:self];
+
 }
 -(void) cancel:(id)sender
 {
@@ -121,6 +95,44 @@
 {
     [self submit:nil];
     return YES;
+}
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void) activationOperationComplete:(NSDictionary *)response
+{
+    [spinner stopAnimating];
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        accessCodeFld.text = @"";
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate presentNewDeals];
+        }];
+        
+    }
+    else
+    {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        NSString *mess = @"Please double check your code and try again.";
+        if (error.localizedDescription)
+        {
+            mess = error.localizedDescription;
+        }
+        
+        UIAlertView *activationError = [[UIAlertView alloc] initWithTitle:@"Activation Error"
+                                                                  message:mess
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"OK"
+                                                        otherButtonTitles:nil];
+        [activationError show];
+    }
+
+    
+    
 }
 
 @end

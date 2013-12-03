@@ -12,8 +12,9 @@
 
 @interface FacebookAuthenticationOperation : AuthenticationOperation
 
-- (id) initWithUser:(NSDictionary<FBGraphUser> *)user delegate:(id<OperationQueueDelegate>)delegate;
+- (id) initWithUser:(NSDictionary<FBGraphUser> *)user token:(NSString *)token delegate:(id<OperationQueueDelegate>)delegate;
 
 @property (nonatomic, readwrite, strong) NSDictionary<FBGraphUser> *user;
+@property (nonatomic, readwrite, strong) NSString *token;
 
 @end

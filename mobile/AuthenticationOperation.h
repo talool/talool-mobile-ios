@@ -11,7 +11,7 @@
 
 @interface AuthenticationOperation : TaloolOperation
 
-- (BOOL) setUpUser:(NSError **)error;
+- (NSMutableDictionary *) setUpUser:(NSError **)error;
 
 @property id<OperationQueueDelegate> delegate;
 

@@ -10,13 +10,18 @@
 #import "AppDelegate.h"
 #import "DealOfferOperation.h"
 #import "DealOfferDealsOperation.h"
+#import "DealAcquireOperation.h"
 #import "MerchantOperation.h"
 #import "FavoriteMerchantOperation.h"
 #import "CategoryOperation.h"
 #import "UserAuthenticationOperation.h"
 #import "FacebookAuthenticationOperation.h"
+#import "ResetPasswordOperation.h"
+#import "GiftOperation.h"
+#import <RedeemOperation.h>
+#import <LogoutOperation.h>
+#import "ActivityOperation.h"
 #import <RegistrationOperation.h>
-#import "MerchantSearchHelper.h"
 #import "CustomerHelper.h"
 #import "CategoryHelper.h"
 #import "Talool-API/ttDealOffer.h"
@@ -79,7 +84,8 @@
 
 - (void) authFacebookUser:(NSDictionary<FBGraphUser> *)user delegate:(id<OperationQueueDelegate>)delegate
 {
-    FacebookAuthenticationOperation *fao = [[FacebookAuthenticationOperation alloc] initWithUser:user delegate:delegate];
+    NSString *token = [[[FBSession activeSession] accessTokenData] accessToken];
+    FacebookAuthenticationOperation *fao = [[FacebookAuthenticationOperation alloc] initWithUser:user token:token delegate:delegate];
 
     __weak id weakSelf = self;
     [fao setCompletionBlock: ^{
@@ -105,7 +111,7 @@
         password:(NSString *)password
        firstName:(NSString *)firstName
         lastName:(NSString *)lastName
-        isFemale:(BOOL)isFemale
+             sex:(NSNumber *)sex
        birthDate:(NSDate *)birthDate
         delegate:(id<OperationQueueDelegate>)delegate
 {
@@ -113,7 +119,7 @@
                                                                    password:password
                                                                   firstName:firstName
                                                                    lastName:lastName
-                                                                   isFemale:isFemale
+                                                                        sex:sex
                                                                   birthDate:birthDate
                                                                    delegate:delegate];
     
@@ -125,15 +131,45 @@
     [self.foregroundQueue addOperation:ao];
 }
 
+- (void) startPasswordResetOperation:(NSString *)customerId
+                            password:(NSString *)pw
+                         changeToken:(NSString *)changeToken
+                            delegate:(id<OperationQueueDelegate>)delegate
+{
+    ResetPasswordOperation *rpo = [[ResetPasswordOperation alloc] initWithPassword:pw
+                                                                        customerId:customerId
+                                                                       changeToken:changeToken
+                                                                          delegate:delegate];
+    [rpo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:rpo];
+}
+
 - (void) startUserBackgroundOperations
 {
     NSLog(@"start the sheduled updates");
     // TODO kick off the location manager
+    // TODO kick off activity monitoring
+    // TODO kick off offer monitoring
+    // TODO kick off location monitoring
 }
 
-- (void) startUserLogout
+- (void) startUserLogout:(id<OperationQueueDelegate>)delegate
 {
-#warning "move logout to background"
+    [self.foregroundQueue cancelAllOperations];
+    LogoutOperation *lo = [[LogoutOperation alloc] initWithDelegate:delegate];
+    [lo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    __weak id weakSelf = self;
+    [lo setCompletionBlock: ^{
+        NSString *notification = LOGOUT_NOTIFICATION;
+        [[NSNotificationCenter defaultCenter] postNotificationName:notification object:weakSelf];
+        [weakSelf killTimers];
+    }];
+    [self.foregroundQueue addOperation:lo];
+}
+
+- (void)killTimers
+{
+    // TODO when i'm using timers...
 }
 
 #pragma mark -
@@ -148,6 +184,40 @@
 
 }
 
+- (void) startPurchaseByCardOperation:(NSString *)card
+                             expMonth:(NSString *)expMonth
+                              expYear:(NSString *)expYear
+                         securityCode:(NSString *)security
+                              zipCode:(NSString *)zip
+                         venmoSession:(NSString *)session
+                                offer:(ttDealOffer *)offer
+                             delegate:(id<OperationQueueDelegate>)delegate
+{
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithCard:card
+                                                              expMonth:expMonth
+                                                               expYear:expYear
+                                                          securityCode:security
+                                                               zipCode:zip
+                                                          venmoSession:session
+                                                                 offer:offer
+                                                              delegate:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
+}
+
+- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
+{
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithPurchaseCode:code offer:offer delegate:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
+}
+
+- (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
+{
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithActivationCode:code offer:offer delegate:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
+}
 
 
 #pragma mark -
@@ -163,5 +233,89 @@
 }
 
 
+#pragma mark -
+#pragma mark - Merchant Operation Management
+
+- (void) startMerchantOperation:(id<OperationQueueDelegate>)delegate
+{
+    MerchantOperation *mo = [[MerchantOperation alloc] initWithDelegate:delegate];
+    [mo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:mo];
+}
+
+- (void) startFavoriteOperation:(NSString *)merchantId isFavorite:(BOOL)isFav delegate:(id<OperationQueueDelegate>)delegate
+{
+    FavoriteMerchantOperation *fmo = [[FavoriteMerchantOperation alloc] initWithMerchant:merchantId isFavorite:isFav delegate:delegate];
+    [fmo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:fmo];
+}
+
+#pragma mark -
+#pragma mark - Deal Acquire Management
+
+- (void) startDealAcquireOperation:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate
+{
+    DealAcquireOperation *dao = [[DealAcquireOperation alloc] initWithMerchantId:merchantId delegate:delegate];
+    [dao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:dao];
+}
+
+- (void) startFacebookGiftOperation:(NSString *)facebookId dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate
+{
+    GiftOperation *go = [[GiftOperation alloc] initWithFacebookId:facebookId dealAcquireId:dealAcquireId recipientName:name delegate:delegate];
+    [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:go];
+}
+
+- (void) startEmailGiftOperation:(NSString *)email dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate
+{
+    GiftOperation *go = [[GiftOperation alloc] initWithEmail:email dealAcquireId:dealAcquireId recipientName:name delegate:delegate];
+    [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:go];
+}
+
+- (void) startGiftLookupOperation:(NSString *)giftId delegate:(id<OperationQueueDelegate>)delegate
+{
+    GiftOperation *go = [[GiftOperation alloc] initWithGiftId:giftId delegate:delegate];
+    [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:go];
+}
+
+- (void) startGiftAcceptanceOperation:(NSString *)giftId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate
+{
+    GiftOperation *go = [[GiftOperation alloc] initWithGiftId:giftId accept:accept delegate:delegate];
+    [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    __weak id weakSelf = self;
+    [go setCompletionBlock: ^{
+        NSString *notification = CUSTOMER_ACCEPTED_GIFT;
+        [[NSNotificationCenter defaultCenter] postNotificationName:notification object:weakSelf];
+    }];
+    [self.foregroundQueue addOperation:go];
+}
+
+- (void) startRedeemOperation:(NSString *)dealAcquireId delegate:(id<OperationQueueDelegate>)delegate
+{
+    RedeemOperation *ro = [[RedeemOperation alloc] initWithDealAcquireId:dealAcquireId delegate:delegate];
+    [ro setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:ro];
+}
+
+
+#pragma mark -
+#pragma mark - Activity Management
+
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate
+{
+    ActivityOperation *ao = [[ActivityOperation alloc] initWithDelegate:delegate];
+    [ao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:ao];
+}
+
+- (void) startCloseActivityOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate
+{
+    ActivityOperation *ao = [[ActivityOperation alloc] initWithActivityId:activityId delegate:delegate];
+    [ao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:ao];
+}
 
 @end

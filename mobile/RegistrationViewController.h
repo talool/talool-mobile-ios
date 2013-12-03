@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class TaloolUIButton, TaloolTextField;
+@class TaloolUIButton, TaloolTextField, ttCustomer;
 
 @interface RegistrationViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate, OperationQueueDelegate> {
     IBOutlet TaloolTextField *emailField;
@@ -35,5 +35,7 @@
 @property (nonatomic, retain) UIAlertView *errorView;
 
 @property (retain, nonatomic) UIActivityIndicatorView *spinner;
+
+@property (strong, nonatomic) ttCustomer *failedUser;
 
 @end

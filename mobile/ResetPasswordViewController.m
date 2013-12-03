@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import "TaloolTabBarController.h"
 #import "MyDealsViewController.h"
+#import <OperationQueueManager.h>
 
 @interface ResetPasswordViewController ()
 
@@ -105,30 +106,13 @@
     }
     else
     {
-        NSError *err;
-        ttCustomer *customer = [ttCustomer resetPassword:customerId
-                                                password:passwordField.text
-                                                    code:resetCode
-                                                 context:[CustomerHelper getContext]
-                                                   error:&err];
-        if (customer.token != nil)
-        {
-            //[CustomerHelper handleNewLogin];
-#warning @"ResetPassword needs an operation"
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        else
-        {
-            [CustomerHelper showErrorMessage:err.localizedDescription
-                                   withTitle:@"Password Reset Failure"
-                                  withCancel:@"Ok"
-                                  withSender:nil];
-        }
-        
+        [[OperationQueueManager sharedInstance] startPasswordResetOperation:customerId
+                                                                   password:passwordField.text
+                                                                changeToken:resetCode
+                                                                   delegate:self];
     }
     
-    // remove the spinner
-    [spinner stopAnimating];
+    
 }
 
 #pragma mark -
@@ -158,6 +142,43 @@
 {
     [self submit:nil];
     return YES;
+}
+
+
+#pragma mark -
+#pragma mark - OperationQueueDelegate methods
+
+- (void) passwordResetOperationComplete:(NSDictionary *)response
+{
+    // remove the spinner
+    [spinner stopAnimating];
+    
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+    if (success)
+    {
+        ttCustomer *customer = [CustomerHelper getLoggedInUser];
+        if (customer)
+        {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+        else
+        {
+            [CustomerHelper showErrorMessage:@"We were unable to complete your password change.  Please try again later."
+                                   withTitle:@"Password Reset Failure"
+                                  withCancel:@"Ok"
+                                  withSender:nil];
+        }
+        
+    }
+    else
+    {
+        [CustomerHelper showErrorMessage:error.localizedDescription
+                               withTitle:@"Password Reset Failure"
+                              withCancel:@"Ok"
+                              withSender:nil];
+    }
+    
 }
 
 @end
