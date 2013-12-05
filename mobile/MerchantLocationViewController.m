@@ -160,35 +160,18 @@
     LocationCell *cell = (LocationCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell
-    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
     [cell setLocation:location];
     
     return cell;
 }
 
-- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
-{
-    NSString *CellIdentifier = @"TileTop";
-    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if ([locations count]==0) {
-        [cell setMessage:[NSString stringWithFormat:@"No Locations for %@",merchant.name]];
-    }
-    else
-    {
-        [cell setMessage:@"Touch the map to get directions."];
-    }
-    return cell;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row > 0 && indexPath.row <= [locations count])
-    {
-        ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:(indexPath.row-1)];
-        [self centerMap:location];
 
-    }
+    ttMerchantLocation *location = (ttMerchantLocation *)[locations objectAtIndex:indexPath.row];
+    [self centerMap:location];
+
 }
 
 @end

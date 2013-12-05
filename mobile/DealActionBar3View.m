@@ -96,13 +96,14 @@
         else if (dealAcquire.sharedTo)
         {
             NSString *friendLabel;
-            if (dealAcquire.sharedTo.email == nil)
+            ttFriend *friend = dealAcquire.sharedTo;
+            if (friend.email)
             {
-                friendLabel = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.sharedTo.fullName];
+                friendLabel = [NSString stringWithFormat:@"Gifted to %@", friend.email];
             }
             else
             {
-                friendLabel = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.sharedTo.email];
+                friendLabel = [NSString stringWithFormat:@"Gifted to %@", friend.firstName];
             }
             message.text = friendLabel;
         }

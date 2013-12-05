@@ -58,10 +58,9 @@
     [self resetFetchRestulsController];
     [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
     
-    NSString *logoutNotification = LOGOUT_NOTIFICATION;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogout)
-                                                 name:logoutNotification
+                                                 name:LOGOUT_NOTIFICATION
                                                object:nil];
     
 }

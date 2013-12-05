@@ -28,6 +28,8 @@
                                    forState:UIControlStateNormal];
         
         [submitButton setTitle:label];
+        [submitButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"TrebuchetMS-Bold" size:18.0]}
+                                   forState:UIControlStateNormal];
         
         [self setKeyboardAccessoryDelegate:keyboardDelegate];
         

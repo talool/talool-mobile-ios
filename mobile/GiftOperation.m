@@ -205,11 +205,12 @@
     {
         NSManagedObjectContext *context = [self getContext];
         ttDealAcquire *deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
-        [self announceShareOnFacebook:giftId dealAcquire:deal];
+        
         ttFriend *friend = [ttFriend initWithName:self.recipientName
                                             email:self.email
                                           context:context];
         result = [deal setSharedWith:friend error:&error context:context];
+        [self announceShareOnFacebook:giftId dealAcquire:deal];
     }
     
     if (self.delegate)

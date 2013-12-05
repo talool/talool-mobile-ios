@@ -15,6 +15,7 @@
 #import "Talool-API/ttActivity.h"
 #import "CategoryHelper.h"
 #import <LocationHelper.h>
+#import "OperationQueueManager.h"
 
 @implementation AuthenticationOperation
 
@@ -51,6 +52,8 @@
                         
                         // init the location helper to start monitoring
                         [LocationHelper sharedInstance];
+                        
+                        [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:result userInfo:result];
                         
                         success = YES;
                     }

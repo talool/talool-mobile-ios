@@ -35,6 +35,8 @@
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) MerchantTableViewController *detailView;
+@property (strong, nonatomic) NSString *cacheName;
+@property BOOL resetAfterLogin;
 @end
 
 @implementation MyDealsViewController
@@ -67,23 +69,17 @@
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
+    _cacheName = @"MyDeals";
     
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:NO];
     
-    NSString *logoutNotification = LOGOUT_NOTIFICATION;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleUserLogout)
-                                                 name:logoutNotification
-                                               object:nil];
-    NSString *giftNotification = CUSTOMER_ACCEPTED_GIFT;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleAcceptedGift)
-                                                 name:giftNotification
+                                                 name:CUSTOMER_ACCEPTED_GIFT
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGIN_NOTIFICATION
                                                object:nil];
 
 }
@@ -105,6 +101,12 @@
         [self performSegueWithIdentifier:@"welcome" sender:self];
     }
     
+    if (_resetAfterLogin)
+    {
+        [self forcedClearOfTableView];
+    }
+    [self askForHelp];
+    
     self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -116,8 +118,6 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self askForHelp];
     
     if (![LocationHelper sharedInstance].locationManagerStatusKnown)
     {
@@ -132,26 +132,15 @@
     [self closeHelp];
 }
 
-- (void) handleUserLogout
+- (void) handleUserLogin:(NSNotification *)message
 {
-    _fetchedResultsController = nil;
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    [self.tableView reloadData];
+    _resetAfterLogin = YES;
+    [self.searchView.filterControl setSelectedSegmentIndex:0];
 }
 
 - (void) handleAcceptedGift
 {
-    _fetchedResultsController = nil;
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:NO];
 }
 
 - (void)settings:(id)sender
@@ -180,6 +169,21 @@
 }
 
 
+/*
+    Multi-User Edge Case:
+    Create an emptyset for the fetched result controller to clear the list of any old data
+    that may be left from a previous user.
+ */
+- (void) forcedClearOfTableView
+{
+    _resetAfterLogin = NO;
+    NSPredicate *purgePredicate = [NSPredicate predicateWithFormat:@"SELF.name == nil"];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:purgePredicate];
+    [self resetFetchedResultsController:NO];
+    [self resetFetchedResultsController:YES];
+}
+
+
 #pragma mark -
 #pragma mark - FetchedResultsController
 
@@ -203,24 +207,39 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:MERCHANT_ENTITY_NAME
                                               inManagedObjectContext:[CustomerHelper getContext]];
     [fetchRequest setEntity:entity];
-    
+    [fetchRequest setSortDescriptors:_sortDescriptors];
+    [fetchRequest setFetchBatchSize:20];
     if (predicate)
     {
         [fetchRequest setPredicate:predicate];
     }
     
-    [fetchRequest setSortDescriptors:_sortDescriptors];
-    
-    [fetchRequest setFetchBatchSize:20];
-    
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:nil];
+                                                   cacheName:_cacheName];
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
+}
+
+- (void) resetFetchedResultsController:(BOOL)hard
+{
+    [[CustomerHelper getContext] processPendingChanges];
+    [NSFetchedResultsController deleteCacheWithName:_cacheName];
+    if (hard)
+    {
+        _fetchedResultsController = nil;
+    }
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark -
@@ -272,20 +291,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    if (indexPath.row == 0)
-    {
-        return [self getHeaderCell:indexPath];
-    }
-    else if (indexPath.row == [self merchantCount]+1)
-    {
-        return [self getFooterCell:indexPath];
-    }
-    else
-    {
-        return [self getMerchantCell:indexPath];
-    }
-    */
     return [self getMerchantCell:indexPath];
 }
 
@@ -316,20 +321,10 @@
 
 - (void) configureCell:(MerchantCell *)cell path:(NSIndexPath *)indexPath
 {
-    ttMerchant *merchant = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath];
     [cell setMerchant:merchant];
 }
 
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row==0 || indexPath.row == [self merchantCount]+1)
-    {
-        return 60.0;
-    }
-    return 90.0;
-}
-*/
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return self.searchView;
@@ -361,15 +356,9 @@
 
 - (void)filterChanged:(NSPredicate *)predicate sender:(id)sender
 {
-    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:YES];
     
-    if (!predicate)
+    if (self.searchView.filterControl.selectedSegmentIndex == 0)
     {
         [self askForHelp];
     }
@@ -380,12 +369,7 @@
 
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:NO];
 }
 
 #pragma mark -

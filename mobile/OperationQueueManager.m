@@ -160,8 +160,7 @@
     [lo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     __weak id weakSelf = self;
     [lo setCompletionBlock: ^{
-        NSString *notification = LOGOUT_NOTIFICATION;
-        [[NSNotificationCenter defaultCenter] postNotificationName:notification object:weakSelf];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:weakSelf];
         [weakSelf killTimers];
     }];
     [self.foregroundQueue addOperation:lo];
@@ -287,8 +286,7 @@
     [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
     __weak id weakSelf = self;
     [go setCompletionBlock: ^{
-        NSString *notification = CUSTOMER_ACCEPTED_GIFT;
-        [[NSNotificationCenter defaultCenter] postNotificationName:notification object:weakSelf];
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:weakSelf];
     }];
     [self.foregroundQueue addOperation:go];
 }

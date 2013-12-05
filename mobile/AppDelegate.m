@@ -24,6 +24,7 @@
 #import <VenmoTouch/VenmoTouch.h>
 #import "TestFlight.h"
 #import "BraintreeHelper.h"
+#import <OperationQueueManager.h>
 
 @implementation AppDelegate
 
@@ -97,6 +98,11 @@
     // Call takeOff after install your own unhandled exception and signal handlers
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGIN_NOTIFICATION
+                                               object:nil];
     
     [self initVTClient];
     
@@ -343,12 +349,12 @@
         
         NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
         if (coordinator != nil) {
-            _managedObjectContext = [[NSManagedObjectContext alloc] init];
+            _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
             [_managedObjectContext setPersistentStoreCoordinator:coordinator];
             
             // TODO not sure about this...
             [_managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-            //[_managedObjectContext setStalenessInterval:0];
+            [_managedObjectContext setStalenessInterval:0];
         }
         return _managedObjectContext;
     }
@@ -358,7 +364,7 @@
         NSManagedObjectContext *threadManagedObjectContext = [[thisThread threadDictionary] objectForKey:@"MOC_KEY"];
         if (threadManagedObjectContext == nil)
         {
-            threadManagedObjectContext = [[NSManagedObjectContext alloc] init];
+            threadManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
             [threadManagedObjectContext setPersistentStoreCoordinator: [self persistentStoreCoordinator]];
             [threadManagedObjectContext setMergePolicy:NSMergeByPropertyStoreTrumpMergePolicy];
             [[thisThread threadDictionary] setObject:threadManagedObjectContext forKey:@"MOC_KEY"];
@@ -403,23 +409,11 @@
 }
 
 #pragma mark -
-#pragma mark - ActivityStreamDelegate methods
+#pragma mark - NotificationCenter methods
 
-- (void)activitySetChanged:(NSArray *)newActivies sender:(id)sender
+- (void) handleUserLogin:(NSNotification *)message
 {
-    
-}
-- (void)openActivityCountChanged:(int)count sender:(id)sender
-{
-    NSString *badge;
-    if (count > 0)
-    {
-        badge = [NSString stringWithFormat:@"%d",count];
-    }
-    UIViewController *controller = [[self.mainViewController viewControllers] objectAtIndex:2];
-    UITabBarItem *activityTab = [controller tabBarItem];
-    activityTab.badgeValue = badge;
-    
+    [[self managedObjectContext] reset];
 }
 
 #pragma mark -
