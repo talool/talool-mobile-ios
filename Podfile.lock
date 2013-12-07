@@ -12,7 +12,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.8)
   - FontAwesomeKit (~> 1.1.3)
   - GoogleAnalytics-iOS-SDK (~> 3.0.1)
-  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.1.3`)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, branch `refactor1`)
   - TestFlightSDK (~> 2.0.2)
 
 EXTERNAL SOURCES:
@@ -20,8 +20,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/braintree/braintree_ios.git
     :tag: 2.2.4
   Talool-API:
+    :branch: refactor1
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.1.3
 
 SPEC CHECKSUMS:
   Braintree: 3135689620aa8d8ce76d515c615ef8bfe8b416a4
