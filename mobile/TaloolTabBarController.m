@@ -9,6 +9,7 @@
 #import "TaloolTabBarController.h"
 #import "TaloolColor.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
+#import "OperationQueueManager.h"
 
 @implementation TaloolTabBarController
 
@@ -48,8 +49,54 @@
     activity.image = activityIcon;
     activity.title = @"Activity";
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGIN_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogout)
+                                                 name:LOGOUT_NOTIFICATION
+                                               object:nil];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) updateBadge:(NSNumber *)count
+{
+    NSString *badge;
+    if ([count intValue] > 0)
+    {
+        badge = [NSString stringWithFormat:@"%@",count];
+    }
+    UITabBarItem *activity = [self.tabBar.items objectAtIndex:2];
+    activity.badgeValue = badge;
+}
+
+- (void) handleUserLogin:(NSNotification *)message
+{
+    
+    NSDictionary *dictionary = message.userInfo;
+    if (dictionary)
+    {
+        NSNumber *openCount = [dictionary objectForKey:DELEGATE_RESPONSE_COUNT];
+        if (openCount)
+        {
+            [self updateBadge:openCount];
+        }
+        else
+        {
+            [self updateBadge:nil];
+        }
+    }
+}
+
+- (void) handleUserLogout
+{
+    [self updateBadge:nil];
+}
 
 @end

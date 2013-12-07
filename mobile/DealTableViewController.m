@@ -8,6 +8,7 @@
 
 #import "DealTableViewController.h"
 #import <MerchantLocationViewController.h>
+#import "PersonViewController.h"
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import <LocationHelper.h>
@@ -33,6 +34,7 @@
 
 @interface DealTableViewController ()
 @property (strong, nonatomic) MerchantLocationViewController *locationViewController;
+@property (strong, nonatomic) ABPeoplePickerNavigationController *picker;
 @end
 
 @implementation DealTableViewController
@@ -250,6 +252,7 @@
     }
 }
 
+
 #pragma mark -
 #pragma mark - TaloolDealActionDelegate methods
 
@@ -280,9 +283,14 @@
 
 - (void)sendGiftViaEmail:(id)sender
 {
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.peoplePickerDelegate = self;
-    [self presentViewController:picker animated:YES completion:nil];
+    if (!_picker)
+    {
+        _picker = [[ABPeoplePickerNavigationController alloc] init];
+        [_picker setPeoplePickerDelegate:self];
+    }
+    [_picker popToRootViewControllerAnimated:NO];
+    [self presentViewController:_picker animated:YES completion:nil];
+    
 }
 
 - (void)sendGiftViaFacebook:(id)sender
@@ -321,6 +329,8 @@
     }
 }
 
+
+#pragma mark -
 #pragma mark - FBFriendPickerDelegate delegate methods
 
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
@@ -337,28 +347,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (NSString *) copyEmailFromContact:(ABRecordRef)person identifier:(ABMultiValueIdentifier)idx
-{
-    NSString *email;
-    ABMutableMultiValueRef multi = ABRecordCopyValue(person, kABPersonEmailProperty);
-    if (ABMultiValueGetCount(multi) > 0)
-    {
-        CFStringRef emailRef = ABMultiValueCopyValueAtIndex(multi, idx);
-        email = (__bridge NSString *)(emailRef);
-        if (emailRef)
-        {
-            CFRelease(emailRef);
-        }
-    }
-    
-    if (multi)
-    {
-        CFRelease(multi);
-    }
-    
-    return email;
-}
 
+#pragma mark -
 #pragma mark - Facebook helpers
 
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
@@ -409,28 +399,66 @@
 
 }
 
+#pragma mark -
 #pragma mark - ABPeoplePickerNavigationControllerDelegate delegate methods
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
 {
-    return YES;
+    // store person properties in a dictionay, so we don't have to deal the Address Book crap
+    NSMutableDictionary *personDictionary = [[NSMutableDictionary alloc] init];
+    
+    // load the person's name in the dictionary
+    NSString *fname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    NSString *lname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
+    if (!fname) fname=@"";
+    if (!lname) lname=@"";
+    [personDictionary setObject:fname forKey:[NSNumber numberWithInt:kABPersonFirstNameProperty]];
+    [personDictionary setObject:lname forKey:[NSNumber numberWithInt:kABPersonLastNameProperty]];
+    
+    // load the person's emails in the dictionary
+    NSMutableArray *emails = [[NSMutableArray alloc] init];
+    NSMutableDictionary *email;
+    NSString *emailLabel, *emailAddress;
+    CFArrayRef linked = ABPersonCopyArrayOfAllLinkedPeople(person);
+    ABRecordRef iLinkedPerson;
+    ABMutableMultiValueRef abEmails;
+    int count = CFArrayGetCount(linked);
+    for (CFIndex m = 0; m < count; m++) {
+        iLinkedPerson = CFArrayGetValueAtIndex(linked, m);
+        abEmails = ABRecordCopyValue(iLinkedPerson, kABPersonEmailProperty);
+        
+        for (int i=0; i<ABMultiValueGetCount(abEmails); i++)
+        {
+            emailLabel = (__bridge NSString*) ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(abEmails, i));
+            emailAddress = (__bridge NSString *)ABMultiValueCopyValueAtIndex(abEmails, i);
+            
+            if (!emailLabel) emailLabel=@"";
+            if (emailAddress)
+            {
+                email = [[NSMutableDictionary alloc] init];
+                [email setObject:emailLabel forKey:KEY_EMAIL_LABEL];
+                [email setObject:emailAddress forKey:KEY_EMAIL_ADDRESS];
+                [emails addObject:email];
+            }
+            
+        }
+    }
+    if (linked) CFRelease(linked);
+    [personDictionary setObject:emails forKey:[NSNumber numberWithInt:kABPersonEmailProperty]];
+    
+    // push the person view to confirm the email selection
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+    PersonViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"PersonView"];
+    [pvc setDelegate:self];
+    [pvc setPerson:personDictionary];
+    [_picker pushViewController:pvc animated:YES];
+    
+    // return no, so we get out of the shitty address book views
+    return NO;
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
 {
-    if (property == kABPersonEmailProperty)
-    {
-        NSString *fname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
-        NSString *lname = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
-        
-        if (!fname) fname=@"";
-        if (!lname) lname=@"";
-        
-        NSString *name = [NSString stringWithFormat:@"%@ %@",fname, lname];
-        NSString *email = [self copyEmailFromContact:person identifier:identifier];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [self handleUserContact:email name:name];
-    }
     return NO;
 }
 
@@ -439,15 +467,23 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Contacts (Address Book) helpers
+
+#pragma mark -
+#pragma mark - PersonViewDelegate methods
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
 {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    /*
+    // send the gift
     [actionBar3View startSpinner];
     [[OperationQueueManager sharedInstance] startEmailGiftOperation:email
                                                       dealAcquireId:deal.dealAcquireId
                                                       recipientName:name
                                                            delegate:self];
+    */
 }
+
 
 @end

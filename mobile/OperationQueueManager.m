@@ -147,10 +147,10 @@
 - (void) startUserBackgroundOperations
 {
     NSLog(@"start the sheduled updates");
-    // TODO kick off the location manager
+    [self startDealOfferOperation:nil];
+    [self startActivityOperation:nil];
     // TODO kick off activity monitoring
     // TODO kick off offer monitoring
-    // TODO kick off location monitoring
 }
 
 - (void) startUserLogout:(id<OperationQueueDelegate>)delegate
@@ -284,10 +284,6 @@
 {
     GiftOperation *go = [[GiftOperation alloc] initWithGiftId:giftId accept:accept delegate:delegate];
     [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    __weak id weakSelf = self;
-    [go setCompletionBlock: ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:weakSelf];
-    }];
     [self.foregroundQueue addOperation:go];
 }
 

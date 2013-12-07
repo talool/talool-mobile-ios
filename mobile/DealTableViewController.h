@@ -16,7 +16,7 @@
 
 @class ttDealAcquire, ttDealOffer, DealRedemptionView, DealLayoutState, DealActionBar3View;
 
-@interface DealTableViewController : UITableViewController<TaloolDealActionDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, ABPeoplePickerNavigationControllerDelegate, UIActionSheetDelegate, OperationQueueDelegate>
+@interface DealTableViewController : UITableViewController<TaloolDealActionDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, ABPeoplePickerNavigationControllerDelegate, UIActionSheetDelegate, OperationQueueDelegate, PersonViewDelegate>
 
 @property (strong, nonatomic) ttDealAcquire *deal;
 @property (strong, nonatomic) ttDealOffer *offer;

@@ -45,6 +45,7 @@
 		8190F2D0184AA73300FF0AFB /* GiftOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2CF184AA73300FF0AFB /* GiftOperation.m */; };
 		8190F2D3184AA74800FF0AFB /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
 		8190F2D6184CE3A800FF0AFB /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
+		8190F2D9185219F100FF0AFB /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D8185219F100FF0AFB /* PersonViewController.m */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
@@ -214,6 +215,8 @@
 		8190F2D2184AA74800FF0AFB /* RedeemOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedeemOperation.m; sourceTree = "<group>"; };
 		8190F2D4184CE3A800FF0AFB /* ResetPasswordOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordOperation.h; sourceTree = "<group>"; };
 		8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordOperation.m; sourceTree = "<group>"; };
+		8190F2D7185219F100FF0AFB /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
+		8190F2D8185219F100FF0AFB /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 				81BD12A8178F37B200AF7475 /* DealTableViewController.h */,
 				81BD12A9178F37B200AF7475 /* DealTableViewController.m */,
 				81BD12C21791BB4000AF7475 /* Deal Layouts */,
+				8190F2D7185219F100FF0AFB /* PersonViewController.h */,
+				8190F2D8185219F100FF0AFB /* PersonViewController.m */,
 			);
 			name = "Action Views";
 			sourceTree = "<group>";
@@ -1026,6 +1031,7 @@
 				81A869B81777822E0043ACE8 /* ActivityFilterView.m in Sources */,
 				8145C45F177A1CE800880294 /* DealCell.m in Sources */,
 				819B277D1845259100105479 /* FacebookAuthenticationOperation.m in Sources */,
+				8190F2D9185219F100FF0AFB /* PersonViewController.m in Sources */,
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
 				8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */,

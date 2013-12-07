@@ -74,7 +74,7 @@
     [self resetFetchedResultsController:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAcceptedGift)
+                                             selector:@selector(handleAcceptedGift:)
                                                  name:CUSTOMER_ACCEPTED_GIFT
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -138,9 +138,9 @@
     [self.searchView.filterControl setSelectedSegmentIndex:0];
 }
 
-- (void) handleAcceptedGift
+- (void) handleAcceptedGift:(NSNotification *)message
 {
-    [self resetFetchedResultsController:NO];
+    [[OperationQueueManager sharedInstance] startMerchantOperation:self];
 }
 
 - (void)settings:(id)sender

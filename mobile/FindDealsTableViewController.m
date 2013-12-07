@@ -30,6 +30,7 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) DealOfferTableViewController *detailView;
 @property (strong, nonatomic) NSString *cacheName;
+@property BOOL resetAfterLogin;
 @end
 
 @implementation FindDealsTableViewController
@@ -54,13 +55,17 @@
                             [NSSortDescriptor sortDescriptorWithKey:@"distanceInMeters" ascending:YES],
                             [NSSortDescriptor sortDescriptorWithKey:@"dealOffer.title" ascending:YES],
                             nil];
+    _cacheName = @"FindDeals";
     
-    [self resetFetchRestulsController];
-    [[OperationQueueManager sharedInstance] startDealOfferOperation:nil];
+    [self resetFetchedResultsController:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogout)
                                                  name:LOGOUT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGIN_NOTIFICATION
                                                object:nil];
     
 }
@@ -77,7 +82,10 @@
 {
     [super viewWillAppear:animated];
     
-    [self resetFetchRestulsController];
+    if (_resetAfterLogin)
+    {
+        [self forcedClearOfTableView];
+    }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Find Deals Screen"];
@@ -87,6 +95,11 @@
 - (void) handleUserLogout
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
+- (void) handleUserLogin:(NSNotification *)message
+{
+    _resetAfterLogin = YES;
 }
 
 - (DealOfferTableViewController *) getDetailView:(ttDealOffer *)offer
@@ -100,25 +113,22 @@
     return _detailView;
 }
 
-- (void) setNewCacheName
+/*
+ Multi-User Edge Case:
+ Create an emptyset for the fetched result controller to clear the list of any old data
+ that may be left from a previous user.
+ */
+- (void) forcedClearOfTableView
 {
-    _cacheName = [NSString stringWithFormat:@"%@_%@",@"FD",[NSDate date]];
+    _resetAfterLogin = NO;
+    NSPredicate *purgePredicate = [NSPredicate predicateWithFormat:@"dealOffer.title == nil"];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:purgePredicate];
+    [self resetFetchedResultsController:NO];
+    [self resetFetchedResultsController:YES];
 }
 
 #pragma mark -
 #pragma mark - FetchedResultsController
-
-- (void)resetFetchRestulsController
-{
-    _fetchedResultsController = nil;
-    [self setNewCacheName];
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-    [self.tableView reloadData];
-}
 
 - (NSFetchedResultsController *)fetchedResultsController {
     
@@ -156,6 +166,24 @@
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
+}
+
+- (void) resetFetchedResultsController:(BOOL)hard
+{
+    [[CustomerHelper getContext] processPendingChanges];
+    [NSFetchedResultsController deleteCacheWithName:_cacheName];
+    if (hard)
+    {
+        _fetchedResultsController = nil;
+    }
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark -
@@ -265,7 +293,7 @@
 
 - (void)dealOfferOperationComplete:(NSDictionary *)response
 {
-    [self resetFetchRestulsController];
+    [self resetFetchedResultsController:NO];
 }
 
 #pragma mark -

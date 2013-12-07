@@ -12,10 +12,12 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttFriend.h"
 #import "Talool-API/ttGift.h"
+#import "Talool-API/ttGiftDetail.h"
 #import "Talool-API/ttDealAcquire.h"
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttMerchant.h"
+#import <OperationQueueManager.h>
 
 @interface GiftOperation()
 
@@ -120,14 +122,21 @@
     {
         result = [ttGift rejectGift:self.giftId customer:customer context:[self getContext] error:&error];
     }
+    
+    NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
+    [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
+    
     if (self.delegate)
     {
         NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
         [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        [delegateResponse setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
+        
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(giftAcceptOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
@@ -146,18 +155,28 @@
     ttGift *gift = [ttGift fetchById:self.giftId context:context];
     if (gift)
     {
-        NSString *dealOfferId = gift.deal.dealOfferId;
-        // see if the offer is in the context
-        ttDealOffer *offer = [ttDealOffer fetchById:dealOfferId context:context];
-        if (!offer)
+        
+        if (gift.deal && gift.deal.dealOfferId)
         {
-            // get the offer for this gift
-            result = [ttDealOffer getById:dealOfferId customer:customer context:context error:&error];
+            NSString *dealOfferId = gift.deal.dealOfferId;
+            // see if the offer is in the context
+            ttDealOffer *offer = [ttDealOffer fetchById:dealOfferId context:context];
+            if (!offer.dealOfferId)
+            {
+                // get the offer for this gift
+                result = [ttDealOffer getById:dealOfferId customer:customer context:context error:&error];
+            }
+            else
+            {
+                result = YES;
+            }
         }
         else
         {
-            result = YES;
+            result = NO;
+            // TODO cook up an error message
         }
+        
     }
     
     
@@ -204,8 +223,13 @@
     if (giftId)
     {
         NSManagedObjectContext *context = [self getContext];
-        ttDealAcquire *deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
         
+#warning "should use ttGiftDetail, but would to get it from the service when we send the gift."
+        ttDealAcquire *deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
+        [ttDealAcquire getDealAcquires:customer forMerchant:deal.deal.merchant context:context error:&error];
+        deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
+
+        // TODO phase out the ttFriend
         ttFriend *friend = [ttFriend initWithName:self.recipientName
                                             email:self.email
                                           context:context];
@@ -217,6 +241,7 @@
     {
         NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
         [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        [delegateResponse setObject:giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];

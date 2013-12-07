@@ -34,6 +34,8 @@
 @interface ActivityViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSString *cacheName;
+@property BOOL resetAfterLogin;
 @end
 
 @implementation ActivityViewController
@@ -54,24 +56,19 @@
     
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"activityDate" ascending:NO],
+                        [NSSortDescriptor sortDescriptorWithKey:@"activityId" ascending:NO],
                         nil];
+    _cacheName = @"MyActivity";
     
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:NO];
     
-    NSString *logoutNotification = LOGOUT_NOTIFICATION;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleUserLogout)
-                                                 name:logoutNotification
+                                             selector:@selector(handleAcceptedGift:)
+                                                 name:CUSTOMER_ACCEPTED_GIFT
                                                object:nil];
-    NSString *giftNotification = CUSTOMER_ACCEPTED_GIFT;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleAcceptedGift)
-                                                 name:giftNotification
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGIN_NOTIFICATION
                                                object:nil];
     
 }
@@ -89,31 +86,39 @@
 {
     [super viewWillAppear:animated];
     
+    if (_resetAfterLogin)
+    {
+        [self forcedClearOfTableView];
+    }
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Activity Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void) handleUserLogout
+- (void) updateBadge:(NSNumber *)count
 {
-    _fetchedResultsController = nil;
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    NSString *badge;
+    if ([count intValue] > 0)
+    {
+        badge = [NSString stringWithFormat:@"%@",count];
     }
-    [self.tableView reloadData];
+    [[self navigationController] tabBarItem].badgeValue = badge;
 }
 
-- (void) handleAcceptedGift
+- (void) handleUserLogin:(NSNotification *)message
 {
-    _fetchedResultsController = nil;
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-        // Update to handle the error appropriately.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    [self.tableView reloadData];
+    _resetAfterLogin = YES;
+    [self.filterView.filterControl setSelectedSegmentIndex:0];
+}
+
+- (void) handleAcceptedGift:(NSNotification *)message
+{
+    // refresh the activity for this gift so the cell updates
+    NSString *giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
+    [ttActivity refreshActivityForGiftId:giftId context:[CustomerHelper getContext]];
+    
+    [[OperationQueueManager sharedInstance] startActivityOperation:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -135,6 +140,20 @@
         [[segue destinationViewController] setMobileWebUrl:activity.link.elementId];
         [[segue destinationViewController] setViewTitle:@"Welcome"];
     }
+}
+
+/*
+    Multi-User Edge Case:
+    Create an emptyset for the fetched result controller to clear the list of any old data
+    that may be left from a previous user.
+ */
+- (void) forcedClearOfTableView
+{
+    _resetAfterLogin = NO;
+    NSPredicate *purgePredicate = [NSPredicate predicateWithFormat:@"SELF.title == nil"];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:purgePredicate];
+    [self resetFetchedResultsController:NO];
+    [self resetFetchedResultsController:YES];
 }
 
 
@@ -175,10 +194,28 @@
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:nil];
+                                                   cacheName:_cacheName];
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
+}
+
+- (void) resetFetchedResultsController:(BOOL)hard
+{
+    [[CustomerHelper getContext] processPendingChanges];
+    [NSFetchedResultsController deleteCacheWithName:_cacheName];
+    if (hard)
+    {
+        _fetchedResultsController = nil;
+    }
+    NSError *error;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Update to handle the error appropriately.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+    
+    [self.tableView reloadData];
+    
 }
 
 - (int)activityCount
@@ -254,6 +291,7 @@
     NSString *CellIdentifier;
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
     {
+        [[CustomerHelper getContext] refreshObject:activity mergeChanges:YES];
         if ([activity isClosed])
         {
             CellIdentifier = @"ActivityCell";
@@ -314,13 +352,7 @@
 
 - (void)filterChanged:(NSPredicate *)predicate sender:(id)sender
 {
-    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
-    NSError *error;
-    if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-    [self.tableView reloadData];
+    [self resetFetchedResultsController:YES];
 }
 
 
@@ -329,20 +361,26 @@
 
 - (void)activityOperationComplete:(NSDictionary *)response
 {
-    // TODO refetch
-    [self.tableView reloadData];
     
-    NSNumber *openCount = [response objectForKey:@"openCount"];
+    NSString *activityId = [response objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
+    if (activityId)
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        ttActivity *act = [ttActivity fetchById:activityId context:context];
+        [context refreshObject:act mergeChanges:YES];
+    }
+    
+    NSNumber *openCount = [response objectForKey:DELEGATE_RESPONSE_COUNT];
     if (openCount)
     {
-        NSString *badge;
-        int count = [openCount intValue];
-        if (count > 0)
-        {
-            badge = [NSString stringWithFormat:@"%d",count];
-        }
-        [[self navigationController] tabBarItem].badgeValue = badge;
+        [self updateBadge:openCount];
     }
+    else
+    {
+        [self updateBadge:nil];
+    }
+    
+    [self resetFetchedResultsController:NO];
 }
 
 

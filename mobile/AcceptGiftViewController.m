@@ -48,14 +48,15 @@
     
     // gifts were loaded when the activities where loaded, so we should
     // be able to get the gift from the context, but... you never know...
-    _gift = [ttGift fetchById:giftId context:[CustomerHelper getContext]];
-    if (_gift)
+    NSManagedObjectContext *context =[CustomerHelper getContext];
+    _gift = [ttGift fetchById:giftId context:context];
+    [context refreshObject:_gift mergeChanges:YES];
+    if (_gift && _gift.deal && _gift.fromCustomer)
     {
         [self updateGift];
     }
     else
     {
-#warning "need to test this case"
         [actionBarView startSpinner];
         [[OperationQueueManager sharedInstance] startGiftLookupOperation:giftId delegate:self];
     }
@@ -106,7 +107,7 @@
     UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
                                                         message:@"We failed to handle this gift."
                                                        delegate:self
-                                              cancelButtonTitle:@"Please Try Again"
+                                              cancelButtonTitle:@"Sorry"
                                               otherButtonTitles:nil];
     [errorView show];
 }
@@ -150,6 +151,7 @@
 - (void) giftAcceptOperationComplete:(NSDictionary *)response
 {
     [actionBarView stopSpinner];
+    [[CustomerHelper getContext] refreshObject:_gift mergeChanges:YES];
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
@@ -169,7 +171,9 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        _gift = [ttGift fetchById:giftId context:[CustomerHelper getContext]];
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        _gift = [ttGift fetchById:giftId context:context];
+        [context refreshObject:_gift mergeChanges:YES];
         [self updateGift];
     }
     else
@@ -177,6 +181,16 @@
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         [self displayError:error];
     }
+}
+
+
+#pragma mark -
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    // close the modal
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

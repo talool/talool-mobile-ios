@@ -14,6 +14,10 @@
 static NSString *DELEGATE_RESPONSE_ERROR = @"error";
 static NSString *DELEGATE_RESPONSE_SUCCESS = @"success";
 static NSString *DELEGATE_RESPONSE_COUNT = @"openCount";
+static NSString *DELEGATE_RESPONSE_OBJECT_ID = @"objectId";
+
+static NSString *KEY_EMAIL_ADDRESS = @"emailaddress";
+static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 
 @protocol TaloolDealLayoutDelegate <NSObject>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -39,6 +43,10 @@ static NSString *DELEGATE_RESPONSE_COUNT = @"openCount";
 - (void)merchantOperationComplete:(NSDictionary *)response;
 - (void)purchaseOperationComplete:(NSDictionary *)response;
 - (void)activationOperationComplete:(NSDictionary *)response;
+@end
+
+@protocol PersonViewDelegate<NSObject>
+- (void)handleUserContact:(NSString *)email name:(NSString *)name;
 @end
 
 @protocol TaloolGiftActionDelegate<NSObject>

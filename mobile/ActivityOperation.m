@@ -79,6 +79,7 @@
     {
         NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
         [delegateResponse setObject:[NSNumber numberWithBool:success] forKey:DELEGATE_RESPONSE_SUCCESS];
+        [delegateResponse setObject:self.activityId forKey:DELEGATE_RESPONSE_OBJECT_ID];
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];

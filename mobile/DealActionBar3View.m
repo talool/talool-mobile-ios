@@ -91,7 +91,14 @@
     {
         if ((dealAcquire.giftDetail))
         {
-            message.text = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.giftDetail.toEmail];
+            if (dealAcquire.giftDetail.toName)
+            {
+                message.text = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.giftDetail.toName];
+            }
+            else
+            {
+                message.text = [NSString stringWithFormat:@"Gifted to %@", dealAcquire.giftDetail.toEmail];
+            }
         }
         else if (dealAcquire.sharedTo)
         {
