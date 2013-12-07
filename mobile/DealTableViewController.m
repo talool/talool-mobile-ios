@@ -475,14 +475,12 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    /*
     // send the gift
     [actionBar3View startSpinner];
     [[OperationQueueManager sharedInstance] startEmailGiftOperation:email
                                                       dealAcquireId:deal.dealAcquireId
                                                       recipientName:name
                                                            delegate:self];
-    */
 }
 
 

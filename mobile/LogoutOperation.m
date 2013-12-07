@@ -10,6 +10,7 @@
 #import "Talool-API/ttCustomer.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "CustomerHelper.h"
+#import "OperationQueueManager.h"
 
 @implementation LogoutOperation
 
@@ -29,6 +30,10 @@
         
         NSError *error;
         BOOL result = [ttCustomer logoutUser:[self getContext] error:&error];
+        
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:nil];
+        });
         
         if (self.delegate)
         {

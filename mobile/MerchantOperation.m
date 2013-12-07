@@ -43,6 +43,7 @@
             
             NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
             [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+            [delegateResponse setObject:[NSNumber numberWithBool:(location!=nil)] forKey:DELEGATE_RESPONSE_LOCATION_ENABLED];
             if (error)
             {
                 [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];

@@ -82,6 +82,7 @@
             break;
         default:
             cat = nil;
+            NSLog(@"Categories are broken and need to be refetched");
             break;
     }
 

@@ -291,6 +291,7 @@
     NSString *CellIdentifier;
     if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
     {
+#warning "this is expensive and could affect performance.  find a better way to update the activities."
         [[CustomerHelper getContext] refreshObject:activity mergeChanges:YES];
         if ([activity isClosed])
         {

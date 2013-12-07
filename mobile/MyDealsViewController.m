@@ -78,6 +78,10 @@
                                                  name:CUSTOMER_ACCEPTED_GIFT
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlePurchase:)
+                                                 name:CUSTOMER_PURCHASED_DEAL_OFFER
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
@@ -139,6 +143,11 @@
 }
 
 - (void) handleAcceptedGift:(NSNotification *)message
+{
+    [[OperationQueueManager sharedInstance] startMerchantOperation:self];
+}
+
+- (void) handlePurchase:(NSNotification *)message
 {
     [[OperationQueueManager sharedInstance] startMerchantOperation:self];
 }
@@ -370,6 +379,12 @@
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
     [self resetFetchedResultsController:NO];
+    BOOL locationEnabledUpdate = [[response objectForKey:DELEGATE_RESPONSE_LOCATION_ENABLED] boolValue];
+    if (locationEnabledUpdate)
+    {
+#warning "a hard refresh will for all the locations to update, but it also moves the list scroll to the top"
+        [self resetFetchedResultsController:YES];
+    }
 }
 
 #pragma mark -

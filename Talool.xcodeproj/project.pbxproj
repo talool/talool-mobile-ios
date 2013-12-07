@@ -46,6 +46,8 @@
 		8190F2D3184AA74800FF0AFB /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
 		8190F2D6184CE3A800FF0AFB /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
 		8190F2D9185219F100FF0AFB /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D8185219F100FF0AFB /* PersonViewController.m */; };
+		8190F2DF1853B42A00FF0AFB /* EmailConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */; };
+		8190F2E11853B44200FF0AFB /* EmailConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */; };
 		81937B1B176A38BB002DDCA8 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		81937B2C176B6B1E002DDCA8 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
 		8195F075183FB16F00CAC6A9 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
@@ -217,6 +219,9 @@
 		8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordOperation.m; sourceTree = "<group>"; };
 		8190F2D7185219F100FF0AFB /* PersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonViewController.h; sourceTree = "<group>"; };
 		8190F2D8185219F100FF0AFB /* PersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonViewController.m; sourceTree = "<group>"; };
+		8190F2DD1853B42A00FF0AFB /* EmailConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailConfirmationView.h; sourceTree = "<group>"; };
+		8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailConfirmationView.m; sourceTree = "<group>"; };
+		8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmailConfirmationView.xib; sourceTree = "<group>"; };
 		81937B1A176A38BB002DDCA8 /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		81937B2A176B6B1E002DDCA8 /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		81937B2B176B6B1E002DDCA8 /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
@@ -563,6 +568,9 @@
 				81AE6DCB17A1BB78000596E8 /* GiftActionBar2View.h */,
 				81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */,
 				81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */,
+				8190F2DD1853B42A00FF0AFB /* EmailConfirmationView.h */,
+				8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */,
+				8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */,
 			);
 			name = "Table Headers";
 			sourceTree = "<group>";
@@ -924,6 +932,7 @@
 				81AE6DAE179F77CF000596E8 /* HelpBuyDealsWithCode.png in Resources */,
 				8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */,
 				81AE6DAF179F77CF000596E8 /* HelpBuyDealsWithCode@2x.png in Resources */,
+				8190F2E11853B44200FF0AFB /* EmailConfirmationView.xib in Resources */,
 				819092CE17FCB2CF00699C39 /* Default-568h@2x.png in Resources */,
 				8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */,
 				81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */,
@@ -1057,6 +1066,7 @@
 				817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */,
 				8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */,
 				819B26BE179B1DA400744C04 /* DealLocationCell.m in Sources */,
+				8190F2DF1853B42A00FF0AFB /* EmailConfirmationView.m in Sources */,
 				819B26C1179B203200744C04 /* DealOfferLogoCell.m in Sources */,
 				819B26D7179B8A8200744C04 /* MerchantActionBar3View.m in Sources */,
 				819B277A184524E300105479 /* AuthenticationOperation.m in Sources */,

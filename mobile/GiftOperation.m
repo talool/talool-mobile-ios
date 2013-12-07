@@ -123,9 +123,11 @@
         result = [ttGift rejectGift:self.giftId customer:customer context:[self getContext] error:&error];
     }
     
-    NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
-    [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
-    [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
+    dispatch_async(dispatch_get_main_queue(),^{
+        NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
+        [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
+    });
     
     if (self.delegate)
     {

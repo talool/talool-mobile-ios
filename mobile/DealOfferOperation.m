@@ -13,6 +13,7 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOfferGeoSummary.h"
 #import "Talool-API/ttDealOffer.h"
+#import "OperationQueueManager.h"
 
 @interface DealOfferOperation()
 
@@ -134,7 +135,13 @@
                                     customer:customer
                                        error:&error];
     
-    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    if (result)
+    {
+        [FacebookHelper postOGPurchaseAction:self.offer];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+        });
+    }
     
     if (self.delegate)
     {
@@ -156,7 +163,13 @@
     NSError *error;
     BOOL result = [self.offer purchaseByCode:self.code customer:customer error:&error];
     
-    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    if (result)
+    {
+        [FacebookHelper postOGPurchaseAction:self.offer];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+        });
+    }
     
     if (self.delegate)
     {
@@ -178,7 +191,13 @@
     NSError *error;
     BOOL result = [self.offer activiateCode:customer code:self.code error:&error];
     
-    if (result) [FacebookHelper postOGPurchaseAction:self.offer];
+    if (result)
+    {
+        [FacebookHelper postOGPurchaseAction:self.offer];
+        dispatch_async(dispatch_get_main_queue(),^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+        });
+    }
     
     if (self.delegate)
     {

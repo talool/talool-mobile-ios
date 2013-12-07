@@ -160,7 +160,6 @@
     [lo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     __weak id weakSelf = self;
     [lo setCompletionBlock: ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:weakSelf];
         [weakSelf killTimers];
     }];
     [self.foregroundQueue addOperation:lo];

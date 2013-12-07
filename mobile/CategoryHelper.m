@@ -113,7 +113,7 @@ static NSMutableDictionary *_categoryDictionary;
     NSDictionary * catDic = [self getCategoryDictionary:catType];
     ttCategory *cat = [catDic objectForKey:@"category"];
     
-    if (cat == nil)
+    if (cat == nil || cat.categoryId == nil)
     {
         [self reset];
     }

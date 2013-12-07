@@ -7,11 +7,14 @@
 //
 
 #import "PersonViewController.h"
+#import <EmailConfirmationView.h>
+#import "TextureHelper.h"
 
 @interface PersonViewController ()
 @property (strong, nonatomic) NSMutableArray *emails;
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) EmailConfirmationView *header;
 @end
 
 
@@ -19,11 +22,16 @@
 
 @synthesize person, delegate;
 
+static float headerHeight = 120.0f;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // TODO set up the header view
+    CGRect frame = self.view.bounds;
+    _header = [[EmailConfirmationView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,headerHeight)];
+    
+    [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,11 +48,14 @@
     _lastName = [person objectForKey:[NSNumber numberWithInt:kABPersonLastNameProperty]];
     _emails = [person objectForKey:[NSNumber numberWithInt:kABPersonEmailProperty]];
     
-    // TODO update the header view
+    // update the header view
     if (!_emails || [_emails count] == 0)
     {
-        //change the message to a error
-        NSLog(@"no emails to show");
+        [_header setMessage:[NSString stringWithFormat:@"You have no email addresses for %@ %@ in your address book.  Please update your address book and try again.",_firstName, _lastName]];
+    }
+    else
+    {
+        [_header setMessage:[NSString stringWithFormat:@"Please confirm your gift to %@ %@ by selecting an email address below.",_firstName, _lastName]];
     }
     [self.tableView reloadData];
 }
@@ -81,6 +92,16 @@
     NSString *address = [email objectForKey:KEY_EMAIL_ADDRESS];
     NSLog(@"picked %@ for %@ %@",address, _firstName, _lastName);
     [delegate handleUserContact:address name:[NSString stringWithFormat:@"%@ %@",_firstName, _lastName]];
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return _header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return headerHeight;
 }
 
 @end

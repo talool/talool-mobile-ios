@@ -13,6 +13,7 @@
 
 static NSString *DELEGATE_RESPONSE_ERROR = @"error";
 static NSString *DELEGATE_RESPONSE_SUCCESS = @"success";
+static NSString *DELEGATE_RESPONSE_LOCATION_ENABLED = @"locationEnabled";
 static NSString *DELEGATE_RESPONSE_COUNT = @"openCount";
 static NSString *DELEGATE_RESPONSE_OBJECT_ID = @"objectId";
 

@@ -53,7 +53,9 @@
                         // init the location helper to start monitoring
                         [LocationHelper sharedInstance];
                         
-                        [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:result userInfo:result];
+                        dispatch_async(dispatch_get_main_queue(),^{
+                            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:result userInfo:result];
+                        });
                         
                         success = YES;
                     }
