@@ -10,6 +10,7 @@
 #import "CustomerHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttActivity.h"
+#import <OperationQueueManager.h>
 
 @interface ActivityOperation()
 
@@ -100,6 +101,10 @@
     
     NSError *error;
     NSDictionary *response = [ttActivity getActivities:user context:[self getContext] error:&error];
+    
+    dispatch_async(dispatch_get_main_queue(),^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:response userInfo:response];
+    });
     
     if (self.delegate)
     {

@@ -26,16 +26,24 @@
 #import "CategoryHelper.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttMerchant.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
 
 @interface OperationQueueManager()
 
 @property (strong, nonatomic) NSOperationQueue *foregroundQueue;
 @property (strong, nonatomic) NSOperationQueue *backgroundQueue;
+@property (strong, nonatomic) NSTimer *activityTimer;
+@property (strong, nonatomic) NSTimer *dealOfferTimer;
+@property (strong, nonatomic) NSTimer *dealAcquireTimer;
 
 @end
 
 @implementation OperationQueueManager
+
+static int OFFER_MONITOR_INTERVAL_IN_SECONDS = 360.0;
+static int ACTIVITY_MONITOR_INTERVAL_IN_SECONDS = 120.0;
+static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 
 + (OperationQueueManager *)sharedInstance
 {
@@ -147,10 +155,16 @@
 - (void) startUserBackgroundOperations
 {
     NSLog(@"start the sheduled updates");
-    [self startDealOfferOperation:nil];
-    [self startActivityOperation:nil];
-    // TODO kick off activity monitoring
-    // TODO kick off offer monitoring
+    
+    // the one time ops
+    // TODO kick off offer deal acquire batch download
+    dispatch_async(dispatch_get_main_queue(),^{
+        [self startRecurringDealAcquireOperation];
+    });
+    
+    // the standard times
+    [self startTimers];
+    
 }
 
 - (void) startUserLogout:(id<OperationQueueDelegate>)delegate
@@ -165,9 +179,19 @@
     [self.foregroundQueue addOperation:lo];
 }
 
+- (void)startTimers
+{
+    dispatch_async(dispatch_get_main_queue(),^{
+        [self startRecurringActivityOperation];
+        [self startRecurringDealOfferOperation];
+    });
+}
+
 - (void)killTimers
 {
-    // TODO when i'm using timers...
+    [_activityTimer invalidate];
+    [_dealOfferTimer invalidate];
+    [_dealAcquireTimer invalidate];
 }
 
 #pragma mark -
@@ -175,11 +199,16 @@
 
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate
 {
+    [self startDealOfferOperation:delegate withPriority:NSOperationQueuePriorityVeryHigh];
+}
+
+- (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate withPriority:(NSOperationQueuePriority)priority
+{
     
     DealOfferOperation *doo = [[DealOfferOperation alloc] initWithDelegate:delegate];
-    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [doo setQueuePriority:priority];
     [self.foregroundQueue addOperation:doo];
-
+    
 }
 
 - (void) startPurchaseByCardOperation:(NSString *)card
@@ -218,6 +247,25 @@
 }
 
 
+- (void) startRecurringDealOfferOperation
+{
+    SEL selector = @selector(startDealOfferOperation:withPriority:);
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setSelector:selector];
+    [invocation setTarget:self];
+    
+    id<OperationQueueDelegate> delegate = nil;
+    [invocation setArgument:&delegate atIndex:2];
+    
+    NSOperationQueuePriority *pri = NSOperationQueuePriorityNormal;
+    [invocation setArgument:&pri atIndex:3];
+    
+    _dealOfferTimer = [NSTimer scheduledTimerWithTimeInterval:OFFER_MONITOR_INTERVAL_IN_SECONDS invocation:invocation repeats:YES];
+    [_dealOfferTimer fire];
+}
+
+
 #pragma mark -
 #pragma mark - Deal Offer Deals Operation Management
 
@@ -253,8 +301,13 @@
 
 - (void) startDealAcquireOperation:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate
 {
+    [self startDealAcquireOperation:merchantId delegate:delegate priority:NSOperationQueuePriorityVeryHigh];
+}
+
+- (void) startDealAcquireOperation:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate priority:(NSOperationQueuePriority)pri
+{
     DealAcquireOperation *dao = [[DealAcquireOperation alloc] initWithMerchantId:merchantId delegate:delegate];
-    [dao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [dao setQueuePriority:pri];
     [self.foregroundQueue addOperation:dao];
 }
 
@@ -293,14 +346,55 @@
     [self.foregroundQueue addOperation:ro];
 }
 
+- (void) recurringDealAcquireOperation
+{
+    NSMutableArray *merchants = [_dealAcquireTimer.userInfo objectForKey:@"merchants"];
+    ttMerchant *merchant = [merchants objectAtIndex:0];
+    
+    NSLog(@"get deal acquires for %@",merchant.merchantId);
+    [self startDealAcquireOperation:merchant.merchantId delegate:nil priority:NSOperationQueuePriorityLow];
+    
+    // kill the timer when there are no more merchants
+    [merchants removeObjectAtIndex:0];
+    if ([merchants count]==0)
+    {
+        [_dealAcquireTimer invalidate];
+    }
+}
+
+- (void) startRecurringDealAcquireOperation
+{
+    // get the merchants for this user from the context
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"customer != nil"];
+    NSArray *merchants = [ttMerchant fetchMerchants:[CustomerHelper getContext] withPredicate:predicate];
+    
+    if ([merchants count] > 0)
+    {
+        NSMutableArray *ma = [NSMutableArray arrayWithArray:merchants];
+        NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+        [userInfo setObject:ma forKey:@"merchants"];
+        
+        _dealAcquireTimer = [NSTimer scheduledTimerWithTimeInterval:DEAL_ACQUIRE_INTERVAL_IN_SECONDS
+                                                             target:self
+                                                           selector:@selector(recurringDealAcquireOperation)
+                                                           userInfo:userInfo
+                                                            repeats:YES];
+    }
+}
+
 
 #pragma mark -
 #pragma mark - Activity Management
 
 - (void) startActivityOperation:(id<OperationQueueDelegate>)delegate
 {
+    [self startActivityOperation:delegate withPriority:NSOperationQueuePriorityVeryHigh];
+}
+
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate withPriority:(NSOperationQueuePriority)priority
+{
     ActivityOperation *ao = [[ActivityOperation alloc] initWithDelegate:delegate];
-    [ao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [ao setQueuePriority:priority];
     [self.foregroundQueue addOperation:ao];
 }
 
@@ -309,6 +403,24 @@
     ActivityOperation *ao = [[ActivityOperation alloc] initWithActivityId:activityId delegate:delegate];
     [ao setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:ao];
+}
+
+- (void) startRecurringActivityOperation
+{
+    SEL selector = @selector(startActivityOperation:withPriority:);
+    NSMethodSignature *sig = [self methodSignatureForSelector:selector];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setSelector:selector];
+    [invocation setTarget:self];
+    
+    id<OperationQueueDelegate> delegate = nil;
+    [invocation setArgument:&delegate atIndex:2];
+    
+    NSOperationQueuePriority *pri = NSOperationQueuePriorityNormal;
+    [invocation setArgument:&pri atIndex:3];
+    
+    _activityTimer = [NSTimer scheduledTimerWithTimeInterval:ACTIVITY_MONITOR_INTERVAL_IN_SECONDS invocation:invocation repeats:YES];
+    [_activityTimer fire];
 }
 
 @end

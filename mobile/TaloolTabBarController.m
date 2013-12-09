@@ -13,7 +13,6 @@
 
 @implementation TaloolTabBarController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -50,12 +49,16 @@
     activity.title = @"Activity";
 
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleUserLogin:)
+                                             selector:@selector(handleActivity:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogout)
                                                  name:LOGOUT_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleActivity:)
+                                                 name:ACTIVITY_NOTIFICATION
                                                object:nil];
 }
 
@@ -76,7 +79,7 @@
     activity.badgeValue = badge;
 }
 
-- (void) handleUserLogin:(NSNotification *)message
+- (void) handleActivity:(NSNotification *)message
 {
     
     NSDictionary *dictionary = message.userInfo;

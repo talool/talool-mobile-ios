@@ -11,14 +11,12 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
 
-#define OFFER_MONITOR_INTERVAL_IN_SECONDS 360.0
-#define ACTIVITY_MONITOR_INTERVAL_IN_SECONDS 120.0
-#define DEAL_ACTIVITY_INTERVAL_IN_SECONDS 2
-
 static NSString *LOGIN_NOTIFICATION = @"CUSTOMER_LOGGED_IN";
 static NSString *LOGOUT_NOTIFICATION = @"CUSTOMER_LOGGED_OUT";
 static NSString *CUSTOMER_ACCEPTED_GIFT = @"CUSTOMER_ACCEPTED_GIFT";
 static NSString *CUSTOMER_PURCHASED_DEAL_OFFER = @"CUSTOMER_PURCHASED_DEAL_OFFER";
+static NSString *ACTIVITY_NOTIFICATION = @"ACTIVITY";
+static NSString *LOCATION_NOTIFICATION = @"LOCATION";
 
 @class ttDealOffer, ttCustomer, ttMerchant;
 
@@ -68,18 +66,13 @@ static NSString *CUSTOMER_PURCHASED_DEAL_OFFER = @"CUSTOMER_PURCHASED_DEAL_OFFER
 - (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
 /*
-- (void) startCategoryOperation;
-- (void) startFavoriteMerchantOperation;
-- (void) startActivityOperationWithPriority:(NSOperationQueuePriority)pri repeat:(BOOL)repeat;
-- (void) startMerchantOperation:(CLLocation *)location;
+
 
 - (void) startDealAcquireOperationWithDelegate:(id<OperationQueueDelegate>)delegate merchant:(ttMerchant *)merchant
                                   withPriority:(NSOperationQueuePriority)pri;
 
 - (void) startDealAcquireBatchOperation:(NSArray *)merchants;
 
-- (void) startNewUserSetup:(id<OperationQueueDelegate>)delegate;
-- (void) startUserLogout;
  */
 
 @end
