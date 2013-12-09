@@ -34,7 +34,6 @@
 @interface ActivityViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSString *cacheName;
 @property BOOL resetAfterLogin;
 @end
 
@@ -58,7 +57,6 @@
                         [NSSortDescriptor sortDescriptorWithKey:@"activityDate" ascending:NO],
                         [NSSortDescriptor sortDescriptorWithKey:@"activityId" ascending:NO],
                         nil];
-    _cacheName = @"MyActivity";
     
     [self resetFetchedResultsController:NO];
     
@@ -194,7 +192,7 @@
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:_cacheName];
+                                                   cacheName:nil];
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
@@ -203,7 +201,6 @@
 - (void) resetFetchedResultsController:(BOOL)hard
 {
     [[CustomerHelper getContext] processPendingChanges];
-    [NSFetchedResultsController deleteCacheWithName:_cacheName];
     if (hard)
     {
         _fetchedResultsController = nil;

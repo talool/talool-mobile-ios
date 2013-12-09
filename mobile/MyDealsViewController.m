@@ -35,7 +35,6 @@
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) MerchantTableViewController *detailView;
-@property (strong, nonatomic) NSString *cacheName;
 @property BOOL resetAfterLogin;
 @end
 
@@ -69,7 +68,6 @@
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
-    _cacheName = @"MyDeals";
     
     [self resetFetchedResultsController:NO];
     
@@ -227,7 +225,7 @@
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[CustomerHelper getContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:_cacheName];
+                                                   cacheName:nil];
     theFetchedResultsController.delegate = self;
     
     return theFetchedResultsController;
@@ -236,7 +234,6 @@
 - (void) resetFetchedResultsController:(BOOL)hard
 {
     [[CustomerHelper getContext] processPendingChanges];
-    [NSFetchedResultsController deleteCacheWithName:_cacheName];
     if (hard)
     {
         _fetchedResultsController = nil;
@@ -379,12 +376,6 @@
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
     [self resetFetchedResultsController:NO];
-    BOOL locationEnabledUpdate = [[response objectForKey:DELEGATE_RESPONSE_LOCATION_ENABLED] boolValue];
-    if (locationEnabledUpdate)
-    {
-#warning "a hard refresh will for all the locations to update, but it also moves the list scroll to the top"
-        [self resetFetchedResultsController:YES];
-    }
 }
 
 #pragma mark -
