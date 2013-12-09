@@ -154,12 +154,10 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 
 - (void) startUserBackgroundOperations
 {
-    NSLog(@"start the sheduled updates");
-    
     // the one time ops
-    // TODO kick off offer deal acquire batch download
     dispatch_async(dispatch_get_main_queue(),^{
-        [self startRecurringDealAcquireOperation];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"customer != nil"];
+        [self startRecurringDealAcquireOperation:predicate];
     });
     
     // the standard times
@@ -351,7 +349,6 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     NSMutableArray *merchants = [_dealAcquireTimer.userInfo objectForKey:@"merchants"];
     ttMerchant *merchant = [merchants objectAtIndex:0];
     
-    NSLog(@"get deal acquires for %@",merchant.merchantId);
     [self startDealAcquireOperation:merchant.merchantId delegate:nil priority:NSOperationQueuePriorityLow];
     
     // kill the timer when there are no more merchants
@@ -362,12 +359,9 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     }
 }
 
-- (void) startRecurringDealAcquireOperation
+- (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate
 {
-    // get the merchants for this user from the context
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"customer != nil"];
-    NSArray *merchants = [ttMerchant fetchMerchants:[CustomerHelper getContext] withPredicate:predicate];
-    
+    NSArray *merchants = [ttMerchant fetchMerchants:[CustomerHelper getContext] withPredicate:merchantPredicate];
     if ([merchants count] > 0)
     {
         NSMutableArray *ma = [NSMutableArray arrayWithArray:merchants];

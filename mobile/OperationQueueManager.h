@@ -65,14 +65,6 @@ static NSString *LOCATION_NOTIFICATION = @"LOCATION";
 - (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
-/*
-
-
-- (void) startDealAcquireOperationWithDelegate:(id<OperationQueueDelegate>)delegate merchant:(ttMerchant *)merchant
-                                  withPriority:(NSOperationQueuePriority)pri;
-
-- (void) startDealAcquireBatchOperation:(NSArray *)merchants;
-
- */
+- (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate;
 
 @end

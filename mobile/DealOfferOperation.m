@@ -140,6 +140,8 @@
         [FacebookHelper postOGPurchaseAction:self.offer];
         dispatch_async(dispatch_get_main_queue(),^{
             [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+            NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
+            [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
         });
     }
     
@@ -168,6 +170,8 @@
         [FacebookHelper postOGPurchaseAction:self.offer];
         dispatch_async(dispatch_get_main_queue(),^{
             [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+            NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
+            [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
         });
     }
     
