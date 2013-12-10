@@ -8,9 +8,11 @@
 
 #import "ActivityOperation.h"
 #import "CustomerHelper.h"
+#import "LocationHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttActivity.h"
 #import <OperationQueueManager.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface ActivityOperation()
 
@@ -105,6 +107,9 @@
     dispatch_async(dispatch_get_main_queue(),^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:response userInfo:response];
     });
+    
+    CLLocation *loc = [LocationHelper sharedInstance].lastLocation;
+    NSLog(@"activity operation with location: %f %f", loc.coordinate.latitude, loc.coordinate.longitude);
     
     if (self.delegate)
     {

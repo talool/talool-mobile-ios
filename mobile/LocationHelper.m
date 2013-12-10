@@ -35,6 +35,7 @@
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
+    
     return sharedInstance;
 }
 
@@ -42,17 +43,21 @@
 {
     self = [super init];
     
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.delegate = self;
-    
-    locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
-    _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
-    
-    if (_locationManagerEnabled)
-    {
-        [_locationManager startUpdatingLocation];
-    }
+    dispatch_async(dispatch_get_main_queue(),^{
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self;
+        [_locationManager setPausesLocationUpdatesAutomatically:NO];
+        
+        locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
+        _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
+        
+        if (_locationManagerEnabled)
+        {
+            //[_locationManager startMonitoringSignificantLocationChanges];
+            [_locationManager startUpdatingLocation];
+        }
+    });
     
     return self;
 }
@@ -60,7 +65,12 @@
 - (void) promptForLocationServiceAuthorization
 {
     _locationManagerEnabled=YES;
-    [_locationManager startUpdatingLocation];
+    
+    dispatch_async(dispatch_get_main_queue(),^{
+        //[_locationManager startMonitoringSignificantLocationChanges];
+        [_locationManager startUpdatingLocation];
+    });
+    
     locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
     _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
     
@@ -99,6 +109,13 @@
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     _locationManagerEnabled = (status == kCLAuthorizationStatusAuthorized);
+    if (_locationManagerEnabled)
+    {
+        dispatch_async(dispatch_get_main_queue(),^{
+            //[_locationManager startMonitoringSignificantLocationChanges];
+            [_locationManager startUpdatingLocation];
+        });
+    }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     
