@@ -25,6 +25,7 @@
 #import "TestFlight.h"
 #import "BraintreeHelper.h"
 #import <OperationQueueManager.h>
+#import "LocationHelper.h"
 
 @implementation AppDelegate
 
@@ -229,6 +230,7 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[OperationQueueManager sharedInstance] handleBackgroundState];
+    [[LocationHelper sharedInstance] handleBackgroundState];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -250,6 +252,8 @@
     [FBAppCall handleDidBecomeActive];
     [[OperationQueueManager sharedInstance] handleForegroundState];
     
+    [[LocationHelper sharedInstance] handleForegroundState];
+
     [self setUserAgent];
 }
 

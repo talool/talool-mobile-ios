@@ -54,7 +54,6 @@
         
         if (_locationManagerEnabled)
         {
-            //[_locationManager startMonitoringSignificantLocationChanges];
             [_locationManager startUpdatingLocation];
         }
     });
@@ -67,7 +66,6 @@
     _locationManagerEnabled=YES;
     
     dispatch_async(dispatch_get_main_queue(),^{
-        //[_locationManager startMonitoringSignificantLocationChanges];
         [_locationManager startUpdatingLocation];
     });
     
@@ -76,7 +74,22 @@
     
 }
 
+- (void) handleForegroundState
+{
+    if (_locationManager)
+    {
+        [_locationManager stopMonitoringSignificantLocationChanges];
+        [_locationManager startUpdatingLocation];
+    }
+}
 
+- (void) handleBackgroundState
+{
+    if (_locationManager)
+    {
+        [_locationManager startMonitoringSignificantLocationChanges];
+    }
+}
 
 #pragma mark -
 #pragma mark CLLocationManagerDelegate
@@ -112,7 +125,6 @@
     if (_locationManagerEnabled)
     {
         dispatch_async(dispatch_get_main_queue(),^{
-            //[_locationManager startMonitoringSignificantLocationChanges];
             [_locationManager startUpdatingLocation];
         });
     }

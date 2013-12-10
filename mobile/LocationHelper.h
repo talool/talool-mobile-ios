@@ -19,4 +19,7 @@
 
 - (void) promptForLocationServiceAuthorization;
 
+- (void) handleForegroundState;
+- (void) handleBackgroundState;
+
 @end
