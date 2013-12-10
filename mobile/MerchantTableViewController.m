@@ -114,8 +114,13 @@
 
 - (void) likeAction
 {
+    // change the value and label right away, then persist it with the service call
+    BOOL newvalue = ![merchant isFavorite];
+    [merchant setIsFav:[NSNumber numberWithBool:newvalue]];
+    [self setLikeLabel];
+    
     [[OperationQueueManager sharedInstance] startFavoriteOperation:merchant.merchantId
-                                                        isFavorite:![merchant isFavorite]
+                                                        isFavorite:newvalue
                                                           delegate:self];
 }
 

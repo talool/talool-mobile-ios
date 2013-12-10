@@ -90,7 +90,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    NSLog(@"My Deals memory warning");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
