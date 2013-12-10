@@ -86,7 +86,6 @@
     
     if (newLocation)
     {
-        //[_locationManager stopUpdatingLocation];
         lastLocation = newLocation;
     }
 }
@@ -95,7 +94,6 @@
       didFailWithError:(NSError *)error
 {
     NSLog(@"location error: %@", error.localizedDescription);
-    //[_locationManager stopUpdatingLocation];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status

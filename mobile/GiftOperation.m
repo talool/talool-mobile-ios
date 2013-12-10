@@ -226,16 +226,18 @@
     {
         NSManagedObjectContext *context = [self getContext];
         
-#warning "should use ttGiftDetail, but would to get it from the service when we send the gift."
+        // update the dealAcquire with the GiftDetail
+#warning "This is inefficient.  We should get GiftDetail from the service when we send the gift."
         ttDealAcquire *deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
         [ttDealAcquire getDealAcquires:customer forMerchant:deal.deal.merchant context:context error:&error];
         deal = [ttDealAcquire fetchDealAcquireById:self.dealAcquireId context:context];
 
-        // TODO phase out the ttFriend
+        // TODO phase out the ttFriend... I don't think it's needed now
         ttFriend *friend = [ttFriend initWithName:self.recipientName
                                             email:self.email
                                           context:context];
         result = [deal setSharedWith:friend error:&error context:context];
+        
         [self announceShareOnFacebook:giftId dealAcquire:deal];
     }
     

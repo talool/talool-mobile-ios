@@ -36,6 +36,7 @@
 @property (strong, nonatomic) NSTimer *activityTimer;
 @property (strong, nonatomic) NSTimer *dealOfferTimer;
 @property (strong, nonatomic) NSTimer *dealAcquireTimer;
+@property BOOL isForeground;
 
 @end
 
@@ -69,14 +70,14 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 {
     [self.foregroundQueue setSuspended:YES];
     [self.backgroundQueue setSuspended:NO];
-    NSLog(@"App went into the background");
+    _isForeground = NO;
 }
 
 - (void) handleForegroundState
 {
     [self.foregroundQueue setSuspended:NO];
     [self.backgroundQueue setSuspended:YES];
-    NSLog(@"App went into the foreground");
+    _isForeground = YES;
 }
 
 - (NSManagedObjectContext *) getContext
@@ -389,7 +390,14 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 {
     ActivityOperation *ao = [[ActivityOperation alloc] initWithDelegate:delegate];
     [ao setQueuePriority:priority];
-    [self.foregroundQueue addOperation:ao];
+    if (_isForeground)
+    {
+        [self.foregroundQueue addOperation:ao];
+    }
+    else
+    {
+        [self.backgroundQueue addOperation:ao];
+    }
 }
 
 - (void) startCloseActivityOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate
