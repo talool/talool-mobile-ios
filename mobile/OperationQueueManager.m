@@ -71,6 +71,14 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue setSuspended:YES];
     [self.backgroundQueue setSuspended:NO];
     _isForeground = NO;
+
+    // I think we can leave the activity monitor running if the period can stay the same.
+    // I think we can let the dealAcquireTimer can keep running, since it ends on it's own.
+    
+    if (_dealOfferTimer)
+    {
+        [_dealOfferTimer invalidate];
+    }
 }
 
 - (void) handleForegroundState
@@ -78,14 +86,22 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue setSuspended:NO];
     [self.backgroundQueue setSuspended:YES];
     _isForeground = YES;
+    
+    if ([CustomerHelper getLoggedInUser])
+    {
+        [self startRecurringDealOfferOperation];
+        if (!_activityTimer)
+        {
+            [self startRecurringActivityOperation];
+        }
+    }
 }
 
 - (NSManagedObjectContext *) getContext
 {
-    // New thread need to use their own context.  The AppDelegate will return a new one as needed.
+    // New threads need to use their own context.  The AppDelegate will return a new one as needed.
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return [appDelegate managedObjectContext];
-    //return [CustomerHelper getContext];
 }
 
 #pragma mark -

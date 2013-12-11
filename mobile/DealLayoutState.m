@@ -46,11 +46,18 @@
                                                         options:NSStringDrawingUsesLineFragmentOrigin
                                                      attributes:attributes2
                                                         context:nil].size;
+    if (detailsSize.height==0)
+    {
+        detailsSize.height = 50;
+    }
     
     int padding = 54;
     int margin = 20;
     detailSize = (summarySize.height + detailsSize.height + padding + margin);
-    if (detailSize < 112) detailSize = 112;
+    if (detailSize < 112)
+    {
+        detailSize = 112;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

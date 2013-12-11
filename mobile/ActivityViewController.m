@@ -80,7 +80,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    NSLog(@"My Activities memory warning");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
