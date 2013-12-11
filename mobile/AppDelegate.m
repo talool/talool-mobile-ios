@@ -40,6 +40,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+ 
+    
+    //For now, register for all types of notifications
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
+    //Request background refresh interval
+    self.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:self.minUpdateInterval];
     
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -388,6 +397,27 @@
     _persistentStoreCoordinator = [TaloolPersistentStoreCoordinator initWithStoreUrl:storeURL];
         
     return _persistentStoreCoordinator;
+}
+
+-(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    TTLog(@"Background fetch started");
+    
+    completionHandler(UIBackgroundFetchResultNoData);
+    
+    TTLog(@"Background fetch completed");
+}
+
+#pragma mark - Push Notification Registration
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+	TTLog(@"Device token is: %@", deviceToken);
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	TTLog(@"Failed to get token, error: %@", error);
 }
 
 #pragma mark - Application's Documents directory
