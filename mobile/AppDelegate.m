@@ -26,6 +26,7 @@
 #import "BraintreeHelper.h"
 #import <OperationQueueManager.h>
 #import "LocationHelper.h"
+#import "ActivityOperation.h"
 
 @implementation AppDelegate
 
@@ -48,9 +49,10 @@
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     //Request background refresh interval
-    self.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
+    self.minUpdateInterval = 10;
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:self.minUpdateInterval];
     
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -407,9 +409,25 @@
 {
     TTLog(@"Background fetch started");
     
-    completionHandler(UIBackgroundFetchResultNoData);
+    [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:^(NSDictionary *response, NSError *error) {
+        if (error) {
+            completionHandler(UIBackgroundFetchResultFailed);
+        }else{
+            NSNumber *num = [response valueForKey:@"openCount"];
+            //TODO fix this logic to actually work, and see if the number has changed, not if it is greater than 0
+            if(num > 0)
+            {
+                [UIApplication sharedApplication].applicationIconBadgeNumber = [num integerValue];
+                completionHandler(UIBackgroundFetchResultNewData);
+            }else{
+                completionHandler(UIBackgroundFetchResultNoData);
+            }
+        }
+        TTLog(@"Background fetch completed");
+
+    }];
     
-    TTLog(@"Background fetch completed");
+    
 }
 
 #pragma mark - Push Notification Registration

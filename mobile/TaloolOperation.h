@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TaloolOperation : NSOperation
-
+@property NSDictionary *response;
+@property NSError *error;
 - (NSManagedObjectContext *) getContext;
 
 @end

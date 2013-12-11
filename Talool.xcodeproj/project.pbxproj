@@ -1118,7 +1118,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1135,6 +1135,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_NAME = Talool;
+				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1151,7 +1152,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1161,6 +1162,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_NAME = Talool;
+				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1171,8 +1173,7 @@
 			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1195,8 +1196,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1206,8 +1206,7 @@
 			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1230,8 +1229,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -124,7 +124,7 @@
     NSString *giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
     [ttActivity refreshActivityForGiftId:giftId context:[CustomerHelper getContext]];
     
-    [[OperationQueueManager sharedInstance] startActivityOperation:self];
+    [[OperationQueueManager sharedInstance] startActivityOperation:self completionHander:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -342,7 +342,7 @@
 - (void) refreshActivities
 {
     [self performSelector:@selector(updateTable) withObject:nil afterDelay:1];
-    [[OperationQueueManager sharedInstance] startActivityOperation:self];
+    [[OperationQueueManager sharedInstance] startActivityOperation:self completionHander:nil];
 }
 
 - (void) updateTable

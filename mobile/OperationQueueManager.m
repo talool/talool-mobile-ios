@@ -397,15 +397,23 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 #pragma mark -
 #pragma mark - Activity Management
 
-- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate completionHander:(OperationResponse)completion
 {
-    [self startActivityOperation:delegate withPriority:NSOperationQueuePriorityVeryHigh];
+    [self startActivityOperation:delegate withPriority:NSOperationQueuePriorityVeryHigh completionHandler:completion];
 }
 
-- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate withPriority:(NSOperationQueuePriority)priority
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate withPriority:(NSOperationQueuePriority)priority completionHandler:(OperationResponse)completion
 {
-    ActivityOperation *ao = [[ActivityOperation alloc] initWithDelegate:delegate];
+    ActivityOperation *ao = nil;
+    //getting weakoperation and setting operation completition block
+    __weak ActivityOperation *wao = ao = [[ActivityOperation alloc] initWithDelegate:delegate];
+    ao.completionBlock = ^{
+        if(completion){
+            completion(wao.response,wao.error);
+        }
+    };
     [ao setQueuePriority:priority];
+    
     if (_isForeground)
     {
         [self.foregroundQueue addOperation:ao];
@@ -425,7 +433,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 
 - (void) startRecurringActivityOperation
 {
-    SEL selector = @selector(startActivityOperation:withPriority:);
+    SEL selector = @selector(startActivityOperation:withPriority:completionHandler:);
     NSMethodSignature *sig = [self methodSignatureForSelector:selector];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
     [invocation setSelector:selector];

@@ -18,7 +18,6 @@
 
 @property id<OperationQueueDelegate> delegate;
 @property NSString *activityId;
-
 @property BOOL isActivityAction;
 
 @end
@@ -95,17 +94,28 @@
 
 - (void) getActivities
 {
-    if ([self isCancelled]) return;
+    if ([self isCancelled]) {
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"user not logged in" forKey:NSLocalizedDescriptionKey];
+        self.error = [[NSError alloc] initWithDomain:@"talool" code:206 userInfo:details];
+        return;
+    }
     
     ttCustomer *user = [CustomerHelper getLoggedInUser];
     
-    if (!user) return;
+    if (!user){
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"user not logged in" forKey:NSLocalizedDescriptionKey];
+        self.error = [[NSError alloc] initWithDomain:@"talool" code:403 userInfo:details];
+        return;
+    }
     
     NSError *error;
-    NSDictionary *response = [ttActivity getActivities:user context:[self getContext] error:&error];
-    
+    NSDictionary *responseData = [ttActivity getActivities:user context:[self getContext] error:&error];
+    self.response = responseData;
+    self.error = error;
     dispatch_async(dispatch_get_main_queue(),^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:response userInfo:response];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:self userInfo:self.response];
     });
     
     CLLocation *loc = [LocationHelper sharedInstance].lastLocation;
@@ -113,7 +123,7 @@
     
     if (self.delegate)
     {
-        NSMutableDictionary *delegateResponse = [NSMutableDictionary dictionaryWithDictionary:response];
+        NSMutableDictionary *delegateResponse = [NSMutableDictionary dictionaryWithDictionary:self.response];
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];

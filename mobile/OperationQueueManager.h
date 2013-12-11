@@ -18,6 +18,9 @@ static NSString *CUSTOMER_PURCHASED_DEAL_OFFER = @"CUSTOMER_PURCHASED_DEAL_OFFER
 static NSString *ACTIVITY_NOTIFICATION = @"ACTIVITY";
 static NSString *LOCATION_NOTIFICATION = @"LOCATION";
 
+
+typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
+
 @class ttDealOffer, ttCustomer, ttMerchant;
 
 @interface OperationQueueManager : NSObject
@@ -52,7 +55,7 @@ static NSString *LOCATION_NOTIFICATION = @"LOCATION";
 - (void) startGiftAcceptanceOperation:(NSString *)giftId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startRedeemOperation:(NSString *)dealAcquireId delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startFavoriteOperation:(NSString *)merchantId isFavorite:(BOOL)isFav delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate;
+- (void) startActivityOperation:(id<OperationQueueDelegate>)delegate completionHander:(OperationResponse)completion;
 - (void) startCloseActivityOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startPurchaseByCardOperation:(NSString *)card
                              expMonth:(NSString *)expMonth
