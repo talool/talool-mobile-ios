@@ -16,6 +16,7 @@
 @interface AcceptGiftViewController : UITableViewController<TaloolGiftActionDelegate, OperationQueueDelegate, UIAlertViewDelegate>
 
 @property (retain, nonatomic) NSString *giftId;
+@property (retain, nonatomic) NSString *activityId;
 @property (strong, nonatomic) GiftActionBar2View *actionBarView;
 @property (nonatomic) DealLayoutState *dealLayout;
 

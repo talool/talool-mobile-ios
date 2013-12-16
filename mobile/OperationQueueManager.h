@@ -38,6 +38,8 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
         lastName:(NSString *)lastName
              sex:(NSNumber *)sex
        birthDate:(NSDate *)birthDate
+      facebookId:(NSString *)fbId
+   facebookToken:(NSString *)fbToken
         delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startPasswordResetOperation:(NSString *)customerId
                             password:(NSString *)pw
@@ -52,7 +54,7 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
 - (void) startFacebookGiftOperation:(NSString *)facebookId dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startEmailGiftOperation:(NSString *)email dealAcquireId:(NSString *)dealAcquireId recipientName:(NSString *)name delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startGiftLookupOperation:(NSString *)giftId delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startGiftAcceptanceOperation:(NSString *)giftId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startGiftAcceptanceOperation:(NSString *)giftId activityId:(NSString *)activityId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startRedeemOperation:(NSString *)dealAcquireId delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startFavoriteOperation:(NSString *)merchantId isFavorite:(BOOL)isFav delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startActivityOperation:(id<OperationQueueDelegate>)delegate completionHander:(OperationResponse)completion;

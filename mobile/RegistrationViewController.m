@@ -10,6 +10,7 @@
 #import "RegistrationViewController.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttSocialAccount.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
 #import "KeyboardAccessoryView.h"
@@ -86,13 +87,15 @@
     
     if (failedUser)
     {
-#warning "test this"
         // preload the form
         emailField.text = failedUser.email;
         firstNameField.text = failedUser.firstName;
         lastNameField.text = failedUser.lastName;
-        // TODO preload the bday and sex
-        // TODO confirm the failed user has the FB id stored
+        if (failedUser.birthDate)
+        {
+            birthDateField.text = [self.formatter stringFromDate:failedUser.birthDate];
+        }
+        sexPicker.selectedSegmentIndex = [failedUser.sex intValue];
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -126,7 +129,19 @@
     {
         bday = [datePicker date];
     }
-#warning "pass the FB ID if we have it"
+    
+    NSString *facebookId;
+    NSString *facebookToken;
+    if (failedUser)
+    {
+        ttSocialAccount *sa = [[failedUser.socialAccounts objectEnumerator] nextObject];
+        if (sa)
+        {
+            facebookId = sa.loginId;
+            facebookToken = [[[FBSession activeSession] accessTokenData] accessToken];
+        }
+    }
+    
     // Register the user.  The Helper will display errors.
     // don't leave the page if reg failed
     [[OperationQueueManager sharedInstance] regUser:emailField.text
@@ -134,7 +149,9 @@
                                           firstName:firstNameField.text
                                            lastName:lastNameField.text
                                                 sex:sex
-                                          birthDate:nil
+                                          birthDate:bday
+                                         facebookId:facebookId
+                                      facebookToken:facebookToken
                                            delegate:self];
     
 }
@@ -174,9 +191,8 @@
 
 #pragma mark -
 
-- (IBAction)dateChanged:(id)sender {
-    
-    NSLog(@"get the date from the picker: %@", [self.formatter stringFromDate:[datePicker date]]);
+- (IBAction)dateChanged:(id)sender
+{
     birthDateField.text = [self.formatter stringFromDate:[datePicker date]];
 }
 

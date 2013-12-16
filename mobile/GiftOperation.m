@@ -17,6 +17,7 @@
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttActivity.h"
 #import <OperationQueueManager.h>
 
 @interface GiftOperation()
@@ -29,6 +30,7 @@
 @property id<OperationQueueDelegate> delegate;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *giftId;
+@property (strong, nonatomic) NSString *activityId;
 @property (strong, nonatomic) NSString *facebookId;
 @property (strong, nonatomic) NSString *dealAcquireId;
 @property (strong, nonatomic) NSString *recipientName;
@@ -74,12 +76,13 @@
     return self;
 }
 
-- (id)initWithGiftId:(NSString *)gId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)d
+- (id)initWithGiftId:(NSString *)gId activityId:(NSString *)aId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
         self.delegate = d;
         self.giftId = gId;
+        self.activityId = aId;
         self.isAccepted = accept;
         self.isGiftAcceptance = YES;
     }
@@ -117,10 +120,30 @@
     if (self.isAccepted)
     {
         result = [ttGift acceptGift:self.giftId customer:customer context:[self getContext] error:&error];
+        if (result && self.activityId)
+        {
+            // update the activity so it shows that there was an action taken
+            ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
+            if (tta.activityId)
+            {
+                tta.actionTaken = [NSNumber numberWithBool:YES];
+                result = [[self getContext] save:&error];
+            }
+        }
     }
     else
     {
         result = [ttGift rejectGift:self.giftId customer:customer context:[self getContext] error:&error];
+        if (result && self.activityId)
+        {
+            // update the activity so it shows that there was an action taken
+            ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
+            if (tta.activityId)
+            {
+                tta.actionTaken = [NSNumber numberWithBool:YES];
+                result = [[self getContext] save:&error];
+            }
+        }
     }
     
     dispatch_async(dispatch_get_main_queue(),^{

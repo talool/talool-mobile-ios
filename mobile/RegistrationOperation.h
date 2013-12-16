@@ -16,6 +16,8 @@
            lastName:(NSString *)lastName
                 sex:(NSNumber *)sex
           birthDate:(NSDate *)birthDate
+         facebookId:(NSString *)fbId
+      facebookToken:(NSString *)fbToken
            delegate:(id<OperationQueueDelegate>)delegate;
 
 @end

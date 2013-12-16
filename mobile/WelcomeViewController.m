@@ -14,7 +14,6 @@
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
 #import "Talool-API/ttCustomer.h"
-#import "EmailViewController.h"
 #import "MyDealsViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -243,7 +242,7 @@
             {
                 _failedUser = [FacebookHelper createCustomerFromFacebookUser:[error.userInfo objectForKey:@"fbUser"]
                                                                      context:[CustomerHelper getContext]];
-                [self.navigationController performSegueWithIdentifier:@"showReg" sender:self];
+                [self performSegueWithIdentifier:@"showReg" sender:self];
             }
             else
             {

@@ -30,7 +30,7 @@
 
 @implementation AcceptGiftViewController
 
-@synthesize giftId, actionBarView, dealLayout;
+@synthesize giftId, activityId, actionBarView, dealLayout;
 
 - (void)viewDidLoad
 {
@@ -87,13 +87,13 @@
 - (void)acceptGift:(id)sender
 {
     [actionBarView startSpinner];
-    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId accept:YES delegate:self];
+    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId activityId:activityId accept:YES delegate:self];
 }
 
 - (void)rejectGift:(id)sender
 {
     [actionBarView startSpinner];
-    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId accept:NO delegate:self];
+    [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId activityId:activityId accept:NO delegate:self];
 }
 
 - (void) displayError:(NSError *)error

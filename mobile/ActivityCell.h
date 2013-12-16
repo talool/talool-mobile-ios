@@ -17,8 +17,6 @@
     IBOutlet UILabel *subtitleLabel;
     IBOutlet UILabel *dateLabel;
     
-    IBOutlet UIImageView *disclosureIndicator;
-    IBOutlet UIImageView *cellBackground;
     ttActivity *activity;
 }
 
@@ -27,6 +25,4 @@
 @property (retain, nonatomic) UILabel *subtitleLabel;
 @property (retain, nonatomic) UIImageView *iconView;
 @property (retain, nonatomic) UILabel *dateLabel;
-@property (strong, nonatomic) UIImageView *cellBackground;
-@property (strong, nonatomic) UIImageView *disclosureIndicator;
 @end

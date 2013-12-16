@@ -71,14 +71,10 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue setSuspended:YES];
     [self.backgroundQueue setSuspended:NO];
     _isForeground = NO;
-
-    // I think we can leave the activity monitor running if the period can stay the same.
-    // I think we can let the dealAcquireTimer can keep running, since it ends on it's own.
     
-    if (_dealOfferTimer)
-    {
-        [_dealOfferTimer invalidate];
-    }
+    if (_dealOfferTimer) [_dealOfferTimer invalidate];
+    if (_activityTimer) [_activityTimer invalidate];
+    if (_dealAcquireTimer) [_dealAcquireTimer invalidate];
 }
 
 - (void) handleForegroundState
@@ -90,10 +86,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     if ([CustomerHelper getLoggedInUser])
     {
         [self startRecurringDealOfferOperation];
-        if (!_activityTimer)
-        {
-            [self startRecurringActivityOperation];
-        }
+        [self startRecurringActivityOperation];
     }
 }
 
@@ -138,6 +131,8 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
         lastName:(NSString *)lastName
              sex:(NSNumber *)sex
        birthDate:(NSDate *)birthDate
+      facebookId:(NSString *)fbId
+   facebookToken:(NSString *)fbToken
         delegate:(id<OperationQueueDelegate>)delegate
 {
     RegistrationOperation *ao = [[RegistrationOperation alloc] initWithUser:email
@@ -146,6 +141,8 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
                                                                    lastName:lastName
                                                                         sex:sex
                                                                   birthDate:birthDate
+                                                                 facebookId:fbId
+                                                              facebookToken:fbToken
                                                                    delegate:delegate];
     
     __weak id weakSelf = self;
@@ -347,9 +344,9 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue addOperation:go];
 }
 
-- (void) startGiftAcceptanceOperation:(NSString *)giftId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate
+- (void) startGiftAcceptanceOperation:(NSString *)giftId activityId:(NSString *)activityId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate
 {
-    GiftOperation *go = [[GiftOperation alloc] initWithGiftId:giftId accept:accept delegate:delegate];
+    GiftOperation *go = [[GiftOperation alloc] initWithGiftId:giftId activityId:activityId accept:accept delegate:delegate];
     [go setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:go];
 }
@@ -378,6 +375,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate
 {
+#warning "this is inefficient.  we should get them with a single (paginated) call"
     NSArray *merchants = [ttMerchant fetchMerchants:[CustomerHelper getContext] withPredicate:merchantPredicate];
     if ([merchants count] > 0)
     {

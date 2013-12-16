@@ -8,6 +8,8 @@
 
 #import "RegistrationOperation.h"
 #import "Talool-API/ttCustomer.h"
+#import "Talool-API/ttSocialAccount.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 
 @interface RegistrationOperation()
 
@@ -17,7 +19,8 @@
 @property (nonatomic, readwrite, strong) NSString *firstName;
 @property (strong, nonatomic) NSNumber *sex;
 @property (nonatomic, readwrite, strong) NSDate *birthDate;
-
+@property (nonatomic, readwrite, strong) NSString *facebookId;
+@property (nonatomic, readwrite, strong) NSString *facebookToken;
 @end
 
 @implementation RegistrationOperation
@@ -28,6 +31,8 @@
            lastName:(NSString *)lName
                 sex:(NSNumber *)s
           birthDate:(NSDate *)bDate
+         facebookId:(NSString *)fbId
+      facebookToken:(NSString *)fbToken
            delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
@@ -39,6 +44,8 @@
         self.lastName = lName;
         self.sex = s;
         self.birthDate = bDate;
+        self.facebookId = fbId;
+        self.facebookToken = fbToken;
     }
     return self;
 }
@@ -61,6 +68,15 @@
             [customer setAsFemale:([self.sex intValue]==1)];
         }
         [customer setBirthDate:self.birthDate];
+        
+        if (self.facebookId)
+        {
+            ttSocialAccount *sa = [ttSocialAccount createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
+                                                               loginId:self.facebookId
+                                                                 token:self.facebookToken
+                                                               context:context];
+            [customer addSocialAccountsObject:sa];
+        }
         
         BOOL result = [ttCustomer registerCustomer:customer password:self.password context:context error:&error];
         

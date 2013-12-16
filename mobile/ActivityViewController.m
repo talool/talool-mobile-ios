@@ -124,6 +124,7 @@
     NSString *giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
     [ttActivity refreshActivityForGiftId:giftId context:[CustomerHelper getContext]];
     
+    // we want the activity badge to update, so get the activities
     [[OperationQueueManager sharedInstance] startActivityOperation:self completionHander:nil];
 }
 
@@ -137,6 +138,7 @@
 
         AcceptGiftViewController *agvc = (AcceptGiftViewController *)[segue destinationViewController];
         [agvc setGiftId:giftId];
+        [agvc setActivityId:activity.activityId];
     }
     else if ([[segue identifier] isEqualToString:@"WelcomeActivity"])
     {

@@ -112,7 +112,6 @@
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
-		81FBEC5B1815ACC600751F3A /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81FBEC5A1815ACC600751F3A /* EmailViewController.m */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
@@ -333,8 +332,6 @@
 		81F24B22175950C9003A3A1A /* TaloolIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIconButton.h; sourceTree = "<group>"; };
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
-		81FBEC591815ACC600751F3A /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
-		81FBEC5A1815ACC600751F3A /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -499,8 +496,6 @@
 				81A57C8B17ECEAA400A68B71 /* SendPasswordResetViewController.m */,
 				81E3AA5E17EB5E5F00B5EE5A /* ResetPasswordViewController.h */,
 				81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */,
-				81FBEC591815ACC600751F3A /* EmailViewController.h */,
-				81FBEC5A1815ACC600751F3A /* EmailViewController.m */,
 			);
 			name = "Customer Account";
 			sourceTree = "<group>";
@@ -1037,7 +1032,6 @@
 				819FA953177B99DE006A819B /* IconHelper.m in Sources */,
 				819FA956177BA2CF006A819B /* ActivityFilterControl.m in Sources */,
 				8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */,
-				81FBEC5B1815ACC600751F3A /* EmailViewController.m in Sources */,
 				819FA959177CC564006A819B /* TaloolMobileWebViewController.m in Sources */,
 				810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */,
 				819B27631844227200105479 /* OfferSummaryView.m in Sources */,

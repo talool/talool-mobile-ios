@@ -340,143 +340,6 @@
             </objects>
             <point key="canvasLocation" x="2154" y="-2538"/>
         </scene>
-        <!--Email View Controller-->
-        <scene sceneID="srx-vT-KZw">
-            <objects>
-                <tableViewController storyboardIdentifier="EmailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bPD-0E-0km" customClass="EmailViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="5EW-B3-SEy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="DON-gV-XLA">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="30" id="MRR-Ob-E6x">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MRR-Ob-E6x" id="EOi-pe-CFI">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="80" id="iAa-RK-0I2">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="80"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iAa-RK-0I2" id="jue-Ke-6oA">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your email address to complete your registration." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Kz9-XY-Qve">
-                                                    <rect key="frame" x="20" y="20" width="280" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
-                                                    <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="eRu-Fv-4Gs">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eRu-Fv-4Gs" id="fsW-u0-bO2">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="3nr-4n-yAf" customClass="TaloolTextField">
-                                                    <rect key="frame" x="35" y="15" width="250" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="JPH-jU-0cl"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
-                                                </textField>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DJR-S8-Zgg">
-                                                    <rect key="frame" x="142" y="3" width="37" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="color" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                </activityIndicatorView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="3nr-4n-yAf" firstAttribute="centerX" secondItem="fsW-u0-bO2" secondAttribute="centerX" id="4p6-SW-c34"/>
-                                                <constraint firstItem="3nr-4n-yAf" firstAttribute="centerY" secondItem="fsW-u0-bO2" secondAttribute="centerY" id="eRl-EB-OTV"/>
-                                                <constraint firstItem="DJR-S8-Zgg" firstAttribute="top" secondItem="fsW-u0-bO2" secondAttribute="top" constant="3" id="mXp-mN-Fwk"/>
-                                                <constraint firstItem="3nr-4n-yAf" firstAttribute="centerX" secondItem="DJR-S8-Zgg" secondAttribute="centerX" id="u1x-Ir-4h6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zaa-7Z-hcx">
-                                        <rect key="frame" x="0.0" y="170" width="320" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zaa-7Z-hcx" id="bSl-1m-FGv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igh-FE-evp" customClass="TaloolUIButton">
-                                                    <rect key="frame" x="35" y="1" width="250" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <size key="titleShadowOffset" width="1" height="1"/>
-                                                    <state key="normal" title="Complete Registration">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="changePasswordAction:" destination="gaF-0O-T3u" eventType="touchUpInside" id="DKx-tF-75j"/>
-                                                        <action selector="saveAction:" destination="bPD-0E-0km" eventType="touchUpInside" id="QXZ-hq-7kv"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Atf-zh-Xbh">
-                                        <rect key="frame" x="0.0" y="230" width="320" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Atf-zh-Xbh" id="VwA-dn-E59">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUk-3S-Bk6">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <size key="titleShadowOffset" width="1" height="1"/>
-                                                    <state key="normal" title="Cancel">
-                                                        <color key="titleColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="cancelAction:" destination="bPD-0E-0km" eventType="touchUpInside" id="Unn-Ax-KeR"/>
-                                                        <action selector="cancelAction:" destination="gaF-0O-T3u" eventType="touchUpInside" id="Xlj-qi-r3R"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="bPD-0E-0km" id="q1H-Tv-CEl"/>
-                            <outlet property="delegate" destination="bPD-0E-0km" id="xPT-X0-Noh"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="cancelButton" destination="TUk-3S-Bk6" id="DwN-xG-8cj"/>
-                        <outlet property="emailField" destination="3nr-4n-yAf" id="xey-Ly-ng9"/>
-                        <outlet property="saveButton" destination="igh-FE-evp" id="NUU-fN-YGV"/>
-                        <outlet property="spinner" destination="DJR-S8-Zgg" id="tPG-RG-reO"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YwT-SG-mCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2543" y="-2538"/>
-        </scene>
         <!--Welcome View Controller - Welcome to Talool-->
         <scene sceneID="Cnn-fG-aJo">
             <objects>
@@ -622,7 +485,7 @@
                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="iSD-Ws-CbE" kind="push" id="FjV-Nz-nqA"/>
+                                                        <segue destination="iSD-Ws-CbE" kind="push" identifier="showReg" id="FjV-Nz-nqA"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -777,7 +640,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tz4-lK-3Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2099" y="-1784"/>
+            <point key="canvasLocation" x="2136" y="-1450"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="YWw-G9-qca">
@@ -2702,7 +2565,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npe-cl-geT">
-                                            <rect key="frame" x="15" y="12" width="38" height="21"/>
+                                            <rect key="frame" x="15" y="12" width="39" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2711,7 +2574,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GAE-wv-aLD">
-                                            <rect key="frame" x="15" y="33" width="43" height="14"/>
+                                            <rect key="frame" x="15" y="34" width="43" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

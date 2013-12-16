@@ -14,7 +14,7 @@
 
 @implementation ActivityCell
 
-@synthesize titleLabel, iconView, dateLabel, subtitleLabel, activity, cellBackground, disclosureIndicator;
+@synthesize titleLabel, iconView, dateLabel, subtitleLabel, activity;
 
 - (void)setActivity:(ttActivity *)newActivity
 {
@@ -80,10 +80,6 @@
         iconView.image = [IconHelper getImageForIcon:FAKIconQuestion color:[TaloolColor gray_1]];
     }
     
-    disclosureIndicator.image = [FontAwesomeKit imageForIcon:FAKIconChevronRight
-                                                        imageSize:CGSizeMake(30, 30)
-                                                         fontSize:14
-                                                       attributes:@{ FAKImageAttributeForegroundColor:[TaloolColor gray_2] }];
 }
 
 @end

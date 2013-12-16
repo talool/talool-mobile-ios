@@ -118,9 +118,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:self userInfo:self.response];
     });
     
-    CLLocation *loc = [LocationHelper sharedInstance].lastLocation;
-    NSLog(@"activity operation with location: %f %f", loc.coordinate.latitude, loc.coordinate.longitude);
-    
     if (self.delegate)
     {
         NSMutableDictionary *delegateResponse = [NSMutableDictionary dictionaryWithDictionary:self.response];

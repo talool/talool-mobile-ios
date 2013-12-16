@@ -17,6 +17,6 @@
 
 - (id)initWithGiftId:(NSString *)gId delegate:(id<OperationQueueDelegate>)delegate;
 
-- (id)initWithGiftId:(NSString *)gId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
+- (id)initWithGiftId:(NSString *)gId activityId:(NSString *)aId accept:(BOOL)accept delegate:(id<OperationQueueDelegate>)delegate;
 
 @end
