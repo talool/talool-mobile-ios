@@ -13,7 +13,6 @@
 
 @interface MyDealsViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, MerchantFilterDelegate>
 
-@property (strong, nonatomic) UIButton *helpButton;
 @property (retain, nonatomic) MerchantSearchView *searchView;
 
 @end

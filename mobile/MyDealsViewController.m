@@ -25,6 +25,7 @@
 #import "CustomerHelper.h"
 #import "LocationHelper.h"
 #import "TaloolColor.h"
+#import "TutorialViewController.h"
 #import "MerchantSearchView.h"
 #import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
@@ -40,7 +41,7 @@
 
 @implementation MyDealsViewController
 
-@synthesize helpButton, searchView;
+@synthesize searchView;
 
 - (void)viewDidLoad
 {
@@ -125,12 +126,6 @@
         // The user hasn't approved or denied location services
         [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [self closeHelp];
 }
 
 - (void) handleUserLogin:(NSNotification *)message
@@ -252,26 +247,13 @@
 
 - (void) askForHelp
 {
-    // if merchants are still 0, we should show the user some help
-    if ([self merchantCount]==0 && helpButton==nil && [self.searchView.filterControl selectedSegmentIndex]==0)
+    // Show the welcome tutorial if they haven't seen it yet
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
     {
-        helpButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [helpButton setBackgroundImage:[UIImage imageNamed:@"HelpBuyDealsWithCode.png"] forState:UIControlStateNormal];
-        [helpButton addTarget:self action:@selector(closeHelp) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:helpButton];
-    }
-    else if ([self merchantCount]>0)
-    {
-        [self closeHelp];
-    }
-}
-
-- (void)closeHelp
-{
-    if (helpButton)
-    {
-        [helpButton removeFromSuperview];
-        helpButton = nil;
+        TutorialViewController *tvc = [[TutorialViewController alloc] init];
+        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
+        [tvc setHidesBottomBarWhenPushed:YES];
+        [self presentViewController:tvc animated:NO completion:nil];
     }
 }
 
@@ -433,5 +415,6 @@
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
 }
+
 
 @end
