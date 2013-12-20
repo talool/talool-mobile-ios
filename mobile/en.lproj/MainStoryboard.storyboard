@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="wjd-Bl-EPa" kind="relationship" relationship="viewControllers" id="ZC1-UD-p0b"/>
@@ -1725,7 +1725,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVq-kx-6hW" userLabel="Distance">
-                                            <rect key="frame" x="78" y="67" width="196" height="21"/>
+                                            <rect key="frame" x="78" y="67" width="209" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1733,19 +1733,19 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="55q-Tk-jxS" firstAttribute="leading" secondItem="sn2-tp-leA" secondAttribute="leading" id="0cN-c5-icE"/>
-                                        <constraint firstAttribute="bottom" secondItem="RVq-kx-6hW" secondAttribute="bottom" constant="1" id="0rg-Pi-59U"/>
-                                        <constraint firstItem="55q-Tk-jxS" firstAttribute="trailing" secondItem="RVq-kx-6hW" secondAttribute="trailing" id="1Tr-rh-ig4"/>
+                                        <constraint firstItem="RVq-kx-6hW" firstAttribute="leading" secondItem="55q-Tk-jxS" secondAttribute="leading" id="1GV-lc-vsZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="RVq-kx-6hW" secondAttribute="trailing" id="20e-nm-PCc"/>
                                         <constraint firstAttribute="trailing" secondItem="55q-Tk-jxS" secondAttribute="trailing" constant="13" id="BOf-3v-bQ8"/>
+                                        <constraint firstItem="RVq-kx-6hW" firstAttribute="leading" secondItem="vA7-Ue-fC7" secondAttribute="leading" constant="78" id="DJO-wY-MaA"/>
                                         <constraint firstItem="HVO-Iq-jv2" firstAttribute="top" secondItem="sn2-tp-leA" secondAttribute="top" id="FtD-bG-GwZ"/>
                                         <constraint firstItem="55q-Tk-jxS" firstAttribute="trailing" secondItem="sn2-tp-leA" secondAttribute="trailing" id="GHZ-8Y-X5x"/>
                                         <constraint firstItem="55q-Tk-jxS" firstAttribute="top" secondItem="sn2-tp-leA" secondAttribute="bottom" constant="3" id="I7F-87-g3T"/>
+                                        <constraint firstAttribute="bottom" secondItem="RVq-kx-6hW" secondAttribute="bottom" constant="1" id="JHV-im-eL0"/>
+                                        <constraint firstItem="RVq-kx-6hW" firstAttribute="top" secondItem="55q-Tk-jxS" secondAttribute="bottom" constant="16" id="Jdk-c6-PxO"/>
                                         <constraint firstItem="55q-Tk-jxS" firstAttribute="leading" secondItem="HVO-Iq-jv2" secondAttribute="trailing" constant="13" id="Soa-a5-KGX"/>
                                         <constraint firstItem="HVO-Iq-jv2" firstAttribute="top" secondItem="vA7-Ue-fC7" secondAttribute="top" constant="6" id="WGB-Au-INP"/>
                                         <constraint firstItem="HVO-Iq-jv2" firstAttribute="leading" secondItem="vA7-Ue-fC7" secondAttribute="leading" constant="15" id="Yva-cv-sX9"/>
                                         <constraint firstAttribute="bottom" secondItem="HVO-Iq-jv2" secondAttribute="bottom" constant="34" id="ZRS-Ck-mt2"/>
-                                        <constraint firstItem="RVq-kx-6hW" firstAttribute="leading" secondItem="vA7-Ue-fC7" secondAttribute="leading" constant="78" id="fvA-U5-CxY"/>
-                                        <constraint firstItem="55q-Tk-jxS" firstAttribute="leading" secondItem="RVq-kx-6hW" secondAttribute="leading" id="jQd-8e-jhX"/>
-                                        <constraint firstItem="RVq-kx-6hW" firstAttribute="top" secondItem="55q-Tk-jxS" secondAttribute="bottom" constant="16" id="prg-il-xlt"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

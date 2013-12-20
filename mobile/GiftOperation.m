@@ -149,6 +149,7 @@
     dispatch_async(dispatch_get_main_queue(),^{
         NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
         [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+#warning "add a boolean for acceptance and the deal acquire id -- see the gift deep link logic"
         [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
     });
     

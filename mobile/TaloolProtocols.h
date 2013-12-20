@@ -84,12 +84,8 @@ static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 - (void)cancel:(id)sender;
 @end
 
-@protocol MerchantFilterDelegate <NSObject>
-- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
-@end
-
-@protocol ActivityFilterDelegate <NSObject>
-- (void)filterChanged:(NSPredicate *)filter sender:(id)sender;
+@protocol FilterMenuDelegate <NSObject>
+- (void)filterChanged:(NSPredicate *)filter title:(NSString *)title sender:(id)sender;
 @end
 
 @protocol OGDeal<FBGraphObject>

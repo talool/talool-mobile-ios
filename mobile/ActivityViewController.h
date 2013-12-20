@@ -11,8 +11,7 @@
 
 @class ActivityFilterView;
 
-@interface ActivityViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, ActivityFilterDelegate>
+@interface ActivityViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, FilterMenuDelegate>
 
-@property (retain, nonatomic) ActivityFilterView *filterView;
 
 @end

@@ -11,8 +11,6 @@
 
 @class MerchantSearchView;
 
-@interface MyDealsViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, MerchantFilterDelegate>
-
-@property (retain, nonatomic) MerchantSearchView *searchView;
+@interface MyDealsViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, FilterMenuDelegate>
 
 @end

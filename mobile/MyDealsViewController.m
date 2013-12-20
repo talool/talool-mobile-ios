@@ -12,9 +12,6 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "WelcomeViewController.h"
 #import "MerchantCell.h"
-#import "HeaderPromptCell.h"
-#import "FooterPromptCell.h"
-#import "MerchantFilterControl.h"
 #import "Talool-API/ttCategory.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttMerchant.h"
@@ -26,8 +23,9 @@
 #import "LocationHelper.h"
 #import "TaloolColor.h"
 #import "TutorialViewController.h"
-#import "MerchantSearchView.h"
 #import "OperationQueueManager.h"
+#import "MerchantFilterMenu.h"
+#import "SimpleHeaderView.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -36,12 +34,12 @@
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) MerchantTableViewController *detailView;
+@property (strong, nonatomic) SimpleHeaderView *tableHeader;
+@property (strong, nonatomic) MerchantFilterMenu *menu;
 @property BOOL resetAfterLogin;
 @end
 
 @implementation MyDealsViewController
-
-@synthesize searchView;
 
 - (void)viewDidLoad
 {
@@ -54,17 +52,24 @@
     self.refreshControl.attributedTitle = refreshLabel;
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
-    self.searchView = [[MerchantSearchView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)
-                                         merchantFilterDelegate:self];
-    
     // add the settings button
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(settings:)];
-    self.navigationItem.rightBarButtonItem = settingsButton;
     [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
                                   forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = settingsButton;
+    
+    
+    // add the filter button
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(filterMenu:)];
+    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
+                                  forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = filterButton;
     
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
@@ -85,6 +90,12 @@
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
 
+
+    _menu = [[MerchantFilterMenu alloc] initWithDelegate:self];
+    _tableHeader = [[SimpleHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)];
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,12 +142,17 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     _resetAfterLogin = YES;
-    [self.searchView.filterControl setSelectedSegmentIndex:0];
+    [_menu setSelectedIndex:0];
 }
 
 - (void) handleAcceptedGift:(NSNotification *)message
 {
     [[OperationQueueManager sharedInstance] startMerchantOperation:self];
+    
+    // prompt the user to see if they want to view their deal
+#warning "get the dealAcquireId from the message"
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate presentAcceptedGift];
 }
 
 - (void) handlePurchase:(NSNotification *)message
@@ -146,7 +162,26 @@
 
 - (void)settings:(id)sender
 {
-    [self performSegueWithIdentifier:@"showSettings" sender:self];
+    if (![self.menu isOpen] && ![self.menu isAnimating])
+    {
+        [self performSegueWithIdentifier:@"showSettings" sender:self];
+    }
+}
+
+- (void)filterMenu:(UIBarButtonItem *)sender
+{
+    if (![self.menu isAnimating])
+    {
+        if ([self.menu isOpen])
+        {
+            [self.menu close];
+        }
+        else
+        {
+            [self.menu refreshCounts];
+            [self.menu showFromNavigationController:self.navigationController];
+        }
+    }
 }
 
 - (MerchantTableViewController *) getDetailView:(ttMerchant *)merchant
@@ -184,7 +219,6 @@
     [self resetFetchedResultsController:YES];
 }
 
-
 #pragma mark -
 #pragma mark - FetchedResultsController
 
@@ -195,7 +229,7 @@
     }
     [self.tableView reloadData];
     
-    NSPredicate *predicate = [searchView.filterControl getPredicateAtSelectedIndex];
+    NSPredicate *predicate = [_menu getPredicateAtSelectedIndex];
 
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
@@ -254,6 +288,7 @@
         [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
         [tvc setHidesBottomBarWhenPushed:YES];
         [self presentViewController:tvc animated:NO completion:nil];
+        [self.tabBarController setSelectedIndex:1]; // kick the user over to Find Deals
     }
 }
 
@@ -281,23 +316,6 @@
     return [self getMerchantCell:indexPath];
 }
 
-- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
-{
-    NSString *CellIdentifier = @"TileTop";
-    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    ttCategory *cat = [searchView.filterControl getCategoryAtSelectedIndex];
-    [cell setMessageForMerchantCount:[self merchantCount] category:cat favorite:(searchView.filterControl.selectedSegmentIndex==1)];
-    return cell;
-}
-
-- (UITableViewCell *)getFooterCell:(NSIndexPath *)indexPath
-{
-    NSString *CellIdentifier = @"FooterCell";
-    FooterPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [cell setSimpleAttributedMessage:@"Need Deals? Find Deals!" icon:FAKIconArrowDown icon:FAKIconArrowDown];
-    return cell;
-}
-
 - (UITableViewCell *)getMerchantCell:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"MerchantCell";
@@ -309,12 +327,12 @@
 - (void) configureCell:(MerchantCell *)cell path:(NSIndexPath *)indexPath
 {
     ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath];
-    [cell setMerchant:merchant];
+    [cell setMerchant:merchant remainingDeals:3]; // TODO get the number of remaining deals
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.searchView;
+    return _tableHeader;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -341,14 +359,10 @@
 #pragma mark -
 #pragma mark - MerchantFilterDelegate methods
 
-- (void)filterChanged:(NSPredicate *)predicate sender:(id)sender
+- (void)filterChanged:(NSPredicate *)predicate title:(NSString *)title sender:(id)sender
 {
+    [_tableHeader updateTitle:title subtitle:[_menu getSubtitleAtSelectedIndex]];
     [self resetFetchedResultsController:YES];
-    
-    if (self.searchView.filterControl.selectedSegmentIndex == 0)
-    {
-        [self askForHelp];
-    }
 }
 
 #pragma mark -

@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     // Set the color fo the tabBar
-    //self.tabBar.barTintColor = [TaloolColor gray_5];
+    self.tabBar.barTintColor = [TaloolColor true_dark_gray];
     //self.tabBar.selectedImageTintColor = [TaloolColor teal];
     
     // Set the icon for MyDeals

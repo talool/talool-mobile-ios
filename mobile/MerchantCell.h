@@ -20,6 +20,6 @@
     IBOutlet UILabel *addressLabel;
 }
 
-- (void)setMerchant:(ttMerchant *)merchant;
+- (void)setMerchant:(ttMerchant *)merchant remainingDeals:(int)count;
 
 @end

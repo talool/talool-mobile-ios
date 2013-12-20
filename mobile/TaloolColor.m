@@ -119,7 +119,7 @@ static UIColor * TRUE_DARK_GRAY;
 + (UIColor *)true_dark_gray
 {
     if (!TRUE_DARK_GRAY) {
-        TRUE_DARK_GRAY = [UIColor colorWithRed:110.0/255.0 green:110.0/255.0 blue:110.0/255.0 alpha:1.0];
+        TRUE_DARK_GRAY = [UIColor colorWithRed:80.0/255.0 green:80.0/255.0 blue:80.0/255.0 alpha:1.0];
     }
     return TRUE_DARK_GRAY;
 }

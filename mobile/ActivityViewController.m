@@ -11,10 +11,8 @@
 #import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "ActivityCell.h"
-#import "HeaderPromptCell.h"
-#import "FooterPromptCell.h"
-#import "ActivityFilterView.h"
-#import "ActivityFilterControl.h"
+#import "ActivityFilterMenu.h"
+#import "SimpleHeaderView.h"
 #import "TaloolColor.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttGift.h"
@@ -34,6 +32,8 @@
 @interface ActivityViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) SimpleHeaderView *tableHeader;
+@property (strong, nonatomic) ActivityFilterMenu *menu;
 @property BOOL resetAfterLogin;
 @end
 
@@ -50,8 +50,6 @@
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"TrebuchetMS" size:12.0] range:range];
     [refreshLabel addAttribute:NSForegroundColorAttributeName value:[TaloolColor true_dark_gray] range:range];
     self.refreshControl.attributedTitle = refreshLabel;
-    
-    self.filterView = [[ActivityFilterView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0) activityFilterDelegate:self];
     
     _sortDescriptors = [NSArray arrayWithObjects:
                         [NSSortDescriptor sortDescriptorWithKey:@"activityDate" ascending:NO],
@@ -72,6 +70,20 @@
                                              selector:@selector(handleActivity:)
                                                  name:ACTIVITY_NOTIFICATION
                                                object:nil];
+    
+    // add the filter button
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(filterMenu:)];
+    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
+                                forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = filterButton;
+    
+    _menu = [[ActivityFilterMenu alloc] initWithDelegate:self];
+    _tableHeader = [[SimpleHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)];
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
     
 }
 
@@ -110,7 +122,23 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     _resetAfterLogin = YES;
-    [self.filterView.filterControl setSelectedSegmentIndex:0];
+    [_menu setSelectedIndex:0];
+}
+
+- (void)filterMenu:(UIBarButtonItem *)sender
+{
+    if (![self.menu isAnimating])
+    {
+        if ([self.menu isOpen])
+        {
+            [self.menu close];
+        }
+        else
+        {
+            [self.menu refreshCounts];
+            [self.menu showFromNavigationController:self.navigationController];
+        }
+    }
 }
 
 - (void) handleActivity:(NSNotification *)message
@@ -175,7 +203,7 @@
     }
     [self.tableView reloadData];
     
-    NSPredicate *predicate = [self.filterView.filterControl getPredicateAtSelectedIndex];
+    NSPredicate *predicate = [_menu getPredicateAtSelectedIndex];
     
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
@@ -248,39 +276,6 @@
     return [self getActivityCell:indexPath];
 }
 
-- (UITableViewCell *)getHeaderCell:(NSIndexPath *)indexPath
-{
-    NSString *CellIdentifier = @"TileTop";
-    HeaderPromptCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    NSString *prompt;
-    switch (self.filterView.filterControl.selectedSegmentIndex) {
-        case 1:
-            prompt = @"Gifts sent and received";
-            break;
-            
-        case 2:
-            prompt = @"Purchases and redeemed deals";
-            break;
-            
-        case 3:
-            prompt = @"Your friends' activity";
-            break;
-            
-        case 4:
-            prompt = @"Messages from merchants and Talool";
-            break;
-            
-        default:
-            prompt = @"All your activities on Talool";
-            break;
-    }
-
-    [cell setMessage:prompt];
- 
-    return cell;
-}
-
 - (UITableViewCell *)getActivityCell:(NSIndexPath *)indexPath
 {
     
@@ -335,7 +330,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return self.filterView;
+    return _tableHeader;
 }
 
 #pragma mark -
@@ -356,8 +351,9 @@
 #pragma mark -
 #pragma mark - ActivityFilterDelegate methods
 
-- (void)filterChanged:(NSPredicate *)predicate sender:(id)sender
+- (void)filterChanged:(NSPredicate *)predicate title:(NSString *)title sender:(id)sender
 {
+    [_tableHeader updateTitle:title subtitle:[_menu getSubtitleAtSelectedIndex]];
     [self resetFetchedResultsController:YES];
 }
 

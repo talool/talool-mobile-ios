@@ -97,7 +97,6 @@
     
     // dismiss the tutorial and show Find Deals
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.tabBarController setSelectedIndex:1];
 }
 
 @end
