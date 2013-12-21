@@ -119,6 +119,7 @@
     NSError *error;
     if (self.isAccepted)
     {
+#warning "This is inefficient.  We should get a DealAcquire from the service when we accept the gift."
         result = [ttGift acceptGift:self.giftId customer:customer context:[self getContext] error:&error];
         if (result && self.activityId)
         {
@@ -149,7 +150,7 @@
     dispatch_async(dispatch_get_main_queue(),^{
         NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
         [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
-#warning "add a boolean for acceptance and the deal acquire id -- see the gift deep link logic"
+        [notification setObject:[NSNumber numberWithBool:self.isAccepted] forKey:DELEGATE_RESPONSE_GIFT_ACCEPTED];
         [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
     });
     

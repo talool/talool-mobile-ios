@@ -154,8 +154,17 @@
 {
     // prompt the user to see if they want to view their deal
     _giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
-    // the gifted deal may not be here until the merchant operation completes
-    [[OperationQueueManager sharedInstance] startMerchantOperation:self];    
+    BOOL isAccepted = [[message.userInfo objectForKey:DELEGATE_RESPONSE_GIFT_ACCEPTED] boolValue];
+    if (isAccepted)
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        ttGift *gift = [ttGift fetchById:_giftId context:context];
+        if (gift.giftId)
+        {
+            // the gifted dealAcquire may not be here until the dealAcquire operation completes
+            [[OperationQueueManager sharedInstance] startDealAcquireOperation:gift.deal.merchant.merchantId delegate:self];
+        }
+    }
 }
 
 - (void) handlePurchase:(NSNotification *)message
@@ -374,7 +383,10 @@
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
     [self resetFetchedResultsController:NO];
-    
+}
+
+- (void) dealAcquireOperationComplete:(NSDictionary *)response
+{
     if (_giftId)
     {
         NSManagedObjectContext *context = [CustomerHelper getContext];
@@ -395,7 +407,6 @@
         _giftId = nil;
     }
 }
-
 
 #pragma mark -
 #pragma mark - UIAlertViewDelegate

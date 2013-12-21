@@ -16,6 +16,7 @@ static NSString *DELEGATE_RESPONSE_SUCCESS = @"success";
 static NSString *DELEGATE_RESPONSE_LOCATION_ENABLED = @"locationEnabled";
 static NSString *DELEGATE_RESPONSE_COUNT = @"openCount";
 static NSString *DELEGATE_RESPONSE_OBJECT_ID = @"objectId";
+static NSString *DELEGATE_RESPONSE_GIFT_ACCEPTED = @"giftAccepted";
 
 static NSString *KEY_EMAIL_ADDRESS = @"emailaddress";
 static NSString *KEY_EMAIL_LABEL = @"emaillabel";
