@@ -8,6 +8,7 @@
 
 #import "MyDealsViewController.h"
 #import "MerchantTableViewController.h"
+#import "DealTableViewController.h"
 #import "AppDelegate.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "WelcomeViewController.h"
@@ -15,6 +16,8 @@
 #import "Talool-API/ttCategory.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttDeal.h"
+#import "Talool-API/ttDealAcquire.h"
 #import "Talool-API/ttMerchantLocation.h"
 #import "Talool-API/ttGift.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
@@ -36,6 +39,7 @@
 @property (strong, nonatomic) MerchantTableViewController *detailView;
 @property (strong, nonatomic) SimpleHeaderView *tableHeader;
 @property (strong, nonatomic) MerchantFilterMenu *menu;
+@property (strong, nonatomic) ttDealAcquire *giftedDeal;
 @property BOOL resetAfterLogin;
 @end
 
@@ -149,10 +153,25 @@
 {
     [[OperationQueueManager sharedInstance] startMerchantOperation:self];
     
+#warning "the gifted deal may not be here until the merchant operation completes"
     // prompt the user to see if they want to view their deal
-#warning "get the dealAcquireId from the message"
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate presentAcceptedGift];
+    NSString *giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    ttGift *gift = [ttGift fetchById:giftId context:context];
+    if (gift.giftId)
+    {
+        _giftedDeal = [gift getDealAquire:context];
+        if (_giftedDeal)
+        {
+            UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got a new Deal!"
+                                                             message:[NSString stringWithFormat:@"We've updated your account with a new deal for %@ at %@.  Would you like to see it now?", _giftedDeal.deal.title, _giftedDeal.deal.merchant.name]
+                                                            delegate:self
+                                                   cancelButtonTitle:@"Yes"
+                                                   otherButtonTitles:@"No",nil];
+            [showMe show];
+        }
+    }
+    
 }
 
 - (void) handlePurchase:(NSNotification *)message
@@ -428,6 +447,24 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
+}
+
+
+#pragma mark -
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
+    {
+        // take the user to the "my deals" tab
+        [self.navigationController.tabBarController setSelectedIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        DealTableViewController *view = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+        [view setDeal:_giftedDeal];
+        [self.navigationController pushViewController:view animated:YES];
+    }
+    _giftedDeal = nil;
 }
 
 

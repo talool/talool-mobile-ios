@@ -16,8 +16,6 @@
 #import "Talool-API/ttCustomer.h"
 #import "CustomerHelper.h"
 #import "LocationCell.h"
-#import "HeaderPromptCell.h"
-#import "FooterPromptCell.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
