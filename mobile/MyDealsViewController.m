@@ -40,6 +40,7 @@
 @property (strong, nonatomic) SimpleHeaderView *tableHeader;
 @property (strong, nonatomic) MerchantFilterMenu *menu;
 @property (strong, nonatomic) ttDealAcquire *giftedDeal;
+@property (strong, nonatomic) NSString *giftId;
 @property BOOL resetAfterLogin;
 @end
 
@@ -151,27 +152,10 @@
 
 - (void) handleAcceptedGift:(NSNotification *)message
 {
-    [[OperationQueueManager sharedInstance] startMerchantOperation:self];
-    
-#warning "the gifted deal may not be here until the merchant operation completes"
     // prompt the user to see if they want to view their deal
-    NSString *giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
-    NSManagedObjectContext *context = [CustomerHelper getContext];
-    ttGift *gift = [ttGift fetchById:giftId context:context];
-    if (gift.giftId)
-    {
-        _giftedDeal = [gift getDealAquire:context];
-        if (_giftedDeal)
-        {
-            UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got a new Deal!"
-                                                             message:[NSString stringWithFormat:@"We've updated your account with a new deal for %@ at %@.  Would you like to see it now?", _giftedDeal.deal.title, _giftedDeal.deal.merchant.name]
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Yes"
-                                                   otherButtonTitles:@"No",nil];
-            [showMe show];
-        }
-    }
-    
+    _giftId = [message.userInfo objectForKey:DELEGATE_RESPONSE_OBJECT_ID];
+    // the gifted deal may not be here until the merchant operation completes
+    [[OperationQueueManager sharedInstance] startMerchantOperation:self];    
 }
 
 - (void) handlePurchase:(NSNotification *)message
@@ -390,7 +374,47 @@
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
     [self resetFetchedResultsController:NO];
+    
+    if (_giftId)
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        ttGift *gift = [ttGift fetchById:_giftId context:context];
+        if (gift.giftId)
+        {
+            _giftedDeal = [gift getDealAquire:context];
+            if (_giftedDeal)
+            {
+                UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got a new Deal!"
+                                                                 message:[NSString stringWithFormat:@"We've updated your account with a new deal for %@ at %@.  Would you like to see it now?", _giftedDeal.deal.title, _giftedDeal.deal.merchant.name]
+                                                                delegate:self
+                                                       cancelButtonTitle:@"Yes"
+                                                       otherButtonTitles:@"No",nil];
+                [showMe show];
+            }
+        }
+        _giftId = nil;
+    }
 }
+
+
+#pragma mark -
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"] && _giftedDeal)
+    {
+        // ensure the user is on the "my deals" tab and display the new deal
+        [self.navigationController.tabBarController setSelectedIndex:0];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        DealTableViewController *view = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+        [view setDeal:_giftedDeal];
+        [self.navigationController pushViewController:view animated:YES];
+        _giftedDeal = nil;
+    }
+    
+}
+
 
 #pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate methods
@@ -447,24 +471,6 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
-}
-
-
-#pragma mark -
-#pragma mark - UIAlertViewDelegate
-
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
-    {
-        // take the user to the "my deals" tab
-        [self.navigationController.tabBarController setSelectedIndex:0];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        DealTableViewController *view = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
-        [view setDeal:_giftedDeal];
-        [self.navigationController pushViewController:view animated:YES];
-    }
-    _giftedDeal = nil;
 }
 
 
