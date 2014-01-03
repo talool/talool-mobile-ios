@@ -339,7 +339,9 @@
 - (void) configureCell:(MerchantCell *)cell path:(NSIndexPath *)indexPath
 {
     ttMerchant *merchant = [_fetchedResultsController objectAtIndexPath:indexPath];
-    [cell setMerchant:merchant remainingDeals:3]; // TODO get the number of remaining deals
+#warning "TODO we need to have all the deal acquires on the device before we can show the count of deals"
+    int count = 0;//[merchant getAvailableDealAcquireCount:[CustomerHelper getContext]];
+    [cell setMerchant:merchant remainingDeals:count];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

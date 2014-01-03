@@ -24,20 +24,58 @@
     
     [addressLabel setText:[merchant getLocationLabel]];
     
-    ttMerchantLocation *loc = [merchant getClosestLocation];
-    if ([loc getDistanceInMiles] == nil || [[loc getDistanceInMiles] intValue]==0)
+   
+    NSString *countLabel = [self getDealCountLabel:count];
+    NSString *milesLabel = [self getDistanceLabel:[[merchant getClosestLocation] getDistanceInMiles]];
+    if (countLabel && milesLabel)
     {
-        [distanceLabel setText:[NSString stringWithFormat:@"%d deals",count]];
+        [distanceLabel setText:[NSString stringWithFormat:@"%@, %@",countLabel, milesLabel]];
     }
-    else
+    else if (countLabel)
     {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setPositiveFormat:@"###0.##"];
-        [formatter setLocale:[NSLocale currentLocale]];
-        NSString *miles = [formatter stringFromNumber:[loc getDistanceInMiles]];
-        [distanceLabel setText:[NSString stringWithFormat:@"%d deals, %@ miles away",count, miles] ];
+        [distanceLabel setText:countLabel];
+    }
+    else if (milesLabel)
+    {
+        [distanceLabel setText:milesLabel];
     }
     
+}
+
+- (NSString *) getDealCountLabel:(int)count
+{
+    NSString *label;
+    
+    if (count && count > 0)
+    {
+        NSString *dealLabel = (count==1)?@"deal":@"deals";
+        label = [NSString stringWithFormat:@"%d %@",count, dealLabel];
+    }
+    
+    return label;
+}
+
+- (NSString *) getDistanceLabel:(NSNumber *)miles
+{
+    NSString *label;
+    
+    if (miles && [miles intValue] > 0)
+    {
+        if ([miles intValue] > 100)
+        {
+            label = @"far, far away";
+        }
+        else
+        {
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            [formatter setPositiveFormat:@"###0.##"];
+            [formatter setLocale:[NSLocale currentLocale]];
+            NSString *m = [formatter stringFromNumber:miles];
+            label = [NSString stringWithFormat:@"%@ miles away",m];
+        }
+    }
+    
+    return label;
 }
 
 @end

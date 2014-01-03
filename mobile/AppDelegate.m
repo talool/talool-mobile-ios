@@ -27,6 +27,7 @@
 #import <OperationQueueManager.h>
 #import "LocationHelper.h"
 #import "ActivityOperation.h"
+#import "TutorialViewController.h"
 
 @implementation AppDelegate
 
@@ -48,7 +49,7 @@
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
     //Request background refresh interval
-    self.minUpdateInterval = 10;
+    self.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:self.minUpdateInterval];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
@@ -367,8 +368,6 @@
         if (coordinator != nil) {
             _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
             [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-            
-            // TODO not sure about this...
             [_managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
             [_managedObjectContext setStalenessInterval:0];
         }
@@ -404,30 +403,33 @@
     return _persistentStoreCoordinator;
 }
 
+
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-    TTLog(@"Background fetch started");
-    
+
     [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:^(NSDictionary *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);
         }else{
             NSNumber *num = [response valueForKey:@"openCount"];
-            //TODO fix this logic to actually work, and see if the number has changed, not if it is greater than 0
+            if (!num) num=0;
             if(num > 0)
             {
                 [UIApplication sharedApplication].applicationIconBadgeNumber = [num integerValue];
                 completionHandler(UIBackgroundFetchResultNewData);
-            }else{
+            }
+            else
+            {
+                int number;
+                [UIApplication sharedApplication].applicationIconBadgeNumber = number;
                 completionHandler(UIBackgroundFetchResultNoData);
             }
         }
-        TTLog(@"Background fetch completed");
 
     }];
     
-    
 }
+
 
 #pragma mark - Push Notification Registration
 

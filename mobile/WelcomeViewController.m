@@ -118,6 +118,7 @@
                  }
                  else
                  {
+#warning "If we use our own button we can make this process smoother when the network is slow"
                      [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
                      [[OperationQueueManager sharedInstance] authFacebookUser:user delegate:self];
                  }

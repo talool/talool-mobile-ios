@@ -45,9 +45,10 @@
     
     dispatch_async(dispatch_get_main_queue(),^{
         _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         _locationManager.delegate = self;
-        [_locationManager setPausesLocationUpdatesAutomatically:NO];
+        
+        [_locationManager setDistanceFilter:10]; // 10 meters
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
         
         locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
         _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
@@ -87,7 +88,18 @@
 {
     if (_locationManager)
     {
-        [_locationManager startMonitoringSignificantLocationChanges];
+        [_locationManager stopUpdatingLocation];
+        
+        /*
+         *   startMonitoringSignificantLocationChanges
+         *
+         *   This method is more appropriate for the majority of applications that just need an initial
+         *   user location fix and need updates only when the user moves a significant distance. This interface
+         *   delivers new events only when it detects changes to the device’s associated cell towers, resulting
+         *   in less frequent updates and significantly lower power usage.
+         *
+         */
+         [_locationManager startMonitoringSignificantLocationChanges];
     }
 }
 
