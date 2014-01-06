@@ -37,7 +37,7 @@
     deal = newDeal;
     NSString *date;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    [dateFormatter setDateFormat:@"M/d/yyyy"];
     if ([deal hasBeenRedeemed])
     {
         date = [NSString stringWithFormat:@"Redeemed on %@", [dateFormatter stringFromDate:deal.redeemed]];

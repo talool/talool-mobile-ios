@@ -23,7 +23,7 @@
     subtitleLabel.text = activity.subtitle;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy hh:mm:ss a"];
+    [dateFormatter setDateFormat:@"M/d/yyyy' at 'h:mm a"];
     dateLabel.text = [dateFormatter stringFromDate:activity.activityDate];
 
     if ([activity isFacebookReceiveGiftEvent] ||

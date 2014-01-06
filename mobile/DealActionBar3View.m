@@ -62,7 +62,7 @@
     
     // manage the state of the view
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy 'at' HH:mm:ss"];
+    [dateFormatter setDateFormat:@"M/d/yyyy' at 'h:mm:ss a"];
     
     if ([dealAcquire hasBeenRedeemed])
     {
