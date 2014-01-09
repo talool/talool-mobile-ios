@@ -20,6 +20,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ActivateCodeViewController ()
 
@@ -44,7 +45,6 @@
     [submit setBaseColor:[TaloolColor teal]];
     [submit setTitle:@"Load Deals" forState:UIControlStateNormal];
     
-    spinner.hidesWhenStopped = YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -68,15 +68,11 @@
     [self submit:sender];
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 #pragma mark -
 #pragma mark - TaloolKeyboardAccessoryDelegate methods
 -(void) submit:(id)sender
 {
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [SVProgressHUD showWithStatus:@"Validating Code" maskType:SVProgressHUDMaskTypeBlack];
 
     [accessCodeFld resignFirstResponder];
 
@@ -102,7 +98,8 @@
 
 - (void) activationOperationComplete:(NSDictionary *)response
 {
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
+    
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
@@ -123,12 +120,8 @@
             mess = error.localizedDescription;
         }
         
-        UIAlertView *activationError = [[UIAlertView alloc] initWithTitle:@"Activation Error"
-                                                                  message:mess
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles:nil];
-        [activationError show];
+        [CustomerHelper showAlertMessage:mess withTitle:@"Activation Error" withCancel:@"OK" withSender:self];
+        
     }
 
     

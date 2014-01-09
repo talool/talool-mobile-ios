@@ -32,6 +32,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import <TSMessages/TSMessage.h>
 
 @interface MyDealsViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
@@ -119,10 +120,17 @@
         [self performSegueWithIdentifier:@"welcome" sender:self];
     }
     
+    // see if we lost the predicate for the fetchedResultsController
+    if (!_fetchedResultsController.fetchRequest.predicate)
+    {
+        [self forcedClearOfTableView];
+    }
+    
     if (_resetAfterLogin)
     {
         [self forcedClearOfTableView];
     }
+    
     [self askForHelp];
     
     self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
@@ -142,6 +150,27 @@
         // The user hasn't approved or denied location services
         [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
+    
+    if ([self merchantCount]==0)
+    {
+        [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Welcome!"
+                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                               type:TSMessageNotificationTypeMessage
+                                           duration:TSMessageNotificationDurationEndless
+                                           callback:nil
+                                        buttonTitle:nil
+                                     buttonCallback:nil
+                                         atPosition:TSMessageNotificationPositionBottom
+                                canBeDismisedByUser:NO];
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [TSMessage dismissActiveNotification];
 }
 
 - (void) handleUserLogin:(NSNotification *)message
@@ -302,6 +331,7 @@
         [self presentViewController:tvc animated:NO completion:nil];
         [self.tabBarController setSelectedIndex:1]; // kick the user over to Find Deals
     }
+    
 }
 
 - (int)merchantCount

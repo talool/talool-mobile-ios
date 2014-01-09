@@ -13,6 +13,7 @@
 		810BB75F1783295600C65540 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
 		810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		811A9CC0175FE2C400B42612 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		8127D59B187E0753009B4340 /* MessageDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 8127D59A187E0753009B4340 /* MessageDesign.json */; };
 		8130BFC0184136CE00EE30B9 /* MerchantDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */; };
 		8130BFC31841410900EE30B9 /* OfferMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC21841410900EE30B9 /* OfferMerchantView.m */; };
 		8130BFC51841412B00EE30B9 /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
@@ -33,7 +34,6 @@
 		8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
 		8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D317CC0DA400061B62 /* Icon_58.png */; };
 		8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D417CC0DA400061B62 /* Icon_80.png */; };
-		817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */; };
 		817A5A43185FAE6F0010FEE9 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */; };
 		817A5A521860DB5E0010FEE9 /* welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */; };
 		817A5A561860DB5E0010FEE9 /* welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */; };
@@ -164,6 +164,7 @@
 		810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardAccessoryView.xib; sourceTree = "<group>"; };
 		811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcceptGiftViewController.h; sourceTree = "<group>"; };
 		811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcceptGiftViewController.m; sourceTree = "<group>"; };
+		8127D59A187E0753009B4340 /* MessageDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MessageDesign.json; sourceTree = "<group>"; };
 		8130BFBE184136CE00EE30B9 /* MerchantDealsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MerchantDealsViewController.h; sourceTree = "<group>"; };
 		8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MerchantDealsViewController.m; sourceTree = "<group>"; };
 		8130BFC11841410900EE30B9 /* OfferMerchantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferMerchantView.h; sourceTree = "<group>"; };
@@ -200,8 +201,6 @@
 		8157F8D217CC0DA400061B62 /* Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_29.png; sourceTree = "<group>"; };
 		8157F8D317CC0DA400061B62 /* Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_58.png; sourceTree = "<group>"; };
 		8157F8D417CC0DA400061B62 /* Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_80.png; sourceTree = "<group>"; };
-		817914AA1798D34300576CDD /* HelpNetworkFailureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpNetworkFailureViewController.h; sourceTree = "<group>"; };
-		817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpNetworkFailureViewController.m; sourceTree = "<group>"; };
 		817A5A41185FAE6F0010FEE9 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome0-568h@2x.png"; sourceTree = "<group>"; };
@@ -430,8 +429,6 @@
 		810BB7441781FFCF00C65540 /* Help Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				817914AA1798D34300576CDD /* HelpNetworkFailureViewController.h */,
-				817914AB1798D34300576CDD /* HelpNetworkFailureViewController.m */,
 				817A5A41185FAE6F0010FEE9 /* TutorialViewController.h */,
 				817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */,
 			);
@@ -702,6 +699,7 @@
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
 				9103111816D1E53800CEE814 /* main.m */,
 				9103111A16D1E53800CEE814 /* Talool-Prefix.pch */,
+				8127D59A187E0753009B4340 /* MessageDesign.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -911,6 +909,7 @@
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				81517B4F17FBB5470020A688 /* hero@2x.png in Resources */,
+				8127D59B187E0753009B4340 /* MessageDesign.json in Resources */,
 				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
 				81A869B217750BA30043ACE8 /* SimpleHeaderView.xib in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
@@ -1054,7 +1053,6 @@
 				81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */,
 				81AF1E32183FAB9100D64A3B /* DealOfferOperation.m in Sources */,
 				81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */,
-				817914AC1798D34300576CDD /* HelpNetworkFailureViewController.m in Sources */,
 				8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */,
 				819B26BE179B1DA400744C04 /* DealLocationCell.m in Sources */,
 				8190F2DF1853B42A00FF0AFB /* EmailConfirmationView.m in Sources */,

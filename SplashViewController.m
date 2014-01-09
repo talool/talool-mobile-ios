@@ -8,6 +8,7 @@
 
 #import "SplashViewController.h"
 #import "UIImage+H568.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface SplashViewController ()
 
@@ -15,29 +16,24 @@
 
 @implementation SplashViewController
 
-@synthesize spinner, defaultImage;
+@synthesize defaultImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	spinner.hidesWhenStopped = YES;
     defaultImage.image = [UIImage imageNamed:@"Default.png"];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [SVProgressHUD showWithStatus:@"Loading" maskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [spinner stopAnimating];
-}
-
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning

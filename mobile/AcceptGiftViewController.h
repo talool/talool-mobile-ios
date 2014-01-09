@@ -13,7 +13,7 @@
 
 @class ttGift, GiftActionBar2View, DealLayoutState;
 
-@interface AcceptGiftViewController : UITableViewController<TaloolGiftActionDelegate, OperationQueueDelegate, UIAlertViewDelegate>
+@interface AcceptGiftViewController : UITableViewController<TaloolGiftActionDelegate, OperationQueueDelegate>
 
 @property (retain, nonatomic) NSString *giftId;
 @property (retain, nonatomic) NSString *activityId;

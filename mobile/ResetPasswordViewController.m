@@ -21,6 +21,7 @@
 #import "TaloolTabBarController.h"
 #import "MyDealsViewController.h"
 #import <OperationQueueManager.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ResetPasswordViewController ()
 
@@ -28,7 +29,7 @@
 
 @implementation ResetPasswordViewController
 
-@synthesize spinner, customerId, resetCode;
+@synthesize customerId, resetCode;
 
 
 - (void)viewDidLoad
@@ -40,8 +41,6 @@
     [changePasswordButton useTaloolStyle];
     [changePasswordButton setBaseColor:[TaloolColor teal]];
     [changePasswordButton setTitle:@"Change Password" forState:UIControlStateNormal];
-    
-    spinner.hidesWhenStopped=YES;
     
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Submit"];
     [passwordField setInputAccessoryView:kav];
@@ -76,10 +75,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 - (IBAction)cancelAction:(id) sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -88,18 +83,18 @@
 - (IBAction)changePasswordAction:(id) sender
 {
     // add a spinner
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [SVProgressHUD showWithStatus:@"Changing password" maskType:SVProgressHUDMaskTypeBlack];
     
     if (passwordField.text == nil || confirmPasswordField.text == nil)
     {
-        [CustomerHelper showErrorMessage:@"You must enter your new password twice."
+        [CustomerHelper showAlertMessage:@"You must enter your new password twice."
                                withTitle:@"Password Error"
                               withCancel:@"Try Again"
                               withSender:nil];
     }
     else if (![passwordField.text isEqualToString:confirmPasswordField.text])
     {
-        [CustomerHelper showErrorMessage:@"Your passwords don't match."
+        [CustomerHelper showAlertMessage:@"Your passwords don't match."
                                withTitle:@"Password Error"
                               withCancel:@"Try Again"
                               withSender:nil];
@@ -151,7 +146,7 @@
 - (void) passwordResetOperationComplete:(NSDictionary *)response
 {
     // remove the spinner
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
     
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
@@ -164,7 +159,7 @@
         }
         else
         {
-            [CustomerHelper showErrorMessage:@"We were unable to complete your password change.  Please try again later."
+            [CustomerHelper showAlertMessage:@"We were unable to complete your password change.  Please try again later."
                                    withTitle:@"Password Reset Failure"
                                   withCancel:@"Ok"
                                   withSender:nil];
@@ -173,7 +168,7 @@
     }
     else
     {
-        [CustomerHelper showErrorMessage:error.localizedDescription
+        [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Password Reset Failure"
                               withCancel:@"Ok"
                               withSender:nil];

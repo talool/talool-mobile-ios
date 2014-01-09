@@ -24,7 +24,6 @@
     UIAlertView *errorView;
     
     IBOutlet TaloolUIButton *regButton;
-    IBOutlet UIActivityIndicatorView *spinner;
 }
 
 - (IBAction)dateChanged:(id)sender;
@@ -33,8 +32,6 @@
 - (IBAction)dateAction:(id)sender;
 
 @property (nonatomic, retain) UIAlertView *errorView;
-
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
 @property (strong, nonatomic) ttCustomer *failedUser;
 

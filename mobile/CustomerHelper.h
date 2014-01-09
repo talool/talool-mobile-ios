@@ -18,7 +18,6 @@
 
 + (BOOL) isEmailValid:(NSString *)email;
 
-+ (void) showNetworkError;
-+ (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
++ (void) showAlertMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender;
 
 @end

@@ -142,7 +142,7 @@ static int ACTIVITY_TAB_INDEX = 2;
     else
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
-        [CustomerHelper showErrorMessage:error.localizedDescription
+        [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"We're Sorry"
                               withCancel:@"Ok"
                               withSender:nil];

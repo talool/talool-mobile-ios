@@ -19,6 +19,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface SettingsTableViewController ()
 @property (strong, nonatomic) UIView *accountHeader;
@@ -27,7 +28,7 @@
 
 @implementation SettingsTableViewController
 
-@synthesize customer, spinner, accountHeader, taloolHeader;
+@synthesize customer, accountHeader, taloolHeader;
 
 static NSString *host = @"http://www.talool.com";
 
@@ -44,8 +45,6 @@ static NSString *host = @"http://www.talool.com";
     // create table headers
     accountHeader = [self createHeaderView:@"Account"];
     taloolHeader = [self createHeaderView:@"About Talool"];
-    
-    spinner.hidesWhenStopped=YES;
 
 }
 
@@ -96,10 +95,6 @@ static NSString *host = @"http://www.talool.com";
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"logout"])
@@ -144,7 +139,7 @@ static NSString *host = @"http://www.talool.com";
 - (IBAction)logout:(id)sender
 {
     // add a spinner
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [SVProgressHUD showWithStatus:@"Logging out" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startUserLogout:self];
     
 }
@@ -198,11 +193,7 @@ static NSString *host = @"http://www.talool.com";
     }
     
     if (alertMessage) {
-        [[[UIAlertView alloc] initWithTitle:alertTitle
-                                    message:alertMessage
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
+        [CustomerHelper showAlertMessage:alertMessage withTitle:alertTitle withCancel:@"OK" withSender:self];
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -242,7 +233,7 @@ static NSString *host = @"http://www.talool.com";
 - (void) logoutComplete:(NSDictionary *)response
 {
     // remove the spinner
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
     
     BOOL result = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (result)

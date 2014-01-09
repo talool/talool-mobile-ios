@@ -18,12 +18,10 @@
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
     IBOutlet TaloolUIButton *logoutButton;
-    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet UITableViewCell *logoutCell;
 }
 - (IBAction)logout:(id)sender;
 
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) ttCustomer *customer;
 
 @end

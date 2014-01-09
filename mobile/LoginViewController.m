@@ -18,14 +18,13 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
 #import "OperationQueueManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-
-@synthesize spinner;
 
 - (void)viewDidLoad
 {
@@ -36,8 +35,6 @@
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
     [signinButton setTitle:@"Log In" forState:UIControlStateNormal];
-    
-    spinner.hidesWhenStopped=YES;
     
     KeyboardAccessoryView *kav = [[KeyboardAccessoryView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0) keyboardDelegate:self submitLabel:@"Log In"];
     [emailField setInputAccessoryView:kav];
@@ -66,13 +63,10 @@
     }
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 - (IBAction)loginAction:(id) sender
 {
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [SVProgressHUD showWithStatus:@"Authenticating" maskType:SVProgressHUDMaskTypeBlack];
+    
     [[OperationQueueManager sharedInstance] authUser:emailField.text password:passwordField.text delegate:self];
 }
 
@@ -111,7 +105,7 @@
 - (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
     
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
@@ -122,7 +116,7 @@
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         
-        [CustomerHelper showErrorMessage:error.localizedDescription
+        [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];

@@ -20,6 +20,7 @@
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 #import "OperationQueueManager.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #define sexUndefinedIndex   0
 #define sexFemaleIndex      1
@@ -40,7 +41,7 @@
 
 @implementation RegistrationViewController
 
-@synthesize errorView, spinner, failedUser;
+@synthesize errorView, failedUser;
 
 - (void)viewDidLoad
 {
@@ -67,8 +68,6 @@
     [firstNameField setDefaultBorderColor];
     [lastNameField setDefaultBorderColor];
     [birthDateField setDefaultBorderColor];
-    
-    spinner.hidesWhenStopped = YES;
     
     [regButton useTaloolStyle];
     [regButton setBaseColor:[TaloolColor teal]];
@@ -112,15 +111,12 @@
     }
 }
 
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
-}
-
 #pragma mark -
 #pragma mark - TaloolKeyboardAccessoryDelegate methods
 -(void) submit:(id)sender
 {
-    [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
+    [self dismissKyeboard];
+    [SVProgressHUD showWithStatus:@"Creating account" maskType:SVProgressHUDMaskTypeBlack];
     
     NSNumber *sex = [NSNumber numberWithInt:[sexPicker selectedSegmentIndex]];
     
@@ -155,7 +151,13 @@
                                            delegate:self];
     
 }
+
 -(void) cancel:(id)sender
+{
+    [self dismissKyeboard];
+}
+
+-(void) dismissKyeboard
 {
     if ([emailField isFirstResponder])
     {
@@ -248,7 +250,7 @@
 - (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
     
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
@@ -258,8 +260,9 @@
     else
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        
         // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-        [CustomerHelper showErrorMessage:error.localizedDescription
+        [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];

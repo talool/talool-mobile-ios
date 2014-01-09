@@ -15,10 +15,7 @@
 {
     IBOutlet TaloolTextField *emailField;
     IBOutlet TaloolTextField *passwordField;
-    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *signinButton;
 }
-
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
 @end

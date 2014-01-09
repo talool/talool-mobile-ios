@@ -376,6 +376,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate
 {
 #warning "this is inefficient.  we should get them with a single (paginated) call"
+    if (_dealAcquireTimer) [_dealAcquireTimer invalidate];
     NSArray *merchants = [ttMerchant fetchMerchants:[CustomerHelper getContext] withPredicate:merchantPredicate];
     if ([merchants count] > 0)
     {

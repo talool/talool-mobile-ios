@@ -14,10 +14,7 @@
 @interface SendPasswordResetViewController : UITableViewController<TaloolKeyboardAccessoryDelegate, UITextFieldDelegate>
 {
     IBOutlet TaloolTextField *emailField;
-    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *sendEmailButton;
 }
-
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 
 @end

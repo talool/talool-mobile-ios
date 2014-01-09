@@ -26,6 +26,7 @@
 #import "BraintreeHelper.h"
 #import <OperationQueueManager.h>
 #import "LocationHelper.h"
+#import "CustomerHelper.h"
 #import "ActivityOperation.h"
 #import "TutorialViewController.h"
 
@@ -213,11 +214,6 @@
     
     NSString *URLString = [url absoluteString];
     
-    NSString *message = [NSString stringWithFormat:@"The application received a request to open this URL: %@. Be careful when servicing handleOpenURL requests!", URLString];
-    
-    UIAlertView *openURLAlert = [[UIAlertView alloc] initWithTitle:@"handleOpenURL:" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [openURLAlert show];
-    
     if (!URLString) {
         // The URL's absoluteString is nil. There's nothing more to do.
         return NO;
@@ -296,10 +292,9 @@
     // ... and open it from the App Link's Token.
     [appLinkSession openFromAccessTokenData:appLinkToken
                           completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                              // Forward any errors to the FBLoginView delegate.
                               if (error) {
                                   NSLog(@"FB login error %@",error);
-                                  [self.loginViewController loginView:nil handleError:error];
+#warning "TODO handle errors"
                               }
                           }];
 }
@@ -309,14 +304,15 @@
     
     if (self.mainViewController.selectedIndex > 0)
     {
+
         // the user is on FindDeals or Activity, so we should ask if they want to be redirected
-        UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got Deals!"
+        UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
                                                             message:@"We've updated your account with new deals.  Would you like to see them now?"
                                                            delegate:self
                                                   cancelButtonTitle:@"Yes"
                                                   otherButtonTitles:@"No",nil];
         [showMe show];
-        
+
     }
 
 }
@@ -470,6 +466,7 @@
 {
     [[self managedObjectContext] reset];
 }
+
 
 #pragma mark -
 #pragma mark - Braintree - Venmo Touch client methods

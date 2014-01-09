@@ -20,14 +20,17 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface WelcomeViewController ()
+- (IBAction)fbButtonClicked:(id)sender;
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
+
+@property (strong, nonatomic) NSArray *fbPermissions;
 
 @end
 
 @implementation WelcomeViewController
-
-@synthesize spinner, FBLoginView;
 
 - (void)viewDidLoad
 {
@@ -37,26 +40,33 @@
     
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        [[OperationQueueManager sharedInstance] startUserLogout:self];
+    // check for a cached FB session
+    _fbPermissions = @[@"basic_info", @"email", @"user_birthday"];
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        NSLog(@"Found a cached session");
+        
+        [SVProgressHUD showWithStatus:@"Authenticating" maskType:SVProgressHUDMaskTypeBlack];
+        
+        // If there's one, just open the session silently, without showing the user the login UI
+        [FBSession openActiveSessionWithReadPermissions:_fbPermissions
+                                           allowLoginUI:NO
+                                      completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                          // Handler for session state changes
+                                          // This method will be called EACH time the session state changes,
+                                          // also for intermediate states and NOT just when the session open
+                                          [self sessionStateChanged:session state:state error:error];
+                                      }];
+        
     }
-    
-    // TODO: set up FB permissions
-    /* there are a ton of permissions to consider
-     https://developers.facebook.com/docs/reference/login/extended-permissions/
-     
-     user_birthday (friends_birthday)
-     user_likes
-     publish_actions, publish_checkins
-     
-     */
-    self.FBLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"email",@"user_birthday"]];
     
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
     [signinButton setTitle:@"Log in with Talool" forState:UIControlStateNormal];
     
-    spinner.hidesWhenStopped=YES;
+    [facebookButton useTaloolStyle];
+    [facebookButton setBaseColor:[UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1.0]];
+    [facebookButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
+
     self.navigationItem.hidesBackButton = YES;
     
 }
@@ -80,7 +90,6 @@
 }
 
 - (void)viewDidUnload {
-    [self setFBLoginView:nil];
     [super viewDidUnload];
 }
 
@@ -103,35 +112,65 @@
     }
 }
 
-#pragma mark - FBLoginView delegate
 
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    if (FBSession.activeSession.isOpen && [CustomerHelper getLoggedInUser] == nil) {
-        [[FBRequest requestForMe] startWithCompletionHandler:
-         ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
-             if (!error) {
+#pragma mark -
+#pragma mark - Facebook methods
 
-                 if ([CustomerHelper getLoggedInUser])
-                 {
-                     [FacebookHelper trackNumberOfFriends];
-                     [self.navigationController popToRootViewControllerAnimated:YES];
-                 }
-                 else
-                 {
-#warning "If we use our own button we can make this process smoother when the network is slow"
-                     [NSThread detachNewThreadSelector:@selector(threadStartSpinner:) toTarget:self withObject:nil];
-                     [[OperationQueueManager sharedInstance] authFacebookUser:user delegate:self];
-                 }
-                 
-             }
-         }];
-
-    }
+- (IBAction)fbButtonClicked:(id)sender
+{
+    [SVProgressHUD showWithStatus:@"Authenticating" maskType:SVProgressHUDMaskTypeBlack];
     
+    if (FBSession.activeSession.state == FBSessionStateOpen
+        || FBSession.activeSession.state == FBSessionStateOpenTokenExtended)
+    {
+        [self userLoggedInWithFacebook];
+    }
+    else
+    {
+        [FBSession openActiveSessionWithReadPermissions:_fbPermissions
+                                           allowLoginUI:YES
+                                      completionHandler:
+         ^(FBSession *session, FBSessionState state, NSError *error)
+        {
+             [self sessionStateChanged:session state:state error:error];
+         }];
+    }
 }
 
-- (void)loginView:(FBLoginView *)loginView
-      handleError:(NSError *)error{
+- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
+{
+    // If the session was opened successfully
+    if (!error && state == FBSessionStateOpen)
+    {
+        [self userLoggedInWithFacebook];
+    }
+    else if (error)
+    {
+        [self handleFacebookError:error];
+    }
+}
+
+- (void)userLoggedInWithFacebook
+{
+    [[FBRequest requestForMe] startWithCompletionHandler:
+     ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error)
+     {
+         if (!error)
+         {
+             [[OperationQueueManager sharedInstance] authFacebookUser:user delegate:self];
+         }
+         else
+         {
+             [self handleFacebookError:error];
+         }
+     }];
+}
+
+- (void)handleFacebookError:(NSError *)error
+{
+    // remove the spinner
+    [SVProgressHUD dismiss];
+    
     NSString *alertMessage, *alertTitle;
     
     // Facebook SDK * error handling *
@@ -142,21 +181,28 @@
     // and [- requestPermissionAndPost] on `SCViewController` for further
     // error handling on other operations.
     
-    if (error.fberrorShouldNotifyUser) {
+    if (error.fberrorShouldNotifyUser)
+    {
         // If the SDK has a message for the user, surface it. This conveniently
         // handles cases like password change or iOS6 app slider state.
         alertTitle = @"Something Went Wrong";
         alertMessage = error.fberrorUserMessage;
-    } else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
+    }
+    else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession)
+    {
         // It is important to handle session closures as mentioned. You can inspect
         // the error for more context but this sample generically notifies the user.
         alertTitle = @"Session Error";
         alertMessage = @"Your current session is no longer valid. Please log in again.";
-    } else if (error.fberrorCategory == FBErrorCategoryUserCancelled) {
+    }
+    else if (error.fberrorCategory == FBErrorCategoryUserCancelled)
+    {
         // The user has cancelled a login. You can inspect the error
         // for more context. For this sample, we will simply ignore it.
         NSLog(@"user cancelled login");
-    } else {
+    }
+    else
+    {
         NSError *innerError = [error.userInfo objectForKey:@"com.facebook.sdk:ErrorInnerErrorKey"];
         if (innerError.code == -1009)
         {
@@ -174,12 +220,8 @@
         
     }
     
-    if ([FBSession activeSession].isOpen)
+    if (alertMessage)
     {
-        [[FBSession activeSession] closeAndClearTokenInformation];
-    }
-    
-    if (alertMessage) {
         
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
         
@@ -188,33 +230,8 @@
                                                                label:error.domain
                                                                value:[NSNumber numberWithInteger:error.code]] build]];
         
-        [[[UIAlertView alloc] initWithTitle:alertTitle
-                                    message:alertMessage
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
+        [CustomerHelper showAlertMessage:alertMessage withTitle:alertTitle withCancel:@"OK" withSender:self];
     }
-}
-
-- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
-    // NOTE: We don't want to log the user out here.  If they were never connected with FB,
-    //      this would invalidate their token everything they quit the app and reopen it.
-    //      Consider checking if the user has a FB account before logging them out...
-    //      But this could still cause problems.0
-    //
-    // Facebook SDK * login flow *
-    // It is important to always handle session closure because it can happen
-    // externally; for example, if the current session's access token becomes
-    // invalid. For this sample, we simply pop back to the landing page.
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    if ([customer isFacebookUser])
-    {
-        [[OperationQueueManager sharedInstance] startUserLogout:self];
-    }
-}
-
-- (void) threadStartSpinner:(id)data {
-    [spinner startAnimating];
 }
 
 
@@ -224,7 +241,8 @@
 - (void)userAuthComplete:(NSDictionary *)response
 {
     // remove the spinner
-    [spinner stopAnimating];
+    [SVProgressHUD dismiss];
+    
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
@@ -251,7 +269,7 @@
                 [[FBSession activeSession] closeAndClearTokenInformation];
                 
                 // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-                [CustomerHelper showErrorMessage:error.localizedDescription
+                [CustomerHelper showAlertMessage:error.localizedDescription
                                        withTitle:@"Authentication Failed"
                                       withCancel:@"Try again"
                                       withSender:nil];
@@ -266,7 +284,7 @@
             NSLog(@"FAIL: No user stored after authentication");
             
             // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-            [CustomerHelper showErrorMessage:@"We were unable to store your credentials."
+            [CustomerHelper showAlertMessage:@"We were unable to store your credentials."
                                    withTitle:@"Authentication Failed"
                                   withCancel:@"Try again"
                                   withSender:nil];
@@ -274,5 +292,6 @@
     }
     
 }
+
 
 @end

@@ -157,14 +157,4 @@
     [self.delegate sendGift:self];
 }
 
-- (void) startSpinner
-{
-    [spinner startAnimating];
-}
-
-- (void) stopSpinner
-{
-    [spinner stopAnimating];
-}
-
 @end

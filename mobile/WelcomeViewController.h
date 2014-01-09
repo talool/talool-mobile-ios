@@ -12,14 +12,12 @@
 
 @class TaloolUIButton, ttCustomer;
 
-@interface WelcomeViewController : UITableViewController<FBLoginViewDelegate, OperationQueueDelegate>
+@interface WelcomeViewController : UITableViewController<OperationQueueDelegate>
 {
-    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *signinButton;
+    IBOutlet TaloolUIButton *facebookButton;
 }
 
-@property (unsafe_unretained, nonatomic) IBOutlet FBLoginView *FBLoginView;
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) ttCustomer *failedUser;
 
 @end

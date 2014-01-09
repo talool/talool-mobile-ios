@@ -10,18 +10,18 @@
 
 @interface TaloolColor : NSObject
 
-+ (UIColor *)orange;
-+ (UIColor *)red;
-+ (UIColor *)teal;
-+ (UIColor *)dark_teal;
-+ (UIColor *)green;
-+ (UIColor *)gray_1;
-+ (UIColor *)gray_2;
-+ (UIColor *)gray_3;
-+ (UIColor *)gray_4;
-+ (UIColor *)gray_5;
-+ (UIColor *)true_gray;
-+ (UIColor *)true_dark_gray;
++ (UIColor *)orange;            // #f15a24
++ (UIColor *)red;               // #ed1c24
++ (UIColor *)teal;              // #19bcb9
++ (UIColor *)dark_teal;         // #128d8b
++ (UIColor *)green;             // #50b948
++ (UIColor *)gray_1;            //
++ (UIColor *)gray_2;            //
++ (UIColor *)gray_3;            //
++ (UIColor *)gray_4;            //
++ (UIColor *)gray_5;            //
++ (UIColor *)true_gray;         //
++ (UIColor *)true_dark_gray;    //
 
 @end
 

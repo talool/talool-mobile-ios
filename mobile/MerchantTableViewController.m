@@ -22,7 +22,6 @@
 #import "Talool-API/ttDeal.h"
 #import "Talool-API/ttCustomer.h"
 #import <OperationQueueManager.h>
-#import "HelpNetworkFailureViewController.h"
 #import "MerchantActionBar3View.h"
 #import "TaloolMobileWebViewController.h"
 #import "Talool-API/TaloolFrameworkHelper.h"

@@ -30,6 +30,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface DealTableViewController ()
@@ -191,7 +192,7 @@
 
 - (void) giftSendOperationComplete:(NSDictionary *)response
 {
-    [actionBar3View stopSpinner];
+    [SVProgressHUD dismiss];
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
@@ -203,27 +204,20 @@
     else
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
-        if (error.code == -1009)
-        {
-            [CustomerHelper showNetworkError];
-        }
-        else
-        {
-            // show an error
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                                message:@"We failed to send this gift."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Please Try Again"
-                                                      otherButtonTitles:nil];
-            [errorView show];
-        }
+        // show an error
+        [CustomerHelper showAlertMessage:error.localizedDescription
+                               withTitle:@"Failed to Send Gift"
+                              withCancel:@"Please Try Again"
+                              withSender:self];
+        
+        
     }
     
 }
 
 - (void) redeemOperationComplete:(NSDictionary *)response
 {
-    [actionBar3View stopSpinner];
+    [SVProgressHUD dismiss];
     NSNumber *success = [response objectForKey:@"success"];
     if ([success boolValue])
     {
@@ -235,20 +229,10 @@
     else
     {
         NSError *error = [response objectForKey:@"error"];
-        if (error && error.code == -1009)
-        {
-            [CustomerHelper showNetworkError];
-        }
-        else
-        {
-            // show an error
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                                message:@"We failed to redeem this deal."
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Please Try Again"
-                                                      otherButtonTitles:nil];
-            [errorView show];
-        }
+        [CustomerHelper showAlertMessage:error.localizedDescription
+                               withTitle:@"Failed to Redeem Deal"
+                              withCancel:@"Please Try Again"
+                              withSender:self];
     }
 }
 
@@ -324,7 +308,7 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        [actionBar3View startSpinner];
+        [SVProgressHUD showWithStatus:@"Redeeming deal" maskType:SVProgressHUDMaskTypeBlack];
         [[OperationQueueManager sharedInstance] startRedeemOperation:deal.dealAcquireId delegate:self];
     }
 }
@@ -353,21 +337,11 @@
 
 - (void)handleFacebookUser:(NSString *)facebookId name:(NSString *)name
 {
-    [actionBar3View startSpinner];
+    [SVProgressHUD showWithStatus:@"Sending gift" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startFacebookGiftOperation:facebookId
                                                          dealAcquireId:deal.dealAcquireId
                                                          recipientName:name
                                                               delegate:self];
-}
-
-- (void) displayError:(NSError *)error
-{
-    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                        message:@"We failed to send this gift."
-                                                       delegate:self
-                                              cancelButtonTitle:@"Please Try Again"
-                                              otherButtonTitles:nil];
-    [errorView show];
 }
 
 // THIS REACHES USERS WHO DIDN'T CONNECT WITH FB, BUT HAVE THE FB APP INSTALLED
@@ -476,7 +450,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     // send the gift
-    [actionBar3View startSpinner];
+    [SVProgressHUD showWithStatus:@"Sending gift" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startEmailGiftOperation:email
                                                       dealAcquireId:deal.dealAcquireId
                                                       recipientName:name

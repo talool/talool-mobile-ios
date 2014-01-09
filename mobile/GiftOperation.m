@@ -270,7 +270,10 @@
     {
         NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
         [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
-        [delegateResponse setObject:giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+        if (giftId)
+        {
+            [delegateResponse setObject:giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+        }
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];

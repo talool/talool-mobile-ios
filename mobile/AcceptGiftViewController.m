@@ -23,6 +23,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface AcceptGiftViewController ()
 @property (retain, nonatomic) ttGift *gift;
@@ -57,7 +58,7 @@
     }
     else
     {
-        [actionBarView startSpinner];
+        [SVProgressHUD showWithStatus:@"Loading gift" maskType:SVProgressHUDMaskTypeBlack];
         [[OperationQueueManager sharedInstance] startGiftLookupOperation:giftId delegate:self];
     }
     
@@ -86,30 +87,28 @@
 
 - (void)acceptGift:(id)sender
 {
-    [actionBarView startSpinner];
+    [SVProgressHUD showWithStatus:@"Accepting gift" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId activityId:activityId accept:YES delegate:self];
 }
 
 - (void)rejectGift:(id)sender
 {
-    [actionBarView startSpinner];
+    [SVProgressHUD showWithStatus:@"Returning gift" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startGiftAcceptanceOperation:giftId activityId:activityId accept:NO delegate:self];
 }
 
 - (void) displayError:(NSError *)error
 {
+    // close the modal
+    [self.navigationController popViewControllerAnimated:YES];
+    
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GIFT"
                                                           action:@"RecipientAction"
                                                            label:error.domain
                                                            value:[NSNumber numberWithInteger:error.code]] build]];
     
-    UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"Server Error"
-                                                        message:@"We failed to handle this gift."
-                                                       delegate:self
-                                              cancelButtonTitle:@"Sorry"
-                                              otherButtonTitles:nil];
-    [errorView show];
+    [CustomerHelper showAlertMessage:@"We failed to handle this gift." withTitle:@"Server Error" withCancel:@"Sorry" withSender:self];
 }
 
 #pragma mark - Table view data source
@@ -150,7 +149,7 @@
 
 - (void) giftAcceptOperationComplete:(NSDictionary *)response
 {
-    [actionBarView stopSpinner];
+    [SVProgressHUD dismiss];
     [[CustomerHelper getContext] refreshObject:_gift mergeChanges:YES];
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
@@ -167,7 +166,7 @@
 
 - (void) giftLookupOperationComplete:(NSDictionary *)response
 {
-    [actionBarView stopSpinner];
+    [SVProgressHUD dismiss];
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
@@ -183,14 +182,5 @@
     }
 }
 
-
-#pragma mark -
-#pragma mark - UIAlertViewDelegate
-
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    // close the modal
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

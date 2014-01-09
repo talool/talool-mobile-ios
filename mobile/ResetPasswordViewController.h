@@ -15,11 +15,9 @@
 {
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolTextField *confirmPasswordField;
-    IBOutlet UIActivityIndicatorView *spinner;
     IBOutlet TaloolUIButton *changePasswordButton;
 }
 
-@property (retain, nonatomic) UIActivityIndicatorView *spinner;
 @property (retain, nonatomic) NSString *customerId;
 @property (retain, nonatomic) NSString *resetCode;
 

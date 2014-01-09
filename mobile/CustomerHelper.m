@@ -27,19 +27,14 @@
     return customer;
 }
 
-+ (void) showNetworkError
++ (void)showAlertMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender
 {
-    [self showErrorMessage:@"You appear to be offline." withTitle:@"No Internet Connection" withCancel:@"Try again later" withSender:nil];
-}
-
-+ (void)showErrorMessage:(NSString *)message withTitle:(NSString *)title withCancel:(NSString *)label withSender:(UIViewController *)sender
-{
-	UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:title
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
                                                         message:message
                                                        delegate:sender
                                               cancelButtonTitle:label
                                               otherButtonTitles:nil];
-	[errorView show];
+	[alertView show];
 }
 
 + (BOOL) isEmailValid:(NSString *)email
