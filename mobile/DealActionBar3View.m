@@ -17,6 +17,7 @@
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation DealActionBar3View
 
@@ -49,16 +50,7 @@
 
 - (void) updateView:(ttDealAcquire *)dealAcquire
 {
-    
-    [dealImage setImageWithURL:[NSURL URLWithString:dealAcquire.deal.imageUrl]
-          placeholderImage:[UIImage imageNamed:@"000.png"]
-                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                     if (error !=  nil) {
-                         // TODO track these errors
-                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                     }
-                     
-                 }];
+    [dealImage setImageWithURL:[NSURL URLWithString:dealAcquire.deal.imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     // manage the state of the view
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

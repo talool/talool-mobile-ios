@@ -92,9 +92,23 @@
         lastNameField.text = failedUser.lastName;
         if (failedUser.birthDate)
         {
-            birthDateField.text = [self.formatter stringFromDate:failedUser.birthDate];
+            NSDateFormatter *fbFormatter = [[NSDateFormatter alloc] init];
+            [fbFormatter setDateFormat:@"MM/dd/YYYY"];
+            NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+            [fbFormatter setTimeZone:gmt];
+            birthDateField.text = [fbFormatter stringFromDate:failedUser.birthDate];
         }
-        sexPicker.selectedSegmentIndex = [failedUser.sex intValue];
+        switch ([failedUser.sex intValue]) {
+            case 0:
+                [sexPicker setSelectedSegmentIndex:2];
+                break;
+            case 1:
+                [sexPicker setSelectedSegmentIndex:1];
+                break;
+            default:
+                [sexPicker setSelectedSegmentIndex:0];
+                break;
+        }
     }
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];

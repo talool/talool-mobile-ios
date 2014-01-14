@@ -284,28 +284,33 @@
     }
 }
 
+
 - (void) announceShareOnFacebook:(NSString *)giftId dealAcquire:(ttDealAcquire *)deal
 {
-    if ([FBSession.activeSession isOpen])
-    {
-        if ([FBSession.activeSession.permissions
-             indexOfObject:@"publish_actions"] == NSNotFound) {
-            
-            [FBSession.activeSession
-             requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
-             defaultAudience:FBSessionDefaultAudienceFriends
-             completionHandler:^(FBSession *session, NSError *error) {
-                 if (!error) {
-                     // re-call assuming we now have the permission
-                     [self announceShareOnFacebook:giftId dealAcquire:deal];
-                 }
-             }];
-        }
-        else
+    // ALL FACEBOOK CALLS NEED TO HAPPEN ON THE MAIN THREAD3
+    dispatch_async(dispatch_get_main_queue(),^{
+        if ([FBSession.activeSession isOpen])
         {
-            [FacebookHelper postOGGiftAction:giftId toFacebookId:self.facebookId atLocation:[deal.deal.merchant getClosestLocation]];
+            if ([FBSession.activeSession.permissions
+                 indexOfObject:@"publish_actions"] == NSNotFound) {
+                
+                [FBSession.activeSession
+                 requestNewPublishPermissions:[NSArray arrayWithObject:@"publish_actions"]
+                 defaultAudience:FBSessionDefaultAudienceFriends
+                 completionHandler:^(FBSession *session, NSError *error) {
+                     if (!error) {
+                         // re-call assuming we now have the permission
+                         [self announceShareOnFacebook:giftId dealAcquire:deal];
+                     }
+                 }];
+            }
+            else
+            {
+                [FacebookHelper postOGGiftAction:giftId toFacebookId:self.facebookId atLocation:[deal.deal.merchant getClosestLocation]];
+            }
         }
-    }
+    });
+    
 }
 
 

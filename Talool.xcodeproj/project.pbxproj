@@ -140,7 +140,6 @@
 		9183F4CB170342D500ED4844 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
 		9183F4CD170342E200ED4844 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
 		9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
-		9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9197F97A170CB50500BDAA58 /* SDWebImage.framework */; };
 		9197F98E170F157200BDAA58 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
 		91986EFC16D7150400D1CA96 /* DealAcquireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* DealAcquireCell.m */; };
 		91986F0C16DA88F900D1CA96 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
@@ -374,7 +373,6 @@
 		9183F4CA170342D500ED4844 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		9183F4CC170342E100ED4844 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9183F4D6170350BB00ED4844 /* ZXingObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZXingObjC.framework; sourceTree = "<group>"; };
-		9197F97A170CB50500BDAA58 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		9197F98C170F157200BDAA58 /* TaloolColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolColor.h; sourceTree = "<group>"; };
 		9197F98D170F157200BDAA58 /* TaloolColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolColor.m; sourceTree = "<group>"; };
 		91986EFA16D7150400D1CA96 /* DealAcquireCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealAcquireCell.h; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 				9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */,
 				9161487B16EAD783001C546C /* AddressBook.framework in Frameworks */,
 				9183F4D7170350BB00ED4844 /* ZXingObjC.framework in Frameworks */,
-				9197F97B170CB50500BDAA58 /* SDWebImage.framework in Frameworks */,
 				6D1542516A0F4B2F8BB1C81A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +640,6 @@
 				81F24B021750280D003A3A1A /* AddressBookUI.framework */,
 				91490D301745DBD000622A85 /* CoreText.framework */,
 				919A3310174510A90093FAC4 /* MapKit.framework */,
-				9197F97A170CB50500BDAA58 /* SDWebImage.framework */,
 				9183F4D6170350BB00ED4844 /* ZXingObjC.framework */,
 				9183F4CC170342E100ED4844 /* QuartzCore.framework */,
 				9183F4CA170342D500ED4844 /* ImageIO.framework */,

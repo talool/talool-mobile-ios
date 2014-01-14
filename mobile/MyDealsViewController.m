@@ -119,25 +119,27 @@
         // The user isn't logged in, so kick them to the welcome view
         [self performSegueWithIdentifier:@"welcome" sender:self];
     }
-    
-    // see if we lost the predicate for the fetchedResultsController
-    if (!_fetchedResultsController.fetchRequest.predicate)
+    else
     {
-        [self forcedClearOfTableView];
+        // see if we lost the predicate for the fetchedResultsController
+        if (!_fetchedResultsController.fetchRequest.predicate)
+        {
+            [self forcedClearOfTableView];
+        }
+        
+        if (_resetAfterLogin)
+        {
+            [self forcedClearOfTableView];
+        }
+        
+        [self askForHelp];
+        
+        self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
+        
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker set:kGAIScreenName value:@"My Deals Screen"];
+        [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
-    
-    if (_resetAfterLogin)
-    {
-        [self forcedClearOfTableView];
-    }
-    
-    [self askForHelp];
-    
-    self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
-    
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"My Deals Screen"];
-    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
 
@@ -415,6 +417,10 @@
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
     [self resetFetchedResultsController:NO];
+    if ([self merchantCount] > 0)
+    {
+        [TSMessage dismissActiveNotification];
+    }
 }
 
 - (void) dealAcquireOperationComplete:(NSDictionary *)response

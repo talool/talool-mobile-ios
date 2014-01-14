@@ -57,11 +57,11 @@
 
 - (NSString *) getDistanceLabel:(NSNumber *)miles
 {
-    NSString *label;
+    NSString *label = @" ";
     
     if (miles && [miles intValue] > 0)
     {
-        if ([miles intValue] > 100)
+        if ([miles intValue] > 10000)
         {
             label = @"far, far away";
         }

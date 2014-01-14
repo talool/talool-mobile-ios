@@ -99,8 +99,6 @@
 
 - (void) displayError:(NSError *)error
 {
-    // close the modal
-    [self.navigationController popViewControllerAnimated:YES];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"GIFT"
@@ -180,6 +178,15 @@
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         [self displayError:error];
     }
+}
+
+
+#pragma mark -
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // close the modal
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

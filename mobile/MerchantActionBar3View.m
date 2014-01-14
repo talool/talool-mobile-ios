@@ -10,6 +10,7 @@
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation MerchantActionBar3View
 
@@ -46,15 +47,7 @@
 
 - (void)setMerchantImage:(NSString *)url
 {
-    [image setImageWithURL:[NSURL URLWithString:url]
-         placeholderImage:[UIImage imageNamed:@"000.png"]
-                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                    if (error !=  nil) {
-                        // TODO track these errors
-                        NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                    }
-                    
-                }];
+    [image setImageWithURL:[NSURL URLWithString:url] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 }
 
 - (IBAction)mapAction:(id)sender {

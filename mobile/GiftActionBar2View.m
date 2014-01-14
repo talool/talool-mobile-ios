@@ -17,6 +17,7 @@
 #import "FacebookHelper.h"
 #import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @implementation GiftActionBar2View
 
@@ -51,15 +52,7 @@
 
 - (void) updateView:(ttGift *)gift
 {
-    [dealImage setImageWithURL:[NSURL URLWithString:gift.deal.imageUrl]
-              placeholderImage:[UIImage imageNamed:@"000.png"]
-                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                         if (error !=  nil) {
-                             // TODO track these errors
-                             NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                         }
-                         
-                     }];
+    [dealImage setImageWithURL:[NSURL URLWithString:gift.deal.imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     [inactiveView setHidden:YES];
     [twoButtonView setHidden:NO];
