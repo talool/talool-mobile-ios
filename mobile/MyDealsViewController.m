@@ -78,6 +78,7 @@
     self.navigationItem.leftBarButtonItem = filterButton;
     
     _sortDescriptors = [NSArray arrayWithObjects:
+                        [NSSortDescriptor sortDescriptorWithKey:@"closestLocation.distanceInMeters" ascending:YES],
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
     

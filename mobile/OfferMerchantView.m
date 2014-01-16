@@ -49,7 +49,7 @@
         dealOfferImage.image = [UIImage imageNamed:@"DealOfferBG"];
     }
     
-    [merchantLogo setImageWithURL:[NSURL URLWithString:[merchant getClosestLocation].logoUrl]
+    [merchantLogo setImageWithURL:[NSURL URLWithString:merchant.closestLocation.logoUrl]
                    placeholderImage:[UIImage imageNamed:@"000.png"]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               if (error !=  nil) {

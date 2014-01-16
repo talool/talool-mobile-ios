@@ -306,7 +306,7 @@
             }
             else
             {
-                [FacebookHelper postOGGiftAction:giftId toFacebookId:self.facebookId atLocation:[deal.deal.merchant getClosestLocation]];
+                [FacebookHelper postOGGiftAction:giftId toFacebookId:self.facebookId atLocation:deal.deal.merchant.closestLocation];
             }
         }
     });

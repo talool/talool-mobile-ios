@@ -52,7 +52,7 @@
         
         if (result)
         {
-            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:[deal.deal.merchant getClosestLocation]];
+            [FacebookHelper postOGRedeemAction:(ttDeal *)deal.deal atLocation:deal.deal.merchant.closestLocation];
         }
         
         if (self.delegate)

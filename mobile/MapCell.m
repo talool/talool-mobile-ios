@@ -39,7 +39,7 @@
         //  we'll center the map on the first location
         if (i==0)
         {
-            centerLocation = [deal.merchant getClosestLocation];
+            centerLocation = deal.merchant.closestLocation;
         }
     }
     
@@ -68,7 +68,7 @@
 - (void) setMerchant:(ttMerchant *)merchant
 {
     [self plotMerchantLocations:merchant];
-    [self centerMap:[merchant getClosestLocation]];
+    [self centerMap:merchant.closestLocation];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)locationMapView viewForAnnotation:(id <MKAnnotation>)annotation {

@@ -17,7 +17,7 @@
 -(void) setMerchant:(ttMerchant *)merchant;
 {
     
-    ttMerchantLocation *merchantLocation = [merchant getClosestLocation];
+    ttMerchantLocation *merchantLocation = merchant.closestLocation;
     
     [merchantLogo setImageWithURL:[NSURL URLWithString: merchantLocation.logoUrl]
          placeholderImage:[UIImage imageNamed:@"000.png"]

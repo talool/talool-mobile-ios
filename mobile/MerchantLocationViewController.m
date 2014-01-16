@@ -63,7 +63,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self centerMap:[merchant getClosestLocation]];
+    [self centerMap:merchant.closestLocation];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {

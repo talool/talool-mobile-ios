@@ -26,7 +26,7 @@
     
    
     NSString *countLabel = [self getDealCountLabel:count];
-    NSString *milesLabel = [self getDistanceLabel:[[merchant getClosestLocation] getDistanceInMiles]];
+    NSString *milesLabel = [self getDistanceLabel:[merchant.closestLocation getDistanceInMiles]];
     if (countLabel && milesLabel)
     {
         [distanceLabel setText:[NSString stringWithFormat:@"%@, %@",countLabel, milesLabel]];

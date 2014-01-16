@@ -88,7 +88,7 @@
     
     self.navigationItem.title = merchant.name;
     
-    NSString *url = [merchant getClosestLocation].imageUrl;
+    NSString *url = merchant.closestLocation.imageUrl;
     [actionBar3View setMerchantImage:url];
     
     [self setLikeLabel];
@@ -139,7 +139,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showWebsite"])
     {
-        ttMerchantLocation *loc = [merchant getClosestLocation];
+        ttMerchantLocation *loc = merchant.closestLocation;
         [[segue destinationViewController] setMobileWebUrl:loc.websiteUrl];
         [[segue destinationViewController] setViewTitle:merchant.name];
     }
@@ -310,7 +310,7 @@
                                                            label:@"Call"
                                                            value:nil] build]];
     
-    ttMerchantLocation *loc = [merchant getClosestLocation];
+    ttMerchantLocation *loc = merchant.closestLocation;
     
     NSMutableString *cleanPhoneNumber = [NSMutableString
                                        stringWithCapacity:10];
