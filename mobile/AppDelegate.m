@@ -433,6 +433,7 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
 	TTLog(@"Device token is: %@", deviceToken);
+    [[TaloolFrameworkHelper sharedInstance] setApnDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
