@@ -70,12 +70,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 -(void)viewWillAppear:(BOOL)animated
 {

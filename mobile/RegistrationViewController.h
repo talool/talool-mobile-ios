@@ -21,8 +21,6 @@
     IBOutlet UITableViewCell *datePickerCell;
     IBOutlet UIDatePicker *datePicker;
     
-    UIAlertView *errorView;
-    
     IBOutlet TaloolUIButton *regButton;
 }
 
@@ -30,8 +28,6 @@
 
 - (IBAction)regAction:(id)sender;
 - (IBAction)dateAction:(id)sender;
-
-@property (nonatomic, retain) UIAlertView *errorView;
 
 @property (strong, nonatomic) ttCustomer *failedUser;
 

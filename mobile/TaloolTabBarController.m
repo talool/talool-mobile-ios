@@ -62,12 +62,6 @@
                                                object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void) updateBadge:(NSNumber *)count
 {
     NSString *badge;

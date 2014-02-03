@@ -309,8 +309,8 @@
         UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
                                                             message:@"We've updated your account with new deals.  Would you like to see them now?"
                                                            delegate:self
-                                                  cancelButtonTitle:@"Yes"
-                                                  otherButtonTitles:@"No",nil];
+                                                  cancelButtonTitle:@"No"
+                                                  otherButtonTitles:@"Yes",nil];
         [showMe show];
 
     }
@@ -344,6 +344,7 @@
     {
         // take the user to the "my deals" tab
         [self.mainViewController setSelectedIndex:0];
+        [self.mainViewController.selectedViewController.navigationController popToRootViewControllerAnimated:NO];
     }
 }
 

@@ -105,12 +105,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -136,6 +130,9 @@
         [self askForHelp];
         
         self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
+        
+        [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                         subtitle:[_menu getSubtitleAtSelectedIndex]];
         
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
         [tracker set:kGAIScreenName value:@"My Deals Screen"];
@@ -317,7 +314,6 @@
     }
     
     [self.tableView reloadData];
-    
 }
 
 #pragma mark -
@@ -422,6 +418,8 @@
     {
         [TSMessage dismissActiveNotification];
     }
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
 }
 
 - (void) dealAcquireOperationComplete:(NSDictionary *)response
@@ -438,12 +436,14 @@
                 UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got a new Deal!"
                                                                  message:[NSString stringWithFormat:@"We've updated your account with a new deal for %@ at %@.  Would you like to see it now?", _giftedDeal.deal.title, _giftedDeal.deal.merchant.name]
                                                                 delegate:self
-                                                       cancelButtonTitle:@"Yes"
-                                                       otherButtonTitles:@"No",nil];
+                                                       cancelButtonTitle:@"No"
+                                                       otherButtonTitles:@"Yes",nil];
                 [showMe show];
             }
         }
         _giftId = nil;
+        [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                         subtitle:[_menu getSubtitleAtSelectedIndex]];
     }
 }
 

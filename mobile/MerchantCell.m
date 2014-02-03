@@ -59,7 +59,7 @@
 {
     NSString *label = @" ";
     
-    if (miles && [miles intValue] > 0)
+    if (miles)
     {
         if ([miles intValue] > 10000)
         {

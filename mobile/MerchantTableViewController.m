@@ -88,8 +88,7 @@
     
     self.navigationItem.title = merchant.name;
     
-    NSString *url = merchant.closestLocation.imageUrl;
-    [actionBar3View setMerchantImage:url];
+    [actionBar3View setMerchantImage:merchant.closestLocation.imageUrl];
     
     [self setLikeLabel];
     

@@ -87,14 +87,6 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -103,6 +95,9 @@
     {
         [self forcedClearOfTableView];
     }
+    
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Activity Screen"];

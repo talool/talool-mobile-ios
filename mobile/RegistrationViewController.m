@@ -41,7 +41,7 @@
 
 @implementation RegistrationViewController
 
-@synthesize errorView, failedUser;
+@synthesize failedUser;
 
 - (void)viewDidLoad
 {
