@@ -3,7 +3,7 @@ PODS:
   - EAIntroView (2.0.0)
   - Facebook-iOS-SDK (3.11.0)
   - FontAwesomeKit (1.1.4)
-  - GoogleAnalytics-iOS-SDK (3.0.2)
+  - GoogleAnalytics-iOS-SDK (3.0.3)
   - HexColors (2.2.1)
   - REMenu (1.7.1)
   - SDWebImage (3.5.2):
@@ -45,7 +45,7 @@ SPEC CHECKSUMS:
   EAIntroView: fe7769195d4af0fcb1bf6ad1c104e8749c2ead22
   Facebook-iOS-SDK: 2eb12f9ed04f3d3956f0a4fb0e4e60c824dcd101
   FontAwesomeKit: 5898a51ceadcdb05d72b04991ecf04469332b20c
-  GoogleAnalytics-iOS-SDK: 86393b99f7328ae8d8e975fcaa8632a39dafafe8
+  GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
