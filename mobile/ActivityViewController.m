@@ -118,6 +118,8 @@
 {
     _resetAfterLogin = YES;
     [_menu setSelectedIndex:0];
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
 }
 
 - (void)filterMenu:(UIBarButtonItem *)sender
@@ -139,6 +141,8 @@
 - (void) handleActivity:(NSNotification *)message
 {
     [self resetFetchedResultsController:NO];
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
 }
 
 - (void) handleAcceptedGift:(NSNotification *)message
@@ -378,6 +382,9 @@
     }
     
     [self resetFetchedResultsController:NO];
+    
+    [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
+                     subtitle:[_menu getSubtitleAtSelectedIndex]];
 }
 
 

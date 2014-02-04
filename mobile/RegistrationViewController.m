@@ -275,7 +275,7 @@
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         
-        // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+        // show error message 
         [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
