@@ -8,6 +8,7 @@
 
 #import "TutorialViewController.h"
 #import "UIImage+H568.h"
+#import <TaloolColor.h>
 
 @interface TutorialViewController ()
 
@@ -77,6 +78,7 @@
     
     EAIntroView *intro = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page0, page1,page2, page3, page4, page5]];
     [intro setDelegate:self];
+    [intro setBackgroundColor:[TaloolColor teal]];
     
     [intro showInView:self.view animateDuration:0.0];
 }

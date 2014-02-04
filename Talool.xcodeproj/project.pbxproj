@@ -37,9 +37,7 @@
 		817A5A43185FAE6F0010FEE9 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */; };
 		817A5A521860DB5E0010FEE9 /* welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */; };
 		817A5A561860DB5E0010FEE9 /* welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */; };
-		817A5A571860DB5E0010FEE9 /* welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A511860DB5E0010FEE9 /* welcome5-568h@2x.png */; };
 		817A5A5B1860E7220010FEE9 /* welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */; };
-		817A5A5C1860E7220010FEE9 /* welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A591860E7220010FEE9 /* welcome2-568h@2x.png */; };
 		817A5A5D1860E7220010FEE9 /* welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */; };
 		818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
 		8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
@@ -106,6 +104,14 @@
 		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
 		81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
 		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
+		81C23DFE18A0839700127F83 /* welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23DF818A0839700127F83 /* welcome0@2x.png */; };
+		81C23E1318A086A000127F83 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
+		81C23E1518A086A000127F83 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
+		81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
+		81C23E1A18A13E2E00127F83 /* welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */; };
+		81C23E1B18A13E2E00127F83 /* welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */; };
+		81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1C18A13E4400127F83 /* welcome2@2x.png */; };
+		81C23E1F18A13E4400127F83 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
 		81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
 		81E3AA6317EB71D100B5EE5A /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
 		81E5504F17F9EB1C000BF3A5 /* TaloolLogoIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */; };
@@ -204,9 +210,7 @@
 		817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome0-568h@2x.png"; sourceTree = "<group>"; };
 		817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4-568h@2x.png"; sourceTree = "<group>"; };
-		817A5A511860DB5E0010FEE9 /* welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5-568h@2x.png"; sourceTree = "<group>"; };
 		817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome1-568h@2x.png"; sourceTree = "<group>"; };
-		817A5A591860E7220010FEE9 /* welcome2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome2-568h@2x.png"; sourceTree = "<group>"; };
 		817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome3-568h@2x.png"; sourceTree = "<group>"; };
 		817E53841770CE180049434A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		818641701798FED100DE0C2E /* DealActionBar3View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DealActionBar3View.xib; sourceTree = "<group>"; };
@@ -318,6 +322,14 @@
 		81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDealLayoutState.m; sourceTree = "<group>"; };
 		81BD12C31791BCA300AF7475 /* DealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLayoutState.h; sourceTree = "<group>"; };
 		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
+		81C23DF818A0839700127F83 /* welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome0@2x.png"; sourceTree = "<group>"; };
+		81C23E0E18A086A000127F83 /* welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome1@2x.png"; sourceTree = "<group>"; };
+		81C23E1018A086A000127F83 /* welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome3@2x.png"; sourceTree = "<group>"; };
+		81C23E1118A086A000127F83 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
+		81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome2-568h@2x.png"; sourceTree = "<group>"; };
+		81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5-568h@2x.png"; sourceTree = "<group>"; };
+		81C23E1C18A13E4400127F83 /* welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome2@2x.png"; sourceTree = "<group>"; };
+		81C23E1D18A13E4400127F83 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		81E3AA5E17EB5E5F00B5EE5A /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		81E3AA6117EB71D100B5EE5A /* TaloolAppCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolAppCall.h; sourceTree = "<group>"; };
@@ -722,12 +734,18 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81C23DF818A0839700127F83 /* welcome0@2x.png */,
+				81C23E0E18A086A000127F83 /* welcome1@2x.png */,
+				81C23E1C18A13E4400127F83 /* welcome2@2x.png */,
+				81C23E1018A086A000127F83 /* welcome3@2x.png */,
+				81C23E1118A086A000127F83 /* welcome4@2x.png */,
+				81C23E1D18A13E4400127F83 /* welcome5@2x.png */,
 				817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */,
 				817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */,
-				817A5A591860E7220010FEE9 /* welcome2-568h@2x.png */,
+				81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */,
 				817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */,
 				817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */,
-				817A5A511860DB5E0010FEE9 /* welcome5-568h@2x.png */,
+				81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */,
 				819A0E20183D0653008D43C8 /* DealOfferIcon.png */,
 				819A0E24183D19E9008D43C8 /* DealOfferBG.png */,
 				819092D117FCCB0800699C39 /* compass.png */,
@@ -898,23 +916,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */,
 				819B27651844228900105479 /* OfferSummaryView.xib in Resources */,
 				81867EC817CFEC7A0069EC9E /* Icon_120.png in Resources */,
 				817A5A5D1860E7220010FEE9 /* welcome3-568h@2x.png in Resources */,
 				817A5A561860DB5E0010FEE9 /* welcome4-568h@2x.png in Resources */,
+				81C23E1F18A13E4400127F83 /* welcome5@2x.png in Resources */,
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				81517B4F17FBB5470020A688 /* hero@2x.png in Resources */,
+				81C23DFE18A0839700127F83 /* welcome0@2x.png in Resources */,
 				8127D59B187E0753009B4340 /* MessageDesign.json in Resources */,
 				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
 				81A869B217750BA30043ACE8 /* SimpleHeaderView.xib in Resources */,
+				81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
 				818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */,
-				817A5A571860DB5E0010FEE9 /* welcome5-568h@2x.png in Resources */,
 				81A57C8717EBA57A00A68B71 /* TaloolLogoAndIcon.png in Resources */,
 				819B26D9179B8AA200744C04 /* MerchantActionBar3View.xib in Resources */,
 				81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */,
+				81C23E1B18A13E2E00127F83 /* welcome5-568h@2x.png in Resources */,
+				81C23E1A18A13E2E00127F83 /* welcome2-568h@2x.png in Resources */,
 				8130BFC51841412B00EE30B9 /* OfferMerchantView.xib in Resources */,
 				8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */,
 				8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */,
@@ -926,10 +949,11 @@
 				819A0E21183D0653008D43C8 /* DealOfferIcon.png in Resources */,
 				819092D417FCCB3B00699C39 /* no-wifi-icon.png in Resources */,
 				81AE6DDC17A1D938000596E8 /* ribbonbadge@2x.png in Resources */,
-				817A5A5C1860E7220010FEE9 /* welcome2-568h@2x.png in Resources */,
+				81C23E1518A086A000127F83 /* welcome3@2x.png in Resources */,
 				81AE459517A379D300F5643E /* Icon.png in Resources */,
 				817A5A521860DB5E0010FEE9 /* welcome0-568h@2x.png in Resources */,
 				81AE459617A379D300F5643E /* Icon@2x.png in Resources */,
+				81C23E1318A086A000127F83 /* welcome1@2x.png in Resources */,
 				817A5A5B1860E7220010FEE9 /* welcome1-568h@2x.png in Resources */,
 				819092CF17FCB2CF00699C39 /* Default.png in Resources */,
 				819092D017FCB2CF00699C39 /* Default@2x.png in Resources */,
