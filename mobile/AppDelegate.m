@@ -45,8 +45,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-#warning @"Environment set to dev"
-    [[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+//#warning @"Environment set to dev"
+    //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
     
     //For now, register for all types of notifications
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
@@ -249,7 +249,7 @@
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     
-    [[UIApplication sharedApplication] performSelector:@selector(_performMemoryWarning)];
+    //[[UIApplication sharedApplication] performSelector:@selector(_performMemoryWarning)];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
