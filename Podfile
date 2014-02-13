@@ -1,5 +1,5 @@
 platform :ios, :deployment_target => "7.0"
-pod 'Talool-API', :git => "https://github.com/talool/talool-api-ios.git", :branch => "refactor1"
+pod 'Talool-API', :git => "https://github.com/talool/talool-api-ios.git", :tag => "v1.2.1"
 pod 'Braintree', :git => "https://github.com/braintree/braintree_ios.git", :tag => "2.2.4"
 pod 'Facebook-iOS-SDK', "~> 3.11"
 pod 'FontAwesomeKit', "~> 1.1.3"
