@@ -111,7 +111,22 @@
     }
     
     NSError *error;
-    NSDictionary *responseData = [ttActivity getActivities:user context:[self getContext] error:&error];
+    NSDictionary *responseData;
+    CLLocation *location = [LocationHelper sharedInstance].lastLocation;
+    if (location)
+    {
+        responseData = [ttActivity getMessages:user
+                                      latitude:location.coordinate.latitude
+                                     longitude:location.coordinate.longitude
+                                       context:[self getContext]
+                                         error:&error];
+    }
+    else
+    {
+        responseData = [ttActivity getActivities:user context:[self getContext] error:&error];
+    }
+    
+    
     self.response = responseData;
     self.error = error;
     dispatch_async(dispatch_get_main_queue(),^{
