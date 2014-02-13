@@ -45,7 +45,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-//#warning @"Environment set to dev"
+    //#warning @"Environment set to dev"
     //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
     
     //For now, register for all types of notifications
