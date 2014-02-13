@@ -1,7 +1,7 @@
 PODS:
   - Braintree (2.2.4)
   - EAIntroView (2.2.1)
-  - Facebook-iOS-SDK (3.11.1)
+  - Facebook-iOS-SDK (3.12.0)
   - FontAwesomeKit (1.1.4)
   - GoogleAnalytics-iOS-SDK (3.0.3)
   - HexColors (2.2.1)
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Braintree: 3135689620aa8d8ce76d515c615ef8bfe8b416a4
   EAIntroView: 7bc9e6b0738999343faf8e4a8b092b2b1218332b
-  Facebook-iOS-SDK: 42a1de39170b858d675c2453d8aace55c51be2bb
+  Facebook-iOS-SDK: c09f7d80db5c48170ff834bc03ebe774c49d1f5b
   FontAwesomeKit: 5898a51ceadcdb05d72b04991ecf04469332b20c
   GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
