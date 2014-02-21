@@ -10,7 +10,7 @@ PODS:
     - SDWebImage/Core
   - SDWebImage/Core (3.5.2)
   - SVProgressHUD (1.0)
-  - Talool-API (1.2.2):
+  - Talool-API (1.2.3):
     - GoogleAnalytics-iOS-SDK (~> 3.0.1)
   - TestFlightSDK (2.0.2)
   - TSMessages (0.9.4):
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - REMenu (~> 1.7.1)
   - SDWebImage (~> 3.5.2)
   - SVProgressHUD (~> 1.0)
-  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.2.2`)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.2.3`)
   - TestFlightSDK (~> 2.0.2)
   - TSMessages (~> 0.9.4)
   - UIActivityIndicator-for-SDWebImage (~> 1.0.3)
@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
     :tag: 2.2.4
   Talool-API:
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.2.2
+    :tag: v1.2.3
 
 SPEC CHECKSUMS:
   Braintree: 3135689620aa8d8ce76d515c615ef8bfe8b416a4
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  Talool-API: 7012a44911273cd2137a724b7b40bad1bb58590e
+  Talool-API: 99c923f79434e44fa29b86c4c07e8de1caffae46
   TestFlightSDK: 0811097c1f831afb71f68ccd07ae71325cb90f43
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   UIActivityIndicator-for-SDWebImage: e712b97826395022ce7b4a4b56eb7194090c19d5
