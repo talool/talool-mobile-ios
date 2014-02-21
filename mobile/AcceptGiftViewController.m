@@ -83,6 +83,8 @@
                                                actionDelegate:self];
     [actionBarView updateView:_gift];
     [self.tableView reloadData];
+    
+    self.navigationItem.title = _gift.deal.merchant.name;
 }
 
 - (void)acceptGift:(id)sender
