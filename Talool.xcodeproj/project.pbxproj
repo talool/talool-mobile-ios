@@ -1187,7 +1187,8 @@
 			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1210,7 +1211,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;
-				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1220,7 +1221,8 @@
 			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1243,7 +1245,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Talool;
-				PROVISIONING_PROFILE = "21F45FC3-0900-4C0C-B738-D342746BEFC8";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

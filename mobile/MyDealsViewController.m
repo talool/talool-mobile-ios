@@ -413,6 +413,22 @@
 
 - (void) merchantOperationComplete:(NSDictionary *)response
 {
+    // Hacky fix for a bug related to distance not being updated in the list
+    bool locationEnabled = [response objectForKey:DELEGATE_RESPONSE_LOCATION_ENABLED];
+    if (locationEnabled)
+    {
+        NSManagedObjectContext *context = [CustomerHelper getContext];
+        NSArray *merchants = [ttMerchant fetchMerchants:context
+                                           withPredicate:[NSPredicate predicateWithFormat:@"customer != nil"]];
+        for (ttMerchant *merchant in merchants)
+        {
+            if ([merchant.closestLocation getDistanceInMiles].intValue==0)
+            {
+                [context refreshObject:merchant.closestLocation mergeChanges:YES];
+            }
+        }
+    }
+    
     [self resetFetchedResultsController:NO];
     if ([self merchantCount] > 0)
     {

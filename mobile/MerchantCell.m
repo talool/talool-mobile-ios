@@ -65,7 +65,7 @@
         {
             label = @"far, far away";
         }
-        else
+        else if ([miles intValue] > 0)
         {
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             [formatter setPositiveFormat:@"###0.##"];
