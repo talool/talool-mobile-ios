@@ -267,6 +267,7 @@
     [[LocationHelper sharedInstance] handleForegroundState];
 
     [self setUserAgent];
+    [[TaloolFrameworkHelper sharedInstance] setWhiteLabelId:[CustomerHelper getWhiteLabelId]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

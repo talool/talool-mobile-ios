@@ -31,6 +31,151 @@
 		81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
 		81517B4F17FBB5470020A688 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
 		81517B5217FC62650020A688 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
+		8155F99118BE9F6F00314DB3 /* MerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276E18450C1F00105479 /* MerchantOperation.m */; };
+		8155F99218BE9F6F00314DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E5505117F9FB58000BF3A5 /* LoginViewController.m */; };
+		8155F99318BE9F6F00314DB3 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
+		8155F99418BE9F6F00314DB3 /* TaloolOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27671844FBC900105479 /* TaloolOperation.m */; };
+		8155F99518BE9F6F00314DB3 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
+		8155F99618BE9F6F00314DB3 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
+		8155F99718BE9F6F00314DB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111816D1E53800CEE814 /* main.m */; };
+		8155F99818BE9F6F00314DB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
+		8155F99918BE9F6F00314DB3 /* DealAcquireOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277218450C1F00105479 /* DealAcquireOperation.m */; };
+		8155F99A18BE9F6F00314DB3 /* GiftOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2CF184AA73300FF0AFB /* GiftOperation.m */; };
+		8155F99B18BE9F6F00314DB3 /* SendPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A57C8B17ECEAA400A68B71 /* SendPasswordResetViewController.m */; };
+		8155F99C18BE9F6F00314DB3 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
+		8155F99D18BE9F6F00314DB3 /* MerchantFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0CF1864B57A00E905B5 /* MerchantFilterMenu.m */; };
+		8155F99E18BE9F6F00314DB3 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
+		8155F99F18BE9F6F00314DB3 /* DealAcquireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* DealAcquireCell.m */; };
+		8155F9A018BE9F6F00314DB3 /* DealOfferDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC718439C9300EE30B9 /* DealOfferDealCell.m */; };
+		8155F9A118BE9F6F00314DB3 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
+		8155F9A218BE9F6F00314DB3 /* FindDealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBBA1836D065006E39EC /* FindDealsTableViewController.m */; };
+		8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
+		8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
+		8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
+		8155F9A618BE9F6F00314DB3 /* ActivateCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B4817FB7F070020A688 /* ActivateCodeViewController.m */; };
+		8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
+		8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
+		8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
+		8155F9AA18BE9F6F00314DB3 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
+		8155F9AB18BE9F6F00314DB3 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D7F174810A600622A85 /* CategoryHelper.m */; };
+		8155F9AC18BE9F6F00314DB3 /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
+		8155F9AD18BE9F6F00314DB3 /* CategoryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276A18450C1F00105479 /* CategoryOperation.m */; };
+		8155F9AE18BE9F6F00314DB3 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
+		8155F9AF18BE9F6F00314DB3 /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		8155F9B018BE9F6F00314DB3 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
+		8155F9B118BE9F6F00314DB3 /* OfferMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC21841410900EE30B9 /* OfferMerchantView.m */; };
+		8155F9B218BE9F6F00314DB3 /* TaloolFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D51864F80000E905B5 /* TaloolFilterMenu.m */; };
+		8155F9B318BE9F6F00314DB3 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		8155F9B418BE9F6F00314DB3 /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
+		8155F9B518BE9F6F00314DB3 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
+		8155F9B618BE9F6F00314DB3 /* LogoutOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27851845536600105479 /* LogoutOperation.m */; };
+		8155F9B718BE9F6F00314DB3 /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
+		8155F9B818BE9F6F00314DB3 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
+		8155F9B918BE9F6F00314DB3 /* UserAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277F1845457C00105479 /* UserAuthenticationOperation.m */; };
+		8155F9BA18BE9F6F00314DB3 /* MyDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D174177394BC0035F589 /* MyDealsViewController.m */; };
+		8155F9BB18BE9F6F00314DB3 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1771773EF130035F589 /* ActivityViewController.m */; };
+		8155F9BC18BE9F6F00314DB3 /* SimpleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869AC17750B810043ACE8 /* SimpleHeaderView.m */; };
+		8155F9BD18BE9F6F00314DB3 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B4177633220043ACE8 /* LocationHelper.m */; };
+		8155F9BE18BE9F6F00314DB3 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */; };
+		8155F9BF18BE9F6F00314DB3 /* ActivityFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D21864D8EC00E905B5 /* ActivityFilterMenu.m */; };
+		8155F9C018BE9F6F00314DB3 /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
+		8155F9C118BE9F6F00314DB3 /* FacebookAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277C1845259100105479 /* FacebookAuthenticationOperation.m */; };
+		8155F9C218BE9F6F00314DB3 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D8185219F100FF0AFB /* PersonViewController.m */; };
+		8155F9C318BE9F6F00314DB3 /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
+		8155F9C418BE9F6F00314DB3 /* MerchantDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */; };
+		8155F9C518BE9F6F00314DB3 /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
+		8155F9C618BE9F6F00314DB3 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
+		8155F9C718BE9F6F00314DB3 /* OfferSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27621844227200105479 /* OfferSummaryView.m */; };
+		8155F9C818BE9F6F00314DB3 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
+		8155F9C918BE9F6F00314DB3 /* FavoriteMerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */; };
+		8155F9CA18BE9F6F00314DB3 /* RegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27821845459700105479 /* RegistrationOperation.m */; };
+		8155F9CB18BE9F6F00314DB3 /* OfferActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127217872AD000AF7475 /* OfferActionView.m */; };
+		8155F9CC18BE9F6F00314DB3 /* OfferSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12771787575A00AF7475 /* OfferSummaryCell.m */; };
+		8155F9CD18BE9F6F00314DB3 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* MapCell.m */; };
+		8155F9CE18BE9F6F00314DB3 /* ActivityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277018450C1F00105479 /* ActivityOperation.m */; };
+		8155F9CF18BE9F6F00314DB3 /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBB71836D032006E39EC /* DealOfferCell.m */; };
+		8155F9D018BE9F6F00314DB3 /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD129F178F117500AF7475 /* MerchantTableViewController.m */; };
+		8155F9D118BE9F6F00314DB3 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A9178F37B200AF7475 /* DealTableViewController.m */; };
+		8155F9D218BE9F6F00314DB3 /* DealDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B2178F453C00AF7475 /* DealDetailCell.m */; };
+		8155F9D318BE9F6F00314DB3 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
+		8155F9D418BE9F6F00314DB3 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
+		8155F9D518BE9F6F00314DB3 /* DealOfferOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */; };
+		8155F9D618BE9F6F00314DB3 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
+		8155F9D718BE9F6F00314DB3 /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
+		8155F9D818BE9F6F00314DB3 /* DealLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26BD179B1DA400744C04 /* DealLocationCell.m */; };
+		8155F9D918BE9F6F00314DB3 /* EmailConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */; };
+		8155F9DA18BE9F6F00314DB3 /* DealOfferLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26C0179B203200744C04 /* DealOfferLogoCell.m */; };
+		8155F9DB18BE9F6F00314DB3 /* MerchantActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26D6179B8A8200744C04 /* MerchantActionBar3View.m */; };
+		8155F9DC18BE9F6F00314DB3 /* AuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B2779184524E300105479 /* AuthenticationOperation.m */; };
+		8155F9DD18BE9F6F00314DB3 /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
+		8155F9DE18BE9F6F00314DB3 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81471F3E179F0B3800C6DAB8 /* SplashViewController.m */; };
+		8155F9DF18BE9F6F00314DB3 /* UIImage+H568.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DB117A02053000596E8 /* UIImage+H568.m */; };
+		8155F9E018BE9F6F00314DB3 /* OperationQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */; };
+		8155F9E118BE9F6F00314DB3 /* DealOfferMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFCA18439CAC00EE30B9 /* DealOfferMerchantCell.m */; };
+		8155F9E218BE9F6F00314DB3 /* GiftActionBar2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */; };
+		8155F9E318BE9F6F00314DB3 /* DefaultGiftLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */; };
+		8155F9E418BE9F6F00314DB3 /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
+		8155F9E618BE9F6F00314DB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
+		8155F9E718BE9F6F00314DB3 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
+		8155F9E818BE9F6F00314DB3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
+		8155F9E918BE9F6F00314DB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919A3310174510A90093FAC4 /* MapKit.framework */; };
+		8155F9EA18BE9F6F00314DB3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
+		8155F9EB18BE9F6F00314DB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
+		8155F9EC18BE9F6F00314DB3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C8170342C800ED4844 /* CoreVideo.framework */; };
+		8155F9ED18BE9F6F00314DB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C4170342B000ED4844 /* AVFoundation.framework */; };
+		8155F9EE18BE9F6F00314DB3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C5170342B000ED4844 /* CoreMedia.framework */; };
+		8155F9EF18BE9F6F00314DB3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8155F9F018BE9F6F00314DB3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8155F9F118BE9F6F00314DB3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8155F9F218BE9F6F00314DB3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
+		8155F9F318BE9F6F00314DB3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
+		8155F9F418BE9F6F00314DB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
+		8155F9F518BE9F6F00314DB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
+		8155F9F618BE9F6F00314DB3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
+		8155F9F718BE9F6F00314DB3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
+		8155F9F818BE9F6F00314DB3 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
+		8155F9F918BE9F6F00314DB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749444CD6524D9DB18E06E3 /* libPods.a */; };
+		8155F9FB18BE9F6F00314DB3 /* welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1C18A13E4400127F83 /* welcome2@2x.png */; };
+		8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B27641844228900105479 /* OfferSummaryView.xib */; };
+		8155F9FE18BE9F6F00314DB3 /* welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */; };
+		8155F9FF18BE9F6F00314DB3 /* welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */; };
+		8155FA0018BE9F6F00314DB3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
+		8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103111516D1E53800CEE814 /* InfoPlist.strings */; };
+		8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
+		8155FA0318BE9F6F00314DB3 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
+		8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 8127D59A187E0753009B4340 /* MessageDesign.json */; };
+		8155FA0618BE9F6F00314DB3 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
+		8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B117750BA30043ACE8 /* SimpleHeaderView.xib */; };
+		8155FA0818BE9F6F00314DB3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
+		8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
+		8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
+		8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
+		8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */; };
+		8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B26D8179B8AA100744C04 /* MerchantActionBar3View.xib */; };
+		8155FA0E18BE9F6F00314DB3 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
+		8155FA0F18BE9F6F00314DB3 /* welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */; };
+		8155FA1018BE9F6F00314DB3 /* welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */; };
+		8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
+		8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */; };
+		8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */; };
+		8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
+		8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E20183D0653008D43C8 /* DealOfferIcon.png */; };
+		8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
+		8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
+		8155FA1C18BE9F6F00314DB3 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
+		8155FA2018BE9F6F00314DB3 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
+		8155FA2118BE9F6F00314DB3 /* welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */; };
+		8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
+		8155FA2518BE9F6F00314DB3 /* TaloolLogoIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */; };
+		8155FA2618BE9F6F00314DB3 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
+		8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */; };
+		8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */; };
+		8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3018BEA57500314DB3 /* SA_Icon_120.png */; };
+		8155FA3718BEA69600314DB3 /* SA_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */; };
+		8155FA3918BEA69600314DB3 /* SA_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3618BEA69600314DB3 /* SA_Default@2x.png */; };
+		8155FA3A18BEA99F00314DB3 /* welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23DF818A0839700127F83 /* welcome0@2x.png */; };
+		8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */; };
+		8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */; };
 		8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
 		8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D317CC0DA400061B62 /* Icon_58.png */; };
 		8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D417CC0DA400061B62 /* Icon_80.png */; };
@@ -104,7 +249,6 @@
 		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
 		81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
 		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
-		81C23DFE18A0839700127F83 /* welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23DF818A0839700127F83 /* welcome0@2x.png */; };
 		81C23E1318A086A000127F83 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
 		81C23E1518A086A000127F83 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
 		81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
@@ -202,6 +346,15 @@
 		81517B5017FC62650020A688 /* TaloolTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTextField.h; sourceTree = "<group>"; };
 		81517B5117FC62650020A688 /* TaloolTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTextField.m; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8155FA2B18BE9F6F00314DB3 /* SaveAround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAround.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8155FA2C18BE9F7000314DB3 /* SaveAround-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SaveAround-Info.plist"; path = "/Users/dmccuen/git/whitelabel/talool-mobile-ios/SaveAround-Info.plist"; sourceTree = "<absolute>"; };
+		8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_58.png; sourceTree = "<group>"; };
+		8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_80.png; sourceTree = "<group>"; };
+		8155FA3018BEA57500314DB3 /* SA_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_120.png; sourceTree = "<group>"; };
+		8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default-568h@2x.png"; sourceTree = "<group>"; };
+		8155FA3618BEA69600314DB3 /* SA_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default@2x.png"; sourceTree = "<group>"; };
+		8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero-568h@2x.png"; sourceTree = "<group>"; };
+		8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero@2x.png"; sourceTree = "<group>"; };
 		8157F8D117CC0D8000061B62 /* Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_120.png; sourceTree = "<group>"; };
 		8157F8D217CC0DA400061B62 /* Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_29.png; sourceTree = "<group>"; };
 		8157F8D317CC0DA400061B62 /* Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_58.png; sourceTree = "<group>"; };
@@ -405,6 +558,33 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8155F9E518BE9F6F00314DB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8155F9E618BE9F6F00314DB3 /* Security.framework in Frameworks */,
+				8155F9E718BE9F6F00314DB3 /* AddressBookUI.framework in Frameworks */,
+				8155F9E818BE9F6F00314DB3 /* CoreText.framework in Frameworks */,
+				8155F9E918BE9F6F00314DB3 /* MapKit.framework in Frameworks */,
+				8155F9EA18BE9F6F00314DB3 /* QuartzCore.framework in Frameworks */,
+				8155F9EB18BE9F6F00314DB3 /* ImageIO.framework in Frameworks */,
+				8155F9EC18BE9F6F00314DB3 /* CoreVideo.framework in Frameworks */,
+				8155F9ED18BE9F6F00314DB3 /* AVFoundation.framework in Frameworks */,
+				8155F9EE18BE9F6F00314DB3 /* CoreMedia.framework in Frameworks */,
+				8155F9EF18BE9F6F00314DB3 /* AdSupport.framework in Frameworks */,
+				8155F9F018BE9F6F00314DB3 /* Social.framework in Frameworks */,
+				8155F9F118BE9F6F00314DB3 /* Accounts.framework in Frameworks */,
+				8155F9F218BE9F6F00314DB3 /* CoreData.framework in Frameworks */,
+				8155F9F318BE9F6F00314DB3 /* CoreLocation.framework in Frameworks */,
+				8155F9F418BE9F6F00314DB3 /* UIKit.framework in Frameworks */,
+				8155F9F518BE9F6F00314DB3 /* Foundation.framework in Frameworks */,
+				8155F9F618BE9F6F00314DB3 /* CoreGraphics.framework in Frameworks */,
+				8155F9F718BE9F6F00314DB3 /* AddressBook.framework in Frameworks */,
+				8155F9F818BE9F6F00314DB3 /* ZXingObjC.framework in Frameworks */,
+				8155F9F918BE9F6F00314DB3 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9103110616D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -507,6 +687,21 @@
 				81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */,
 			);
 			name = "Customer Account";
+			sourceTree = "<group>";
+		};
+		8155FA2D18BEA39700314DB3 /* SaveAround */ = {
+			isa = PBXGroup;
+			children = (
+				8155FA2C18BE9F7000314DB3 /* SaveAround-Info.plist */,
+				8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */,
+				8155FA3618BEA69600314DB3 /* SA_Default@2x.png */,
+				8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */,
+				8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */,
+				8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */,
+				8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */,
+				8155FA3018BEA57500314DB3 /* SA_Icon_120.png */,
+			);
+			name = SaveAround;
 			sourceTree = "<group>";
 		};
 		81AE6DEC17A2B5DA000596E8 /* Deal Offer */ = {
@@ -639,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				9103110916D1E53800CEE814 /* Talool.app */,
+				8155FA2B18BE9F6F00314DB3 /* SaveAround.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -734,6 +930,7 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8155FA2D18BEA39700314DB3 /* SaveAround */,
 				81C23DF818A0839700127F83 /* welcome0@2x.png */,
 				81C23E0E18A086A000127F83 /* welcome1@2x.png */,
 				81C23E1C18A13E4400127F83 /* welcome2@2x.png */,
@@ -856,6 +1053,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8155F98E18BE9F6F00314DB3 /* SaveAround */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8155FA2818BE9F6F00314DB3 /* Build configuration list for PBXNativeTarget "SaveAround" */;
+			buildPhases = (
+				8155F98F18BE9F6F00314DB3 /* Check Pods Manifest.lock */,
+				8155F99018BE9F6F00314DB3 /* Sources */,
+				8155F9E518BE9F6F00314DB3 /* Frameworks */,
+				8155F9FA18BE9F6F00314DB3 /* Resources */,
+				8155FA2718BE9F6F00314DB3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaveAround;
+			productName = mobile;
+			productReference = 8155FA2B18BE9F6F00314DB3 /* SaveAround.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9103110816D1E53800CEE814 /* Talool */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9103114C16D1E53900CEE814 /* Build configuration list for PBXNativeTarget "Talool" */;
@@ -884,6 +1100,9 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Douglas McCuen";
 				TargetAttributes = {
+					8155F98E18BE9F6F00314DB3 = {
+						DevelopmentTeam = JWR4CXD4VG;
+					};
 					9103110816D1E53800CEE814 = {
 						DevelopmentTeam = JWR4CXD4VG;
 						SystemCapabilities = {
@@ -907,15 +1126,64 @@
 			projectRoot = "";
 			targets = (
 				9103110816D1E53800CEE814 /* Talool */,
+				8155F98E18BE9F6F00314DB3 /* SaveAround */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8155F9FA18BE9F6F00314DB3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8155F9FB18BE9F6F00314DB3 /* welcome2@2x.png in Resources */,
+				8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */,
+				8155FA3718BEA69600314DB3 /* SA_Default-568h@2x.png in Resources */,
+				8155F9FE18BE9F6F00314DB3 /* welcome3-568h@2x.png in Resources */,
+				8155F9FF18BE9F6F00314DB3 /* welcome4-568h@2x.png in Resources */,
+				8155FA0018BE9F6F00314DB3 /* welcome5@2x.png in Resources */,
+				8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */,
+				8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */,
+				8155FA0318BE9F6F00314DB3 /* hero@2x.png in Resources */,
+				8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */,
+				8155FA0618BE9F6F00314DB3 /* 000.png in Resources */,
+				8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */,
+				8155FA0818BE9F6F00314DB3 /* welcome4@2x.png in Resources */,
+				8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */,
+				8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */,
+				8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */,
+				8155FA3918BEA69600314DB3 /* SA_Default@2x.png in Resources */,
+				8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */,
+				8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */,
+				8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */,
+				8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */,
+				8155FA0E18BE9F6F00314DB3 /* hero-568h@2x.png in Resources */,
+				8155FA0F18BE9F6F00314DB3 /* welcome5-568h@2x.png in Resources */,
+				8155FA1018BE9F6F00314DB3 /* welcome2-568h@2x.png in Resources */,
+				8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */,
+				8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */,
+				8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */,
+				8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */,
+				8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */,
+				8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */,
+				8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */,
+				8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */,
+				8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */,
+				8155FA1C18BE9F6F00314DB3 /* welcome3@2x.png in Resources */,
+				8155FA2018BE9F6F00314DB3 /* welcome1@2x.png in Resources */,
+				8155FA2118BE9F6F00314DB3 /* welcome1-568h@2x.png in Resources */,
+				8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */,
+				8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */,
+				8155FA2518BE9F6F00314DB3 /* TaloolLogoIcon2.png in Resources */,
+				8155FA2618BE9F6F00314DB3 /* compass.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9103110716D1E53800CEE814 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8155FA3A18BEA99F00314DB3 /* welcome0@2x.png in Resources */,
 				81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */,
 				819B27651844228900105479 /* OfferSummaryView.xib in Resources */,
 				81867EC817CFEC7A0069EC9E /* Icon_120.png in Resources */,
@@ -925,7 +1193,6 @@
 				9103111716D1E53800CEE814 /* InfoPlist.strings in Resources */,
 				9103112616D1E53800CEE814 /* MainStoryboard.storyboard in Resources */,
 				81517B4F17FBB5470020A688 /* hero@2x.png in Resources */,
-				81C23DFE18A0839700127F83 /* welcome0@2x.png in Resources */,
 				8127D59B187E0753009B4340 /* MessageDesign.json in Resources */,
 				81937B1B176A38BB002DDCA8 /* 000.png in Resources */,
 				81A869B217750BA30043ACE8 /* SimpleHeaderView.xib in Resources */,
@@ -966,6 +1233,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8155F98F18BE9F6F00314DB3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8155FA2718BE9F6F00314DB3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA0F455FCD9744A4B2147823 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -999,6 +1296,97 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8155F99018BE9F6F00314DB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8155F99118BE9F6F00314DB3 /* MerchantOperation.m in Sources */,
+				8155F99218BE9F6F00314DB3 /* LoginViewController.m in Sources */,
+				8155F99318BE9F6F00314DB3 /* LocationCell.m in Sources */,
+				8155F99418BE9F6F00314DB3 /* TaloolOperation.m in Sources */,
+				8155F99518BE9F6F00314DB3 /* MerchantLocationAnnotation.m in Sources */,
+				8155F99618BE9F6F00314DB3 /* MerchantLocationViewController.m in Sources */,
+				8155F99718BE9F6F00314DB3 /* main.m in Sources */,
+				8155F99818BE9F6F00314DB3 /* AppDelegate.m in Sources */,
+				8155F99918BE9F6F00314DB3 /* DealAcquireOperation.m in Sources */,
+				8155F99A18BE9F6F00314DB3 /* GiftOperation.m in Sources */,
+				8155F99B18BE9F6F00314DB3 /* SendPasswordResetViewController.m in Sources */,
+				8155F99C18BE9F6F00314DB3 /* MerchantCell.m in Sources */,
+				8155F99D18BE9F6F00314DB3 /* MerchantFilterMenu.m in Sources */,
+				8155F99E18BE9F6F00314DB3 /* TaloolTextField.m in Sources */,
+				8155F99F18BE9F6F00314DB3 /* DealAcquireCell.m in Sources */,
+				8155F9A018BE9F6F00314DB3 /* DealOfferDealCell.m in Sources */,
+				8155F9A118BE9F6F00314DB3 /* RegistrationViewController.m in Sources */,
+				8155F9A218BE9F6F00314DB3 /* FindDealsTableViewController.m in Sources */,
+				8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */,
+				8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */,
+				8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */,
+				8155F9A618BE9F6F00314DB3 /* ActivateCodeViewController.m in Sources */,
+				8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */,
+				8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */,
+				8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */,
+				8155F9AA18BE9F6F00314DB3 /* TaloolColor.m in Sources */,
+				8155F9AB18BE9F6F00314DB3 /* CategoryHelper.m in Sources */,
+				8155F9AC18BE9F6F00314DB3 /* TaloolUIButton.m in Sources */,
+				8155F9AD18BE9F6F00314DB3 /* CategoryOperation.m in Sources */,
+				8155F9AE18BE9F6F00314DB3 /* GradientButton.m in Sources */,
+				8155F9AF18BE9F6F00314DB3 /* TaloolIconButton.m in Sources */,
+				8155F9B018BE9F6F00314DB3 /* DealOfferDealsOperation.m in Sources */,
+				8155F9B118BE9F6F00314DB3 /* OfferMerchantView.m in Sources */,
+				8155F9B218BE9F6F00314DB3 /* TaloolFilterMenu.m in Sources */,
+				8155F9B318BE9F6F00314DB3 /* AcceptGiftViewController.m in Sources */,
+				8155F9B418BE9F6F00314DB3 /* ResetPasswordOperation.m in Sources */,
+				8155F9B518BE9F6F00314DB3 /* TextureHelper.m in Sources */,
+				8155F9B618BE9F6F00314DB3 /* LogoutOperation.m in Sources */,
+				8155F9B718BE9F6F00314DB3 /* RedeemOperation.m in Sources */,
+				8155F9B818BE9F6F00314DB3 /* ActivityCell.m in Sources */,
+				8155F9B918BE9F6F00314DB3 /* UserAuthenticationOperation.m in Sources */,
+				8155F9BA18BE9F6F00314DB3 /* MyDealsViewController.m in Sources */,
+				8155F9BB18BE9F6F00314DB3 /* ActivityViewController.m in Sources */,
+				8155F9BC18BE9F6F00314DB3 /* SimpleHeaderView.m in Sources */,
+				8155F9BD18BE9F6F00314DB3 /* LocationHelper.m in Sources */,
+				8155F9BE18BE9F6F00314DB3 /* TutorialViewController.m in Sources */,
+				8155F9BF18BE9F6F00314DB3 /* ActivityFilterMenu.m in Sources */,
+				8155F9C018BE9F6F00314DB3 /* DealCell.m in Sources */,
+				8155F9C118BE9F6F00314DB3 /* FacebookAuthenticationOperation.m in Sources */,
+				8155F9C218BE9F6F00314DB3 /* PersonViewController.m in Sources */,
+				8155F9C318BE9F6F00314DB3 /* IconHelper.m in Sources */,
+				8155F9C418BE9F6F00314DB3 /* MerchantDealsViewController.m in Sources */,
+				8155F9C518BE9F6F00314DB3 /* TaloolMobileWebViewController.m in Sources */,
+				8155F9C618BE9F6F00314DB3 /* KeyboardAccessoryView.m in Sources */,
+				8155F9C718BE9F6F00314DB3 /* OfferSummaryView.m in Sources */,
+				8155F9C818BE9F6F00314DB3 /* DealOfferTableViewController.m in Sources */,
+				8155F9C918BE9F6F00314DB3 /* FavoriteMerchantOperation.m in Sources */,
+				8155F9CA18BE9F6F00314DB3 /* RegistrationOperation.m in Sources */,
+				8155F9CB18BE9F6F00314DB3 /* OfferActionView.m in Sources */,
+				8155F9CC18BE9F6F00314DB3 /* OfferSummaryCell.m in Sources */,
+				8155F9CD18BE9F6F00314DB3 /* MapCell.m in Sources */,
+				8155F9CE18BE9F6F00314DB3 /* ActivityOperation.m in Sources */,
+				8155F9CF18BE9F6F00314DB3 /* DealOfferCell.m in Sources */,
+				8155F9D018BE9F6F00314DB3 /* MerchantTableViewController.m in Sources */,
+				8155F9D118BE9F6F00314DB3 /* DealTableViewController.m in Sources */,
+				8155F9D218BE9F6F00314DB3 /* DealDetailCell.m in Sources */,
+				8155F9D318BE9F6F00314DB3 /* BarCodeCell.m in Sources */,
+				8155F9D418BE9F6F00314DB3 /* DefaultDealLayoutState.m in Sources */,
+				8155F9D518BE9F6F00314DB3 /* DealOfferOperation.m in Sources */,
+				8155F9D618BE9F6F00314DB3 /* DealLayoutState.m in Sources */,
+				8155F9D718BE9F6F00314DB3 /* DealActionBar3View.m in Sources */,
+				8155F9D818BE9F6F00314DB3 /* DealLocationCell.m in Sources */,
+				8155F9D918BE9F6F00314DB3 /* EmailConfirmationView.m in Sources */,
+				8155F9DA18BE9F6F00314DB3 /* DealOfferLogoCell.m in Sources */,
+				8155F9DB18BE9F6F00314DB3 /* MerchantActionBar3View.m in Sources */,
+				8155F9DC18BE9F6F00314DB3 /* AuthenticationOperation.m in Sources */,
+				8155F9DD18BE9F6F00314DB3 /* TaloolAppCall.m in Sources */,
+				8155F9DE18BE9F6F00314DB3 /* SplashViewController.m in Sources */,
+				8155F9DF18BE9F6F00314DB3 /* UIImage+H568.m in Sources */,
+				8155F9E018BE9F6F00314DB3 /* OperationQueueManager.m in Sources */,
+				8155F9E118BE9F6F00314DB3 /* DealOfferMerchantCell.m in Sources */,
+				8155F9E218BE9F6F00314DB3 /* GiftActionBar2View.m in Sources */,
+				8155F9E318BE9F6F00314DB3 /* DefaultGiftLayoutState.m in Sources */,
+				8155F9E418BE9F6F00314DB3 /* GiftDetailCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9103110516D1E53800CEE814 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1120,6 +1508,74 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8155FA2918BE9F6F00314DB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SaveAround-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = SaveAround;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8155FA2A18BE9F6F00314DB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SaveAround-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lsqlite3.0",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = SaveAround;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		9103114A16D1E53900CEE814 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1253,6 +1709,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8155FA2818BE9F6F00314DB3 /* Build configuration list for PBXNativeTarget "SaveAround" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8155FA2918BE9F6F00314DB3 /* Debug */,
+				8155FA2A18BE9F6F00314DB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9103110416D1E53800CEE814 /* Build configuration list for PBXProject "Talool" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
