@@ -42,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBarTintColor:[TaloolColor teal]];
+    [self.navigationController.navigationBar setTintColor:[TaloolColor dark_teal]];
 
     [self.refreshControl addTarget:self action:@selector(refreshActivities) forControlEvents:UIControlEventValueChanged];
     self.refreshControl.backgroundColor = [UIColor clearColor];

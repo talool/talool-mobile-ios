@@ -16,6 +16,8 @@
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolTextField *confirmPasswordField;
     IBOutlet TaloolUIButton *changePasswordButton;
+    IBOutlet UIButton *cancleButton;
+    IBOutlet UIImageView *logo;
 }
 
 @property (retain, nonatomic) NSString *customerId;

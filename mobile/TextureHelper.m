@@ -7,13 +7,14 @@
 //
 
 #import "TextureHelper.h"
+#import "WhiteLabelHelper.h"
 
 @implementation TextureHelper
 
 +(UIView *) getBackgroundView:(CGRect)frame
 {
     UIImageView *hero = [[UIImageView alloc] initWithFrame:frame];
-    hero.image = [UIImage imageNamed:@"hero"];
+    hero.image = [UIImage imageNamed:[WhiteLabelHelper getNameForImage:@"hero"]];
     [hero setAlpha:0.15];
     return hero;
 }

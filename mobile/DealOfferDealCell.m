@@ -9,12 +9,14 @@
 #import "DealOfferDealCell.h"
 #import "Talool-API/ttDeal.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "TaloolColor.h"
 
 @implementation DealOfferDealCell
 
 - (void)setDeal:(ttDeal *)deal
 {
     summaryLabel.text = deal.summary;
+    [sampleLabel setTextColor:[TaloolColor orange]];
     
     /*
     [bgImageView setImageWithURL:[NSURL URLWithString:deal.imageUrl]

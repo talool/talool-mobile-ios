@@ -22,6 +22,7 @@
 #import "MyDealsViewController.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "WhiteLabelHelper.h"
 
 @interface ResetPasswordViewController ()
 
@@ -49,6 +50,10 @@
     [confirmPasswordField setDelegate:self];
     [passwordField setDefaultBorderColor];
     [confirmPasswordField setDefaultBorderColor];
+    
+    [cancleButton setTitleColor:[TaloolColor dark_teal] forState:UIControlStateNormal];
+    
+    [logo setImage:[UIImage imageNamed:[WhiteLabelHelper getNameForImage:@"LogoAndIcon"]]];
 }
 
 -(void) viewWillAppear:(BOOL)animated

@@ -16,6 +16,7 @@
     IBOutlet TaloolTextField *emailField;
     IBOutlet TaloolTextField *passwordField;
     IBOutlet TaloolUIButton *signinButton;
+    IBOutlet UIButton *forgotButton;
 }
 
 @end

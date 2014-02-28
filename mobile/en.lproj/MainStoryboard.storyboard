@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" image="Default.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-eW-wzy">
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" misplaced="YES" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-eW-wzy">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
@@ -173,7 +173,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TaloolLogoIcon2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bll-8N-aEt">
+                                                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoAndIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bll-8N-aEt">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -312,8 +312,10 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cancleButton" destination="QGA-I6-eB6" id="UqC-pa-WFv"/>
                         <outlet property="changePasswordButton" destination="mUd-I7-ycZ" id="p42-Zd-LPb"/>
                         <outlet property="confirmPasswordField" destination="v6Z-5F-Hzq" id="giE-Du-Onb"/>
+                        <outlet property="logo" destination="Bll-8N-aEt" id="qDK-UQ-yBc"/>
                         <outlet property="passwordField" destination="o34-w4-QWf" id="i61-E6-sfU"/>
                     </connections>
                 </tableViewController>
@@ -486,6 +488,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="facebookButton" destination="SOl-2i-T9d" id="ius-oF-kIi"/>
+                        <outlet property="regButton" destination="j8h-k7-kbF" id="AId-00-nq1"/>
                         <outlet property="signinButton" destination="0GP-hG-WXj" id="2n5-nc-Ydc"/>
                     </connections>
                 </tableViewController>
@@ -608,6 +611,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailField" destination="Vh7-mu-9w1" id="VeQ-Uj-fPe"/>
+                        <outlet property="forgotButton" destination="tnM-jL-njQ" id="51Z-Ju-fAv"/>
                         <outlet property="passwordField" destination="6IM-kO-l59" id="enL-ut-oUD"/>
                         <outlet property="signinButton" destination="7Bh-Kt-yYY" id="d3h-EY-3MS"/>
                     </connections>
@@ -2255,6 +2259,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="bgImageView" destination="Hb9-jW-J1a" id="BtL-XW-vwj"/>
+                                    <outlet property="sampleLabel" destination="hdX-Ej-kUo" id="Dvb-KU-yog"/>
                                     <outlet property="summaryLabel" destination="oif-6v-PIc" id="iED-La-pUn"/>
                                 </connections>
                             </tableViewCell>
@@ -2718,8 +2723,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="000.png" width="1" height="1"/>
-        <image name="Default.png" width="320" height="480"/>
-        <image name="TaloolLogoIcon2.png" width="199" height="50"/>
+        <image name="LogoAndIcon.png" width="199" height="50"/>
         <image name="ribbonbadge.png" width="320" height="90"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

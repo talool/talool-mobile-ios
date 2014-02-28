@@ -14,6 +14,7 @@
 {
     IBOutlet UIImageView *bgImageView;
     IBOutlet UILabel *summaryLabel;
+    IBOutlet UILabel *sampleLabel;
 }
 
 - (void)setDeal:(ttDeal *)deal;

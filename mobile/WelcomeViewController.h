@@ -16,6 +16,7 @@
 {
     IBOutlet TaloolUIButton *signinButton;
     IBOutlet TaloolUIButton *facebookButton;
+    IBOutlet UIButton *regButton;
 }
 
 @property (strong, nonatomic) ttCustomer *failedUser;

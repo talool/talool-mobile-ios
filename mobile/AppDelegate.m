@@ -27,6 +27,7 @@
 #import <OperationQueueManager.h>
 #import "LocationHelper.h"
 #import "CustomerHelper.h"
+#import "WhiteLabelHelper.h"
 #import "ActivityOperation.h"
 #import "TutorialViewController.h"
 
@@ -82,7 +83,17 @@
     self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"]; // Used for FB errors
     
     // Back to the main thread for the work that needs to happen there
-    [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
+    if ([WhiteLabelHelper getTaloolDictionary])
+    {
+        // it's a white label, so delay to show the "powered by talool"
+        dispatch_async(dispatch_get_main_queue(),^{
+            [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(finalizeSetup) userInfo:nil repeats:NO];
+        });
+    }
+    else
+    {
+        [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
+    }
     
 }
 
@@ -267,7 +278,7 @@
     [[LocationHelper sharedInstance] handleForegroundState];
 
     [self setUserAgent];
-    [[TaloolFrameworkHelper sharedInstance] setWhiteLabelId:[CustomerHelper getWhiteLabelId]];
+    [[TaloolFrameworkHelper sharedInstance] setWhiteLabelId:[WhiteLabelHelper getWhiteLabelId]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -400,7 +411,12 @@
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"mobile.sqlite"];
+    // if there is a white label id, use it as a prefix to our standard storePath "mobile.sqlite".
+    // NOTE: don't change the store path for Talool from "mobile.sqlite"
+    NSString *whiteLabelId = [WhiteLabelHelper getWhiteLabelId];
+    NSString *storePath = [NSString stringWithFormat:@"%@%@",whiteLabelId,@"mobile.sqlite"];
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:storePath];
     _persistentStoreCoordinator = [TaloolPersistentStoreCoordinator initWithStoreUrl:storeURL];
         
     return _persistentStoreCoordinator;

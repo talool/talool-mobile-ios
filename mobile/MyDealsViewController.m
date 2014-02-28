@@ -51,6 +51,9 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setBarTintColor:[TaloolColor teal]];
+    [self.navigationController.navigationBar setTintColor:[TaloolColor dark_teal]];
+    
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"TrebuchetMS" size:12.0] range:range];

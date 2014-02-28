@@ -78,6 +78,8 @@
     
     self.formatter = [[NSDateFormatter alloc] init];
     [self.formatter setDateFormat:@"MM/dd/YYYY"];
+    
+    [sexPicker setTintColor:[TaloolColor dark_teal]];
 }
 
 -(void) viewWillAppear:(BOOL)animated

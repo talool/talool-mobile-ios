@@ -8,6 +8,7 @@
 
 #import "TaloolMobileWebViewController.h"
 #import "TaloolColor.h"
+#import <WhiteLabelHelper.h>
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -29,6 +30,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // add the white label id to the url
+    NSString *wlid = [WhiteLabelHelper getWhiteLabelId];
+    if (wlid)
+    {
+        NSString *appender = ([mobileWebUrl rangeOfString:@"?"].location == NSNotFound) ? @"?":@"&";
+        mobileWebUrl = [NSString stringWithFormat:@"%@%@wlid=%@", mobileWebUrl, appender, wlid];
+    }
     NSURL *taloolUrl = [NSURL URLWithString:mobileWebUrl];
     [mobileWeb loadRequest:[NSURLRequest requestWithURL:taloolUrl]];
     self.navigationItem.title = viewTitle;

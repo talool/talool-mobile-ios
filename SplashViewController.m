@@ -9,6 +9,7 @@
 #import "SplashViewController.h"
 #import "UIImage+H568.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <WhiteLabelHelper.h>
 
 @interface SplashViewController ()
 
@@ -21,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    defaultImage.image = [UIImage imageNamed:@"Default.png"];
+    defaultImage.image = [UIImage imageNamed:[WhiteLabelHelper getNameForImage:@"Default.png"]];
 }
 
 - (void) viewDidAppear:(BOOL)animated

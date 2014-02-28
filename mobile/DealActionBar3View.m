@@ -43,6 +43,8 @@
         
         [self updateView:dealAcq];
         
+        [inactiveView setBackgroundColor:[TaloolColor orange]];
+        
         [self addSubview:view];
     }
     return self;

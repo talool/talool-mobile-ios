@@ -135,26 +135,17 @@
 		8155F9F718BE9F6F00314DB3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
 		8155F9F818BE9F6F00314DB3 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
 		8155F9F918BE9F6F00314DB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749444CD6524D9DB18E06E3 /* libPods.a */; };
-		8155F9FB18BE9F6F00314DB3 /* welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1C18A13E4400127F83 /* welcome2@2x.png */; };
 		8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B27641844228900105479 /* OfferSummaryView.xib */; };
-		8155F9FE18BE9F6F00314DB3 /* welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */; };
-		8155F9FF18BE9F6F00314DB3 /* welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */; };
-		8155FA0018BE9F6F00314DB3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
 		8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103111516D1E53800CEE814 /* InfoPlist.strings */; };
 		8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
-		8155FA0318BE9F6F00314DB3 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
 		8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 8127D59A187E0753009B4340 /* MessageDesign.json */; };
 		8155FA0618BE9F6F00314DB3 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
 		8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B117750BA30043ACE8 /* SimpleHeaderView.xib */; };
-		8155FA0818BE9F6F00314DB3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
 		8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
 		8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
 		8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
 		8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */; };
 		8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B26D8179B8AA100744C04 /* MerchantActionBar3View.xib */; };
-		8155FA0E18BE9F6F00314DB3 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
-		8155FA0F18BE9F6F00314DB3 /* welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */; };
-		8155FA1018BE9F6F00314DB3 /* welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */; };
 		8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
 		8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */; };
 		8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */; };
@@ -162,17 +153,11 @@
 		8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E20183D0653008D43C8 /* DealOfferIcon.png */; };
 		8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
 		8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
-		8155FA1C18BE9F6F00314DB3 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
-		8155FA2018BE9F6F00314DB3 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
-		8155FA2118BE9F6F00314DB3 /* welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */; };
 		8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
-		8155FA2518BE9F6F00314DB3 /* TaloolLogoIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */; };
 		8155FA2618BE9F6F00314DB3 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
 		8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */; };
 		8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */; };
 		8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3018BEA57500314DB3 /* SA_Icon_120.png */; };
-		8155FA3718BEA69600314DB3 /* SA_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */; };
-		8155FA3918BEA69600314DB3 /* SA_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3618BEA69600314DB3 /* SA_Default@2x.png */; };
 		8155FA3A18BEA99F00314DB3 /* welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23DF818A0839700127F83 /* welcome0@2x.png */; };
 		8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */; };
 		8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */; };
@@ -258,8 +243,25 @@
 		81C23E1F18A13E4400127F83 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
 		81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
 		81E3AA6317EB71D100B5EE5A /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
-		81E5504F17F9EB1C000BF3A5 /* TaloolLogoIcon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */; };
+		81E5504F17F9EB1C000BF3A5 /* LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* LogoAndIcon.png */; };
 		81E5505217F9FB58000BF3A5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E5505117F9FB58000BF3A5 /* LoginViewController.m */; };
+		81E6030418C0393B004A017B /* WhiteLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E6030318C0393B004A017B /* WhiteLabelHelper.m */; };
+		81E6030518C03949004A017B /* WhiteLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E6030318C0393B004A017B /* WhiteLabelHelper.m */; };
+		81E6030818C140D9004A017B /* SA_LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030718C140D9004A017B /* SA_LogoAndIcon.png */; };
+		81E6031318C141C0004A017B /* SA_welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */; };
+		81E6031418C141C0004A017B /* SA_welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */; };
+		81E6031518C141C0004A017B /* SA_welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */; };
+		81E6031618C141C0004A017B /* SA_welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */; };
+		81E6031718C141C0004A017B /* SA_welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */; };
+		81E6031818C141C0004A017B /* SA_welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */; };
+		81E6031F18C141D6004A017B /* SA_welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031918C141D6004A017B /* SA_welcome0@2x.png */; };
+		81E6032018C141D6004A017B /* SA_welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031A18C141D6004A017B /* SA_welcome1@2x.png */; };
+		81E6032118C141D6004A017B /* SA_welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031B18C141D6004A017B /* SA_welcome2@2x.png */; };
+		81E6032218C141D6004A017B /* SA_welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031C18C141D6004A017B /* SA_welcome3@2x.png */; };
+		81E6032318C141D6004A017B /* SA_welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031D18C141D6004A017B /* SA_welcome4@2x.png */; };
+		81E6032418C141D6004A017B /* SA_welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031E18C141D6004A017B /* SA_welcome5@2x.png */; };
+		81E6032718C14352004A017B /* SA_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6032518C14352004A017B /* SA_Default-568h@2x.png */; };
+		81E6032818C14352004A017B /* SA_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6032618C14352004A017B /* SA_Default@2x.png */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
@@ -351,8 +353,6 @@
 		8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_58.png; sourceTree = "<group>"; };
 		8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_80.png; sourceTree = "<group>"; };
 		8155FA3018BEA57500314DB3 /* SA_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_120.png; sourceTree = "<group>"; };
-		8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default-568h@2x.png"; sourceTree = "<group>"; };
-		8155FA3618BEA69600314DB3 /* SA_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default@2x.png"; sourceTree = "<group>"; };
 		8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero-568h@2x.png"; sourceTree = "<group>"; };
 		8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero@2x.png"; sourceTree = "<group>"; };
 		8157F8D117CC0D8000061B62 /* Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_120.png; sourceTree = "<group>"; };
@@ -487,9 +487,26 @@
 		81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		81E3AA6117EB71D100B5EE5A /* TaloolAppCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolAppCall.h; sourceTree = "<group>"; };
 		81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolAppCall.m; sourceTree = "<group>"; };
-		81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TaloolLogoIcon2.png; sourceTree = "<group>"; };
+		81E5504E17F9EB1C000BF3A5 /* LogoAndIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoAndIcon.png; sourceTree = "<group>"; };
 		81E5505017F9FB58000BF3A5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		81E5505117F9FB58000BF3A5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		81E6030218C0393B004A017B /* WhiteLabelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteLabelHelper.h; sourceTree = "<group>"; };
+		81E6030318C0393B004A017B /* WhiteLabelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteLabelHelper.m; sourceTree = "<group>"; };
+		81E6030718C140D9004A017B /* SA_LogoAndIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_LogoAndIcon.png; sourceTree = "<group>"; };
+		81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome0-568h@2x.png"; sourceTree = "<group>"; };
+		81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome1-568h@2x.png"; sourceTree = "<group>"; };
+		81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome2-568h@2x.png"; sourceTree = "<group>"; };
+		81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome3-568h@2x.png"; sourceTree = "<group>"; };
+		81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome4-568h@2x.png"; sourceTree = "<group>"; };
+		81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome5-568h@2x.png"; sourceTree = "<group>"; };
+		81E6031918C141D6004A017B /* SA_welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome0@2x.png"; sourceTree = "<group>"; };
+		81E6031A18C141D6004A017B /* SA_welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome1@2x.png"; sourceTree = "<group>"; };
+		81E6031B18C141D6004A017B /* SA_welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome2@2x.png"; sourceTree = "<group>"; };
+		81E6031C18C141D6004A017B /* SA_welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome3@2x.png"; sourceTree = "<group>"; };
+		81E6031D18C141D6004A017B /* SA_welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome4@2x.png"; sourceTree = "<group>"; };
+		81E6031E18C141D6004A017B /* SA_welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome5@2x.png"; sourceTree = "<group>"; };
+		81E6032518C14352004A017B /* SA_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default-568h@2x.png"; sourceTree = "<group>"; };
+		81E6032618C14352004A017B /* SA_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default@2x.png"; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -693,13 +710,26 @@
 			isa = PBXGroup;
 			children = (
 				8155FA2C18BE9F7000314DB3 /* SaveAround-Info.plist */,
-				8155FA3418BEA69600314DB3 /* SA_Default-568h@2x.png */,
-				8155FA3618BEA69600314DB3 /* SA_Default@2x.png */,
+				81E6032518C14352004A017B /* SA_Default-568h@2x.png */,
+				81E6032618C14352004A017B /* SA_Default@2x.png */,
 				8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */,
 				8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */,
 				8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */,
 				8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */,
 				8155FA3018BEA57500314DB3 /* SA_Icon_120.png */,
+				81E6030718C140D9004A017B /* SA_LogoAndIcon.png */,
+				81E6031918C141D6004A017B /* SA_welcome0@2x.png */,
+				81E6031A18C141D6004A017B /* SA_welcome1@2x.png */,
+				81E6031B18C141D6004A017B /* SA_welcome2@2x.png */,
+				81E6031C18C141D6004A017B /* SA_welcome3@2x.png */,
+				81E6031D18C141D6004A017B /* SA_welcome4@2x.png */,
+				81E6031E18C141D6004A017B /* SA_welcome5@2x.png */,
+				81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */,
+				81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */,
+				81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */,
+				81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */,
+				81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */,
+				81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */,
 			);
 			name = SaveAround;
 			sourceTree = "<group>";
@@ -819,6 +849,60 @@
 			name = "Deal Layouts";
 			sourceTree = "<group>";
 		};
+		81E6030618C140A1004A017B /* Talool */ = {
+			isa = PBXGroup;
+			children = (
+				9103111416D1E53800CEE814 /* Talool-Info.plist */,
+				81C23DF818A0839700127F83 /* welcome0@2x.png */,
+				81C23E0E18A086A000127F83 /* welcome1@2x.png */,
+				81C23E1C18A13E4400127F83 /* welcome2@2x.png */,
+				81C23E1018A086A000127F83 /* welcome3@2x.png */,
+				81C23E1118A086A000127F83 /* welcome4@2x.png */,
+				81C23E1D18A13E4400127F83 /* welcome5@2x.png */,
+				817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */,
+				817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */,
+				81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */,
+				817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */,
+				817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */,
+				81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */,
+				81517B4C17FBB5470020A688 /* hero-568h@2x.png */,
+				81517B4D17FBB5470020A688 /* hero@2x.png */,
+				81E5504E17F9EB1C000BF3A5 /* LogoAndIcon.png */,
+				819092CB17FCB2CF00699C39 /* Default-568h@2x.png */,
+				819092CC17FCB2CF00699C39 /* Default.png */,
+				819092CD17FCB2CF00699C39 /* Default@2x.png */,
+				8157F8D317CC0DA400061B62 /* Icon_58.png */,
+				8157F8D417CC0DA400061B62 /* Icon_80.png */,
+				8157F8D117CC0D8000061B62 /* Icon_120.png */,
+			);
+			name = Talool;
+			sourceTree = "<group>";
+		};
+		81E6030B18C14115004A017B /* trash */ = {
+			isa = PBXGroup;
+			children = (
+				8157F8D217CC0DA400061B62 /* Icon_29.png */,
+				81AE459317A379D300F5643E /* Icon.png */,
+				81AE459417A379D300F5643E /* Icon@2x.png */,
+				819092D317FCCB3B00699C39 /* no-wifi-icon.png */,
+				81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */,
+				819092D117FCCB0800699C39 /* compass.png */,
+			);
+			name = trash;
+			sourceTree = "<group>";
+		};
+		81E6030C18C14129004A017B /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				819A0E20183D0653008D43C8 /* DealOfferIcon.png */,
+				819A0E24183D19E9008D43C8 /* DealOfferBG.png */,
+				81AE6DD917A1D938000596E8 /* ribbonbadge.png */,
+				81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */,
+				81937B1A176A38BB002DDCA8 /* 000.png */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
@@ -890,16 +974,6 @@
 		9103111316D1E53800CEE814 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				819092CB17FCB2CF00699C39 /* Default-568h@2x.png */,
-				819092CC17FCB2CF00699C39 /* Default.png */,
-				819092CD17FCB2CF00699C39 /* Default@2x.png */,
-				8157F8D217CC0DA400061B62 /* Icon_29.png */,
-				8157F8D317CC0DA400061B62 /* Icon_58.png */,
-				8157F8D417CC0DA400061B62 /* Icon_80.png */,
-				8157F8D117CC0D8000061B62 /* Icon_120.png */,
-				81AE459317A379D300F5643E /* Icon.png */,
-				81AE459417A379D300F5643E /* Icon@2x.png */,
-				9103111416D1E53800CEE814 /* Talool-Info.plist */,
 				9103111516D1E53800CEE814 /* InfoPlist.strings */,
 				9103111816D1E53800CEE814 /* main.m */,
 				9103111A16D1E53800CEE814 /* Talool-Prefix.pch */,
@@ -931,29 +1005,9 @@
 			isa = PBXGroup;
 			children = (
 				8155FA2D18BEA39700314DB3 /* SaveAround */,
-				81C23DF818A0839700127F83 /* welcome0@2x.png */,
-				81C23E0E18A086A000127F83 /* welcome1@2x.png */,
-				81C23E1C18A13E4400127F83 /* welcome2@2x.png */,
-				81C23E1018A086A000127F83 /* welcome3@2x.png */,
-				81C23E1118A086A000127F83 /* welcome4@2x.png */,
-				81C23E1D18A13E4400127F83 /* welcome5@2x.png */,
-				817A5A4C1860DB5E0010FEE9 /* welcome0-568h@2x.png */,
-				817A5A581860E7220010FEE9 /* welcome1-568h@2x.png */,
-				81C23E1818A13E2E00127F83 /* welcome2-568h@2x.png */,
-				817A5A5A1860E7220010FEE9 /* welcome3-568h@2x.png */,
-				817A5A501860DB5E0010FEE9 /* welcome4-568h@2x.png */,
-				81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */,
-				819A0E20183D0653008D43C8 /* DealOfferIcon.png */,
-				819A0E24183D19E9008D43C8 /* DealOfferBG.png */,
-				819092D117FCCB0800699C39 /* compass.png */,
-				819092D317FCCB3B00699C39 /* no-wifi-icon.png */,
-				81517B4C17FBB5470020A688 /* hero-568h@2x.png */,
-				81517B4D17FBB5470020A688 /* hero@2x.png */,
-				81E5504E17F9EB1C000BF3A5 /* TaloolLogoIcon2.png */,
-				81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */,
-				81AE6DD917A1D938000596E8 /* ribbonbadge.png */,
-				81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */,
-				81937B1A176A38BB002DDCA8 /* 000.png */,
+				81E6030618C140A1004A017B /* Talool */,
+				81E6030B18C14115004A017B /* trash */,
+				81E6030C18C14129004A017B /* Global */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1046,6 +1100,8 @@
 				81AE6DB117A02053000596E8 /* UIImage+H568.m */,
 				81E3AA6117EB71D100B5EE5A /* TaloolAppCall.h */,
 				81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */,
+				81E6030218C0393B004A017B /* WhiteLabelHelper.h */,
+				81E6030318C0393B004A017B /* WhiteLabelHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1136,46 +1192,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8155F9FB18BE9F6F00314DB3 /* welcome2@2x.png in Resources */,
 				8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */,
-				8155FA3718BEA69600314DB3 /* SA_Default-568h@2x.png in Resources */,
-				8155F9FE18BE9F6F00314DB3 /* welcome3-568h@2x.png in Resources */,
-				8155F9FF18BE9F6F00314DB3 /* welcome4-568h@2x.png in Resources */,
-				8155FA0018BE9F6F00314DB3 /* welcome5@2x.png in Resources */,
+				81E6031818C141C0004A017B /* SA_welcome5-568h@2x.png in Resources */,
+				81E6032018C141D6004A017B /* SA_welcome1@2x.png in Resources */,
 				8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */,
 				8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */,
-				8155FA0318BE9F6F00314DB3 /* hero@2x.png in Resources */,
+				81E6032118C141D6004A017B /* SA_welcome2@2x.png in Resources */,
+				81E6031718C141C0004A017B /* SA_welcome4-568h@2x.png in Resources */,
+				81E6030818C140D9004A017B /* SA_LogoAndIcon.png in Resources */,
 				8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */,
 				8155FA0618BE9F6F00314DB3 /* 000.png in Resources */,
 				8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */,
-				8155FA0818BE9F6F00314DB3 /* welcome4@2x.png in Resources */,
+				81E6031F18C141D6004A017B /* SA_welcome0@2x.png in Resources */,
 				8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */,
 				8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */,
 				8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */,
-				8155FA3918BEA69600314DB3 /* SA_Default@2x.png in Resources */,
 				8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */,
 				8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */,
+				81E6032418C141D6004A017B /* SA_welcome5@2x.png in Resources */,
 				8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */,
 				8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */,
-				8155FA0E18BE9F6F00314DB3 /* hero-568h@2x.png in Resources */,
-				8155FA0F18BE9F6F00314DB3 /* welcome5-568h@2x.png in Resources */,
-				8155FA1018BE9F6F00314DB3 /* welcome2-568h@2x.png in Resources */,
+				81E6032218C141D6004A017B /* SA_welcome3@2x.png in Resources */,
 				8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */,
 				8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */,
+				81E6031418C141C0004A017B /* SA_welcome1-568h@2x.png in Resources */,
 				8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */,
 				8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */,
+				81E6031318C141C0004A017B /* SA_welcome0-568h@2x.png in Resources */,
 				8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */,
 				8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */,
 				8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */,
+				81E6032718C14352004A017B /* SA_Default-568h@2x.png in Resources */,
 				8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */,
+				81E6032318C141D6004A017B /* SA_welcome4@2x.png in Resources */,
 				8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */,
-				8155FA1C18BE9F6F00314DB3 /* welcome3@2x.png in Resources */,
-				8155FA2018BE9F6F00314DB3 /* welcome1@2x.png in Resources */,
-				8155FA2118BE9F6F00314DB3 /* welcome1-568h@2x.png in Resources */,
 				8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */,
 				8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */,
-				8155FA2518BE9F6F00314DB3 /* TaloolLogoIcon2.png in Resources */,
 				8155FA2618BE9F6F00314DB3 /* compass.png in Resources */,
+				81E6031618C141C0004A017B /* SA_welcome3-568h@2x.png in Resources */,
+				81E6032818C14352004A017B /* SA_Default@2x.png in Resources */,
+				81E6031518C141C0004A017B /* SA_welcome2-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,7 +1281,7 @@
 				819092CF17FCB2CF00699C39 /* Default.png in Resources */,
 				819092D017FCB2CF00699C39 /* Default@2x.png in Resources */,
 				819A0E25183D19E9008D43C8 /* DealOfferBG.png in Resources */,
-				81E5504F17F9EB1C000BF3A5 /* TaloolLogoIcon2.png in Resources */,
+				81E5504F17F9EB1C000BF3A5 /* LogoAndIcon.png in Resources */,
 				819092D217FCCB0800699C39 /* compass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1373,6 +1429,7 @@
 				8155F9D718BE9F6F00314DB3 /* DealActionBar3View.m in Sources */,
 				8155F9D818BE9F6F00314DB3 /* DealLocationCell.m in Sources */,
 				8155F9D918BE9F6F00314DB3 /* EmailConfirmationView.m in Sources */,
+				81E6030518C03949004A017B /* WhiteLabelHelper.m in Sources */,
 				8155F9DA18BE9F6F00314DB3 /* DealOfferLogoCell.m in Sources */,
 				8155F9DB18BE9F6F00314DB3 /* MerchantActionBar3View.m in Sources */,
 				8155F9DC18BE9F6F00314DB3 /* AuthenticationOperation.m in Sources */,
@@ -1464,6 +1521,7 @@
 				8186417C179904B500DE0C2E /* DealActionBar3View.m in Sources */,
 				819B26BE179B1DA400744C04 /* DealLocationCell.m in Sources */,
 				8190F2DF1853B42A00FF0AFB /* EmailConfirmationView.m in Sources */,
+				81E6030418C0393B004A017B /* WhiteLabelHelper.m in Sources */,
 				819B26C1179B203200744C04 /* DealOfferLogoCell.m in Sources */,
 				819B26D7179B8A8200744C04 /* MerchantActionBar3View.m in Sources */,
 				819B277A184524E300105479 /* AuthenticationOperation.m in Sources */,

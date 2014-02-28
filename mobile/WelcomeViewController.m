@@ -10,6 +10,7 @@
 #import "WelcomeViewController.h"
 #import "TaloolTabBarController.h"
 #import "CustomerHelper.h"
+#import "WhiteLabelHelper.h"
 #import "TaloolUIButton.h"
 #import "FacebookHelper.h"
 #import "TaloolColor.h"
@@ -36,7 +37,8 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setTitle:@"Welcome to Talool"];
+    NSString *productName = [WhiteLabelHelper getProductName];
+    [self.navigationItem setTitle:[NSString stringWithFormat:@"Welcome to %@", productName]];
     
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
@@ -61,11 +63,13 @@
     
     [signinButton useTaloolStyle];
     [signinButton setBaseColor:[TaloolColor teal]];
-    [signinButton setTitle:@"Log in with Talool" forState:UIControlStateNormal];
+    [signinButton setTitle:[NSString stringWithFormat:@"Log in with %@", productName] forState:UIControlStateNormal];
     
     [facebookButton useTaloolStyle];
     [facebookButton setBaseColor:[UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1.0]];
     [facebookButton setTitle:@"Log in with Facebook" forState:UIControlStateNormal];
+    
+    [regButton setTitleColor:[TaloolColor dark_teal] forState:UIControlStateNormal];
 
     self.navigationItem.hidesBackButton = YES;
     

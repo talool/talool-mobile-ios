@@ -44,6 +44,8 @@
     
     [emailField setDefaultBorderColor];
     [passwordField setDefaultBorderColor];
+    
+    [forgotButton setTitleColor:[TaloolColor dark_teal] forState:UIControlStateNormal];
 
 }
 

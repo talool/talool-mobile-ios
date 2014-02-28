@@ -26,10 +26,12 @@
         [closeButton setTitle:FAKIconCircleArrowDown];
         [closeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:20]}
                                    forState:UIControlStateNormal];
+        [closeButton setTintColor:[TaloolColor dark_teal]];
         
         [submitButton setTitle:label];
         [submitButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"TrebuchetMS-Bold" size:18.0]}
                                    forState:UIControlStateNormal];
+        [submitButton setTintColor:[TaloolColor dark_teal]];
         
         [self setKeyboardAccessoryDelegate:keyboardDelegate];
         
