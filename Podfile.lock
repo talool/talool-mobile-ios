@@ -27,9 +27,9 @@ DEPENDENCIES:
   - REMenu (~> 1.7.1)
   - SDWebImage (~> 3.5.2)
   - SVProgressHUD (~> 1.0)
-  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.2.3`)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, branch `whitelabel`)
   - TestFlightSDK (~> 2.0.2)
-  - TSMessages (~> 0.9.4)
+  - TSMessages (= 0.9.4)
   - UIActivityIndicator-for-SDWebImage (~> 1.0.3)
 
 EXTERNAL SOURCES:
@@ -37,8 +37,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/braintree/braintree_ios.git
     :tag: 2.2.4
   Talool-API:
+    :branch: whitelabel
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.2.3
 
 SPEC CHECKSUMS:
   Braintree: 3135689620aa8d8ce76d515c615ef8bfe8b416a4
