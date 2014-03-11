@@ -47,6 +47,11 @@ static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 - (void)activationOperationComplete:(NSDictionary *)response;
 @end
 
+@protocol FundraisingCodeDelegate<NSObject>
+- (void)handleValidCode:(NSString *)code;
+- (void)handleSkipCode;
+@end
+
 @protocol PersonViewDelegate<NSObject>
 - (void)handleUserContact:(NSString *)email name:(NSString *)name;
 @end

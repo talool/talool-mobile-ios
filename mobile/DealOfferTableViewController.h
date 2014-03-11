@@ -13,7 +13,7 @@
 #define ACTION_VIEW_HEIGHT 40.0f
 #define SUMMARY_VIEW_HEIGHT 190.0f
 
-@interface DealOfferTableViewController : UITableViewController<BTPaymentViewControllerDelegate, TaloolDealOfferActionDelegate, NSFetchedResultsControllerDelegate, OperationQueueDelegate>
+@interface DealOfferTableViewController : UITableViewController<BTPaymentViewControllerDelegate, TaloolDealOfferActionDelegate, NSFetchedResultsControllerDelegate, OperationQueueDelegate, FundraisingCodeDelegate>
 
 @property (strong, nonatomic) ttDealOffer *offer;
 

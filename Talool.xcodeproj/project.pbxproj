@@ -266,6 +266,7 @@
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
@@ -515,6 +516,8 @@
 		81F24B22175950C9003A3A1A /* TaloolIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIconButton.h; sourceTree = "<group>"; };
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
+		81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundraiserCodeViewController.m; sourceTree = "<group>"; };
+		81F5E27118CF910500FBDF96 /* FundraiserCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundraiserCodeViewController.h; sourceTree = "<group>"; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -674,6 +677,8 @@
 				811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */,
 				81517B4717FB7F060020A688 /* ActivateCodeViewController.h */,
 				81517B4817FB7F070020A688 /* ActivateCodeViewController.m */,
+				81F5E27118CF910500FBDF96 /* FundraiserCodeViewController.h */,
+				81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */,
 				81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */,
 				81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */,
 				81BD12A8178F37B200AF7475 /* DealTableViewController.h */,
@@ -1470,6 +1475,7 @@
 				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
 				916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */,
 				81517B4917FB7F070020A688 /* ActivateCodeViewController.m in Sources */,
+				81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */,
 				91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */,
 				81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */,
 				9168A4DB170496CC00E53EB1 /* SettingsTableViewController.m in Sources */,
