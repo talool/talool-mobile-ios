@@ -1340,21 +1340,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="summary" destination="Vuz-Of-vcI" id="rBz-fd-TZL"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealOfferLogoCell" rowHeight="50" id="gQ5-5m-YZv" customClass="DealOfferLogoCell">
-                                <rect key="frame" x="0.0" y="294" width="320" height="50"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealOfferLogoCell" rowHeight="65" id="gQ5-5m-YZv" customClass="DealOfferLogoCell">
+                                <rect key="frame" x="0.0" y="294" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQ5-5m-YZv" id="fmf-DL-tRX">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="000.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rgk-0U-lgM" userLabel="Logo">
-                                            <rect key="frame" x="20" y="11" width="140" height="28"/>
+                                            <rect key="frame" x="20" y="19" width="140" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="GAc-uC-c94"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expires 09/01/2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKM-Zy-Kx1">
-                                            <rect key="frame" x="168" y="7" width="132" height="21"/>
+                                            <rect key="frame" x="168" y="26" width="132" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="8Ik-ym-et7"/>
                                                 <constraint firstAttribute="width" constant="132" id="ukD-Yq-gWX"/>
@@ -1368,10 +1368,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="yKM-Zy-Kx1" firstAttribute="leading" secondItem="Rgk-0U-lgM" secondAttribute="trailing" constant="8" symbolic="YES" id="7hc-pt-srS"/>
-                                    <constraint firstItem="yKM-Zy-Kx1" firstAttribute="top" secondItem="gQ5-5m-YZv" secondAttribute="top" constant="7" id="MvV-TA-KOV"/>
+                                    <constraint firstItem="yKM-Zy-Kx1" firstAttribute="top" secondItem="gQ5-5m-YZv" secondAttribute="top" constant="26" id="MvV-TA-KOV"/>
                                     <constraint firstItem="Rgk-0U-lgM" firstAttribute="leading" secondItem="gQ5-5m-YZv" secondAttribute="leading" constant="20" id="NZQ-fj-Tfh"/>
                                     <constraint firstAttribute="trailing" secondItem="yKM-Zy-Kx1" secondAttribute="trailing" constant="20" id="Q1g-hS-NDf"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rgk-0U-lgM" secondAttribute="bottom" constant="11" id="nMI-Ht-doH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rgk-0U-lgM" secondAttribute="bottom" constant="18" id="nMI-Ht-doH"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="expires" destination="yKM-Zy-Kx1" id="YXA-y9-xIH"/>
@@ -2720,7 +2720,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="706" y="1074"/>
         </scene>
-        <!--Fundraiser Code View Controller-->
+        <!--Fundraiser Code View Controller - Fundraising-->
         <scene sceneID="Oas-Tn-pGe">
             <objects>
                 <tableViewController storyboardIdentifier="FundraiserCodeView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fxf-kT-2NG" customClass="FundraiserCodeViewController" sceneMemberID="viewController">
@@ -2831,6 +2831,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="fxf-kT-2NG" id="OEX-4s-rnv"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Fundraising" id="anf-yL-r46">
+                        <barButtonItem key="backBarButtonItem" title=" " id="YP3-CF-1NL"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="codeFld" destination="QKV-RA-fUc" id="Ap2-Qz-miB"/>
                         <outlet property="instructions" destination="dgi-i6-VGW" id="eeg-7j-lJo"/>

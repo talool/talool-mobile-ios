@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
+#import <Braintree/BTPaymentViewController.h>
 
 @class TaloolUIButton, TaloolTextField, ttDealOffer;
 
@@ -24,5 +25,6 @@
 
 @property (strong, nonatomic) ttDealOffer *offer;
 @property id<FundraisingCodeDelegate> delegate;
+@property (strong, nonatomic) BTPaymentViewController *paymentViewController;
 
 @end

@@ -28,7 +28,7 @@
 
 @implementation FundraiserCodeViewController
 
-@synthesize offer, delegate;
+@synthesize offer, delegate, paymentViewController;
 
 - (void)viewDidLoad
 {
@@ -65,28 +65,25 @@
 - (IBAction)submitAction:(id)sender {
     [self submit:sender];
 }
-- (IBAction)skipAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [delegate handleSkipCode];
-    }];
+- (IBAction)skipAction:(id)sender
+{
+    [delegate handleSkipCode];
+    [self.navigationController pushViewController:paymentViewController animated:YES];
 }
 
 #pragma mark -
 #pragma mark - TaloolKeyboardAccessoryDelegate methods
 -(void) submit:(id)sender
 {
-    [SVProgressHUD showWithStatus:@"Validating Code" maskType:SVProgressHUDMaskTypeBlack];
+    //[SVProgressHUD showWithStatus:@"Validating Code" maskType:SVProgressHUDMaskTypeBlack];
 
     [codeFld resignFirstResponder];
 
 #warning "Validate fundraiserCode"
     // TODO validate this code with a new operation
     //[[OperationQueueManager sharedInstance] startActivateCodeOperation:accessCodeFld.text offer:offer delegate:self];
-    [self dismissViewControllerAnimated:YES completion:^{
-        [SVProgressHUD dismiss];
-        [delegate handleValidCode:[codeFld text]];
-    }];
-
+    [delegate handleValidCode:[codeFld text]];
+    [self.navigationController pushViewController:paymentViewController animated:YES];
 }
 -(void) cancel:(id)sender
 {

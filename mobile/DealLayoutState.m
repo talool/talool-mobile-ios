@@ -54,9 +54,9 @@
     int padding = 54;
     int margin = 20;
     detailSize = (summarySize.height + detailsSize.height + padding + margin);
-    if (detailSize < 112)
+    if (detailSize < 122)
     {
-        detailSize = 112;
+        detailSize = 122;
     }
 }
 

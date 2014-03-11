@@ -14,7 +14,7 @@
 
 #define ROW_HEIGHT_LOCATION    60.0f
 #define ROW_HEIGHT_HERO    100.0f
-#define ROW_HEIGHT_OFFER    50.0f
+#define ROW_HEIGHT_OFFER    65.0f
 
 @class ttDealAcquire;
 

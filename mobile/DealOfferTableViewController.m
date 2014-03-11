@@ -274,41 +274,19 @@
     [self.navigationController pushViewController:[self getDetailView:merchant] animated:YES];
 }
 
-- (UINavigationController *) getPaymentController
+- (UIViewController *) getPaymentController
 {
-    if (!_paymentNavigationController)
-    {
-        self.paymentViewController = [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
-        self.paymentViewController.delegate = self;
-        self.paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
-        
-        // Add paymentViewController to a navigation controller.
-        _paymentNavigationController = [[UINavigationController alloc] initWithRootViewController:self.paymentViewController];
-        
-        // Add the cancel button
-        self.paymentViewController.navigationItem.leftBarButtonItem =
-            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                          target:_paymentNavigationController
-                                                          action:@selector(dismissModalViewControllerAnimated:)];
-        
-        [self.paymentViewController.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                                                                   forState:UIControlStateNormal];
-    }
+
+    
+    // price formatter for the title bar
     NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
     [priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    self.paymentViewController.navigationItem.title = [NSString stringWithFormat:@"Buy Deals - %@",[priceFormatter stringFromNumber:offer.price]];
     
-    return _paymentNavigationController;
-}
-
-#pragma mark -
-#pragma mark - TaloolDealOfferActionDelegate
-
-// Create and present a BTPaymentViewController (that has a cancel button)
-- (void)buyNow:(id)sender
-{
-    _fundraisingCode = nil;
+    _paymentViewController = [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
+    _paymentViewController.delegate = self;
+    _paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
+    _paymentViewController.navigationItem.title = [NSString stringWithFormat:@"Buy Deals - %@",[priceFormatter stringFromNumber:offer.price]];
     
 #warning "check if offer is a fundraiser"
     if (YES) // if offer.isFundraiser
@@ -320,14 +298,24 @@
         }
         [_fundraiserViewController setOffer:offer];
         [_fundraiserViewController setDelegate:self];
-        [self presentViewController:_fundraiserViewController animated:YES completion:nil];
+        [_fundraiserViewController setPaymentViewController:_paymentViewController];
+        _fundraiserViewController.navigationItem.title = @"Fundraiser Tracking Code";
+        return _fundraiserViewController;
     }
     else
     {
-        [self presentViewController:[self getPaymentController] animated:YES completion:nil];
+        return _paymentViewController;
     }
-    
-    
+}
+
+#pragma mark -
+#pragma mark - TaloolDealOfferActionDelegate
+
+// Create and present a BTPaymentViewController (that has a cancel button)
+- (void)buyNow:(id)sender
+{
+    _fundraisingCode = nil;
+    [self.navigationController pushViewController:[self getPaymentController] animated:YES];
 }
 
 - (void)activateCode:(id)sender
@@ -354,13 +342,11 @@
 - (void) handleValidCode:(NSString *)code
 {
     _fundraisingCode = code;
-    [self presentViewController:[self getPaymentController] animated:YES completion:nil];
 }
 
 - (void)handleSkipCode
 {
     _fundraisingCode = nil;
-    [self presentViewController:[self getPaymentController] animated:YES completion:nil];
 }
 
 #pragma mark -
