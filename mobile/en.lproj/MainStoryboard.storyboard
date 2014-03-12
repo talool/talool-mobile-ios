@@ -908,34 +908,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TileTop" rowHeight="60" id="kQQ-6U-KCQ" customClass="HeaderPromptCell">
-                                <rect key="frame" x="0.0" y="50" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kQQ-6U-KCQ" id="bOR-EL-y2t">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="List Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQC-80-ohC">
-                                            <rect key="frame" x="20" y="22" width="280" height="21"/>
-                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                            <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="KQC-80-ohC" secondAttribute="trailing" constant="20" symbolic="YES" id="0gm-CU-pi5"/>
-                                        <constraint firstItem="KQC-80-ohC" firstAttribute="top" secondItem="bOR-EL-y2t" secondAttribute="top" constant="22" id="ImS-x0-p0t"/>
-                                        <constraint firstItem="KQC-80-ohC" firstAttribute="leading" secondItem="bOR-EL-y2t" secondAttribute="leading" constant="20" symbolic="YES" id="adM-Ae-Drq"/>
-                                        <constraint firstAttribute="bottom" secondItem="KQC-80-ohC" secondAttribute="bottom" constant="16" id="lbs-ZP-Miz"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="promptMessage" destination="KQC-80-ohC" id="qMr-Fx-jqi"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" id="qid-w6-WlB" customClass="ActivityCell">
-                                <rect key="frame" x="0.0" y="110" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qid-w6-WlB" id="vHv-Ft-lgy">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
@@ -999,7 +973,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GiftCell" id="Hy9-5a-7NC" customClass="ActivityCell">
-                                <rect key="frame" x="0.0" y="200" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="140" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hy9-5a-7NC" id="GRh-wr-zWf">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
@@ -1061,8 +1035,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <segue destination="t7S-Tz-gPL" kind="push" identifier="openGift" id="N5t-B5-FH9"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WelcomeCell" id="fbh-DV-DEf" customClass="ActivityCell">
-                                <rect key="frame" x="0.0" y="290" width="320" height="90"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MobileWebCell" id="fbh-DV-DEf" customClass="ActivityCell">
+                                <rect key="frame" x="0.0" y="230" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbh-DV-DEf" id="4Qu-cT-EeS">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
@@ -1121,35 +1095,69 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="iconView" destination="c2P-Kr-QFW" id="pVi-uH-N8N"/>
                                     <outlet property="subtitleLabel" destination="g2a-6M-lqO" id="TD7-j1-a1I"/>
                                     <outlet property="titleLabel" destination="rKs-Lg-icS" id="mKH-Xh-Xt2"/>
-                                    <segue destination="Kia-Ym-Kxg" kind="push" identifier="WelcomeActivity" id="q3T-VT-ua5"/>
+                                    <segue destination="Kia-Ym-Kxg" kind="push" identifier="MobileWebActivity" id="q3T-VT-ua5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FooterCell" rowHeight="60" id="FpQ-My-Dh9" userLabel="Buy More Prompt" customClass="FooterPromptCell">
-                                <rect key="frame" x="0.0" y="380" width="320" height="60"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GenericLinkCell" id="xH7-wA-1xh" customClass="ActivityCell">
+                                <rect key="frame" x="0.0" y="320" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FpQ-My-Dh9" id="G0a-Md-1Gt">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xH7-wA-1xh" id="kfv-oR-FM9">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Buy More Deals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZt-Ec-6TZ">
-                                            <rect key="frame" x="20" y="18" width="280" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3f-gv-whx">
+                                            <rect key="frame" x="15" y="6" width="50" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="5Ma-CA-dtn"/>
+                                                <constraint firstAttribute="height" constant="50" id="sCx-OT-eOF"/>
+                                                <constraint firstAttribute="width" constant="50" id="wCy-4P-5Ha"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
-                                            <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Action with External Link" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="201" translatesAutoresizingMaskIntoConstraints="NO" id="ALG-RU-baM">
+                                            <rect key="frame" x="73" y="6" width="201" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="38" id="KTu-Kf-JF6"/>
+                                                <constraint firstAttribute="width" constant="201" id="r7d-aw-iMZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="From Sally" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gZ-Mc-0aT">
+                                            <rect key="frame" x="73" y="48" width="196" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="6/25/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djx-lk-1PL">
+                                            <rect key="frame" x="73" y="68" width="222" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.52549019610000003" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Djx-lk-1PL" firstAttribute="top" secondItem="ALG-RU-baM" secondAttribute="bottom" constant="24" id="4rs-bD-nIo"/>
+                                        <constraint firstItem="1gZ-Mc-0aT" firstAttribute="leading" secondItem="o3f-gv-whx" secondAttribute="trailing" constant="8" symbolic="YES" id="9b5-2R-pEw"/>
+                                        <constraint firstItem="1gZ-Mc-0aT" firstAttribute="leading" secondItem="Djx-lk-1PL" secondAttribute="leading" id="DP8-bI-0g2"/>
+                                        <constraint firstAttribute="bottom" secondItem="Djx-lk-1PL" secondAttribute="bottom" id="JJS-0e-OLE"/>
+                                        <constraint firstItem="1gZ-Mc-0aT" firstAttribute="top" secondItem="ALG-RU-baM" secondAttribute="bottom" constant="4" id="K8U-DN-i71"/>
+                                        <constraint firstAttribute="trailing" secondItem="Djx-lk-1PL" secondAttribute="trailing" constant="-8" id="hOa-GL-fWz"/>
+                                        <constraint firstAttribute="trailing" secondItem="1gZ-Mc-0aT" secondAttribute="trailing" constant="18" id="q7n-xl-9qm"/>
+                                        <constraint firstAttribute="bottom" secondItem="1gZ-Mc-0aT" secondAttribute="bottom" constant="20" symbolic="YES" id="rIv-oe-yyu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DZt-Ec-6TZ" secondAttribute="trailing" constant="20" id="ZeZ-aK-syJ"/>
-                                    <constraint firstItem="DZt-Ec-6TZ" firstAttribute="top" secondItem="FpQ-My-Dh9" secondAttribute="top" constant="18" id="jcc-7M-Jl3"/>
-                                    <constraint firstItem="DZt-Ec-6TZ" firstAttribute="leading" secondItem="FpQ-My-Dh9" secondAttribute="leading" constant="20" id="mzE-IA-Re0"/>
+                                    <constraint firstItem="o3f-gv-whx" firstAttribute="leading" secondItem="xH7-wA-1xh" secondAttribute="leading" constant="15" id="3wN-fi-ojW"/>
+                                    <constraint firstItem="ALG-RU-baM" firstAttribute="top" secondItem="o3f-gv-whx" secondAttribute="top" id="DXn-we-TmO"/>
+                                    <constraint firstItem="ALG-RU-baM" firstAttribute="leading" secondItem="o3f-gv-whx" secondAttribute="trailing" constant="8" symbolic="YES" id="hj0-mO-W57"/>
+                                    <constraint firstItem="o3f-gv-whx" firstAttribute="top" secondItem="xH7-wA-1xh" secondAttribute="top" constant="6" id="sRr-TD-Rl8"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="promptMessage" destination="DZt-Ec-6TZ" id="cDI-y3-FoB"/>
+                                    <outlet property="dateLabel" destination="Djx-lk-1PL" id="tYi-j6-QIP"/>
+                                    <outlet property="iconView" destination="o3f-gv-whx" id="KMq-jR-F7w"/>
+                                    <outlet property="subtitleLabel" destination="1gZ-Mc-0aT" id="s9O-Sm-lr2"/>
+                                    <outlet property="titleLabel" destination="ALG-RU-baM" id="DNZ-tN-2TT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2858,7 +2866,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYY-Ve-nGY"/>
         <segue reference="wjI-dw-vyW"/>
+        <segue reference="q3T-VT-ua5"/>
     </inferredMetricsTieBreakers>
 </document>

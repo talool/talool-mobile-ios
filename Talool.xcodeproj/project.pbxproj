@@ -267,6 +267,9 @@
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
 		81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
+		81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
+		81F5E27418CFFBD800FBDF96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
+		81F5E27518CFFBE800FBDF96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
 		9103111116D1E53800CEE814 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
@@ -518,6 +521,7 @@
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
 		81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundraiserCodeViewController.m; sourceTree = "<group>"; };
 		81F5E27118CF910500FBDF96 /* FundraiserCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundraiserCodeViewController.h; sourceTree = "<group>"; };
+		81F5E27318CFFBD800FBDF96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9103110916D1E53800CEE814 /* Talool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9103110C16D1E53800CEE814 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9103110E16D1E53800CEE814 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -582,6 +586,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F5E27418CFFBD800FBDF96 /* MessageUI.framework in Frameworks */,
 				8155F9E618BE9F6F00314DB3 /* Security.framework in Frameworks */,
 				8155F9E718BE9F6F00314DB3 /* AddressBookUI.framework in Frameworks */,
 				8155F9E818BE9F6F00314DB3 /* CoreText.framework in Frameworks */,
@@ -609,6 +614,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81F5E27518CFFBE800FBDF96 /* MessageUI.framework in Frameworks */,
 				916B1167175D69590024A037 /* Security.framework in Frameworks */,
 				81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */,
 				91490D311745DBD000622A85 /* CoreText.framework in Frameworks */,
@@ -931,6 +937,7 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81F5E27318CFFBD800FBDF96 /* MessageUI.framework */,
 				8151CBA4179452F0007894B2 /* SystemConfiguration.framework */,
 				817E53841770CE180049434A /* StoreKit.framework */,
 				916B1166175D69590024A037 /* Security.framework */,
@@ -1383,6 +1390,7 @@
 				8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */,
 				8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */,
 				8155F9A618BE9F6F00314DB3 /* ActivateCodeViewController.m in Sources */,
+				81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */,
 				8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */,
 				8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */,
 				8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */,

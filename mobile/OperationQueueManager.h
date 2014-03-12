@@ -66,9 +66,11 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
                               zipCode:(NSString *)zip
                          venmoSession:(NSString *)session
                                 offer:(ttDealOffer *)offer
+                           fundraiser:(NSString *)fundraiser
                              delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
+- (void) startValidateTrackingCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate;
 

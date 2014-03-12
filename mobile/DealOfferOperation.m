@@ -27,12 +27,14 @@
 @property (strong, nonatomic) NSString *session;
 
 @property (strong, nonatomic) NSString *code;
+@property (strong, nonatomic) NSString *fundraiser;
 
 @property (strong, nonatomic) ttDealOffer *offer;
 
 @property BOOL isCardPurchase;
 @property BOOL isCodePurchase;
 @property BOOL isActivation;
+@property BOOL isCodeValidation;
 
 @end
 
@@ -54,6 +56,7 @@
            zipCode:(NSString *)z
       venmoSession:(NSString *)s
              offer:(ttDealOffer *)o
+        fundraiser:(NSString *)f
           delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
@@ -65,17 +68,19 @@
         self.zip = z;
         self.session = s;
         self.offer = o;
+        self.fundraiser = f;
         self.isCardPurchase = YES;
     }
     return self;
 }
 
-- (id)initWithPurchaseCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
+- (id)initWithPurchaseCode:(NSString *)c offer:(ttDealOffer *)o fundraiser:(NSString *)f delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
         self.delegate = d;
         self.offer = o;
+        self.fundraiser = f;
         self.code = c;
         self.isCodePurchase = YES;
     }
@@ -90,6 +95,18 @@
         self.offer = o;
         self.code = c;
         self.isActivation = YES;
+    }
+    return self;
+}
+
+- (id)initWithTrackingCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.offer = o;
+        self.code = c;
+        self.isCodeValidation = YES;
     }
     return self;
 }
@@ -112,6 +129,10 @@
         {
             [self activate];
         }
+        else if (self.isCodeValidation)
+        {
+            [self validate];
+        }
         else
         {
             [self fetch];
@@ -133,12 +154,14 @@
                                      zipCode:self.zip
                                 venmoSession:self.session
                                     customer:customer
+                                  fundraiser:_fundraiser
                                        error:&error];
     
     if (result)
     {
-        [FacebookHelper postOGPurchaseAction:self.offer];
+        
         dispatch_async(dispatch_get_main_queue(),^{
+            [FacebookHelper postOGPurchaseAction:self.offer fundraiser:self.fundraiser];
             [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
             NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
             [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
@@ -163,12 +186,13 @@
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *error;
-    BOOL result = [self.offer purchaseByCode:self.code customer:customer error:&error];
+    BOOL result = [self.offer purchaseByCode:self.code customer:customer fundraiser:_fundraiser error:&error];
     
     if (result)
     {
-        [FacebookHelper postOGPurchaseAction:self.offer];
+        
         dispatch_async(dispatch_get_main_queue(),^{
+            [FacebookHelper postOGPurchaseAction:self.offer fundraiser:self.fundraiser];
             [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
             NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
             [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
@@ -197,7 +221,7 @@
     
     if (result)
     {
-        [FacebookHelper postOGPurchaseAction:self.offer];
+        [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];
         dispatch_async(dispatch_get_main_queue(),^{
             [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
         });
@@ -212,6 +236,26 @@
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activationOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) validate
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    BOOL result = [self.offer validateCode:customer code:self.code error:&error];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(validateTrackingCodeOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }

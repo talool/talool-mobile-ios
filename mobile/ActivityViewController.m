@@ -170,13 +170,13 @@
         [agvc setGiftId:giftId];
         [agvc setActivityId:activity.activityId];
     }
-    else if ([[segue identifier] isEqualToString:@"WelcomeActivity"])
+    else if ([[segue identifier] isEqualToString:@"MobileWebActivity"])
     {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ttActivity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
         [[segue destinationViewController] setMobileWebUrl:activity.link.elementId];
-        [[segue destinationViewController] setViewTitle:@"Welcome"];
+        [[segue destinationViewController] setViewTitle:activity.title];
     }
 }
 
@@ -291,9 +291,10 @@
 - (NSString *) getCellIdentifier:(NSIndexPath *)indexPath
 {
     ttActivity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    ttActivityLink *link = (ttActivityLink *) activity.link;
     
     NSString *CellIdentifier;
-    if ([activity isFacebookReceiveGiftEvent] || [activity isEmailReceiveGiftEvent])
+    if ([link isGiftLink])
     {
         if ([activity isClosed])
         {
@@ -304,9 +305,13 @@
             CellIdentifier = @"GiftCell";
         }
     }
-    else if ([activity isWelcomeEvent])
+    else if ([link isExternalLink])
     {
-        CellIdentifier = @"WelcomeCell";
+        CellIdentifier = @"MobileWebCell";
+    }
+    else if ([link isEmailLink])
+    {
+        CellIdentifier = @"GenericLinkCell";
     }
     else
     {
@@ -324,9 +329,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttActivity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([activity isWelcomeEvent] || [activity isTaloolReachEvent] || [activity isMerchantReachEvent])
+    if (![activity isClosed])
     {
         [[OperationQueueManager sharedInstance] startCloseActivityOperation:activity.activityId delegate:self];
+        
+        ttActivityLink *link = (ttActivityLink *) activity.link;
+        if ([link isEmailLink])
+        {
+            [self showEmail:activity];
+        }
+        
     }
 }
 
@@ -446,6 +458,60 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
     [self.tableView endUpdates];
+}
+
+
+#pragma mark -
+#pragma mark - Email helper
+
+- (void)showEmail:(ttActivity *)activity {
+    
+    ttActivityLink *link = [activity getLink];
+    if (!link) return;
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:activity.title];
+    [mc setMessageBody:link.elementId isHTML:YES];
+
+    [self presentViewController:mc animated:YES completion:NULL];
+    
+}
+
+#pragma mark -
+#pragma mark - MFMailComposeViewControllerDelegate methods
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    NSString *status;
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            status = @"Mail cancelled";
+            break;
+        case MFMailComposeResultSaved:
+            status = @"Mail saved";
+            break;
+        case MFMailComposeResultSent:
+            status = @"Mail sent";
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            status = @"Mail failure";
+            break;
+        default:
+            break;
+    }
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"EMAIL"
+                                                          action:@"activityEmail"
+                                                           label:status
+                                                           value:nil] build]];
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

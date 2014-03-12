@@ -53,7 +53,7 @@
 {
     [super viewWillAppear:animated];
     
-    codeFld.text = @"";
+    codeFld.text = nil;
     
     instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ collection to support a fundraiser, please enter the fundraiser's tracking code below.", offer.title];
     
@@ -79,11 +79,7 @@
 
     [codeFld resignFirstResponder];
 
-#warning "Validate fundraiserCode"
-    // TODO validate this code with a new operation
-    //[[OperationQueueManager sharedInstance] startActivateCodeOperation:accessCodeFld.text offer:offer delegate:self];
-    [delegate handleValidCode:[codeFld text]];
-    [self.navigationController pushViewController:paymentViewController animated:YES];
+    [[OperationQueueManager sharedInstance] startValidateTrackingCodeOperation:codeFld.text offer:offer delegate:self];
 }
 -(void) cancel:(id)sender
 {
@@ -109,10 +105,8 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self dismissViewControllerAnimated:YES completion:^{
-            [delegate handleValidCode:[codeFld text]];
-        }];
-        
+        [delegate handleValidCode:[codeFld text]];
+        [self.navigationController pushViewController:paymentViewController animated:YES];
     }
     else
     {

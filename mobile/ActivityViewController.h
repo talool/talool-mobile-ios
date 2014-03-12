@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "TaloolProtocols.h"
 
 @class ActivityFilterView;
 
-@interface ActivityViewController : UITableViewController<OperationQueueDelegate, NSFetchedResultsControllerDelegate, FilterMenuDelegate>
+@interface ActivityViewController : UITableViewController<MFMailComposeViewControllerDelegate, OperationQueueDelegate, NSFetchedResultsControllerDelegate, FilterMenuDelegate>
 
 
 @end

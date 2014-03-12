@@ -230,6 +230,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
                               zipCode:(NSString *)zip
                          venmoSession:(NSString *)session
                                 offer:(ttDealOffer *)offer
+                           fundraiser:(NSString *)fundraiser
                              delegate:(id<OperationQueueDelegate>)delegate
 {
     DealOfferOperation *doo = [[DealOfferOperation alloc] initWithCard:card
@@ -239,14 +240,15 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
                                                                zipCode:zip
                                                           venmoSession:session
                                                                  offer:offer
+                                                            fundraiser:fundraiser
                                                               delegate:delegate];
     [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:doo];
 }
 
-- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
+- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate
 {
-    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithPurchaseCode:code offer:offer delegate:delegate];
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithPurchaseCode:code offer:offer fundraiser:fundraiser delegate:delegate];
     [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:doo];
 }
@@ -258,6 +260,12 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue addOperation:doo];
 }
 
+- (void) startValidateTrackingCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
+{
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithTrackingCode:code offer:offer delegate:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
+}
 
 - (void) startRecurringDealOfferOperation
 {

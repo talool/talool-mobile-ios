@@ -23,10 +23,12 @@
            zipCode:(NSString *)z
       venmoSession:(NSString *)s
              offer:(ttDealOffer *)offer
+        fundraiser:(NSString *)fundraiser
           delegate:(id<OperationQueueDelegate>)d;
 
-- (id)initWithPurchaseCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
+- (id)initWithPurchaseCode:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)d;
 
 - (id)initWithActivationCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
+- (id)initWithTrackingCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
 
 @end

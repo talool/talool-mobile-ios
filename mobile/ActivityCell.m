@@ -25,59 +25,40 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"M/d/yyyy' at 'h:mm a"];
     dateLabel.text = [dateFormatter stringFromDate:activity.activityDate];
+    
+    UIColor *iconColor;
+    if ([activity isClosed])
+    {
+        iconColor = [TaloolColor gray_3];
+    }
+    else
+    {
+        iconColor = [TaloolColor teal];
+    }
 
     if ([activity isFacebookReceiveGiftEvent] ||
-        [activity isEmailReceiveGiftEvent])
+        [activity isRejectGiftEvent] ||
+        [activity isEmailReceiveGiftEvent] ||
+        [activity isEmailSendGiftEvent] ||
+        [activity isFacebookSendGiftEvent])
     {
-        if ([activity isClosed])
-        {
-            iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
-        }
-        else
-        {
-            iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor teal]];
-        }
+        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:iconColor];
     }
-    else if ([activity isRejectGiftEvent])
+    else if ([activity isPurchaseEvent] ||
+             [activity isRedeemEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
-    }
-    else if ([activity isEmailSendGiftEvent] ||
-             [activity isFacebookSendGiftEvent])
-    {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:[TaloolColor gray_3]];
-    }
-    else if ([activity isPurchaseEvent])
-    {
-        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
-    }
-    else if ([activity isWelcomeEvent] ||
-             [activity isMerchantReachEvent] ||
-             [activity isTaloolReachEvent])
-    {
-        if ([activity isClosed])
-        {
-            iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor gray_3]];
-        }
-        else
-        {
-            iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:[TaloolColor teal]];
-        }
-    }
-    else if ([activity isRedeemEvent])
-    {
-        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_3]];
+        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:iconColor];
     }
     else if ([activity isFriendGiftAcceptEvent] ||
              [activity isFriendGiftRedeemEvent] ||
              [activity isFriendGiftRejectEvent] ||
              [activity isFriendPurchaseEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGroup color:[TaloolColor gray_3]];
+        iconView.image = [IconHelper getImageForIcon:FAKIconGroup color:iconColor];
     }
     else
-    { 
-        iconView.image = [IconHelper getImageForIcon:FAKIconQuestion color:[TaloolColor gray_1]];
+    {
+        iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:iconColor];
     }
     
 }

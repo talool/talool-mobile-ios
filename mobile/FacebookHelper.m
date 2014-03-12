@@ -134,14 +134,21 @@
     return result;
 }
 
-+ (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer
++ (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer fundraiser:(NSString *)fundraiser
 {
     NSString *host = ([[TaloolFrameworkHelper sharedInstance] isProduction])? OG_OFFER_PAGE_PROD:OG_OFFER_PAGE_DEV;
     id<OGDealPack> result = (id<OGDealPack>)[FBGraphObject graphObject];
-    result.url = [NSString stringWithFormat:@"%@/%@", host, dealOffer.dealOfferId];
+    if (fundraiser)
+    {
+        result.url = [NSString stringWithFormat:@"%@/%@/%@", host, dealOffer.dealOfferId, fundraiser];
+    }
+    else
+    {
+        result.url = [NSString stringWithFormat:@"%@/%@", host, dealOffer.dealOfferId];
+    }
+    
     
     return result;
-
 }
 
 + (void)postOGGiftAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location
@@ -222,7 +229,7 @@
      ];
 }
 
-+ (void)postOGPurchaseAction:(ttDealOffer*)pack
++ (void)postOGPurchaseAction:(ttDealOffer*)offer fundraiser:(NSString *)fundraiser
 {
     // bail if not connected & we couldn't reopen it
     if (![FBSession activeSession].isOpen)
@@ -230,12 +237,12 @@
         if (![FacebookHelper reopenSession]) return;
     }
     
-    // First create the Open Graph deal object for the deal being shared.
-    id<OGDealPack> dealPackObject = [FacebookHelper dealPackObjectForDealOffer:pack];
+    // First create the Open Graph dealPack object for the deal offer being purchased.
+    id<OGDealPack> dealOfferObject = [FacebookHelper dealPackObjectForDealOffer:offer fundraiser:fundraiser];
     
     // Now create an Open Graph purchase action with the deal offer
     id<OGPurchaseDealPackAction> action = (id<OGPurchaseDealPackAction>)[FBGraphObject graphObject];
-    action.deal_pack = dealPackObject;
+    action.deal_pack = dealOfferObject;
     
     // Handy setting for additional logging
     //[FBSettings setLoggingBehavior:[NSSet setWithObjects:FBLoggingBehaviorFBRequests, FBLoggingBehaviorFBURLConnections, nil]];

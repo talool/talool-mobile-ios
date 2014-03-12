@@ -18,11 +18,11 @@
 +(ttCustomer *) createCustomerFromFacebookUser: (NSDictionary<FBGraphUser> *)user context:(NSManagedObjectContext *)context;
 + (id<OGDeal>)dealObjectForGift:(NSString*)giftId;
 + (id<OGDeal>)dealObjectForDeal:(ttDeal*)deal;
-+ (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer;
++ (id<OGDealPack>)dealPackObjectForDealOffer:(ttDealOffer*)dealOffer fundraiser:(NSString *)fundraiser;
 + (id<OGLocation>)locationObjectForMerchantLocation:(ttMerchantLocation*)loc;
 + (void)postOGGiftAction:(NSString*)giftId toFacebookId:(NSString *)facebookId  atLocation:(ttMerchantLocation*)location;
 + (void)postOGRedeemAction:(ttDeal*)deal atLocation:(ttMerchantLocation*)location;
-+ (void)postOGPurchaseAction:(ttDealOffer*)pack;
++ (void)postOGPurchaseAction:(ttDealOffer*)pack fundraiser:(NSString *)fundraiser;
 + (void)postOGLikeAction:(ttMerchantLocation*)loc;
 
 + (void)trackNumberOfFriends;

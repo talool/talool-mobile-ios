@@ -126,10 +126,9 @@
     if (success)
     {
         [self.paymentViewController prepareForDismissal];
-        [self.paymentViewController dismissViewControllerAnimated:YES completion:^{
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate presentNewDeals];
-        }];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate presentNewDeals];
     }
     else
     {
@@ -276,7 +275,6 @@
 
 - (UIViewController *) getPaymentController
 {
-
     
     // price formatter for the title bar
     NSNumberFormatter *priceFormatter = [[NSNumberFormatter alloc] init];
@@ -288,8 +286,7 @@
     _paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
     _paymentViewController.navigationItem.title = [NSString stringWithFormat:@"Buy Deals - %@",[priceFormatter stringFromNumber:offer.price]];
     
-#warning "check if offer is a fundraiser"
-    if (YES) // if offer.isFundraiser
+    if ([offer isFundraiser])
     {
         if (!_fundraiserViewController)
         {
@@ -363,7 +360,6 @@
     NSString *zip = [cardInfoEncrypted objectForKey:@"zipcode"];
     NSString *session = [cardInfoEncrypted objectForKey:@"venmo_sdk_session"];
 
-#warning "pass fundraiserCode"
     [[OperationQueueManager sharedInstance] startPurchaseByCardOperation:card
                                                                 expMonth:expMonth
                                                                  expYear:expYear
@@ -371,14 +367,14 @@
                                                                  zipCode:zip
                                                             venmoSession:session
                                                                    offer:offer
+                                                              fundraiser:_fundraisingCode
                                                                 delegate:self];
     
 }
 
 - (void) paymentViewController:(BTPaymentViewController *)paymentViewController didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode
 {
-#warning "pass fundraiserCode"
-    [[OperationQueueManager sharedInstance] startPurchaseByCodeOperation:paymentMethodCode offer:offer delegate:self];
+    [[OperationQueueManager sharedInstance] startPurchaseByCodeOperation:paymentMethodCode offer:offer fundraiser:_fundraisingCode delegate:self];
 }
 
 
