@@ -21,7 +21,6 @@
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
 #import "AppDelegate.h"
-#import "ActivateCodeViewController.h"
 #import "FacebookHelper.h"
 #import "OperationQueueManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -273,7 +272,7 @@
     [self.navigationController pushViewController:[self getDetailView:merchant] animated:YES];
 }
 
-- (UIViewController *) getPaymentController
+- (UIViewController *) getPaymentController:(BOOL)showCodeValidationByDefault
 {
     
     // price formatter for the title bar
@@ -286,7 +285,7 @@
     _paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
     _paymentViewController.navigationItem.title = [NSString stringWithFormat:@"Buy Deals - %@",[priceFormatter stringFromNumber:offer.price]];
     
-    if ([offer isFundraiser])
+    if (showCodeValidationByDefault || [offer isFundraiser])
     {
         if (!_fundraiserViewController)
         {
@@ -296,7 +295,7 @@
         [_fundraiserViewController setOffer:offer];
         [_fundraiserViewController setDelegate:self];
         [_fundraiserViewController setPaymentViewController:_paymentViewController];
-        _fundraiserViewController.navigationItem.title = @"Fundraiser Tracking Code";
+        _fundraiserViewController.navigationItem.title = @"Code Validation";
         return _fundraiserViewController;
     }
     else
@@ -312,25 +311,13 @@
 - (void)buyNow:(id)sender
 {
     _fundraisingCode = nil;
-    [self.navigationController pushViewController:[self getPaymentController] animated:YES];
+    [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
 }
 
 - (void)activateCode:(id)sender
 {
-    ActivateCodeViewController *activateView = (ActivateCodeViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ActivateCodeView"];
-    UINavigationController *activateViewNavigationController =
-        [[UINavigationController alloc] initWithRootViewController:activateView];
-    activateView.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                             target:activateViewNavigationController
-                                             action:@selector(dismissModalViewControllerAnimated:)];
-    [activateView.navigationItem.leftBarButtonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                                                               forState:UIControlStateNormal];
-    activateView.navigationItem.title = @"Activate Deals";
-    
-    [activateView setOffer:offer];
-    
-    [self presentViewController:activateViewNavigationController animated:YES completion:nil];
+    _fundraisingCode = nil;
+    [self.navigationController pushViewController:[self getPaymentController:YES] animated:YES];
 }
 
 #pragma mark -

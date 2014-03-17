@@ -253,16 +253,9 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [self.foregroundQueue addOperation:doo];
 }
 
-- (void) startActivateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
+- (void) startValidateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
 {
-    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithActivationCode:code offer:offer delegate:delegate];
-    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [self.foregroundQueue addOperation:doo];
-}
-
-- (void) startValidateTrackingCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate
-{
-    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithTrackingCode:code offer:offer delegate:delegate];
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithCode:code offer:offer delegate:delegate];
     [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:doo];
 }

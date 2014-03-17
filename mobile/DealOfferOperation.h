@@ -28,7 +28,6 @@
 
 - (id)initWithPurchaseCode:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)d;
 
-- (id)initWithActivationCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
-- (id)initWithTrackingCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
+- (id)initWithCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
 
 @end

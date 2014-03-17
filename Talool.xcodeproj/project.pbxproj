@@ -27,7 +27,6 @@
 		8146E0D31864D8EC00E905B5 /* ActivityFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D21864D8EC00E905B5 /* ActivityFilterMenu.m */; };
 		8146E0D61864F80000E905B5 /* TaloolFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D51864F80000E905B5 /* TaloolFilterMenu.m */; };
 		81471F3F179F0B3900C6DAB8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81471F3E179F0B3800C6DAB8 /* SplashViewController.m */; };
-		81517B4917FB7F070020A688 /* ActivateCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B4817FB7F070020A688 /* ActivateCodeViewController.m */; };
 		81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
 		81517B4F17FBB5470020A688 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
 		81517B5217FC62650020A688 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
@@ -52,7 +51,6 @@
 		8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
 		8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
 		8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
-		8155F9A618BE9F6F00314DB3 /* ActivateCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B4817FB7F070020A688 /* ActivateCodeViewController.m */; };
 		8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
 		8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
 		8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
@@ -345,8 +343,6 @@
 		8146E0D51864F80000E905B5 /* TaloolFilterMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolFilterMenu.m; sourceTree = "<group>"; };
 		81471F3D179F0B3800C6DAB8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
 		81471F3E179F0B3800C6DAB8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashViewController.m; path = ../SplashViewController.m; sourceTree = "<group>"; };
-		81517B4717FB7F060020A688 /* ActivateCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateCodeViewController.h; sourceTree = "<group>"; };
-		81517B4817FB7F070020A688 /* ActivateCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateCodeViewController.m; sourceTree = "<group>"; };
 		81517B4C17FBB5470020A688 /* hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hero-568h@2x.png"; sourceTree = "<group>"; };
 		81517B4D17FBB5470020A688 /* hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hero@2x.png"; sourceTree = "<group>"; };
 		81517B5017FC62650020A688 /* TaloolTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTextField.h; sourceTree = "<group>"; };
@@ -681,8 +677,6 @@
 			children = (
 				811A9CBE175FE2C400B42612 /* AcceptGiftViewController.h */,
 				811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */,
-				81517B4717FB7F060020A688 /* ActivateCodeViewController.h */,
-				81517B4817FB7F070020A688 /* ActivateCodeViewController.m */,
 				81F5E27118CF910500FBDF96 /* FundraiserCodeViewController.h */,
 				81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */,
 				81BD126917870F4E00AF7475 /* DealOfferTableViewController.h */,
@@ -1389,7 +1383,6 @@
 				8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */,
 				8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */,
 				8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */,
-				8155F9A618BE9F6F00314DB3 /* ActivateCodeViewController.m in Sources */,
 				81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */,
 				8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */,
 				8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */,
@@ -1482,7 +1475,6 @@
 				91986F0F16DA9E8B00D1CA96 /* TaloolTabBarController.m in Sources */,
 				914B1EC016E3029A00C88B59 /* WelcomeViewController.m in Sources */,
 				916148CF16ED1C04001C546C /* CustomerHelper.m in Sources */,
-				81517B4917FB7F070020A688 /* ActivateCodeViewController.m in Sources */,
 				81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */,
 				91CC60BF16F5222C00647AEC /* FacebookHelper.m in Sources */,
 				81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */,

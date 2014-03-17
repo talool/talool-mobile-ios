@@ -44,8 +44,7 @@ static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 - (void)activityOperationComplete:(NSDictionary *)response;
 - (void)merchantOperationComplete:(NSDictionary *)response;
 - (void)purchaseOperationComplete:(NSDictionary *)response;
-- (void)activationOperationComplete:(NSDictionary *)response;
-- (void)validateTrackingCodeOperationComplete:(NSDictionary *)response;
+- (void)validationOperationComplete:(NSDictionary *)response;
 @end
 
 @protocol FundraisingCodeDelegate<NSObject>

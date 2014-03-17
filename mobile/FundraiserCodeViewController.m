@@ -55,10 +55,10 @@
     
     codeFld.text = nil;
     
-    instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ collection to support a fundraiser, please enter the fundraiser's tracking code below.", offer.title];
+    instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ collection to support a fundraiser, please enter the fundraiser's tracking code below. \n\nIf you have already paid for the %@ collection and have an access code, you can enter that in the field below too.", offer.title, offer.title];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"Fundraiser Code Screen"];
+    [tracker set:kGAIScreenName value:@"Validate Code Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
@@ -75,11 +75,11 @@
 #pragma mark - TaloolKeyboardAccessoryDelegate methods
 -(void) submit:(id)sender
 {
-    //[SVProgressHUD showWithStatus:@"Validating Code" maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"Validating Code" maskType:SVProgressHUDMaskTypeBlack];
 
     [codeFld resignFirstResponder];
 
-    [[OperationQueueManager sharedInstance] startValidateTrackingCodeOperation:codeFld.text offer:offer delegate:self];
+    [[OperationQueueManager sharedInstance] startValidateCodeOperation:codeFld.text offer:offer delegate:self];
 }
 -(void) cancel:(id)sender
 {
@@ -98,15 +98,21 @@
 #pragma mark -
 #pragma mark - OperationQueueDelegate methods
 
-- (void) validateTrackingCodeOperationComplete:(NSDictionary *)response
+- (void) validationOperationComplete:(NSDictionary *)response
 {
     [SVProgressHUD dismiss];
     
-    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
-    if (success)
+    int success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] intValue];
+    if (success == ValidatationResponse_VALID)
     {
         [delegate handleValidCode:[codeFld text]];
         [self.navigationController pushViewController:paymentViewController animated:YES];
+    }
+    else if (success == ValidatationResponse_ACTIVATED)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate presentNewDeals];
     }
     else
     {

@@ -33,7 +33,6 @@
 
 @property BOOL isCardPurchase;
 @property BOOL isCodePurchase;
-@property BOOL isActivation;
 @property BOOL isCodeValidation;
 
 @end
@@ -87,19 +86,7 @@
     return self;
 }
 
-- (id)initWithActivationCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
-{
-    if (self = [super init])
-    {
-        self.delegate = d;
-        self.offer = o;
-        self.code = c;
-        self.isActivation = YES;
-    }
-    return self;
-}
-
-- (id)initWithTrackingCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
+- (id)initWithCode:(NSString *)c offer:(ttDealOffer *)o delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
@@ -124,10 +111,6 @@
         else if (self.isCodePurchase)
         {
             [self purchaseWithCode];
-        }
-        else if (self.isActivation)
-        {
-            [self activate];
         }
         else if (self.isCodeValidation)
         {
@@ -213,13 +196,13 @@
     }
 }
 
--(void) activate
+-(void) validate
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *error;
-    BOOL result = [self.offer activiateCode:customer code:self.code error:&error];
+    int result = [self.offer validateCode:customer code:self.code error:&error];
     
-    if (result)
+    if (result == ValidatationResponse_ACTIVATED)
     {
         [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];
         dispatch_async(dispatch_get_main_queue(),^{
@@ -230,32 +213,12 @@
     if (self.delegate)
     {
         NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
-        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        [delegateResponse setObject:[NSNumber numberWithInt:result] forKey:DELEGATE_RESPONSE_SUCCESS];
         if (error)
         {
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
-        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activationOperationComplete:))
-                                                    withObject:delegateResponse
-                                                 waitUntilDone:NO];
-    }
-}
-
--(void) validate
-{
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSError *error;
-    BOOL result = [self.offer validateCode:customer code:self.code error:&error];
-    
-    if (self.delegate)
-    {
-        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
-        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
-        if (error)
-        {
-            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
-        }
-        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(validateTrackingCodeOperationComplete:))
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(validationOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }
