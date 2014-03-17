@@ -1,8 +1,8 @@
 PODS:
   - Braintree (2.2.4)
-  - EAIntroView (2.2.1)
-  - Facebook-iOS-SDK (3.12.0)
-  - FontAwesomeKit (1.1.4)
+  - EAIntroView (2.2.0)
+  - Facebook-iOS-SDK (3.11.0)
+  - FontAwesomeKit (1.1.3)
   - GoogleAnalytics-iOS-SDK (3.0.3)
   - HexColors (2.2.1)
   - REMenu (1.7.1)
@@ -20,17 +20,17 @@ PODS:
 
 DEPENDENCIES:
   - Braintree (from `https://github.com/braintree/braintree_ios.git`, tag `2.2.4`)
-  - EAIntroView (~> 2.2.0)
-  - Facebook-iOS-SDK (~> 3.11)
-  - FontAwesomeKit (~> 1.1.3)
-  - GoogleAnalytics-iOS-SDK (~> 3.0.1)
-  - REMenu (~> 1.7.1)
-  - SDWebImage (~> 3.5.2)
-  - SVProgressHUD (~> 1.0)
+  - EAIntroView (= 2.2.0)
+  - Facebook-iOS-SDK (= 3.11)
+  - FontAwesomeKit (= 1.1.3)
+  - GoogleAnalytics-iOS-SDK (= 3.0.1)
+  - REMenu (= 1.7.1)
+  - SDWebImage (= 3.5.2)
+  - SVProgressHUD (= 1.0)
   - Talool-API (from `https://github.com/talool/talool-api-ios.git`, branch `whitelabel`)
-  - TestFlightSDK (~> 2.0.2)
+  - TestFlightSDK (= 2.0.2)
   - TSMessages (= 0.9.4)
-  - UIActivityIndicator-for-SDWebImage (~> 1.0.3)
+  - UIActivityIndicator-for-SDWebImage (= 1.0.3)
 
 EXTERNAL SOURCES:
   Braintree:
@@ -42,15 +42,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Braintree: 3135689620aa8d8ce76d515c615ef8bfe8b416a4
-  EAIntroView: 7bc9e6b0738999343faf8e4a8b092b2b1218332b
-  Facebook-iOS-SDK: c09f7d80db5c48170ff834bc03ebe774c49d1f5b
-  FontAwesomeKit: 5898a51ceadcdb05d72b04991ecf04469332b20c
+  EAIntroView: 032cc107158df2956dc9393b84c0b80a02b22762
+  Facebook-iOS-SDK: 2eb12f9ed04f3d3956f0a4fb0e4e60c824dcd101
+  FontAwesomeKit: 4c839de6549fabe8dd50db00fc7e3dd177ac98a9
   GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
   SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  Talool-API: 99c923f79434e44fa29b86c4c07e8de1caffae46
+  Talool-API: fe4d39a2d0efbe949a3f2b293b00b940679542a7
   TestFlightSDK: 0811097c1f831afb71f68ccd07ae71325cb90f43
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   UIActivityIndicator-for-SDWebImage: e712b97826395022ce7b4a4b56eb7194090c19d5
