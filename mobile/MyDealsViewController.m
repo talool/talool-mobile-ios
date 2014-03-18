@@ -324,8 +324,7 @@
 
 - (void) askForHelp
 {
-    // Show the welcome tutorial if they haven't seen it yet
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
     {
         TutorialViewController *tvc = [[TutorialViewController alloc] init];
         [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
@@ -338,7 +337,7 @@
 
 - (int)merchantCount
 {
-    return [_fetchedResultsController.fetchedObjects count];
+    return (int)[_fetchedResultsController.fetchedObjects count];
 }
 
 

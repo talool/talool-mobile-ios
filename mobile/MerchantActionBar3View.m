@@ -9,6 +9,8 @@
 #import "MerchantActionBar3View.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "TaloolColor.h"
+#import "Talool-API/ttMerchant.h"
+#import "Talool-API/ttMerchantLocation.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
@@ -45,9 +47,29 @@
     [self addSubview:view];
 }
 
-- (void)setMerchantImage:(NSString *)url
+- (void)setMerchant:(ttMerchant *)merchant
 {
-    [image setImageWithURL:[NSURL URLWithString:url] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    NSString *websiteUrl = nil;//merchant.closestLocation.websiteUrl;
+    if (websiteUrl != nil)
+    {
+        [webButton setEnabled:YES];
+        NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
+                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        [webButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+    }
+    else
+    {
+        [webButton setEnabled:NO];
+        NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor true_gray],
+                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              };
+        [webButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+    }
+    
+    
+    NSString *imageUrl = merchant.closestLocation.imageUrl;
+    [image setImageWithURL:[NSURL URLWithString:imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 }
 
 - (IBAction)mapAction:(id)sender {

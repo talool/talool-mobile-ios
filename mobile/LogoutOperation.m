@@ -11,7 +11,6 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "CustomerHelper.h"
 #import "OperationQueueManager.h"
-#import <TutorialViewController.h>
 
 @implementation LogoutOperation
 
@@ -31,9 +30,6 @@
         
         NSError *error;
         BOOL result = [ttCustomer logoutUser:[self getContext] error:&error];
-        
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:NO forKey:WELCOME_TUTORIAL_KEY];
         
         dispatch_async(dispatch_get_main_queue(),^{
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUT_NOTIFICATION object:nil];

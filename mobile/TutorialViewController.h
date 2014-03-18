@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EAIntroView.h"
 
-static NSString *WELCOME_TUTORIAL_KEY = @"WELCOME";
+static NSString *WELCOME_TUTORIAL_KEY = @"WELCOME_TUTORIAL";
 
 @interface TutorialViewController : UIViewController<EAIntroDelegate>
 

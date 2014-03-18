@@ -88,7 +88,7 @@
     
     self.navigationItem.title = merchant.name;
     
-    [actionBar3View setMerchantImage:merchant.closestLocation.imageUrl];
+    [actionBar3View setMerchant:merchant];
     
     [self setLikeLabel];
     

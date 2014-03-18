@@ -21,6 +21,7 @@
 #import "TaloolTextField.h"
 #import "OperationQueueManager.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <TutorialViewController.h>
 
 #define sexUndefinedIndex   0
 #define sexFemaleIndex      1
@@ -271,6 +272,9 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else

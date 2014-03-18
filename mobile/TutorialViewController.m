@@ -96,7 +96,7 @@
 {
     // mark the current tutorial as viewed
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:YES forKey:tutorialKey];
+    [defaults setBool:NO forKey:tutorialKey];
     
     // dismiss the tutorial and show Find Deals
     [self dismissViewControllerAnimated:YES completion:nil];

@@ -27,6 +27,6 @@
 @property (nonatomic, strong) id<TaloolMerchantActionDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<TaloolMerchantActionDelegate>)actionDelegate;
-- (void)setMerchantImage:(NSString *)url;
+- (void)setMerchant:(ttMerchant *)merchant;
 
 @end
