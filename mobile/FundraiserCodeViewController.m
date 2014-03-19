@@ -55,7 +55,7 @@
     
     codeFld.text = nil;
     
-    instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ collection to support a fundraiser, please enter the fundraiser's tracking code below. \n\nIf you have already paid for the %@ collection and have an access code, you can enter that in the field below too.", offer.title, offer.title];
+    instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ to support a fundraiser, please enter the fundraiser's tracking code below. \n\nIf you have already paid for the %@ and have an access code, you can enter that in the field below too.", offer.title, offer.title];
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Validate Code Screen"];
