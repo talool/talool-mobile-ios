@@ -11,6 +11,7 @@
 #import "TaloolColor.h"
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
+#import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
 
@@ -49,7 +50,9 @@
 
 - (void)setMerchant:(ttMerchant *)merchant
 {
-    NSString *websiteUrl = nil;//merchant.closestLocation.websiteUrl;
+    [[CustomerHelper getContext] refreshObject:merchant.closestLocation mergeChanges:YES];
+    
+    NSString *websiteUrl = merchant.closestLocation.websiteUrl;
     if (websiteUrl != nil)
     {
         [webButton setEnabled:YES];

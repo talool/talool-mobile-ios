@@ -52,6 +52,9 @@
 
 - (void) updateView:(ttDealAcquire *)dealAcquire
 {
+    
+    [[CustomerHelper getContext] refreshObject:dealAcquire.deal mergeChanges:YES];
+    
     [dealImage setImageWithURL:[NSURL URLWithString:dealAcquire.deal.imageUrl] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     // manage the state of the view

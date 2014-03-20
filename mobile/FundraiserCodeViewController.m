@@ -79,7 +79,7 @@
 
     [codeFld resignFirstResponder];
 
-    [[OperationQueueManager sharedInstance] startValidateCodeOperation:codeFld.text offer:offer delegate:self];
+    [[OperationQueueManager sharedInstance] startValidateCodeOperation:[codeFld.text uppercaseString] offer:offer delegate:self];
 }
 -(void) cancel:(id)sender
 {
@@ -105,7 +105,7 @@
     int success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] intValue];
     if (success == ValidatationResponse_VALID)
     {
-        [delegate handleValidCode:[codeFld text]];
+        [delegate handleValidCode:[codeFld.text uppercaseString]];
         [self.navigationController pushViewController:paymentViewController animated:YES];
     }
     else if (success == ValidatationResponse_ACTIVATED)
