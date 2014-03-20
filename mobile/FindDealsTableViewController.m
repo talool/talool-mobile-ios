@@ -43,7 +43,7 @@
     [self.navigationController.navigationBar setTintColor:[TaloolColor dark_teal]];
 
     [self.refreshControl addTarget:self action:@selector(refreshOffers) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl.backgroundColor = [UIColor clearColor];
+
     NSMutableAttributedString *refreshLabel = [[NSMutableAttributedString alloc] initWithString:@"Refreshing Deals"];
     NSRange range = NSMakeRange(0,refreshLabel.length);
     [refreshLabel addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"TrebuchetMS" size:12.0] range:range];
@@ -230,7 +230,7 @@
     if (offer.backgroundUrl)
     {
         [cell.brandingView setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
-                          placeholderImage:[UIImage imageNamed:@"000"]
+                          placeholderImage:[UIImage imageNamed:@"DealOfferBG"]
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                      if (error !=  nil) {
                                          // TODO track these errors
@@ -248,7 +248,7 @@
     if (offer.iconUrl)
     {
         [cell.iconView setImageWithURL:[NSURL URLWithString:offer.iconUrl]
-                          placeholderImage:[UIImage imageNamed:@"000"]
+                          placeholderImage:[UIImage imageNamed:@"DealOfferIcon"]
                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                      if (error !=  nil) {
                                          // TODO track these errors
