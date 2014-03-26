@@ -105,6 +105,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-eX-27Q" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                 </textField>
@@ -219,6 +220,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="o34-w4-QWf" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="BrL-1o-88x"/>
                                                     </constraints>
@@ -242,6 +244,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm New Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="v6Z-5F-Hzq" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="W2j-iC-KVt"/>
                                                     </constraints>
@@ -527,6 +530,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Addresss" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-mu-9w1" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                                 </textField>
@@ -544,6 +548,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6IM-kO-l59" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
@@ -688,6 +693,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3sL-nz-wID" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="PfU-aZ-xMP"/>
                                                     </constraints>
@@ -711,6 +717,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VV2-7d-Vpc" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="vvS-LR-nLZ"/>
                                                     </constraints>
@@ -741,6 +748,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYq-JX-fX5">
                                                     <rect key="frame" x="20" y="0.0" width="280" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -809,6 +817,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-rh-5Zb" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="GTK-T7-mJx"/>
                                                     </constraints>
@@ -832,6 +841,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IG8-BV-pgS" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="dVB-fd-7Ga"/>
                                                     </constraints>
@@ -2685,9 +2695,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="7 digit code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKV-RA-fUc" customClass="TaloolTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKV-RA-fUc" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="133" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
