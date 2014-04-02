@@ -202,12 +202,21 @@
     NSError *error;
     int result = [self.offer validateCode:customer code:self.code error:&error];
     
-    if (result == ValidatationResponse_ACTIVATED)
+    if (result == ValidatationResponse_ACTIVATED) // This should be ValidatationResponse_ACTIVATION_CODE
     {
-        [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];
-        dispatch_async(dispatch_get_main_queue(),^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
-        });
+        BOOL activated = [self.offer activiateCode:customer code:self.code error:&error];
+        if (activated)
+        {
+            [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
+            });
+        }
+        else
+        {
+            result = ValidatationResponse_ERROR;
+        }
+        
     }
     
     if (self.delegate)
