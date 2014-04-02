@@ -86,6 +86,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [datePicker setAlpha:0];
     
     if (failedUser)
     {
@@ -223,19 +224,37 @@
 
     self.datePickerOpen = !self.datePickerOpen;
     
-    if (self.datePickerOpen) [self cancel:self];
-    
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    
+    if (self.datePickerOpen)
+    {
+        [self cancel:self];
+        [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showPicker:) userInfo:nil repeats:NO];
+    }
+    else
+    {
+        [datePicker setAlpha:0];
+    }
 
+}
+
+- (void)showPicker:(NSTimer*)timer {
+    [datePicker setAlpha:100];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath compare:self.datePickerIndexPath] == NSOrderedSame)
     {
-        if (self.datePickerOpen) return rowHeightPicker;
-        else return 0;
+        if (self.datePickerOpen)
+        {
+            return rowHeightPicker;
+        }
+        else
+        {
+            return 0;
+        }
     }
     else if (indexPath.row == tableRowHeader)
     {
