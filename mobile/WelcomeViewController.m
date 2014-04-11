@@ -46,6 +46,11 @@
     _fbPermissions = @[@"basic_info", @"email", @"user_birthday"];
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         NSLog(@"Found a cached session");
+        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"APP"
+                                                              action:@"FBSessionStateCreatedTokenLoaded"
+                                                               label:@"auth_in_WelcomeViewController_viewDidLoad"
+                                                               value:nil] build]];
         
         [SVProgressHUD showWithStatus:@"Authenticating" maskType:SVProgressHUDMaskTypeBlack];
         
