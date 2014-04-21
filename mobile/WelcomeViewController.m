@@ -260,6 +260,7 @@
     {
         [FacebookHelper trackNumberOfFriends];
         [self.navigationController popToRootViewControllerAnimated:YES];
+        [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
     {

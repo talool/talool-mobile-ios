@@ -11,6 +11,7 @@
 #import "LocationHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttActivity.h"
+#import "Talool-API/ttActivityLink.h"
 #import <OperationQueueManager.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -19,7 +20,7 @@
 @property id<OperationQueueDelegate> delegate;
 @property NSString *activityId;
 @property BOOL isActivityAction;
-
+@property BOOL isEmailBodyAction;
 @end
 
 @implementation ActivityOperation
@@ -44,6 +45,17 @@
     return self;
 }
 
+- (id)initForEmailOperation:(NSString *)aId delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.activityId = aId;
+        self.isEmailBodyAction = YES;
+    }
+    return self;
+}
+
 - (void)main
 {
     @autoreleasepool {
@@ -53,6 +65,10 @@
         if (self.isActivityAction)
         {
             [self closeActivity];
+        }
+        else if (self.isEmailBodyAction)
+        {
+            [self emailBodyActivity];
         }
         else
         {
@@ -87,6 +103,54 @@
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(activityOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+- (void) emailBodyActivity
+{
+    if ([self isCancelled]) return;
+    
+    ttCustomer *user = [CustomerHelper getLoggedInUser];
+    ttActivity *activity = [ttActivity fetchById:self.activityId context:[self getContext]];
+    if (!user || !activity) return;
+    
+    BOOL success = YES;
+    NSString *email;
+    NSString *subject;
+    NSError *error;
+    
+    NSString *templateId = activity.link.templateId;
+    NSString *entityId = activity.link.elementId;
+    if (!templateId || !entityId) {
+        NSLog(@"failed to get email body: incomplete activity link");
+        success = NO;
+    }
+    else
+    {
+        email = [ttActivity getEmail:user template:templateId entity:entityId error:&error];
+        subject = activity.title;
+        if (!email || error)
+        {
+            NSLog(@"failed to get email body: %@",error);
+            success = NO;
+        }
+    }
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:(email != nil)] forKey:DELEGATE_RESPONSE_SUCCESS];
+        [delegateResponse setObject:self.activityId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+        [delegateResponse setObject:email forKey:DELEGATE_RESPONSE_EMAIL_BODY];
+        [delegateResponse setObject:subject forKey:DELEGATE_RESPONSE_EMAIL_SUBJECT];
+        [delegateResponse setObject:[NSNumber numberWithBool:success] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(emailBodyOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }

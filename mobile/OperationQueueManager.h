@@ -21,7 +21,7 @@ static NSString *LOCATION_NOTIFICATION = @"LOCATION";
 
 typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
 
-@class ttDealOffer, ttCustomer, ttMerchant;
+@class ttDealOffer, ttCustomer, ttMerchant, ttActivity;
 
 @interface OperationQueueManager : NSObject
 
@@ -72,5 +72,7 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
 - (void) startValidateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate;
+
+- (void) startEmailBodyOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate;
 
 @end

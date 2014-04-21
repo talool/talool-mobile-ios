@@ -28,6 +28,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ActivityViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
@@ -332,13 +333,12 @@
     if (![activity isClosed])
     {
         [[OperationQueueManager sharedInstance] startCloseActivityOperation:activity.activityId delegate:self];
-        
-        ttActivityLink *link = (ttActivityLink *) activity.link;
-        if ([link isEmailLink])
-        {
-            [self showEmail:activity];
-        }
-        
+    }
+    
+    ttActivityLink *link = (ttActivityLink *) activity.link;
+    if ([link isEmailLink])
+    {
+        [self showEmail:activity];
     }
 }
 
@@ -402,6 +402,23 @@
                      subtitle:[_menu getSubtitleAtSelectedIndex]];
 }
 
+- (void)emailBodyOperationComplete:(NSDictionary *)response
+{
+    [SVProgressHUD dismiss];
+    NSString *subject = [response objectForKey:DELEGATE_RESPONSE_EMAIL_SUBJECT];
+    NSString *body = [response objectForKey:DELEGATE_RESPONSE_EMAIL_BODY];
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    
+    if (success)
+    {
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+        [mc setSubject:subject];
+        [mc setMessageBody:body isHTML:YES];
+    
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+}
 
 #pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate methods
@@ -465,17 +482,10 @@
 #pragma mark - Email helper
 
 - (void)showEmail:(ttActivity *)activity {
-    
     ttActivityLink *link = [activity getLink];
     if (!link) return;
-    
-    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    mc.mailComposeDelegate = self;
-    [mc setSubject:activity.title];
-    [mc setMessageBody:link.elementId isHTML:YES];
-
-    [self presentViewController:mc animated:YES completion:NULL];
-    
+    [[OperationQueueManager sharedInstance] startEmailBodyOperation:activity.activityId delegate:self];
+    [SVProgressHUD showWithStatus:@"Preparing Email" maskType:SVProgressHUDMaskTypeBlack];
 }
 
 #pragma mark -

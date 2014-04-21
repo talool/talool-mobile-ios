@@ -449,4 +449,11 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     [_activityTimer fire];
 }
 
+- (void) startEmailBodyOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate
+{
+    ActivityOperation *ao = [[ActivityOperation alloc] initForEmailOperation:activityId delegate:delegate];
+    [ao setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:ao];
+}
+
 @end

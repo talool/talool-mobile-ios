@@ -113,6 +113,7 @@
     if (success)
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
+        [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
     {

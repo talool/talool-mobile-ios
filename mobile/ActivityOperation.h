@@ -13,5 +13,6 @@
 @interface ActivityOperation : TaloolOperation
 - (id)initWithDelegate:(id<OperationQueueDelegate>)delegate;
 - (id)initWithActivityId:(NSString *)aId delegate:(id<OperationQueueDelegate>)delegate;
+- (id)initForEmailOperation:(NSString *)aId delegate:(id<OperationQueueDelegate>)delegate;
 
 @end

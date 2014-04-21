@@ -136,7 +136,7 @@
     [self dismissKyeboard];
     [SVProgressHUD showWithStatus:@"Creating account" maskType:SVProgressHUDMaskTypeBlack];
     
-    NSNumber *sex = [NSNumber numberWithInt:[sexPicker selectedSegmentIndex]];
+    NSNumber *sex = [NSNumber numberWithInteger:[sexPicker selectedSegmentIndex]];
     
     NSDate *bday = nil;
     if (birthDateField.text)
@@ -295,6 +295,7 @@
         [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
         
         [self.navigationController popToRootViewControllerAnimated:YES];
+        [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
     {
