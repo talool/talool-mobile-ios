@@ -26,7 +26,7 @@
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
 #import <CoreLocation/CoreLocation.h>
-#import "ZXingObjC/ZXingObjC.h"
+//#import "ZXingObjC/ZXingObjC.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
@@ -396,7 +396,7 @@
     CFArrayRef linked = ABPersonCopyArrayOfAllLinkedPeople(person);
     ABRecordRef iLinkedPerson;
     ABMutableMultiValueRef abEmails;
-    int count = CFArrayGetCount(linked);
+    NSInteger count = CFArrayGetCount(linked);
     for (CFIndex m = 0; m < count; m++) {
         iLinkedPerson = CFArrayGetValueAtIndex(linked, m);
         abEmails = ABRecordCopyValue(iLinkedPerson, kABPersonEmailProperty);
