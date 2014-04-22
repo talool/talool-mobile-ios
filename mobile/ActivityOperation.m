@@ -117,6 +117,7 @@
     if (!user || !activity) return;
     
     BOOL success = YES;
+    NSMutableDictionary *response;
     NSString *email;
     NSString *subject;
     NSError *error;
@@ -129,11 +130,12 @@
     }
     else
     {
-        email = [ttActivity getEmail:user template:templateId entity:entityId error:&error];
-        subject = activity.title;
-        if (!email || error)
+        response = [ttActivity getEmail:user template:templateId entity:entityId error:&error];
+        email = [response objectForKey:@"body"];
+        subject = [response objectForKey:@"subject"];
+        if (!email || !subject || error)
         {
-            NSLog(@"failed to get email body: %@",error);
+            NSLog(@"failed to get email message: %@",error);
             success = NO;
         }
     }
