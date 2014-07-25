@@ -119,6 +119,8 @@
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         
+        // TODO the error coming straight from the service may not be as "clean" as we'd like...
+        // condsider using a hard coded string and logging the failture (it's logged already)
         [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"

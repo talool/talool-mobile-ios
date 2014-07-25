@@ -3,14 +3,14 @@ PODS:
   - EAIntroView (2.2.0)
   - Facebook-iOS-SDK (3.11.0)
   - FontAwesomeKit (1.1.3)
-  - GoogleAnalytics-iOS-SDK (3.0.6)
+  - GoogleAnalytics-iOS-SDK (3.0.8)
   - HexColors (2.2.1)
   - REMenu (1.7.1)
   - SDWebImage (3.5.2):
     - SDWebImage/Core
   - SDWebImage/Core (3.5.2)
   - SVProgressHUD (1.0)
-  - Talool-API (1.3.3):
+  - Talool-API (1.3.4):
     - GoogleAnalytics-iOS-SDK (~> 3.0.1)
   - TestFlightSDK (3.0.0)
   - TSMessages (0.9.4):
@@ -27,7 +27,7 @@ DEPENDENCIES:
   - REMenu (= 1.7.1)
   - SDWebImage (= 3.5.2)
   - SVProgressHUD (= 1.0)
-  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.3.3`)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.3.4`)
   - TestFlightSDK (= 3.0.0)
   - TSMessages (= 0.9.4)
   - UIActivityIndicator-for-SDWebImage (= 1.0.3)
@@ -38,21 +38,21 @@ EXTERNAL SOURCES:
     :tag: 2.2.8
   Talool-API:
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.3.3
+    :tag: v1.3.4
 
 SPEC CHECKSUMS:
   Braintree: b6303c797a3354eef2310e3adb84d21cadb278a6
-  EAIntroView: 032cc107158df2956dc9393b84c0b80a02b22762
-  Facebook-iOS-SDK: 2eb12f9ed04f3d3956f0a4fb0e4e60c824dcd101
-  FontAwesomeKit: 4c839de6549fabe8dd50db00fc7e3dd177ac98a9
-  GoogleAnalytics-iOS-SDK: 4f77f2cce5216e590343ce0b75ac491aa249ca89
-  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
-  REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
-  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
-  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  Talool-API: 114a463bed80e4c5a67991a4fb8bbe2e1c618105
-  TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
-  TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
-  UIActivityIndicator-for-SDWebImage: e712b97826395022ce7b4a4b56eb7194090c19d5
+  EAIntroView: 540025fbf0964c94519d06d752b5b7256826edac
+  Facebook-iOS-SDK: 6055faaa01b46bccafb701888a9cafed14b36253
+  FontAwesomeKit: 5823d47bf244972a7f4c660a51f9603eb977e9ce
+  GoogleAnalytics-iOS-SDK: a3206c68ee5f2a014ed67383d1f779072b653988
+  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  REMenu: 51ef4a05423b4de2ef589c19f4df9a5f56f6d0c3
+  SDWebImage: 35ff1fae2591257fa832ff1a640650620a9a1697
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  Talool-API: b7b0fe07f50bf90cb0d49c9ffd5f74f953a627c9
+  TestFlightSDK: 36b8a207c5a119a3144aa2e6d24973eb9d5e0d0a
+  TSMessages: 6e85d86caa001e4965db8ae24c5ad19a5887667c
+  UIActivityIndicator-for-SDWebImage: fad0a3471de0e5f97771e516f537453eee506103
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1
