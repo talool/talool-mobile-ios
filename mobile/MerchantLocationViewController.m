@@ -119,7 +119,11 @@
         coordinate.latitude = [loc.latitude doubleValue];
         coordinate.longitude = [loc.longitude doubleValue];
         
-        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name address:loc.address1 coordinate:coordinate];
+        MerchantLocationAnnotation *annotation = [[MerchantLocationAnnotation alloc] initWithName:name
+                                                                                          address:loc.address1
+                                                                                             city:loc.city
+                                                                                            state:loc.stateProvidenceCounty
+                                                                                       coordinate:coordinate];
         [locationMapView addAnnotation:annotation];
 	}
 }

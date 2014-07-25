@@ -227,8 +227,7 @@
 {
     if ((int)section==0) return 0;
     id sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
-    int rows = [sectionInfo numberOfObjects];
-    return rows;
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

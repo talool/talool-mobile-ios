@@ -11,7 +11,11 @@
 
 @interface MerchantLocationAnnotation : NSObject <MKAnnotation>
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithName:(NSString*)name
+           address:(NSString*)address
+              city:(NSString*)city
+             state:(NSString*)state
+        coordinate:(CLLocationCoordinate2D)coordinate;
 - (MKMapItem*)mapItem;
 
 @end

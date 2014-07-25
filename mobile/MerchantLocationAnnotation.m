@@ -12,12 +12,18 @@
 @interface MerchantLocationAnnotation ()
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *state;
 @property (nonatomic, assign) CLLocationCoordinate2D theCoordinate;
 @end
 
 @implementation MerchantLocationAnnotation
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate {
+- (id)initWithName:(NSString*)name
+           address:(NSString*)address
+              city:(NSString*)city
+             state:(NSString*)state
+        coordinate:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
         if ([name isKindOfClass:[NSString class]]) {
             self.name = name;
@@ -25,6 +31,8 @@
             self.name = @"Unknown location";
         }
         self.address = address;
+        self.city = city;
+        self.state = state;
         self.theCoordinate = coordinate;
     }
     return self;
@@ -43,14 +51,16 @@
 }
 
 - (MKMapItem*)mapItem {
-    NSDictionary *addressDict = @{(NSString*)kABPersonAddressStreetKey : _address};
+    NSDictionary *addressDict = @{(NSString*)kABPersonAddressStreetKey : _address,
+                                  (NSString*)kABPersonAddressCityKey : _city,
+                                  (NSString*)kABPersonAddressStateKey : _state};
     
     MKPlacemark *placemark = [[MKPlacemark alloc]
-                              initWithCoordinate:self.coordinate
+                              initWithCoordinate:_theCoordinate
                               addressDictionary:addressDict];
     
     MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
-    mapItem.name = self.title;
+    mapItem.name = _name;
     
     return mapItem;
 }
