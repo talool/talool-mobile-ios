@@ -62,13 +62,19 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>14</string>
+	<string>15</string>
 	<key>FacebookAppID</key>
 	<string>342739092494152</string>
 	<key>FacebookDisplayName</key>
 	<string>Talool</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Talool uses your location to send you deals and reminders for saving money.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Talool uses your location to send you deals and reminders for saving money.</string>
+	<key>NSLocationWhenInUserUsageDescription</key>
+	<string>Talool uses your location to send you deals and reminders for saving money.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.ttf</string>
