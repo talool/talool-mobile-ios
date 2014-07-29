@@ -21,7 +21,6 @@
 #import "SplashViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
-#import <VenmoTouch/VenmoTouch.h>
 #import "TestFlight.h"
 #import "BraintreeHelper.h"
 #import <OperationQueueManager.h>
@@ -46,8 +45,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    //#warning @"Environment set to dev"
-    //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+    #warning @"Environment set to dev"
+    [[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
     
     //For now, register for all types of notifications
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
@@ -130,8 +129,6 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
-    
-    [self initVTClient];
     
     [self.splashView.view removeFromSuperview];
     self.isSplashing = NO;
@@ -489,30 +486,6 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     [[self managedObjectContext] reset];
-}
-
-
-#pragma mark -
-#pragma mark - Braintree - Venmo Touch client methods
-
-- (void) initVTClient
-{
-    if ([[TaloolFrameworkHelper sharedInstance] isProduction]) {
-        [VTClient
-         startWithMerchantID:BRAINTREE_MERCHANT_ID_PROD
-         customerEmail:BRAINTREE_EMAIL_PROD
-         braintreeClientSideEncryptionKey:BRAINTREE_KEY_PROD
-         environment:VTEnvironmentProduction];
-    }
-    else
-    {
-        [VTClient
-         startWithMerchantID:BRAINTREE_MERCHANT_ID_DEV
-         customerEmail:BRAINTREE_EMAIL_DEV
-         braintreeClientSideEncryptionKey:BRAINTREE_KEY_DEV
-         environment:VTEnvironmentSandbox];
-    }
-    
 }
 
 

@@ -238,6 +238,9 @@ static NSString *host = @"http://www.talool.com";
     BOOL result = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (result)
     {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:BRAINTREE_CLIENT_TOKEN_KEY];
+        
         if ([FBSession.activeSession isOpen])
         {
             [FBSession.activeSession closeAndClearTokenInformation];

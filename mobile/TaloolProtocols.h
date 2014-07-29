@@ -19,9 +19,12 @@ static NSString *DELEGATE_RESPONSE_OBJECT_ID = @"objectId";
 static NSString *DELEGATE_RESPONSE_GIFT_ACCEPTED = @"giftAccepted";
 static NSString *DELEGATE_RESPONSE_EMAIL_BODY = @"emailBody";
 static NSString *DELEGATE_RESPONSE_EMAIL_SUBJECT = @"emailSubject";
+static NSString *DELEGATE_RESPONSE_TOKEN = @"token";
 
 static NSString *KEY_EMAIL_ADDRESS = @"emailaddress";
 static NSString *KEY_EMAIL_LABEL = @"emaillabel";
+
+static NSString *BRAINTREE_CLIENT_TOKEN_KEY = @"BRAINTREE_CLIENT_TOKEN";
 
 @protocol TaloolDealLayoutDelegate <NSObject>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -47,6 +50,7 @@ static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 - (void)merchantOperationComplete:(NSDictionary *)response;
 - (void)purchaseOperationComplete:(NSDictionary *)response;
 - (void)validationOperationComplete:(NSDictionary *)response;
+- (void)braintreeTokenOperationComplete:(NSDictionary *)response;
 - (void)emailBodyOperationComplete:(NSDictionary *)response;
 @end
 

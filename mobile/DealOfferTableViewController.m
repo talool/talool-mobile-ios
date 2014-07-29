@@ -29,7 +29,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 
 @interface DealOfferTableViewController ()
-@property (strong, nonatomic) BTPaymentViewController *paymentViewController;
+@property (strong, nonatomic) BTDropInViewController *paymentViewController;
 @property (strong, nonatomic) UINavigationController *paymentNavigationController;
 @property (strong, nonatomic) FundraiserCodeViewController *fundraiserViewController;
 @property (strong, nonatomic) OfferSummaryView *summaryView;
@@ -39,6 +39,7 @@
 @property (nonatomic, strong) NSMutableDictionary *cacheNames;
 @property (strong, nonatomic) MerchantDealsViewController *detailView;
 @property (strong, nonatomic) NSString *fundraisingCode;
+@property (strong, nonatomic) NSString *clientToken;
 @end
 
 @implementation DealOfferTableViewController
@@ -48,6 +49,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* token = [defaults objectForKey:BRAINTREE_CLIENT_TOKEN_KEY];
+    if (token)
+    {
+        _clientToken = token;
+    }
+    else
+    {
+        [[OperationQueueManager sharedInstance] startBraintreeClientTokenOperation:self];
+    }
     
     CGRect frame = self.view.bounds;
     actionView = [[OfferActionView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,ACTION_VIEW_HEIGHT) delegate:self];
@@ -85,6 +97,11 @@
 {
     [super viewDidAppear:animated];
     [self.tableView reloadData];
+    
+    if (_clientToken==nil)
+    {
+        [[OperationQueueManager sharedInstance] startBraintreeClientTokenOperation:self];
+    }
 }
 
 - (void) updateDeals
@@ -124,7 +141,6 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self.paymentViewController prepareForDismissal];
         [self.navigationController popToRootViewControllerAnimated:YES];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate presentNewDeals];
@@ -132,9 +148,34 @@
     else
     {
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
-        [self.paymentViewController showErrorWithTitle:@"Payment Error" message:[error localizedDescription]];
+        [CustomerHelper showAlertMessage:[error localizedDescription]
+                               withTitle:@"Payment Error"
+                              withCancel:@"OK"
+                              withSender:self.paymentViewController];
     }
 
+}
+
+- (void)braintreeTokenOperationComplete:(NSDictionary *)response
+{
+    BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
+    if (success)
+    {
+        NSString *token = (NSString *)[response objectForKey:DELEGATE_RESPONSE_TOKEN];
+        self.clientToken = token;
+        
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:token forKey:BRAINTREE_CLIENT_TOKEN_KEY];
+    }
+    else
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
+        [CustomerHelper showAlertMessage:[error localizedDescription]
+                               withTitle:@"Error"
+                              withCancel:@"OK"
+                              withSender:self];
+    }
 }
 
 #pragma mark -
@@ -279,10 +320,18 @@
     [priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     
-    _paymentViewController = [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
-    _paymentViewController.delegate = self;
-    _paymentViewController.vtCardViewBackgroundColor = [TaloolColor teal];
-    _paymentViewController.navigationItem.title = [NSString stringWithFormat:@"Buy Deals - %@",[priceFormatter stringFromNumber:offer.price]];
+    // Create a Braintree with the client token
+    Braintree *braintree = [Braintree braintreeWithClientToken:self.clientToken];
+    // Create a BTDropInViewController
+    _paymentViewController = [braintree dropInViewControllerWithDelegate:self];
+    
+    _paymentViewController.navigationItem.title = @"Checkout";
+    
+    _paymentViewController.view.tintColor = [TaloolColor teal];
+    _paymentViewController.summaryTitle = offer.title;
+    _paymentViewController.summaryDescription =  [NSString stringWithFormat:@"Price: %@",[priceFormatter stringFromNumber:offer.price]];
+    //_paymentViewController.displayAmount = [priceFormatter stringFromNumber:offer.price];
+    _paymentViewController.callToActionText = @"Buy Now";
     
     if (showCodeValidationByDefault || [offer isFundraiser])
     {
@@ -309,14 +358,21 @@
 // Create and present a BTPaymentViewController (that has a cancel button)
 - (void)buyNow:(id)sender
 {
-    _fundraisingCode = nil;
-    [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+    if (_clientToken)
+    {
+        _fundraisingCode = nil;
+        [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+    }
+    
 }
 
 - (void)activateCode:(id)sender
 {
-    _fundraisingCode = nil;
-    [self.navigationController pushViewController:[self getPaymentController:YES] animated:YES];
+    if (_clientToken)
+    {
+        _fundraisingCode = nil;
+        [self.navigationController pushViewController:[self getPaymentController:YES] animated:YES];
+    }
 }
 
 #pragma mark -
@@ -333,36 +389,20 @@
 }
 
 #pragma mark -
-#pragma mark - BTPaymentViewControllerDelegate
+#pragma mark - BTDropInViewControllerDelegate
 
-- (void)paymentViewController:(BTPaymentViewController *)paymentViewController
-        didSubmitCardWithInfo:(NSDictionary *)cardInfo
-         andCardInfoEncrypted:(NSDictionary *)cardInfoEncrypted
-{
-    NSString *card = [cardInfoEncrypted objectForKey:@"card_number"];
-    NSString *expMonth = [cardInfoEncrypted objectForKey:@"expiration_month"];
-    NSString *expYear = [cardInfoEncrypted objectForKey:@"expiration_year"];
-    NSString *security = [cardInfoEncrypted objectForKey:@"cvv"];
-    NSString *zip = [cardInfoEncrypted objectForKey:@"zipcode"];
-    NSString *session = [cardInfoEncrypted objectForKey:@"venmo_sdk_session"];
+- (void)dropInViewController:(__unused BTDropInViewController *)viewController didSucceedWithPaymentMethod:(BTPaymentMethod *)paymentMethod {
 
-    [[OperationQueueManager sharedInstance] startPurchaseByCardOperation:card
-                                                                expMonth:expMonth
-                                                                 expYear:expYear
-                                                            securityCode:security
-                                                                 zipCode:zip
-                                                            venmoSession:session
-                                                                   offer:offer
-                                                              fundraiser:_fundraisingCode
-                                                                delegate:self];
-    
+    [[OperationQueueManager sharedInstance] startPurchaseOperation:paymentMethod.nonce
+                                                             offer:offer
+                                                        fundraiser:_fundraisingCode
+                                                          delegate:self];
 }
 
-- (void) paymentViewController:(BTPaymentViewController *)paymentViewController didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode
+- (void)dropInViewControllerDidCancel:(__unused BTDropInViewController *)viewController
 {
-    [[OperationQueueManager sharedInstance] startPurchaseByCodeOperation:paymentMethodCode offer:offer fundraiser:_fundraisingCode delegate:self];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
 
 #pragma mark -
 #pragma mark - NSFetchedResultsControllerDelegate methods

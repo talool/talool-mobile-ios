@@ -223,32 +223,9 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     
 }
 
-- (void) startPurchaseByCardOperation:(NSString *)card
-                             expMonth:(NSString *)expMonth
-                              expYear:(NSString *)expYear
-                         securityCode:(NSString *)security
-                              zipCode:(NSString *)zip
-                         venmoSession:(NSString *)session
-                                offer:(ttDealOffer *)offer
-                           fundraiser:(NSString *)fundraiser
-                             delegate:(id<OperationQueueDelegate>)delegate
+- (void) startPurchaseOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate
 {
-    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithCard:card
-                                                              expMonth:expMonth
-                                                               expYear:expYear
-                                                          securityCode:security
-                                                               zipCode:zip
-                                                          venmoSession:session
-                                                                 offer:offer
-                                                            fundraiser:fundraiser
-                                                              delegate:delegate];
-    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
-    [self.foregroundQueue addOperation:doo];
-}
-
-- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate
-{
-    DealOfferOperation *doo = [[DealOfferOperation alloc] initWithPurchaseCode:code offer:offer fundraiser:fundraiser delegate:delegate];
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initPurchase:code offer:offer fundraiser:fundraiser delegate:delegate];
     [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
     [self.foregroundQueue addOperation:doo];
 }
@@ -276,6 +253,13 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     
     _dealOfferTimer = [NSTimer scheduledTimerWithTimeInterval:OFFER_MONITOR_INTERVAL_IN_SECONDS invocation:invocation repeats:YES];
     [_dealOfferTimer fire];
+}
+
+- (void) startBraintreeClientTokenOperation:(id<OperationQueueDelegate>)delegate
+{
+    DealOfferOperation *doo = [[DealOfferOperation alloc] initForClientToken:delegate];
+    [doo setQueuePriority:NSOperationQueuePriorityVeryHigh];
+    [self.foregroundQueue addOperation:doo];
 }
 
 

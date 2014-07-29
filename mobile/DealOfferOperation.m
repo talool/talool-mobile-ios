@@ -31,9 +31,9 @@
 
 @property (strong, nonatomic) ttDealOffer *offer;
 
-@property BOOL isCardPurchase;
-@property BOOL isCodePurchase;
+@property BOOL isPurchase;
 @property BOOL isCodeValidation;
+@property BOOL isTokenGeneration;
 
 @end
 
@@ -48,40 +48,15 @@
     return self;
 }
 
-- (id)initWithCard:(NSString *)cd
-          expMonth:(NSString *)expM
-           expYear:(NSString *)expY
-      securityCode:(NSString *)sec
-           zipCode:(NSString *)z
-      venmoSession:(NSString *)s
-             offer:(ttDealOffer *)o
-        fundraiser:(NSString *)f
-          delegate:(id<OperationQueueDelegate>)d
-{
-    if (self = [super init])
-    {
-        self.delegate = d;
-        self.expMonth = expM;
-        self.expYear = expY;
-        self.securityCode = sec;
-        self.zip = z;
-        self.session = s;
-        self.offer = o;
-        self.fundraiser = f;
-        self.isCardPurchase = YES;
-    }
-    return self;
-}
-
-- (id)initWithPurchaseCode:(NSString *)c offer:(ttDealOffer *)o fundraiser:(NSString *)f delegate:(id<OperationQueueDelegate>)d
+- (id)initPurchase:(NSString *)n offer:(ttDealOffer *)o fundraiser:(NSString *)f delegate:(id<OperationQueueDelegate>)d
 {
     if (self = [super init])
     {
         self.delegate = d;
         self.offer = o;
         self.fundraiser = f;
-        self.code = c;
-        self.isCodePurchase = YES;
+        self.code = n;
+        self.isPurchase = YES;
     }
     return self;
 }
@@ -98,23 +73,33 @@
     return self;
 }
 
+- (id)initForClientToken:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.isTokenGeneration = YES;
+    }
+    return self;
+}
+
 - (void)main
 {
     @autoreleasepool {
         
         if ([self isCancelled]) return;
         
-        if (self.isCardPurchase)
+        if (self.isPurchase)
         {
-            [self purchaseWithCard];
-        }
-        else if (self.isCodePurchase)
-        {
-            [self purchaseWithCode];
+            [self purchase];
         }
         else if (self.isCodeValidation)
         {
             [self validate];
+        }
+        else if (self.isTokenGeneration)
+        {
+            [self generateBraintreeToken];
         }
         else
         {
@@ -126,50 +111,11 @@
     
 }
 
--(void) purchaseWithCard
+-(void) purchase
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *error;
-    BOOL result = [self.offer purchaseByCard:self.card
-                                    expMonth:self.expMonth
-                                     expYear:self.expYear
-                                securityCode:self.securityCode
-                                     zipCode:self.zip
-                                venmoSession:self.session
-                                    customer:customer
-                                  fundraiser:_fundraiser
-                                       error:&error];
-    
-    if (result)
-    {
-        
-        dispatch_async(dispatch_get_main_queue(),^{
-            [FacebookHelper postOGPurchaseAction:self.offer fundraiser:self.fundraiser];
-            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
-            NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
-            [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
-        });
-    }
-    
-    if (self.delegate)
-    {
-        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
-        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
-        if (error)
-        {
-            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
-        }
-        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(purchaseOperationComplete:))
-                                                    withObject:delegateResponse
-                                                 waitUntilDone:NO];
-    }
-}
-
--(void) purchaseWithCode
-{
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    NSError *error;
-    BOOL result = [self.offer purchaseByCode:self.code customer:customer fundraiser:_fundraiser error:&error];
+    BOOL result = [self.offer purchaseWithNonce:self.code customer:customer fundraiser:_fundraiser error:&error];
     
     if (result)
     {
@@ -228,6 +174,31 @@
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(validationOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) generateBraintreeToken
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    NSString *token = [customer generateBraintreeClientToken:&error];
+    BOOL success = (token != nil);
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:success] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (success)
+        {
+            [delegateResponse setObject:token forKey:DELEGATE_RESPONSE_TOKEN];
+        }
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(braintreeTokenOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }

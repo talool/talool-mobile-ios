@@ -59,20 +59,14 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
 - (void) startFavoriteOperation:(NSString *)merchantId isFavorite:(BOOL)isFav delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startActivityOperation:(id<OperationQueueDelegate>)delegate completionHander:(OperationResponse)completion;
 - (void) startCloseActivityOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startPurchaseByCardOperation:(NSString *)card
-                             expMonth:(NSString *)expMonth
-                              expYear:(NSString *)expYear
-                         securityCode:(NSString *)security
-                              zipCode:(NSString *)zip
-                         venmoSession:(NSString *)session
-                                offer:(ttDealOffer *)offer
-                           fundraiser:(NSString *)fundraiser
-                             delegate:(id<OperationQueueDelegate>)delegate;
-- (void) startPurchaseByCodeOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate;
+
+- (void) startPurchaseOperation:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startValidateCodeOperation:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)delegate;
 
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate;
 
 - (void) startEmailBodyOperation:(NSString *)activityId delegate:(id<OperationQueueDelegate>)delegate;
+
+- (void) startBraintreeClientTokenOperation:(id<OperationQueueDelegate>)delegate;
 
 @end

@@ -16,18 +16,10 @@
 
 - (id)initWithDelegate:(id<OperationQueueDelegate>)delegate;
 
-- (id)initWithCard:(NSString *)cd
-          expMonth:(NSString *)expM
-           expYear:(NSString *)expY
-      securityCode:(NSString *)sec
-           zipCode:(NSString *)z
-      venmoSession:(NSString *)s
-             offer:(ttDealOffer *)offer
-        fundraiser:(NSString *)fundraiser
-          delegate:(id<OperationQueueDelegate>)d;
-
-- (id)initWithPurchaseCode:(NSString *)code offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)d;
+- (id)initPurchase:(NSString *)nonce offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)d;
 
 - (id)initWithCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;
+
+- (id)initForClientToken:(id<OperationQueueDelegate>)d;
 
 @end
