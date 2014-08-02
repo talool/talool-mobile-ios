@@ -64,9 +64,9 @@
                                             socialAccount:nil
                                                   context:context];
         
-        if ([self.sex intValue] > 0) {
-            [customer setAsFemale:([self.sex intValue]==1)];
-        }
+
+        [customer setAsFemale:([self.sex intValue]==0)];
+        
         [customer setBirthDate:self.birthDate];
         
         if (self.facebookId)

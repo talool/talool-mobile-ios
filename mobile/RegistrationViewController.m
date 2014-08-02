@@ -104,9 +104,6 @@
         }
         switch ([failedUser.sex intValue]) {
             case 0:
-                [sexPicker setSelectedSegmentIndex:2];
-                break;
-            case 1:
                 [sexPicker setSelectedSegmentIndex:1];
                 break;
             default:
