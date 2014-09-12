@@ -31,6 +31,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 @interface DealTableViewController ()
@@ -308,6 +309,10 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
+        
+#warning @"test crashlytics here"
+        //[[Crashlytics sharedInstance] crash];
+        
         [SVProgressHUD showWithStatus:@"Redeeming deal" maskType:SVProgressHUDMaskTypeBlack];
         [[OperationQueueManager sharedInstance] startRedeemOperation:deal.dealAcquireId delegate:self];
     }
