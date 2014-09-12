@@ -239,6 +239,8 @@
 		81C23E1B18A13E2E00127F83 /* welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */; };
 		81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1C18A13E4400127F83 /* welcome2@2x.png */; };
 		81C23E1F18A13E4400127F83 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
+		81D10D7B19A5201500CFF856 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D10D7A19A5201500CFF856 /* Crashlytics.framework */; };
+		81D10D7C19A5201500CFF856 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D10D7A19A5201500CFF856 /* Crashlytics.framework */; };
 		81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
 		81E3AA6317EB71D100B5EE5A /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
 		81E5504F17F9EB1C000BF3A5 /* LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* LogoAndIcon.png */; };
@@ -483,6 +485,7 @@
 		81C23E1918A13E2E00127F83 /* welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5-568h@2x.png"; sourceTree = "<group>"; };
 		81C23E1C18A13E4400127F83 /* welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome2@2x.png"; sourceTree = "<group>"; };
 		81C23E1D18A13E4400127F83 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
+		81D10D7A19A5201500CFF856 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		81E3AA5E17EB5E5F00B5EE5A /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		81E3AA6117EB71D100B5EE5A /* TaloolAppCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolAppCall.h; sourceTree = "<group>"; };
@@ -592,6 +595,7 @@
 				8155F9EC18BE9F6F00314DB3 /* CoreVideo.framework in Frameworks */,
 				8155F9ED18BE9F6F00314DB3 /* AVFoundation.framework in Frameworks */,
 				8155F9EE18BE9F6F00314DB3 /* CoreMedia.framework in Frameworks */,
+				81D10D7C19A5201500CFF856 /* Crashlytics.framework in Frameworks */,
 				8155F9EF18BE9F6F00314DB3 /* AdSupport.framework in Frameworks */,
 				8155F9F018BE9F6F00314DB3 /* Social.framework in Frameworks */,
 				8155F9F118BE9F6F00314DB3 /* Accounts.framework in Frameworks */,
@@ -620,6 +624,7 @@
 				9183F4C9170342C800ED4844 /* CoreVideo.framework in Frameworks */,
 				9183F4C6170342B000ED4844 /* AVFoundation.framework in Frameworks */,
 				9183F4C7170342B000ED4844 /* CoreMedia.framework in Frameworks */,
+				81D10D7B19A5201500CFF856 /* Crashlytics.framework in Frameworks */,
 				9161488316EADC1A001C546C /* AdSupport.framework in Frameworks */,
 				9161487616EAD758001C546C /* Social.framework in Frameworks */,
 				9161487916EAD76F001C546C /* Accounts.framework in Frameworks */,
@@ -931,6 +936,7 @@
 		9103110B16D1E53800CEE814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81D10D7A19A5201500CFF856 /* Crashlytics.framework */,
 				81F5E27318CFFBD800FBDF96 /* MessageUI.framework */,
 				8151CBA4179452F0007894B2 /* SystemConfiguration.framework */,
 				817E53841770CE180049434A /* StoreKit.framework */,
@@ -1143,6 +1149,7 @@
 				9103110616D1E53800CEE814 /* Frameworks */,
 				9103110716D1E53800CEE814 /* Resources */,
 				E1C8E4AD2E734CCCB3B1E811 /* Copy Pods Resources */,
+				81D10D7919A5173800CFF856 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1324,6 +1331,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		81D10D7919A5173800CFF856 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "./Crashlytics.framework/run 621dd92cb7c068e9486411b53478071c2c3f5357 b12045ccd9172914421f83a61567a51e7e9919702fa35da32731cd976a5f201f";
+			shellScript = "";
 		};
 		CA0F455FCD9744A4B2147823 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1583,6 +1603,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
@@ -1617,6 +1638,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
@@ -1713,6 +1735,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";
@@ -1747,6 +1770,7 @@
 					"$(inherited)",
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "mobile/Talool-Prefix.pch";

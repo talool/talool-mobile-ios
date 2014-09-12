@@ -29,6 +29,7 @@
 #import "WhiteLabelHelper.h"
 #import "ActivityOperation.h"
 #import "TutorialViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -124,6 +125,8 @@
     // Call takeOff after install your own unhandled exception and signal handlers
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
+    
+    [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
