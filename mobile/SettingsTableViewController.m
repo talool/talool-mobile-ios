@@ -37,6 +37,11 @@ static NSString *host = @"http://www.talool.com";
     [super viewDidLoad];
     customer = [CustomerHelper getLoggedInUser];
     nameLabel.text = [customer getFullName];
+    
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    versionLabel.text = [NSString stringWithFormat:@"version: %@, build: %@", version, build];
+    
 	self.navigationItem.title = @"Settings";
     
     [logoutButton useTaloolStyle];
@@ -129,7 +134,9 @@ static NSString *host = @"http://www.talool.com";
     else if ([[segue identifier] isEqualToString:@"feedback"])
     {
         ttCustomer *user = [CustomerHelper getLoggedInUser];
-        NSString *feedbackUrl = [NSString stringWithFormat:@"%@/feedback?fromEmail=%@&feedbackSrc=ios",host,user.email];
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+        NSString *feedbackUrl = [NSString stringWithFormat:@"%@/feedback?fromEmail=%@&feedbackSrc=ios&version=%@&build=%@",host,user.email,version, build];
         NSLog(@"open url %@",feedbackUrl);
         [[segue destinationViewController] setMobileWebUrl:feedbackUrl];
         [[segue destinationViewController] setViewTitle:@"Feedback"];

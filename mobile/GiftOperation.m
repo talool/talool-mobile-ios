@@ -124,8 +124,10 @@
         if (result && self.activityId)
         {
             // update the activity so it shows that there was an action taken
+            
             ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
-            if (tta.activityId)
+            BOOL success = [tta actionTaken:customer context:[self getContext] error:&error];
+            if (tta.activityId && success)
             {
                 tta.actionTaken = [NSNumber numberWithBool:YES];
                 result = [[self getContext] save:&error];
@@ -139,7 +141,8 @@
         {
             // update the activity so it shows that there was an action taken
             ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
-            if (tta.activityId)
+            BOOL success = [tta actionTaken:customer context:[self getContext] error:&error];
+            if (tta.activityId && success)
             {
                 tta.actionTaken = [NSNumber numberWithBool:YES];
                 result = [[self getContext] save:&error];

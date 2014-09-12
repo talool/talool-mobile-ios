@@ -330,12 +330,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttActivity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if (![activity isClosed])
+    ttActivityLink *link = (ttActivityLink *) activity.link;
+    if (![activity isClosed] && ![link isGiftLink])
     {
         [[OperationQueueManager sharedInstance] startCloseActivityOperation:activity.activityId delegate:self];
     }
     
-    ttActivityLink *link = (ttActivityLink *) activity.link;
     if ([link isEmailLink])
     {
         [self showEmail:activity];

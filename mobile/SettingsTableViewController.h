@@ -17,6 +17,7 @@
 {
     ttCustomer *customer;
     IBOutlet UILabel *nameLabel;
+    IBOutlet UILabel *versionLabel;
     IBOutlet TaloolUIButton *logoutButton;
     IBOutlet UITableViewCell *logoutCell;
 }

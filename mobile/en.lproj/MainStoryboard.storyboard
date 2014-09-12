@@ -1583,6 +1583,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="feedback" id="ABU-IG-HyQ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="7" reuseIdentifier="version" textLabel="Y2k-aP-Bec" style="IBUITableViewCellStyleDefault" id="wnQ-i5-Bim">
+                                        <rect key="frame" x="0.0" y="367" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wnQ-i5-Bim" id="PpS-it-igS">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="app version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y2k-aP-Bec">
+                                                    <rect key="frame" x="29" y="0.0" width="276" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1598,6 +1616,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="logoutButton" destination="Swu-yj-sjq" id="Yv4-jS-QfY"/>
                         <outlet property="logoutCell" destination="VH0-jv-Tde" id="Wf6-1V-BJn"/>
                         <outlet property="nameLabel" destination="TZr-xT-pgA" id="GIZ-rz-NQm"/>
+                        <outlet property="versionLabel" destination="Y2k-aP-Bec" id="4xC-Fw-kBl"/>
                         <segue destination="wci-Hs-PRq" kind="unwind" identifier="logoutUser" unwindAction="logoutAction:" id="aiu-i8-P0x"/>
                         <segue destination="smi-JA-E6U" kind="push" identifier="logout" id="wjI-dw-vyW"/>
                     </connections>
@@ -2780,6 +2799,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wjI-dw-vyW"/>
-        <segue reference="q3T-VT-ua5"/>
+        <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
 </document>
