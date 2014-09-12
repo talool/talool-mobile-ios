@@ -28,6 +28,10 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
+        if (![CustomerHelper getLoggedInUser])
+        {
+            return;
+        }
         
         NSManagedObjectContext *context = [self getContext];
         NSError *error;

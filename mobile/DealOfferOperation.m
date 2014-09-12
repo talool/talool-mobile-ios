@@ -88,7 +88,10 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
-        
+        if (![CustomerHelper getLoggedInUser])
+        {
+            return;
+        }
         if (self.isPurchase)
         {
             [self purchase];

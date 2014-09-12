@@ -201,9 +201,9 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 
 - (void)killTimers
 {
-    [_activityTimer invalidate];
-    [_dealOfferTimer invalidate];
-    [_dealAcquireTimer invalidate];
+    if (_dealOfferTimer) [_dealOfferTimer invalidate];
+    if (_activityTimer) [_activityTimer invalidate];
+    if (_dealAcquireTimer) [_dealAcquireTimer invalidate];
 }
 
 #pragma mark -
@@ -347,15 +347,22 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
 {
     NSMutableArray *merchants = [_dealAcquireTimer.userInfo objectForKey:@"merchants"];
     ttMerchant *merchant = [merchants objectAtIndex:0];
-    
-    [self startDealAcquireOperation:merchant.merchantId delegate:nil priority:NSOperationQueuePriorityLow];
-    
-    // kill the timer when there are no more merchants
-    [merchants removeObjectAtIndex:0];
-    if ([merchants count]==0)
+    if (merchant && [CustomerHelper getLoggedInUser])
+    {
+        [self startDealAcquireOperation:merchant.merchantId delegate:nil priority:NSOperationQueuePriorityLow];
+        
+        // kill the timer when there are no more merchants
+        [merchants removeObjectAtIndex:0];
+        if ([merchants count]==0)
+        {
+            [_dealAcquireTimer invalidate];
+        }
+    }
+    else
     {
         [_dealAcquireTimer invalidate];
     }
+    
 }
 
 - (void) startRecurringDealAcquireOperation:(NSPredicate *)merchantPredicate
