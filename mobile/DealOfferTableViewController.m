@@ -91,6 +91,8 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Offer Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    [[OperationQueueManager sharedInstance] startDealOfferByIdOperation:offer.dealOfferId delegate:self];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -134,6 +136,15 @@
 {
     [self setNewCacheName:offer.dealOfferId];
     [self resetFetchRestulsController];
+}
+
+- (void)dealOfferOperationComplete:(NSDictionary *)response
+{
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    offer = [ttDealOffer fetchById:offer.dealOfferId context:context];
+    [context refreshObject:offer mergeChanges:YES];
+    [actionView updateOffer:offer];
+    [summaryView updateOffer:offer];
 }
 
 - (void)purchaseOperationComplete:(NSDictionary *)response

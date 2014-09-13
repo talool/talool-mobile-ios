@@ -48,6 +48,7 @@ typedef void (^OperationResponse)(NSDictionary *response,NSError *error);
 - (void) startUserLogout:(id<OperationQueueDelegate>)delegate;
 
 - (void) startDealOfferOperation:(id<OperationQueueDelegate>)delegate;
+- (void) startDealOfferByIdOperation:(NSString *)offerId delegate:(id<OperationQueueDelegate>)delegate;
 - (void) startDealOfferDealsOperation:(ttDealOffer *)offer withDelegate:(id<OperationQueueDelegate>)delegate;
 - (void) startMerchantOperation:(id<OperationQueueDelegate>)delegate;
 - (void) startDealAcquireOperation:(NSString *)merchantId delegate:(id<OperationQueueDelegate>)delegate;

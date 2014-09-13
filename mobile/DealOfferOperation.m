@@ -26,6 +26,8 @@
 @property (strong, nonatomic) NSString *zip;
 @property (strong, nonatomic) NSString *session;
 
+@property (strong, nonatomic) NSString *offerId;
+
 @property (strong, nonatomic) NSString *code;
 @property (strong, nonatomic) NSString *fundraiser;
 
@@ -34,6 +36,7 @@
 @property BOOL isPurchase;
 @property BOOL isCodeValidation;
 @property BOOL isTokenGeneration;
+@property BOOL isGetOffer;
 
 @end
 
@@ -44,6 +47,17 @@
     if (self = [super init])
     {
         self.delegate = d;
+    }
+    return self;
+}
+
+- (id)initWithOfferId:(NSString *)offerId delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.offerId = offerId;
+        self.isGetOffer = YES;
     }
     return self;
 }
@@ -103,6 +117,10 @@
         else if (self.isTokenGeneration)
         {
             [self generateBraintreeToken];
+        }
+        else if (self.isGetOffer)
+        {
+            [self getDealOffer];
         }
         else
         {
@@ -202,6 +220,27 @@
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(braintreeTokenOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) getDealOffer
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    NSManagedObjectContext *context = [self getContext];
+    BOOL result = [ttDealOffer getById:self.offerId customer:customer context:context error:&error];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }
