@@ -242,6 +242,7 @@
 - (void) resetFetchedResultsController:(BOOL)hard
 {
     [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     if (hard)
     {
         _fetchedResultsController = nil;

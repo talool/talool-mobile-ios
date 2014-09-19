@@ -177,6 +177,8 @@
             dispatch_async(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
                 [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];  // TODO this should track an activation code back to the fundraiser
+                NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
+                [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
             });
         }
         else

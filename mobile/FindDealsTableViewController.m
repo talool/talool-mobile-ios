@@ -167,6 +167,7 @@
 - (void) resetFetchedResultsController:(BOOL)hard
 {
     [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     [NSFetchedResultsController deleteCacheWithName:_cacheName];
     if (hard)
     {

@@ -45,8 +45,6 @@
         
         if (self.delegate)
         {
-            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealAcquireOperationComplete:)) withObject:self waitUntilDone:NO];
-            
             NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
             [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
             if (error)

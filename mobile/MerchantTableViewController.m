@@ -175,8 +175,14 @@
         return _fetchedResultsController;
     }
     [self.tableView reloadData];
+
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setMonth:-1];
+    NSDate *oneMonthAgo = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deal.merchant.merchantId = %@", merchant.merchantId];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deal.merchant.merchantId = %@ AND deal.expires > %@", merchant.merchantId, oneMonthAgo ];
     
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
@@ -402,6 +408,12 @@
 - (void)dealAcquireOperationComplete:(NSDictionary *)response
 {
     NSError *error;
+    [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] refreshObject:merchant mergeChanges:YES];
+    for (ttDeal *deal in merchant.deals) {
+        [[CustomerHelper getContext] refreshObject:deal mergeChanges:YES];
+    }
+
     _fetchedResultsController = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
