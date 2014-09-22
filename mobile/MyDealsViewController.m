@@ -62,22 +62,22 @@
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
     // add the settings button
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
+    FAKFontAwesome *settingsIcon = [FAKFontAwesome cogIconWithSize:28];
+    [settingsIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[settingsIcon imageWithSize:CGSizeMake(30, 30)]
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(settings:)];
-    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                  forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = settingsButton;
     
     
     // add the filter button
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
+    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:28];
+    [filterIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[filterIcon imageWithSize:CGSizeMake(30, 30)]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(filterMenu:)];
-    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                  forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = filterButton;
     
     _sortDescriptors = [NSArray arrayWithObjects:
@@ -157,16 +157,19 @@
     if ([self merchantCount]==0)
     {
         [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+        
         [TSMessage showNotificationInViewController:self
                                               title:@"Welcome!"
                                            subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                              image:nil
                                                type:TSMessageNotificationTypeMessage
                                            duration:TSMessageNotificationDurationEndless
                                            callback:nil
                                         buttonTitle:nil
                                      buttonCallback:nil
                                          atPosition:TSMessageNotificationPositionBottom
-                                canBeDismisedByUser:NO];
+                                canBeDismissedByUser:NO];
+
     }
 }
 
@@ -533,6 +536,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

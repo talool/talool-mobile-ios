@@ -46,7 +46,7 @@
                                               insertNewObjectForEntityForName:SOCIAL_ACCOUNT_ENTITY_NAME
                                               inManagedObjectContext:context];
 
-    ttsa.loginId = user.id;
+    ttsa.loginId = user.objectID;
     ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
     
     return ttsa;
@@ -98,7 +98,7 @@
     NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
     ttSocialAccount *sa = [ttSocialAccount createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
-                                                       loginId:fb_user.id
+                                                       loginId:fb_user.objectID
                                                          token:fbToken
                                                        context:context];
     [user addSocialAccountsObject:sa];

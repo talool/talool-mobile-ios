@@ -26,24 +26,23 @@
         self.entityName = MERCHANT_ENTITY_NAME;
         self.labelPural = @"Merchants";
         self.labelSingular = @"Merchant";
-
-        UIImage *heartIcon = [FontAwesomeKit imageForIcon:FAKIconHeart
-                                                imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                 fontSize:self.fontSize
-                                               attributes:self.iconAttrs];
-        UIImage *foodIcon = [FontAwesomeKit imageForIcon:FAKIconFood
-                                               imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                fontSize:self.fontSize
-                                              attributes:self.iconAttrs];
-        UIImage *shoppingIcon = [FontAwesomeKit imageForIcon:FAKIconShoppingCart
-                                                   imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                    fontSize:self.fontSize
-                                                  attributes:self.iconAttrs];
-        UIImage *funIcon = [FontAwesomeKit imageForIcon:FAKIconTicket
-                                              imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                               fontSize:self.fontSize
-                                             attributes:self.iconAttrs];
         
+        
+        FAKFontAwesome *hicon = [FAKFontAwesome heartIconWithSize:self.fontSize];
+        hicon.attributes = self.iconAttrs;
+        UIImage *heartIcon = [hicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *ficon = [FAKFontAwesome cutleryIconWithSize:self.fontSize];
+        ficon.attributes = self.iconAttrs;
+        UIImage *foodIcon = [ficon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *sicon = [FAKFontAwesome shoppingCartIconWithSize:self.fontSize];
+        sicon.attributes = self.iconAttrs;
+        UIImage *shoppingIcon = [sicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *fuicon = [FAKFontAwesome ticketIconWithSize:self.fontSize];
+        fuicon.attributes = self.iconAttrs;
+        UIImage *funIcon = [fuicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
         
         
         // create the filter menu

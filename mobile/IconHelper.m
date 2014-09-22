@@ -8,21 +8,17 @@
 
 #import "IconHelper.h"
 #import "TaloolColor.h"
-#import <FontAwesomeKit/FontAwesomeKit.h>
+
 
 @implementation IconHelper
 
-+(UIImage *) getImageForIcon:(NSString *)icon color:(UIColor *)color
++(UIImage *) getImageForIcon:(FAKFontAwesome *)icon color:(UIColor *)color
 {
-    NSDictionary *attr =@{
-                          FAKImageAttributeForegroundColor:[UIColor whiteColor],
-                          FAKImageAttributeBackgroundColor:[UIColor colorWithPatternImage:[IconHelper getCircleWithColor:color]]
-                          };
     
-    return [FontAwesomeKit imageForIcon:icon
-                              imageSize:CGSizeMake(50, 50)
-                               fontSize:24
-                             attributes:attr];
+    [icon addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor]];
+    icon.drawingBackgroundColor = [UIColor colorWithPatternImage:[IconHelper getCircleWithColor:color]];
+    
+    return [icon imageWithSize:CGSizeMake(50, 50)];
     
 }
 

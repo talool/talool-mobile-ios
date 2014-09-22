@@ -23,10 +23,9 @@
                
         [self addSubview:view];
         
-        [closeButton setTitle:FAKIconCircleArrowDown];
-        [closeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:20]}
-                                   forState:UIControlStateNormal];
-        [closeButton setTintColor:[TaloolColor dark_teal]];
+        FAKFontAwesome *closeIcon = [FAKFontAwesome arrowCircleDownIconWithSize:20];
+        [closeIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
+        [closeButton setImage:[closeIcon imageWithSize:CGSizeMake(25, 25)]];
         
         [submitButton setTitle:label];
         [submitButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"TrebuchetMS-Bold" size:18.0]}

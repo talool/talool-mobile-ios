@@ -24,15 +24,18 @@
         [[NSBundle mainBundle] loadNibNamed:@"MerchantActionBar3View" owner:self options:nil];
         
         self.delegate = actionDelegate;
+        FAKFontAwesome *mapIcon = [FAKFontAwesome mapMarkerIconWithSize:16];
+        FAKFontAwesome *callIcon = [FAKFontAwesome phoneSquareIconWithSize:16];
+        FAKFontAwesome *webIcon = [FAKFontAwesome infoCircleIconWithSize:16];
         
         NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
-                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              NSFontAttributeName:[mapIcon iconFont]
                               };
-        [mapButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMapMarker, @"Map"]];
+        [mapButton setTitle:[NSString stringWithFormat:@"%@  %@", mapIcon.characterCode, @"Map"]];
         [mapButton setTitleTextAttributes:attr forState:UIControlStateNormal];
-        [callButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconPhoneSign, @"Call"]];
+        [callButton setTitle:[NSString stringWithFormat:@"%@  %@", callIcon.characterCode, @"Call"]];
         [callButton setTitleTextAttributes:attr forState:UIControlStateNormal];
-        [webButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconInfoSign, @"Web"]];
+        [webButton setTitle:[NSString stringWithFormat:@"%@  %@", webIcon.characterCode, @"Web"]];
         [webButton setTitleTextAttributes:attr forState:UIControlStateNormal];
 
         

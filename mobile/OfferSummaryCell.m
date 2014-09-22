@@ -16,15 +16,14 @@
 {
     self.summary.text = offer.summary;
     
-    [self.logo setImageWithURL:[NSURL URLWithString:offer.imageUrl]
-                        placeholderImage:[UIImage imageNamed:@"000.png"]
-                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                   if (error !=  nil) {
-                                       // TODO track these errors
-                                       NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                   }
-                                   
-                               }];
+    [self.logo sd_setImageWithURL:[NSURL URLWithString:offer.imageUrl]
+                      placeholderImage:[UIImage imageNamed:@"000.png"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                 if (error !=  nil) {
+                                     // TODO track these errors
+                                     NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                 }
+                             }];
 }
 
 @end

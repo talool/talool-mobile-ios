@@ -230,15 +230,15 @@
     // Use a branded background image
     if (offer.backgroundUrl)
     {
-        [cell.brandingView setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
-                          placeholderImage:[UIImage imageNamed:@"DealOfferBG"]
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     if (error !=  nil) {
-                                         // TODO track these errors
-                                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                     }
-                             
-                                 }];
+
+        [cell.brandingView sd_setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
+                             placeholderImage:[UIImage imageNamed:@"DealOfferBG"]
+                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        if (error !=  nil) {
+                                            // TODO track these errors
+                                            NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                        }
+                                    }];
     }
     else
     {
@@ -248,15 +248,15 @@
     // Use a branded icon image
     if (offer.iconUrl)
     {
-        [cell.iconView setImageWithURL:[NSURL URLWithString:offer.iconUrl]
-                          placeholderImage:[UIImage imageNamed:@"DealOfferIcon"]
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     if (error !=  nil) {
-                                         // TODO track these errors
-                                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                     }
-                                     
-                                 }];
+
+        [cell.iconView sd_setImageWithURL:[NSURL URLWithString:offer.iconUrl]
+                             placeholderImage:[UIImage imageNamed:@"DealOfferIcon"]
+                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        if (error !=  nil) {
+                                            // TODO track these errors
+                                            NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                        }
+                                    }];
     }
     else
     {
@@ -340,6 +340,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

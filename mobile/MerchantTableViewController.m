@@ -61,12 +61,13 @@
     actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT) delegate:self];
     
     // add the settings button
-    UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconHeartEmpty
+    FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:26];
+    UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:heartIcon.characterCode
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
                                                                   action:@selector(likeAction)];
     self.navigationItem.rightBarButtonItem = likeButton;
-    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:26], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[heartIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
     _sortDescriptors = [NSArray arrayWithObjects:
@@ -132,11 +133,13 @@
     UIBarButtonItem *likeButton = self.navigationItem.rightBarButtonItem;
     if ([merchant isFavorite])
     {
-        likeButton.title = FAKIconHeart;
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartIconWithSize:26];
+        likeButton.title = heartIcon.characterCode;
     }
     else
     {
-        likeButton.title = FAKIconHeartEmpty;
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:26];
+        likeButton.title = heartIcon.characterCode;
     }
 }
 
@@ -396,6 +399,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

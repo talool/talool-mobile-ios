@@ -30,15 +30,18 @@
         
         self.delegate = actionDelegate;
         
+        FAKFontAwesome *moneyIcon = [FAKFontAwesome moneyIconWithSize:16];
+        FAKFontAwesome *giftIcon = [FAKFontAwesome giftIconWithSize:16];
+        
         NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
-                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              NSFontAttributeName:[giftIcon iconFont]
                               };
         NSDictionary *attr2 =@{NSForegroundColorAttributeName:[TaloolColor orange],
-                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              NSFontAttributeName:[moneyIcon iconFont]
                               };
-        [redeemButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMoney, @"Redeem Now"]];
+        [redeemButton setTitle:[NSString stringWithFormat:@"%@  %@", moneyIcon.characterCode, @"Redeem Now"]];
         [redeemButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
-        [emailButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconGift, @"Give As Gift"]];
+        [emailButton setTitle:[NSString stringWithFormat:@"%@  %@", giftIcon.characterCode, @"Give As Gift"]];
         [emailButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         [self updateView:dealAcq];

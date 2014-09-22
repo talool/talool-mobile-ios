@@ -43,7 +43,7 @@
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
     // check for a cached FB session
-    _fbPermissions = @[@"basic_info", @"email", @"user_birthday"];
+    _fbPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_friends"];
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         NSLog(@"Found a cached session");
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];

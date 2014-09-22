@@ -34,7 +34,7 @@
         
         NSError *error;
         NSManagedObjectContext *context = [self getContext];
-        BOOL result = [ttCustomer authenticateFacebook:self.user.id
+        BOOL result = [ttCustomer authenticateFacebook:self.user.objectID
                                               facebookToken:self.token
                                                     context:context
                                                       error:&error];

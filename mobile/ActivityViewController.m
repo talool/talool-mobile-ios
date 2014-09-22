@@ -76,12 +76,12 @@
                                                object:nil];
     
     // add the filter button
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
+    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:28];
+    [filterIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[filterIcon imageWithSize:CGSizeMake(30, 30)]
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(filterMenu:)];
-    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = filterButton;
     
     _menu = [[ActivityFilterMenu alloc] initWithDelegate:self];
@@ -469,6 +469,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }
