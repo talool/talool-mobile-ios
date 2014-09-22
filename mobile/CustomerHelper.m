@@ -20,6 +20,27 @@
     return context;
 }
 
++ (NSManagedObject *) fetchFault:(NSManagedObject *)fault entityType:(NSString *)entityName
+{
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:[CustomerHelper getContext]];
+    [request setEntity:entity];
+    
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"self == %@", fault];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [[CustomerHelper getContext] executeFetchRequest:request error:&error];
+    if (array != nil && [array count]==1)
+    {
+        fault = [array objectAtIndex:0];
+    }
+    return fault;
+}
+
 + (ttCustomer *) getLoggedInUser
 {
     NSManagedObjectContext *context = [CustomerHelper getContext];

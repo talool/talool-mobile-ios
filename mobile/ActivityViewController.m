@@ -241,8 +241,6 @@
 
 - (void) resetFetchedResultsController:(BOOL)hard
 {
-    [[CustomerHelper getContext] processPendingChanges];
-    [[CustomerHelper getContext] reset];
     if (hard)
     {
         _fetchedResultsController = nil;
@@ -396,6 +394,9 @@
     {
         [self updateBadge:nil];
     }
+    
+    [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     
     [self resetFetchedResultsController:NO];
     

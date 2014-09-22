@@ -25,6 +25,7 @@
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttMerchant.h"
 #import "Talool-API/ttMerchantLocation.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <CoreLocation/CoreLocation.h>
 //#import "ZXingObjC/ZXingObjC.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
@@ -56,6 +57,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([deal isFault])
+    {
+        deal = (ttDealAcquire *)[CustomerHelper fetchFault:deal entityType:DEAL_ACQUIRE_ENTITY_NAME];
+    }
     
     self.navigationItem.title = deal.deal.merchant.name;
     
@@ -461,6 +467,7 @@
                                                       recipientName:name
                                                            delegate:self];
 }
+
 
 
 @end

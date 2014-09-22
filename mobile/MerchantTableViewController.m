@@ -86,7 +86,12 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = merchant.name;
+    if ([merchant isFault])
+    {
+        merchant = (ttMerchant *)[CustomerHelper fetchFault:merchant entityType:MERCHANT_ENTITY_NAME];
+    }
+    
+    self.navigationItem.title = [merchant name];
     
     [actionBar3View setMerchant:merchant];
     
@@ -108,6 +113,7 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
 }
+
 
 - (void) likeAction
 {
@@ -426,6 +432,28 @@
 {
     [[CustomerHelper getContext] refreshObject:merchant mergeChanges:YES];
     [self setLikeLabel];
+}
+
+#pragma mark -
+#pragma mark - Fetch Faulted Objects
+
+- (void) fetchFault
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:MERCHANT_ENTITY_NAME
+                                              inManagedObjectContext:[CustomerHelper getContext]];
+    [request setEntity:entity];
+    
+    NSPredicate *predicate =
+    [NSPredicate predicateWithFormat:@"self == %@", merchant];
+    [request setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [[CustomerHelper getContext] executeFetchRequest:request error:&error];
+    if (array != nil && [array count]==1)
+    {
+        merchant = [array objectAtIndex:0];
+    }
 }
 
 @end

@@ -84,6 +84,11 @@
 {
     [super viewWillAppear:animated];
     
+    if ([offer isFault])
+    {
+        offer = (ttDealOffer *)[CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    }
+    
     self.navigationItem.title = offer.title;
     
     [self updateDeals];
