@@ -148,29 +148,32 @@
 {
     [super viewDidAppear:animated];
     
-    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
-    {
-        // The user hasn't approved or denied location services
-        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+    if ([CustomerHelper getLoggedInUser]) {
+        if (![LocationHelper sharedInstance].locationManagerStatusKnown)
+        {
+            // The user hasn't approved or denied location services
+            [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+        }
+        
+        if ([self merchantCount]==0)
+        {
+            [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+            
+            [TSMessage showNotificationInViewController:self
+                                                  title:@"Welcome!"
+                                               subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                                  image:nil
+                                                   type:TSMessageNotificationTypeMessage
+                                               duration:TSMessageNotificationDurationEndless
+                                               callback:nil
+                                            buttonTitle:nil
+                                         buttonCallback:nil
+                                             atPosition:TSMessageNotificationPositionTop
+                                   canBeDismissedByUser:NO];
+            
+        }
     }
     
-    if ([self merchantCount]==0)
-    {
-        [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
-        
-        [TSMessage showNotificationInViewController:self
-                                              title:@"Welcome!"
-                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
-                                              image:nil
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionBottom
-                                canBeDismissedByUser:NO];
-
-    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated

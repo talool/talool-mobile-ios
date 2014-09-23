@@ -160,6 +160,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate presentNewDeals];
+        [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:nil];
     }
     else
     {

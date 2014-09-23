@@ -289,7 +289,7 @@
     if (self.friendPickerController == nil) {
         // Create friend picker, and get data loaded into it.
         self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-        self.friendPickerController.title = @"Pick Friends";
+        self.friendPickerController.title = @"Pick A Friend";
         self.friendPickerController.delegate = self;
         self.friendPickerController.allowsMultipleSelection = NO;
     }
@@ -297,7 +297,7 @@
     [self.friendPickerController loadData];
     [self.friendPickerController clearSelection];
     
-    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+    [self.navigationController pushViewController:self.friendPickerController animated:YES];
 }
 
 - (void)dealRedeemed:(id)sender
@@ -315,10 +315,6 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if([title isEqualToString:@"Yes"])
     {
-        
-#warning @"test crashlytics here"
-        //[[Crashlytics sharedInstance] crash];
-        
         [SVProgressHUD showWithStatus:@"Redeeming deal" maskType:SVProgressHUDMaskTypeBlack];
         [[OperationQueueManager sharedInstance] startRedeemOperation:deal.dealAcquireId delegate:self];
     }
@@ -331,15 +327,14 @@
 - (void)facebookViewControllerDoneWasPressed:(id)sender {
     
     for (id<FBGraphUser> user in self.friendPickerController.selection) {
-        NSLog(@"Friend picked: %@, %@", user.name, [user objectForKey:@"id"]);
         [self handleFacebookUser:[user objectForKey:@"id"] name:user.name];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)facebookViewControllerCancelWasPressed:(id)sender {
     // clean up, if needed
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -385,9 +380,39 @@
 }
 
 #pragma mark -
-#pragma mark - ABPeoplePickerNavigationControllerDelegate delegate methods
+#pragma mark - ABPeoplePickerNavigationControllerDelegate delegate methods for iOS8
+
+- (void)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker didSelectPerson:(ABRecordRef)person
+{
+    [self confirmPerson:person];
+}
+
+#pragma mark -
+#pragma mark - ABPeoplePickerNavigationControllerDelegate delegate methods for iOS7
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    [self confirmPerson:person];
+    
+    // return no, so we get out of the shitty address book views
+    return NO;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    return NO;
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark -
+#pragma mark - People Picker Helpers
+
+- (void) confirmPerson:(ABRecordRef)person
 {
     // store person properties in a dictionay, so we don't have to deal the Address Book crap
     NSMutableDictionary *personDictionary = [[NSMutableDictionary alloc] init];
@@ -431,25 +456,14 @@
     if (linked) CFRelease(linked);
     [personDictionary setObject:emails forKey:[NSNumber numberWithInt:kABPersonEmailProperty]];
     
-    // push the person view to confirm the email selection
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-    PersonViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"PersonView"];
-    [pvc setDelegate:self];
-    [pvc setPerson:personDictionary];
-    [_picker pushViewController:pvc animated:YES];
-    
-    // return no, so we get out of the shitty address book views
-    return NO;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
-{
-    return NO;
-}
-
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        // push the person view to confirm the email selection
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
+        PersonViewController *pvc = [storyboard instantiateViewControllerWithIdentifier:@"PersonView"];
+        [pvc setDelegate:self];
+        [pvc setPerson:personDictionary];
+        [self.navigationController pushViewController:pvc animated:YES];
+    }];
 }
 
 
@@ -458,7 +472,7 @@
 
 - (void)handleUserContact:(NSString *)email name:(NSString *)name
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
     // send the gift
     [SVProgressHUD showWithStatus:@"Sending gift" maskType:SVProgressHUDMaskTypeBlack];
