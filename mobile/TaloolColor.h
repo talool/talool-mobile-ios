@@ -15,6 +15,7 @@
 + (UIColor *)teal;              // #19bcb9
 + (UIColor *)dark_teal;         // #128d8b
 + (UIColor *)green;             // #50b948
++ (UIColor *)blue;              // 
 + (UIColor *)gray_1;            //
 + (UIColor *)gray_3;            //
 + (UIColor *)gray_5;            //

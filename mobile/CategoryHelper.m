@@ -81,6 +81,11 @@ static NSMutableDictionary *_categoryDictionary;
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryNightlife];
                 break;
+            case CategoryServices:
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome cogsIconWithSize:24] color:[TaloolColor blue]];
+                catObj = [self createCategoryDictionary:cat icon:icon];
+                catKey = [NSNumber numberWithInt:CategoryServices];
+                break;
             default:
                 catObj = nil;
                 catKey = nil;

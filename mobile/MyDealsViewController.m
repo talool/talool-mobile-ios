@@ -169,9 +169,14 @@
                                             buttonTitle:nil
                                          buttonCallback:nil
                                              atPosition:TSMessageNotificationPositionTop
-                                   canBeDismissedByUser:NO];
+                                   canBeDismissedByUser:YES];
             
         }
+    }
+    else
+    {
+        // The user isn't logged in, so kick them to the welcome view
+        [self performSegueWithIdentifier:@"welcome" sender:self];
     }
     
 }
@@ -294,6 +299,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:_sortDescriptors];
     [fetchRequest setFetchBatchSize:20];
+    
     if (predicate)
     {
         [fetchRequest setPredicate:predicate];
@@ -427,8 +433,12 @@
         NSManagedObjectContext *context = [CustomerHelper getContext];
         NSArray *merchants = [ttMerchant fetchMerchants:context
                                            withPredicate:[NSPredicate predicateWithFormat:@"customer != nil"]];
-        for (ttMerchant *merchant in merchants)
+        for (__strong ttMerchant *merchant in merchants)
         {
+            if ([merchant isFault])
+            {
+                merchant = (ttMerchant *)[CustomerHelper fetchFault:merchant entityType:MERCHANT_ENTITY_NAME];
+            }
             if ([merchant.closestLocation getDistanceInMiles].intValue==0)
             {
                 [context refreshObject:merchant.closestLocation mergeChanges:YES];
