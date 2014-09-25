@@ -138,6 +138,7 @@
     {
         dispatch_async(dispatch_get_main_queue(),^{
             [_locationManager startUpdatingLocation];
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOCATION_ENABLED_NOTIFICATION object:nil];
         });
     }
     
@@ -160,6 +161,11 @@
                                                                label:@"Denied"
                                                                value:nil] build]];
     }
+}
+
+- (bool) isUserSharingLocation
+{
+    return (_locationManagerEnabled == YES);
 }
 
 

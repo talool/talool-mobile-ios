@@ -61,7 +61,7 @@
     actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT) delegate:self];
     
     // add the settings button
-    FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:26];
+    FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:ICON_FONT_SIZE];
     UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:heartIcon.characterCode
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
@@ -133,12 +133,12 @@
     UIBarButtonItem *likeButton = self.navigationItem.rightBarButtonItem;
     if ([merchant isFavorite])
     {
-        FAKFontAwesome *heartIcon = [FAKFontAwesome heartIconWithSize:26];
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartIconWithSize:ICON_FONT_SIZE];
         likeButton.title = heartIcon.characterCode;
     }
     else
     {
-        FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:26];
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:ICON_FONT_SIZE];
         likeButton.title = heartIcon.characterCode;
     }
 }

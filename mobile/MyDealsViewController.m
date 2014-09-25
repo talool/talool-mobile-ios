@@ -45,6 +45,7 @@
 @property BOOL resetAfterLogin;
 @end
 
+
 @implementation MyDealsViewController
 
 - (void)viewDidLoad
@@ -62,26 +63,18 @@
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
     // add the settings button
-    FAKFontAwesome *settingsIcon = [FAKFontAwesome cogIconWithSize:28];
-    [settingsIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[settingsIcon imageWithSize:CGSizeMake(30, 30)]
+    FAKFontAwesome *settingsIcon = [FAKFontAwesome cogIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:settingsIcon.characterCode
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(settings:)];
+    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[settingsIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                              forState:UIControlStateNormal];
+    
     self.navigationItem.rightBarButtonItem = settingsButton;
     
     
-    // add the filter button
-    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:28];
-    [filterIcon addAttribute:NSForegroundColorAttributeName value:[TaloolColor dark_teal]];
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithImage:[filterIcon imageWithSize:CGSizeMake(30, 30)]
-                                                                     style:UIBarButtonItemStyleBordered
-                                                                    target:self
-                                                                    action:@selector(filterMenu:)];
-    self.navigationItem.leftBarButtonItem = filterButton;
-    
     _sortDescriptors = [NSArray arrayWithObjects:
-                        [NSSortDescriptor sortDescriptorWithKey:@"closestLocation.distanceInMeters" ascending:YES],
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
     
@@ -99,12 +92,25 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleLocationEnabled:)
+                                                 name:LOCATION_ENABLED_NOTIFICATION
+                                               object:nil];
 
 
     _menu = [[MerchantFilterMenu alloc] initWithDelegate:self];
     _tableHeader = [[SimpleHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)];
     [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
                      subtitle:[_menu getSubtitleAtSelectedIndex]];
+    
+    // make sure a sort option is set
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    if (sort==nil)
+    {
+        [defaults setObject:MERCHANT_SORT_ALPHA forKey:MERCHANT_SORT_KEY];
+    }
     
 }
 
@@ -119,6 +125,8 @@
     }
     else
     {
+        [self initLeftBarButtons];
+         
         // see if we lost the predicate for the fetchedResultsController
         if (!_fetchedResultsController.fetchRequest.predicate)
         {
@@ -193,6 +201,11 @@
     [_menu setSelectedIndex:0];
 }
 
+- (void) handleLocationEnabled:(NSNotification *)message
+{
+    [self initLeftBarButtons];
+}
+
 - (void) handleAcceptedGift:(NSNotification *)message
 {
     // prompt the user to see if they want to view their deal
@@ -236,6 +249,97 @@
             [self.menu refreshCounts];
             [self.menu showFromNavigationController:self.navigationController];
         }
+    }
+}
+
+- (void) initLeftBarButtons
+{
+    // add the filter button
+    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:filterIcon.characterCode
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(filterMenu:)];
+    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[filterIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                              forState:UIControlStateNormal];
+    
+    if ([[LocationHelper sharedInstance] isUserSharingLocation])
+    {
+        // add the sortToggle button
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortAlphaAscIconWithSize:ICON_FONT_SIZE];
+        UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@" "
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(sortToggle:)];
+        [sortButton setTitleTextAttributes:@{NSFontAttributeName:[sortIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                                  forState:UIControlStateNormal];
+        [self setSortLabel:sortButton];
+        self.navigationItem.leftBarButtonItems = @[filterButton, sortButton];
+        
+    }
+    else
+    {
+        self.navigationItem.leftBarButtonItem = filterButton;
+    }
+    [self setSorts];
+    
+}
+
+- (void) sortToggle:(UIBarButtonItem *)button
+{
+    // update the sort setting
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        sort = MERCHANT_SORT_DISTANCE;
+    }
+    else
+    {
+        sort = MERCHANT_SORT_ALPHA;
+    }
+    [defaults setObject:sort forKey:MERCHANT_SORT_KEY];
+    
+    [self setSortLabel:button];
+    [self setSorts];
+    [self resetFetchedResultsController:YES];
+}
+
+- (void) setSortLabel:(UIBarButtonItem *)sortButton
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortAlphaAscIconWithSize:28];
+        sortButton.title = sortIcon.characterCode;
+    }
+    else
+    {
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortNumericAscIconWithSize:28];
+        sortButton.title = sortIcon.characterCode;
+    }
+}
+
+- (void)setSorts
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        _sortDescriptors = [NSArray arrayWithObjects:
+                            [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                            nil];
+    }
+    else
+    {
+        _sortDescriptors = [NSArray arrayWithObjects:
+                            [NSSortDescriptor sortDescriptorWithKey:@"closestLocation.distanceInMeters" ascending:YES],
+                            [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                            nil];
     }
 }
 

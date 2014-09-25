@@ -87,8 +87,10 @@ static NSMutableDictionary *_categoryDictionary;
                 catKey = [NSNumber numberWithInt:CategoryServices];
                 break;
             default:
-                catObj = nil;
-                catKey = nil;
+                // unknown category
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome asteriskIconWithSize:24] color:[TaloolColor dark_teal]];
+                catObj = [self createCategoryDictionary:cat icon:icon];
+                catKey = [NSNumber numberWithInt:[cat.categoryId intValue]];
                 break;
         }
         if (catObj != nil)
