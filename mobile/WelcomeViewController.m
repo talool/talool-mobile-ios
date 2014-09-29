@@ -22,6 +22,7 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <TutorialViewController.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;
@@ -259,6 +260,10 @@
     if (success && customer)
     {
         [FacebookHelper trackNumberOfFriends];
+        
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
