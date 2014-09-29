@@ -150,12 +150,16 @@
         }
     }
     
-    dispatch_async(dispatch_get_main_queue(),^{
-        NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
-        [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
-        [notification setObject:[NSNumber numberWithBool:self.isAccepted] forKey:DELEGATE_RESPONSE_GIFT_ACCEPTED];
-        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
-    });
+    if (result)
+    {
+        dispatch_async(dispatch_get_main_queue(),^{
+            NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
+            [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+            [notification setObject:[NSNumber numberWithBool:self.isAccepted] forKey:DELEGATE_RESPONSE_GIFT_ACCEPTED];
+            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
+        });
+    }
+    
     
     if (self.delegate)
     {

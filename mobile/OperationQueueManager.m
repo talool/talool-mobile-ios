@@ -85,6 +85,7 @@ static int DEAL_ACQUIRE_INTERVAL_IN_SECONDS = 2;
     
     if ([CustomerHelper getLoggedInUser])
     {
+        [self startMerchantOperation:nil];
         [self startRecurringDealOfferOperation];
         [self startRecurringActivityOperation];
     }

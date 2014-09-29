@@ -217,7 +217,15 @@
 - (void) configureCell:(DealOfferCell *)cell path:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([offerSummary isFault])
+    {
+        offerSummary = (ttDealOfferGeoSummary *) [CustomerHelper fetchFault:offerSummary entityType:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME];
+    }
     ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
+    if ([offer isFault])
+    {
+        offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    }
 
     [cell.titleLabel setText:offer.title];
     [cell.summaryLabel setText:offer.summary];
@@ -267,7 +275,16 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
+    if ([offerSummary isFault])
+    {
+        offerSummary = (ttDealOfferGeoSummary *) [CustomerHelper fetchFault:offerSummary entityType:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME];
+    }
     ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
+    if ([offer isFault])
+    {
+        offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    }
+    
     [self.navigationController pushViewController:[self getDetailView:offer] animated:YES];
 }
 
