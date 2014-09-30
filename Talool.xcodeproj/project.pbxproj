@@ -266,6 +266,8 @@
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		81F4542F19DB2C8400A3E7A6 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */; };
+		81F4543019DB2C8400A3E7A6 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */; };
 		81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
 		81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
 		81F5E27418CFFBD800FBDF96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
@@ -518,6 +520,7 @@
 		81F24B22175950C9003A3A1A /* TaloolIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolIconButton.h; sourceTree = "<group>"; };
 		81F24B23175950C9003A3A1A /* TaloolIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolIconButton.m; sourceTree = "<group>"; };
 		81F24B25175ABA66003A3A1A /* TaloolProtocols.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaloolProtocols.h; sourceTree = "<group>"; };
+		81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ribbon@2x.png"; sourceTree = "<group>"; };
 		81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FundraiserCodeViewController.m; sourceTree = "<group>"; };
 		81F5E27118CF910500FBDF96 /* FundraiserCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FundraiserCodeViewController.h; sourceTree = "<group>"; };
 		81F5E27318CFFBD800FBDF96 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -904,6 +907,7 @@
 		81E6030C18C14129004A017B /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */,
 				819A0E20183D0653008D43C8 /* DealOfferIcon.png */,
 				819A0E24183D19E9008D43C8 /* DealOfferBG.png */,
 				81AE6DD917A1D938000596E8 /* ribbonbadge.png */,
@@ -1236,6 +1240,7 @@
 				8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */,
 				8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */,
 				81E6032718C14352004A017B /* SA_Default-568h@2x.png in Resources */,
+				81F4543019DB2C8400A3E7A6 /* ribbon@2x.png in Resources */,
 				8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */,
 				81E6032318C141D6004A017B /* SA_welcome4@2x.png in Resources */,
 				8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */,
@@ -1268,6 +1273,7 @@
 				81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */,
 				810BB7611783296D00C65540 /* KeyboardAccessoryView.xib in Resources */,
 				81BD127517872AEB00AF7475 /* OfferActionView.xib in Resources */,
+				81F4542F19DB2C8400A3E7A6 /* ribbon@2x.png in Resources */,
 				818641711798FED100DE0C2E /* DealActionBar3View.xib in Resources */,
 				81A57C8717EBA57A00A68B71 /* TaloolLogoAndIcon.png in Resources */,
 				819B26D9179B8AA200744C04 /* MerchantActionBar3View.xib in Resources */,

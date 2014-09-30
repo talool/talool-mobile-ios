@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Splash View Controller-->
@@ -1226,29 +1228,26 @@
                                     <outlet property="merchantLogo" destination="NgO-mf-wiP" id="glg-fb-2yO"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GiftDetails" rowHeight="100" id="pyx-ha-OIg" userLabel="Gift Details" customClass="GiftDetailCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GiftDetails" rowHeight="50" id="pyx-ha-OIg" userLabel="Gift Details" customClass="GiftDetailCell">
                                 <rect key="frame" x="0.0" y="82" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pyx-ha-OIg" id="fJN-jU-IRk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ribbonbadge.png" translatesAutoresizingMaskIntoConstraints="NO" id="MDM-bh-a7u" userLabel="Ribbon">
-                                            <rect key="frame" x="0.0" y="5" width="320" height="90"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ribbon.png" translatesAutoresizingMaskIntoConstraints="NO" id="MDM-bh-a7u" userLabel="Ribbon">
+                                            <rect key="frame" x="-1" y="-20" width="320" height="90"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="IjM-oR-DcG">
-                                            <rect key="frame" x="127" y="36" width="67" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="67" id="RYQ-tK-Rzd"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="14"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Gift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjM-oR-DcG">
+                                            <rect key="frame" x="7" y="18" width="304" height="24"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="from" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="67" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-hc-Rdw" userLabel="from">
-                                            <rect key="frame" x="126" y="14" width="67" height="24"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A Gift From" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-hc-Rdw" userLabel="from">
+                                            <rect key="frame" x="126" y="0.0" width="67" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="67" id="BKx-cC-cJb"/>
                                             </constraints>
@@ -1259,14 +1258,16 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Sfg-hc-Rdw" firstAttribute="top" secondItem="fJN-jU-IRk" secondAttribute="top" constant="14" id="7zh-zB-XwT"/>
-                                        <constraint firstAttribute="bottom" secondItem="IjM-oR-DcG" secondAttribute="bottom" constant="40" id="G76-Yy-wce"/>
+                                        <constraint firstItem="IjM-oR-DcG" firstAttribute="leading" secondItem="fJN-jU-IRk" secondAttribute="leadingMargin" constant="-1" id="3zk-ue-NsN"/>
+                                        <constraint firstItem="Sfg-hc-Rdw" firstAttribute="top" secondItem="fJN-jU-IRk" secondAttribute="top" id="6SH-Ks-v7h"/>
+                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="centerY" secondItem="fJN-jU-IRk" secondAttribute="centerY" id="Cj4-An-Wa5"/>
+                                        <constraint firstItem="IjM-oR-DcG" firstAttribute="centerX" secondItem="Sfg-hc-Rdw" secondAttribute="centerX" id="H67-Eo-p0O"/>
                                         <constraint firstItem="Sfg-hc-Rdw" firstAttribute="leading" secondItem="fJN-jU-IRk" secondAttribute="leading" constant="126" id="IU1-WG-R0Y"/>
-                                        <constraint firstAttribute="bottom" secondItem="Sfg-hc-Rdw" secondAttribute="bottom" constant="62" id="REr-WH-qDc"/>
-                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="centerY" secondItem="fJN-jU-IRk" secondAttribute="centerY" id="Rml-2k-NaM"/>
-                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="leading" secondItem="fJN-jU-IRk" secondAttribute="leading" id="SpL-cR-HLu"/>
-                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="centerX" secondItem="IjM-oR-DcG" secondAttribute="centerX" id="VBu-dF-ej4"/>
-                                        <constraint firstItem="IjM-oR-DcG" firstAttribute="top" secondItem="fJN-jU-IRk" secondAttribute="top" constant="36" id="u6b-jW-eXJ"/>
+                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="top" secondItem="fJN-jU-IRk" secondAttribute="topMargin" constant="-28" id="QC7-g8-Ek9"/>
+                                        <constraint firstItem="IjM-oR-DcG" firstAttribute="top" secondItem="fJN-jU-IRk" secondAttribute="topMargin" constant="10" id="WKX-n5-cci"/>
+                                        <constraint firstItem="MDM-bh-a7u" firstAttribute="centerX" secondItem="IjM-oR-DcG" secondAttribute="centerX" id="o3G-0A-YPD"/>
+                                        <constraint firstItem="IjM-oR-DcG" firstAttribute="bottom" secondItem="fJN-jU-IRk" secondAttribute="bottomMargin" id="r1i-Lc-ox2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Sfg-hc-Rdw" secondAttribute="bottom" constant="18" id="thM-pL-o8A"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2736,7 +2737,7 @@
         <image name="000.png" width="1" height="1"/>
         <image name="Default.png" width="320" height="480"/>
         <image name="LogoAndIcon.png" width="199" height="50"/>
-        <image name="ribbonbadge.png" width="320" height="90"/>
+        <image name="ribbon.png" width="320" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
