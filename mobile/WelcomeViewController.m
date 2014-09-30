@@ -22,7 +22,6 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <TutorialViewController.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;
@@ -261,9 +260,6 @@
     {
         [FacebookHelper trackNumberOfFriends];
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
-        
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
@@ -272,24 +268,20 @@
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         if (error)
         {
-            if (error.code == FacebookErrorCode_USER_INVALID)
-            {
-                _failedUser = [FacebookHelper createCustomerFromFacebookUser:[error.userInfo objectForKey:@"fbUser"]
-                                                                     context:[CustomerHelper getContext]];
-                [self performSegueWithIdentifier:@"showReg" sender:self];
-            }
-            else
-            {
-                // Reg failed so log out of Facebook
-                [[FBSession activeSession] closeAndClearTokenInformation];
-                
-                // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-                [CustomerHelper showAlertMessage:error.localizedDescription
-                                       withTitle:@"Authentication Failed"
-                                      withCancel:@"Try again"
-                                      withSender:nil];
-            }
+            // Fail if don't get what we need from Facebook.  Sending the user to the
+            // normal registration form could cause it's own problems right now
+            // For example, we don't want them to create a different password.
+            // A missing birthday won't cause a problem b/c that field is optional.
             
+            // Reg failed so log out of Facebook
+            [[FBSession activeSession] closeAndClearTokenInformation];
+            
+            // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+            [CustomerHelper showAlertMessage:error.localizedDescription
+                                   withTitle:@"Authentication Failed"
+                                  withCancel:@"Try again"
+                                  withSender:nil];
+
         }
         else
         {

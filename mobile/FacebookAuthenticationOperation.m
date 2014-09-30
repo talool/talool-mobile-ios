@@ -10,6 +10,7 @@
 #import "CustomerHelper.h"
 #import "FacebookHelper.h"
 #import "Talool-API/ttCustomer.h"
+#import <TutorialViewController.h>
 
 @implementation FacebookAuthenticationOperation
 
@@ -34,7 +35,7 @@
         
         NSError *error;
         NSManagedObjectContext *context = [self getContext];
-        BOOL result = [ttCustomer authenticateFacebook:self.user.objectID
+        BOOL result = [ttCustomer authenticateFacebook:[self.user objectForKey:@"id"]
                                               facebookToken:self.token
                                                     context:context
                                                       error:&error];
@@ -47,12 +48,17 @@
             {
                 NSString *password = [ttCustomer nonrandomPassword:email];
                 result = [ttCustomer registerCustomer:customer password:password context:context error:&error];
+                if (result)
+                {
+                    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
+                }
             }
             else
             {
                 // Create a new error object to message that we need to register this user
                 NSMutableDictionary* details = [NSMutableDictionary dictionary];
-                NSString *errorDetails = @"Facebook user is missing a valid email address.";
+                NSString *errorDetails = @"We didn't get a valid email address from Facebook.  We may be blocked from getting that information from your account.  You can change that at Facebook, or register an account at Talool without Facebook.";
                 [details setValue:errorDetails forKey:NSLocalizedDescriptionKey];
                 [details setValue:self.user forKey:@"fbUser"];
                 error = [NSError errorWithDomain:@"FacebookAuthentication"
