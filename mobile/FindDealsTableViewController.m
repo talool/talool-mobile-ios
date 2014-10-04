@@ -133,7 +133,11 @@
     }
     [self.tableView reloadData];
     
-    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    // Set the predicate to only get offers that are not expired
+    // We don't delete offers, we expire them.  This ensure we only get the current stuff.
+    NSDate *today = [[NSDate alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dealOffer.expires > %@", today ];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
     
 }
@@ -217,14 +221,12 @@
 - (void) configureCell:(DealOfferCell *)cell path:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([offerSummary isFault])
-    {
-        offerSummary = (ttDealOfferGeoSummary *) [CustomerHelper fetchFault:offerSummary entityType:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME];
-    }
-    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
-    if ([offer isFault])
-    {
-        offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    ttDealOffer *offer = [self getOffer:offerSummary];
+    
+    // bail rather than fail
+    if (offer==nil) {
+        NSLog(@"OFFER FAIL: cound't get offer from summary at indexPath: %@", indexPath);
+        return;
     }
 
     [cell.titleLabel setText:offer.title];
@@ -244,7 +246,7 @@
                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                         if (error !=  nil) {
                                             // TODO track these errors
-                                            NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                            //NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
                                         }
                                     }];
     }
@@ -262,7 +264,7 @@
                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                         if (error !=  nil) {
                                             // TODO track these errors
-                                            NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                            //NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
                                         }
                                     }];
     }
@@ -275,17 +277,32 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
+    ttDealOffer *offer = [self getOffer:offerSummary];
+    [self.navigationController pushViewController:[self getDetailView:offer] animated:YES];
+}
+
+
+
+#pragma mark -
+#pragma mark - Safely get the DealOffer from the GeoSummary in case there is a core data fault
+
+- (ttDealOffer *) getOffer:(ttDealOfferGeoSummary *) offerSummary
+{
+    ttDealOffer *offer = nil;
     if ([offerSummary isFault])
     {
         offerSummary = (ttDealOfferGeoSummary *) [CustomerHelper fetchFault:offerSummary entityType:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME];
     }
-    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
-    if ([offer isFault])
+    if (offerSummary != nil)
     {
-        offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+        offer = (ttDealOffer *)offerSummary.dealOffer;
+        if ([offer isFault])
+        {
+            offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+        }
     }
     
-    [self.navigationController pushViewController:[self getDetailView:offer] animated:YES];
+    return offer;
 }
 
 #pragma mark -
@@ -307,6 +324,8 @@
 
 - (void)dealOfferOperationComplete:(NSDictionary *)response
 {
+    [[CustomerHelper getContext] processPendingChanges];
+    //[[CustomerHelper getContext] reset];
     [self resetFetchedResultsController:NO];
 }
 

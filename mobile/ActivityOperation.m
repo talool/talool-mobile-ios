@@ -197,6 +197,18 @@
     self.error = error;
     dispatch_async(dispatch_get_main_queue(),^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ACTIVITY_NOTIFICATION object:self userInfo:self.response];
+        
+        NSNumber *num = [responseData valueForKey:@"openCount"];
+        if (!num) num=0;
+        if(num > 0)
+        {
+            [UIApplication sharedApplication].applicationIconBadgeNumber = [num integerValue];
+        }
+        else
+        {
+            int number;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = number;
+        }
     });
     
     if (self.delegate)

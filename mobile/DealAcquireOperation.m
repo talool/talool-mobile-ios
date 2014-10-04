@@ -39,6 +39,10 @@
         
         // make sure we have a merchant from this context
         ttMerchant *merchant = [ttMerchant fetchMerchantById:self.merchantId context:context];
+        if (merchant == nil || merchant.merchantId == nil)
+        {
+            return;
+        }
         
         ttCustomer *customer = [CustomerHelper getLoggedInUser];
         BOOL result = [ttDealAcquire getDealAcquires:customer forMerchant:merchant context:context error:&error];

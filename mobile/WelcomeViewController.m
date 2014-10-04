@@ -136,14 +136,32 @@
     }
     else
     {
-        [FBSession openActiveSessionWithReadPermissions:_fbPermissions
-                                           allowLoginUI:YES
-                                      completionHandler:
-         ^(FBSession *session, FBSessionState state, NSError *error)
-        {
-             [self sessionStateChanged:session state:state error:error];
-         }];
+        FBSessionStateHandler completionHandler = ^(FBSession *session, FBSessionState status, NSError *error) {
+            [self sessionStateChanged:session state:status error:error];
+        };
+        
+        if ([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded) {
+            // we have a cached token, so open the session
+            [[FBSession activeSession] openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent
+                                      completionHandler:completionHandler];
+        } else {
+            [self clearAllUserInfo];
+            // create a new facebook session
+            FBSession *fbSession = [[FBSession alloc] initWithPermissions:@[@"email", @"user_location"]];
+            [FBSession setActiveSession:fbSession];
+            [fbSession openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent
+                      completionHandler:completionHandler];
+        }
     }
+}
+
+- (void) clearAllUserInfo
+{
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession renewSystemCredentials:^(ACAccountCredentialRenewResult result, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    [FBSession setActiveSession:nil];
 }
 
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
