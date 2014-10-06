@@ -38,7 +38,7 @@
     
     [self setName:location.address1];
     
-    [self setIcon:[IconHelper getImageForIcon:FAKIconMapMarker color:[TaloolColor orange]]];
+    [self setIcon:[IconHelper getImageForIcon:[FAKFontAwesome mapMarkerIconWithSize:24] color:[TaloolColor orange]]];
     
     [self setAddress:[NSString stringWithFormat:@"%@, %@, %@",location.city, location.stateProvidenceCounty, location.zip]];
 

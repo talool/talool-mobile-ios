@@ -61,12 +61,13 @@
     actionBar3View = [[MerchantActionBar3View alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,HEADER_HEIGHT) delegate:self];
     
     // add the settings button
-    UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconHeartEmpty
+    FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *likeButton = [[UIBarButtonItem alloc] initWithTitle:heartIcon.characterCode
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
                                                                   action:@selector(likeAction)];
     self.navigationItem.rightBarButtonItem = likeButton;
-    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:26], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+    [likeButton setTitleTextAttributes:@{NSFontAttributeName:[heartIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                               forState:UIControlStateNormal];
     
     _sortDescriptors = [NSArray arrayWithObjects:
@@ -86,7 +87,12 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.title = merchant.name;
+    if ([merchant isFault])
+    {
+        merchant = (ttMerchant *)[CustomerHelper fetchFault:merchant entityType:MERCHANT_ENTITY_NAME];
+    }
+    
+    self.navigationItem.title = [merchant name];
     
     [actionBar3View setMerchant:merchant];
     
@@ -109,6 +115,7 @@
     
 }
 
+
 - (void) likeAction
 {
     // change the value and label right away, then persist it with the service call
@@ -126,11 +133,13 @@
     UIBarButtonItem *likeButton = self.navigationItem.rightBarButtonItem;
     if ([merchant isFavorite])
     {
-        likeButton.title = FAKIconHeart;
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartIconWithSize:ICON_FONT_SIZE];
+        likeButton.title = heartIcon.characterCode;
     }
     else
     {
-        likeButton.title = FAKIconHeartEmpty;
+        FAKFontAwesome *heartIcon = [FAKFontAwesome heartOIconWithSize:ICON_FONT_SIZE];
+        likeButton.title = heartIcon.characterCode;
     }
 }
 
@@ -175,8 +184,14 @@
         return _fetchedResultsController;
     }
     [self.tableView reloadData];
+
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setMonth:-1];
+    NSDate *oneMonthAgo = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deal.merchant.merchantId = %@", merchant.merchantId];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deal.merchant.merchantId = %@ AND deal.expires > %@", merchant.merchantId, oneMonthAgo ];
     
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
@@ -385,6 +400,10 @@
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
+            break;
     }
 }
 
@@ -402,6 +421,12 @@
 - (void)dealAcquireOperationComplete:(NSDictionary *)response
 {
     NSError *error;
+    [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] refreshObject:merchant mergeChanges:YES];
+    for (ttDeal *deal in merchant.deals) {
+        [[CustomerHelper getContext] refreshObject:deal mergeChanges:YES];
+    }
+
     _fetchedResultsController = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
         // Update to handle the error appropriately.
@@ -415,5 +440,6 @@
     [[CustomerHelper getContext] refreshObject:merchant mergeChanges:YES];
     [self setLikeLabel];
 }
+
 
 @end

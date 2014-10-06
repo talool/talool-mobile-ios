@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+static NSString *LOCATION_ENABLED_NOTIFICATION = @"LOCATION_ENABLED_NOTIFICATION";
+
 @interface LocationHelper : NSObject<CLLocationManagerDelegate>
 
 + (LocationHelper *)sharedInstance;
@@ -21,5 +23,6 @@
 
 - (void) handleForegroundState;
 - (void) handleBackgroundState;
+- (bool) isUserSharingLocation;
 
 @end

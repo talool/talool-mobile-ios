@@ -33,15 +33,19 @@
         [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
         
+        FAKFontAwesome *buyIcon = [FAKFontAwesome moneyIconWithSize:16];
+        FAKFontAwesome *codeIcon = [FAKFontAwesome bookIconWithSize:16];
+        
         NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
-                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              NSFontAttributeName:[codeIcon iconFont]
                               };
         NSDictionary *attr2 =@{NSForegroundColorAttributeName:[TaloolColor orange],
-                               NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                               NSFontAttributeName:[buyIcon iconFont]
                                };
-        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconMoney, @"Buy Now"]];
+        
+        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", buyIcon.characterCode, @"Buy Now"]];
         [buyButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
-        [activateButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconBook, @"Enter Code"]];
+        [activateButton setTitle:[NSString stringWithFormat:@"%@  %@", codeIcon.characterCode, @"Enter Code"]];
         [activateButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         _originalToolbarItems = toolbar.items;

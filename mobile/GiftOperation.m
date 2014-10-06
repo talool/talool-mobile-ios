@@ -124,8 +124,10 @@
         if (result && self.activityId)
         {
             // update the activity so it shows that there was an action taken
+            
             ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
-            if (tta.activityId)
+            BOOL success = [tta actionTaken:customer context:[self getContext] error:&error];
+            if (tta.activityId && success)
             {
                 tta.actionTaken = [NSNumber numberWithBool:YES];
                 result = [[self getContext] save:&error];
@@ -139,7 +141,8 @@
         {
             // update the activity so it shows that there was an action taken
             ttActivity *tta = [ttActivity fetchById:self.activityId context:[self getContext]];
-            if (tta.activityId)
+            BOOL success = [tta actionTaken:customer context:[self getContext] error:&error];
+            if (tta.activityId && success)
             {
                 tta.actionTaken = [NSNumber numberWithBool:YES];
                 result = [[self getContext] save:&error];
@@ -147,12 +150,16 @@
         }
     }
     
-    dispatch_async(dispatch_get_main_queue(),^{
-        NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
-        [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
-        [notification setObject:[NSNumber numberWithBool:self.isAccepted] forKey:DELEGATE_RESPONSE_GIFT_ACCEPTED];
-        [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
-    });
+    if (result)
+    {
+        dispatch_async(dispatch_get_main_queue(),^{
+            NSMutableDictionary *notification = [[NSMutableDictionary alloc] init];
+            [notification setObject:self.giftId forKey:DELEGATE_RESPONSE_OBJECT_ID];
+            [notification setObject:[NSNumber numberWithBool:self.isAccepted] forKey:DELEGATE_RESPONSE_GIFT_ACCEPTED];
+            [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_ACCEPTED_GIFT object:notification userInfo:notification];
+        });
+    }
+    
     
     if (self.delegate)
     {

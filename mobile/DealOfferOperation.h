@@ -16,6 +16,8 @@
 
 - (id)initWithDelegate:(id<OperationQueueDelegate>)delegate;
 
+- (id)initWithOfferId:(NSString *)offerId delegate:(id<OperationQueueDelegate>)d;
+
 - (id)initPurchase:(NSString *)nonce offer:(ttDealOffer *)offer fundraiser:(NSString *)fundraiser delegate:(id<OperationQueueDelegate>)d;
 
 - (id)initWithCode:(NSString *)code offer:(ttDealOffer *)offer delegate:(id<OperationQueueDelegate>)d;

@@ -76,12 +76,14 @@
                                                object:nil];
     
     // add the filter button
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
+    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:filterIcon.characterCode
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
                                                                     action:@selector(filterMenu:)];
-    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
+    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[filterIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
                                 forState:UIControlStateNormal];
+
     self.navigationItem.leftBarButtonItem = filterButton;
     
     _menu = [[ActivityFilterMenu alloc] initWithDelegate:self];
@@ -241,7 +243,6 @@
 
 - (void) resetFetchedResultsController:(BOOL)hard
 {
-    [[CustomerHelper getContext] processPendingChanges];
     if (hard)
     {
         _fetchedResultsController = nil;
@@ -330,12 +331,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttActivity *activity = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if (![activity isClosed])
+    ttActivityLink *link = (ttActivityLink *) activity.link;
+    if (![activity isClosed] && ![link isGiftLink])
     {
         [[OperationQueueManager sharedInstance] startCloseActivityOperation:activity.activityId delegate:self];
     }
     
-    ttActivityLink *link = (ttActivityLink *) activity.link;
     if ([link isEmailLink])
     {
         [self showEmail:activity];
@@ -395,6 +396,9 @@
     {
         [self updateBadge:nil];
     }
+    
+    [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     
     [self resetFetchedResultsController:NO];
     
@@ -467,6 +471,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

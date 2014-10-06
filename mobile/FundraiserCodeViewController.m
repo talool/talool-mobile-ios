@@ -13,6 +13,7 @@
 #import "KeyboardAccessoryView.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttDealOffer.h"
+#import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "AppDelegate.h"
 #import "TextureHelper.h"
 #import "FacebookHelper.h"
@@ -53,9 +54,14 @@
 {
     [super viewWillAppear:animated];
     
+    if ([offer isFault])
+    {
+        offer = (ttDealOffer *)[CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    }
+    
     codeFld.text = nil;
     
-    instructions.text = [NSString stringWithFormat:@"If you are purchasing the %@ to support a fundraiser, please enter the fundraiser's tracking code below. \n\nIf you have already paid for the %@ and have an access code, you can enter that in the field below too.", offer.title, offer.title];
+    instructions.text = @"If you are purchasing this digital coupon book to support a fundraiser, please enter the fundraiser's tracking code below. \n\nIf you have a prepaid access code for this digital coupon book, you can enter that in the field below too.";
     
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Validate Code Screen"];

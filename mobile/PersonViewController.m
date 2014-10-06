@@ -32,6 +32,7 @@ static float headerHeight = 120.0f;
     _header = [[EmailConfirmationView alloc] initWithFrame:CGRectMake(0.0,0.0,frame.size.width,headerHeight)];
     
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
+    self.title = @"Confirm Email Address";
 }
 
 - (void)didReceiveMemoryWarning

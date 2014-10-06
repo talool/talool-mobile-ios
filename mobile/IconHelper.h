@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FontAwesomeKit/FontAwesomeKit.h>
 
 @interface IconHelper : NSObject
 
 +(UIImage *) getCircleWithColor:(UIColor *)color diameter:(CGFloat)diameter;
-+(UIImage *) getImageForIcon:(NSString *)icon color:(UIColor *)color;
++(UIImage *) getImageForIcon:(FAKFontAwesome *)icon color:(UIColor *)color;
 
 @end

@@ -108,7 +108,7 @@
                                                            label:error.domain
                                                            value:[NSNumber numberWithInteger:error.code]] build]];
     
-    [CustomerHelper showAlertMessage:@"We failed to handle this gift." withTitle:@"Server Error" withCancel:@"Sorry" withSender:self];
+    [CustomerHelper showAlertMessage:[error localizedDescription] withTitle:@"Whoops!" withCancel:@"Sorry" withSender:self];
 }
 
 #pragma mark - Table view data source

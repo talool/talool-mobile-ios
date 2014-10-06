@@ -29,6 +29,7 @@
 #import "WhiteLabelHelper.h"
 #import "ActivityOperation.h"
 #import "TutorialViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -49,8 +50,15 @@
     //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
     
     //For now, register for all types of notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        // use registerUserNotificationSettings
+        UIUserNotificationSettings* notificationSettings =
+            [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    } else {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+            (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
     
     //Request background refresh interval
     self.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
@@ -124,6 +132,8 @@
     // Call takeOff after install your own unhandled exception and signal handlers
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
+    
+    [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)

@@ -26,7 +26,7 @@
     {
         _delegate = d;
 
-        _iconAttrs =@{FAKImageAttributeForegroundColor:[UIColor colorWithRed:180.0/255.0 green:180.0/255.0 blue:180.0/255.0 alpha:1.0]};
+        _iconAttrs =@{NSForegroundColorAttributeName:[UIColor colorWithRed:180.0/255.0 green:180.0/255.0 blue:180.0/255.0 alpha:1.0]};
         
         _iconHeight = 21;
         _iconWidth = 30;

@@ -26,6 +26,8 @@
 @property (strong, nonatomic) NSString *zip;
 @property (strong, nonatomic) NSString *session;
 
+@property (strong, nonatomic) NSString *offerId;
+
 @property (strong, nonatomic) NSString *code;
 @property (strong, nonatomic) NSString *fundraiser;
 
@@ -34,6 +36,7 @@
 @property BOOL isPurchase;
 @property BOOL isCodeValidation;
 @property BOOL isTokenGeneration;
+@property BOOL isGetOffer;
 
 @end
 
@@ -44,6 +47,17 @@
     if (self = [super init])
     {
         self.delegate = d;
+    }
+    return self;
+}
+
+- (id)initWithOfferId:(NSString *)offerId delegate:(id<OperationQueueDelegate>)d
+{
+    if (self = [super init])
+    {
+        self.delegate = d;
+        self.offerId = offerId;
+        self.isGetOffer = YES;
     }
     return self;
 }
@@ -88,7 +102,10 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
-        
+        if (![CustomerHelper getLoggedInUser])
+        {
+            return;
+        }
         if (self.isPurchase)
         {
             [self purchase];
@@ -100,6 +117,10 @@
         else if (self.isTokenGeneration)
         {
             [self generateBraintreeToken];
+        }
+        else if (self.isGetOffer)
+        {
+            [self getDealOffer];
         }
         else
         {
@@ -156,6 +177,8 @@
             dispatch_async(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:CUSTOMER_PURCHASED_DEAL_OFFER object:nil];
                 [FacebookHelper postOGPurchaseAction:self.offer fundraiser:nil];  // TODO this should track an activation code back to the fundraiser
+                NSPredicate *dealOfferPredicate = [NSPredicate predicateWithFormat:@"ANY deals.dealOfferId = %@", self.offer.dealOfferId];
+                [[OperationQueueManager sharedInstance] startRecurringDealAcquireOperation:dealOfferPredicate];
             });
         }
         else
@@ -199,6 +222,27 @@
             [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
         }
         [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(braintreeTokenOperationComplete:))
+                                                    withObject:delegateResponse
+                                                 waitUntilDone:NO];
+    }
+}
+
+-(void) getDealOffer
+{
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    NSError *error;
+    NSManagedObjectContext *context = [self getContext];
+    BOOL result = [ttDealOffer getById:self.offerId customer:customer context:context error:&error];
+    
+    if (self.delegate)
+    {
+        NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
+        [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
+        if (error)
+        {
+            [delegateResponse setObject:error forKey:DELEGATE_RESPONSE_ERROR];
+        }
+        [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealOfferOperationComplete:))
                                                     withObject:delegateResponse
                                                  waitUntilDone:NO];
     }

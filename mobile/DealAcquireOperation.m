@@ -29,20 +29,26 @@
     @autoreleasepool {
         
         if ([self isCancelled]) return;
+        if (![CustomerHelper getLoggedInUser])
+        {
+            return;
+        }
 
         NSError *error;
         NSManagedObjectContext *context = [self getContext];
         
         // make sure we have a merchant from this context
         ttMerchant *merchant = [ttMerchant fetchMerchantById:self.merchantId context:context];
+        if (merchant == nil || merchant.merchantId == nil)
+        {
+            return;
+        }
         
         ttCustomer *customer = [CustomerHelper getLoggedInUser];
         BOOL result = [ttDealAcquire getDealAcquires:customer forMerchant:merchant context:context error:&error];
         
         if (self.delegate)
         {
-            [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(dealAcquireOperationComplete:)) withObject:self waitUntilDone:NO];
-            
             NSMutableDictionary *delegateResponse = [[NSMutableDictionary alloc] init];
             [delegateResponse setObject:[NSNumber numberWithBool:result] forKey:DELEGATE_RESPONSE_SUCCESS];
             if (error)

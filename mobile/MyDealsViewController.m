@@ -45,6 +45,7 @@
 @property BOOL resetAfterLogin;
 @end
 
+
 @implementation MyDealsViewController
 
 - (void)viewDidLoad
@@ -62,26 +63,18 @@
     [self.refreshControl addTarget:self action:@selector(refreshMerchants) forControlEvents:UIControlEventValueChanged];
     
     // add the settings button
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconCog
+    FAKFontAwesome *settingsIcon = [FAKFontAwesome cogIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:settingsIcon.characterCode
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(settings:)];
-    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                  forState:UIControlStateNormal];
+    [settingsButton setTitleTextAttributes:@{NSFontAttributeName:[settingsIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                              forState:UIControlStateNormal];
+    
     self.navigationItem.rightBarButtonItem = settingsButton;
     
     
-    // add the filter button
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:FAKIconFilter
-                                                                     style:UIBarButtonItemStyleBordered
-                                                                    target:self
-                                                                    action:@selector(filterMenu:)];
-    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[FontAwesomeKit fontWithSize:28], NSForegroundColorAttributeName:[TaloolColor dark_teal]}
-                                  forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = filterButton;
-    
     _sortDescriptors = [NSArray arrayWithObjects:
-                        [NSSortDescriptor sortDescriptorWithKey:@"closestLocation.distanceInMeters" ascending:YES],
                         [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
                         nil];
     
@@ -99,12 +92,25 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleLocationEnabled:)
+                                                 name:LOCATION_ENABLED_NOTIFICATION
+                                               object:nil];
 
 
     _menu = [[MerchantFilterMenu alloc] initWithDelegate:self];
     _tableHeader = [[SimpleHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)];
     [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
                      subtitle:[_menu getSubtitleAtSelectedIndex]];
+    
+    // make sure a sort option is set
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    if (sort==nil)
+    {
+        [defaults setObject:MERCHANT_SORT_ALPHA forKey:MERCHANT_SORT_KEY];
+    }
     
 }
 
@@ -119,6 +125,8 @@
     }
     else
     {
+        [self initLeftBarButtons];
+         
         // see if we lost the predicate for the fetchedResultsController
         if (!_fetchedResultsController.fetchRequest.predicate)
         {
@@ -148,26 +156,37 @@
 {
     [super viewDidAppear:animated];
     
-    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
+    if ([CustomerHelper getLoggedInUser]) {
+        if (![LocationHelper sharedInstance].locationManagerStatusKnown)
+        {
+            // The user hasn't approved or denied location services
+            [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+        }
+        
+        if ([self merchantCount]==0)
+        {
+            [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+            
+            [TSMessage showNotificationInViewController:self
+                                                  title:@"Welcome!"
+                                               subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                                  image:nil
+                                                   type:TSMessageNotificationTypeMessage
+                                               duration:TSMessageNotificationDurationEndless
+                                               callback:nil
+                                            buttonTitle:nil
+                                         buttonCallback:nil
+                                             atPosition:TSMessageNotificationPositionTop
+                                   canBeDismissedByUser:YES];
+            
+        }
+    }
+    else
     {
-        // The user hasn't approved or denied location services
-        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+        // The user isn't logged in, so kick them to the welcome view
+        [self performSegueWithIdentifier:@"welcome" sender:self];
     }
     
-    if ([self merchantCount]==0)
-    {
-        [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
-        [TSMessage showNotificationInViewController:self
-                                              title:@"Welcome!"
-                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
-                                               type:TSMessageNotificationTypeMessage
-                                           duration:TSMessageNotificationDurationEndless
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionBottom
-                                canBeDismisedByUser:NO];
-    }
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -180,6 +199,11 @@
 {
     _resetAfterLogin = YES;
     [_menu setSelectedIndex:0];
+}
+
+- (void) handleLocationEnabled:(NSNotification *)message
+{
+    [self initLeftBarButtons];
 }
 
 - (void) handleAcceptedGift:(NSNotification *)message
@@ -225,6 +249,97 @@
             [self.menu refreshCounts];
             [self.menu showFromNavigationController:self.navigationController];
         }
+    }
+}
+
+- (void) initLeftBarButtons
+{
+    // add the filter button
+    FAKFontAwesome *filterIcon = [FAKFontAwesome filterIconWithSize:ICON_FONT_SIZE];
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:filterIcon.characterCode
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(filterMenu:)];
+    [filterButton setTitleTextAttributes:@{NSFontAttributeName:[filterIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                              forState:UIControlStateNormal];
+    
+    if ([[LocationHelper sharedInstance] isUserSharingLocation])
+    {
+        // add the sortToggle button
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortAlphaAscIconWithSize:ICON_FONT_SIZE];
+        UIBarButtonItem *sortButton = [[UIBarButtonItem alloc] initWithTitle:@" "
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(sortToggle:)];
+        [sortButton setTitleTextAttributes:@{NSFontAttributeName:[sortIcon iconFont], NSForegroundColorAttributeName: [TaloolColor dark_teal]}
+                                  forState:UIControlStateNormal];
+        [self setSortLabel:sortButton];
+        self.navigationItem.leftBarButtonItems = @[filterButton, sortButton];
+        
+    }
+    else
+    {
+        self.navigationItem.leftBarButtonItem = filterButton;
+    }
+    [self setSorts];
+    
+}
+
+- (void) sortToggle:(UIBarButtonItem *)button
+{
+    // update the sort setting
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        sort = MERCHANT_SORT_DISTANCE;
+    }
+    else
+    {
+        sort = MERCHANT_SORT_ALPHA;
+    }
+    [defaults setObject:sort forKey:MERCHANT_SORT_KEY];
+    
+    [self setSortLabel:button];
+    [self setSorts];
+    [self resetFetchedResultsController:YES];
+}
+
+- (void) setSortLabel:(UIBarButtonItem *)sortButton
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortAlphaAscIconWithSize:28];
+        sortButton.title = sortIcon.characterCode;
+    }
+    else
+    {
+        FAKFontAwesome *sortIcon = [FAKFontAwesome sortNumericAscIconWithSize:28];
+        sortButton.title = sortIcon.characterCode;
+    }
+}
+
+- (void)setSorts
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSString* sort = [defaults objectForKey:MERCHANT_SORT_KEY];
+    
+    if ([sort isEqualToString:MERCHANT_SORT_ALPHA])
+    {
+        _sortDescriptors = [NSArray arrayWithObjects:
+                            [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                            nil];
+    }
+    else
+    {
+        _sortDescriptors = [NSArray arrayWithObjects:
+                            [NSSortDescriptor sortDescriptorWithKey:@"closestLocation.distanceInMeters" ascending:YES],
+                            [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES],
+                            nil];
     }
 }
 
@@ -288,6 +403,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setSortDescriptors:_sortDescriptors];
     [fetchRequest setFetchBatchSize:20];
+    
     if (predicate)
     {
         [fetchRequest setPredicate:predicate];
@@ -305,7 +421,6 @@
 
 - (void) resetFetchedResultsController:(BOOL)hard
 {
-    [[CustomerHelper getContext] processPendingChanges];
     if (hard)
     {
         _fetchedResultsController = nil;
@@ -422,14 +537,21 @@
         NSManagedObjectContext *context = [CustomerHelper getContext];
         NSArray *merchants = [ttMerchant fetchMerchants:context
                                            withPredicate:[NSPredicate predicateWithFormat:@"customer != nil"]];
-        for (ttMerchant *merchant in merchants)
+        for (__strong ttMerchant *merchant in merchants)
         {
+            if ([merchant isFault])
+            {
+                merchant = (ttMerchant *)[CustomerHelper fetchFault:merchant entityType:MERCHANT_ENTITY_NAME];
+            }
             if ([merchant.closestLocation getDistanceInMiles].intValue==0)
             {
                 [context refreshObject:merchant.closestLocation mergeChanges:YES];
             }
         }
     }
+    
+    [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     
     [self resetFetchedResultsController:NO];
     if ([self merchantCount] > 0)
@@ -531,6 +653,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }
