@@ -16,6 +16,7 @@
 #import "TaloolColor.h"
 #import "IconHelper.h"
 #import "TextureHelper.h"
+#import "LocationHelper.h"
 #import "OperationQueueManager.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
@@ -86,6 +87,16 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Find Deals Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
+    {
+        // The user hasn't approved or denied location services
+        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+    }
 }
 
 - (void) handleUserLogout

@@ -50,8 +50,7 @@
                                                                                       withObject:nil
                                                                                    waitUntilDone:NO];
                         
-                        // init the location helper to start monitoring
-                        [LocationHelper sharedInstance];
+                        
                         
                         dispatch_async(dispatch_get_main_queue(),^{
                             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:result userInfo:result];
