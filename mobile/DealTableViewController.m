@@ -249,6 +249,8 @@
 
 - (void)sendGift:(id)sender
 {
+    [self sendGiftViaEmail:sender];
+    /*
     if ([FBSession activeSession].isOpen || [[CustomerHelper getLoggedInUser] isFacebookUser])
     {
         // open action sheet
@@ -264,6 +266,7 @@
     {
         [self sendGiftViaEmail:sender];
     }
+     */
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
