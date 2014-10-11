@@ -87,8 +87,7 @@
 
 - (IBAction)changePasswordAction:(id) sender
 {
-    // add a spinner
-    [SVProgressHUD showWithStatus:@"Changing password" maskType:SVProgressHUDMaskTypeBlack];
+    
     
     if (passwordField.text == nil || confirmPasswordField.text == nil)
     {
@@ -106,6 +105,9 @@
     }
     else
     {
+        // add a spinner
+        [SVProgressHUD showWithStatus:@"Changing password" maskType:SVProgressHUDMaskTypeBlack];
+        
         [[OperationQueueManager sharedInstance] startPasswordResetOperation:customerId
                                                                    password:passwordField.text
                                                                 changeToken:resetCode
