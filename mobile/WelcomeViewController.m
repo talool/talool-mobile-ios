@@ -22,6 +22,7 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;
@@ -280,6 +281,9 @@
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
+        
+        [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
+        [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
     }
     else
     {

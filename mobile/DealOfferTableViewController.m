@@ -375,6 +375,8 @@
 // Create and present a BTPaymentViewController (that has a cancel button)
 - (void)buyNow:(id)sender
 {
+    // TODO: check if the price is zero
+    
     if (_clientToken)
     {
         _fundraisingCode = nil;
@@ -385,6 +387,8 @@
 
 - (void)activateCode:(id)sender
 {
+    // TODO: check if the price is zero
+    
     if (_clientToken)
     {
         _fundraisingCode = nil;

@@ -54,9 +54,10 @@
         // use registerUserNotificationSettings
         UIUserNotificationSettings* notificationSettings =
             [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+        [application registerUserNotificationSettings:notificationSettings];
+        [application registerForRemoteNotifications];
     } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+        [application registerForRemoteNotificationTypes:
             (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     }
     
@@ -463,6 +464,8 @@
 {
 	TTLog(@"Device token is: %@", deviceToken);
     [[TaloolFrameworkHelper sharedInstance] setApnDeviceToken:deviceToken];
+    
+    [Crashlytics setUserIdentifier:[NSString stringWithFormat:@"%@",deviceToken]];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
