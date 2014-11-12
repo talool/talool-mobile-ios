@@ -53,7 +53,14 @@
         dealOfferImage.image = [UIImage imageNamed:@"DealOfferBG"];
     }
     
-    priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
+    if ([offer isFree])
+    {
+        priceLabel.text = @"Free!";
+    }
+    else
+    {
+        priceLabel.text = [NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]];
+    }
     summaryLabel.text = offer.summary;
     
 }

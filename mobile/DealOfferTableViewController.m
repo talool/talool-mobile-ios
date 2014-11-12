@@ -375,20 +375,26 @@
 // Create and present a BTPaymentViewController (that has a cancel button)
 - (void)buyNow:(id)sender
 {
-    // TODO: check if the price is zero
-    
-    if (_clientToken)
+    if ([self.offer isFree]==YES)
     {
-        _fundraisingCode = nil;
-        [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+        // download the deals
+        [[OperationQueueManager sharedInstance] startPurchaseOperation:nil
+                                                                 offer:offer
+                                                            fundraiser:nil
+                                                              delegate:self];
     }
-    
+    else
+    {
+        if (_clientToken)
+        {
+            _fundraisingCode = nil;
+            [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+        }
+    }
 }
 
 - (void)activateCode:(id)sender
 {
-    // TODO: check if the price is zero
-    
     if (_clientToken)
     {
         _fundraisingCode = nil;

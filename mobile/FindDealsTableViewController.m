@@ -242,7 +242,16 @@
 
     [cell.titleLabel setText:offer.title];
     [cell.summaryLabel setText:offer.summary];
-    [cell.priceLabel setText:[NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]]];
+    
+    if ([offer isFree])
+    {
+        [cell.priceLabel setText:@"Price: Free!"];
+    }
+    else
+    {
+        [cell.priceLabel setText:[NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]]];
+    }
+    
     
     [cell.statsLabel setText:[NSString stringWithFormat:@"%@ deals from %@ merchants",
                               offerSummary.totalDeals,
