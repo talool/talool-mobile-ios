@@ -58,7 +58,7 @@
                                 }
                             }];
     
-    NSString *summary = [NSString stringWithFormat:@"%@ has partnered with %@ to make the following deal(s) available in the %@.", offer.merchant.name, merchant.name, offer.title];
+    NSString *summary = [NSString stringWithFormat:@"%@ has made the following deal(s) available in %@.", merchant.name, offer.title];
     summaryLabel.text = summary;
 }
 

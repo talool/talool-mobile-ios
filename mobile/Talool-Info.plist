@@ -62,7 +62,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>22</string>
 	<key>FacebookAppID</key>
 	<string>342739092494152</string>
 	<key>FacebookDisplayName</key>
@@ -70,11 +70,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Talool uses your location to send you deals and reminders for saving money.</string>
+	<string>Talool uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Talool uses your location to send you deals and reminders for saving money.</string>
-	<key>NSLocationWhenInUserUsageDescription</key>
-	<string>Talool uses your location to send you deals and reminders for saving money.</string>
+	<string>Talool uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Talool uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FontAwesome.ttf</string>

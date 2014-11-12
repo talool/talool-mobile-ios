@@ -279,6 +279,7 @@
     }
     else
     {
+        self.navigationItem.leftBarButtonItems = @[];
         self.navigationItem.leftBarButtonItem = filterButton;
     }
     [self setSorts];

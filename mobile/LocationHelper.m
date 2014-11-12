@@ -52,11 +52,6 @@
         
         locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
         _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
-        
-        if (_locationManagerEnabled)
-        {
-            [_locationManager startUpdatingLocation];
-        }
     });
     
     return self;
@@ -64,20 +59,20 @@
 
 - (void) promptForLocationServiceAuthorization
 {
-    _locationManagerEnabled=YES;
-    
+    // prompt for location
     dispatch_async(dispatch_get_main_queue(),^{
+        // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+        if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+            [_locationManager requestAlwaysAuthorization];
+        }
         [_locationManager startUpdatingLocation];
     });
-    
-    locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
-    _locationManagerEnabled = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
     
 }
 
 - (void) handleForegroundState
 {
-    if (_locationManager)
+    if (_locationManager && _locationManagerEnabled)
     {
         [_locationManager stopMonitoringSignificantLocationChanges];
         [_locationManager startUpdatingLocation];
@@ -86,7 +81,7 @@
 
 - (void) handleBackgroundState
 {
-    if (_locationManager)
+    if (_locationManager && _locationManagerEnabled)
     {
         [_locationManager stopUpdatingLocation];
         
@@ -110,15 +105,6 @@
    didUpdateToLocation:(CLLocation *)newLocation
           fromLocation:(CLLocation *)oldLocation
 {
-    
-    if (_locationManagerEnabled == NO)
-    {
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized) {
-            // we were just authorized, so update the list
-            _locationManagerEnabled = YES;
-        }
-    }
-    
     if (newLocation)
     {
         lastLocation = newLocation;
@@ -133,6 +119,7 @@
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
+    locationManagerStatusKnown = ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusNotDetermined);
     _locationManagerEnabled = (status == kCLAuthorizationStatusAuthorized);
     if (_locationManagerEnabled)
     {
