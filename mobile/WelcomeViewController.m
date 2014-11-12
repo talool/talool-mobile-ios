@@ -43,7 +43,7 @@
     [self.tableView setBackgroundView:[TextureHelper getBackgroundView:self.view.bounds]];
     
     // check for a cached FB session
-    _fbPermissions = @[@"basic_info", @"email", @"user_birthday"];
+    _fbPermissions = @[@"public_profile", @"email", @"user_birthday", @"user_friends"];
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         NSLog(@"Found a cached session");
         id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
@@ -136,14 +136,32 @@
     }
     else
     {
-        [FBSession openActiveSessionWithReadPermissions:_fbPermissions
-                                           allowLoginUI:YES
-                                      completionHandler:
-         ^(FBSession *session, FBSessionState state, NSError *error)
-        {
-             [self sessionStateChanged:session state:state error:error];
-         }];
+        FBSessionStateHandler completionHandler = ^(FBSession *session, FBSessionState status, NSError *error) {
+            [self sessionStateChanged:session state:status error:error];
+        };
+        
+        if ([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded) {
+            // we have a cached token, so open the session
+            [[FBSession activeSession] openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent
+                                      completionHandler:completionHandler];
+        } else {
+            [self clearAllUserInfo];
+            // create a new facebook session
+            FBSession *fbSession = [[FBSession alloc] initWithPermissions:@[@"email", @"user_location"]];
+            [FBSession setActiveSession:fbSession];
+            [fbSession openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent
+                      completionHandler:completionHandler];
+        }
     }
+}
+
+- (void) clearAllUserInfo
+{
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession renewSystemCredentials:^(ACAccountCredentialRenewResult result, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+    [FBSession setActiveSession:nil];
 }
 
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
@@ -259,6 +277,7 @@
     if (success && customer)
     {
         [FacebookHelper trackNumberOfFriends];
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
@@ -267,24 +286,20 @@
         NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         if (error)
         {
-            if (error.code == FacebookErrorCode_USER_INVALID)
-            {
-                _failedUser = [FacebookHelper createCustomerFromFacebookUser:[error.userInfo objectForKey:@"fbUser"]
-                                                                     context:[CustomerHelper getContext]];
-                [self performSegueWithIdentifier:@"showReg" sender:self];
-            }
-            else
-            {
-                // Reg failed so log out of Facebook
-                [[FBSession activeSession] closeAndClearTokenInformation];
-                
-                // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
-                [CustomerHelper showAlertMessage:error.localizedDescription
-                                       withTitle:@"Authentication Failed"
-                                      withCancel:@"Try again"
-                                      withSender:nil];
-            }
+            // Fail if don't get what we need from Facebook.  Sending the user to the
+            // normal registration form could cause it's own problems right now
+            // For example, we don't want them to create a different password.
+            // A missing birthday won't cause a problem b/c that field is optional.
             
+            // Reg failed so log out of Facebook
+            [[FBSession activeSession] closeAndClearTokenInformation];
+            
+            // show error message (CustomerHelper.loginFacebookUser doesn't handle this)
+            [CustomerHelper showAlertMessage:error.localizedDescription
+                                   withTitle:@"Authentication Failed"
+                                  withCancel:@"Try again"
+                                  withSender:nil];
+
         }
         else
         {

@@ -16,6 +16,7 @@
 #import "TaloolColor.h"
 #import "IconHelper.h"
 #import "TextureHelper.h"
+#import "LocationHelper.h"
 #import "OperationQueueManager.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
@@ -88,6 +89,16 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
+    {
+        // The user hasn't approved or denied location services
+        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+    }
+}
+
 - (void) handleUserLogout
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
@@ -133,7 +144,11 @@
     }
     [self.tableView reloadData];
     
-    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:nil];
+    // Set the predicate to only get offers that are not expired
+    // We don't delete offers, we expire them.  This ensure we only get the current stuff.
+    NSDate *today = [[NSDate alloc] init];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dealOffer.expires > %@", today ];
+    _fetchedResultsController = [self fetchedResultsControllerWithPredicate:predicate];
     return _fetchedResultsController;
     
 }
@@ -167,6 +182,7 @@
 - (void) resetFetchedResultsController:(BOOL)hard
 {
     [[CustomerHelper getContext] processPendingChanges];
+    [[CustomerHelper getContext] reset];
     [NSFetchedResultsController deleteCacheWithName:_cacheName];
     if (hard)
     {
@@ -216,7 +232,13 @@
 - (void) configureCell:(DealOfferCell *)cell path:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
+    ttDealOffer *offer = [self getOffer:offerSummary];
+    
+    // bail rather than fail
+    if (offer==nil) {
+        NSLog(@"OFFER FAIL: cound't get offer from summary at indexPath: %@", indexPath);
+        return;
+    }
 
     [cell.titleLabel setText:offer.title];
     [cell.summaryLabel setText:offer.summary];
@@ -229,15 +251,15 @@
     // Use a branded background image
     if (offer.backgroundUrl)
     {
-        [cell.brandingView setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
-                          placeholderImage:[UIImage imageNamed:@"DealOfferBG"]
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     if (error !=  nil) {
-                                         // TODO track these errors
-                                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                     }
-                             
-                                 }];
+
+        [cell.brandingView sd_setImageWithURL:[NSURL URLWithString:offer.backgroundUrl]
+                             placeholderImage:[UIImage imageNamed:@"DealOfferBG"]
+                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        if (error !=  nil) {
+                                            // TODO track these errors
+                                            //NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                        }
+                                    }];
     }
     else
     {
@@ -247,15 +269,15 @@
     // Use a branded icon image
     if (offer.iconUrl)
     {
-        [cell.iconView setImageWithURL:[NSURL URLWithString:offer.iconUrl]
-                          placeholderImage:[UIImage imageNamed:@"DealOfferIcon"]
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     if (error !=  nil) {
-                                         // TODO track these errors
-                                         NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
-                                     }
-                                     
-                                 }];
+
+        [cell.iconView sd_setImageWithURL:[NSURL URLWithString:offer.iconUrl]
+                             placeholderImage:[UIImage imageNamed:@"DealOfferIcon"]
+                                    completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        if (error !=  nil) {
+                                            // TODO track these errors
+                                            //NSLog(@"IMG FAIL: loading errors: %@", error.localizedDescription);
+                                        }
+                                    }];
     }
     else
     {
@@ -266,8 +288,32 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ttDealOfferGeoSummary *offerSummary = [_fetchedResultsController objectAtIndexPath:indexPath];
-    ttDealOffer *offer = (ttDealOffer *)offerSummary.dealOffer;
+    ttDealOffer *offer = [self getOffer:offerSummary];
     [self.navigationController pushViewController:[self getDetailView:offer] animated:YES];
+}
+
+
+
+#pragma mark -
+#pragma mark - Safely get the DealOffer from the GeoSummary in case there is a core data fault
+
+- (ttDealOffer *) getOffer:(ttDealOfferGeoSummary *) offerSummary
+{
+    ttDealOffer *offer = nil;
+    if ([offerSummary isFault])
+    {
+        offerSummary = (ttDealOfferGeoSummary *) [CustomerHelper fetchFault:offerSummary entityType:DEAL_OFFER_GEO_SUMMARY_ENTITY_NAME];
+    }
+    if (offerSummary != nil)
+    {
+        offer = (ttDealOffer *)offerSummary.dealOffer;
+        if ([offer isFault])
+        {
+            offer = (ttDealOffer *) [CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+        }
+    }
+    
+    return offer;
 }
 
 #pragma mark -
@@ -289,6 +335,8 @@
 
 - (void)dealOfferOperationComplete:(NSDictionary *)response
 {
+    [[CustomerHelper getContext] processPendingChanges];
+    //[[CustomerHelper getContext] reset];
     [self resetFetchedResultsController:NO];
 }
 
@@ -339,6 +387,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

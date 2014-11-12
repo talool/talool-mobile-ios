@@ -11,6 +11,8 @@
 
 @class ttDealAcquire, ttDealOffer;
 
+#define ICON_FONT_SIZE 24
+
 static NSString *DELEGATE_RESPONSE_ERROR = @"error";
 static NSString *DELEGATE_RESPONSE_SUCCESS = @"success";
 static NSString *DELEGATE_RESPONSE_LOCATION_ENABLED = @"locationEnabled";
@@ -25,6 +27,9 @@ static NSString *KEY_EMAIL_ADDRESS = @"emailaddress";
 static NSString *KEY_EMAIL_LABEL = @"emaillabel";
 
 static NSString *BRAINTREE_CLIENT_TOKEN_KEY = @"BRAINTREE_CLIENT_TOKEN";
+static NSString *MERCHANT_SORT_KEY = @"MERCHANT_SORT";
+static NSString *MERCHANT_SORT_ALPHA = @"MERCHANT_SORT_ALPHA";
+static NSString *MERCHANT_SORT_DISTANCE = @"MERCHANT_SORT_DISTANCE";
 
 @protocol TaloolDealLayoutDelegate <NSObject>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;

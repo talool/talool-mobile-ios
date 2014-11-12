@@ -16,6 +16,7 @@ static UIColor * RED;
 static UIColor * TEAL;
 static UIColor * DARK_TEAL;
 static UIColor * GREEN;
+static UIColor * BLUE;
 static UIColor * GRAY_1;
 static UIColor * GRAY_3;
 static UIColor * GRAY_5;
@@ -43,6 +44,17 @@ static UIColor * TRUE_DARK_GRAY;
         }
     }
     return RED;
+}
+
++ (UIColor *)blue
+{
+    if (!BLUE) {
+        BLUE = [self getColorFromDictionary:@"Blue"];
+        if (!BLUE) {
+            BLUE = [UIColor colorWithRed:35.0/255.0 green:113.0/255.0 blue:159.0/255.0 alpha:1.0];
+        }
+    }
+    return BLUE;
 }
 
 

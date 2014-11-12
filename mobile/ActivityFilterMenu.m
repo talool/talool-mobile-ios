@@ -25,22 +25,23 @@
         self.labelPural = @"Activities";
         self.labelSingular = @"Activity";
 
-        UIImage *giftIcon = [FontAwesomeKit imageForIcon:FAKIconGift
-                                               imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                fontSize:self.fontSize
-                                              attributes:self.iconAttrs];
-        UIImage *moneyIcon = [FontAwesomeKit imageForIcon:FAKIconMoney
-                                                imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                 fontSize:self.fontSize
-                                               attributes:self.iconAttrs];
-        UIImage *shareIcon = [FontAwesomeKit imageForIcon:FAKIconGroup
-                                                imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                 fontSize:self.fontSize
-                                               attributes:self.iconAttrs];
-        UIImage *reachIcon = [FontAwesomeKit imageForIcon:FAKIconEnvelopeAlt
-                                                imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                 fontSize:self.fontSize
-                                               attributes:self.iconAttrs];
+        FAKFontAwesome *gicon = [FAKFontAwesome giftIconWithSize:self.fontSize];
+        gicon.attributes = self.iconAttrs;
+        UIImage *giftIcon = [gicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *micon = [FAKFontAwesome moneyIconWithSize:self.fontSize];
+        micon.attributes = self.iconAttrs;
+        UIImage *moneyIcon = [micon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *sicon = [FAKFontAwesome groupIconWithSize:self.fontSize];
+        sicon.attributes = self.iconAttrs;
+        UIImage *shareIcon = [sicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *ricon = [FAKFontAwesome envelopeOIconWithSize:self.fontSize];
+        ricon.attributes = self.iconAttrs;
+        UIImage *reachIcon = [ricon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+                             
+
         
         // create the filter menu
         REMenuItem *allItem = [[REMenuItem alloc] initWithTitle:[self.titles objectAtIndex:0]

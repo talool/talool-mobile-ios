@@ -42,23 +42,23 @@
         [activity isEmailSendGiftEvent] ||
         [activity isFacebookSendGiftEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGift color:iconColor];
+        iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome giftIconWithSize:24] color:iconColor];
     }
     else if ([activity isPurchaseEvent] ||
              [activity isRedeemEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:iconColor];
+        iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome moneyIconWithSize:24] color:iconColor];
     }
     else if ([activity isFriendGiftAcceptEvent] ||
              [activity isFriendGiftRedeemEvent] ||
              [activity isFriendGiftRejectEvent] ||
              [activity isFriendPurchaseEvent])
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconGroup color:iconColor];
+        iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome groupIconWithSize:24] color:iconColor];
     }
     else
     {
-        iconView.image = [IconHelper getImageForIcon:FAKIconEnvelopeAlt color:iconColor];
+        iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome envelopeOIconWithSize:24] color:iconColor];
     }
     
 }

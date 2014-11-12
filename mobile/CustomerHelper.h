@@ -14,6 +14,8 @@
 
 + (NSManagedObjectContext *) getContext;
 
++ (NSManagedObject *) fetchFault:(NSManagedObject *)fault entityType:(NSString *)entityName;
+
 + (ttCustomer *) getLoggedInUser;
 
 + (BOOL) isEmailValid:(NSString *)email;

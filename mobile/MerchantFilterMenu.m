@@ -22,28 +22,35 @@
     self = [super initWithDelegate:delegate];
     if (self)
     {
-        self.titles = @[@"All My Merchants", @"My Favorites", @"Fine Dining & Fast Food", @"Shopping & Services", @"Attractions & Fun"];
+        self.titles = @[@"All My Merchants", @"My Favorites", @"Fine Dining & Fast Food", @"Shopping", @"Services", @"Attractions & Fun", @"Nightlife"];
         self.entityName = MERCHANT_ENTITY_NAME;
         self.labelPural = @"Merchants";
         self.labelSingular = @"Merchant";
-
-        UIImage *heartIcon = [FontAwesomeKit imageForIcon:FAKIconHeart
-                                                imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                 fontSize:self.fontSize
-                                               attributes:self.iconAttrs];
-        UIImage *foodIcon = [FontAwesomeKit imageForIcon:FAKIconFood
-                                               imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                fontSize:self.fontSize
-                                              attributes:self.iconAttrs];
-        UIImage *shoppingIcon = [FontAwesomeKit imageForIcon:FAKIconShoppingCart
-                                                   imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                                    fontSize:self.fontSize
-                                                  attributes:self.iconAttrs];
-        UIImage *funIcon = [FontAwesomeKit imageForIcon:FAKIconTicket
-                                              imageSize:CGSizeMake(self.iconWidth, self.iconHeight)
-                                               fontSize:self.fontSize
-                                             attributes:self.iconAttrs];
         
+        
+        FAKFontAwesome *hicon = [FAKFontAwesome heartIconWithSize:self.fontSize];
+        hicon.attributes = self.iconAttrs;
+        UIImage *heartIcon = [hicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *ficon = [FAKFontAwesome cutleryIconWithSize:self.fontSize];
+        ficon.attributes = self.iconAttrs;
+        UIImage *foodIcon = [ficon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *sicon = [FAKFontAwesome shoppingCartIconWithSize:self.fontSize];
+        sicon.attributes = self.iconAttrs;
+        UIImage *shoppingIcon = [sicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *fuicon = [FAKFontAwesome ticketIconWithSize:self.fontSize];
+        fuicon.attributes = self.iconAttrs;
+        UIImage *funIcon = [fuicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *glassicon = [FAKFontAwesome glassIconWithSize:self.fontSize];
+        glassicon.attributes = self.iconAttrs;
+        UIImage *nlIcon = [glassicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
+        
+        FAKFontAwesome *cogsicon = [FAKFontAwesome cogsIconWithSize:self.fontSize];
+        cogsicon.attributes = self.iconAttrs;
+        UIImage *servicesIcon = [cogsicon imageWithSize:CGSizeMake(self.iconWidth, self.iconHeight)];
         
         
         // create the filter menu
@@ -79,15 +86,33 @@
                                                                   [self handleSelection:3];
                                                               }];
         
-        REMenuItem *funItem = [[REMenuItem alloc] initWithTitle:[self.titles objectAtIndex:4]
+        REMenuItem *servicesItem = [[REMenuItem alloc] initWithTitle:[self.titles objectAtIndex:4]
+                                                            subtitle:@""
+                                                               image:servicesIcon
+                                                    highlightedImage:nil
+                                                              action:^(REMenuItem *item) {
+                                                                  [self handleSelection:4];
+                                                              }];
+        
+        REMenuItem *funItem = [[REMenuItem alloc] initWithTitle:[self.titles objectAtIndex:5]
                                                        subtitle:@""
                                                           image:funIcon
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
-                                                             [self handleSelection:4];
+                                                             [self handleSelection:5];
                                                          }];
         
-        [self setItems:@[allItem, favItem, foodItem, shoppingItem, funItem]];
+        REMenuItem *nightlightItem = [[REMenuItem alloc] initWithTitle:[self.titles objectAtIndex:6]
+                                                       subtitle:@""
+                                                          image:nlIcon
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             [self handleSelection:6];
+                                                         }];
+        
+        
+        
+        [self setItems:@[allItem, favItem, foodItem, shoppingItem, servicesItem, funItem, nightlightItem]];
 
     }
     
@@ -118,6 +143,9 @@
             break;
         case MyDealsMenuNightlifeIndex:
             cat = [[CategoryHelper sharedInstance] getCategory:CategoryNightlife];
+            break;
+        case MyDealsMenuServicesIndex:
+            cat = [[CategoryHelper sharedInstance] getCategory:CategoryServices];
             break;
         default:
             cat = nil;

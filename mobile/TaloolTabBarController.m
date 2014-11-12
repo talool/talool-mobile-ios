@@ -23,28 +23,25 @@
     
     // Set the icon for MyDeals
     UITabBarItem *mydeals = [self.tabBar.items objectAtIndex:0];
-    UIImage *mydealsIcon = [FontAwesomeKit imageForIcon:FAKIconUser
-                                             imageSize:CGSizeMake(30, 30)
-                                              fontSize:29
-                                            attributes:nil];
+    FAKFontAwesome *userIcon = [FAKFontAwesome userIconWithSize:29];
+    UIImage *mydealsIcon = [userIcon imageWithSize:CGSizeMake(30, 30)];
+    
     mydeals.image = mydealsIcon;
     mydeals.title = @"My Deals";
     
     // Set the icon for Find Deals
     UITabBarItem *explore = [self.tabBar.items objectAtIndex:1];
-    UIImage *tabBarIcon = [FontAwesomeKit imageForIcon:FAKIconSearch
-                                             imageSize:CGSizeMake(30, 30)
-                                              fontSize:29
-                                            attributes:nil];
+    FAKFontAwesome *searchIcon = [FAKFontAwesome searchIconWithSize:29];
+    UIImage *tabBarIcon = [searchIcon imageWithSize:CGSizeMake(30, 30)];
+    
     explore.image = tabBarIcon;
     explore.title = @"Find Deals";
     
     // Set the icon for Activity
     UITabBarItem *activity = [self.tabBar.items objectAtIndex:2];
-    UIImage *activityIcon = [FontAwesomeKit imageForIcon:FAKIconTime
-                                             imageSize:CGSizeMake(30, 30)
-                                              fontSize:29
-                                            attributes:nil];
+    FAKFontAwesome *timeIcon = [FAKFontAwesome clockOIconWithSize:29];
+    UIImage *activityIcon = [timeIcon imageWithSize:CGSizeMake(30, 30)];
+                             
     activity.image = activityIcon;
     activity.title = @"Activity";
 

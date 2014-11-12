@@ -84,6 +84,11 @@
 {
     [super viewWillAppear:animated];
     
+    if ([offer isFault])
+    {
+        offer = (ttDealOffer *)[CustomerHelper fetchFault:offer entityType:DEAL_OFFER_ENTITY_NAME];
+    }
+    
     self.navigationItem.title = offer.title;
     
     [self updateDeals];
@@ -91,6 +96,8 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Deal Offer Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    [[OperationQueueManager sharedInstance] startDealOfferByIdOperation:offer.dealOfferId delegate:self];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -136,6 +143,15 @@
     [self resetFetchRestulsController];
 }
 
+- (void)dealOfferOperationComplete:(NSDictionary *)response
+{
+    NSManagedObjectContext *context = [CustomerHelper getContext];
+    offer = [ttDealOffer fetchById:offer.dealOfferId context:context];
+    [context refreshObject:offer mergeChanges:YES];
+    [actionView updateOffer:offer];
+    [summaryView updateOffer:offer];
+}
+
 - (void)purchaseOperationComplete:(NSDictionary *)response
 {
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
@@ -144,6 +160,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [appDelegate presentNewDeals];
+        [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:nil];
     }
     else
     {
@@ -454,6 +471,10 @@
             
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeUpdate:
             break;
     }
 }

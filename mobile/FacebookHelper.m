@@ -46,7 +46,7 @@
                                               insertNewObjectForEntityForName:SOCIAL_ACCOUNT_ENTITY_NAME
                                               inManagedObjectContext:context];
 
-    ttsa.loginId = user.id;
+    ttsa.loginId = [user objectForKey:@"id"];
     ttsa.socialNetwork = [[NSNumber alloc] initWithInt:0];
     
     return ttsa;
@@ -85,20 +85,23 @@
         [user setAsFemale:[gender isEqualToString:@"female"]];
     }
     
-    // convert the bday string to a date
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"MM/dd/yyyy"];
-    NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-    [formatter setTimeZone:gmt];
-    NSDate *bday = [formatter dateFromString:fb_user.birthday];
-    [user setBirthDate:bday];
+    if (fb_user.birthday != nil)
+    {
+        // convert the bday string to a date
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"MM/dd/yyyy"];
+        NSTimeZone *gmt = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
+        [formatter setTimeZone:gmt];
+        NSDate *bday = [formatter dateFromString:fb_user.birthday];
+        [user setBirthDate:bday];
+    }
     
     [user setEmail:[fb_user objectForKey:@"email"]];
     
     NSString *fbToken = [[[FBSession activeSession] accessTokenData] accessToken];
     
     ttSocialAccount *sa = [ttSocialAccount createSocialAccount:(int *)SOCIAL_NETWORK_FACEBOOK
-                                                       loginId:fb_user.id
+                                                       loginId:[fb_user objectForKey:@"id"]
                                                          token:fbToken
                                                        context:context];
     [user addSocialAccountsObject:sa];

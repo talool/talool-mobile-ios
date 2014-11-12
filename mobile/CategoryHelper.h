@@ -18,7 +18,8 @@ enum {
     CategoryFood = 1,
     CategoryShopping = 2,
     CategoryFun = 3,
-    CategoryNightlife = 4
+    CategoryNightlife = 4,
+    CategoryServices = 5
 };
 typedef int CategoryType;
 

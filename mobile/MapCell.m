@@ -80,11 +80,11 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = NO;
             annotationView.canShowCallout = NO;
-            NSDictionary *attr =@{FAKImageAttributeForegroundColor:[TaloolColor orange]};
-            UIImage *pinIcon = [FontAwesomeKit imageForIcon:FAKIconMapMarker
-                                                  imageSize:CGSizeMake(20, 20)
-                                                   fontSize:18
-                                                 attributes:attr];
+            
+            FAKFontAwesome *icon = [FAKFontAwesome mapMarkerIconWithSize:18];
+            [icon addAttribute:NSForegroundColorAttributeName value:[TaloolColor orange]];
+            UIImage *pinIcon = [icon imageWithSize:CGSizeMake(20, 20)];
+            
             annotationView.image = pinIcon;
         } else {
             annotationView.annotation = annotation;

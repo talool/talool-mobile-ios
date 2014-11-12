@@ -62,28 +62,35 @@ static NSMutableDictionary *_categoryDictionary;
     {
         switch ([cat.categoryId intValue]) {
             case CategoryFood:
-                icon = [IconHelper getImageForIcon:FAKIconFood color:[TaloolColor teal]];
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome cutleryIconWithSize:24] color:[TaloolColor teal]];
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryFood];
                 break;
             case CategoryShopping:
-                icon = [IconHelper getImageForIcon:FAKIconShoppingCart color:[TaloolColor orange]];
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome shoppingCartIconWithSize:24] color:[TaloolColor orange]];
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryShopping];
                 break;
             case CategoryFun:
-                icon = [IconHelper getImageForIcon:FAKIconTicket color:[TaloolColor green]];
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome ticketIconWithSize:24] color:[TaloolColor green]];
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryFun];
                 break;
             case CategoryNightlife:
-                icon = [IconHelper getImageForIcon:FAKIconGlass color:[TaloolColor red]];
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome glassIconWithSize:24] color:[TaloolColor red]];
                 catObj = [self createCategoryDictionary:cat icon:icon];
                 catKey = [NSNumber numberWithInt:CategoryNightlife];
                 break;
+            case CategoryServices:
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome cogsIconWithSize:24] color:[TaloolColor blue]];
+                catObj = [self createCategoryDictionary:cat icon:icon];
+                catKey = [NSNumber numberWithInt:CategoryServices];
+                break;
             default:
-                catObj = nil;
-                catKey = nil;
+                // unknown category
+                icon = [IconHelper getImageForIcon:[FAKFontAwesome asteriskIconWithSize:24] color:[TaloolColor dark_teal]];
+                catObj = [self createCategoryDictionary:cat icon:icon];
+                catKey = [NSNumber numberWithInt:[cat.categoryId intValue]];
                 break;
         }
         if (catObj != nil)

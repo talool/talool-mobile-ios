@@ -30,15 +30,18 @@
         
         self.delegate = actionDelegate;
         
+        FAKFontAwesome *acceptIcon = [FAKFontAwesome thumbsUpIconWithSize:16];
+        FAKFontAwesome *rejectIcon = [FAKFontAwesome thumbsDownIconWithSize:16];
+        
         NSDictionary *attr =@{NSForegroundColorAttributeName:[TaloolColor dark_teal],
-                              NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                              NSFontAttributeName:[acceptIcon iconFont]
                               };
         NSDictionary *attr2 =@{NSForegroundColorAttributeName:[TaloolColor orange],
-                               NSFontAttributeName:[UIFont fontWithName:@"FontAwesome" size:16.0]
+                               NSFontAttributeName:[rejectIcon iconFont]
                                };
-        [acceptButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconThumbsUp, @"Accept Gift"]];
+        [acceptButton setTitle:[NSString stringWithFormat:@"%@  %@", acceptIcon.characterCode, @"Accept Gift"]];
         [acceptButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
-        [rejectButton setTitle:[NSString stringWithFormat:@"%@  %@", FAKIconThumbsDown, @"No Thanks"]];
+        [rejectButton setTitle:[NSString stringWithFormat:@"%@  %@", rejectIcon.characterCode, @"No Thanks"]];
         [rejectButton setTitleTextAttributes:attr forState:UIControlStateNormal];
         
         

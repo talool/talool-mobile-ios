@@ -69,7 +69,7 @@
     
     if ([deal hasBeenRedeemed] || [deal hasBeenShared] || [deal hasExpired])
     {
-        self.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor gray_1]];
+        self.iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome moneyIconWithSize:24] color:[TaloolColor gray_1]];
         
         self.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:strikethrough];
     }
@@ -84,7 +84,7 @@
             date = [NSString stringWithFormat:@"Expires on %@", [dateFormatter stringFromDate:deal.deal.expires]];
         }
         self.nameLabel.attributedText = [[NSAttributedString alloc] initWithString:dealTitle attributes:normaltext];
-        self.iconView.image = [IconHelper getImageForIcon:FAKIconMoney color:[TaloolColor green]];
+        self.iconView.image = [IconHelper getImageForIcon:[FAKFontAwesome moneyIconWithSize:24] color:[TaloolColor green]];
     }
     
     self.dateLabel.text = date;

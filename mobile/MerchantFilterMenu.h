@@ -17,8 +17,9 @@ enum {
     MyDealsMenuFavsIndex = 1,
     MyDealsMenuFoodIndex = 2,
     MyDealsMenuShoppingIndex = 3,
-    MyDealsMenuFunIndex = 4,
-    MyDealsMenuNightlifeIndex = 5
+    MyDealsMenuFunIndex = 5,
+    MyDealsMenuNightlifeIndex = 6,
+    MyDealsMenuServicesIndex = 4
 };
 typedef NSUInteger MyDealsMenuCategoryIndex;
 
