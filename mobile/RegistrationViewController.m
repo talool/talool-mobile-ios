@@ -8,6 +8,7 @@
 
 // TODO: enable/disable the button based on ttCustomer.isValid
 #import "RegistrationViewController.h"
+#import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttSocialAccount.h"
@@ -122,7 +123,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 

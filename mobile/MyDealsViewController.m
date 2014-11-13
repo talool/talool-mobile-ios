@@ -121,7 +121,8 @@
     
     if (![CustomerHelper getLoggedInUser]) {
         // The user isn't logged in, so kick them to the welcome view
-        [self performSegueWithIdentifier:@"welcome" sender:self];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToLoginView];
     }
     else
     {
@@ -184,7 +185,8 @@
     else
     {
         // The user isn't logged in, so kick them to the welcome view
-        [self performSegueWithIdentifier:@"welcome" sender:self];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToLoginView];
     }
     
 }
@@ -354,16 +356,6 @@
     [_detailView setMerchant:merchant];
     return _detailView;
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"welcome"])
-    {
-        WelcomeViewController *wvc = [segue destinationViewController];
-        [wvc setHidesBottomBarWhenPushed:YES];
-    }
-}
-
 
 /*
     Multi-User Edge Case:

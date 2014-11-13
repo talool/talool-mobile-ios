@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "FacebookSDK/FacebookSDK.h"
 #import "WelcomeViewController.h"
@@ -252,7 +253,9 @@ static NSString *host = @"http://www.talool.com";
         {
             [FBSession.activeSession closeAndClearTokenInformation];
         }
-        [self performSegueWithIdentifier:@"logout" sender:self];
+        
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToLoginView];
     }
 }
 

@@ -95,7 +95,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 
@@ -279,11 +280,10 @@
     {
         [FacebookHelper trackNumberOfFriends];
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
         
-        [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
-        [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
     else
     {

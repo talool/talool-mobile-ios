@@ -7,6 +7,7 @@
 //
 
 #import "SendPasswordResetViewController.h"
+#import "AppDelegate.h"
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 #import "TaloolColor.h"
@@ -56,7 +57,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 
