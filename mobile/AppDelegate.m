@@ -49,6 +49,8 @@
     //#warning @"Environment set to dev"
     //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
     
+    [self setUserAgent];
+    
     //For now, register for all types of notifications
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         // use registerUserNotificationSettings
@@ -433,7 +435,7 @@
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-
+    [self setUserAgent];
     [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:^(NSDictionary *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);
