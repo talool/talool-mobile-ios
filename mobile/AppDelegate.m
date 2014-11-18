@@ -291,6 +291,7 @@
     
     [self.window setRootViewController:(UIViewController *)self.mainViewController];
     [self.window makeKeyAndVisible];
+    [self.mainViewController.navigationController popToRootViewControllerAnimated:NO];
     
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
@@ -311,6 +312,7 @@
     
     [self.window setRootViewController:(UIViewController *)self.loginViewController];
     [self.window makeKeyAndVisible];
+    [self.loginViewController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - UIAlertViewDelegate 
