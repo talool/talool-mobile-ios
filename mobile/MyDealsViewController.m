@@ -42,7 +42,6 @@
 @property (strong, nonatomic) MerchantFilterMenu *menu;
 @property (strong, nonatomic) ttDealAcquire *giftedDeal;
 @property (strong, nonatomic) NSString *giftId;
-@property BOOL resetAfterLogin;
 @end
 
 
@@ -92,6 +91,10 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:LOGOUT_NOTIFICATION
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleLocationEnabled:)
@@ -134,13 +137,6 @@
             [self forcedClearOfTableView];
         }
         
-        if (_resetAfterLogin)
-        {
-            [self forcedClearOfTableView];
-        }
-        
-        [self askForHelp];
-        
         self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
         
         [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
@@ -158,6 +154,9 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser]) {
+        
+        [self askForHelp];
+        
         if (![LocationHelper sharedInstance].locationManagerStatusKnown)
         {
             // The user hasn't approved or denied location services
@@ -199,8 +198,8 @@
 
 - (void) handleUserLogin:(NSNotification *)message
 {
-    _resetAfterLogin = YES;
     [_menu setSelectedIndex:0];
+    [self forcedClearOfTableView];
 }
 
 - (void) handleLocationEnabled:(NSNotification *)message
@@ -364,7 +363,6 @@
  */
 - (void) forcedClearOfTableView
 {
-    _resetAfterLogin = NO;
     NSPredicate *purgePredicate = [NSPredicate predicateWithFormat:@"SELF.name == nil"];
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:purgePredicate];
     [self resetFetchedResultsController:NO];
