@@ -136,6 +136,10 @@
 {
     ttCustomer *customer = [CustomerHelper getLoggedInUser];
     NSError *error;
+    
+    // TODO If the code is nil, then you have a free book.  Consider forking code to download without a purchase.
+    // to be sure, you can check [offer isFree] == YES
+    
     BOOL result = [self.offer purchaseWithNonce:self.code customer:customer fundraiser:_fundraiser error:&error];
     
     if (result)

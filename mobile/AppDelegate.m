@@ -12,23 +12,17 @@
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "Talool-API/TaloolFrameworkHelper.h"
 #import "Talool-API/ttActivity.h"
-#import "TaloolColor.h"
+#import "Talool-API/ttCustomer.h"
 #import "TaloolTabBarController.h"
 #import "WelcomeViewController.h"
-#import "SettingsTableViewController.h"
-#import "MyDealsViewController.h"
-#import "ActivityViewController.h"
 #import "SplashViewController.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
-#import "TestFlight.h"
-#import "BraintreeHelper.h"
 #import <OperationQueueManager.h>
 #import "LocationHelper.h"
 #import "CustomerHelper.h"
 #import "WhiteLabelHelper.h"
 #import "ActivityOperation.h"
-#import "TutorialViewController.h"
 #import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
@@ -48,23 +42,9 @@
 
     //#warning @"Environment set to dev"
     //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+
+    [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     
-    //For now, register for all types of notifications
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        // use registerUserNotificationSettings
-        UIUserNotificationSettings* notificationSettings =
-            [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-    } else {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-            (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    }
-    
-    //Request background refresh interval
-    self.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:self.minUpdateInterval];
-    
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -74,79 +54,14 @@
     [self.window addSubview:self.splashView.view];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = self.splashView;
-
-    // Dispatch a new thread so we'll see the Splash View and the user will get the progress spinner
-    [NSThread detachNewThreadSelector:@selector(setupApp) toTarget:self withObject:nil];
-    
-    self.isSplashing = YES;
-    
-    return YES;
-}
-
-- (void) setupApp
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-    self.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"]; // Handy reference to the tab controller
-    self.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"]; // Used for FB errors
-    
-    // Back to the main thread for the work that needs to happen there
-    if ([WhiteLabelHelper getTaloolDictionary])
-    {
-        // it's a white label, so delay to show the "powered by talool"
-        dispatch_async(dispatch_get_main_queue(),^{
-            [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(finalizeSetup) userInfo:nil repeats:NO];
-        });
-    }
-    else
-    {
-        [self performSelectorOnMainThread:@selector(finalizeSetup) withObject:nil waitUntilDone:NO];
-    }
-    
-}
-
-- (void) finalizeSetup
-{
-    
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    // Optional: set debug to YES for extra debugging information.
-    //[GAI sharedInstance].debug = YES;
-    // Create tracker instance.
-    [[GAI sharedInstance] trackerWithName:@"Talool" trackingId:GA_TRACKING_ID];
-    
-    
-    // installs HandleExceptions as the Uncaught Exception Handler
-    NSSetUncaughtExceptionHandler(&HandleExceptions);
-    // create the signal action structure
-    struct sigaction newSignalAction;
-    // initialize the signal action structure
-    memset(&newSignalAction, 0, sizeof(newSignalAction));
-    // set SignalHandler as the handler in the signal action structure
-    newSignalAction.sa_handler = &SignalHandler;
-    // set SignalHandler as the handlers for SIGABRT, SIGILL and SIGBUS
-    sigaction(SIGABRT, &newSignalAction, NULL);
-    sigaction(SIGILL, &newSignalAction, NULL);
-    sigaction(SIGBUS, &newSignalAction, NULL);
-    // Call takeOff after install your own unhandled exception and signal handlers
-    [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
-    [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
-    
-    [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    self.isSplashing = YES;
     
-    [self.splashView.view removeFromSuperview];
-    self.isSplashing = NO;
-    
-    self.window.rootViewController = self.mainViewController;
-    [self.window makeKeyAndVisible];
-    
-    [[TaloolAppCall sharedInstance] handleDidBecomeActive];
+    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -357,7 +272,47 @@
     iosVersion = [iosVersion stringByReplacingOccurrencesOfString:@"." withString:@"_"];
     iosVersion = [NSString stringWithFormat:@"iPhone; CPU iPhone OS %@ like Mac OS X",iosVersion];
     
+    NSLog(@"UserAgent appVersion: %@ iOSVersion: %@", appVersion, iosVersion);
+    
     [[TaloolFrameworkHelper sharedInstance] setUserAgent:appVersion iosVersion:iosVersion];
+}
+
+- (void) switchToMainView
+{
+    if (self.isSplashing)
+    {
+        [self.splashView.view removeFromSuperview];
+        self.isSplashing = NO;
+    }
+    else
+    {
+        [self.loginViewController.view removeFromSuperview];
+    }
+    
+    [self.window setRootViewController:(UIViewController *)self.mainViewController];
+    [self.window makeKeyAndVisible];
+    [self.mainViewController.navigationController popToRootViewControllerAnimated:NO];
+    
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
+    [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
+}
+
+- (void) switchToLoginView
+{
+    if (self.isSplashing)
+    {
+        [self.splashView.view removeFromSuperview];
+        self.isSplashing = NO;
+    }
+    else
+    {
+        [self.mainViewController.view removeFromSuperview];
+    }
+    
+    [self.window setRootViewController:(UIViewController *)self.loginViewController];
+    [self.window makeKeyAndVisible];
+    [self.loginViewController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - UIAlertViewDelegate 
@@ -432,7 +387,7 @@
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-
+    [self setUserAgent];
     [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:^(NSDictionary *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);
@@ -461,13 +416,15 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-	TTLog(@"Device token is: %@", deviceToken);
+	NSLog(@"Device token is: %@", deviceToken);
     [[TaloolFrameworkHelper sharedInstance] setApnDeviceToken:deviceToken];
+    
+    [Crashlytics setUserIdentifier:[NSString stringWithFormat:@"%@",deviceToken]];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
-	TTLog(@"Failed to get token, error: %@", error);
+	NSLog(@"Failed to get token, error: %@", error);
 }
 
 #pragma mark - Application's Documents directory
@@ -496,25 +453,6 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     [[self managedObjectContext] reset];
-}
-
-
-#pragma mark -
-#pragma mark - TestFlight - Exception Handlers
-
-/*
-My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest
-*/
-void HandleExceptions(NSException *exception) {
-    [TestFlight passCheckpoint:@"CRASH"];
-    // Save application data on crash
-}
-/*
- My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
- */
-void SignalHandler(int sig) {
-    [TestFlight passCheckpoint:@"SIGNAL"];
-    // Save application data on crash
 }
 
 

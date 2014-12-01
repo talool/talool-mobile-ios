@@ -22,6 +22,7 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;
@@ -94,7 +95,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 
@@ -278,8 +280,10 @@
     {
         [FacebookHelper trackNumberOfFriends];
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
+        
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
     else
     {

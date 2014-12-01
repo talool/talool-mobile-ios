@@ -67,18 +67,26 @@ static int ACTIVITY_TAB_INDEX = 2;
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (callHost == nil || appDelegate.isSplashing) return;
     
-    UIViewController *currentView = appDelegate.mainViewController.selectedViewController;
 
     // open the right view
     if ([callHost isEqualToString:CALL_PASSWORD])
     {
+        // if the user is logged in, we don't need to deep link
+        if ([CustomerHelper getLoggedInUser]) return;
+        
+        [appDelegate switchToLoginView];
+        
+        UIViewController *currentView = appDelegate.loginViewController;
+        
         ResetPasswordViewController *view = [currentView.storyboard instantiateViewControllerWithIdentifier:@"ResetPassword"];
         view.customerId = resetPasswordCustomerId;
         view.resetCode = resetPasswordCode;
+        
         [currentView presentViewController:view animated:NO completion:nil];
     }
     else if ([callHost isEqualToString:CALL_GIFT])
     {
+        
         // if the user isn't logged in, we don't need to deep link
         if (![CustomerHelper getLoggedInUser]) return;
         

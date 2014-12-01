@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "CustomerHelper.h"
 #import "TaloolUIButton.h"
@@ -61,7 +62,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 
@@ -112,7 +114,9 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
+        
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else

@@ -70,7 +70,8 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate switchToMainView];
     }
 }
 
