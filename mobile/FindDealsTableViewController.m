@@ -18,6 +18,7 @@
 #import "TextureHelper.h"
 #import "LocationHelper.h"
 #import "OperationQueueManager.h"
+#import <TutorialViewController.h>
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -78,6 +79,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
+    {
+#warning TODO just make this a push segue after reg.  no need for user defaults.  spash needs to watch for reg event.
+        TutorialViewController *tvc = [[TutorialViewController alloc] init];
+        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
+        [tvc setHidesBottomBarWhenPushed:YES];
+        [self presentViewController:tvc animated:NO completion:nil];
+    }
     
     if (_resetAfterLogin)
     {

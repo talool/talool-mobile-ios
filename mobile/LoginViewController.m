@@ -57,16 +57,6 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
-    }
-}
-
 - (IBAction)loginAction:(id) sender
 {
     [SVProgressHUD showWithStatus:@"Authenticating" maskType:SVProgressHUDMaskTypeBlack];
@@ -114,9 +104,7 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
-        
+        [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else

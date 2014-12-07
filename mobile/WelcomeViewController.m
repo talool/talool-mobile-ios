@@ -95,8 +95,7 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser]) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -282,8 +281,8 @@
         
         [[OperationQueueManager sharedInstance] handleForegroundState];
         
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
+        [self performSegueWithIdentifier:@"welcome_unwind" sender:self];
+        
     }
     else
     {

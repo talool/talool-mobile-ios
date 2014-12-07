@@ -25,7 +25,6 @@
 #import "CustomerHelper.h"
 #import "LocationHelper.h"
 #import "TaloolColor.h"
-#import "TutorialViewController.h"
 #import "OperationQueueManager.h"
 #import "MerchantFilterMenu.h"
 #import "SimpleHeaderView.h"
@@ -91,10 +90,6 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleUserLogin:)
-                                                 name:LOGOUT_NOTIFICATION
-                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleLocationEnabled:)
@@ -122,15 +117,15 @@
 {
     [super viewWillAppear:animated];
     
-    if (![CustomerHelper getLoggedInUser]) {
-        // The user isn't logged in, so kick them to the welcome view
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToLoginView];
+    if ([CustomerHelper getLoggedInUser] == nil)
+    {
+        [self performSegueWithIdentifier:@"mydeals_unwind" sender:self];
+
     }
     else
     {
         [self initLeftBarButtons];
-         
+        
         // see if we lost the predicate for the fetchedResultsController
         if (!_fetchedResultsController.fetchRequest.predicate)
         {
@@ -147,46 +142,39 @@
         [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if ([CustomerHelper getLoggedInUser]) {
-        
-        [self askForHelp];
-        
-        if (![LocationHelper sharedInstance].locationManagerStatusKnown)
-        {
-            // The user hasn't approved or denied location services
-            [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
-        }
-        
-        if ([self merchantCount]==0)
-        {
-            [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
-            
-            [TSMessage showNotificationInViewController:self
-                                                  title:@"Welcome!"
-                                               subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
-                                                  image:nil
-                                                   type:TSMessageNotificationTypeMessage
-                                               duration:TSMessageNotificationDurationEndless
-                                               callback:nil
-                                            buttonTitle:nil
-                                         buttonCallback:nil
-                                             atPosition:TSMessageNotificationPositionTop
-                                   canBeDismissedByUser:YES];
-            
-        }
-    }
-    else
+    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
     {
-        // The user isn't logged in, so kick them to the welcome view
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToLoginView];
+        // The user hasn't approved or denied location services
+        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
+    
+    if ([self merchantCount]==0)
+    {
+        [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+        
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Welcome!"
+                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                              image:nil
+                                               type:TSMessageNotificationTypeMessage
+                                           duration:TSMessageNotificationDurationEndless
+                                           callback:nil
+                                        buttonTitle:nil
+                                     buttonCallback:nil
+                                         atPosition:TSMessageNotificationPositionTop
+                               canBeDismissedByUser:YES];
+        
+    }
+    
+
+    
     
 }
 
@@ -423,22 +411,6 @@
     }
     
     [self.tableView reloadData];
-}
-
-#pragma mark -
-#pragma mark - Help Overlay Methods
-
-- (void) askForHelp
-{
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
-    {
-        TutorialViewController *tvc = [[TutorialViewController alloc] init];
-        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
-        [tvc setHidesBottomBarWhenPushed:YES];
-        [self presentViewController:tvc animated:NO completion:nil];
-        [self.tabBarController setSelectedIndex:1]; // kick the user over to Find Deals
-    }
-    
 }
 
 - (int)merchantCount

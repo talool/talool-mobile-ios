@@ -10,6 +10,7 @@
 #import "UIImage+H568.h"
 #import <TaloolColor.h>
 #import <WhiteLabelHelper.h>
+#import "TaloolTabBarController.h"
 
 @interface TutorialViewController ()
 

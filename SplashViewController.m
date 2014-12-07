@@ -15,6 +15,8 @@
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
 #import "CustomerHelper.h"
+#import <TaloolTabBarController.h>
+#import <TutorialViewController.h>
 
 @interface SplashViewController ()
 
@@ -33,12 +35,23 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [SVProgressHUD showWithStatus:@"Loading" maskType:SVProgressHUDMaskTypeBlack];
     
-    // do this async, so the spinner shows up
-    dispatch_async(dispatch_get_main_queue(),^{
-        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(setupApp) userInfo:nil repeats:NO];
-    });
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (appDelegate.isSplashing)
+    {
+        [SVProgressHUD showWithStatus:@"Loading" maskType:SVProgressHUDMaskTypeBlack];
+        
+        // do this async, so the spinner shows up
+        dispatch_async(dispatch_get_main_queue(),^{
+            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(setupApp) userInfo:nil repeats:NO];
+        });
+    }
+    else
+    {
+        [self presentApp];
+    }
+    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -76,11 +89,7 @@
     appDelegate.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:appDelegate.minUpdateInterval];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    
-    // Set up root view controller options
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
-    appDelegate.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    appDelegate.loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginNavController"];
+
     
     // Google Analytics
     // Optional: automatically send uncaught exceptions to Google Analytics.
@@ -96,34 +105,58 @@
     [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
     [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
     
+    [[TaloolAppCall sharedInstance] handleDidBecomeActive];
+    
+    appDelegate.isSplashing = NO;
+    
     // Delayed Finalization
     if ([WhiteLabelHelper getTaloolDictionary])
     {
         // it's a white label, so delay to show the "powered by talool"
-        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(finalizeSetup) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(presentApp) userInfo:nil repeats:NO];
     }
     else
     {
-        [self finalizeSetup];
+        [self presentApp];
     }
 }
 
-- (void) finalizeSetup
+-(IBAction)unwindToSplash:(UIStoryboardSegue *)segue {}
+
+- (void) presentApp
 {
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    if ([CustomerHelper getLoggedInUser])
+    if ([CustomerHelper getLoggedInUser] == nil)
     {
-        // show the main view
-        [appDelegate switchToMainView];
+        [self.navigationController setNavigationBarHidden:NO];
+        [self performSegueWithIdentifier:@"splash_to_welcome" sender:self];
     }
     else
     {
-        // show the login view
-        [appDelegate switchToLoginView];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self performSegueWithIdentifier:@"splash_to_mydeals" sender:self];
     }
-    
-    [[TaloolAppCall sharedInstance] handleDidBecomeActive];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"splash_to_mydeals"])
+    {
+        TaloolTabBarController *controller = [segue destinationViewController];
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
+        {
+            [controller setSelectedIndex:1];
+        }
+        else
+        {
+            [controller setSelectedIndex:0];
+        }
+        [controller.navigationController popToRootViewControllerAnimated:NO];
+        
+        
+        
+    }
+}
+
 
 @end

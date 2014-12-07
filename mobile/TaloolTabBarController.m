@@ -10,6 +10,8 @@
 #import "TaloolColor.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "OperationQueueManager.h"
+#import "CustomerHelper.h"
+#import <AppDelegate.h>
 
 @implementation TaloolTabBarController
 
@@ -45,10 +47,6 @@
     activity.image = activityIcon;
     activity.title = @"Activity";
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(handleActivity:)
-                                                 name:LOGIN_NOTIFICATION
-                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogout)
                                                  name:LOGOUT_NOTIFICATION

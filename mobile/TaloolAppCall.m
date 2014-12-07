@@ -74,8 +74,6 @@ static int ACTIVITY_TAB_INDEX = 2;
         // if the user is logged in, we don't need to deep link
         if ([CustomerHelper getLoggedInUser]) return;
         
-        [appDelegate switchToLoginView];
-        
         UIViewController *currentView = appDelegate.loginViewController;
         
         ResetPasswordViewController *view = [currentView.storyboard instantiateViewControllerWithIdentifier:@"ResetPassword"];

@@ -256,8 +256,7 @@ static NSString *host = @"http://www.talool.com";
             [FBSession.activeSession closeAndClearTokenInformation];
         }
         
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToLoginView];
+        [self performSegueWithIdentifier:@"settings_unwind" sender:self];
     }
 }
 

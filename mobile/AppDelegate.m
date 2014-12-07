@@ -40,26 +40,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    //#warning @"Environment set to dev"
-    //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+    #warning @"Environment set to dev"
+    [[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
 
     [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    self.isSplashing = YES;
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     
-    self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"SplashView"];
+    self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"splash_nav"];
     [self.window addSubview:self.splashView.view];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = self.splashView;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
-    self.isSplashing = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:REG_NOTIFICATION
+                                               object:nil];
+    
     
     return YES;
 }
@@ -277,43 +282,6 @@
     [[TaloolFrameworkHelper sharedInstance] setUserAgent:appVersion iosVersion:iosVersion];
 }
 
-- (void) switchToMainView
-{
-    if (self.isSplashing)
-    {
-        [self.splashView.view removeFromSuperview];
-        self.isSplashing = NO;
-    }
-    else
-    {
-        [self.loginViewController.view removeFromSuperview];
-    }
-    
-    [self.window setRootViewController:(UIViewController *)self.mainViewController];
-    [self.window makeKeyAndVisible];
-    
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
-    [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
-}
-
-- (void) switchToLoginView
-{
-    if (self.isSplashing)
-    {
-        [self.splashView.view removeFromSuperview];
-        self.isSplashing = NO;
-    }
-    else
-    {
-        [self.mainViewController.view removeFromSuperview];
-    }
-    
-    [self.window setRootViewController:(UIViewController *)self.loginViewController];
-    [self.window makeKeyAndVisible];
-    [self.loginViewController popToRootViewControllerAnimated:NO];
-}
-
 #pragma mark - UIAlertViewDelegate 
 
 -(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -452,6 +420,10 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     [[self managedObjectContext] reset];
+    
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
+    [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
 }
 
 
