@@ -10,4 +10,6 @@
 
 @interface TaloolTabBarController : UITabBarController
 
+- (void) resetViews;
+
 @end

@@ -18,7 +18,6 @@
 #import "TextureHelper.h"
 #import "LocationHelper.h"
 #import "OperationQueueManager.h"
-#import <TutorialViewController.h>
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -72,6 +71,10 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlePurchase)
+                                                 name:CUSTOMER_PURCHASED_DEAL_OFFER
+                                               object:nil];
     
 }
 
@@ -79,15 +82,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
-    {
-#warning TODO just make this a push segue after reg.  no need for user defaults.  spash needs to watch for reg event.
-        TutorialViewController *tvc = [[TutorialViewController alloc] init];
-        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
-        [tvc setHidesBottomBarWhenPushed:YES];
-        [self presentViewController:tvc animated:NO completion:nil];
-    }
     
     if (_resetAfterLogin)
     {
@@ -334,6 +328,31 @@
     
     return offer;
 }
+
+-(void) handlePurchase
+{
+    // the user is on FindDeals or Activity, so we should ask if they want to be redirected
+    UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
+                                                     message:@"We've updated your account with new deals.  Would you like to see them now?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"No"
+                                           otherButtonTitles:@"Yes",nil];
+    [showMe show];
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
+    {
+        // take the user to the "my deals" tab
+        [self.tabBarController setSelectedIndex:0];
+        [self.tabBarController.selectedViewController.navigationController popToRootViewControllerAnimated:NO];
+    }
+}
+
 
 #pragma mark -
 #pragma mark - Refresh Control

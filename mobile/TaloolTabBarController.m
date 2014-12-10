@@ -91,4 +91,12 @@
     [self updateBadge:nil];
 }
 
+- (void) resetViews
+{
+    for (UINavigationController *c in self.viewControllers)
+    {
+        [c popToRootViewControllerAnimated:NO];
+    }
+}
+
 @end

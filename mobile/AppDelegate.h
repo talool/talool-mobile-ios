@@ -9,15 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
-@class SplashViewController;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
-@property (strong, nonatomic) UITabBarController *mainViewController;
-@property (strong, nonatomic) UINavigationController* loginViewController;
-@property (strong, nonatomic) SplashViewController* splashView;
 @property BOOL isNavigating;
 @property BOOL isSplashing;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -25,7 +21,6 @@
 @property NSTimeInterval minUpdateInterval;
 
 - (NSURL *)applicationDocumentsDirectory;
-- (void) presentNewDeals;
 - (void) setUserAgent;
 
 #define GA_TRACKING_ID  @"UA-42344079-1"

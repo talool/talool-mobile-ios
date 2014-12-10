@@ -280,10 +280,7 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"showTutorial" sender:self];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
@@ -295,6 +292,16 @@
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showTutorial"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TutorialViewController *tvc = [segue destinationViewController];
+        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
     }
 }
 

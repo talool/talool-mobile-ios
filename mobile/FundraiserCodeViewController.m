@@ -117,8 +117,6 @@
     else if (success == ValidatationResponse_ACTIVATED)
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate presentNewDeals];
     }
     else
     {

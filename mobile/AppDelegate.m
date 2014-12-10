@@ -29,13 +29,10 @@
 
 @synthesize window = _window,
             navigationController = _navigationController,
-            mainViewController = _mainViewController,
-            loginViewController = _loginViewController,
             isNavigating = _isNavigating,
             isSplashing = _isSplashing;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize splashView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -52,9 +49,10 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     
-    self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"splash_nav"];
-    [self.window addSubview:self.splashView.view];
+    _navigationController = [storyboard instantiateViewControllerWithIdentifier:@"splash_nav"];
+    [self.window addSubview:_navigationController.view];
     [self.window makeKeyAndVisible];
+    [self.window setRootViewController:_navigationController];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
@@ -243,24 +241,6 @@
                           }];
 }
 
--(void) presentNewDeals
-{
-    
-    if (self.mainViewController.selectedIndex > 0)
-    {
-
-        // the user is on FindDeals or Activity, so we should ask if they want to be redirected
-        UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
-                                                            message:@"We've updated your account with new deals.  Would you like to see them now?"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"No"
-                                                  otherButtonTitles:@"Yes",nil];
-        [showMe show];
-
-    }
-
-}
-
 -(void) setUserAgent
 {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -280,18 +260,6 @@
     NSLog(@"UserAgent appVersion: %@ iOSVersion: %@", appVersion, iosVersion);
     
     [[TaloolFrameworkHelper sharedInstance] setUserAgent:appVersion iosVersion:iosVersion];
-}
-
-#pragma mark - UIAlertViewDelegate 
-
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
-    {
-        // take the user to the "my deals" tab
-        [self.mainViewController setSelectedIndex:0];
-        [self.mainViewController.selectedViewController.navigationController popToRootViewControllerAnimated:NO];
-    }
 }
 
 #pragma mark - Core Data stack
