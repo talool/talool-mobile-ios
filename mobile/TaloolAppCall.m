@@ -74,7 +74,7 @@ static int ACTIVITY_TAB_INDEX = 2;
     // open the right view
     if ([callHost isEqualToString:CALL_PASSWORD])
     {
-        // if the user is logged in, we don't need to deep link
+        // if the user is logged in, we don't need to deep link to change the password... ignore the request
         if ([CustomerHelper getLoggedInUser]) return;
         
         UIViewController *currentView = appDelegate.navigationController.visibleViewController;
@@ -89,7 +89,7 @@ static int ACTIVITY_TAB_INDEX = 2;
     else if ([callHost isEqualToString:CALL_GIFT])
     {
         
-        // if the user isn't logged in, we don't need to deep link
+        // if the user isn't logged in, we don't need to deep link... ignore the request
         if (![CustomerHelper getLoggedInUser]) return;
         
         ttGift *gift = [ttGift fetchById:self.giftId context:[CustomerHelper getContext]];

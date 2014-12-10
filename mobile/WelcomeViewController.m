@@ -22,7 +22,6 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <Crashlytics/Crashlytics.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;

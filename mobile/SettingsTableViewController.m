@@ -150,8 +150,6 @@ static NSString *host = @"http://www.talool.com";
     [SVProgressHUD showWithStatus:@"Logging out" maskType:SVProgressHUDMaskTypeBlack];
     [[OperationQueueManager sharedInstance] startUserLogout:self];
     
-    [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning
