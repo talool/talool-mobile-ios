@@ -13,6 +13,8 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttDealOfferGeoSummary.h"
+#import <TaloolTabBarController.h>
+#import "MyDealsViewController.h"
 #import "TaloolColor.h"
 #import "IconHelper.h"
 #import "TextureHelper.h"
@@ -359,7 +361,8 @@
     {
         // take the user to the "my deals" tab
         [self.tabBarController setSelectedIndex:0];
-        [self.tabBarController.selectedViewController.navigationController popToRootViewControllerAnimated:NO];
+        TaloolTabBarController *tabController = (TaloolTabBarController *)self.tabBarController;
+        [tabController.myDealsView.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
