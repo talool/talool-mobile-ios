@@ -12,8 +12,12 @@
 #import "OperationQueueManager.h"
 #import "CustomerHelper.h"
 #import <AppDelegate.h>
+#import <MyDealsViewController.h>
+#import "ActivityViewController.h"
 
 @implementation TaloolTabBarController
+
+@synthesize myDealsView, activityView;
 
 - (void)viewDidLoad
 {
@@ -55,6 +59,9 @@
                                              selector:@selector(handleActivity:)
                                                  name:ACTIVITY_NOTIFICATION
                                                object:nil];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.taloolTabBarController = self;
 }
 
 - (void) updateBadge:(NSNumber *)count

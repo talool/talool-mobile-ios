@@ -16,7 +16,6 @@
 #import "TaloolAppCall.h"
 #import "CustomerHelper.h"
 #import <TaloolTabBarController.h>
-#import <TutorialViewController.h>
 
 @interface SplashViewController ()
 
@@ -89,7 +88,6 @@
     appDelegate.minUpdateInterval = UIApplicationBackgroundFetchIntervalMinimum;
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:appDelegate.minUpdateInterval];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
     
     // Google Analytics
     // Optional: automatically send uncaught exceptions to Google Analytics.
@@ -142,19 +140,7 @@
     if ([[segue identifier] isEqualToString:@"splash_to_mydeals"])
     {
         TaloolTabBarController *controller = [segue destinationViewController];
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
-        {
-            [controller setSelectedIndex:1];
-        }
-        else
-        {
-            [controller setSelectedIndex:0];
-        }
-        [controller.navigationController popToRootViewControllerAnimated:NO];
-        
-        
-        
+        [controller resetViews];
     }
 }
 

@@ -12,6 +12,8 @@
 #import "ResetPasswordViewController.h"
 #import "AcceptGiftViewController.h"
 #import "DealTableViewController.h"
+#import "MyDealsViewController.h"
+#import "ActivityViewController.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttGift.h"
 #import "Talool-API/ttDealAcquire.h"
@@ -20,6 +22,7 @@
 NSString * const CALL_PASSWORD = @"password";
 NSString * const CALL_GIFT = @"gift";
 
+static int MYDEALS_TAB_INDEX = 0;
 static int ACTIVITY_TAB_INDEX = 2;
 
 @implementation TaloolAppCall
@@ -74,22 +77,20 @@ static int ACTIVITY_TAB_INDEX = 2;
         // if the user is logged in, we don't need to deep link
         if ([CustomerHelper getLoggedInUser]) return;
         
-        UIViewController *currentView = appDelegate.loginViewController;
+        UIViewController *currentView = appDelegate.navigationController.visibleViewController;
+        [currentView.navigationController popToRootViewControllerAnimated:YES];
         
         ResetPasswordViewController *view = [currentView.storyboard instantiateViewControllerWithIdentifier:@"ResetPassword"];
         view.customerId = resetPasswordCustomerId;
         view.resetCode = resetPasswordCode;
         
-        [currentView presentViewController:view animated:NO completion:nil];
+        [currentView presentViewController:view animated:YES completion:nil];
     }
     else if ([callHost isEqualToString:CALL_GIFT])
     {
         
         // if the user isn't logged in, we don't need to deep link
         if (![CustomerHelper getLoggedInUser]) return;
-        
-        // select the activity tab
-        [appDelegate.mainViewController setSelectedIndex:ACTIVITY_TAB_INDEX];
         
         ttGift *gift = [ttGift fetchById:self.giftId context:[CustomerHelper getContext]];
         if (gift)
@@ -109,13 +110,21 @@ static int ACTIVITY_TAB_INDEX = 2;
 {
     NSManagedObjectContext *context = [CustomerHelper getContext];
     [context refreshObject:gift mergeChanges:YES];
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UINavigationController *nav = [[appDelegate.mainViewController viewControllers] objectAtIndex:ACTIVITY_TAB_INDEX];
+    // NOTE: the user must be logged in to get here, so get the tab bar controller
+    if (appDelegate.taloolTabBarController == nil) return;
+    TaloolTabBarController *tabController = appDelegate.taloolTabBarController;
+    
     if ([gift isPending])
     {
-        AcceptGiftViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
+        AcceptGiftViewController *view = [tabController.storyboard instantiateViewControllerWithIdentifier:@"GiftView"];
         [view setGiftId:giftId];
-        [nav pushViewController:view animated:YES];
+        [tabController setSelectedIndex:ACTIVITY_TAB_INDEX];
+        if (tabController.activityView != nil) {
+             [tabController.activityView.navigationController pushViewController:view animated:YES];
+        }
+       
     }
     else
     {
@@ -124,9 +133,12 @@ static int ACTIVITY_TAB_INDEX = 2;
         if (deal)
         {
             [context refreshObject:deal mergeChanges:YES];
-            DealTableViewController *view = [nav.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
+            DealTableViewController *view = [tabController.storyboard instantiateViewControllerWithIdentifier:@"DealTableView"];
             [view setDeal:deal];
-            [nav pushViewController:view animated:YES];
+            [tabController setSelectedIndex:MYDEALS_TAB_INDEX];
+            if (tabController.myDealsView != nil) {
+                [tabController.myDealsView.navigationController pushViewController:view animated:YES];
+            }
         }
     }
 }

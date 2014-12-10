@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TaloolProtocols.h"
 
+@class TaloolTabBarController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
+@property (strong, nonatomic) TaloolTabBarController *taloolTabBarController;
 @property BOOL isNavigating;
 @property BOOL isSplashing;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

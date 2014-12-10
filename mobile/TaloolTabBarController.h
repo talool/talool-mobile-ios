@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyDealsViewController, ActivityViewController;
+
 @interface TaloolTabBarController : UITabBarController
+
+@property (strong, nonatomic) MyDealsViewController *myDealsView;
+@property (strong, nonatomic) ActivityViewController *activityView;
 
 - (void) resetViews;
 

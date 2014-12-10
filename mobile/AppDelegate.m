@@ -29,6 +29,7 @@
 
 @synthesize window = _window,
             navigationController = _navigationController,
+            taloolTabBarController = _taloolTabBarController,
             isNavigating = _isNavigating,
             isSplashing = _isSplashing;
 @synthesize managedObjectContext = _managedObjectContext;

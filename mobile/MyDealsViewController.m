@@ -32,6 +32,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <TSMessages/TSMessage.h>
+#import "TaloolTabBarController.h"
 
 @interface MyDealsViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
@@ -110,6 +111,8 @@
         [defaults setObject:MERCHANT_SORT_ALPHA forKey:MERCHANT_SORT_KEY];
     }
     
+    TaloolTabBarController *tabBar = (TaloolTabBarController *)self.tabBarController;
+    tabBar.myDealsView = self;
 }
 
 
