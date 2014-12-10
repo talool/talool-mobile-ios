@@ -101,6 +101,11 @@
         // The user hasn't approved or denied location services
         [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
+    
+    if ([self offerCount] == 0)
+    {
+        [[OperationQueueManager sharedInstance] startDealOfferOperation:self];
+    }
 }
 
 - (void) handleUserLogout
@@ -200,6 +205,11 @@
     
     [self.tableView reloadData];
     
+}
+
+- (int)offerCount
+{
+    return (int)[_fetchedResultsController.fetchedObjects count];
 }
 
 #pragma mark -
