@@ -67,10 +67,10 @@ static int ACTIVITY_TAB_INDEX = 2;
 - (void)handleDidBecomeActive
 {
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (callHost == nil || appDelegate.isSplashing) return;
+    if (callHost == nil) return;
     
-
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     // open the right view
     if ([callHost isEqualToString:CALL_PASSWORD])
     {
@@ -89,8 +89,11 @@ static int ACTIVITY_TAB_INDEX = 2;
     else if ([callHost isEqualToString:CALL_GIFT])
     {
         
-        // if the user isn't logged in, we don't need to deep link... ignore the request
-        if (![CustomerHelper getLoggedInUser]) return;
+        if (![CustomerHelper getLoggedInUser] || appDelegate.taloolTabBarController == nil)
+        {
+            // we will come back later, so don't clear the callHost yet...
+            return;
+        }
         
         ttGift *gift = [ttGift fetchById:self.giftId context:[CustomerHelper getContext]];
         if (gift)
@@ -113,7 +116,6 @@ static int ACTIVITY_TAB_INDEX = 2;
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     // NOTE: the user must be logged in to get here, so get the tab bar controller
-    if (appDelegate.taloolTabBarController == nil) return;
     TaloolTabBarController *tabController = appDelegate.taloolTabBarController;
     
     if ([gift isPending])
@@ -123,6 +125,8 @@ static int ACTIVITY_TAB_INDEX = 2;
         [tabController setSelectedIndex:ACTIVITY_TAB_INDEX];
         if (tabController.activityView != nil) {
              [tabController.activityView.navigationController pushViewController:view animated:YES];
+        } else {
+            [tabController.selectedViewController.navigationController pushViewController:view animated:YES];
         }
        
     }
@@ -138,6 +142,8 @@ static int ACTIVITY_TAB_INDEX = 2;
             [tabController setSelectedIndex:MYDEALS_TAB_INDEX];
             if (tabController.myDealsView != nil) {
                 [tabController.myDealsView.navigationController pushViewController:view animated:YES];
+            } else {
+                [tabController.selectedViewController.navigationController pushViewController:view animated:YES];
             }
         }
     }

@@ -14,6 +14,7 @@
 #import <AppDelegate.h>
 #import <MyDealsViewController.h>
 #import "ActivityViewController.h"
+#import "TaloolAppCall.h"
 
 @implementation TaloolTabBarController
 
@@ -66,6 +67,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.taloolTabBarController = self;
+    [[TaloolAppCall sharedInstance] handleDidBecomeActive]; // check for deep links we weren't ready for earlier
 }
 
 - (void) updateBadge:(NSNumber *)count
