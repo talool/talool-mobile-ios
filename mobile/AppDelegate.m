@@ -141,35 +141,6 @@
     return params;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-
-    // You should be extremely careful when handling URL requests.
-    // You must take steps to validate the URL before handling it.
-    
-    if (!url) {
-        // The URL is nil. There's nothing more to do.
-        return NO;
-    }
-    
-    NSString *URLString = [url absoluteString];
-    
-    if (!URLString) {
-        // The URL's absoluteString is nil. There's nothing more to do.
-        return NO;
-    }
-    
-    // Your application is defining the new URL type, so you should know the maximum character
-    // count of the URL. Anything longer than what you expect is likely to be dangerous.
-    NSInteger maximumExpectedLength = 50;
-    
-    if ([URLString length] > maximumExpectedLength) {
-        // The URL is longer than we expect. Stop servicing it.
-        return NO;
-    }
-    
-    return YES;
-}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
