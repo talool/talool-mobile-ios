@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Douglas McCuen. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "CustomerHelper.h"
 #import "TaloolUIButton.h"
@@ -17,6 +18,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import "TextureHelper.h"
+#import <TaloolTabBarController.h>
 #import "OperationQueueManager.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
@@ -54,15 +56,6 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Login Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
 }
 
 - (IBAction)loginAction:(id) sender
@@ -112,7 +105,7 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"login_to_mydeals" sender:self];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
@@ -127,6 +120,16 @@
                               withSender:nil];
     }
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"login_to_mydeals"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TaloolTabBarController *controller = [segue destinationViewController];
+        [controller resetViews];
+    }
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "UIImage+H568.h"
 #import <TaloolColor.h>
 #import <WhiteLabelHelper.h>
+#import "TaloolTabBarController.h"
 
 @interface TutorialViewController ()
 
@@ -94,12 +95,21 @@
 
 - (void) introDidFinish:(EAIntroView *)introView
 {
-    // mark the current tutorial as viewed
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:NO forKey:tutorialKey];
-    
     // dismiss the tutorial and show Find Deals
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"tutorial_to_mydeals" sender:self];
+    
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"tutorial_to_mydeals"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TaloolTabBarController *controller = [segue destinationViewController];
+        [controller resetViews];
+        [controller setSelectedIndex:1];
+    }
+}
+
 
 @end

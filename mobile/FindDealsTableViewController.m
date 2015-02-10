@@ -13,6 +13,8 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttDealOffer.h"
 #import "Talool-API/ttDealOfferGeoSummary.h"
+#import <TaloolTabBarController.h>
+#import "MyDealsViewController.h"
 #import "TaloolColor.h"
 #import "IconHelper.h"
 #import "TextureHelper.h"
@@ -71,6 +73,10 @@
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handlePurchase)
+                                                 name:CUSTOMER_PURCHASED_DEAL_OFFER
+                                               object:nil];
     
 }
 
@@ -96,6 +102,11 @@
     {
         // The user hasn't approved or denied location services
         [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
+    }
+    
+    if ([self offerCount] == 0)
+    {
+        [[OperationQueueManager sharedInstance] startDealOfferOperation:self];
     }
 }
 
@@ -198,6 +209,11 @@
     
 }
 
+- (int)offerCount
+{
+    return (int)[_fetchedResultsController.fetchedObjects count];
+}
+
 #pragma mark -
 #pragma mark - Table view data source
 
@@ -242,7 +258,16 @@
 
     [cell.titleLabel setText:offer.title];
     [cell.summaryLabel setText:offer.summary];
-    [cell.priceLabel setText:[NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]]];
+    
+    if ([offer isFree])
+    {
+        [cell.priceLabel setText:@"Price: Free!"];
+    }
+    else
+    {
+        [cell.priceLabel setText:[NSString stringWithFormat:@"Price: %@",[_priceFormatter stringFromNumber:[offer price]]]];
+    }
+    
     
     [cell.statsLabel setText:[NSString stringWithFormat:@"%@ deals from %@ merchants",
                               offerSummary.totalDeals,
@@ -315,6 +340,32 @@
     
     return offer;
 }
+
+-(void) handlePurchase
+{
+    // the user is on FindDeals or Activity, so we should ask if they want to be redirected
+    UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
+                                                     message:@"We've updated your account with new deals.  Would you like to see them now?"
+                                                    delegate:self
+                                           cancelButtonTitle:@"No"
+                                           otherButtonTitles:@"Yes",nil];
+    [showMe show];
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
+    {
+        // take the user to the "my deals" tab
+        [self.tabBarController setSelectedIndex:0];
+        TaloolTabBarController *tabController = (TaloolTabBarController *)self.tabBarController;
+        [tabController.myDealsView.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 
 #pragma mark -
 #pragma mark - Refresh Control

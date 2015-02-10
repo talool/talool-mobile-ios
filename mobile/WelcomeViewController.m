@@ -119,6 +119,12 @@
             _failedUser = nil;
         }
     }
+    else if ([[segue identifier] isEqualToString:@"welcome_to_mydeals"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TaloolTabBarController *controller = [segue destinationViewController];
+        [controller resetViews];
+    }
 }
 
 
@@ -278,8 +284,10 @@
     {
         [FacebookHelper trackNumberOfFriends];
         
-        [self.navigationController popToRootViewControllerAnimated:YES];
         [[OperationQueueManager sharedInstance] handleForegroundState];
+        
+        [self performSegueWithIdentifier:@"welcome_to_mydeals" sender:self];
+        
     }
     else
     {

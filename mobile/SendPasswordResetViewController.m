@@ -7,6 +7,7 @@
 //
 
 #import "SendPasswordResetViewController.h"
+#import "AppDelegate.h"
 #import "TaloolUIButton.h"
 #import "TaloolTextField.h"
 #import "TaloolColor.h"
@@ -49,15 +50,6 @@
     [tracker set:kGAIScreenName value:@"Send Password Reset Email Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,7 @@
 
 // TODO: enable/disable the button based on ttCustomer.isValid
 #import "RegistrationViewController.h"
+#import "AppDelegate.h"
 #import "CustomerHelper.h"
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttSocialAccount.h"
@@ -115,15 +116,6 @@
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Registration Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
 }
 
 #pragma mark -
@@ -288,10 +280,7 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:WELCOME_TUTORIAL_KEY];
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"showTutorial" sender:self];
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
@@ -303,6 +292,16 @@
                                withTitle:@"Authentication Failed"
                               withCancel:@"Try again"
                               withSender:nil];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showTutorial"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TutorialViewController *tvc = [segue destinationViewController];
+        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
     }
 }
 

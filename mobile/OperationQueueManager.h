@@ -11,6 +11,7 @@
 #import "FacebookSDK/FacebookSDK.h"
 #import "TaloolProtocols.h"
 
+static NSString *REG_NOTIFICATION = @"CUSTOMER_REGISTRATION";
 static NSString *LOGIN_NOTIFICATION = @"CUSTOMER_LOGGED_IN";
 static NSString *LOGOUT_NOTIFICATION = @"CUSTOMER_LOGGED_OUT";
 static NSString *CUSTOMER_ACCEPTED_GIFT = @"CUSTOMER_ACCEPTED_GIFT";

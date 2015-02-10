@@ -310,7 +310,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		5749444CD6524D9DB18E06E3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8108CBB61836D032006E39EC /* DealOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealOfferCell.h; sourceTree = "<group>"; };
 		8108CBB71836D032006E39EC /* DealOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealOfferCell.m; sourceTree = "<group>"; };
@@ -581,6 +580,8 @@
 		919A331617452F1B0093FAC4 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		91CC60BD16F5222C00647AEC /* FacebookHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookHelper.h; sourceTree = "<group>"; };
 		91CC60BE16F5222C00647AEC /* FacebookHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookHelper.m; sourceTree = "<group>"; };
+		E8B2C02953A31BA91F02AC54 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FF94C3A57FC1B6EBA5F9DEA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -917,6 +918,15 @@
 			name = Global;
 			sourceTree = "<group>";
 		};
+		8B7E982CB08135E2DA0452E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8B2C02953A31BA91F02AC54 /* Pods.debug.xcconfig */,
+				FF94C3A57FC1B6EBA5F9DEA4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
@@ -924,7 +934,7 @@
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
 				9103110A16D1E53800CEE814 /* Products */,
-				2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */,
+				8B7E982CB08135E2DA0452E4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1378,7 +1388,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1600,7 +1610,6 @@
 /* Begin XCBuildConfiguration section */
 		8155FA2918BE9F6F00314DB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1635,7 +1644,6 @@
 		};
 		8155FA2A18BE9F6F00314DB3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1732,11 +1740,12 @@
 		};
 		9103114D16D1E53900CEE814 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
+			baseConfigurationReference = E8B2C02953A31BA91F02AC54 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1767,11 +1776,12 @@
 		};
 		9103114E16D1E53900CEE814 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C02141BBEA44D77AC6B30E9 /* Pods.xcconfig */;
+			baseConfigurationReference = FF94C3A57FC1B6EBA5F9DEA4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

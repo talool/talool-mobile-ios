@@ -157,10 +157,8 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate presentNewDeals];
         [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else
     {
@@ -375,12 +373,22 @@
 // Create and present a BTPaymentViewController (that has a cancel button)
 - (void)buyNow:(id)sender
 {
-    if (_clientToken)
+    if ([self.offer isFree]==YES)
     {
-        _fundraisingCode = nil;
-        [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+        // download the deals
+        [[OperationQueueManager sharedInstance] startPurchaseOperation:nil
+                                                                 offer:offer
+                                                            fundraiser:nil
+                                                              delegate:self];
     }
-    
+    else
+    {
+        if (_clientToken)
+        {
+            _fundraisingCode = nil;
+            [self.navigationController pushViewController:[self getPaymentController:NO] animated:YES];
+        }
+    }
 }
 
 - (void)activateCode:(id)sender

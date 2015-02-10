@@ -16,6 +16,7 @@
     NSNumberFormatter * _priceFormatter;
     NSArray * _originalToolbarItems;
     NSArray * _limitedToolbarItems;
+    NSArray * _freeToolbarItems;
     id<TaloolDealOfferActionDelegate> _delegate;
 }
 
@@ -51,7 +52,12 @@
         _originalToolbarItems = toolbar.items;
         NSMutableArray *newToolBarArray = [NSMutableArray arrayWithArray:toolbar.items];
         [newToolBarArray removeObjectAtIndex:1];
+        [newToolBarArray removeObjectAtIndex:3];
         _limitedToolbarItems = newToolBarArray;
+        
+        NSMutableArray *freeToolBarArray = [NSMutableArray arrayWithArray:_originalToolbarItems];
+        [freeToolBarArray removeObjectAtIndex:3];
+        _freeToolbarItems = freeToolBarArray;
         
         [self addSubview:view];
     }
@@ -72,12 +78,21 @@
     
     // Hide the buy button if the deal offer is expired
     NSDate *today = [NSDate date];
-    if ([today compare:offer.expires] == NSOrderedDescending) {
+    if ([offer isFree]==YES)
+    {
+        [toolbar setItems:_freeToolbarItems animated:NO];
+        FAKFontAwesome *bookIcon = [FAKFontAwesome bookIconWithSize:16];
+        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", bookIcon.characterCode, @"Get Yours Now"]];
+        
+    }
+    else if ([today compare:offer.expires] == NSOrderedDescending) {
         [toolbar setItems:_limitedToolbarItems animated:NO];
     }
     else
     {
         [toolbar setItems:_originalToolbarItems animated:NO];
+        FAKFontAwesome *buyIcon = [FAKFontAwesome moneyIconWithSize:16];
+        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", buyIcon.characterCode, @"Buy Now"]];
     }
     
 }
