@@ -532,6 +532,7 @@
 {
     if (_giftId)
     {
+#warning "iphone6 shows this multiple times"
         NSManagedObjectContext *context = [CustomerHelper getContext];
         ttGift *gift = [ttGift fetchById:_giftId context:context];
         if (gift.giftId)
