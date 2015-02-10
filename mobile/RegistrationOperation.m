@@ -10,6 +10,7 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttSocialAccount.h"
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
+#import "OperationQueueManager.h"
 
 @interface RegistrationOperation()
 
@@ -101,6 +102,9 @@
             [(NSObject *)self.delegate performSelectorOnMainThread:(@selector(userAuthComplete:))
                                                         withObject:delegateResponse
                                                      waitUntilDone:NO];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:REG_NOTIFICATION object:delegateResponse userInfo:delegateResponse];
+            });
         }
         
     }

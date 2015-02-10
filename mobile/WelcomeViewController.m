@@ -22,7 +22,6 @@
 #import "TextureHelper.h"
 #import <OperationQueueManager.h>
 #import <SVProgressHUD/SVProgressHUD.h>
-#import <Crashlytics/Crashlytics.h>
 
 @interface WelcomeViewController ()
 - (IBAction)fbButtonClicked:(id)sender;
@@ -95,8 +94,7 @@
     [super viewDidAppear:animated];
     
     if ([CustomerHelper getLoggedInUser]) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 
@@ -120,6 +118,12 @@
             [[segue destinationViewController] setFailedUser:_failedUser];
             _failedUser = nil;
         }
+    }
+    else if ([[segue identifier] isEqualToString:@"welcome_to_mydeals"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TaloolTabBarController *controller = [segue destinationViewController];
+        [controller resetViews];
     }
 }
 
@@ -282,8 +286,8 @@
         
         [[OperationQueueManager sharedInstance] handleForegroundState];
         
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
+        [self performSegueWithIdentifier:@"welcome_to_mydeals" sender:self];
+        
     }
     else
     {

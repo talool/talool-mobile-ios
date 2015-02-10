@@ -25,7 +25,6 @@
 #import "CustomerHelper.h"
 #import "LocationHelper.h"
 #import "TaloolColor.h"
-#import "TutorialViewController.h"
 #import "OperationQueueManager.h"
 #import "MerchantFilterMenu.h"
 #import "SimpleHeaderView.h"
@@ -33,6 +32,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <TSMessages/TSMessage.h>
+#import "TaloolTabBarController.h"
 
 @interface MyDealsViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
@@ -42,7 +42,6 @@
 @property (strong, nonatomic) MerchantFilterMenu *menu;
 @property (strong, nonatomic) ttDealAcquire *giftedDeal;
 @property (strong, nonatomic) NSString *giftId;
-@property BOOL resetAfterLogin;
 @end
 
 
@@ -112,6 +111,8 @@
         [defaults setObject:MERCHANT_SORT_ALPHA forKey:MERCHANT_SORT_KEY];
     }
     
+    TaloolTabBarController *tabBar = (TaloolTabBarController *)self.tabBarController;
+    tabBar.myDealsView = self;
 }
 
 
@@ -119,27 +120,20 @@
 {
     [super viewWillAppear:animated];
     
-    if (![CustomerHelper getLoggedInUser]) {
-        // The user isn't logged in, so kick them to the welcome view
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToLoginView];
+    if ([CustomerHelper getLoggedInUser] == nil)
+    {
+        [self performSegueWithIdentifier:@"mydeals_unwind" sender:self];
+
     }
     else
     {
         [self initLeftBarButtons];
-         
+        
         // see if we lost the predicate for the fetchedResultsController
         if (!_fetchedResultsController.fetchRequest.predicate)
         {
             [self forcedClearOfTableView];
         }
-        
-        if (_resetAfterLogin)
-        {
-            [self forcedClearOfTableView];
-        }
-        
-        [self askForHelp];
         
         self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
         
@@ -151,43 +145,39 @@
         [tracker send:[[GAIDictionaryBuilder createAppView] build]];
     }
     
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if ([CustomerHelper getLoggedInUser]) {
-        if (![LocationHelper sharedInstance].locationManagerStatusKnown)
-        {
-            // The user hasn't approved or denied location services
-            [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
-        }
-        
-        if ([self merchantCount]==0)
-        {
-            [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
-            
-            [TSMessage showNotificationInViewController:self
-                                                  title:@"Welcome!"
-                                               subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
-                                                  image:nil
-                                                   type:TSMessageNotificationTypeMessage
-                                               duration:TSMessageNotificationDurationEndless
-                                               callback:nil
-                                            buttonTitle:nil
-                                         buttonCallback:nil
-                                             atPosition:TSMessageNotificationPositionTop
-                                   canBeDismissedByUser:YES];
-            
-        }
-    }
-    else
+    if (![LocationHelper sharedInstance].locationManagerStatusKnown)
     {
-        // The user isn't logged in, so kick them to the welcome view
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToLoginView];
+        // The user hasn't approved or denied location services
+        [[LocationHelper sharedInstance] promptForLocationServiceAuthorization];
     }
+    
+    if ([self merchantCount]==0)
+    {
+        [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
+        
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Welcome!"
+                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                              image:nil
+                                               type:TSMessageNotificationTypeMessage
+                                           duration:TSMessageNotificationDurationEndless
+                                           callback:nil
+                                        buttonTitle:nil
+                                     buttonCallback:nil
+                                         atPosition:TSMessageNotificationPositionTop
+                               canBeDismissedByUser:YES];
+        
+    }
+    
+
+    
     
 }
 
@@ -199,8 +189,8 @@
 
 - (void) handleUserLogin:(NSNotification *)message
 {
-    _resetAfterLogin = YES;
     [_menu setSelectedIndex:0];
+    [self forcedClearOfTableView];
 }
 
 - (void) handleLocationEnabled:(NSNotification *)message
@@ -364,7 +354,6 @@
  */
 - (void) forcedClearOfTableView
 {
-    _resetAfterLogin = NO;
     NSPredicate *purgePredicate = [NSPredicate predicateWithFormat:@"SELF.name == nil"];
     _fetchedResultsController = [self fetchedResultsControllerWithPredicate:purgePredicate];
     [self resetFetchedResultsController:NO];
@@ -425,22 +414,6 @@
     }
     
     [self.tableView reloadData];
-}
-
-#pragma mark -
-#pragma mark - Help Overlay Methods
-
-- (void) askForHelp
-{
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:WELCOME_TUTORIAL_KEY])
-    {
-        TutorialViewController *tvc = [[TutorialViewController alloc] init];
-        [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
-        [tvc setHidesBottomBarWhenPushed:YES];
-        [self presentViewController:tvc animated:NO completion:nil];
-        [self.tabBarController setSelectedIndex:1]; // kick the user over to Find Deals
-    }
-    
 }
 
 - (int)merchantCount
@@ -559,6 +532,7 @@
 {
     if (_giftId)
     {
+#warning "iphone6 shows this multiple times"
         NSManagedObjectContext *context = [CustomerHelper getContext];
         ttGift *gift = [ttGift fetchById:_giftId context:context];
         if (gift.giftId)

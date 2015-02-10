@@ -29,13 +29,11 @@
 
 @synthesize window = _window,
             navigationController = _navigationController,
-            mainViewController = _mainViewController,
-            loginViewController = _loginViewController,
+            taloolTabBarController = _taloolTabBarController,
             isNavigating = _isNavigating,
             isSplashing = _isSplashing;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize splashView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -48,18 +46,24 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    self.isSplashing = YES;
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]];
     
-    self.splashView = [storyboard instantiateViewControllerWithIdentifier:@"SplashView"];
-    [self.window addSubview:self.splashView.view];
+    _navigationController = [storyboard instantiateViewControllerWithIdentifier:@"splash_nav"];
+    [self.window addSubview:_navigationController.view];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = self.splashView;
+    [self.window setRootViewController:_navigationController];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUserLogin:)
                                                  name:LOGIN_NOTIFICATION
                                                object:nil];
-    self.isSplashing = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleUserLogin:)
+                                                 name:REG_NOTIFICATION
+                                               object:nil];
+    
     
     return YES;
 }
@@ -137,35 +141,6 @@
     return params;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-
-    // You should be extremely careful when handling URL requests.
-    // You must take steps to validate the URL before handling it.
-    
-    if (!url) {
-        // The URL is nil. There's nothing more to do.
-        return NO;
-    }
-    
-    NSString *URLString = [url absoluteString];
-    
-    if (!URLString) {
-        // The URL's absoluteString is nil. There's nothing more to do.
-        return NO;
-    }
-    
-    // Your application is defining the new URL type, so you should know the maximum character
-    // count of the URL. Anything longer than what you expect is likely to be dangerous.
-    NSInteger maximumExpectedLength = 50;
-    
-    if ([URLString length] > maximumExpectedLength) {
-        // The URL is longer than we expect. Stop servicing it.
-        return NO;
-    }
-    
-    return YES;
-}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -238,24 +213,6 @@
                           }];
 }
 
--(void) presentNewDeals
-{
-    
-    if (self.mainViewController.selectedIndex > 0)
-    {
-
-        // the user is on FindDeals or Activity, so we should ask if they want to be redirected
-        UIAlertView *showMe = [[UIAlertView alloc] initWithTitle:@"You've Got New Deals!"
-                                                            message:@"We've updated your account with new deals.  Would you like to see them now?"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"No"
-                                                  otherButtonTitles:@"Yes",nil];
-        [showMe show];
-
-    }
-
-}
-
 -(void) setUserAgent
 {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -275,56 +232,6 @@
     NSLog(@"UserAgent appVersion: %@ iOSVersion: %@", appVersion, iosVersion);
     
     [[TaloolFrameworkHelper sharedInstance] setUserAgent:appVersion iosVersion:iosVersion];
-}
-
-- (void) switchToMainView
-{
-    if (self.isSplashing)
-    {
-        [self.splashView.view removeFromSuperview];
-        self.isSplashing = NO;
-    }
-    else
-    {
-        [self.loginViewController.view removeFromSuperview];
-    }
-    
-    [self.window setRootViewController:(UIViewController *)self.mainViewController];
-    [self.window makeKeyAndVisible];
-    [self.mainViewController.navigationController popToRootViewControllerAnimated:NO];
-    
-    ttCustomer *customer = [CustomerHelper getLoggedInUser];
-    [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
-    [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
-}
-
-- (void) switchToLoginView
-{
-    if (self.isSplashing)
-    {
-        [self.splashView.view removeFromSuperview];
-        self.isSplashing = NO;
-    }
-    else
-    {
-        [self.mainViewController.view removeFromSuperview];
-    }
-    
-    [self.window setRootViewController:(UIViewController *)self.loginViewController];
-    [self.window makeKeyAndVisible];
-    [self.loginViewController popToRootViewControllerAnimated:NO];
-}
-
-#pragma mark - UIAlertViewDelegate 
-
--(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"])
-    {
-        // take the user to the "my deals" tab
-        [self.mainViewController setSelectedIndex:0];
-        [self.mainViewController.selectedViewController.navigationController popToRootViewControllerAnimated:NO];
-    }
 }
 
 #pragma mark - Core Data stack
@@ -453,6 +360,10 @@
 - (void) handleUserLogin:(NSNotification *)message
 {
     [[self managedObjectContext] reset];
+    
+    ttCustomer *customer = [CustomerHelper getLoggedInUser];
+    [Crashlytics setUserEmail:[NSString stringWithFormat:@"%@",customer.email]];
+    [Crashlytics setUserName:[NSString stringWithFormat:@"%@ %@",customer.firstName, customer.lastName]];
 }
 
 

@@ -29,6 +29,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "TaloolTabBarController.h"
 
 @interface ActivityViewController ()
 @property (nonatomic, retain) NSArray *sortDescriptors;
@@ -90,6 +91,9 @@
     _tableHeader = [[SimpleHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 50.0)];
     [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
                      subtitle:[_menu getSubtitleAtSelectedIndex]];
+    
+    TaloolTabBarController *tabBar = (TaloolTabBarController *)self.tabBarController;
+    tabBar.activityView = self;
     
 }
 

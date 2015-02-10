@@ -65,16 +65,6 @@
     
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if ([CustomerHelper getLoggedInUser] != nil) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate switchToMainView];
-    }
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -157,25 +147,16 @@
     [SVProgressHUD dismiss];
     
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
-    NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
     if (success)
     {
-        ttCustomer *customer = [CustomerHelper getLoggedInUser];
-        if (customer)
-        {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        else
-        {
-            [CustomerHelper showAlertMessage:@"We were unable to complete your password change.  Please try again later."
-                                   withTitle:@"Password Reset Failure"
-                                  withCancel:@"Ok"
-                                  withSender:nil];
-        }
-        
+        [[OperationQueueManager sharedInstance] handleForegroundState];
+        [self dismissViewControllerAnimated:NO completion:nil];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.navigationController popToRootViewControllerAnimated:NO];
     }
     else
     {
+        NSError *error = [response objectForKey:DELEGATE_RESPONSE_ERROR];
         [CustomerHelper showAlertMessage:error.localizedDescription
                                withTitle:@"Password Reset Failure"
                               withCancel:@"Ok"

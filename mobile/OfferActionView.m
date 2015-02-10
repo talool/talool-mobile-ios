@@ -82,7 +82,7 @@
     {
         [toolbar setItems:_freeToolbarItems animated:NO];
         FAKFontAwesome *bookIcon = [FAKFontAwesome bookIconWithSize:16];
-        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", bookIcon.characterCode, @"Download"]];
+        [buyButton setTitle:[NSString stringWithFormat:@"%@  %@", bookIcon.characterCode, @"Get Yours Now"]];
         
     }
     else if ([today compare:offer.expires] == NSOrderedDescending) {

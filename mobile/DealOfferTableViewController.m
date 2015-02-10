@@ -157,10 +157,8 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate presentNewDeals];
         [[OperationQueueManager sharedInstance] startActivityOperation:nil completionHander:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else
     {

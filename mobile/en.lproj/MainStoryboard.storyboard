@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="20T-kB-mH2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qfe-3S-Pf3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -29,13 +29,37 @@
                             <constraint firstItem="9xP-eW-wzy" firstAttribute="bottom" secondItem="ytO-jt-56l" secondAttribute="bottom" id="zLY-Ov-HeH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aVZ-3Z-kom"/>
                     <connections>
                         <outlet property="defaultImage" destination="9xP-eW-wzy" id="OUr-gt-qLz"/>
+                        <segue destination="4" kind="push" identifier="splash_to_mydeals" id="nnw-3f-B8b"/>
+                        <segue destination="smi-JA-E6U" kind="push" identifier="splash_to_welcome" id="F87-D4-XDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpz-6i-Qm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="-4142"/>
+            <point key="canvasLocation" x="-1050" y="385"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lon-57-JJn">
+            <objects>
+                <navigationController storyboardIdentifier="splash_nav" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Qfe-3S-Pf3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xPG-Ss-HIR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="20T-kB-mH2" kind="relationship" relationship="rootViewController" id="csO-VB-W56"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gXu-y5-Aya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1592" y="385"/>
         </scene>
         <!--Talool Tab Bar Controller-->
         <scene sceneID="15">
@@ -57,7 +81,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="385"/>
+            <point key="canvasLocation" x="1975" y="381"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="3Vy-2K-cP9">
@@ -152,7 +176,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPc-BT-WF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="-2178"/>
+            <point key="canvasLocation" x="1582" y="1066"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="oVh-Wo-X4i">
@@ -314,34 +338,13 @@
                         <outlet property="confirmPasswordField" destination="v6Z-5F-Hzq" id="giE-Du-Onb"/>
                         <outlet property="logo" destination="Bll-8N-aEt" id="qDK-UQ-yBc"/>
                         <outlet property="passwordField" destination="o34-w4-QWf" id="i61-E6-sfU"/>
+                        <segue destination="cPz-Cc-Bdc" kind="unwind" identifier="reset_unwind" unwindAction="unwindToSplash:" id="TKq-Ob-BfX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frI-n2-2R2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cPz-Cc-Bdc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2099" y="-2178"/>
-        </scene>
-        <!--Login Navigation-->
-        <scene sceneID="Mzy-Zh-Nqh">
-            <objects>
-                <navigationController storyboardIdentifier="LoginNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fQH-XP-sFd" userLabel="Login Navigation" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="O6b-3a-Ik2"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nzs-kv-bVG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="smi-JA-E6U" kind="relationship" relationship="rootViewController" id="osI-ej-W4m"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fcS-94-Sfm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1" y="-2519"/>
+            <point key="canvasLocation" x="1582" y="1774"/>
         </scene>
         <!--Welcome to Talool-->
         <scene sceneID="Cnn-fG-aJo">
@@ -457,7 +460,7 @@
                                                         <color key="titleShadowColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="uBs-OK-FZH" kind="push" id="WaB-u7-aem"/>
+                                                        <segue destination="uBs-OK-FZH" kind="push" identifier="welcome_to_login" id="WaB-u7-aem"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -500,17 +503,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Welcome to Talool" id="e09-xp-g0J">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bi4-Yn-UuJ"/>
+                        <barButtonItem key="backBarButtonItem" enabled="NO" title=" " id="bi4-Yn-UuJ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="facebookButton" destination="SOl-2i-T9d" id="ius-oF-kIi"/>
                         <outlet property="regButton" destination="j8h-k7-kbF" id="AId-00-nq1"/>
                         <outlet property="signinButton" destination="0GP-hG-WXj" id="2n5-nc-Ydc"/>
+                        <segue destination="7T8-dp-NIr" kind="unwind" identifier="welcome_unwind" unwindAction="unwindToSplash:" id="5uP-Bc-LPJ"/>
+                        <segue destination="4" kind="push" identifier="welcome_to_mydeals" id="QxD-zv-a3o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vpq-Bj-eSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7T8-dp-NIr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="561" y="-2519"/>
+            <point key="canvasLocation" x="-269" y="385"/>
         </scene>
         <!--Log In-->
         <scene sceneID="RO0-Bt-GUL">
@@ -628,11 +634,14 @@
                         <outlet property="forgotButton" destination="tnM-jL-njQ" id="51Z-Ju-fAv"/>
                         <outlet property="passwordField" destination="6IM-kO-l59" id="enL-ut-oUD"/>
                         <outlet property="signinButton" destination="7Bh-Kt-yYY" id="d3h-EY-3MS"/>
+                        <segue destination="XVe-qP-qLQ" kind="unwind" identifier="login_unwind" unwindAction="unwindToSplash:" id="6dG-kf-Prz"/>
+                        <segue destination="4" kind="push" identifier="login_to_mydeals" id="uEn-bZ-qa5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tz4-lK-3Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="XVe-qP-qLQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="-2178"/>
+            <point key="canvasLocation" x="565" y="834"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="YWw-G9-qca">
@@ -886,11 +895,37 @@
                         <outlet property="passwordField" destination="IG8-BV-pgS" id="GmP-9o-Y6I"/>
                         <outlet property="regButton" destination="xar-xf-w6Y" id="0tv-rt-F0i"/>
                         <outlet property="sexPicker" destination="9jL-b1-3NG" id="daR-Ci-EyA"/>
+                        <segue destination="8ly-oM-ne5" kind="unwind" identifier="reg_unwind" unwindAction="unwindToSplash:" id="IBY-ac-Cxb"/>
+                        <segue destination="ivS-WS-HeA" kind="push" identifier="showTutorial" id="sy1-9h-Ydu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIl-Lz-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8ly-oM-ne5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1131" y="-2969"/>
+            <point key="canvasLocation" x="565" y="-45"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="qxY-6J-NQF">
+            <objects>
+                <viewController storyboardIdentifier="Tutorial" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ivS-WS-HeA" customClass="TutorialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mo0-VL-cRG"/>
+                        <viewControllerLayoutGuide type="bottom" id="FET-Fo-pa2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zUg-XW-Xc1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.098039215690000001" green="0.73725490199999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="f1K-de-jtI"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <segue destination="4" kind="push" identifier="tutorial_to_mydeals" id="6Qc-hv-zQ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUm-ke-Kcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1138" y="-45"/>
         </scene>
         <!--Activity-->
         <scene sceneID="s5q-0c-13S">
@@ -1177,7 +1212,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOs-BK-Atm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="1074"/>
+            <point key="canvasLocation" x="3242" y="1066"/>
         </scene>
         <!--A Gift For You!-->
         <scene sceneID="cZY-0l-X29">
@@ -1388,7 +1423,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U72-uF-vER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="1074"/>
+            <point key="canvasLocation" x="3647" y="1066"/>
         </scene>
         <!--Settings-->
         <scene sceneID="3FZ-Fi-RuH">
@@ -1600,13 +1635,13 @@
                         <outlet property="logoutCell" destination="VH0-jv-Tde" id="Wf6-1V-BJn"/>
                         <outlet property="nameLabel" destination="TZr-xT-pgA" id="GIZ-rz-NQm"/>
                         <outlet property="versionLabel" destination="Y2k-aP-Bec" id="4xC-Fw-kBl"/>
-                        <segue destination="wci-Hs-PRq" kind="unwind" identifier="logoutUser" unwindAction="logoutAction:" id="aiu-i8-P0x"/>
+                        <segue destination="wci-Hs-PRq" kind="unwind" identifier="settings_unwind" unwindAction="unwindToSplash:" id="bal-TQ-aGO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wD6-DU-ZHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wci-Hs-PRq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="-1056"/>
+            <point key="canvasLocation" x="3654" y="-1064"/>
         </scene>
         <!--Talool Mobile Web View Controller-->
         <scene sceneID="4vm-L8-T8Y">
@@ -1617,7 +1652,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6fD-CN-aww"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0hd-9A-sqJ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vN-sa-wLC">
@@ -1643,7 +1678,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAL-9Z-vV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="-1056"/>
+            <point key="canvasLocation" x="4522" y="-1064"/>
         </scene>
         <!--My Deals View Controller-->
         <scene sceneID="WAl-Ln-O8T">
@@ -1794,16 +1829,18 @@
                     </refreshControl>
                     <connections>
                         <segue destination="T3Y-E6-Szt" kind="push" identifier="showSettings" id="ehP-6g-3KM"/>
+                        <segue destination="pve-GG-Pdr" kind="unwind" identifier="mydeals_unwind" unwindAction="unwindToSplash:" id="7H9-0i-pSB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pq-2a-uqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pve-GG-Pdr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="-304"/>
+            <point key="canvasLocation" x="3232" y="-312"/>
         </scene>
-        <!--Title-->
+        <!--Merchant Table View-->
         <scene sceneID="0Og-SG-dlz">
             <objects>
-                <tableViewController storyboardIdentifier="MerchantView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nmK-ha-uWj" customClass="MerchantTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MerchantView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nmK-ha-uWj" userLabel="Merchant Table View" customClass="MerchantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="uSd-9i-RfO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1909,7 +1946,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJE-gQ-N0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="-304"/>
+            <point key="canvasLocation" x="3647" y="-312"/>
         </scene>
         <!--Find Deals-->
         <scene sceneID="C8h-EV-CWJ">
@@ -2014,7 +2051,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Adx-n2-CRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="389"/>
+            <point key="canvasLocation" x="3237" y="381"/>
         </scene>
         <!--Deal Offer Table View Controller-->
         <scene sceneID="sek-B7-El3">
@@ -2118,7 +2155,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibb-FS-5mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="386"/>
+            <point key="canvasLocation" x="3647" y="378"/>
         </scene>
         <!--Merchant Deals View Controller-->
         <scene sceneID="eWo-fd-d6i">
@@ -2183,7 +2220,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcd-QC-6Z7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="385"/>
+            <point key="canvasLocation" x="4522" y="377"/>
         </scene>
         <!--Merchant Location View Controller-->
         <scene sceneID="d9G-s8-gAF">
@@ -2339,7 +2376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvD-bN-0ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525" y="-304"/>
+            <point key="canvasLocation" x="4517" y="-312"/>
         </scene>
         <!--Person View Controller-->
         <scene sceneID="Lkc-3X-VLb">
@@ -2387,7 +2424,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvL-Qu-UGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="-304"/>
+            <point key="canvasLocation" x="4948" y="-312"/>
         </scene>
         <!--Deal Table View Controller-->
         <scene sceneID="ORh-y5-dwy">
@@ -2557,7 +2594,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xt-l1-w9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2099" y="-304"/>
+            <point key="canvasLocation" x="4091" y="-312"/>
         </scene>
         <!--My Deals Nav-->
         <scene sceneID="N06-2z-WXY">
@@ -2581,7 +2618,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXn-Fu-znN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="-304"/>
+            <point key="canvasLocation" x="2706" y="-312"/>
         </scene>
         <!--Find Deals Nav-->
         <scene sceneID="ao3-57-edJ">
@@ -2605,7 +2642,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOV-U3-5dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="386"/>
+            <point key="canvasLocation" x="2706" y="378"/>
         </scene>
         <!--Activity Nav-->
         <scene sceneID="eK6-ke-7AL">
@@ -2629,7 +2666,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="os9-VR-VZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="706" y="1074"/>
+            <point key="canvasLocation" x="2690" y="1066"/>
         </scene>
         <!--Fundraising-->
         <scene sceneID="Oas-Tn-pGe">
@@ -2751,7 +2788,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfw-sO-GWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2099" y="385"/>
+            <point key="canvasLocation" x="4091" y="377"/>
         </scene>
     </scenes>
     <resources>
@@ -2766,6 +2803,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="nnw-3f-B8b"/>
         <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

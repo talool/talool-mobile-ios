@@ -10,8 +10,15 @@
 #import "TaloolColor.h"
 #import <FontAwesomeKit/FontAwesomeKit.h>
 #import "OperationQueueManager.h"
+#import "CustomerHelper.h"
+#import <AppDelegate.h>
+#import <MyDealsViewController.h>
+#import "ActivityViewController.h"
+#import "TaloolAppCall.h"
 
 @implementation TaloolTabBarController
+
+@synthesize myDealsView, activityView;
 
 - (void)viewDidLoad
 {
@@ -57,6 +64,10 @@
                                              selector:@selector(handleActivity:)
                                                  name:ACTIVITY_NOTIFICATION
                                                object:nil];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.taloolTabBarController = self;
+    [[TaloolAppCall sharedInstance] handleDidBecomeActive]; // check for deep links we weren't ready for earlier
 }
 
 - (void) updateBadge:(NSNumber *)count
@@ -91,6 +102,14 @@
 - (void) handleUserLogout
 {
     [self updateBadge:nil];
+}
+
+- (void) resetViews
+{
+    for (UINavigationController *c in self.viewControllers)
+    {
+        [c popToRootViewControllerAnimated:NO];
+    }
 }
 
 @end

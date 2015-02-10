@@ -185,28 +185,36 @@
     BOOL result = NO;
     NSError *error;
     NSManagedObjectContext *context = [self getContext];
-    [ttGift getGiftById:self.giftId customer:customer context:context error:&error];
-    ttGift *gift = [ttGift fetchById:self.giftId context:context];
-    if (gift)
-    {
+    result = [ttGift getGiftById:self.giftId customer:customer context:context error:&error];
+    if (result) {
         
-        if (gift.deal && gift.deal.dealOfferId)
+        // get the gift from the context
+        ttGift *gift = [ttGift fetchById:self.giftId context:context];
+        if (gift)
         {
-            NSString *dealOfferId = gift.deal.dealOfferId;
-            // see if the offer is in the context
-            ttDealOffer *offer = [ttDealOffer fetchById:dealOfferId context:context];
-            if (!offer.dealOfferId)
+            
+            if (gift.deal && gift.deal.dealOfferId)
             {
-                // get the offer for this gift
-                result = [ttDealOffer getById:dealOfferId customer:customer context:context error:&error];
+                NSString *dealOfferId = gift.deal.dealOfferId;
+                // see if the offer is in the context
+                ttDealOffer *offer = [ttDealOffer fetchById:dealOfferId context:context];
+                if (!offer.dealOfferId)
+                {
+                    // get the offer for this gift
+                    result = [ttDealOffer getById:dealOfferId customer:customer context:context error:&error];
+                }
             }
             else
             {
-                result = YES;
+                // couldn't get the deal for the gift... should never happen
+                result = NO;
+                // TODO cook up an error message
             }
+            
         }
         else
         {
+            // couldn't get the gift from the context... should never happen
             result = NO;
             // TODO cook up an error message
         }
