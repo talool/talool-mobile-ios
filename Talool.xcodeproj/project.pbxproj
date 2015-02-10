@@ -352,7 +352,6 @@
 		81517B5117FC62650020A688 /* TaloolTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTextField.m; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8155FA2B18BE9F6F00314DB3 /* SaveAround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAround.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8155FA2C18BE9F7000314DB3 /* SaveAround-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SaveAround-Info.plist"; path = "/Users/dmccuen/git/whitelabel/talool-mobile-ios/SaveAround-Info.plist"; sourceTree = "<absolute>"; };
 		8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_58.png; sourceTree = "<group>"; };
 		8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_80.png; sourceTree = "<group>"; };
 		8155FA3018BEA57500314DB3 /* SA_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_120.png; sourceTree = "<group>"; };
@@ -723,7 +722,6 @@
 		8155FA2D18BEA39700314DB3 /* SaveAround */ = {
 			isa = PBXGroup;
 			children = (
-				8155FA2C18BE9F7000314DB3 /* SaveAround-Info.plist */,
 				81E6032518C14352004A017B /* SA_Default-568h@2x.png */,
 				81E6032618C14352004A017B /* SA_Default@2x.png */,
 				8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */,
