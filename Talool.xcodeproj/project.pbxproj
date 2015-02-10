@@ -232,6 +232,7 @@
 		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
 		81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
 		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
+		81BF38071A8AA1350052EBEF /* SaveAround-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */; };
 		81C23E1318A086A000127F83 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
 		81C23E1518A086A000127F83 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
 		81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
@@ -477,6 +478,7 @@
 		81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDealLayoutState.m; sourceTree = "<group>"; };
 		81BD12C31791BCA300AF7475 /* DealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLayoutState.h; sourceTree = "<group>"; };
 		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
+		81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SaveAround-Info.plist"; sourceTree = "<group>"; };
 		81C23DF818A0839700127F83 /* welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome0@2x.png"; sourceTree = "<group>"; };
 		81C23E0E18A086A000127F83 /* welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome1@2x.png"; sourceTree = "<group>"; };
 		81C23E1018A086A000127F83 /* welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome3@2x.png"; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 		8155FA2D18BEA39700314DB3 /* SaveAround */ = {
 			isa = PBXGroup;
 			children = (
+				81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */,
 				81E6032518C14352004A017B /* SA_Default-568h@2x.png */,
 				81E6032618C14352004A017B /* SA_Default@2x.png */,
 				8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */,
@@ -1293,6 +1296,7 @@
 				8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */,
 				8190F2E11853B44200FF0AFB /* EmailConfirmationView.xib in Resources */,
 				819092CE17FCB2CF00699C39 /* Default-568h@2x.png in Resources */,
+				81BF38071A8AA1350052EBEF /* SaveAround-Info.plist in Resources */,
 				8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */,
 				81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */,
 				81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */,
