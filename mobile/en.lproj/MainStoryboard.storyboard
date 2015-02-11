@@ -1553,7 +1553,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="merchant" id="Vch-VY-fmq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
                                         <rect key="frame" x="0.0" y="279" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHU-bg-EyC" id="6MQ-l5-bRy">
@@ -1634,6 +1634,7 @@
                         <outlet property="logoutButton" destination="Swu-yj-sjq" id="Yv4-jS-QfY"/>
                         <outlet property="logoutCell" destination="VH0-jv-Tde" id="Wf6-1V-BJn"/>
                         <outlet property="nameLabel" destination="TZr-xT-pgA" id="GIZ-rz-NQm"/>
+                        <outlet property="publisherCell" destination="zHU-bg-EyC" id="y1k-dI-Nou"/>
                         <outlet property="versionLabel" destination="Y2k-aP-Bec" id="4xC-Fw-kBl"/>
                         <segue destination="wci-Hs-PRq" kind="unwind" identifier="settings_unwind" unwindAction="unwindToSplash:" id="bal-TQ-aGO"/>
                     </connections>
