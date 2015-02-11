@@ -235,17 +235,8 @@
 		81BF39701A8AA9950052EBEF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE459417A379D300F5643E /* Icon@2x.png */; };
 		81BF39751A8AA9950052EBEF /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
 		81BF39771A8AA9950052EBEF /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
-		81BF39DC1A8AB7330052EBEF /* PG_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */; };
-		81BF39DD1A8AB7330052EBEF /* PG_Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C51A8AB7330052EBEF /* PG_Default.png */; };
-		81BF39DE1A8AB7330052EBEF /* PG_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */; };
 		81BF39DF1A8AB7330052EBEF /* PG_hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */; };
 		81BF39E01A8AB7330052EBEF /* PG_hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */; };
-		81BF39E11A8AB7330052EBEF /* PG_Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */; };
-		81BF39E21A8AB7330052EBEF /* PG_Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */; };
-		81BF39E31A8AB7330052EBEF /* PG_Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */; };
-		81BF39E41A8AB7330052EBEF /* PG_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */; };
-		81BF39E51A8AB7330052EBEF /* PG_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CD1A8AB7330052EBEF /* PG_Icon.png */; };
-		81BF39E61A8AB7330052EBEF /* PG_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */; };
 		81BF39E71A8AB7330052EBEF /* PG_LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */; };
 		81BF39E81A8AB7330052EBEF /* PG_welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */; };
 		81BF39E91A8AB7330052EBEF /* PG_welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */; };
@@ -482,17 +473,8 @@
 		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
 		81BF397D1A8AA9950052EBEF /* Chamber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chamber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BF397E1A8AA9950052EBEF /* Chamber-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Chamber-Info.plist"; path = "/Users/dmccuen/git/talool/talool-mobile-ios/Chamber-Info.plist"; sourceTree = "<absolute>"; };
-		81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Default-568h@2x.png"; sourceTree = "<group>"; };
-		81BF39C51A8AB7330052EBEF /* PG_Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Default.png; sourceTree = "<group>"; };
-		81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Default@2x.png"; sourceTree = "<group>"; };
 		81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_hero-568h@2x.png"; sourceTree = "<group>"; };
 		81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_hero@2x.png"; sourceTree = "<group>"; };
-		81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_29.png; sourceTree = "<group>"; };
-		81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_58.png; sourceTree = "<group>"; };
-		81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_80.png; sourceTree = "<group>"; };
-		81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_120.png; sourceTree = "<group>"; };
-		81BF39CD1A8AB7330052EBEF /* PG_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon.png; sourceTree = "<group>"; };
-		81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Icon@2x.png"; sourceTree = "<group>"; };
 		81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_LogoAndIcon.png; sourceTree = "<group>"; };
 		81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome0-568h@2x.png"; sourceTree = "<group>"; };
 		81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome0@2x.png"; sourceTree = "<group>"; };
@@ -853,17 +835,8 @@
 			isa = PBXGroup;
 			children = (
 				81BF397E1A8AA9950052EBEF /* Chamber-Info.plist */,
-				81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */,
-				81BF39C51A8AB7330052EBEF /* PG_Default.png */,
-				81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */,
 				81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */,
 				81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */,
-				81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */,
-				81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */,
-				81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */,
-				81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */,
-				81BF39CD1A8AB7330052EBEF /* PG_Icon.png */,
-				81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */,
 				81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */,
 				81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */,
 				81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */,
@@ -1253,23 +1226,18 @@
 				81BF39E71A8AB7330052EBEF /* PG_LogoAndIcon.png in Resources */,
 				81BF39541A8AA9950052EBEF /* MessageDesign.json in Resources */,
 				81BF39551A8AA9950052EBEF /* 000.png in Resources */,
-				81BF39DD1A8AB7330052EBEF /* PG_Default.png in Resources */,
 				81BF39561A8AA9950052EBEF /* SimpleHeaderView.xib in Resources */,
-				81BF39DC1A8AB7330052EBEF /* PG_Default-568h@2x.png in Resources */,
 				81BF39581A8AA9950052EBEF /* KeyboardAccessoryView.xib in Resources */,
 				81BF39591A8AA9950052EBEF /* OfferActionView.xib in Resources */,
-				81BF39E11A8AB7330052EBEF /* PG_Icon_29.png in Resources */,
 				81BF395A1A8AA9950052EBEF /* ribbon@2x.png in Resources */,
 				81BF395B1A8AA9950052EBEF /* DealActionBar3View.xib in Resources */,
 				81BF395C1A8AA9950052EBEF /* TaloolLogoAndIcon.png in Resources */,
 				81BF395D1A8AA9950052EBEF /* MerchantActionBar3View.xib in Resources */,
 				81BF39F31A8AB7330052EBEF /* PG_welcome5@2x.png in Resources */,
 				81BF39DF1A8AB7330052EBEF /* PG_hero-568h@2x.png in Resources */,
-				81BF39E31A8AB7330052EBEF /* PG_Icon_80.png in Resources */,
 				81BF39611A8AA9950052EBEF /* OfferMerchantView.xib in Resources */,
 				81BF39621A8AA9950052EBEF /* Icon_29.png in Resources */,
 				81BF39641A8AA9950052EBEF /* EmailConfirmationView.xib in Resources */,
-				81BF39E41A8AB7330052EBEF /* PG_Icon_120.png in Resources */,
 				81BF39681A8AA9950052EBEF /* GiftActionBar2View.xib in Resources */,
 				81BF39F01A8AB7330052EBEF /* PG_welcome4-568h@2x.png in Resources */,
 				81BF39691A8AA9950052EBEF /* ribbonbadge.png in Resources */,
@@ -1277,17 +1245,13 @@
 				81BF396B1A8AA9950052EBEF /* no-wifi-icon.png in Resources */,
 				81BF396C1A8AA9950052EBEF /* ribbonbadge@2x.png in Resources */,
 				81BF39EB1A8AB7330052EBEF /* PG_welcome1@2x.png in Resources */,
-				81BF39E61A8AB7330052EBEF /* PG_Icon@2x.png in Resources */,
 				81BF396E1A8AA9950052EBEF /* Icon.png in Resources */,
 				81BF39701A8AA9950052EBEF /* Icon@2x.png in Resources */,
-				81BF39E51A8AB7330052EBEF /* PG_Icon.png in Resources */,
 				81BF39EF1A8AB7330052EBEF /* PG_welcome3@2x.png in Resources */,
-				81BF39DE1A8AB7330052EBEF /* PG_Default@2x.png in Resources */,
 				81BF39E01A8AB7330052EBEF /* PG_hero@2x.png in Resources */,
 				81BF39EE1A8AB7330052EBEF /* PG_welcome3-568h@2x.png in Resources */,
 				81BF39F11A8AB7330052EBEF /* PG_welcome4@2x.png in Resources */,
 				81BF39751A8AA9950052EBEF /* DealOfferBG.png in Resources */,
-				81BF39E21A8AB7330052EBEF /* PG_Icon_58.png in Resources */,
 				81BF39771A8AA9950052EBEF /* compass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

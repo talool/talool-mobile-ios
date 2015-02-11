@@ -54,7 +54,7 @@
 	<key>CFBundleVersion</key>
 	<string>31</string>
 	<key>FacebookAppID</key>
-	<string>342739092494152</string>
+	<string>943529849004590</string>
 	<key>FacebookDisplayName</key>
 	<string>Chamber</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -169,10 +169,10 @@
 				<integer>25</integer>
 			</dict>
 		</dict>
-		<key>WhiteLabelIdProduction</key>
-		<string>d8b03445-63e7-4376-8a8b-8b43c659cada</string>
 		<key>WhiteLabelIdDevelopment</key>
 		<string>c6679895-7fc7-499c-a063-2aa9b2bbde4c</string>
+		<key>WhiteLabelIdProduction</key>
+		<string>d8b03445-63e7-4376-8a8b-8b43c659cada</string>
 		<key>WhiteLabelResourcePrefix</key>
 		<string>PG_</string>
 	</dict>
