@@ -9,24 +9,11 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>SA_Icon_58</string>
-				<string>SA_Icon_80</string>
-				<string>SA_Icon_120</string>
-				<string>Icon_80</string>
-				<string>Icon_58</string>
-				<string>Icon_29</string>
-				<string>Icon_120</string>
-				<string>Icon</string>
-			</array>
-		</dict>
-	</dict>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.savearound.mobile</string>
+	<string>com.chamberpg.mobile</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -34,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>1.4.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -65,60 +52,77 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>31</string>
 	<key>FacebookAppID</key>
 	<string>342739092494152</string>
 	<key>FacebookDisplayName</key>
-	<string>Talool</string>
+	<string>Chamber</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Chamber uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Chamber uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Chamber uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
 	<key>Talool</key>
 	<dict>
 		<key>Color</key>
 		<dict>
+			<key>Blue</key>
+			<dict>
+				<key>alpha</key>
+				<integer>1</integer>
+				<key>blue</key>
+				<integer>159</integer>
+				<key>green</key>
+				<integer>113</integer>
+				<key>red</key>
+				<integer>35</integer>
+			</dict>
 			<key>Brown</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
 				<key>blue</key>
-				<integer>134</integer>
+				<integer>117</integer>
 				<key>green</key>
-				<integer>209</integer>
+				<integer>134</integer>
 				<key>red</key>
-				<integer>184</integer>
+				<integer>153</integer>
 			</dict>
 			<key>DarkBrown</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
 				<key>blue</key>
-				<integer>57</integer>
+				<integer>65</integer>
 				<key>green</key>
-				<integer>150</integer>
+				<integer>71</integer>
 				<key>red</key>
-				<integer>119</integer>
+				<integer>83</integer>
 			</dict>
 			<key>DarkTeal</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
 				<key>blue</key>
-				<integer>36</integer>
+				<integer>139</integer>
 				<key>green</key>
-				<integer>3</integer>
+				<integer>141</integer>
 				<key>red</key>
-				<integer>112</integer>
+				<integer>18</integer>
 			</dict>
 			<key>Green</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
 				<key>blue</key>
-				<integer>232</integer>
+				<integer>72</integer>
 				<key>green</key>
-				<integer>51</integer>
+				<integer>185</integer>
 				<key>red</key>
-				<integer>196</integer>
+				<integer>80</integer>
 			</dict>
 			<key>LightBrown</key>
 			<dict>
@@ -127,33 +131,22 @@
 				<key>blue</key>
 				<integer>197</integer>
 				<key>green</key>
-				<integer>250</integer>
+				<integer>215</integer>
 				<key>red</key>
-				<integer>232</integer>
+				<integer>218</integer>
 			</dict>
 			<key>Orange</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
 				<key>blue</key>
-				<integer>51</integer>
+				<integer>36</integer>
 				<key>green</key>
-				<integer>232</integer>
+				<integer>90</integer>
 				<key>red</key>
-				<integer>223</integer>
+				<integer>241</integer>
 			</dict>
 			<key>Red</key>
-			<dict>
-				<key>alpha</key>
-				<integer>1</integer>
-				<key>blue</key>
-				<integer>227</integer>
-				<key>green</key>
-				<integer>205</integer>
-				<key>red</key>
-				<integer>9</integer>
-			</dict>
-			<key>Teal</key>
 			<dict>
 				<key>alpha</key>
 				<integer>1</integer>
@@ -164,11 +157,22 @@
 				<key>red</key>
 				<integer>237</integer>
 			</dict>
+			<key>Teal</key>
+			<dict>
+				<key>alpha</key>
+				<integer>1</integer>
+				<key>blue</key>
+				<integer>185</integer>
+				<key>green</key>
+				<integer>188</integer>
+				<key>red</key>
+				<integer>25</integer>
+			</dict>
 		</dict>
 		<key>WhiteLabelId</key>
-		<string>abcd1234</string>
+		<string>c6679895-7fc7-499c-a063-2aa9b2bbde4c</string>
 		<key>WhiteLabelResourcePrefix</key>
-		<string>SA_</string>
+		<string>PG_</string>
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
@@ -179,29 +183,6 @@
 		<string>fetch</string>
 		<string>location</string>
 		<string>remote-notification</string>
-	</array>
-	<key>UILaunchImages</key>
-	<array>
-		<dict>
-			<key>UILaunchImageMinimumOSVersion</key>
-			<string>7.0</string>
-			<key>UILaunchImageName</key>
-			<string>SA_Default</string>
-			<key>UILaunchImageOrientation</key>
-			<string>Portrait</string>
-			<key>UILaunchImageSize</key>
-			<string>{320, 568}</string>
-		</dict>
-		<dict>
-			<key>UILaunchImageMinimumOSVersion</key>
-			<string>7.0</string>
-			<key>UILaunchImageName</key>
-			<string>SA_Default</string>
-			<key>UILaunchImageOrientation</key>
-			<string>Portrait</string>
-			<key>UILaunchImageSize</key>
-			<string>{320, 480}</string>
-		</dict>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>

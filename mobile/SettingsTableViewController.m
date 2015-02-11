@@ -16,6 +16,7 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
+#import <WhiteLabelHelper.h>
 #import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -50,7 +51,7 @@ static NSString *host = @"http://www.talool.com";
     
     // create table headers
     accountHeader = [self createHeaderView:@"Account"];
-    taloolHeader = [self createHeaderView:@"About Talool"];
+    taloolHeader = [self createHeaderView:[NSString stringWithFormat:@"About %@", [WhiteLabelHelper getProductName]]];
 
 }
 
@@ -233,6 +234,16 @@ static NSString *host = @"http://www.talool.com";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return (section==0) ? accountHeader:taloolHeader;
+}
+         
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            
+    if(cell == publisherCell && [WhiteLabelHelper getWhiteLabelId])
+        return 0; //set the hidden cell's height to 0
+    else
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark -
