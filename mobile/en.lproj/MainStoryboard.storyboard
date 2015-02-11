@@ -215,7 +215,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="JAO-Kz-aW0">
                                                     <rect key="frame" x="20" y="11" width="280" height="94"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Enter your new password below.  You will be logged-in to Talool when the change is complete.">
+                                                        <fragment content="Enter your new password below.  You will be logged-in when the change is complete.">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="18" name="TrebuchetMS-Bold"/>

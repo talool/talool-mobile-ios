@@ -73,7 +73,9 @@
 
 - (IBAction)cancelAction:(id) sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (IBAction)changePasswordAction:(id) sender
