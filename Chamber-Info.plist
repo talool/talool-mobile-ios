@@ -169,7 +169,9 @@
 				<integer>25</integer>
 			</dict>
 		</dict>
-		<key>WhiteLabelId</key>
+		<key>WhiteLabelIdProduction</key>
+		<string>d8b03445-63e7-4376-8a8b-8b43c659cada</string>
+		<key>WhiteLabelIdDevelopment</key>
 		<string>c6679895-7fc7-499c-a063-2aa9b2bbde4c</string>
 		<key>WhiteLabelResourcePrefix</key>
 		<string>PG_</string>

@@ -7,6 +7,7 @@
 //
 
 #import "WhiteLabelHelper.h"
+#import <TaloolFrameworkHelper.h>
 
 static NSString * PRODUCT_NAME;
 static NSDictionary * TALOOL_DICTIONARY;
@@ -54,7 +55,15 @@ static NSString * WHITE_LABEL_ID;
         if (!info) {
             return nil;
         }
-        WHITE_LABEL_ID = [info objectForKey:@"WhiteLabelId"];
+        if ([[TaloolFrameworkHelper sharedInstance] isProduction])
+        {
+            WHITE_LABEL_ID = [info objectForKey:@"WhiteLabelIdProduction"];
+        }
+        else
+        {
+            WHITE_LABEL_ID = [info objectForKey:@"WhiteLabelIdDevelopment"];
+        }
+        
     }
     return WHITE_LABEL_ID;
 }
