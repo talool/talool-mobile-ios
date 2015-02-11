@@ -30,135 +30,7 @@
 		81517B4E17FBB5470020A688 /* hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4C17FBB5470020A688 /* hero-568h@2x.png */; };
 		81517B4F17FBB5470020A688 /* hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81517B4D17FBB5470020A688 /* hero@2x.png */; };
 		81517B5217FC62650020A688 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
-		8155F99118BE9F6F00314DB3 /* MerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276E18450C1F00105479 /* MerchantOperation.m */; };
-		8155F99218BE9F6F00314DB3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E5505117F9FB58000BF3A5 /* LoginViewController.m */; };
-		8155F99318BE9F6F00314DB3 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
-		8155F99418BE9F6F00314DB3 /* TaloolOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27671844FBC900105479 /* TaloolOperation.m */; };
-		8155F99518BE9F6F00314DB3 /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
-		8155F99618BE9F6F00314DB3 /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
-		8155F99718BE9F6F00314DB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111816D1E53800CEE814 /* main.m */; };
-		8155F99818BE9F6F00314DB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
-		8155F99918BE9F6F00314DB3 /* DealAcquireOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277218450C1F00105479 /* DealAcquireOperation.m */; };
-		8155F99A18BE9F6F00314DB3 /* GiftOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2CF184AA73300FF0AFB /* GiftOperation.m */; };
-		8155F99B18BE9F6F00314DB3 /* SendPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A57C8B17ECEAA400A68B71 /* SendPasswordResetViewController.m */; };
-		8155F99C18BE9F6F00314DB3 /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
-		8155F99D18BE9F6F00314DB3 /* MerchantFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0CF1864B57A00E905B5 /* MerchantFilterMenu.m */; };
-		8155F99E18BE9F6F00314DB3 /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
-		8155F99F18BE9F6F00314DB3 /* DealAcquireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* DealAcquireCell.m */; };
-		8155F9A018BE9F6F00314DB3 /* DealOfferDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC718439C9300EE30B9 /* DealOfferDealCell.m */; };
-		8155F9A118BE9F6F00314DB3 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
-		8155F9A218BE9F6F00314DB3 /* FindDealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBBA1836D065006E39EC /* FindDealsTableViewController.m */; };
-		8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
-		8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
-		8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
-		8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
-		8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
-		8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
-		8155F9AA18BE9F6F00314DB3 /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
-		8155F9AB18BE9F6F00314DB3 /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D7F174810A600622A85 /* CategoryHelper.m */; };
-		8155F9AC18BE9F6F00314DB3 /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
-		8155F9AD18BE9F6F00314DB3 /* CategoryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276A18450C1F00105479 /* CategoryOperation.m */; };
-		8155F9AE18BE9F6F00314DB3 /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
-		8155F9AF18BE9F6F00314DB3 /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
-		8155F9B018BE9F6F00314DB3 /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
-		8155F9B118BE9F6F00314DB3 /* OfferMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC21841410900EE30B9 /* OfferMerchantView.m */; };
-		8155F9B218BE9F6F00314DB3 /* TaloolFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D51864F80000E905B5 /* TaloolFilterMenu.m */; };
-		8155F9B318BE9F6F00314DB3 /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
-		8155F9B418BE9F6F00314DB3 /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
-		8155F9B518BE9F6F00314DB3 /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
-		8155F9B618BE9F6F00314DB3 /* LogoutOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27851845536600105479 /* LogoutOperation.m */; };
-		8155F9B718BE9F6F00314DB3 /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
-		8155F9B818BE9F6F00314DB3 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
-		8155F9B918BE9F6F00314DB3 /* UserAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277F1845457C00105479 /* UserAuthenticationOperation.m */; };
-		8155F9BA18BE9F6F00314DB3 /* MyDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D174177394BC0035F589 /* MyDealsViewController.m */; };
-		8155F9BB18BE9F6F00314DB3 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1771773EF130035F589 /* ActivityViewController.m */; };
-		8155F9BC18BE9F6F00314DB3 /* SimpleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869AC17750B810043ACE8 /* SimpleHeaderView.m */; };
-		8155F9BD18BE9F6F00314DB3 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B4177633220043ACE8 /* LocationHelper.m */; };
-		8155F9BE18BE9F6F00314DB3 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */; };
-		8155F9BF18BE9F6F00314DB3 /* ActivityFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D21864D8EC00E905B5 /* ActivityFilterMenu.m */; };
-		8155F9C018BE9F6F00314DB3 /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
-		8155F9C118BE9F6F00314DB3 /* FacebookAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277C1845259100105479 /* FacebookAuthenticationOperation.m */; };
-		8155F9C218BE9F6F00314DB3 /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D8185219F100FF0AFB /* PersonViewController.m */; };
-		8155F9C318BE9F6F00314DB3 /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
-		8155F9C418BE9F6F00314DB3 /* MerchantDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */; };
-		8155F9C518BE9F6F00314DB3 /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
-		8155F9C618BE9F6F00314DB3 /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
-		8155F9C718BE9F6F00314DB3 /* OfferSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27621844227200105479 /* OfferSummaryView.m */; };
-		8155F9C818BE9F6F00314DB3 /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
-		8155F9C918BE9F6F00314DB3 /* FavoriteMerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */; };
-		8155F9CA18BE9F6F00314DB3 /* RegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27821845459700105479 /* RegistrationOperation.m */; };
-		8155F9CB18BE9F6F00314DB3 /* OfferActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127217872AD000AF7475 /* OfferActionView.m */; };
-		8155F9CC18BE9F6F00314DB3 /* OfferSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12771787575A00AF7475 /* OfferSummaryCell.m */; };
-		8155F9CD18BE9F6F00314DB3 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* MapCell.m */; };
-		8155F9CE18BE9F6F00314DB3 /* ActivityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277018450C1F00105479 /* ActivityOperation.m */; };
-		8155F9CF18BE9F6F00314DB3 /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBB71836D032006E39EC /* DealOfferCell.m */; };
-		8155F9D018BE9F6F00314DB3 /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD129F178F117500AF7475 /* MerchantTableViewController.m */; };
-		8155F9D118BE9F6F00314DB3 /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A9178F37B200AF7475 /* DealTableViewController.m */; };
-		8155F9D218BE9F6F00314DB3 /* DealDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B2178F453C00AF7475 /* DealDetailCell.m */; };
-		8155F9D318BE9F6F00314DB3 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
-		8155F9D418BE9F6F00314DB3 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
-		8155F9D518BE9F6F00314DB3 /* DealOfferOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */; };
-		8155F9D618BE9F6F00314DB3 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
-		8155F9D718BE9F6F00314DB3 /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
-		8155F9D818BE9F6F00314DB3 /* DealLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26BD179B1DA400744C04 /* DealLocationCell.m */; };
-		8155F9D918BE9F6F00314DB3 /* EmailConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */; };
-		8155F9DA18BE9F6F00314DB3 /* DealOfferLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26C0179B203200744C04 /* DealOfferLogoCell.m */; };
-		8155F9DB18BE9F6F00314DB3 /* MerchantActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26D6179B8A8200744C04 /* MerchantActionBar3View.m */; };
-		8155F9DC18BE9F6F00314DB3 /* AuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B2779184524E300105479 /* AuthenticationOperation.m */; };
-		8155F9DD18BE9F6F00314DB3 /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
-		8155F9DE18BE9F6F00314DB3 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81471F3E179F0B3800C6DAB8 /* SplashViewController.m */; };
-		8155F9DF18BE9F6F00314DB3 /* UIImage+H568.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DB117A02053000596E8 /* UIImage+H568.m */; };
-		8155F9E018BE9F6F00314DB3 /* OperationQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */; };
-		8155F9E118BE9F6F00314DB3 /* DealOfferMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFCA18439CAC00EE30B9 /* DealOfferMerchantCell.m */; };
-		8155F9E218BE9F6F00314DB3 /* GiftActionBar2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */; };
-		8155F9E318BE9F6F00314DB3 /* DefaultGiftLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */; };
-		8155F9E418BE9F6F00314DB3 /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
-		8155F9E618BE9F6F00314DB3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
-		8155F9E718BE9F6F00314DB3 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
-		8155F9E818BE9F6F00314DB3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
-		8155F9E918BE9F6F00314DB3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919A3310174510A90093FAC4 /* MapKit.framework */; };
-		8155F9EA18BE9F6F00314DB3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
-		8155F9EB18BE9F6F00314DB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
-		8155F9EC18BE9F6F00314DB3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C8170342C800ED4844 /* CoreVideo.framework */; };
-		8155F9ED18BE9F6F00314DB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C4170342B000ED4844 /* AVFoundation.framework */; };
-		8155F9EE18BE9F6F00314DB3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C5170342B000ED4844 /* CoreMedia.framework */; };
-		8155F9EF18BE9F6F00314DB3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8155F9F018BE9F6F00314DB3 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8155F9F118BE9F6F00314DB3 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		8155F9F218BE9F6F00314DB3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
-		8155F9F318BE9F6F00314DB3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
-		8155F9F418BE9F6F00314DB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
-		8155F9F518BE9F6F00314DB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
-		8155F9F618BE9F6F00314DB3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
-		8155F9F718BE9F6F00314DB3 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
-		8155F9F818BE9F6F00314DB3 /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
-		8155F9F918BE9F6F00314DB3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749444CD6524D9DB18E06E3 /* libPods.a */; };
-		8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B27641844228900105479 /* OfferSummaryView.xib */; };
-		8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103111516D1E53800CEE814 /* InfoPlist.strings */; };
-		8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
-		8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 8127D59A187E0753009B4340 /* MessageDesign.json */; };
-		8155FA0618BE9F6F00314DB3 /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
-		8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B117750BA30043ACE8 /* SimpleHeaderView.xib */; };
-		8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
-		8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
-		8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
-		8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */; };
-		8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B26D8179B8AA100744C04 /* MerchantActionBar3View.xib */; };
-		8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
-		8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */; };
-		8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */; };
-		8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
-		8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E20183D0653008D43C8 /* DealOfferIcon.png */; };
-		8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
-		8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
-		8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
-		8155FA2618BE9F6F00314DB3 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
-		8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */; };
-		8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */; };
-		8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3018BEA57500314DB3 /* SA_Icon_120.png */; };
 		8155FA3A18BEA99F00314DB3 /* welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23DF818A0839700127F83 /* welcome0@2x.png */; };
-		8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */; };
-		8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */; };
 		8157F8D517CC0DA400061B62 /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
 		8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D317CC0DA400061B62 /* Icon_58.png */; };
 		8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D417CC0DA400061B62 /* Icon_80.png */; };
@@ -232,7 +104,163 @@
 		81BD12B9178F457800AF7475 /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
 		81BD12C11791B9CC00AF7475 /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
 		81BD12C51791BCA400AF7475 /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
-		81BF38071A8AA1350052EBEF /* SaveAround-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */; };
+		81BF38DD1A8AA9950052EBEF /* MerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276E18450C1F00105479 /* MerchantOperation.m */; };
+		81BF38DE1A8AA9950052EBEF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E5505117F9FB58000BF3A5 /* LoginViewController.m */; };
+		81BF38DF1A8AA9950052EBEF /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A331617452F1B0093FAC4 /* LocationCell.m */; };
+		81BF38E01A8AA9950052EBEF /* TaloolOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27671844FBC900105479 /* TaloolOperation.m */; };
+		81BF38E11A8AA9950052EBEF /* MerchantLocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A3313174516610093FAC4 /* MerchantLocationAnnotation.m */; };
+		81BF38E21A8AA9950052EBEF /* MerchantLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919A330B17447C3A0093FAC4 /* MerchantLocationViewController.m */; };
+		81BF38E31A8AA9950052EBEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111816D1E53800CEE814 /* main.m */; };
+		81BF38E41A8AA9950052EBEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103111C16D1E53800CEE814 /* AppDelegate.m */; };
+		81BF38E51A8AA9950052EBEF /* DealAcquireOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277218450C1F00105479 /* DealAcquireOperation.m */; };
+		81BF38E61A8AA9950052EBEF /* GiftOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2CF184AA73300FF0AFB /* GiftOperation.m */; };
+		81BF38E71A8AA9950052EBEF /* SendPasswordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A57C8B17ECEAA400A68B71 /* SendPasswordResetViewController.m */; };
+		81BF38E81A8AA9950052EBEF /* MerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103115D16D3179E00CEE814 /* MerchantCell.m */; };
+		81BF38E91A8AA9950052EBEF /* MerchantFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0CF1864B57A00E905B5 /* MerchantFilterMenu.m */; };
+		81BF38EA1A8AA9950052EBEF /* TaloolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81517B5117FC62650020A688 /* TaloolTextField.m */; };
+		81BF38EB1A8AA9950052EBEF /* DealAcquireCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986EFB16D7150400D1CA96 /* DealAcquireCell.m */; };
+		81BF38EC1A8AA9950052EBEF /* DealOfferDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC718439C9300EE30B9 /* DealOfferDealCell.m */; };
+		81BF38ED1A8AA9950052EBEF /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0B16DA88F800D1CA96 /* RegistrationViewController.m */; };
+		81BF38EE1A8AA9950052EBEF /* FindDealsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBBA1836D065006E39EC /* FindDealsTableViewController.m */; };
+		81BF38EF1A8AA9950052EBEF /* TaloolTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91986F0E16DA9E8900D1CA96 /* TaloolTabBarController.m */; };
+		81BF38F01A8AA9950052EBEF /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 914B1EBF16E3029A00C88B59 /* WelcomeViewController.m */; };
+		81BF38F11A8AA9950052EBEF /* CustomerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916148CE16ED1C04001C546C /* CustomerHelper.m */; };
+		81BF38F21A8AA9950052EBEF /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
+		81BF38F31A8AA9950052EBEF /* FacebookHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC60BE16F5222C00647AEC /* FacebookHelper.m */; };
+		81BF38F41A8AA9950052EBEF /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
+		81BF38F51A8AA9950052EBEF /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168A4DA170496CC00E53EB1 /* SettingsTableViewController.m */; };
+		81BF38F61A8AA9950052EBEF /* TaloolColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9197F98D170F157200BDAA58 /* TaloolColor.m */; };
+		81BF38F71A8AA9950052EBEF /* CategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 91490D7F174810A600622A85 /* CategoryHelper.m */; };
+		81BF38F81A8AA9950052EBEF /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
+		81BF38F91A8AA9950052EBEF /* CategoryOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276A18450C1F00105479 /* CategoryOperation.m */; };
+		81BF38FA1A8AA9950052EBEF /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
+		81BF38FB1A8AA9950052EBEF /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
+		81BF38FC1A8AA9950052EBEF /* DealOfferDealsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195F074183FB16F00CAC6A9 /* DealOfferDealsOperation.m */; };
+		81BF38FD1A8AA9950052EBEF /* OfferMerchantView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFC21841410900EE30B9 /* OfferMerchantView.m */; };
+		81BF38FE1A8AA9950052EBEF /* TaloolFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D51864F80000E905B5 /* TaloolFilterMenu.m */; };
+		81BF38FF1A8AA9950052EBEF /* AcceptGiftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 811A9CBF175FE2C400B42612 /* AcceptGiftViewController.m */; };
+		81BF39001A8AA9950052EBEF /* ResetPasswordOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D5184CE3A800FF0AFB /* ResetPasswordOperation.m */; };
+		81BF39011A8AA9950052EBEF /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81937B2B176B6B1E002DDCA8 /* TextureHelper.m */; };
+		81BF39021A8AA9950052EBEF /* LogoutOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27851845536600105479 /* LogoutOperation.m */; };
+		81BF39031A8AA9950052EBEF /* RedeemOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D2184AA74800FF0AFB /* RedeemOperation.m */; };
+		81BF39041A8AA9950052EBEF /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D168177274450035F589 /* ActivityCell.m */; };
+		81BF39051A8AA9950052EBEF /* UserAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277F1845457C00105479 /* UserAuthenticationOperation.m */; };
+		81BF39061A8AA9950052EBEF /* MyDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D174177394BC0035F589 /* MyDealsViewController.m */; };
+		81BF39071A8AA9950052EBEF /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146D1771773EF130035F589 /* ActivityViewController.m */; };
+		81BF39081A8AA9950052EBEF /* SimpleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869AC17750B810043ACE8 /* SimpleHeaderView.m */; };
+		81BF39091A8AA9950052EBEF /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A869B4177633220043ACE8 /* LocationHelper.m */; };
+		81BF390A1A8AA9950052EBEF /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817A5A42185FAE6F0010FEE9 /* TutorialViewController.m */; };
+		81BF390B1A8AA9950052EBEF /* ActivityFilterMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8146E0D21864D8EC00E905B5 /* ActivityFilterMenu.m */; };
+		81BF390C1A8AA9950052EBEF /* DealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8145C45E177A1CE800880294 /* DealCell.m */; };
+		81BF390D1A8AA9950052EBEF /* FacebookAuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277C1845259100105479 /* FacebookAuthenticationOperation.m */; };
+		81BF390E1A8AA9950052EBEF /* PersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2D8185219F100FF0AFB /* PersonViewController.m */; };
+		81BF390F1A8AA9950052EBEF /* IconHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA952177B99DD006A819B /* IconHelper.m */; };
+		81BF39101A8AA9950052EBEF /* MerchantDealsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFBF184136CE00EE30B9 /* MerchantDealsViewController.m */; };
+		81BF39111A8AA9950052EBEF /* TaloolMobileWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FA958177CC563006A819B /* TaloolMobileWebViewController.m */; };
+		81BF39121A8AA9950052EBEF /* KeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BB75E1783295500C65540 /* KeyboardAccessoryView.m */; };
+		81BF39131A8AA9950052EBEF /* OfferSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27621844227200105479 /* OfferSummaryView.m */; };
+		81BF39141A8AA9950052EBEF /* DealOfferTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD126A17870F4E00AF7475 /* DealOfferTableViewController.m */; };
+		81BF39151A8AA9950052EBEF /* FavoriteMerchantOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B276C18450C1F00105479 /* FavoriteMerchantOperation.m */; };
+		81BF39161A8AA9950052EBEF /* RegistrationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B27821845459700105479 /* RegistrationOperation.m */; };
+		81BF39171A8AA9950052EBEF /* OfferActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127217872AD000AF7475 /* OfferActionView.m */; };
+		81BF39181A8AA9950052EBEF /* OfferSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12771787575A00AF7475 /* OfferSummaryCell.m */; };
+		81BF39191A8AA9950052EBEF /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD127A1787602A00AF7475 /* MapCell.m */; };
+		81BF391A1A8AA9950052EBEF /* ActivityOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B277018450C1F00105479 /* ActivityOperation.m */; };
+		81BF391B1A8AA9950052EBEF /* DealOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8108CBB71836D032006E39EC /* DealOfferCell.m */; };
+		81BF391C1A8AA9950052EBEF /* MerchantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD129F178F117500AF7475 /* MerchantTableViewController.m */; };
+		81BF391D1A8AA9950052EBEF /* DealTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12A9178F37B200AF7475 /* DealTableViewController.m */; };
+		81BF391E1A8AA9950052EBEF /* DealDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B2178F453C00AF7475 /* DealDetailCell.m */; };
+		81BF391F1A8AA9950052EBEF /* BarCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12B8178F457700AF7475 /* BarCodeCell.m */; };
+		81BF39201A8AA9950052EBEF /* DefaultDealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */; };
+		81BF39211A8AA9950052EBEF /* DealOfferOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E31183FAB9100D64A3B /* DealOfferOperation.m */; };
+		81BF39221A8AA9950052EBEF /* DealLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BD12C41791BCA300AF7475 /* DealLayoutState.m */; };
+		81BF39231A8AA9950052EBEF /* DealActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 8186417B179904B500DE0C2E /* DealActionBar3View.m */; };
+		81BF39241A8AA9950052EBEF /* DealLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26BD179B1DA400744C04 /* DealLocationCell.m */; };
+		81BF39251A8AA9950052EBEF /* EmailConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8190F2DE1853B42A00FF0AFB /* EmailConfirmationView.m */; };
+		81BF39261A8AA9950052EBEF /* WhiteLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E6030318C0393B004A017B /* WhiteLabelHelper.m */; };
+		81BF39271A8AA9950052EBEF /* DealOfferLogoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26C0179B203200744C04 /* DealOfferLogoCell.m */; };
+		81BF39281A8AA9950052EBEF /* MerchantActionBar3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B26D6179B8A8200744C04 /* MerchantActionBar3View.m */; };
+		81BF39291A8AA9950052EBEF /* AuthenticationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 819B2779184524E300105479 /* AuthenticationOperation.m */; };
+		81BF392A1A8AA9950052EBEF /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
+		81BF392B1A8AA9950052EBEF /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81471F3E179F0B3800C6DAB8 /* SplashViewController.m */; };
+		81BF392C1A8AA9950052EBEF /* UIImage+H568.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DB117A02053000596E8 /* UIImage+H568.m */; };
+		81BF392D1A8AA9950052EBEF /* OperationQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AF1E2D183FA9C900D64A3B /* OperationQueueManager.m */; };
+		81BF392E1A8AA9950052EBEF /* DealOfferMerchantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8130BFCA18439CAC00EE30B9 /* DealOfferMerchantCell.m */; };
+		81BF392F1A8AA9950052EBEF /* GiftActionBar2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DCC17A1BB78000596E8 /* GiftActionBar2View.m */; };
+		81BF39301A8AA9950052EBEF /* DefaultGiftLayoutState.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD417A1BE75000596E8 /* DefaultGiftLayoutState.m */; };
+		81BF39311A8AA9950052EBEF /* GiftDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6DD717A1CE09000596E8 /* GiftDetailCell.m */; };
+		81BF39331A8AA9950052EBEF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
+		81BF39341A8AA9950052EBEF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916B1166175D69590024A037 /* Security.framework */; };
+		81BF39351A8AA9950052EBEF /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
+		81BF39361A8AA9950052EBEF /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91490D301745DBD000622A85 /* CoreText.framework */; };
+		81BF39371A8AA9950052EBEF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919A3310174510A90093FAC4 /* MapKit.framework */; };
+		81BF39381A8AA9950052EBEF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CC170342E100ED4844 /* QuartzCore.framework */; };
+		81BF39391A8AA9950052EBEF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4CA170342D500ED4844 /* ImageIO.framework */; };
+		81BF393A1A8AA9950052EBEF /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C8170342C800ED4844 /* CoreVideo.framework */; };
+		81BF393B1A8AA9950052EBEF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C4170342B000ED4844 /* AVFoundation.framework */; };
+		81BF393C1A8AA9950052EBEF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4C5170342B000ED4844 /* CoreMedia.framework */; };
+		81BF393D1A8AA9950052EBEF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D10D7A19A5201500CFF856 /* Crashlytics.framework */; };
+		81BF393E1A8AA9950052EBEF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161488216EADC1A001C546C /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		81BF393F1A8AA9950052EBEF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487516EAD758001C546C /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		81BF39401A8AA9950052EBEF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487816EAD76F001C546C /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		81BF39411A8AA9950052EBEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD716DC66AB008A56E3 /* CoreData.framework */; };
+		81BF39421A8AA9950052EBEF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917F0FD816DC66AB008A56E3 /* CoreLocation.framework */; };
+		81BF39431A8AA9950052EBEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
+		81BF39441A8AA9950052EBEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
+		81BF39451A8AA9950052EBEF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103111016D1E53800CEE814 /* CoreGraphics.framework */; };
+		81BF39461A8AA9950052EBEF /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9161487A16EAD783001C546C /* AddressBook.framework */; };
+		81BF39471A8AA9950052EBEF /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9183F4D6170350BB00ED4844 /* ZXingObjC.framework */; };
+		81BF39481A8AA9950052EBEF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749444CD6524D9DB18E06E3 /* libPods.a */; };
+		81BF394C1A8AA9950052EBEF /* OfferSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B27641844228900105479 /* OfferSummaryView.xib */; };
+		81BF39511A8AA9950052EBEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9103111516D1E53800CEE814 /* InfoPlist.strings */; };
+		81BF39521A8AA9950052EBEF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9103112416D1E53800CEE814 /* MainStoryboard.storyboard */; };
+		81BF39541A8AA9950052EBEF /* MessageDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 8127D59A187E0753009B4340 /* MessageDesign.json */; };
+		81BF39551A8AA9950052EBEF /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = 81937B1A176A38BB002DDCA8 /* 000.png */; };
+		81BF39561A8AA9950052EBEF /* SimpleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A869B117750BA30043ACE8 /* SimpleHeaderView.xib */; };
+		81BF39581A8AA9950052EBEF /* KeyboardAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 810BB7601783296D00C65540 /* KeyboardAccessoryView.xib */; };
+		81BF39591A8AA9950052EBEF /* OfferActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81BD127417872AEB00AF7475 /* OfferActionView.xib */; };
+		81BF395A1A8AA9950052EBEF /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */; };
+		81BF395B1A8AA9950052EBEF /* DealActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818641701798FED100DE0C2E /* DealActionBar3View.xib */; };
+		81BF395C1A8AA9950052EBEF /* TaloolLogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A57C8617EBA57A00A68B71 /* TaloolLogoAndIcon.png */; };
+		81BF395D1A8AA9950052EBEF /* MerchantActionBar3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819B26D8179B8AA100744C04 /* MerchantActionBar3View.xib */; };
+		81BF39611A8AA9950052EBEF /* OfferMerchantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8130BFC41841412B00EE30B9 /* OfferMerchantView.xib */; };
+		81BF39621A8AA9950052EBEF /* Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8157F8D217CC0DA400061B62 /* Icon_29.png */; };
+		81BF39641A8AA9950052EBEF /* EmailConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8190F2E01853B44200FF0AFB /* EmailConfirmationView.xib */; };
+		81BF39681A8AA9950052EBEF /* GiftActionBar2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD117A1BB99000596E8 /* GiftActionBar2View.xib */; };
+		81BF39691A8AA9950052EBEF /* ribbonbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DD917A1D938000596E8 /* ribbonbadge.png */; };
+		81BF396A1A8AA9950052EBEF /* DealOfferIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E20183D0653008D43C8 /* DealOfferIcon.png */; };
+		81BF396B1A8AA9950052EBEF /* no-wifi-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D317FCCB3B00699C39 /* no-wifi-icon.png */; };
+		81BF396C1A8AA9950052EBEF /* ribbonbadge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE6DDA17A1D938000596E8 /* ribbonbadge@2x.png */; };
+		81BF396E1A8AA9950052EBEF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE459317A379D300F5643E /* Icon.png */; };
+		81BF39701A8AA9950052EBEF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81AE459417A379D300F5643E /* Icon@2x.png */; };
+		81BF39751A8AA9950052EBEF /* DealOfferBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A0E24183D19E9008D43C8 /* DealOfferBG.png */; };
+		81BF39771A8AA9950052EBEF /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 819092D117FCCB0800699C39 /* compass.png */; };
+		81BF39DC1A8AB7330052EBEF /* PG_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */; };
+		81BF39DD1A8AB7330052EBEF /* PG_Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C51A8AB7330052EBEF /* PG_Default.png */; };
+		81BF39DE1A8AB7330052EBEF /* PG_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */; };
+		81BF39DF1A8AB7330052EBEF /* PG_hero-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */; };
+		81BF39E01A8AB7330052EBEF /* PG_hero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */; };
+		81BF39E11A8AB7330052EBEF /* PG_Icon_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */; };
+		81BF39E21A8AB7330052EBEF /* PG_Icon_58.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */; };
+		81BF39E31A8AB7330052EBEF /* PG_Icon_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */; };
+		81BF39E41A8AB7330052EBEF /* PG_Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */; };
+		81BF39E51A8AB7330052EBEF /* PG_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CD1A8AB7330052EBEF /* PG_Icon.png */; };
+		81BF39E61A8AB7330052EBEF /* PG_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */; };
+		81BF39E71A8AB7330052EBEF /* PG_LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */; };
+		81BF39E81A8AB7330052EBEF /* PG_welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */; };
+		81BF39E91A8AB7330052EBEF /* PG_welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */; };
+		81BF39EA1A8AB7330052EBEF /* PG_welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D21A8AB7330052EBEF /* PG_welcome1-568h@2x.png */; };
+		81BF39EB1A8AB7330052EBEF /* PG_welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D31A8AB7330052EBEF /* PG_welcome1@2x.png */; };
+		81BF39EC1A8AB7330052EBEF /* PG_welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D41A8AB7330052EBEF /* PG_welcome2-568h@2x.png */; };
+		81BF39ED1A8AB7330052EBEF /* PG_welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D51A8AB7330052EBEF /* PG_welcome2@2x.png */; };
+		81BF39EE1A8AB7330052EBEF /* PG_welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D61A8AB7330052EBEF /* PG_welcome3-568h@2x.png */; };
+		81BF39EF1A8AB7330052EBEF /* PG_welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D71A8AB7330052EBEF /* PG_welcome3@2x.png */; };
+		81BF39F01A8AB7330052EBEF /* PG_welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D81A8AB7330052EBEF /* PG_welcome4-568h@2x.png */; };
+		81BF39F11A8AB7330052EBEF /* PG_welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39D91A8AB7330052EBEF /* PG_welcome4@2x.png */; };
+		81BF39F21A8AB7330052EBEF /* PG_welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39DA1A8AB7330052EBEF /* PG_welcome5-568h@2x.png */; };
+		81BF39F31A8AB7330052EBEF /* PG_welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39DB1A8AB7330052EBEF /* PG_welcome5@2x.png */; };
+		81BF39FA1A8ABD780052EBEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39F41A8ABA300052EBEF /* Images.xcassets */; };
+		81BF39FB1A8ABD890052EBEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81BF39F41A8ABA300052EBEF /* Images.xcassets */; };
 		81C23E1318A086A000127F83 /* welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E0E18A086A000127F83 /* welcome1@2x.png */; };
 		81C23E1518A086A000127F83 /* welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1018A086A000127F83 /* welcome3@2x.png */; };
 		81C23E1618A086A000127F83 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1118A086A000127F83 /* welcome4@2x.png */; };
@@ -241,37 +269,17 @@
 		81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1C18A13E4400127F83 /* welcome2@2x.png */; };
 		81C23E1F18A13E4400127F83 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C23E1D18A13E4400127F83 /* welcome5@2x.png */; };
 		81D10D7B19A5201500CFF856 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D10D7A19A5201500CFF856 /* Crashlytics.framework */; };
-		81D10D7C19A5201500CFF856 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D10D7A19A5201500CFF856 /* Crashlytics.framework */; };
 		81E3AA6017EB5E5F00B5EE5A /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */; };
 		81E3AA6317EB71D100B5EE5A /* TaloolAppCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E3AA6217EB71D100B5EE5A /* TaloolAppCall.m */; };
 		81E5504F17F9EB1C000BF3A5 /* LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E5504E17F9EB1C000BF3A5 /* LogoAndIcon.png */; };
 		81E5505217F9FB58000BF3A5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E5505117F9FB58000BF3A5 /* LoginViewController.m */; };
 		81E6030418C0393B004A017B /* WhiteLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E6030318C0393B004A017B /* WhiteLabelHelper.m */; };
-		81E6030518C03949004A017B /* WhiteLabelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E6030318C0393B004A017B /* WhiteLabelHelper.m */; };
-		81E6030818C140D9004A017B /* SA_LogoAndIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030718C140D9004A017B /* SA_LogoAndIcon.png */; };
-		81E6031318C141C0004A017B /* SA_welcome0-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */; };
-		81E6031418C141C0004A017B /* SA_welcome1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */; };
-		81E6031518C141C0004A017B /* SA_welcome2-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */; };
-		81E6031618C141C0004A017B /* SA_welcome3-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */; };
-		81E6031718C141C0004A017B /* SA_welcome4-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */; };
-		81E6031818C141C0004A017B /* SA_welcome5-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */; };
-		81E6031F18C141D6004A017B /* SA_welcome0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031918C141D6004A017B /* SA_welcome0@2x.png */; };
-		81E6032018C141D6004A017B /* SA_welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031A18C141D6004A017B /* SA_welcome1@2x.png */; };
-		81E6032118C141D6004A017B /* SA_welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031B18C141D6004A017B /* SA_welcome2@2x.png */; };
-		81E6032218C141D6004A017B /* SA_welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031C18C141D6004A017B /* SA_welcome3@2x.png */; };
-		81E6032318C141D6004A017B /* SA_welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031D18C141D6004A017B /* SA_welcome4@2x.png */; };
-		81E6032418C141D6004A017B /* SA_welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6031E18C141D6004A017B /* SA_welcome5@2x.png */; };
-		81E6032718C14352004A017B /* SA_Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6032518C14352004A017B /* SA_Default-568h@2x.png */; };
-		81E6032818C14352004A017B /* SA_Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E6032618C14352004A017B /* SA_Default@2x.png */; };
 		81F24B031750280D003A3A1A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F24B021750280D003A3A1A /* AddressBookUI.framework */; };
 		81F24B061752E9D6003A3A1A /* TaloolUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B051752E9D6003A3A1A /* TaloolUIButton.m */; };
 		81F24B1A1754433A003A3A1A /* GradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B191754433A003A3A1A /* GradientButton.m */; };
 		81F24B24175950CA003A3A1A /* TaloolIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F24B23175950C9003A3A1A /* TaloolIconButton.m */; };
 		81F4542F19DB2C8400A3E7A6 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */; };
-		81F4543019DB2C8400A3E7A6 /* ribbon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F4542E19DB2C8400A3E7A6 /* ribbon@2x.png */; };
 		81F5E27018CF90F200FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
-		81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F5E26F18CF90F200FBDF96 /* FundraiserCodeViewController.m */; };
-		81F5E27418CFFBD800FBDF96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
 		81F5E27518CFFBE800FBDF96 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F5E27318CFFBD800FBDF96 /* MessageUI.framework */; };
 		9103110D16D1E53800CEE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110C16D1E53800CEE814 /* UIKit.framework */; };
 		9103110F16D1E53800CEE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9103110E16D1E53800CEE814 /* Foundation.framework */; };
@@ -352,12 +360,6 @@
 		81517B5017FC62650020A688 /* TaloolTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolTextField.h; sourceTree = "<group>"; };
 		81517B5117FC62650020A688 /* TaloolTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolTextField.m; sourceTree = "<group>"; };
 		8151CBA4179452F0007894B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		8155FA2B18BE9F6F00314DB3 /* SaveAround.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaveAround.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_58.png; sourceTree = "<group>"; };
-		8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_80.png; sourceTree = "<group>"; };
-		8155FA3018BEA57500314DB3 /* SA_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_Icon_120.png; sourceTree = "<group>"; };
-		8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero-568h@2x.png"; sourceTree = "<group>"; };
-		8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_hero@2x.png"; sourceTree = "<group>"; };
 		8157F8D117CC0D8000061B62 /* Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_120.png; sourceTree = "<group>"; };
 		8157F8D217CC0DA400061B62 /* Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_29.png; sourceTree = "<group>"; };
 		8157F8D317CC0DA400061B62 /* Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_58.png; sourceTree = "<group>"; };
@@ -478,7 +480,33 @@
 		81BD12C01791B9CA00AF7475 /* DefaultDealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultDealLayoutState.m; sourceTree = "<group>"; };
 		81BD12C31791BCA300AF7475 /* DealLayoutState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealLayoutState.h; sourceTree = "<group>"; };
 		81BD12C41791BCA300AF7475 /* DealLayoutState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealLayoutState.m; sourceTree = "<group>"; };
-		81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SaveAround-Info.plist"; sourceTree = "<group>"; };
+		81BF397D1A8AA9950052EBEF /* Chamber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chamber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81BF397E1A8AA9950052EBEF /* Chamber-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Chamber-Info.plist"; path = "/Users/dmccuen/git/talool/talool-mobile-ios/Chamber-Info.plist"; sourceTree = "<absolute>"; };
+		81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Default-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39C51A8AB7330052EBEF /* PG_Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Default.png; sourceTree = "<group>"; };
+		81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Default@2x.png"; sourceTree = "<group>"; };
+		81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_hero-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_hero@2x.png"; sourceTree = "<group>"; };
+		81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_29.png; sourceTree = "<group>"; };
+		81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_58.png; sourceTree = "<group>"; };
+		81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_80.png; sourceTree = "<group>"; };
+		81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon_120.png; sourceTree = "<group>"; };
+		81BF39CD1A8AB7330052EBEF /* PG_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_Icon.png; sourceTree = "<group>"; };
+		81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_Icon@2x.png"; sourceTree = "<group>"; };
+		81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_LogoAndIcon.png; sourceTree = "<group>"; };
+		81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome0-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome0@2x.png"; sourceTree = "<group>"; };
+		81BF39D21A8AB7330052EBEF /* PG_welcome1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome1-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39D31A8AB7330052EBEF /* PG_welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome1@2x.png"; sourceTree = "<group>"; };
+		81BF39D41A8AB7330052EBEF /* PG_welcome2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome2-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39D51A8AB7330052EBEF /* PG_welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome2@2x.png"; sourceTree = "<group>"; };
+		81BF39D61A8AB7330052EBEF /* PG_welcome3-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome3-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39D71A8AB7330052EBEF /* PG_welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome3@2x.png"; sourceTree = "<group>"; };
+		81BF39D81A8AB7330052EBEF /* PG_welcome4-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome4-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39D91A8AB7330052EBEF /* PG_welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome4@2x.png"; sourceTree = "<group>"; };
+		81BF39DA1A8AB7330052EBEF /* PG_welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome5-568h@2x.png"; sourceTree = "<group>"; };
+		81BF39DB1A8AB7330052EBEF /* PG_welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PG_welcome5@2x.png"; sourceTree = "<group>"; };
+		81BF39F41A8ABA300052EBEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Talool/Images.xcassets; sourceTree = "<group>"; };
 		81C23DF818A0839700127F83 /* welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome0@2x.png"; sourceTree = "<group>"; };
 		81C23E0E18A086A000127F83 /* welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome1@2x.png"; sourceTree = "<group>"; };
 		81C23E1018A086A000127F83 /* welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome3@2x.png"; sourceTree = "<group>"; };
@@ -497,21 +525,6 @@
 		81E5505117F9FB58000BF3A5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		81E6030218C0393B004A017B /* WhiteLabelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiteLabelHelper.h; sourceTree = "<group>"; };
 		81E6030318C0393B004A017B /* WhiteLabelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiteLabelHelper.m; sourceTree = "<group>"; };
-		81E6030718C140D9004A017B /* SA_LogoAndIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SA_LogoAndIcon.png; sourceTree = "<group>"; };
-		81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome0-568h@2x.png"; sourceTree = "<group>"; };
-		81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome1-568h@2x.png"; sourceTree = "<group>"; };
-		81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome2-568h@2x.png"; sourceTree = "<group>"; };
-		81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome3-568h@2x.png"; sourceTree = "<group>"; };
-		81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome4-568h@2x.png"; sourceTree = "<group>"; };
-		81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome5-568h@2x.png"; sourceTree = "<group>"; };
-		81E6031918C141D6004A017B /* SA_welcome0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome0@2x.png"; sourceTree = "<group>"; };
-		81E6031A18C141D6004A017B /* SA_welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome1@2x.png"; sourceTree = "<group>"; };
-		81E6031B18C141D6004A017B /* SA_welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome2@2x.png"; sourceTree = "<group>"; };
-		81E6031C18C141D6004A017B /* SA_welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome3@2x.png"; sourceTree = "<group>"; };
-		81E6031D18C141D6004A017B /* SA_welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome4@2x.png"; sourceTree = "<group>"; };
-		81E6031E18C141D6004A017B /* SA_welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_welcome5@2x.png"; sourceTree = "<group>"; };
-		81E6032518C14352004A017B /* SA_Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default-568h@2x.png"; sourceTree = "<group>"; };
-		81E6032618C14352004A017B /* SA_Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SA_Default@2x.png"; sourceTree = "<group>"; };
 		81F24B021750280D003A3A1A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		81F24B041752E9D6003A3A1A /* TaloolUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaloolUIButton.h; sourceTree = "<group>"; };
 		81F24B051752E9D6003A3A1A /* TaloolUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaloolUIButton.m; sourceTree = "<group>"; };
@@ -586,32 +599,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8155F9E518BE9F6F00314DB3 /* Frameworks */ = {
+		81BF39321A8AA9950052EBEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81F5E27418CFFBD800FBDF96 /* MessageUI.framework in Frameworks */,
-				8155F9E618BE9F6F00314DB3 /* Security.framework in Frameworks */,
-				8155F9E718BE9F6F00314DB3 /* AddressBookUI.framework in Frameworks */,
-				8155F9E818BE9F6F00314DB3 /* CoreText.framework in Frameworks */,
-				8155F9E918BE9F6F00314DB3 /* MapKit.framework in Frameworks */,
-				8155F9EA18BE9F6F00314DB3 /* QuartzCore.framework in Frameworks */,
-				8155F9EB18BE9F6F00314DB3 /* ImageIO.framework in Frameworks */,
-				8155F9EC18BE9F6F00314DB3 /* CoreVideo.framework in Frameworks */,
-				8155F9ED18BE9F6F00314DB3 /* AVFoundation.framework in Frameworks */,
-				8155F9EE18BE9F6F00314DB3 /* CoreMedia.framework in Frameworks */,
-				81D10D7C19A5201500CFF856 /* Crashlytics.framework in Frameworks */,
-				8155F9EF18BE9F6F00314DB3 /* AdSupport.framework in Frameworks */,
-				8155F9F018BE9F6F00314DB3 /* Social.framework in Frameworks */,
-				8155F9F118BE9F6F00314DB3 /* Accounts.framework in Frameworks */,
-				8155F9F218BE9F6F00314DB3 /* CoreData.framework in Frameworks */,
-				8155F9F318BE9F6F00314DB3 /* CoreLocation.framework in Frameworks */,
-				8155F9F418BE9F6F00314DB3 /* UIKit.framework in Frameworks */,
-				8155F9F518BE9F6F00314DB3 /* Foundation.framework in Frameworks */,
-				8155F9F618BE9F6F00314DB3 /* CoreGraphics.framework in Frameworks */,
-				8155F9F718BE9F6F00314DB3 /* AddressBook.framework in Frameworks */,
-				8155F9F818BE9F6F00314DB3 /* ZXingObjC.framework in Frameworks */,
-				8155F9F918BE9F6F00314DB3 /* libPods.a in Frameworks */,
+				81BF39331A8AA9950052EBEF /* MessageUI.framework in Frameworks */,
+				81BF39341A8AA9950052EBEF /* Security.framework in Frameworks */,
+				81BF39351A8AA9950052EBEF /* AddressBookUI.framework in Frameworks */,
+				81BF39361A8AA9950052EBEF /* CoreText.framework in Frameworks */,
+				81BF39371A8AA9950052EBEF /* MapKit.framework in Frameworks */,
+				81BF39381A8AA9950052EBEF /* QuartzCore.framework in Frameworks */,
+				81BF39391A8AA9950052EBEF /* ImageIO.framework in Frameworks */,
+				81BF393A1A8AA9950052EBEF /* CoreVideo.framework in Frameworks */,
+				81BF393B1A8AA9950052EBEF /* AVFoundation.framework in Frameworks */,
+				81BF393C1A8AA9950052EBEF /* CoreMedia.framework in Frameworks */,
+				81BF393D1A8AA9950052EBEF /* Crashlytics.framework in Frameworks */,
+				81BF393E1A8AA9950052EBEF /* AdSupport.framework in Frameworks */,
+				81BF393F1A8AA9950052EBEF /* Social.framework in Frameworks */,
+				81BF39401A8AA9950052EBEF /* Accounts.framework in Frameworks */,
+				81BF39411A8AA9950052EBEF /* CoreData.framework in Frameworks */,
+				81BF39421A8AA9950052EBEF /* CoreLocation.framework in Frameworks */,
+				81BF39431A8AA9950052EBEF /* UIKit.framework in Frameworks */,
+				81BF39441A8AA9950052EBEF /* Foundation.framework in Frameworks */,
+				81BF39451A8AA9950052EBEF /* CoreGraphics.framework in Frameworks */,
+				81BF39461A8AA9950052EBEF /* AddressBook.framework in Frameworks */,
+				81BF39471A8AA9950052EBEF /* ZXingObjC.framework in Frameworks */,
+				81BF39481A8AA9950052EBEF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,34 +732,6 @@
 				81E3AA5F17EB5E5F00B5EE5A /* ResetPasswordViewController.m */,
 			);
 			name = "Customer Account";
-			sourceTree = "<group>";
-		};
-		8155FA2D18BEA39700314DB3 /* SaveAround */ = {
-			isa = PBXGroup;
-			children = (
-				81BF38061A8AA1350052EBEF /* SaveAround-Info.plist */,
-				81E6032518C14352004A017B /* SA_Default-568h@2x.png */,
-				81E6032618C14352004A017B /* SA_Default@2x.png */,
-				8155FA3B18BFCF0200314DB3 /* SA_hero-568h@2x.png */,
-				8155FA3C18BFCF0200314DB3 /* SA_hero@2x.png */,
-				8155FA2E18BEA57500314DB3 /* SA_Icon_58.png */,
-				8155FA2F18BEA57500314DB3 /* SA_Icon_80.png */,
-				8155FA3018BEA57500314DB3 /* SA_Icon_120.png */,
-				81E6030718C140D9004A017B /* SA_LogoAndIcon.png */,
-				81E6031918C141D6004A017B /* SA_welcome0@2x.png */,
-				81E6031A18C141D6004A017B /* SA_welcome1@2x.png */,
-				81E6031B18C141D6004A017B /* SA_welcome2@2x.png */,
-				81E6031C18C141D6004A017B /* SA_welcome3@2x.png */,
-				81E6031D18C141D6004A017B /* SA_welcome4@2x.png */,
-				81E6031E18C141D6004A017B /* SA_welcome5@2x.png */,
-				81E6030D18C141C0004A017B /* SA_welcome0-568h@2x.png */,
-				81E6030E18C141C0004A017B /* SA_welcome1-568h@2x.png */,
-				81E6030F18C141C0004A017B /* SA_welcome2-568h@2x.png */,
-				81E6031018C141C0004A017B /* SA_welcome3-568h@2x.png */,
-				81E6031118C141C0004A017B /* SA_welcome4-568h@2x.png */,
-				81E6031218C141C0004A017B /* SA_welcome5-568h@2x.png */,
-			);
-			name = SaveAround;
 			sourceTree = "<group>";
 		};
 		81AE6DEC17A2B5DA000596E8 /* Deal Offer */ = {
@@ -864,6 +849,38 @@
 			name = "Deal Layouts";
 			sourceTree = "<group>";
 		};
+		81BF397F1A8AA9B00052EBEF /* Chamber */ = {
+			isa = PBXGroup;
+			children = (
+				81BF397E1A8AA9950052EBEF /* Chamber-Info.plist */,
+				81BF39C41A8AB7330052EBEF /* PG_Default-568h@2x.png */,
+				81BF39C51A8AB7330052EBEF /* PG_Default.png */,
+				81BF39C61A8AB7330052EBEF /* PG_Default@2x.png */,
+				81BF39C71A8AB7330052EBEF /* PG_hero-568h@2x.png */,
+				81BF39C81A8AB7330052EBEF /* PG_hero@2x.png */,
+				81BF39C91A8AB7330052EBEF /* PG_Icon_29.png */,
+				81BF39CA1A8AB7330052EBEF /* PG_Icon_58.png */,
+				81BF39CB1A8AB7330052EBEF /* PG_Icon_80.png */,
+				81BF39CC1A8AB7330052EBEF /* PG_Icon_120.png */,
+				81BF39CD1A8AB7330052EBEF /* PG_Icon.png */,
+				81BF39CE1A8AB7330052EBEF /* PG_Icon@2x.png */,
+				81BF39CF1A8AB7330052EBEF /* PG_LogoAndIcon.png */,
+				81BF39D01A8AB7330052EBEF /* PG_welcome0-568h@2x.png */,
+				81BF39D11A8AB7330052EBEF /* PG_welcome0@2x.png */,
+				81BF39D21A8AB7330052EBEF /* PG_welcome1-568h@2x.png */,
+				81BF39D31A8AB7330052EBEF /* PG_welcome1@2x.png */,
+				81BF39D41A8AB7330052EBEF /* PG_welcome2-568h@2x.png */,
+				81BF39D51A8AB7330052EBEF /* PG_welcome2@2x.png */,
+				81BF39D61A8AB7330052EBEF /* PG_welcome3-568h@2x.png */,
+				81BF39D71A8AB7330052EBEF /* PG_welcome3@2x.png */,
+				81BF39D81A8AB7330052EBEF /* PG_welcome4-568h@2x.png */,
+				81BF39D91A8AB7330052EBEF /* PG_welcome4@2x.png */,
+				81BF39DA1A8AB7330052EBEF /* PG_welcome5-568h@2x.png */,
+				81BF39DB1A8AB7330052EBEF /* PG_welcome5@2x.png */,
+			);
+			name = Chamber;
+			sourceTree = "<group>";
+		};
 		81E6030618C140A1004A017B /* Talool */ = {
 			isa = PBXGroup;
 			children = (
@@ -931,6 +948,7 @@
 		9103110016D1E53800CEE814 = {
 			isa = PBXGroup;
 			children = (
+				81BF39F41A8ABA300052EBEF /* Images.xcassets */,
 				9103111216D1E53800CEE814 /* mobile */,
 				9103114116D1E53900CEE814 /* mobileTests */,
 				9103110B16D1E53800CEE814 /* Frameworks */,
@@ -943,7 +961,7 @@
 			isa = PBXGroup;
 			children = (
 				9103110916D1E53800CEE814 /* Talool.app */,
-				8155FA2B18BE9F6F00314DB3 /* SaveAround.app */,
+				81BF397D1A8AA9950052EBEF /* Chamber.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1031,7 +1049,7 @@
 		9103116A16D3271D00CEE814 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8155FA2D18BEA39700314DB3 /* SaveAround */,
+				81BF397F1A8AA9B00052EBEF /* Chamber */,
 				81E6030618C140A1004A017B /* Talool */,
 				81E6030B18C14115004A017B /* trash */,
 				81E6030C18C14129004A017B /* Global */,
@@ -1136,23 +1154,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8155F98E18BE9F6F00314DB3 /* SaveAround */ = {
+		81BF38DA1A8AA9950052EBEF /* Chamber */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8155FA2818BE9F6F00314DB3 /* Build configuration list for PBXNativeTarget "SaveAround" */;
+			buildConfigurationList = 81BF397A1A8AA9950052EBEF /* Build configuration list for PBXNativeTarget "Chamber" */;
 			buildPhases = (
-				8155F98F18BE9F6F00314DB3 /* Check Pods Manifest.lock */,
-				8155F99018BE9F6F00314DB3 /* Sources */,
-				8155F9E518BE9F6F00314DB3 /* Frameworks */,
-				8155F9FA18BE9F6F00314DB3 /* Resources */,
-				8155FA2718BE9F6F00314DB3 /* Copy Pods Resources */,
+				81BF38DB1A8AA9950052EBEF /* Check Pods Manifest.lock */,
+				81BF38DC1A8AA9950052EBEF /* Sources */,
+				81BF39321A8AA9950052EBEF /* Frameworks */,
+				81BF39491A8AA9950052EBEF /* Resources */,
+				81BF39781A8AA9950052EBEF /* Copy Pods Resources */,
+				81BF39791A8AA9950052EBEF /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SaveAround;
+			name = Chamber;
 			productName = mobile;
-			productReference = 8155FA2B18BE9F6F00314DB3 /* SaveAround.app */;
+			productReference = 81BF397D1A8AA9950052EBEF /* Chamber.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9103110816D1E53800CEE814 /* Talool */ = {
@@ -1184,7 +1203,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Douglas McCuen";
 				TargetAttributes = {
-					8155F98E18BE9F6F00314DB3 = {
+					81BF38DA1A8AA9950052EBEF = {
 						DevelopmentTeam = JWR4CXD4VG;
 					};
 					9103110816D1E53800CEE814 = {
@@ -1203,6 +1222,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 9103110016D1E53800CEE814;
 			productRefGroup = 9103110A16D1E53800CEE814 /* Products */;
@@ -1210,57 +1230,65 @@
 			projectRoot = "";
 			targets = (
 				9103110816D1E53800CEE814 /* Talool */,
-				8155F98E18BE9F6F00314DB3 /* SaveAround */,
+				81BF38DA1A8AA9950052EBEF /* Chamber */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8155F9FA18BE9F6F00314DB3 /* Resources */ = {
+		81BF39491A8AA9950052EBEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8155F9FC18BE9F6F00314DB3 /* OfferSummaryView.xib in Resources */,
-				81E6031818C141C0004A017B /* SA_welcome5-568h@2x.png in Resources */,
-				81E6032018C141D6004A017B /* SA_welcome1@2x.png in Resources */,
-				8155FA0118BE9F6F00314DB3 /* InfoPlist.strings in Resources */,
-				8155FA0218BE9F6F00314DB3 /* MainStoryboard.storyboard in Resources */,
-				81E6032118C141D6004A017B /* SA_welcome2@2x.png in Resources */,
-				81E6031718C141C0004A017B /* SA_welcome4-568h@2x.png in Resources */,
-				81E6030818C140D9004A017B /* SA_LogoAndIcon.png in Resources */,
-				8155FA0518BE9F6F00314DB3 /* MessageDesign.json in Resources */,
-				8155FA0618BE9F6F00314DB3 /* 000.png in Resources */,
-				8155FA0718BE9F6F00314DB3 /* SimpleHeaderView.xib in Resources */,
-				81E6031F18C141D6004A017B /* SA_welcome0@2x.png in Resources */,
-				8155FA0918BE9F6F00314DB3 /* KeyboardAccessoryView.xib in Resources */,
-				8155FA0A18BE9F6F00314DB3 /* OfferActionView.xib in Resources */,
-				8155FA3218BEA57500314DB3 /* SA_Icon_80.png in Resources */,
-				8155FA0B18BE9F6F00314DB3 /* DealActionBar3View.xib in Resources */,
-				8155FA0C18BE9F6F00314DB3 /* TaloolLogoAndIcon.png in Resources */,
-				81E6032418C141D6004A017B /* SA_welcome5@2x.png in Resources */,
-				8155FA3D18BFCF0200314DB3 /* SA_hero-568h@2x.png in Resources */,
-				8155FA0D18BE9F6F00314DB3 /* MerchantActionBar3View.xib in Resources */,
-				81E6032218C141D6004A017B /* SA_welcome3@2x.png in Resources */,
-				8155FA1118BE9F6F00314DB3 /* OfferMerchantView.xib in Resources */,
-				8155FA3318BEA57500314DB3 /* SA_Icon_120.png in Resources */,
-				81E6031418C141C0004A017B /* SA_welcome1-568h@2x.png in Resources */,
-				8155FA1418BE9F6F00314DB3 /* EmailConfirmationView.xib in Resources */,
-				8155FA1718BE9F6F00314DB3 /* GiftActionBar2View.xib in Resources */,
-				81E6031318C141C0004A017B /* SA_welcome0-568h@2x.png in Resources */,
-				8155FA3E18BFCF0200314DB3 /* SA_hero@2x.png in Resources */,
-				8155FA1818BE9F6F00314DB3 /* ribbonbadge.png in Resources */,
-				8155FA1918BE9F6F00314DB3 /* DealOfferIcon.png in Resources */,
-				81E6032718C14352004A017B /* SA_Default-568h@2x.png in Resources */,
-				81F4543019DB2C8400A3E7A6 /* ribbon@2x.png in Resources */,
-				8155FA1A18BE9F6F00314DB3 /* no-wifi-icon.png in Resources */,
-				81E6032318C141D6004A017B /* SA_welcome4@2x.png in Resources */,
-				8155FA1B18BE9F6F00314DB3 /* ribbonbadge@2x.png in Resources */,
-				8155FA3118BEA57500314DB3 /* SA_Icon_58.png in Resources */,
-				8155FA2418BE9F6F00314DB3 /* DealOfferBG.png in Resources */,
-				8155FA2618BE9F6F00314DB3 /* compass.png in Resources */,
-				81E6031618C141C0004A017B /* SA_welcome3-568h@2x.png in Resources */,
-				81E6032818C14352004A017B /* SA_Default@2x.png in Resources */,
-				81E6031518C141C0004A017B /* SA_welcome2-568h@2x.png in Resources */,
+				81BF39E91A8AB7330052EBEF /* PG_welcome0@2x.png in Resources */,
+				81BF39ED1A8AB7330052EBEF /* PG_welcome2@2x.png in Resources */,
+				81BF39FA1A8ABD780052EBEF /* Images.xcassets in Resources */,
+				81BF39EA1A8AB7330052EBEF /* PG_welcome1-568h@2x.png in Resources */,
+				81BF394C1A8AA9950052EBEF /* OfferSummaryView.xib in Resources */,
+				81BF39E81A8AB7330052EBEF /* PG_welcome0-568h@2x.png in Resources */,
+				81BF39511A8AA9950052EBEF /* InfoPlist.strings in Resources */,
+				81BF39521A8AA9950052EBEF /* MainStoryboard.storyboard in Resources */,
+				81BF39F21A8AB7330052EBEF /* PG_welcome5-568h@2x.png in Resources */,
+				81BF39EC1A8AB7330052EBEF /* PG_welcome2-568h@2x.png in Resources */,
+				81BF39E71A8AB7330052EBEF /* PG_LogoAndIcon.png in Resources */,
+				81BF39541A8AA9950052EBEF /* MessageDesign.json in Resources */,
+				81BF39551A8AA9950052EBEF /* 000.png in Resources */,
+				81BF39DD1A8AB7330052EBEF /* PG_Default.png in Resources */,
+				81BF39561A8AA9950052EBEF /* SimpleHeaderView.xib in Resources */,
+				81BF39DC1A8AB7330052EBEF /* PG_Default-568h@2x.png in Resources */,
+				81BF39581A8AA9950052EBEF /* KeyboardAccessoryView.xib in Resources */,
+				81BF39591A8AA9950052EBEF /* OfferActionView.xib in Resources */,
+				81BF39E11A8AB7330052EBEF /* PG_Icon_29.png in Resources */,
+				81BF395A1A8AA9950052EBEF /* ribbon@2x.png in Resources */,
+				81BF395B1A8AA9950052EBEF /* DealActionBar3View.xib in Resources */,
+				81BF395C1A8AA9950052EBEF /* TaloolLogoAndIcon.png in Resources */,
+				81BF395D1A8AA9950052EBEF /* MerchantActionBar3View.xib in Resources */,
+				81BF39F31A8AB7330052EBEF /* PG_welcome5@2x.png in Resources */,
+				81BF39DF1A8AB7330052EBEF /* PG_hero-568h@2x.png in Resources */,
+				81BF39E31A8AB7330052EBEF /* PG_Icon_80.png in Resources */,
+				81BF39611A8AA9950052EBEF /* OfferMerchantView.xib in Resources */,
+				81BF39621A8AA9950052EBEF /* Icon_29.png in Resources */,
+				81BF39641A8AA9950052EBEF /* EmailConfirmationView.xib in Resources */,
+				81BF39E41A8AB7330052EBEF /* PG_Icon_120.png in Resources */,
+				81BF39681A8AA9950052EBEF /* GiftActionBar2View.xib in Resources */,
+				81BF39F01A8AB7330052EBEF /* PG_welcome4-568h@2x.png in Resources */,
+				81BF39691A8AA9950052EBEF /* ribbonbadge.png in Resources */,
+				81BF396A1A8AA9950052EBEF /* DealOfferIcon.png in Resources */,
+				81BF396B1A8AA9950052EBEF /* no-wifi-icon.png in Resources */,
+				81BF396C1A8AA9950052EBEF /* ribbonbadge@2x.png in Resources */,
+				81BF39EB1A8AB7330052EBEF /* PG_welcome1@2x.png in Resources */,
+				81BF39E61A8AB7330052EBEF /* PG_Icon@2x.png in Resources */,
+				81BF396E1A8AA9950052EBEF /* Icon.png in Resources */,
+				81BF39701A8AA9950052EBEF /* Icon@2x.png in Resources */,
+				81BF39E51A8AB7330052EBEF /* PG_Icon.png in Resources */,
+				81BF39EF1A8AB7330052EBEF /* PG_welcome3@2x.png in Resources */,
+				81BF39DE1A8AB7330052EBEF /* PG_Default@2x.png in Resources */,
+				81BF39E01A8AB7330052EBEF /* PG_hero@2x.png in Resources */,
+				81BF39EE1A8AB7330052EBEF /* PG_welcome3-568h@2x.png in Resources */,
+				81BF39F11A8AB7330052EBEF /* PG_welcome4@2x.png in Resources */,
+				81BF39751A8AA9950052EBEF /* DealOfferBG.png in Resources */,
+				81BF39E21A8AB7330052EBEF /* PG_Icon_58.png in Resources */,
+				81BF39771A8AA9950052EBEF /* compass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,6 +1297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8155FA3A18BEA99F00314DB3 /* welcome0@2x.png in Resources */,
+				81BF39FB1A8ABD890052EBEF /* Images.xcassets in Resources */,
 				81C23E1E18A13E4400127F83 /* welcome2@2x.png in Resources */,
 				819B27651844228900105479 /* OfferSummaryView.xib in Resources */,
 				81867EC817CFEC7A0069EC9E /* Icon_120.png in Resources */,
@@ -1296,7 +1325,6 @@
 				8157F8D617CC0DA400061B62 /* Icon_58.png in Resources */,
 				8190F2E11853B44200FF0AFB /* EmailConfirmationView.xib in Resources */,
 				819092CE17FCB2CF00699C39 /* Default-568h@2x.png in Resources */,
-				81BF38071A8AA1350052EBEF /* SaveAround-Info.plist in Resources */,
 				8157F8D717CC0DA400061B62 /* Icon_80.png in Resources */,
 				81AE6DD217A1BB99000596E8 /* GiftActionBar2View.xib in Resources */,
 				81AE6DDB17A1D938000596E8 /* ribbonbadge.png in Resources */,
@@ -1320,7 +1348,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8155F98F18BE9F6F00314DB3 /* Check Pods Manifest.lock */ = {
+		81BF38DB1A8AA9950052EBEF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1335,7 +1363,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8155FA2718BE9F6F00314DB3 /* Copy Pods Resources */ = {
+		81BF39781A8AA9950052EBEF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1347,8 +1375,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		81BF39791A8AA9950052EBEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "./Crashlytics.framework/run 621dd92cb7c068e9486411b53478071c2c3f5357 b12045ccd9172914421f83a61567a51e7e9919702fa35da32731cd976a5f201f";
+			shellScript = "";
 		};
 		81D10D7919A5173800CFF856 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1396,95 +1437,95 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8155F99018BE9F6F00314DB3 /* Sources */ = {
+		81BF38DC1A8AA9950052EBEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8155F99118BE9F6F00314DB3 /* MerchantOperation.m in Sources */,
-				8155F99218BE9F6F00314DB3 /* LoginViewController.m in Sources */,
-				8155F99318BE9F6F00314DB3 /* LocationCell.m in Sources */,
-				8155F99418BE9F6F00314DB3 /* TaloolOperation.m in Sources */,
-				8155F99518BE9F6F00314DB3 /* MerchantLocationAnnotation.m in Sources */,
-				8155F99618BE9F6F00314DB3 /* MerchantLocationViewController.m in Sources */,
-				8155F99718BE9F6F00314DB3 /* main.m in Sources */,
-				8155F99818BE9F6F00314DB3 /* AppDelegate.m in Sources */,
-				8155F99918BE9F6F00314DB3 /* DealAcquireOperation.m in Sources */,
-				8155F99A18BE9F6F00314DB3 /* GiftOperation.m in Sources */,
-				8155F99B18BE9F6F00314DB3 /* SendPasswordResetViewController.m in Sources */,
-				8155F99C18BE9F6F00314DB3 /* MerchantCell.m in Sources */,
-				8155F99D18BE9F6F00314DB3 /* MerchantFilterMenu.m in Sources */,
-				8155F99E18BE9F6F00314DB3 /* TaloolTextField.m in Sources */,
-				8155F99F18BE9F6F00314DB3 /* DealAcquireCell.m in Sources */,
-				8155F9A018BE9F6F00314DB3 /* DealOfferDealCell.m in Sources */,
-				8155F9A118BE9F6F00314DB3 /* RegistrationViewController.m in Sources */,
-				8155F9A218BE9F6F00314DB3 /* FindDealsTableViewController.m in Sources */,
-				8155F9A318BE9F6F00314DB3 /* TaloolTabBarController.m in Sources */,
-				8155F9A418BE9F6F00314DB3 /* WelcomeViewController.m in Sources */,
-				8155F9A518BE9F6F00314DB3 /* CustomerHelper.m in Sources */,
-				81F5E27218CFF7AB00FBDF96 /* FundraiserCodeViewController.m in Sources */,
-				8155F9A718BE9F6F00314DB3 /* FacebookHelper.m in Sources */,
-				8155F9A818BE9F6F00314DB3 /* ResetPasswordViewController.m in Sources */,
-				8155F9A918BE9F6F00314DB3 /* SettingsTableViewController.m in Sources */,
-				8155F9AA18BE9F6F00314DB3 /* TaloolColor.m in Sources */,
-				8155F9AB18BE9F6F00314DB3 /* CategoryHelper.m in Sources */,
-				8155F9AC18BE9F6F00314DB3 /* TaloolUIButton.m in Sources */,
-				8155F9AD18BE9F6F00314DB3 /* CategoryOperation.m in Sources */,
-				8155F9AE18BE9F6F00314DB3 /* GradientButton.m in Sources */,
-				8155F9AF18BE9F6F00314DB3 /* TaloolIconButton.m in Sources */,
-				8155F9B018BE9F6F00314DB3 /* DealOfferDealsOperation.m in Sources */,
-				8155F9B118BE9F6F00314DB3 /* OfferMerchantView.m in Sources */,
-				8155F9B218BE9F6F00314DB3 /* TaloolFilterMenu.m in Sources */,
-				8155F9B318BE9F6F00314DB3 /* AcceptGiftViewController.m in Sources */,
-				8155F9B418BE9F6F00314DB3 /* ResetPasswordOperation.m in Sources */,
-				8155F9B518BE9F6F00314DB3 /* TextureHelper.m in Sources */,
-				8155F9B618BE9F6F00314DB3 /* LogoutOperation.m in Sources */,
-				8155F9B718BE9F6F00314DB3 /* RedeemOperation.m in Sources */,
-				8155F9B818BE9F6F00314DB3 /* ActivityCell.m in Sources */,
-				8155F9B918BE9F6F00314DB3 /* UserAuthenticationOperation.m in Sources */,
-				8155F9BA18BE9F6F00314DB3 /* MyDealsViewController.m in Sources */,
-				8155F9BB18BE9F6F00314DB3 /* ActivityViewController.m in Sources */,
-				8155F9BC18BE9F6F00314DB3 /* SimpleHeaderView.m in Sources */,
-				8155F9BD18BE9F6F00314DB3 /* LocationHelper.m in Sources */,
-				8155F9BE18BE9F6F00314DB3 /* TutorialViewController.m in Sources */,
-				8155F9BF18BE9F6F00314DB3 /* ActivityFilterMenu.m in Sources */,
-				8155F9C018BE9F6F00314DB3 /* DealCell.m in Sources */,
-				8155F9C118BE9F6F00314DB3 /* FacebookAuthenticationOperation.m in Sources */,
-				8155F9C218BE9F6F00314DB3 /* PersonViewController.m in Sources */,
-				8155F9C318BE9F6F00314DB3 /* IconHelper.m in Sources */,
-				8155F9C418BE9F6F00314DB3 /* MerchantDealsViewController.m in Sources */,
-				8155F9C518BE9F6F00314DB3 /* TaloolMobileWebViewController.m in Sources */,
-				8155F9C618BE9F6F00314DB3 /* KeyboardAccessoryView.m in Sources */,
-				8155F9C718BE9F6F00314DB3 /* OfferSummaryView.m in Sources */,
-				8155F9C818BE9F6F00314DB3 /* DealOfferTableViewController.m in Sources */,
-				8155F9C918BE9F6F00314DB3 /* FavoriteMerchantOperation.m in Sources */,
-				8155F9CA18BE9F6F00314DB3 /* RegistrationOperation.m in Sources */,
-				8155F9CB18BE9F6F00314DB3 /* OfferActionView.m in Sources */,
-				8155F9CC18BE9F6F00314DB3 /* OfferSummaryCell.m in Sources */,
-				8155F9CD18BE9F6F00314DB3 /* MapCell.m in Sources */,
-				8155F9CE18BE9F6F00314DB3 /* ActivityOperation.m in Sources */,
-				8155F9CF18BE9F6F00314DB3 /* DealOfferCell.m in Sources */,
-				8155F9D018BE9F6F00314DB3 /* MerchantTableViewController.m in Sources */,
-				8155F9D118BE9F6F00314DB3 /* DealTableViewController.m in Sources */,
-				8155F9D218BE9F6F00314DB3 /* DealDetailCell.m in Sources */,
-				8155F9D318BE9F6F00314DB3 /* BarCodeCell.m in Sources */,
-				8155F9D418BE9F6F00314DB3 /* DefaultDealLayoutState.m in Sources */,
-				8155F9D518BE9F6F00314DB3 /* DealOfferOperation.m in Sources */,
-				8155F9D618BE9F6F00314DB3 /* DealLayoutState.m in Sources */,
-				8155F9D718BE9F6F00314DB3 /* DealActionBar3View.m in Sources */,
-				8155F9D818BE9F6F00314DB3 /* DealLocationCell.m in Sources */,
-				8155F9D918BE9F6F00314DB3 /* EmailConfirmationView.m in Sources */,
-				81E6030518C03949004A017B /* WhiteLabelHelper.m in Sources */,
-				8155F9DA18BE9F6F00314DB3 /* DealOfferLogoCell.m in Sources */,
-				8155F9DB18BE9F6F00314DB3 /* MerchantActionBar3View.m in Sources */,
-				8155F9DC18BE9F6F00314DB3 /* AuthenticationOperation.m in Sources */,
-				8155F9DD18BE9F6F00314DB3 /* TaloolAppCall.m in Sources */,
-				8155F9DE18BE9F6F00314DB3 /* SplashViewController.m in Sources */,
-				8155F9DF18BE9F6F00314DB3 /* UIImage+H568.m in Sources */,
-				8155F9E018BE9F6F00314DB3 /* OperationQueueManager.m in Sources */,
-				8155F9E118BE9F6F00314DB3 /* DealOfferMerchantCell.m in Sources */,
-				8155F9E218BE9F6F00314DB3 /* GiftActionBar2View.m in Sources */,
-				8155F9E318BE9F6F00314DB3 /* DefaultGiftLayoutState.m in Sources */,
-				8155F9E418BE9F6F00314DB3 /* GiftDetailCell.m in Sources */,
+				81BF38DD1A8AA9950052EBEF /* MerchantOperation.m in Sources */,
+				81BF38DE1A8AA9950052EBEF /* LoginViewController.m in Sources */,
+				81BF38DF1A8AA9950052EBEF /* LocationCell.m in Sources */,
+				81BF38E01A8AA9950052EBEF /* TaloolOperation.m in Sources */,
+				81BF38E11A8AA9950052EBEF /* MerchantLocationAnnotation.m in Sources */,
+				81BF38E21A8AA9950052EBEF /* MerchantLocationViewController.m in Sources */,
+				81BF38E31A8AA9950052EBEF /* main.m in Sources */,
+				81BF38E41A8AA9950052EBEF /* AppDelegate.m in Sources */,
+				81BF38E51A8AA9950052EBEF /* DealAcquireOperation.m in Sources */,
+				81BF38E61A8AA9950052EBEF /* GiftOperation.m in Sources */,
+				81BF38E71A8AA9950052EBEF /* SendPasswordResetViewController.m in Sources */,
+				81BF38E81A8AA9950052EBEF /* MerchantCell.m in Sources */,
+				81BF38E91A8AA9950052EBEF /* MerchantFilterMenu.m in Sources */,
+				81BF38EA1A8AA9950052EBEF /* TaloolTextField.m in Sources */,
+				81BF38EB1A8AA9950052EBEF /* DealAcquireCell.m in Sources */,
+				81BF38EC1A8AA9950052EBEF /* DealOfferDealCell.m in Sources */,
+				81BF38ED1A8AA9950052EBEF /* RegistrationViewController.m in Sources */,
+				81BF38EE1A8AA9950052EBEF /* FindDealsTableViewController.m in Sources */,
+				81BF38EF1A8AA9950052EBEF /* TaloolTabBarController.m in Sources */,
+				81BF38F01A8AA9950052EBEF /* WelcomeViewController.m in Sources */,
+				81BF38F11A8AA9950052EBEF /* CustomerHelper.m in Sources */,
+				81BF38F21A8AA9950052EBEF /* FundraiserCodeViewController.m in Sources */,
+				81BF38F31A8AA9950052EBEF /* FacebookHelper.m in Sources */,
+				81BF38F41A8AA9950052EBEF /* ResetPasswordViewController.m in Sources */,
+				81BF38F51A8AA9950052EBEF /* SettingsTableViewController.m in Sources */,
+				81BF38F61A8AA9950052EBEF /* TaloolColor.m in Sources */,
+				81BF38F71A8AA9950052EBEF /* CategoryHelper.m in Sources */,
+				81BF38F81A8AA9950052EBEF /* TaloolUIButton.m in Sources */,
+				81BF38F91A8AA9950052EBEF /* CategoryOperation.m in Sources */,
+				81BF38FA1A8AA9950052EBEF /* GradientButton.m in Sources */,
+				81BF38FB1A8AA9950052EBEF /* TaloolIconButton.m in Sources */,
+				81BF38FC1A8AA9950052EBEF /* DealOfferDealsOperation.m in Sources */,
+				81BF38FD1A8AA9950052EBEF /* OfferMerchantView.m in Sources */,
+				81BF38FE1A8AA9950052EBEF /* TaloolFilterMenu.m in Sources */,
+				81BF38FF1A8AA9950052EBEF /* AcceptGiftViewController.m in Sources */,
+				81BF39001A8AA9950052EBEF /* ResetPasswordOperation.m in Sources */,
+				81BF39011A8AA9950052EBEF /* TextureHelper.m in Sources */,
+				81BF39021A8AA9950052EBEF /* LogoutOperation.m in Sources */,
+				81BF39031A8AA9950052EBEF /* RedeemOperation.m in Sources */,
+				81BF39041A8AA9950052EBEF /* ActivityCell.m in Sources */,
+				81BF39051A8AA9950052EBEF /* UserAuthenticationOperation.m in Sources */,
+				81BF39061A8AA9950052EBEF /* MyDealsViewController.m in Sources */,
+				81BF39071A8AA9950052EBEF /* ActivityViewController.m in Sources */,
+				81BF39081A8AA9950052EBEF /* SimpleHeaderView.m in Sources */,
+				81BF39091A8AA9950052EBEF /* LocationHelper.m in Sources */,
+				81BF390A1A8AA9950052EBEF /* TutorialViewController.m in Sources */,
+				81BF390B1A8AA9950052EBEF /* ActivityFilterMenu.m in Sources */,
+				81BF390C1A8AA9950052EBEF /* DealCell.m in Sources */,
+				81BF390D1A8AA9950052EBEF /* FacebookAuthenticationOperation.m in Sources */,
+				81BF390E1A8AA9950052EBEF /* PersonViewController.m in Sources */,
+				81BF390F1A8AA9950052EBEF /* IconHelper.m in Sources */,
+				81BF39101A8AA9950052EBEF /* MerchantDealsViewController.m in Sources */,
+				81BF39111A8AA9950052EBEF /* TaloolMobileWebViewController.m in Sources */,
+				81BF39121A8AA9950052EBEF /* KeyboardAccessoryView.m in Sources */,
+				81BF39131A8AA9950052EBEF /* OfferSummaryView.m in Sources */,
+				81BF39141A8AA9950052EBEF /* DealOfferTableViewController.m in Sources */,
+				81BF39151A8AA9950052EBEF /* FavoriteMerchantOperation.m in Sources */,
+				81BF39161A8AA9950052EBEF /* RegistrationOperation.m in Sources */,
+				81BF39171A8AA9950052EBEF /* OfferActionView.m in Sources */,
+				81BF39181A8AA9950052EBEF /* OfferSummaryCell.m in Sources */,
+				81BF39191A8AA9950052EBEF /* MapCell.m in Sources */,
+				81BF391A1A8AA9950052EBEF /* ActivityOperation.m in Sources */,
+				81BF391B1A8AA9950052EBEF /* DealOfferCell.m in Sources */,
+				81BF391C1A8AA9950052EBEF /* MerchantTableViewController.m in Sources */,
+				81BF391D1A8AA9950052EBEF /* DealTableViewController.m in Sources */,
+				81BF391E1A8AA9950052EBEF /* DealDetailCell.m in Sources */,
+				81BF391F1A8AA9950052EBEF /* BarCodeCell.m in Sources */,
+				81BF39201A8AA9950052EBEF /* DefaultDealLayoutState.m in Sources */,
+				81BF39211A8AA9950052EBEF /* DealOfferOperation.m in Sources */,
+				81BF39221A8AA9950052EBEF /* DealLayoutState.m in Sources */,
+				81BF39231A8AA9950052EBEF /* DealActionBar3View.m in Sources */,
+				81BF39241A8AA9950052EBEF /* DealLocationCell.m in Sources */,
+				81BF39251A8AA9950052EBEF /* EmailConfirmationView.m in Sources */,
+				81BF39261A8AA9950052EBEF /* WhiteLabelHelper.m in Sources */,
+				81BF39271A8AA9950052EBEF /* DealOfferLogoCell.m in Sources */,
+				81BF39281A8AA9950052EBEF /* MerchantActionBar3View.m in Sources */,
+				81BF39291A8AA9950052EBEF /* AuthenticationOperation.m in Sources */,
+				81BF392A1A8AA9950052EBEF /* TaloolAppCall.m in Sources */,
+				81BF392B1A8AA9950052EBEF /* SplashViewController.m in Sources */,
+				81BF392C1A8AA9950052EBEF /* UIImage+H568.m in Sources */,
+				81BF392D1A8AA9950052EBEF /* OperationQueueManager.m in Sources */,
+				81BF392E1A8AA9950052EBEF /* DealOfferMerchantCell.m in Sources */,
+				81BF392F1A8AA9950052EBEF /* GiftActionBar2View.m in Sources */,
+				81BF39301A8AA9950052EBEF /* DefaultGiftLayoutState.m in Sources */,
+				81BF39311A8AA9950052EBEF /* GiftDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,12 +1651,16 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8155FA2918BE9F6F00314DB3 /* Debug */ = {
+		81BF397B1A8AA9950052EBEF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8B2C02953A31BA91F02AC54 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Chamber";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-Chamber";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1629,7 +1674,7 @@
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SaveAround-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Chamber-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1638,18 +1683,22 @@
 					"-lsqlite3.0",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = SaveAround;
+				PRODUCT_NAME = Chamber;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		8155FA2A18BE9F6F00314DB3 /* Release */ = {
+		81BF397C1A8AA9950052EBEF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF94C3A57FC1B6EBA5F9DEA4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Chamber";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-Chamber";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1663,7 +1712,7 @@
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "SaveAround-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Chamber-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1672,7 +1721,7 @@
 					"-lsqlite3.0",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = SaveAround;
+				PRODUCT_NAME = Chamber;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1745,6 +1794,8 @@
 			baseConfigurationReference = E8B2C02953A31BA91F02AC54 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -1781,6 +1832,8 @@
 			baseConfigurationReference = FF94C3A57FC1B6EBA5F9DEA4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -1815,11 +1868,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8155FA2818BE9F6F00314DB3 /* Build configuration list for PBXNativeTarget "SaveAround" */ = {
+		81BF397A1A8AA9950052EBEF /* Build configuration list for PBXNativeTarget "Chamber" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8155FA2918BE9F6F00314DB3 /* Debug */,
-				8155FA2A18BE9F6F00314DB3 /* Release */,
+				81BF397B1A8AA9950052EBEF /* Debug */,
+				81BF397C1A8AA9950052EBEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
