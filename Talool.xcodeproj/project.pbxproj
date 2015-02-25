@@ -1660,7 +1660,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Chamber;
-				PROVISIONING_PROFILE = "4ea1f973-63d1-4872-a78e-4b1d9525d815";
+				PROVISIONING_PROFILE = "e91b51f4-000b-4d31-86f1-c57c02feaa42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1698,7 +1698,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = Chamber;
-				PROVISIONING_PROFILE = "4ea1f973-63d1-4872-a78e-4b1d9525d815";
+				PROVISIONING_PROFILE = "e91b51f4-000b-4d31-86f1-c57c02feaa42";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
