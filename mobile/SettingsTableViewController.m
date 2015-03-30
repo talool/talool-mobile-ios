@@ -38,7 +38,9 @@ static NSString *host = @"http://www.talool.com";
 {
     [super viewDidLoad];
     customer = [CustomerHelper getLoggedInUser];
-    nameLabel.text = [customer getFullName];
+    NSString *name = [[CustomerHelper getLoggedInUser] getFullName];
+    if (name.length < 3) name = @"Anonymous";
+    nameLabel.text = name;
     
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];

@@ -136,7 +136,9 @@
             [self forcedClearOfTableView];
         }
         
-        self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
+        NSString *title = [[CustomerHelper getLoggedInUser] getFullName];
+        if (title.length < 3) title = @"My Deals";
+        self.navigationItem.title = title;
         
         [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
                          subtitle:[_menu getSubtitleAtSelectedIndex]];

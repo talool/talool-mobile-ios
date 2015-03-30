@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qfe-3S-Pf3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qfe-3S-Pf3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -545,7 +545,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Addresss" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-mu-9w1" customClass="TaloolTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username (e.g. Email Address)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-mu-9w1" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -686,12 +686,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-b1-3NG">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-b1-3NG">
                                                     <rect key="frame" x="34" y="6" width="252" height="29"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <segments>
-                                                        <segment title="Female"/>
                                                         <segment title="Male"/>
+                                                        <segment title="Female"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -806,7 +806,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-rh-5Zb" customClass="TaloolTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username (e.g. Email Address)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-rh-5Zb" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -2804,7 +2804,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nnw-3f-B8b"/>
+        <segue reference="uEn-bZ-qa5"/>
         <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

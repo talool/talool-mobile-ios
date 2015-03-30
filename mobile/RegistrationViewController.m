@@ -107,8 +107,11 @@
             case 0:
                 [sexPicker setSelectedSegmentIndex:1];
                 break;
-            default:
+            case 1:
                 [sexPicker setSelectedSegmentIndex:0];
+                break;
+            default:
+                [sexPicker setSelectedSegmentIndex:-1];
                 break;
         }
     }
@@ -126,6 +129,7 @@
     [SVProgressHUD showWithStatus:@"Creating account" maskType:SVProgressHUDMaskTypeBlack];
     
     NSNumber *sex = [NSNumber numberWithInteger:[sexPicker selectedSegmentIndex]];
+    if ([sex integerValue]==-1) sex = [NSNumber numberWithInt:2];
     
     NSDate *bday = nil;
     if (birthDateField.text)
