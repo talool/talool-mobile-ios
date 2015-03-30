@@ -14,7 +14,6 @@
 
 - (void)setGift:(ttGift *)gift
 {
-    details.text = (gift.fromCustomer.firstName)?gift.fromCustomer.firstName:@"Someone";
     if (!gift.fromCustomer.firstName || [gift.fromCustomer.firstName  isEqualToString:@""])
     {
         details.text = @"Someone";
