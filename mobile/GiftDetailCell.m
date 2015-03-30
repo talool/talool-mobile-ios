@@ -14,7 +14,7 @@
 
 - (void)setGift:(ttGift *)gift
 {
-    details.text = gift.fromCustomer.firstName;
+    details.text = (gift.fromCustomer.firstName)?gift.fromCustomer.firstName:@"Someone";
 }
 
 @end
