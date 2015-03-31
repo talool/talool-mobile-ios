@@ -52,7 +52,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>37</string>
+	<string>39</string>
 	<key>FacebookAppID</key>
 	<string>943529849004590</string>
 	<key>FacebookDisplayName</key>
@@ -67,15 +67,6 @@
 	<string>Chamber uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
 	<key>Talool</key>
 	<dict>
-		<key>URL</key>
-		<dict>
-			<key>Merchant</key>
-			<string>http://chamberpg.com/loyalty/members</string>
-			<key>Privacy</key>
-			<string>http://chamberpg.com/loyalty/privacy-policy</string>
-			<key>Terms</key>
-			<string>http://chamberpg.com/loyalty/terms-of-use</string>
-		</dict>
 		<key>Color</key>
 		<dict>
 			<key>Blue</key>
@@ -177,6 +168,15 @@
 				<key>red</key>
 				<integer>25</integer>
 			</dict>
+		</dict>
+		<key>URL</key>
+		<dict>
+			<key>Merchant</key>
+			<string>http://chamberpg.com/loyalty/members</string>
+			<key>Privacy</key>
+			<string>http://chamberpg.com/loyalty/privacy-policy</string>
+			<key>Terms</key>
+			<string>http://chamberpg.com/loyalty/terms-of-use</string>
 		</dict>
 		<key>WhiteLabelIdDevelopment</key>
 		<string>c6679895-7fc7-499c-a063-2aa9b2bbde4c</string>
