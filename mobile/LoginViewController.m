@@ -21,6 +21,7 @@
 #import <TaloolTabBarController.h>
 #import "OperationQueueManager.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import <WhiteLabelHelper.h>
 
 @interface LoginViewController ()
 
@@ -47,7 +48,15 @@
     [emailField setDefaultBorderColor];
     [passwordField setDefaultBorderColor];
     
-    [forgotButton setTitleColor:[TaloolColor dark_teal] forState:UIControlStateNormal];
+    if ([WhiteLabelHelper getWhiteLabelId])
+    {
+        [forgotButton removeFromSuperview];
+    }
+    else
+    {
+        [forgotButton setTitleColor:[TaloolColor dark_teal] forState:UIControlStateNormal];
+    }
+    
 
 }
 

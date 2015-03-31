@@ -113,19 +113,40 @@ static NSString *host = @"http://www.talool.com";
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])
     {
-        NSString *pUrl = [NSString stringWithFormat:@"%@/privacy",host];
+        NSString *pUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            pUrl = [urls objectForKey:@"Privacy"];
+        }
+        if (pUrl==nil) pUrl = [NSString stringWithFormat:@"%@/privacy",host];
+        
         [[segue destinationViewController] setMobileWebUrl:pUrl];
         [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
     }
     else if ([[segue identifier] isEqualToString:@"terms"])
     {
-        NSString *tUrl = [NSString stringWithFormat:@"%@/termsofservice",host];
+        NSString *tUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            tUrl = [urls objectForKey:@"Terms"];
+        }
+        if (tUrl==nil) tUrl = [NSString stringWithFormat:@"%@/termsofservice",host];
+        
         [[segue destinationViewController] setMobileWebUrl:tUrl];
         [[segue destinationViewController] setViewTitle:@"Terms of Use"];
     }
     else if ([[segue identifier] isEqualToString:@"merchant"])
     {
-        NSString *smUrl = [NSString stringWithFormat:@"%@/services/merchants",host];
+        NSString *smUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            smUrl = [urls objectForKey:@"Merchant"];
+        }
+        if (smUrl==nil) smUrl = [NSString stringWithFormat:@"%@/services/merchants",host];
+        
         [[segue destinationViewController] setMobileWebUrl:smUrl];
         [[segue destinationViewController] setViewTitle:@"Merchant Services"];
     }

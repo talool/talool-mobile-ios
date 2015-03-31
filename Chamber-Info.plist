@@ -67,6 +67,15 @@
 	<string>Chamber uses your location to send you deals and reminders for saving money.  Sharing your location also makes it easier to find your deals.</string>
 	<key>Talool</key>
 	<dict>
+		<key>URL</key>
+		<dict>
+			<key>Merchant</key>
+			<string>http://chamberpg.com/loyalty/members</string>
+			<key>Privacy</key>
+			<string>http://chamberpg.com/loyalty/privacy-policy</string>
+			<key>Terms</key>
+			<string>http://chamberpg.com/loyalty/terms-of-use</string>
+		</dict>
 		<key>Color</key>
 		<dict>
 			<key>Blue</key>

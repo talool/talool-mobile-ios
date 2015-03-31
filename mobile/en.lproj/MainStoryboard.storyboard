@@ -897,12 +897,13 @@
                         <outlet property="sexPicker" destination="9jL-b1-3NG" id="daR-Ci-EyA"/>
                         <segue destination="8ly-oM-ne5" kind="unwind" identifier="reg_unwind" unwindAction="unwindToSplash:" id="IBY-ac-Cxb"/>
                         <segue destination="ivS-WS-HeA" kind="push" identifier="showTutorial" id="sy1-9h-Ydu"/>
+                        <segue destination="4" kind="push" identifier="showTabs" id="d3Z-zz-AAk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIl-Lz-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8ly-oM-ne5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="565" y="-45"/>
+            <point key="canvasLocation" x="565" y="-51"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="qxY-6J-NQF">
@@ -925,7 +926,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUm-ke-Kcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="-45"/>
+            <point key="canvasLocation" x="1073" y="-51"/>
         </scene>
         <!--Activity-->
         <scene sceneID="s5q-0c-13S">
@@ -2804,7 +2805,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uEn-bZ-qa5"/>
+        <segue reference="d3Z-zz-AAk"/>
         <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

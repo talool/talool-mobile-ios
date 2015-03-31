@@ -14,6 +14,7 @@
 #import "Talool-API/ttSocialAccount.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
+#import <WhiteLabelHelper.h>
 #import "KeyboardAccessoryView.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -23,6 +24,7 @@
 #import "OperationQueueManager.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <TutorialViewController.h>
+#import "TaloolTabBarController.h"
 
 #define sexUndefinedIndex   0
 #define sexFemaleIndex      1
@@ -284,7 +286,14 @@
     BOOL success = [[response objectForKey:DELEGATE_RESPONSE_SUCCESS] boolValue];
     if (success)
     {
-        [self performSegueWithIdentifier:@"showTutorial" sender:self];
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            [self performSegueWithIdentifier:@"showTabs" sender:self];
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"showTutorial" sender:self];
+        }
         [[OperationQueueManager sharedInstance] handleForegroundState];
     }
     else
@@ -306,6 +315,13 @@
         [self.navigationController setNavigationBarHidden:YES];
         TutorialViewController *tvc = [segue destinationViewController];
         [tvc setTutorialKey:WELCOME_TUTORIAL_KEY];
+    }
+    else if ([[segue identifier] isEqualToString:@"showTabs"])
+    {
+        [self.navigationController setNavigationBarHidden:YES];
+        TaloolTabBarController *controller = [segue destinationViewController];
+        [controller resetViews];
+        [controller setSelectedIndex:1];
     }
 }
 
