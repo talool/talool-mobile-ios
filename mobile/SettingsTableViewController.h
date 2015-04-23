@@ -20,6 +20,7 @@
     IBOutlet UILabel *versionLabel;
     IBOutlet TaloolUIButton *logoutButton;
     IBOutlet UITableViewCell *logoutCell;
+    IBOutlet UITableViewCell *publisherCell;
 }
 - (IBAction)logout:(id)sender;
 

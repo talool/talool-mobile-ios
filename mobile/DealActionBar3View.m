@@ -15,6 +15,7 @@
 #import "Talool-API/ttCustomer.h"
 #import "Talool-API/ttGiftDetail.h"
 #import "FacebookHelper.h"
+#import <WhiteLabelHelper.h>
 #import "CustomerHelper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h>
@@ -41,8 +42,17 @@
                               };
         [redeemButton setTitle:[NSString stringWithFormat:@"%@  %@", moneyIcon.characterCode, @"Redeem Now"]];
         [redeemButton setTitleTextAttributes:attr2 forState:UIControlStateNormal];
-        [emailButton setTitle:[NSString stringWithFormat:@"%@  %@", giftIcon.characterCode, @"Give As Gift"]];
-        [emailButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+        
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            [emailButton setEnabled:NO];
+            [emailButton setTitle:@""];
+        }
+        else
+        {
+            [emailButton setTitle:[NSString stringWithFormat:@"%@  %@", giftIcon.characterCode, @"Give As Gift"]];
+            [emailButton setTitleTextAttributes:attr forState:UIControlStateNormal];
+        }
         
         [self updateView:dealAcq];
         

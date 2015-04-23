@@ -66,7 +66,7 @@
                                                   context:context];
         
 
-        [customer setAsFemale:([self.sex intValue]==0)];
+        [customer setSex:self.sex];
         
         [customer setBirthDate:self.birthDate];
         

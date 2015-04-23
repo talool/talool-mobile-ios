@@ -11,7 +11,6 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import <WhiteLabelHelper.h>
 #import <AppDelegate.h>
-#import "TestFlight.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import "TaloolAppCall.h"
 #import "CustomerHelper.h"
@@ -98,10 +97,7 @@
     //[GAI sharedInstance].debug = YES;
     // Create tracker instance.
     [[GAI sharedInstance] trackerWithName:@"Talool" trackingId:GA_TRACKING_ID];
-    
-    // Test Flight
-    [TestFlight setOptions:@{ TFOptionSessionKeepAliveTimeout : @60 }];
-    [TestFlight takeOff:TESTFLIGHT_APP_TOKEN];
+
     
     [[TaloolAppCall sharedInstance] handleDidBecomeActive];
     

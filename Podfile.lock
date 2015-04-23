@@ -1,5 +1,5 @@
 PODS:
-  - Bolts (1.1.3)
+  - Bolts (1.1.4)
   - Braintree (3.1.3):
     - Braintree/API (= 3.1.3)
     - Braintree/Drop-In (= 3.1.3)
@@ -15,8 +15,8 @@ PODS:
     - Braintree/UI
   - Braintree/UI (3.1.3)
   - EAIntroView (2.6.3)
-  - Facebook-iOS-SDK (3.18.0):
-    - Bolts
+  - Facebook-iOS-SDK (3.23.2):
+    - Bolts (~> 1.0)
   - FontAwesomeKit (2.1.8):
     - FontAwesomeKit/Core (= 2.1.8)
     - FontAwesomeKit/FontAwesome (= 2.1.8)
@@ -39,9 +39,8 @@ PODS:
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SVProgressHUD (1.0)
-  - Talool-API (1.3.11):
+  - Talool-API (1.3.15):
     - GoogleAnalytics-iOS-SDK (~> 3.0.1)
-  - TestFlightSDK (3.0.2)
   - TSMessages (0.9.10):
     - HexColors
   - UIActivityIndicator-for-SDWebImage (1.2):
@@ -50,41 +49,39 @@ PODS:
 DEPENDENCIES:
   - Braintree (= 3.1.3)
   - EAIntroView (= 2.6.3)
-  - Facebook-iOS-SDK (= 3.18)
+  - Facebook-iOS-SDK (= 3.23.2)
   - FontAwesomeKit (= 2.1.8)
   - GoogleAnalytics-iOS-SDK (= 3.0.9)
   - REMenu (= 1.10)
   - SDWebImage (= 3.7.1)
   - SVProgressHUD (= 1.0)
-  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.3.11`)
-  - TestFlightSDK (= 3.0.2)
+  - Talool-API (from `https://github.com/talool/talool-api-ios.git`, tag `v1.3.15`)
   - TSMessages (= 0.9.10)
   - UIActivityIndicator-for-SDWebImage (= 1.2)
 
 EXTERNAL SOURCES:
   Talool-API:
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.3.11
+    :tag: v1.3.15
 
 CHECKOUT OPTIONS:
   Talool-API:
     :git: https://github.com/talool/talool-api-ios.git
-    :tag: v1.3.11
+    :tag: v1.3.15
 
 SPEC CHECKSUMS:
-  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
-  Braintree: d62f157e33705a66cea3cea7b7094e30fd6f35cd
-  EAIntroView: 45924b81c153d1206ee24f4fa654e9d9dae79e93
-  Facebook-iOS-SDK: fa12c51cc57bfb6f92e47793c9d4d2c65bc92741
-  FontAwesomeKit: a2edea3111dab107b4cc43b85881b404eb063385
-  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
-  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
-  REMenu: e3988747d83f9e8f49f244bd3f1fb8b0900e8741
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  Talool-API: 3dd7eb156e9824ed3a292041309403d1d78489b4
-  TestFlightSDK: 0c24c533748d0d84bfe7a3cb6036fa79124d84ee
-  TSMessages: 8598a0645e9d54847f6e5f3b070bef39c493bbf8
-  UIActivityIndicator-for-SDWebImage: 8bd92c15280fbe54816448c6b14674145eee05c7
+  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  Braintree: 3a503f6acb939c29df7493e35befb76344c7260d
+  EAIntroView: 32297ea4c8907933ab87386c9e17c424452cd625
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  FontAwesomeKit: 64759fb28b5d2e74a1bd81553d7c11ca10e32179
+  GoogleAnalytics-iOS-SDK: 3b0994bef22ed2e176a9e2a4d1660c7c2542eb47
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
+  Talool-API: 38afa37cc0a7f2d50b1572c76a3bdc8e95cdb6e3
+  TSMessages: 587c8041a112ccf6cce2d690e89949e5f7dd3a29
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
 
 COCOAPODS: 0.35.0

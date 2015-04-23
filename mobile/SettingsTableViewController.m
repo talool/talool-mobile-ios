@@ -16,6 +16,7 @@
 #import "TaloolUIButton.h"
 #import "TaloolColor.h"
 #import "TextureHelper.h"
+#import <WhiteLabelHelper.h>
 #import "OperationQueueManager.h"
 #import <GoogleAnalytics-iOS-SDK/GAI.h>
 #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
@@ -37,7 +38,9 @@ static NSString *host = @"http://www.talool.com";
 {
     [super viewDidLoad];
     customer = [CustomerHelper getLoggedInUser];
-    nameLabel.text = [customer getFullName];
+    NSString *name = [[CustomerHelper getLoggedInUser] getFullName];
+    if (name.length < 3) name = @"Anonymous";
+    nameLabel.text = name;
     
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
@@ -50,7 +53,7 @@ static NSString *host = @"http://www.talool.com";
     
     // create table headers
     accountHeader = [self createHeaderView:@"Account"];
-    taloolHeader = [self createHeaderView:@"About Talool"];
+    taloolHeader = [self createHeaderView:[NSString stringWithFormat:@"About %@", [WhiteLabelHelper getProductName]]];
 
 }
 
@@ -110,19 +113,40 @@ static NSString *host = @"http://www.talool.com";
     }
     else if ([[segue identifier] isEqualToString:@"privacy"])
     {
-        NSString *pUrl = [NSString stringWithFormat:@"%@/privacy",host];
+        NSString *pUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            pUrl = [urls objectForKey:@"Privacy"];
+        }
+        if (pUrl==nil) pUrl = [NSString stringWithFormat:@"%@/privacy",host];
+        
         [[segue destinationViewController] setMobileWebUrl:pUrl];
         [[segue destinationViewController] setViewTitle:@"Privacy Policy"];
     }
     else if ([[segue identifier] isEqualToString:@"terms"])
     {
-        NSString *tUrl = [NSString stringWithFormat:@"%@/termsofservice",host];
+        NSString *tUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            tUrl = [urls objectForKey:@"Terms"];
+        }
+        if (tUrl==nil) tUrl = [NSString stringWithFormat:@"%@/termsofservice",host];
+        
         [[segue destinationViewController] setMobileWebUrl:tUrl];
         [[segue destinationViewController] setViewTitle:@"Terms of Use"];
     }
     else if ([[segue identifier] isEqualToString:@"merchant"])
     {
-        NSString *smUrl = [NSString stringWithFormat:@"%@/services/merchants",host];
+        NSString *smUrl = nil;
+        if ([WhiteLabelHelper getWhiteLabelId])
+        {
+            NSDictionary *urls = [[WhiteLabelHelper getTaloolDictionary] objectForKey:@"URL"];
+            smUrl = [urls objectForKey:@"Merchant"];
+        }
+        if (smUrl==nil) smUrl = [NSString stringWithFormat:@"%@/services/merchants",host];
+        
         [[segue destinationViewController] setMobileWebUrl:smUrl];
         [[segue destinationViewController] setViewTitle:@"Merchant Services"];
     }
@@ -233,6 +257,16 @@ static NSString *host = @"http://www.talool.com";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return (section==0) ? accountHeader:taloolHeader;
+}
+         
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            
+    if(cell == publisherCell && [WhiteLabelHelper getWhiteLabelId])
+        return 0; //set the hidden cell's height to 0
+    else
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark -

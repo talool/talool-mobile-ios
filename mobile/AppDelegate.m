@@ -39,7 +39,7 @@
 {
 
     //#warning @"Environment set to dev"
-    //[[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
+    [[TaloolFrameworkHelper sharedInstance] setEnvironment:EnvironmentTypeDevelopment];
 
     [Crashlytics startWithAPIKey:@"621dd92cb7c068e9486411b53478071c2c3f5357"];
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qfe-3S-Pf3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qfe-3S-Pf3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -215,7 +215,7 @@
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="JAO-Kz-aW0">
                                                     <rect key="frame" x="20" y="11" width="280" height="94"/>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="Enter your new password below.  You will be logged-in to Talool when the change is complete.">
+                                                        <fragment content="Enter your new password below.  You will be logged-in when the change is complete.">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.32549019610000002" green="0.2784313725" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="18" name="TrebuchetMS-Bold"/>
@@ -545,7 +545,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Addresss" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-mu-9w1" customClass="TaloolTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username (e.g. Email Address)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-mu-9w1" customClass="TaloolTextField">
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -686,12 +686,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-b1-3NG">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-b1-3NG">
                                                     <rect key="frame" x="34" y="6" width="252" height="29"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <segments>
-                                                        <segment title="Female"/>
                                                         <segment title="Male"/>
+                                                        <segment title="Female"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
@@ -806,7 +806,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-rh-5Zb" customClass="TaloolTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username (e.g. Email Address)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-rh-5Zb" customClass="TaloolTextField">
                                                     <rect key="frame" x="35" y="7" width="250" height="30"/>
                                                     <color key="tintColor" red="0.068834403259999996" green="0.55100047829999999" blue="0.54502114319999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -897,12 +897,13 @@
                         <outlet property="sexPicker" destination="9jL-b1-3NG" id="daR-Ci-EyA"/>
                         <segue destination="8ly-oM-ne5" kind="unwind" identifier="reg_unwind" unwindAction="unwindToSplash:" id="IBY-ac-Cxb"/>
                         <segue destination="ivS-WS-HeA" kind="push" identifier="showTutorial" id="sy1-9h-Ydu"/>
+                        <segue destination="4" kind="push" identifier="showTabs" id="d3Z-zz-AAk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIl-Lz-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8ly-oM-ne5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="565" y="-45"/>
+            <point key="canvasLocation" x="565" y="-51"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="qxY-6J-NQF">
@@ -925,7 +926,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUm-ke-Kcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="-45"/>
+            <point key="canvasLocation" x="1073" y="-51"/>
         </scene>
         <!--Activity-->
         <scene sceneID="s5q-0c-13S">
@@ -1553,7 +1554,7 @@
                                             <segue destination="Kia-Ym-Kxg" kind="push" identifier="merchant" id="Vch-VY-fmq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zHU-bg-EyC">
                                         <rect key="frame" x="0.0" y="279" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHU-bg-EyC" id="6MQ-l5-bRy">
@@ -1634,6 +1635,7 @@
                         <outlet property="logoutButton" destination="Swu-yj-sjq" id="Yv4-jS-QfY"/>
                         <outlet property="logoutCell" destination="VH0-jv-Tde" id="Wf6-1V-BJn"/>
                         <outlet property="nameLabel" destination="TZr-xT-pgA" id="GIZ-rz-NQm"/>
+                        <outlet property="publisherCell" destination="zHU-bg-EyC" id="y1k-dI-Nou"/>
                         <outlet property="versionLabel" destination="Y2k-aP-Bec" id="4xC-Fw-kBl"/>
                         <segue destination="wci-Hs-PRq" kind="unwind" identifier="settings_unwind" unwindAction="unwindToSplash:" id="bal-TQ-aGO"/>
                     </connections>
@@ -2803,7 +2805,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nnw-3f-B8b"/>
+        <segue reference="d3Z-zz-AAk"/>
         <segue reference="ZYY-Ve-nGY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

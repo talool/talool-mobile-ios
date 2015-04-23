@@ -26,7 +26,6 @@
 - (void) setUserAgent;
 
 #define GA_TRACKING_ID  @"UA-42344079-1"
-#define TESTFLIGHT_APP_TOKEN @"162f2dda-dd77-461f-b04f-93add82d8af5"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 

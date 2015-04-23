@@ -24,6 +24,7 @@
 #import "Talool-API/TaloolPersistentStoreCoordinator.h"
 #import "CustomerHelper.h"
 #import "LocationHelper.h"
+#import <WhiteLabelHelper.h>
 #import "TaloolColor.h"
 #import "OperationQueueManager.h"
 #import "MerchantFilterMenu.h"
@@ -135,7 +136,9 @@
             [self forcedClearOfTableView];
         }
         
-        self.navigationItem.title = [[CustomerHelper getLoggedInUser] getFullName];
+        NSString *title = [[CustomerHelper getLoggedInUser] getFullName];
+        if (title.length < 3) title = @"My Deals";
+        self.navigationItem.title = title;
         
         [_tableHeader updateTitle:[_menu getTitleAtSelectedIndex]
                          subtitle:[_menu getSubtitleAtSelectedIndex]];
@@ -162,9 +165,11 @@
     {
         [TSMessage addCustomDesignFromFileWithName:@"MessageDesign.json"];
         
+        NSString *subtitle = [NSString stringWithFormat:@"You can get started with %@ by loading some deals from the Find Deals tab below.", [WhiteLabelHelper getProductName]];
+        
         [TSMessage showNotificationInViewController:self
                                               title:@"Welcome!"
-                                           subtitle:@"You can get started with Talool by loading some deals from the Find Deals tab below."
+                                           subtitle:subtitle
                                               image:nil
                                                type:TSMessageNotificationTypeMessage
                                            duration:TSMessageNotificationDurationEndless
